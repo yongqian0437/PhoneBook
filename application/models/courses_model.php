@@ -45,9 +45,9 @@ class courses_model extends CI_Model
         return $this->db->get($table_name)->result();
     }
 
-    function select_condition($id, $table_name)
+    function select_condition($condition, $table_name)
     {
-        $this->db->where('course_id', $id);
+        $this->db->where($condition);
         return $this->db->get($table_name)->result();
     }
 }

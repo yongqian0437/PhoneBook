@@ -45,9 +45,9 @@ class user_student_model extends CI_Model
         return $this->db->get($table_name)->result();
     }
 
-    function select_data_with_user_id($id, $table_name)
+    function select_condition($condition, $table_name)
     {
-        $this->db->where('user_id', $id);
+        $this->db->where($condition);
         return $this->db->get($table_name)->result();
     }
 }
