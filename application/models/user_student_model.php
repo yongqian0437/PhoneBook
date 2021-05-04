@@ -9,9 +9,9 @@ class user_student_model extends CI_Model
         $this->load->database();
     }
 
-    function insert($data, $table_name)
+    function insert($data)
     {
-        $this->db->insert($table_name, $data);
+        $this->db->insert('user_student', $data);
         if ($this->db->affected_rows() > 0) {
             return true;
         } else {
@@ -19,20 +19,20 @@ class user_student_model extends CI_Model
         }
     }
 
-    function update($data, $id, $table_name)
+    function update($data, $id)
     {
         $this->db->where('student_id', $id);
-        if ($this->db->update($table_name, $data)) {
+        if ($this->db->update('user_student', $data)) {
             return true;
         } else {
             return false;
         }
     }
 
-    function delete($id, $table_name)
+    function delete($id)
     {
         $this->db->where('student_id', $id);
-        $this->db->delete($table_name);
+        $this->db->delete('user_student');
         if ($this->db->affected_rows() > 0) {
             return true;
         } else {
@@ -40,15 +40,14 @@ class user_student_model extends CI_Model
         }
     }
 
-    function select_all($table_name)
+    function select_all()
     {
-        return $this->db->get($table_name)->result();
+        return $this->db->get('user_student')->result();
     }
 
-    function select_condition($condition, $table_name)
+    function select_condition($condition)
     {
         $this->db->where($condition);
-        return $this->db->get($table_name)->result();
+        return $this->db->get('user_student')->result();
     }
 }
-    

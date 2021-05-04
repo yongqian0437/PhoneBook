@@ -1,6 +1,6 @@
 <?php
 
-class user_ea_model extends CI_Model
+class course_applicants_model extends CI_Model
 {
 
     public function __construct()
@@ -11,7 +11,7 @@ class user_ea_model extends CI_Model
 
     function insert($data)
     {
-        $this->db->insert('user_ea', $data);
+        $this->db->insert('course_applicants', $data);
         if ($this->db->affected_rows() > 0) {
             return true;
         } else {
@@ -21,8 +21,8 @@ class user_ea_model extends CI_Model
 
     function update($data, $id)
     {
-        $this->db->where('ea_id', $id);
-        if ($this->db->update('user_ea', $data)) {
+        $this->db->where('c_applicant_id', $id);
+        if ($this->db->update('course_applicants', $data)) {
             return true;
         } else {
             return false;
@@ -31,8 +31,8 @@ class user_ea_model extends CI_Model
 
     function delete($id)
     {
-        $this->db->where('ea_id', $id);
-        $this->db->delete('user_ea');
+        $this->db->where('c_applicant_id', $id);
+        $this->db->delete('course_applicants');
         if ($this->db->affected_rows() > 0) {
             return true;
         } else {
@@ -42,12 +42,12 @@ class user_ea_model extends CI_Model
 
     function select_all()
     {
-        return $this->db->get('user_ea')->result();
+        return $this->db->get('course_applicants')->result();
     }
 
     function select_condition($condition)
     {
         $this->db->where($condition);
-        return $this->db->get('user_ea')->result();
+        return $this->db->get('course_applicants')->result();
     }
 }
