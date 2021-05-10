@@ -25,68 +25,56 @@ class Auth extends CI_Controller
         {
             $data['title']='User Login';
 
-        //----------------------------------change later -------------------------------------//
-        // $this->load->view('templates/user_header',$data);
-        // $this->load->view('user/login');
-        // $this->load->view('templates/user_footer');
-        //   }else{
-              $this->_login();
-        //   }
+        $this->load->view('internal/templates/header',$data);
+        $this->load->view('user/login/login_view');
+        $this->load->view('internal/templates/footer');
+           }else{
+               $this->_login();
+           }
+           
             
-        }
     }
-
+    
     private function _login()
     {
         $user_email= $this->input->post('user_email');
         $user_password=$this->input->post('user_password');
         
         $users=$this->db->get_where('users', ['user_email'=>$user_email])->row_array();// put in model
-        
+         
         // if user exists
-        if($users)
-        {
+        if($users){
             // if user is approved
-            if($users['user_approval']==1)
-            {
+            if($users['user_approval']==1){
                 // verify the password
-                if($user_password==$users['user_password'])
-                {
-                    $data=
-                    [
+                if($user_password==$users['user_password']){
+                    $data=[
                         'user_email'=>$users['user_email'],
                         'user_role'=>$users['user_role']
                     ];
                     $this->session->set_userdata($data);
-                    if($users['user_role']=="admin")
-                    {
-
-                        //----------------------change later-------------------------//
-                        // redirect('internal/admin_dashboard');
-                    }
-                    else
-                    //   redirect('external/user_dashboard');
-                }
-                else
-                {
+                    if($users['user_role']=="admin"){
+                        redirect('internal/admin_panel/admin_dashboard');
+                      }else
+                    //    redirect('external/user_dashboard');//-------------change later---------//
+                       redirect('internal/level_2/level_2_dashboard');
+                }else{
                     $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
                     Wrong password!</div>');
-                    // redirect('user/login');
+                    redirect('user/login/login_view');
+    
                 }
-
-            }
-            else
-            {
+    
+            }else{
                 $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
                     Email has not been activated!</div>');
-                    // redirect('user/login');
+                    redirect('user/login/login_view');
             }
-        }
-        else
-        {
+    
+        }else{
             $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
                     Email has not been activated!</div>');
-                    // redirect('user/login');
+                    redirect('user/login/login_view');
         }
     }
 
@@ -110,6 +98,9 @@ class Auth extends CI_Controller
             // $this->load->view('templates/user_header',$data);
             // $this->load->view('user/registration');
             // $this->load->view('templates/user_footer');
+            $this->load->view('internal/templates/header',$data);
+            $this->load->view('user/registration/registration_view');
+            $this->load->view('internal/templates/footer');
 
         }
         else
@@ -130,12 +121,12 @@ class Auth extends CI_Controller
         
             if($user_role=="student")
             {
-                //------------------ change later-------------------//
+                //------------------ change later-------------------(wait for wc)//
                 // $this->load->view('user/reg_student');
             }
             else
             {
-                 //------------------ change later-------------------//
+                 //------------------ change later-------------------(wait for wc)//
                 // $this->load->view('user/reg_education_partner');
             }
             
@@ -192,7 +183,8 @@ class Auth extends CI_Controller
 
         $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
         You have been logout</div>');
-        // redirect('user/login'); 
+        redirect('user/login/login_view');
+     
     }
 
 
