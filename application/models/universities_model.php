@@ -50,4 +50,18 @@ class universities_model extends CI_Model
         $this->db->where($condition);
         return $this->db->get('universities')->result();
     }
+
+    function select_all_approved_only() //new function 
+    {
+        $this->db->where('uni_approval', 1);
+        return $this->db->get('universities')->result();
+    }
+
+    function get_uni_with_id($id)  //new function
+    {
+        $this->db->where('uni_id', $id);
+        return $this->db->get('universities')->result();
+    }
+
+
 }
