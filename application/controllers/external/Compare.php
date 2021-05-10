@@ -45,11 +45,38 @@ class Compare extends CI_Controller {
 			<tr>
 				<td scope="col"></td>
 				<td scope="col">
-                    <img style=" height:85px; width: 250px;" src="'.$logo1.'" alt="logo1">
-                
+                    <center>
+                        <img style=" height:85px; width: 250px;" src="'.$logo1.'" alt="logo1"><br><br>
+                        <a style = "border-radius:10px; background-color:#6B9080; color:white; height:auto; width:auto;" href="" class = "btn btn-icon-split">
+                            <span class = "icon text-white-600">
+                                <i class = "fas fa-university p-1"></i>
+                            </span>
+                            <span style = "" class = "text">View University</span>
+                        </a>
+                    </center>  
                 </td>
-				<td scope="col"><img style=" height:85px; width: 250px;" src="'.$logo2.'" alt="logo2"></td>
-				<td scope="col"><img style=" height:85px; width: 250px;" src="'.$logo3.'" alt="logo3"></td>
+				<td scope="col">
+                    <center>
+                        <img style=" height:85px; width: 250px;" src="'.$logo2.'" alt="logo2"><br><br>
+                        <a style = "border-radius:10px; background-color:#6B9080; color:white; height:auto; width:auto;" href="" class = "btn btn-icon-split">
+                            <span class = "icon text-white-600">
+                                <i class = "fas fa-university p-1"></i>
+                            </span>
+                            <span style = "" class = "text">View University</span>
+                        </a>                    
+                    </center>   
+                </td>
+				<td scope="col">
+                    <center>
+                        <img style=" height:85px; width: 250px;" src="'.$logo3.'" alt="logo3"><br><br>
+                        <a style = "border-radius:10px; background-color:#6B9080; color:white; height:auto; width:auto;" href="" class = "btn btn-icon-split">
+                            <span class = "icon text-white-600">
+                                <i class = "fas fa-university p-1"></i>
+                            </span>
+                            <span style = "" class = "text">View University</span>
+                        </a>                    
+                    </center>    
+                </td>
 			</tr>
 			<tr>
 				<th scope="row">Course Name</th>
@@ -105,6 +132,64 @@ class Compare extends CI_Controller {
 				<td>'.$course_data2[0]->course_requirements.'</td>
 				<td>'.$course_data3[0]->course_requirements.'</td>
 			</tr>
+            <tr>
+				<th scope="row"></th>
+                    <td>
+                        <center>
+                            <span>
+                                <a style = "border-radius:10px; background-color:#6B9080; color:white; height:auto; width:auto;" href="" class = "btn btn-icon-split pr-1">
+                                    <span class = "icon text-white-600">
+                                        <i class = "fas fa-book p-1"></i>
+                                    </span>
+                                    <span style = "" class = "text">View Courses</span>
+                                </a>
+                                <a style = "border-radius:10px; background-color:#6B9080; color:white; height:auto; width:auto%;" href="" class = "btn btn-icon-split">
+                                    <span class = "icon text-white-600">
+                                        <i class = "fas fa-edit p-1"></i>
+                                    </span>
+                                    <span style = "" class = "text">Apply</span>
+                                </a>
+                            </span>
+                        </center>
+                    </td>
+                    <td>  
+                        <center>  
+                            <span>
+                                <a style = "border-radius:10px; background-color:#6B9080; color:white; height:auto; width:auto;" href="" class = "btn btn-icon-split pr-1">
+                                    <span class = "icon text-white-600">
+                                        <i class = "fas fa-book p-1"></i>
+                                    </span>
+                                    <span style = "" class = "text">View Courses</span>
+                                </a>
+                                <a style = "border-radius:10px; background-color:#6B9080; color:white; height:auto; width:auto%;" href="" class = "btn btn-icon-split">
+                                    <span class = "icon text-white-600">
+                                        <i class = "fas fa-edit p-1"></i>
+                                    </span>
+                                    <span style = "" class = "text">Apply</span>
+                                </a>
+                            </span>
+                        </center>
+                    </td>
+                    <td>
+                        <center>
+                            <span>
+                                <a style = "border-radius:10px; background-color:#6B9080; color:white; height:auto; width:auto;" href="" class = "btn btn-icon-split pr-1">
+                                    <span class = "icon text-white-600">
+                                        <i class = "fas fa-book p-1"></i>
+                                    </span>
+                                    <span style = "" class = "text">View Courses</span>
+                                </a>
+                                <a style = "border-radius:10px; background-color:#6B9080; color:white; height:auto; width:auto%;" href="" class = "btn btn-icon-split">
+                                    <span class = "icon text-white-600">
+                                        <i class = "fas fa-edit p-1"></i>
+                                    </span>
+                                    <span style = "" class = "text">Apply</span>
+                                </a>
+                            </span>
+                        </center>
+                    </td>
+			</tr>
+
 		</tbody>';
 
 		echo $output;

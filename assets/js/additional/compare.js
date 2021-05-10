@@ -104,7 +104,7 @@ function generateTable() {
         swal({
             title: "Try Again",
             text: "Please fill in all information.",
-            icon: "success",
+            icon: "error",
             button: "OK",
         });
     }
