@@ -8,7 +8,10 @@ class Users_information extends CI_Controller
         parent:: __construct();
         $this->load->model(['user_student_model','user_ep_model']);
     }
+<<<<<<< Updated upstream
     
+=======
+>>>>>>> Stashed changes
     public function index()
     {
         
