@@ -150,8 +150,7 @@ class Auth extends CI_Controller
         $this->db->insert('user_student',$data);//------------------ move to model-------------------//
         $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
         Check your email to get the approval from the admin</div>');
-        //---------------------change later-------------------------//
-        // redirect('user/login');  
+         redirect('user/login/login_view');  
     
     }
 
@@ -172,8 +171,7 @@ class Auth extends CI_Controller
         $this->db->insert('user_ep',$data);//------------------ move to model-------------------//
         $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
         Check your email to get the approval from the admin</div>'); 
-    //---------------------change later-------------------------//
-        // redirect('user/login');  
+        redirect('user/login/login_view');  
     }
 
     public function logout()
