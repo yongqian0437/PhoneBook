@@ -24,6 +24,7 @@ class Compare extends CI_Controller {
 	function fetch_courses()
 	{
 	  echo $this->courses_model->fetch_courses($this->input->post('uni_id'), $this->input->post('course_level'));
+	  
 	}
 
 	function fetch_table()
@@ -194,5 +195,5 @@ class Compare extends CI_Controller {
 
 		echo $output;
 	}
-
+	
 }
