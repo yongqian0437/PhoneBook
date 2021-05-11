@@ -19,17 +19,17 @@ class user_model extends CI_Model
         }
     }
 
-    function update($data, $id)
-    {
-        $this->db->where('user_id', $id);
-        if ($this->db->update('users', $data)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+    // function update($data, $id)
+    // {
+    //     $this->db->where('user_id', $id);
+    //     if ($this->db->update('users', $data)) {
+    //         return true;
+    //     } else {
+    //         return false;
+    //     }
+    // }
 
-    function delete($id)
+    function deletedata($id)
     {
         $this->db->where('user_id', $id);
         $this->db->delete('users');
@@ -40,37 +40,20 @@ class user_model extends CI_Model
         }
     }
 
-    function select_all()
-    {
-        return $this->db->get('users')->result();
-    }
+    // function select_all()
+    // {
+    //     return $this->db->get('users')->result();
+    // }
 
-    function select_condition($condition)
-    {
-        $this->db->where($condition);
-        return $this->db->get('users')->result();
-    }
+    // function select_condition($condition)
+    // {
+    //     $this->db->where($condition);
+    //     return $this->db->get('users')->result();
+    // }
 
-    public function update_approve()
+    public function update_approve($id,$data)
    {
-       //-------------------move to controller---------------//
-       //------------------same as line 22------------------//
-    //    $id=$_REQUEST['sid'];
-    //    $sapproval=$_REQUEST['sapproval'];
-    //    if($sapproval==1)
-    //    {
-    //     $user_approval=0;
-    //    }
-    //    else 
-    //    {
-    //     $user_approval=1;
-    //    }
-    //    $data=
-    //    array(
-    //     'user_approval'=>$user_approval
-    //    );
         $this->db->where('user_id',$id);
-      
         return $this->db->update('users',$data);
    }
 
@@ -100,19 +83,19 @@ class user_model extends CI_Model
     //    }
 
      //-------------------same as line 48 --------------//
-//        public function  approvedata()
-//    {
-//      $this->db->where('user_approval', 1);
-//      return $this->db->get('users')->result_array();
+       public function  approvedata($condition)
+   {
+     $this->db->where('user_approval', $condition);
+     return $this->db->get('users')->result_array();
 
-//    }
+   }
 
-//     public function  pendingdata()
-//     {
-//       $this->db->where('user_approval', 0);
-//       return $this->db->get('users')->result_array();
+    public function  pendingdata($condition)
+    {
+      $this->db->where('user_approval', $condition);
+      return $this->db->get('users')->result_array();
  
-//      }
+     }
 
      //-------------------same as line 43 --------------//
      public function getuserid()
@@ -129,6 +112,11 @@ class user_model extends CI_Model
    public function search_email()
    {
    return $this->db->get_where('users',['user_email'=>$this->session->userdata('user_email')])->row_array();
+   }
+
+   public function search_id($id)
+   {
+    return $this->db->get_where('users', ['user_id'=>$id])->row_array();
    }
 
    

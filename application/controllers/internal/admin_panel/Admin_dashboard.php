@@ -16,37 +16,38 @@ class Admin_dashboard extends CI_Controller {
     public function users_accounts_nav()
     {
         $data['title']= 'All users';
-        $data['users']=$this->db->get_where('users',['user_email'=>$this->session->userdata('user_email')])->row_array();
-
         $this->load->view('internal/templates/header',$data);
-      //  $this->load->view('internal/templates/sidenav',$data);
-        // $this->load->view('internal/templates/topbar',$data);
-        // if($this->input->post('keyword')){
-        //   //  $data['users']=$this->users_model->searchdata();
-           
-        // }
-       
-        // $this->load->model('users_model');
-        // $result=$this->users_model->index();
-        // $data=array('userlist'=>$result);
         $data['users']=$this->user_model->searchdata();
         $this->load->view('internal/admin_panel/users_accounts_view',$data);
         $this->load->view('internal/templates/footer');
     }
     
-    public function update_acc_approval()//----------------change the function in the view------------------//
+    public function update_acc_approval()
     {
         if(isset($_REQUEST['sapproval']))
         {
             $id=$_REQUEST['sid'];
-            $this->load->model('users_model','users');
-            $up_approval=$this->users_model->update_approve();
+            $sapproval=$_REQUEST['sapproval'];
+            $this->load->model('user_model','users');
+    
+            if($sapproval==1)
+            {
+                $user_approval=0;
+            }
+            else 
+            {
+                $user_approval=1;
+            }
+            $data=
+            array(
+                'user_approval'=>$user_approval
+            );
+            $up_approval=$this->user_model->update_approve($id,$data);
             
-            $users=$this->db->get_where('users', ['user_id'=>$id])->row_array();//-----------put in the model--------//
-            
+            $users=$this->user_model->search_id($id);
               if($users['user_approval']==1)
             { 
-                $this->_sendEmail();
+                 $this->_sendEmail();
                 $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
                 User account is approved</div>');
             }
@@ -56,28 +57,29 @@ class Admin_dashboard extends CI_Controller {
                User account is not approved</div>');
             }
             
-            return redirect('external/users'); //------- change to admin_dashboard controller---------//
+            redirect('internal/admin_panel/Admin_dashboard/users_accounts_nav');
+    
         }
     
     }
 
-    public function delete_acc()//----------------change the function in the view------------------//
+    public function delete_acc()
     {
         $id=$_REQUEST['sid'];
-        $this->users_model->deletedata($id);
+        $this->user_model->deletedata($id);
         $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
         User account is deleted</div>');
-        redirect('external/users'); //------- change to admin_dashboard controller---------//
+        redirect('internal/admin_panel/Admin_dashboard/users_accounts_nav');
     }
 
-    public function decline_acc()//----------------change the function in the view------------------//
+    public function decline_acc()
     {
         $id=$_REQUEST['sid'];
-        $this->users_model->declinedata($id);
+        $this->user_model->deletedata($id);
         $this->_sendEmail();
         $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
         User account is declined</div>');
-        redirect('external/users'); 
+        redirect('internal/admin_panel/Admin_dashboard/users_accounts_nav');
     }
 
         private function _sendEmail()
@@ -86,8 +88,7 @@ class Admin_dashboard extends CI_Controller {
         $id=$_REQUEST['sid'];
         $email=$_REQUEST['semail'];
         $password=$_REQUEST['spassword'];
-        $users=$this->db->get_where('users', ['user_id'=>$id])->row_array();//-----------put in the model--------//
-       
+        $users=$this->user_model->search_id($id);
         $config=
         [
             'protocol'=>'smtp',
@@ -124,32 +125,32 @@ class Admin_dashboard extends CI_Controller {
         }
     }
 
-    public function show_approve_acc()//----------------change the function in the view------------------//
+    public function show_approve_acc()
     { 
         $data['title']= 'Approved';
-        //-----------line 127 put in the model--------//
-        $data['users']=$this->db->get_where('users',['user_email'=>$this->session->userdata('user_email')])->row_array();
-        $this->load->view('templates/header',$data);
-        $this->load->view('templates/sidebar',$data);
-        $this->load->view('templates/topbar',$data);
+        $data['users']=$this->user_model->search_email();
+        $this->load->view('internal/templates/header',$data);
+        $this->load->view('internal/templates/sidenav',$data);
+       // $this->load->view('templates/topbar',$data);
 
-        $data['users']=$this->users_model->approvedata();
-        $this->load->view('external/users',$data);
-        $this->load->view('templates/footer');
+       $condition=1;
+        $data['users']=$this->user_model->approvedata( $condition);
+        $this->load->view('internal/admin_panel/users_accounts_view',$data);
+        $this->load->view('internal/templates/footer'); 
     }
 
-    public function show_pending_acc()//----------------change the function in the view------------------//
+    public function show_pending_acc()
     {
         $data['title']= 'Approved';
-        //-----------line 127 put in the model--------//
-        $data['users']=$this->db->get_where('users',['user_email'=>$this->session->userdata('user_email')])->row_array();
-        $this->load->view('templates/header',$data);
-        $this->load->view('templates/sidebar',$data);
-        $this->load->view('templates/topbar',$data);
+        $data['users']=$this->user_model->search_email();
+        $this->load->view('internal/templates/header',$data);
+        $this->load->view('internal/templates/sidenav',$data);
+       // $this->load->view('internal/templates/topbar',$data);
 
-        $data['users']=$this->users_model->pendingdata();
-        $this->load->view('external/users',$data);
-        $this->load->view('templates/footer'); 
+        $condition=0;
+        $data['users']=$this->user_model->pendingdata($condition);
+        $this->load->view('internal/admin_panel/users_accounts_view',$data);
+        $this->load->view('internal/templates/footer'); 
     }
    
 }

@@ -142,20 +142,20 @@ class Auth extends CI_Controller
             if($user_role=="student")
             {
                 //------------------ change later-------------------(wait for wc)//
-                // $this->load->view('user/reg_student');
+                 $this->load->view('user/registration/student_registration_view');
             }
             else
             {
                  //------------------ change later-------------------(wait for wc)//
-                // $this->load->view('user/reg_education_partner');
+                // $this->load->view('user/registration/ep_registration_view');
             }
             
         }
     }
 
-    public function student_reg()// -----------------change function name in view-------------------//
+    public function student_reg()
     {
-        $user_id=$this->user_student_model->getuserid();
+        $user_id=$this->user_student_model->last_user_id();
         $data=
         [
             'user_id'=>$user_id,
@@ -167,16 +167,17 @@ class Auth extends CI_Controller
             'student_currentlevel'=>htmlspecialchars($this->input->post('student_currentlevel',true)),
         ];
 
-        $this->db->insert('user_student',$data);//------------------ move to model-------------------//
+         // insert data into database
+        $this->user_student_model->insert($data);
         $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
         Check your email to get the approval from the admin</div>');
-         redirect('user/login/login_view');  
+        redirect('user/login/Auth/login'); // ---------change later---------//
     
     }
 
     public function ep_reg()// -----------------change function name in view-------------------//
     {
-        $user_id=$this->user_ep_model->getuserid();
+        $user_id=$this->user_ep_model->last_user_id();
         $data=
         [
             'user_id'=>$user_id,
@@ -188,7 +189,8 @@ class Auth extends CI_Controller
             'ep_jobtitle'=>htmlspecialchars($this->input->post('ep_jobtitle',true)),  
         ];
 
-        $this->db->insert('user_ep',$data);//------------------ move to model-------------------//
+         // insert data into database
+        $this->user_ep_model->insert($data);
         $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
         Check your email to get the approval from the admin</div>'); 
         redirect('user/login/login_view');  

@@ -50,11 +50,11 @@ foreach($users as $re):?>
         
         <!-- <td><a href="users/update_approval?slname=<?php echo $re['user_lname'];?>&semail=<?php echo $re['user_email'];?>&spassword=<?php echo $re['user_password'];?>&sid=<?php echo $re['user_id'];?>&sapproval=<?php echo $re['user_approval'];?>" class="btn btn-success">Approve</a></td> -->
         <td><button type="button" class="btn btn-success"  disabled data-bs-toggle>Approved</button></td>
-        <td><a href="users/delete?sid=<?php echo $re['user_id'];?>" class="btn btn-danger" onclick=" return confirm ('confirm to delete?');">Delete</a></td>
+        <td><a href="<?= base_url(); ?>internal/admin_panel/Admin_dashboard/delete_acc?sid=<?php echo $re['user_id'];?>" class="btn btn-danger" onclick=" return confirm ('confirm to delete?');">Delete</a></td>
         
         <!--user is student-->
         <?php if($re['user_role']=='student'){ ?>
-        <td><a href="<?= base_url(); ?>external/student/detailstudent/<?php echo $re['user_id'];?>" class="btn btn-secondary">View</th>
+        <td><a href="<?= base_url(); ?>internal/admin_panel/Users_information/detailstudent/<?php echo $re['user_id'];?>" class="btn btn-secondary">View</th>
        
         <!--user is education partner-->
         <?php } 
@@ -64,12 +64,12 @@ foreach($users as $re):?>
         <?php }
         else{
           ?>
-         <td><a href="<?= base_url(); ?>external/users/update_approval?slname=<?php echo $re['user_lname'];?>&semail=<?php echo $re['user_email'];?>&spassword=<?php echo $re['user_password'];?>&sid=<?php echo $re['user_id'];?>&sapproval=<?php echo $re['user_approval'];?>" class="btn btn-warning">Pending</a></td>
-         <td><a href="<?= base_url(); ?>external/users/decline?slname=<?php echo $re['user_lname'];?>&semail=<?php echo $re['user_email'];?>&spassword=<?php echo $re['user_password'];?>&sid=<?php echo $re['user_id'];?>&sapproval=<?php echo $re['user_approval'];?>" class="btn btn-info"  onclick=" return confirm ('Confirm to decline?');">Decline</a></td>
+         <td><a href="<?= base_url(); ?>internal/admin_panel/Admin_dashboard/update_acc_approval?slname=<?php echo $re['user_lname'];?>&semail=<?php echo $re['user_email'];?>&spassword=<?php echo $re['user_password'];?>&sid=<?php echo $re['user_id'];?>&sapproval=<?php echo $re['user_approval'];?>" class="btn btn-warning">Pending</a></td>
+         <td><a href="<?= base_url(); ?>internal/admin_panel/Admin_dashboard/decline_acc?slname=<?php echo $re['user_lname'];?>&semail=<?php echo $re['user_email'];?>&spassword=<?php echo $re['user_password'];?>&sid=<?php echo $re['user_id'];?>&sapproval=<?php echo $re['user_approval'];?>" class="btn btn-info"  onclick=" return confirm ('Confirm to decline?');">Decline</a></td>
         
          <!--user is student-->
          <?php if($re['user_role']=='student'){ ?>
-         <td><a href="<?= base_url(); ?>external/student/detailstudent/<?php echo $re['user_id'];?>" class="btn btn-secondary">View</th>
+         <td><a href="<?= base_url(); ?>internal/admin_panel/Users_information/detailstudent/<?php echo $re['user_id'];?>" class="btn btn-secondary">View</th>
          <?php } 
         else if($re['user_role']=='education_partner') {?>
           <td><a href="<?= base_url(); ?>external/education_partner/detaileducation_partner/<?php echo $re['user_id'];?>" class="btn btn-secondary">View</th>
@@ -88,9 +88,9 @@ foreach($users as $re):?>
     <?php endforeach ;?>
     <div class="row mt-3">
   <div class="col-md-10">
-    <a href="<?= base_url(); ?>external/users" class="btn btn-secondary " >All Users</a>
-    <a href="<?= base_url(); ?>external/users/showapprovedata " class="btn btn-success " >Approved</a>
-    <a href="<?= base_url(); ?>external/users/showpendingdata " class="btn btn-warning " >Pending</a>
+    <a href="<?= base_url(); ?>internal/admin_panel/Admin_dashboard/users_accounts_nav" class="btn btn-secondary " >All Users</a>
+    <a href="<?= base_url(); ?>internal/admin_panel/Admin_dashboard/show_approve_acc " class="btn btn-success " >Approved</a>
+    <a href="<?= base_url(); ?>internal/admin_panel/Admin_dashboard/show_pending_acc " class="btn btn-warning " >Pending</a>
     </div>
 </div>
 <br>

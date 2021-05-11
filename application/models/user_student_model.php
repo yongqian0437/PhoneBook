@@ -9,6 +9,12 @@ class user_student_model extends CI_Model
         $this->load->database();
     }
 
+    function index()
+    {
+        // select from  users table
+        return $this->db->get('user_student');
+    }
+
     function insert($data)
     {
         $this->db->insert('user_student', $data);
@@ -51,7 +57,7 @@ class user_student_model extends CI_Model
         return $this->db->get('user_student')->result();
     }
 
-    public function last_user_id()//----------change the function name in controller--------------//
+    public function last_user_id()
     {
      $row = $this->db->select("*")->limit(1)->order_by('user_id',"DESC")->get("users")->row();
      return $row->user_id; //it will provide latest or last record id.
@@ -61,5 +67,6 @@ class user_student_model extends CI_Model
     {
      return $this->db->get_where('user_student',['user_id'=>$id])->row_array();
     }
+    
     
 }
