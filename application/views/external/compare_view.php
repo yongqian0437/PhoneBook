@@ -37,6 +37,9 @@ tr:nth-child(even) {
 }
 </style>
 
+<!-- Top Navigation -->
+<?php $this->load->view('external/templates/topnav');?>
+
 <body id="page-top">
 
     <!-- Page Wrapper -->
@@ -48,14 +51,11 @@ tr:nth-child(even) {
             <!-- Main Content -->
             <div id="content">
 
-                 <!-- Top Navigation -->
-                <?php $this->load->view('external/templates/topnav');?>
-
                 <!-- Begin Page Content -->
                 <div style = 'background-color:white;' class="container-fluid">
 
                 <!-- Page Heading -->
-                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                <div class="d-sm-flex align-items-center justify-content-between mb-4 pt-5">
                     <h1 class="h3 mb-0 text-gray-800"><b>COMPARE COURSES<b></h1>
                 </div>
                 <?php //$courses = $_POST['courses'];  
