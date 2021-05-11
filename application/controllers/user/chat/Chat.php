@@ -25,8 +25,8 @@ class Chat extends CI_Controller
         // Show ACs and Employers as contacts if Student is accessing the chat
         if ($this->session->userdata['user_role'] == 'Student') 
         {
-            $list = $this->user_model->counsellors_list2(); // check in model
-            $list2 = $this->user_model->employers_list2(); // check in model
+            $list = $this->user_model->counsellors_list(); // check in model
+            $list2 = $this->user_model->employers_list(); // check in model
             $data['title'] = 'All Academic Counsellors and Employers';
             $data['sub_title'] = 'Academic Counsellors';
             $data['sub_title2'] = 'Employers';
@@ -182,7 +182,7 @@ class Chat extends CI_Controller
         foreach ($history as $chat):
             $message_id = $chat['chat_id'];
             $sender_id = $chat['sender_id'];
-            $userName = $this->user_model->GetName($chat['sender_id']); // check in model
+            $userName = $this->user_model->get_name($chat['sender_id']); // check in model
             $userPic = base_url('uploads/user_profiles/profile_pic.png'); // Set default user picture
             $message = $chat['message'];
             $messagedatetime = date('d M h:i A', strtotime($chat['message_date_time']));
