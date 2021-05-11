@@ -25,9 +25,9 @@ class Auth extends CI_Controller
         {
             $data['title']='User Login';
 
-        $this->load->view('internal/templates/header',$data);
+        $this->load->view('external/templates/header',$data);
         $this->load->view('user/login/login_view');
-        $this->load->view('internal/templates/footer');
+        $this->load->view('external/templates/footer');
            }else{
                $this->_login();
            }
@@ -43,37 +43,56 @@ class Auth extends CI_Controller
         $users=$this->db->get_where('users', ['user_email'=>$user_email])->row_array();// put in model
          
         // if user exists
-        if($users){
+        if($users)
+        {
             // if user is approved
-            if($users['user_approval']==1){
+            if($users['user_approval']==1)
+            {
                 // verify the password
-                if($user_password==$users['user_password']){
+                if($user_password==$users['user_password'])
+                {
                     $data=[
                         'user_email'=>$users['user_email'],
                         'user_role'=>$users['user_role']
                     ];
+
                     $this->session->set_userdata($data);
-                    if($users['user_role']=="admin"){
-                        redirect('internal/admin_panel/admin_dashboard');
-                      }else
-                    //    redirect('external/user_dashboard');//-------------change later---------//
-                       redirect('internal/level_2/level_2_dashboard');
-                }else{
+                    // check user role is admin
+                    if($users['user_role']=="admin")
+                    {
+                        redirect('internal/admin_panel/admin_dashboard_view');
+                    }
+                    // check user role is  AC,EA,E,EP
+                    else if ($users['user_role']!="student")
+                    {
+                       redirect('internal/level_2/level_2_dashboard_view');
+                    }
+                     // check user role is  student
+                    else
+                        redirect('external/homepage_view');
+                }
+                // if password is incorrect
+                else
+                {
                     $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
                     Wrong password!</div>');
                     redirect('user/login/login_view');
-    
                 }
-    
-            }else{
+            }
+            // if account is not approved by admin
+            else
+            {
                 $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
-                    Email has not been activated!</div>');
-                    redirect('user/login/login_view');
+                Email has not been activated!</div>');
+                redirect('user/login/login_view');
             }
     
-        }else{
+        }
+        // if user account does not exist
+        else
+        {//------------------ check is it extra--------------------//
             $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
-                    Email has not been activated!</div>');
+                    Account does not exist!</div>');
                     redirect('user/login/login_view');
         }
     }
@@ -98,9 +117,9 @@ class Auth extends CI_Controller
             // $this->load->view('templates/user_header',$data);
             // $this->load->view('user/registration');
             // $this->load->view('templates/user_footer');
-            $this->load->view('internal/templates/header',$data);
+            $this->load->view('external/templates/header',$data);
             $this->load->view('user/registration/registration_view');
-            $this->load->view('internal/templates/footer');
+            $this->load->view('external/templates/footer');
 
         }
         else

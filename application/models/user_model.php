@@ -126,4 +126,6 @@ class user_model extends CI_Model
     return $row->user_role; //it will provide latest record.
    }
 
+   
+
 }
