@@ -3,7 +3,7 @@
     overflow: hidden;
 }
 
-.upload_attachmentfile {
+.upload_attachment {
     position: absolute;
     opacity: 0;
     right: 0;
