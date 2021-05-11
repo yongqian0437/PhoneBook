@@ -126,6 +126,11 @@ class user_model extends CI_Model
     return $row->user_role; //it will provide latest record.
    }
 
+   public function search_email()
+   {
+   return $this->db->get_where('users',['user_email'=>$this->session->userdata('user_email')])->row_array();
+   }
+
    
 
 }

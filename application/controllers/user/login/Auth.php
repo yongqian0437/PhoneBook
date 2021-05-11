@@ -66,18 +66,18 @@ class Auth extends CI_Controller
                     // check user role is  AC,EA,E,EP
                     else if ($users['user_role']!="student")
                     {
-                       redirect('internal/level_2/level_2_dashboard_view');
+                       redirect('internal/level_2/Level_2_dashboard/profile_level_2');
                     }
                      // check user role is  student
                     else
-                        redirect('external/homepage_view');
+                        redirect('external/homepage/profile_level_1');
                 }
                 // if password is incorrect
                 else
                 {
                     $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
                     Wrong password!</div>');
-                    redirect('user/login/login_view');
+                    redirect('user/login/Auth/login');
                 }
             }
             // if account is not approved by admin
@@ -85,7 +85,7 @@ class Auth extends CI_Controller
             {
                 $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
                 Email has not been activated!</div>');
-                redirect('user/login/login_view');
+                redirect('user/login/Auth/login');
             }
     
         }
@@ -94,7 +94,7 @@ class Auth extends CI_Controller
         {//------------------ check is it extra--------------------//
             $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
                     Account does not exist!</div>');
-                    redirect('user/login/login_view');
+                    redirect('user/login/Auth/login');
         }
     }
 
@@ -136,7 +136,7 @@ class Auth extends CI_Controller
             ];
         
             // insert data into database
-            $this->db->insert('users',$data);//------------------ move to model-------------------//
+            $this->user_model->insert($data);
             $user_role=$this->user_model->get_role();
         
             if($user_role=="student")
