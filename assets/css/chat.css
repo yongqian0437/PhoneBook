@@ -1,0 +1,15 @@
+.fileDiv {
+    position: relative;
+    overflow: hidden;
+}
+
+.upload_attachmentfile {
+    position: absolute;
+    opacity: 0;
+    right: 0;
+    top: 0;
+}
+
+.btnFileOpen {
+    margin-top: -50px;
+}
