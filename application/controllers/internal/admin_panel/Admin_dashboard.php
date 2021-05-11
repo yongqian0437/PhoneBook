@@ -7,16 +7,20 @@ class Admin_dashboard extends CI_Controller {
     {
         parent:: __construct();
         $this->load->helper('form');
-        $this->load->model('users_model');
+        $this->load->model('user_model');
     }
     public function index()
+    {
+        echo "dashobard";
+    }
+    public function users_accounts_nav()
     {
         $data['title']= 'All users';
         $data['users']=$this->db->get_where('users',['user_email'=>$this->session->userdata('user_email')])->row_array();
 
-        $this->load->view('templates/header',$data);
-        $this->load->view('templates/sidebar',$data);
-        $this->load->view('templates/topbar',$data);
+        $this->load->view('internal/templates/header',$data);
+      //  $this->load->view('internal/templates/sidenav',$data);
+        // $this->load->view('internal/templates/topbar',$data);
         // if($this->input->post('keyword')){
         //   //  $data['users']=$this->users_model->searchdata();
            
@@ -25,9 +29,9 @@ class Admin_dashboard extends CI_Controller {
         // $this->load->model('users_model');
         // $result=$this->users_model->index();
         // $data=array('userlist'=>$result);
-        $data['users']=$this->users_model->searchdata();
-        $this->load->view('external/users',$data);
-        $this->load->view('templates/footer');
+        $data['users']=$this->user_model->searchdata();
+        $this->load->view('internal/admin_panel/users_accounts_view',$data);
+        $this->load->view('internal/templates/footer');
     }
     
     public function update_acc_approval()//----------------change the function in the view------------------//
@@ -142,7 +146,7 @@ class Admin_dashboard extends CI_Controller {
         $this->load->view('templates/header',$data);
         $this->load->view('templates/sidebar',$data);
         $this->load->view('templates/topbar',$data);
-        
+
         $data['users']=$this->users_model->pendingdata();
         $this->load->view('external/users',$data);
         $this->load->view('templates/footer'); 

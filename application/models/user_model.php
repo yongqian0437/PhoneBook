@@ -74,16 +74,16 @@ class user_model extends CI_Model
         return $this->db->update('users',$data);
    }
 
-   //--------------------Reference for datatable---------------------//
-//    public function searchdata()
-//    {
-//        $keyword=$this->input->post('keyword',true);
-//        $this->db->like('user_fname', $keyword);
-//        $this->db->or_like('user_lname', $keyword);
-//        $this->db->or_like('user_email', $keyword);
-//        $this->db->or_like('user_role', $keyword);
-//        return $this->db->get('users')->result_array();
-//     }
+  // --------------------Reference for datatable---------------------//
+   public function searchdata()
+   {
+       $keyword=$this->input->post('keyword',true);
+       $this->db->like('user_fname', $keyword);
+       $this->db->or_like('user_lname', $keyword);
+       $this->db->or_like('user_email', $keyword);
+       $this->db->or_like('user_role', $keyword);
+       return $this->db->get('users')->result_array();
+    }
 
     //-------------------same as line 32 --------------//
     //    public function deletedata($id)

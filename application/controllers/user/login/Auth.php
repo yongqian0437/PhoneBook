@@ -15,7 +15,8 @@ class Auth extends CI_Controller
         $this->load->model('user_ep_model');
         
     }
-
+    
+    
     public function login()
     {
         $this->form_validation->set_rules('user_email','Email','trim|required|valid_email');
@@ -60,7 +61,7 @@ class Auth extends CI_Controller
                     // check user role is admin
                     if($users['user_role']=="admin")
                     {
-                        redirect('internal/admin_panel/admin_dashboard_view');
+                        redirect('internal/admin_panel/Admin_dashboard');
                     }
                     // check user role is  AC,EA,E,EP
                     else if ($users['user_role']!="student")
@@ -201,6 +202,11 @@ class Auth extends CI_Controller
         $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
         You have been logout</div>');
         redirect('user/login/login_view');
+     
+    }
+
+    public function test($user_role)
+    {
      
     }
 
