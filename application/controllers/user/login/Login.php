@@ -8,8 +8,6 @@ class Login extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('user_model');
-
-		//example  $this->user_model->select_all('users');
 	}
 
 

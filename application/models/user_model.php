@@ -22,16 +22,6 @@ class user_model extends CI_Model
         }
     }
 
-    // function update($data, $id)
-    // {
-    //     $this->db->where('user_id', $id);
-    //     if ($this->db->update('users', $data)) {
-    //         return true;
-    //     } else {
-    //         return false;
-    //     }
-    // }
-
     function deletedata($id)
     {
         $this->db->where('user_id', $id);
@@ -45,17 +35,6 @@ class user_model extends CI_Model
             return false;
         }
     }
-
-    // function select_all()
-    // {
-    //     return $this->db->get('users')->result();
-    // }
-
-    // function select_condition($condition)
-    // {
-    //     $this->db->where($condition);
-    //     return $this->db->get('users')->result();
-    // }
 
     public function update_approve($id,$data)
     {
@@ -94,19 +73,24 @@ class user_model extends CI_Model
     }
 
    public function get_role()
-   {
+    {
         $row = $this->db->select("*")->limit(1)->order_by('user_id',"DESC")->get("users")->row();
         return $row->user_role; //it will provide latest record.
-   }
+    }
 
    public function search_email()
-   {
+    {
         return $this->db->get_where('users',['user_email'=>$this->session->userdata('user_email')])->row_array();
-   }
+    }
 
    public function search_id($id)
-   {
+    {
         return $this->db->get_where('users', ['user_id'=>$id])->row_array();
-   }
+    }
+
+    public function valid_email($user_email)
+    {
+        return $this->db->get_where('users', ['user_email'=>$user_email])->row_array();
+    }
 
 }

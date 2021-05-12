@@ -11,10 +11,8 @@ class Admin_dashboard extends CI_Controller {
     }
     public function index()
     {
-       // echo "dashobard";
         $data['title']= 'All users';
-        $data['users']=$this->db->get_where('users',['user_email'=>$this->session->userdata('user_email')])->row_array();
-
+        $data['users']=$this->user_model->search_email();
         $this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav',$data);
         $this->load->view('internal/templates/topbar',$data);
@@ -66,11 +64,8 @@ class Admin_dashboard extends CI_Controller {
                $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
                User account is not approved</div>');
             }
-            
             redirect('internal/admin_panel/Admin_dashboard/users_accounts_nav');
-    
         }
-    
     }
 
     public function delete_acc()
@@ -143,8 +138,8 @@ class Admin_dashboard extends CI_Controller {
         $this->load->view('internal/templates/sidenav',$data);
        // $this->load->view('templates/topbar',$data);
 
-       $condition=1;
-        $data['users']=$this->user_model->approvedata( $condition);
+        $condition=1;
+        $data['users']=$this->user_model->approvedata($condition);
         $this->load->view('internal/admin_panel/users_accounts_view',$data);
         $this->load->view('internal/templates/footer'); 
     }
@@ -162,7 +157,6 @@ class Admin_dashboard extends CI_Controller {
         $this->load->view('internal/admin_panel/users_accounts_view',$data);
         $this->load->view('internal/templates/footer'); 
     }
-   
 }
 
 

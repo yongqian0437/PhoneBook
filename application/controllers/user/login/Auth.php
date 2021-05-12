@@ -3,7 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Auth extends CI_Controller 
 {
-
     public function __construct()
     {
         parent::__construct();
@@ -13,9 +12,7 @@ class Auth extends CI_Controller
         $this->load->model('user_model');
         $this->load->model('user_student_model');
         $this->load->model('user_ep_model');
-        
     }
-    
     
     public function login()
     {
@@ -25,24 +22,22 @@ class Auth extends CI_Controller
         if($this->form_validation->run() ==false)
         {
             $data['title']='User Login';
-
-        $this->load->view('external/templates/header',$data);
-        $this->load->view('user/login/login_view');
-        $this->load->view('external/templates/footer');
-           }else{
-               $this->_login();
+            $this->load->view('external/templates/header',$data);
+            $this->load->view('user/login/login_view');
+            $this->load->view('external/templates/footer');
            }
-           
-            
+           else
+           {
+             $this->_login();
+           }     
     }
     
     private function _login()
     {
         $user_email= $this->input->post('user_email');
         $user_password=$this->input->post('user_password');
-        
-        $users=$this->db->get_where('users', ['user_email'=>$user_email])->row_array();// put in model
-         
+        $users=$this->user_model->valid_email($user_email);
+
         // if user exists
         if($users)
         {
@@ -52,11 +47,11 @@ class Auth extends CI_Controller
                 // verify the password
                 if($user_password==$users['user_password'])
                 {
-                    $data=[
+                    $data=
+                    [
                         'user_email'=>$users['user_email'],
                         'user_role'=>$users['user_role']
                     ];
-
                     $this->session->set_userdata($data);
                     // check user role is admin
                     if($users['user_role']=="Admin")
@@ -87,14 +82,13 @@ class Auth extends CI_Controller
                 Email has not been activated!</div>');
                 redirect('user/login/Auth/login');
             }
-    
         }
         // if user account does not exist
         else
-        {//------------------ check is it extra--------------------//
+        {
             $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
-                    Account does not exist!</div>');
-                    redirect('user/login/Auth/login');
+            Account does not exist!</div>');
+            redirect('user/login/Auth/login');
         }
     }
 
@@ -114,14 +108,9 @@ class Auth extends CI_Controller
         if($this->form_validation->run()== false)
         {
             $data['title']="User Registration";
-            //-------------------------------- chaneg later-----------------------------//
-            // $this->load->view('templates/user_header',$data);
-            // $this->load->view('user/registration');
-            // $this->load->view('templates/user_footer');
             $this->load->view('external/templates/header',$data);
             $this->load->view('user/registration/registration_view');
             $this->load->view('external/templates/footer');
-
         }
         else
         {
@@ -149,7 +138,6 @@ class Auth extends CI_Controller
                  //------------------ change later-------------------(wait for wc)//
                 // $this->load->view('user/registration/ep_registration_view');
             }
-            
         }
     }
 
@@ -167,12 +155,11 @@ class Auth extends CI_Controller
             'student_currentlevel'=>htmlspecialchars($this->input->post('student_currentlevel',true)),
         ];
 
-         // insert data into database
+        // insert data into database
         $this->user_student_model->insert($data);
         $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
         Check your email to get the approval from the admin</div>');
-        redirect('user/login/Auth/login'); // ---------change later---------//
-    
+        redirect('user/login/Auth/login');
     }
 
     public function ep_reg()// -----------------change function name in view-------------------//
@@ -206,13 +193,6 @@ class Auth extends CI_Controller
         redirect('user/login/login_view');
      
     }
-
-    public function test($user_role)
-    {
-     
-    }
-
-
 }
 
 
