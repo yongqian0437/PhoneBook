@@ -58,9 +58,8 @@ tr:nth-child(even) {
                 <div class="d-sm-flex align-items-center justify-content-between mb-4 pt-5">
                     <h1 class="h3 mb-0 text-gray-800"><b>COMPARE COURSES<b></h1>
                 </div>
-                <?php //$courses = $_POST['courses'];  
-                    //echo $courses->course_name;
-                ?>
+                <hr style = "border: 2px solid #EAF4F4;">
+
                 <br>
 
                 <!-- Content Row -->
@@ -105,7 +104,7 @@ tr:nth-child(even) {
                     <div class="row justify-content-md-center">   
 
                         <div class="col-xl-2 col-md-6 mb-4">
-                            <div class="card border-success h-100" id = 'card0'>
+                            <div class="card border-5 h-100" id = 'card0' style = "border-color:#CCE3DE ; border-width: 5px;">
                                 <div class="card-body">
                                 <p style = 'font-size: 15px; color:black;'>STEP 1 : <br><br> SELECT A UNIVERISTY AND A LEVEL</p>
                                 <i style = 'color:#474645;' class="fas fa-arrow-right fa-3x"></i><br><br><br>
@@ -116,7 +115,7 @@ tr:nth-child(even) {
                         </div>
                         <!-- FIRST COURSES INPUTS -->
                         <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-success h-100 py-2" id = 'card1'>
+                            <div class="card h-100 py-2" id = 'card1' style = "border-color:#CCE3DE ; border-width: 5px;">
                                 <div class="card-body">
                                    <!-- UNIVERSITIY INPUT -->
                                     <div class="form-group"><br>
@@ -155,7 +154,7 @@ tr:nth-child(even) {
 
                         <!-- SECOND COURSES INPUTS -->
                         <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-success h-100 py-2" id = 'card2'>
+                            <div class="card h-100 py-2" id = 'card2' style = "border-color:#CCE3DE ; border-width: 5px;">
                                 <div class="card-body">
                                     <!-- UNIVERSITIY INPUT -->
                                     <div class="form-group"><br>
@@ -194,7 +193,7 @@ tr:nth-child(even) {
 
                         <!-- THIRD COURSES INPUTS -->
                         <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-success h-100 py-2" id = 'card3'>
+                            <div class="card h-100 py-2" id = 'card3' style = "border-color:#CCE3DE ; border-width: 5px;">
                                 <div class="card-body">
                                     <!-- UNIVERSITIY INPUT -->
                                     <div class="form-group"><br>
