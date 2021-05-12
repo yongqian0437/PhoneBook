@@ -34,8 +34,8 @@ class Users_information extends CI_Controller
 
     public function detailstudent ($id)
     {
-        $data['users']=$this->db->get_where('users',['user_email'=>$this->session->userdata('user_email')])->row_array();
-        $data['title']="Detail of Student";
+      //  $data['users']=$this->db->get_where('users',['user_email'=>$this->session->userdata('user_email')])->row_array();
+         $data['title']="Detail of Student";
          $data['student']=$this->user_student_model->student_details($id);        
          $this->load->view('internal/templates/header',$data);
          $this->load->view('internal/templates/sidenav',$data);

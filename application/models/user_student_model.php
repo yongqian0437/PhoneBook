@@ -70,3 +70,4 @@ class user_student_model extends CI_Model
     
     
 }
+?>

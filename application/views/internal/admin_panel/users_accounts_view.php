@@ -59,7 +59,7 @@ foreach($users as $re):?>
         <!--user is education partner-->
         <?php } 
         else if($re['user_role']=='education_partner') {?>
-          <td><a href="<?= base_url(); ?>external/education_partner/detaileducation_partner/<?php echo $re['user_id'];?>" class="btn btn-secondary">View</th>
+          <!-- <td><a href="<?= base_url(); ?>external/education_partner/detaileducation_partner/<?php echo $re['user_id'];?>" class="btn btn-secondary">View</th> -->
           <?php } ?>
         <?php }
         else{
@@ -72,7 +72,7 @@ foreach($users as $re):?>
          <td><a href="<?= base_url(); ?>internal/admin_panel/Users_information/detailstudent/<?php echo $re['user_id'];?>" class="btn btn-secondary">View</th>
          <?php } 
         else if($re['user_role']=='education_partner') {?>
-          <td><a href="<?= base_url(); ?>external/education_partner/detaileducation_partner/<?php echo $re['user_id'];?>" class="btn btn-secondary">View</th>
+          <!-- <td><a href="<?= base_url(); ?>external/education_partner/detaileducation_partner/<?php echo $re['user_id'];?>" class="btn btn-secondary">View</th> -->
           <?php } ?>
 
          
