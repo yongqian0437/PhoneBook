@@ -50,11 +50,11 @@
                         <label for="user_role" style=" color:black"; >Role</label>
                         <select class="form-control " id="user_role"
                         name="user_role" >
-                        <option value="student">Student</option>
-                        <option value="education_partner">Education Partner</option>
-                        <option value="education_agent">Education Agent</option>
-                        <option value="academic_couselor">Academic Couselor</option>
-                        <option value="employer">Employer</option>
+                        <option value="Student">Student</option>
+                        <option value="Education Partner">Education Partner</option>
+                        <option value="Education Agent">Education Agent</option>
+                        <option value="Academic Couselor">Academic Couselor</option>
+                        <option value="Employer">Employer</option>
                         <!-- <option value="admin">Admin</option> -->
                         </select>
                         </div>

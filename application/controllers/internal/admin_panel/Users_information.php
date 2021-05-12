@@ -9,6 +9,7 @@ class Users_information extends CI_Controller
         $this->load->model(['user_student_model','user_ep_model']);
     }
 
+    
     //---------------------------wait ariane for the sidebar--------------------//
     public function students_info()//----------- change the function name in view------------------//
     {
@@ -27,7 +28,7 @@ class Users_information extends CI_Controller
         $result=$this->user_student_model->index();
         $data=array('studentlist'=>$result);
         $this->load->view('internal/admin_panel/student_view',$data);
-        // $this->load->view('internal/templates/footer');
+         $this->load->view('internal/templates/footer');
         
     }
     //----------------------------------------------------------------------------//

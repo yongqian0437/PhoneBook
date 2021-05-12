@@ -11,12 +11,22 @@ class Admin_dashboard extends CI_Controller {
     }
     public function index()
     {
-        echo "dashobard";
+       // echo "dashobard";
+        $data['title']= 'All users';
+        $data['users']=$this->db->get_where('users',['user_email'=>$this->session->userdata('user_email')])->row_array();
+
+        $this->load->view('internal/templates/header',$data);
+        $this->load->view('internal/templates/sidenav',$data);
+        $this->load->view('internal/templates/topbar',$data);
+        $this->load->view('internal/templates/footer');
     }
+
     public function users_accounts_nav()
     {
         $data['title']= 'All users';
         $this->load->view('internal/templates/header',$data);
+        $this->load->view('internal/templates/sidenav',$data);
+       // $this->load->view('internal/templates/topbar',$data);
         $data['users']=$this->user_model->searchdata();
         $this->load->view('internal/admin_panel/users_accounts_view',$data);
         $this->load->view('internal/templates/footer');

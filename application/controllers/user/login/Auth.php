@@ -59,12 +59,12 @@ class Auth extends CI_Controller
 
                     $this->session->set_userdata($data);
                     // check user role is admin
-                    if($users['user_role']=="admin")
+                    if($users['user_role']=="Admin")
                     {
                         redirect('internal/admin_panel/Admin_dashboard');
                     }
                     // check user role is  AC,EA,E,EP
-                    else if ($users['user_role']!="student")
+                    else if ($users['user_role']!="Student")
                     {
                        redirect('internal/level_2/Level_2_dashboard/profile_level_2');
                     }
@@ -139,7 +139,7 @@ class Auth extends CI_Controller
             $this->user_model->insert($data);
             $user_role=$this->user_model->get_role();
         
-            if($user_role=="student")
+            if($user_role=="Student")
             {
                 //------------------ change later-------------------(wait for wc)//
                  $this->load->view('user/registration/student_registration_view');
