@@ -55,19 +55,18 @@ class courses_model extends CI_Model
     {
 
         if ($course_area != "") {
-            $this->db->where('course_area', $course_area);
+            $this->db->like('course_area', $course_area);
         }
         if ($course_level != "") {
-            $this->db->where('course_level', $course_level);
+            $this->db->like('course_level', $course_level);
         }
         /* if ($course_area != "") {
             $this->db->where('coruses', $course_fee);
         } */
         if ($course_intake != "") {
-            $this->db->where('course_intake', $course_intake);
+            $this->db->like('course_intake', $course_intake);
         }
-        $query = $this->db->get('courses')->result();
-        echo $course_area;
+        $query = $this->db->get('courses');
 
         if ($query->num_rows() > 0) {
             return $query;
