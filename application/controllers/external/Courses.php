@@ -62,10 +62,11 @@ class Courses extends CI_Controller
 	public function course_filter()
 	{
 
-		$course_area = $this->input->post('course_area');
-		$course_level = $this->input->post('course_level');
+		$course_area = $this->input->post('course_areaid');
+		$course_level = $this->input->post('course_levelid');
 		/* $course_fee = $this->input->post('course_fee'); */
-		$course_intake = $this->input->post('course_intake');
+		$course_intake = $this->input->post('course_intakeid');
+		echo $course_area;
 
 		$data['course_data'] = $this->courses_model->filter_course($course_area, $course_level, $course_intake);
 		$this->load->view('external/courses_view', $data);

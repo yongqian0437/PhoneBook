@@ -209,28 +209,28 @@
                     <div class="col-12 mb-4 px-5">
                         <form method="post" name="filter" action="<?php echo base_url() . 'external/Courses/course_filter' ?>">
                             <div class="row">
-                                <div class="form-group">
-                                    <label for="course_area">Choose course field</label>
-                                    <select class="form-control-sm" id="course_area">
-                                        <option>All</option>
-                                        <option>IT & Computer Science</option>
-                                        <option>Health Science</option>
+                                <div class="form-group"><br>
+                                    <label for="course_area">Course area</label><br>
+                                    <select name="course_areaid" id="filter_1" class="form-control form-select form-select-lg">
+                                        <option value="" selected disabled>Filter area</option>
+                                        <option value="IT & Computer Science">IT & Computer Science</option>
+                                        <option value="Health Science">Health Science</option>
                                     </select>
                                 </div>
-                                <div class="form-group px-4">
-                                    <label for="course_level">Choose course level</label>
-                                    <select class="form-control-sm" id="course_level">
-                                        <option>All</option>
-                                        <option>Bachelor Degree / Honours Degree</option>
-                                        <option>Foundation Studies</option>
+                                <div class="form-group"><br>
+                                    <label for="course_level">Course level</label><br>
+                                    <select name="course_levelid" id="filter_2" class="form-control form-select form-select-lg">
+                                        <option value="" selected disabled>Filter level</option>
+                                        <option value="Bachelor Degree / Honours Degree">Bachelor Degree / Honours Degree</option>
+                                        <option value="Foundation Studies">Foundation</option>
                                     </select>
                                 </div>
-                                <div class="form-group px-4">
-                                    <label for="course_intake">Course Intake</label>
-                                    <select class="form-control-sm" id="course_intake">
-                                        <option>All</option>
-                                        <option>July</option>
-                                        <option>August</option>
+                                <div class="form-group"><br>
+                                    <label for="course_intake">Course intake</label><br>
+                                    <select name="course_intakeid" id="filter_3" class="form-control form-select form-select-lg">
+                                        <option value="" selected disabled>Filter intake</option>
+                                        <option value="July 2021">July</option>
+                                        <option value="Aug 2021">August</option>
                                     </select>
                                 </div>
                             </div>

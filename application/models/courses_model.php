@@ -67,6 +67,7 @@ class courses_model extends CI_Model
             $this->db->where('course_intake', $course_intake);
         }
         $query = $this->db->get('courses')->result();
+        echo $course_area;
 
         if ($query->num_rows() > 0) {
             return $query;
