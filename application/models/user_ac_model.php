@@ -9,6 +9,11 @@ class user_ac_model extends CI_Model
         $this->load->database();
     }
 
+    public function index()
+    {
+       return $this->db->get('user_ac');
+    }
+
     function insert($data)
     {
         $this->db->insert('user_ac', $data);

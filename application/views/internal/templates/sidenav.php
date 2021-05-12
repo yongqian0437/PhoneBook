@@ -56,10 +56,10 @@ $user_role=$this->session->userdata('user_role');
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="<?=base_url('internal/admin_panel/Admin_dashboard/users_accounts_nav');?>">All Users</a>
                         <a class="collapse-item" href="<?=base_url('internal/admin_panel/Users_information/students_info');?>">Students</a>
-                        <a class="collapse-item" href="">Academic Counsellors</a>
-                        <a class="collapse-item" href="">Education Agents</a>
-                        <a class="collapse-item" href="">Education Partners</a>
-                        <a class="collapse-item" href="">Employers</a>
+                        <a class="collapse-item" href="<?=base_url('internal/admin_panel/Users_information/ac_info');?>">Academic Counsellors</a>
+                        <a class="collapse-item" href="<?=base_url('internal/admin_panel/Users_information/ea_info');?>">Education Agents</a>
+                        <a class="collapse-item" href="<?=base_url('internal/admin_panel/Users_information/ep_info');?>">Education Partners</a>
+                        <a class="collapse-item" href="<?=base_url('internal/admin_panel/Users_information/employer_info');?>">Employers</a>
                     </div>
                 </div>
             </li>

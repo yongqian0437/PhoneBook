@@ -46,11 +46,11 @@
         
         <!--user is student-->
         <?php if($re['user_role']=='Student'){?>
-        <td><a href="<?= base_url(); ?>internal/admin_panel/Users_information/detailstudent/<?php echo $re['user_id'];?>" class="btn btn-secondary">View</th>
+        <td><a href="<?= base_url(); ?>internal/admin_panel/Users_information/detail_student/<?php echo $re['user_id'];?>" class="btn btn-secondary">View</th>
        
         <!--user is education partner-->
         <?php } else if($re['user_role']=='Education Partner') {?>
-          <!-- <td><a href="<?= base_url(); ?>external/education_partner/detaileducation_partner/<?php echo $re['user_id'];?>" class="btn btn-secondary">View</th> -->
+          <!-- <td><a href="<?= base_url(); ?>external/education_partner/detail_education_partner/<?php echo $re['user_id'];?>" class="btn btn-secondary">View</th> -->
         <?php } ?>
 
         <?php } else{ ?>
@@ -59,9 +59,9 @@
         
         <!--user is student-->
         <?php if($re['user_role']=='Student'){ ?>
-        <td><a href="<?= base_url(); ?>internal/admin_panel/Users_information/detailstudent/<?php echo $re['user_id'];?>" class="btn btn-secondary">View</th>
+        <td><a href="<?= base_url(); ?>internal/admin_panel/Users_information/detail_student/<?php echo $re['user_id'];?>" class="btn btn-secondary">View</th>
         <?php } else if($re['user_role']=='Education Partner') {?>
-        <!-- <td><a href="<?= base_url(); ?>external/education_partner/detaileducation_partner/<?php echo $re['user_id'];?>" class="btn btn-secondary">View</th> -->
+        <!-- <td><a href="<?= base_url(); ?>external/education_partner/detail_education_partner/<?php echo $re['user_id'];?>" class="btn btn-secondary">View</th> -->
         <?php } ?>
        <?php }?>
       </tr>

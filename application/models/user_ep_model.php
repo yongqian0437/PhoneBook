@@ -9,6 +9,11 @@ class user_ep_model extends CI_Model
         $this->load->database();
     }
 
+    public function index()
+    {
+       return $this->db->get('user_ep');
+    }
+
     function insert($data)
     {
         $this->db->insert('user_ep', $data);

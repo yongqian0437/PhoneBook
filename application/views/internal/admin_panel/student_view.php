@@ -1,7 +1,6 @@
 <div class="container">
 <div class="row">
 <div class="col-md-6">
-
 <table class="table">
   <thead>
     <tr>
@@ -30,10 +29,7 @@ foreach($studentlist->result() as $student)
       ."</tr>"
  
 ?>
-
-  </tbody>
-
-  
+</tbody>
 </table>
 
 
