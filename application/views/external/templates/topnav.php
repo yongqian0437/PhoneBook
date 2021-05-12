@@ -1,15 +1,20 @@
 <style>
 
 .nav-link {
-    color: white !important;
+    color: white;
     font-size:23px;
     font-weight: 600;
 }
 
 .dropdown-item{
-    color: white !important;
+    color: white;
     font-size:22px;
     font-weight: 600;
+}
+
+.btn:hover {
+    background-color: white;
+    opacity: 0.9;
 }
 
 </style>
@@ -29,7 +34,7 @@
     <ul class="navbar-nav ml-auto">
 
         <li class="nav-item px-2">
-            <a class="nav-link" href="#">Universities</a>
+            <a class="nav-link" href="<?php echo base_url('external/universities');?>">Universities</a>
         </li>
 
         <li class="nav-item px-2">
@@ -37,7 +42,7 @@
         </li>
 
         <li class="nav-item px-2">
-            <a class="nav-link" href="#">Comparison</a>
+            <a class="nav-link" href="<?php echo base_url('external/compare');?>">Comparison</a>
         </li>
 
 

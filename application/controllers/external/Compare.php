@@ -16,6 +16,7 @@ class Compare extends CI_Controller {
 	public function index()
 	{
 		$data['university_data'] = $this->universities_model->select_all_approved_only(); 
+		// $data['user_data'] = $this->session->userdata('user_id');
 		$this->load->view('external/compare_view', $data);
         $this->load->view('external/templates/header');
         $this->load->view('external/templates/footer');
