@@ -16,29 +16,32 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Education Partner ID</th>
+                            <th>EmployerID</th>
                             <th>User ID</th>
                             <th>Contact Number</th>
                             <th>Business email</th>
                             <th>Nationality</th>
                             <th>Gender/th>
                             <th>DOB</th>
-                            <th>Job title</th>
+                            <th>Document</th>
+                            <th>Jobtitle</th>
                         </tr>
                     </thead>
                     
                     <tbody>
                     <?php
-                        foreach($eplist->result() as $ep)
-                        echo "<tr>"
-                            ."<td>$ep->ep_id</td>"
-                            ."<td>$ep->user_id</td>"
-                            ."<td>$ep->ep_businessemail</td>"
-                            ."<td>$ep->ep_nationality</td>"
-                            ."<td>$ep->ep_gender</td>"
-                            ."<td>$ep->ep_dob</td>"
-                            ."<td>$ep->ep_jobtitle</td>" 
-                            ."</tr>"
+                        foreach($elist->result() as $e)
+                            echo "<tr>"
+                                ."<td>$e->e_id</td>"
+                                ."<td>$e->user_id</td>"
+                                ."<td>$e->e_phonenumber</td>"
+                                ."<td>$e->e_businessemail</td>"
+                                ."<td>$e->e_nationality</td>"
+                                ."<td>$e->e_gender</td>"
+                                ."<td>$e->e_dob</td>"
+                                ."<td>$e->e_document</td>" 
+                                ."<td>$e->e_jobtitle</td>" 
+                                ."</tr>" 
                     ?>
                     </tbody>
                 </table>

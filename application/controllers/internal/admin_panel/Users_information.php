@@ -6,7 +6,8 @@ class Users_information extends CI_Controller
     public function __construct()
     {
         parent:: __construct();
-        $this->load->model(['user_student_model','user_ep_model','user_ac_model']);
+        $this->load->model(['user_student_model','user_ep_model','user_ac_model','user_ea_model',
+        'user_e_model']);
     }
 
     //---------------------------wait ariane for the sidebar--------------------//
@@ -14,10 +15,10 @@ class Users_information extends CI_Controller
     {  
         $data['title']= 'Student';
         $data['users']=$this->user_model->search_email();
-        $data['user_student']=$this->db->get_where('user_student');
+       // $data['user_student']=$this->db->get_where('user_student');
         $this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav',$data);
-        // $this->load->view('templates/topbar',$data);
+        $this->load->view('internal/templates/topbar',$data);
         $result=$this->user_student_model->index();
         $data=array('studentlist'=>$result);
         $data['users']=$this->user_model->searchdata();
@@ -41,7 +42,7 @@ class Users_information extends CI_Controller
     {
         $data['title']= 'Education Partner';
         $data['users']=$this->user_model->search_email();
-        $data['user_ep']=$this->db->get_where('user_ep');
+        //$data['user_ep']=$this->db->get_where('user_ep');
         $this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav',$data);
         // $this->load->view('templates/topbar',$data);
@@ -65,16 +66,16 @@ class Users_information extends CI_Controller
 
     public function ac_info()
     {
-        // $data['title']= 'Academic Couselor';
-        // $data['users']=$this->user_model->search_email();
-        // $data['user_ac']=$this->db->get_where('user_ac');
-        // $this->load->view('internal/templates/header',$data);
-        // $this->load->view('internal/templates/sidenav',$data);
-        // // $this->load->view('templates/topbar',$data);
-        // $result=$this->user_ac_model->index();
-        // $data=array('aclist'=>$result);
-        // $this->load->view('internal/admin_panel/ac_view',$data);
-        // $this->load->view('internal/templates/footer');   
+        $data['title']= 'Academic Couselor';
+        $data['users']=$this->user_model->search_email();
+       // $data['user_ac']=$this->db->get_where('user_ac');
+        $this->load->view('internal/templates/header',$data);
+        $this->load->view('internal/templates/sidenav',$data);
+        $this->load->view('internal/templates/topbar',$data);
+        $result=$this->user_ac_model->index();
+        $data=array('aclist'=>$result);
+        $this->load->view('internal/admin_panel/ac_view',$data);
+        $this->load->view('internal/templates/footer');   
     }
 
     public function detail_academic_couselor ($id)
@@ -84,7 +85,16 @@ class Users_information extends CI_Controller
 
     public function ea_info()
     {
-
+        $data['title']= 'Education Partner';
+        $data['users']=$this->user_model->search_email();
+       // $data['user_ea']=$this->db->get_where('user_ea');
+        $this->load->view('internal/templates/header',$data);
+        $this->load->view('internal/templates/sidenav',$data);
+        $this->load->view('internal/templates/topbar',$data);
+        $result=$this->user_ea_model->index();
+        $data=array('ealist'=>$result);
+        $this->load->view('internal/admin_panel/ea_view',$data);
+        $this->load->view('internal/templates/footer');   
     }
 
     public function detail_education_agents()
@@ -94,7 +104,16 @@ class Users_information extends CI_Controller
 
     public function employer_info()
     {
-
+        $data['title']= 'Employer';
+        $data['users']=$this->user_model->search_email();
+       // $data['user_ea']=$this->db->get_where('user_ea');
+        $this->load->view('internal/templates/header',$data);
+        $this->load->view('internal/templates/sidenav',$data);
+        $this->load->view('internal/templates/topbar',$data);
+        $result=$this->user_e_model->index();
+        $data=array('elist'=>$result);
+        $this->load->view('internal/admin_panel/employer_view',$data);
+        $this->load->view('internal/templates/footer');   
     }
 
     public function detail_employer()

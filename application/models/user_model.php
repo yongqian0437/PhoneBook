@@ -9,6 +9,12 @@ class user_model extends CI_Model
         $this->load->database();
     }
 
+    function index()
+    {
+        // select from  users table
+        return $this->db->get('users');
+    }
+
     function insert($data)
     {
         $this->db->insert('users', $data);

@@ -16,29 +16,30 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Education Partner ID</th>
+                            <th>Education Agent ID</th>
                             <th>User ID</th>
                             <th>Contact Number</th>
                             <th>Business email</th>
                             <th>Nationality</th>
                             <th>Gender/th>
                             <th>DOB</th>
-                            <th>Job title</th>
+                            <th>Document</th>
                         </tr>
                     </thead>
                     
                     <tbody>
                     <?php
-                        foreach($eplist->result() as $ep)
-                        echo "<tr>"
-                            ."<td>$ep->ep_id</td>"
-                            ."<td>$ep->user_id</td>"
-                            ."<td>$ep->ep_businessemail</td>"
-                            ."<td>$ep->ep_nationality</td>"
-                            ."<td>$ep->ep_gender</td>"
-                            ."<td>$ep->ep_dob</td>"
-                            ."<td>$ep->ep_jobtitle</td>" 
-                            ."</tr>"
+                        foreach($ealist->result() as $ea)
+                            echo "<tr>"
+                                ."<td>$ea->ea_id</td>"
+                                ."<td>$ea->user_id</td>"
+                                ."<td>$ea->ea_phonenumber</td>"
+                                ."<td>$ea->ea_businessemail</td>"
+                                ."<td>$ea->ea_nationality</td>"
+                                ."<td>$ea->ea_gender</td>"
+                                ."<td>$ea->ea_dob</td>"
+                                ."<td>$ea->ea_document</td>" 
+                                ."</tr>" 
                     ?>
                     </tbody>
                 </table>

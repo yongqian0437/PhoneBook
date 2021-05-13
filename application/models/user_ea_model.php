@@ -9,6 +9,12 @@ class user_ea_model extends CI_Model
         $this->load->database();
     }
 
+    function index()
+    {
+        // select from  users table
+        return $this->db->get('user_ea');
+    }
+
     function insert($data)
     {
         $this->db->insert('user_ea', $data);
