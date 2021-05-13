@@ -73,7 +73,7 @@ tr{
                 <div class="row">
                     <div class="col-12">
                         <div class="card" style = " border: 2px solid #b5b3ae;">
-                            <div class="card-body">
+                            <div class="card-body ">
                                 <div class="pb-3" style="display: flex; flex-direction: row; justify-content: space-between; background-color: #A4C3B2, color:white;">
                                     <?php $uni_count = count($university_data) ?>
                                     <h4 style = "opacity:0.7; font-weight:700;"> <?php echo $uni_count ?> UNIVERSITIES</h4>

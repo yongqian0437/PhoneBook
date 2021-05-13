@@ -1,14 +1,15 @@
 $(document).ready(function(){
     $("#table_university").DataTable({
         "bInfo" : false,
+        "ordering": false,
         ajax: {
             url: base_url + "external/universities/universities_list",
             type: "GET",
         },
-        // "columnDefs": [{
-        //     "width": "10%",
-        //     "targets": [0,1,2,3]
-        // },]
+        "columnDefs": [{
+            "width": "15%",
+            "targets": [4]
+        },]
     });
 
     //Styling for search bar in datatables
@@ -21,3 +22,18 @@ $(document).ready(function(){
     css({'margin-top':'20px', 'display':'inline-block'});
 
 }); // end of ready function
+
+function changeApproval(id){
+
+    $.ajax({
+        url: base_url + "external/Universities/switch_approval",
+        method:"POST",
+        data:{uni_id:id},
+        success:function(data)
+        {
+            var xin_table = $("#table_university").DataTable();
+            xin_table.ajax.reload();
+        }
+    });
+    
+}
