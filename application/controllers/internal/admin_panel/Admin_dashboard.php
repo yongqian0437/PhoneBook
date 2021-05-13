@@ -22,9 +22,10 @@ class Admin_dashboard extends CI_Controller {
     public function users_accounts_nav()
     {
         $data['title']= 'All users';
+        $data['users']=$this->user_model->search_email();
         $this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav',$data);
-       // $this->load->view('internal/templates/topbar',$data);
+        $this->load->view('internal/templates/topbar',$data);
         $data['users']=$this->user_model->searchdata();
         $this->load->view('internal/admin_panel/users_accounts_view',$data);
         $this->load->view('internal/templates/footer');
