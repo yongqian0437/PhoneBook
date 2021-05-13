@@ -33,6 +33,7 @@
                         echo "<tr>"
                             ."<td>$ep->ep_id</td>"
                             ."<td>$ep->user_id</td>"
+                            ."<td>$ep->ep_phonenumber</td>"
                             ."<td>$ep->ep_businessemail</td>"
                             ."<td>$ep->ep_nationality</td>"
                             ."<td>$ep->ep_gender</td>"

@@ -61,4 +61,10 @@ class user_ep_model extends CI_Model
      $row = $this->db->select("*")->limit(1)->order_by('user_id',"DESC")->get("users")->row();
      return $row->user_id; //it will provide latest or last record id.
     }
+
+    public function ep_details($id)
+    {
+     return $this->db->get_where('user_ep',['user_id'=>$id])->row_array();
+    }
+    
 }

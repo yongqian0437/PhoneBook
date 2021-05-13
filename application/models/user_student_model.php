@@ -63,7 +63,7 @@ class user_student_model extends CI_Model
      return $row->user_id; //it will provide latest or last record id.
     }
  
-    public function student_details($id)//----------change the function name in controller--------------//
+    public function student_details($id)
     {
      return $this->db->get_where('user_student',['user_id'=>$id])->row_array();
     }

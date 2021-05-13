@@ -14,7 +14,7 @@
     <p class="card-text">Date of Birth:<?=$student ['student_dob'];?></p> 
     <p class="card-text">Interest:<?=$student ['student_interest'];?></p> 
     <p class="card-text">Current Level:<?=$student ['student_currentlevel'];?></p> 
-    <a href="<?=base_url();?>internal/admin_panel/Admin_dashboard/show_pending_acc" class="btn btn-primary">Back</a>
+    <a href="<?=base_url();?>internal/admin_panel/Admin_dashboard/users_accounts_nav" class="btn btn-primary">Back</a>
   </div>
 </div>
         </div>

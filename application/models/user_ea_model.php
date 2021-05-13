@@ -56,4 +56,9 @@ class user_ea_model extends CI_Model
         $this->db->where($condition);
         return $this->db->get('user_ea')->result();
     }
+
+    public function ea_details($id)
+    {
+     return $this->db->get_where('user_ea',['user_id'=>$id])->row_array();
+    }
 }

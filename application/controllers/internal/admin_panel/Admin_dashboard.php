@@ -7,7 +7,9 @@ class Admin_dashboard extends CI_Controller {
     {
         parent:: __construct();
         $this->load->helper('form');
-        $this->load->model('user_model');
+       // $this->load->model('user_model');
+       $this->load->model(['user_student_model','user_ep_model','user_ac_model','user_ea_model',
+        'user_e_model']);
     }
     public function index()
     {
@@ -21,16 +23,28 @@ class Admin_dashboard extends CI_Controller {
 
     public function users_accounts_nav()
     {
+        // $data['title']= 'All users';
+        // $data['users']=$this->user_model->search_email();
+        // $this->load->view('internal/templates/header',$data);
+        // $this->load->view('internal/templates/sidenav',$data);
+        // $this->load->view('internal/templates/topbar',$data);
+        // $result=$this->user_model->index();
+        // $data=array('userslist'=>$result);
+        // $data['users']=$this->user_model->searchdata();
+        // $this->load->view('internal/admin_panel/users_accounts_view',$data);
+        // $this->load->view('internal/templates/footer');
+
         $data['title']= 'All users';
         $data['users']=$this->user_model->search_email();
+       // $data['user_student']=$this->db->get_where('user_student');
         $this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav',$data);
         $this->load->view('internal/templates/topbar',$data);
         $result=$this->user_model->index();
         $data=array('userslist'=>$result);
-        $data['users']=$this->user_model->searchdata();
+        //$data['users']=$this->user_model->searchdata();
         $this->load->view('internal/admin_panel/users_accounts_view',$data);
-        $this->load->view('internal/templates/footer');
+        $this->load->view('internal/templates/footer');  
     }
     
     public function update_acc_approval()

@@ -55,4 +55,9 @@ class user_ac_model extends CI_Model
         $this->db->where($condition);
         return $this->db->get('user_ac')->result();
     }
+
+    public function ac_details($id)
+    {
+     return $this->db->get_where('user_ac',['user_id'=>$id])->row_array();
+    }
 }

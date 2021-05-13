@@ -23,7 +23,7 @@
                             <th>University</th>
                             <th>Nationality</th>
                             <th>Gender</th>
-                            <th>DOB</th>
+                            <th>Date of birth</th>
                             <th>Document</th>
                         </tr>
                     </thead>
@@ -39,8 +39,8 @@
                                 ."<td>$ac->ac_university</td>"
                                 ."<td>$ac->ac_nationality</td>"
                                 ."<td>$ac->ac_gender</td>"
-                                ."<td>$ac->dob</td>" 
-                                ."<td>$ac->document</td>" 
+                                ."<td>$ac->ac_dob</td>" 
+                                ."<td>$ac->ac_document</td>" 
                                 ."</tr>" 
                     ?>
                     </tbody>
