@@ -9,9 +9,8 @@ class Auth extends CI_Controller
         $this->load->library('form_validation');
         $this->load->library('email');
         // this->load->model("modelname");
-        $this->load->model('user_model');
-        $this->load->model('user_student_model');
-        $this->load->model('user_ep_model');
+        $this->load->model(['user_student_model','user_ep_model','user_ac_model','user_ea_model',
+        'user_e_model']);
     }
     
     public function login()
@@ -130,28 +129,23 @@ class Auth extends CI_Controller
         
             if($user_role=="Student")
             {
-                //------------------ change later-------------------(wait for wc)//
-                 $this->load->view('user/registration/student_registration_view');
+                redirect("user/login/Auth/student_reg");
             }
             else if($user_role=="Education Partner")
             {
-                 //------------------ change later-------------------(wait for wc)//
-                // $this->load->view('user/registration/ep_registration_view');
+                redirect("user/login/Auth/ep_reg");
             }
             else if($user_role=="Academic Couselor")
             {
-                 //------------------ change later-------------------(wait for wc)//
-                // $this->load->view('user/registration/ac_registration_view');
+                redirect("user/login/Auth/ac_reg");
             }
             else if($user_role=="Education Agent")
             {
-                 //------------------ change later-------------------(wait for wc)//
-                // $this->load->view('user/registration/ea_registration_view');
+                redirect("user/login/Auth/ea_reg");
             }
             else
             {
-                 //------------------ change later-------------------(wait for wc)//
-                // $this->load->view('user/registration/e_registration_view');
+                redirect("user/login/Auth/employer_reg");
             }
         }
     }
@@ -159,43 +153,187 @@ class Auth extends CI_Controller
     public function student_reg()
     {
         $user_id=$this->user_student_model->last_user_id();
-        $data=
-        [
-            'user_id'=>$user_id,
-            'student_phonenumber'=>htmlspecialchars($this->input->post('student_phonenumber',true)),
-            'student_nationality'=>htmlspecialchars($this->input->post('student_nationality',true)),
-            'student_gender'=>htmlspecialchars($this->input->post('student_gender',true)),
-            'student_dob'=>htmlspecialchars($this->input->post('student_dob',true)),
-            'student_interest'=>htmlspecialchars($this->input->post('student_interest',true)),
-            'student_currentlevel'=>htmlspecialchars($this->input->post('student_currentlevel',true)),
-        ];
+        $data['title']="Student Registration";
+       
+        $this->form_validation->set_rules('student_phonenumber','Phone Number', 'required|trim|min_length[10]',[
+            'min_length'=> 'Phone number too short'
+        ]);
+       // $this->load->view('user/registration/student_registration_view');
+        //
+        if($this->form_validation->run()== false)
+        {
+            $data['title']="Student Registration";
+            $this->load->view('external/templates/header',$data);
+            $this->load->view('user/registration/student_registration_view');
+            //$this->load->view('external/templates/footer');
+        }
+        else
+        {
+            $data=
+            [
+                'user_id'=>$user_id,
+                'student_phonenumber'=>htmlspecialchars($this->input->post('student_phonenumber',true)),
+                'student_nationality'=>htmlspecialchars($this->input->post('student_nationality',true)),
+                'student_gender'=>htmlspecialchars($this->input->post('student_gender',true)),
+                'student_dob'=>htmlspecialchars($this->input->post('student_dob',true)),
+                'student_interest'=>htmlspecialchars($this->input->post('student_interest',true)),
+                'student_currentlevel'=>htmlspecialchars($this->input->post('student_currentlevel',true)),
+            ];
 
         // insert data into database
         $this->user_student_model->insert($data);
+       
         $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
         Check your email to get the approval from the admin</div>');
         redirect('user/login/Auth/login');
+        }
     }
 
-    public function ep_reg()// -----------------change function name in view-------------------//
-    {
+    public function ep_reg()
+    { 
         $user_id=$this->user_ep_model->last_user_id();
-        $data=
-        [
-            'user_id'=>$user_id,
-            'ep_phonenumber'=>htmlspecialchars($this->input->post('ep_phonenumber',true)),
-            'ep_businessemail'=>htmlspecialchars($this->input->post('ep_businessemail',true)),
-            'ep_nationality'=>htmlspecialchars($this->input->post('ep_nationality',true)),
-            'ep_gender'=>htmlspecialchars($this->input->post('ep_gender',true)),
-            'ep_dob'=>htmlspecialchars($this->input->post('ep_dob',true)),
-            'ep_jobtitle'=>htmlspecialchars($this->input->post('ep_jobtitle',true)),  
-        ];
-
+        $this->form_validation->set_rules('ep_phonenumber','Phone Number', 'required|trim|min_length[10]',[
+            'min_length'=> 'Phone number too short'
+        ]);
+        $this->form_validation->set_rules('ep_businessemail','Email', 'required|trim|valid_email|is_unique[user_ep.ep_businessemail]',[
+            'is_unique'=>'This email has already registered!'
+        ]);
+        if($this->form_validation->run()== false)
+        {
+            $data['title']="Education Partner Registration";
+            $this->load->view('external/templates/header',$data);
+            $this->load->view('user/registration/ep_registration_view');
+           // $this->load->view('external/templates/footer');
+        }
+        else
+        {
+            $data=
+            [
+                'user_id'=>$user_id,
+                'ep_phonenumber'=>htmlspecialchars($this->input->post('ep_phonenumber',true)),
+                'ep_businessemail'=>htmlspecialchars($this->input->post('ep_businessemail',true)),
+                'ep_nationality'=>htmlspecialchars($this->input->post('ep_nationality',true)),
+                'ep_gender'=>htmlspecialchars($this->input->post('ep_gender',true)),
+                'ep_dob'=>htmlspecialchars($this->input->post('ep_dob',true)),
+                'ep_jobtitle'=>htmlspecialchars($this->input->post('ep_jobtitle',true)),  
+                //'ep_document'=>htmlspecialchars($this->input->post('ep_document',true)),
+            ];
          // insert data into database
         $this->user_ep_model->insert($data);
         $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
         Check your email to get the approval from the admin</div>'); 
-        redirect('user/login/login_view');  
+        redirect('user/login/Auth/login'); 
+        }
+    }
+
+    public function ea_reg()
+    { 
+        $user_id=$this->user_ep_model->last_user_id();
+        $this->form_validation->set_rules('ea_phonenumber','Phone Number', 'required|trim|min_length[10]',[
+            'min_length'=> 'Phone number too short'
+        ]);
+        $this->form_validation->set_rules('ea_businessemail','Email', 'required|trim|valid_email|is_unique[user_ep.ep_businessemail]',[
+            'is_unique'=>'This email has already registered!'
+        ]);
+        if($this->form_validation->run()== false)
+        {
+            $data['title']="Education Agent Registration";
+            $this->load->view('external/templates/header',$data);
+            $this->load->view('user/registration/ea_registration_view');
+            $this->load->view('external/templates/footer');
+        }
+        else
+        {
+            $data=
+            [
+                'user_id'=>$user_id,
+                'ea_phonenumber'=>htmlspecialchars($this->input->post('ea_phonenumber',true)),
+                'ea_businessemail'=>htmlspecialchars($this->input->post('ea_businessemail',true)),
+                'ea_nationality'=>htmlspecialchars($this->input->post('ea_nationality',true)),
+                'ea_gender'=>htmlspecialchars($this->input->post('ea_gender',true)),
+                'ea_dob'=>htmlspecialchars($this->input->post('ea_dob',true)),
+              //  'ea_document'=>htmlspecialchars($this->input->post('ea_document',true)),  
+            ];
+         // insert data into database
+        $this->user_ea_model->insert($data);
+        $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
+        Check your email to get the approval from the admin</div>'); 
+        redirect('user/login/Auth/login'); 
+        }
+    }
+
+    public function ac_reg()
+    { 
+        $user_id=$this->user_ep_model->last_user_id();
+        $this->form_validation->set_rules('ac_phonenumber','Phone Number', 'required|trim|min_length[10]',[
+            'min_length'=> 'Phone number too short'
+        ]);
+        $this->form_validation->set_rules('ac_businessemail','Email', 'required|trim|valid_email|is_unique[user_ep.ep_businessemail]',[
+            'is_unique'=>'This email has already registered!'
+        ]);
+        if($this->form_validation->run()== false)
+        {
+            $data['title']="Academic Couselor Registration";
+            $this->load->view('external/templates/header',$data);
+            $this->load->view('user/registration/ac_registration_view');
+           // $this->load->view('external/templates/footer');
+        }
+        else
+        {
+            $data=
+            [
+                'user_id'=>$user_id,
+                'ac_phonenumber'=>htmlspecialchars($this->input->post('ac_phonenumber',true)),
+                'ac_businessemail'=>htmlspecialchars($this->input->post('ac_businessemail',true)),
+                'ac_university'=>htmlspecialchars($this->input->post('ac_university',true)),
+                'ac_nationality'=>htmlspecialchars($this->input->post('ac_nationality',true)),
+                'ac_gender'=>htmlspecialchars($this->input->post('ac_gender',true)),
+                'ac_dob'=>htmlspecialchars($this->input->post('ac_dob',true)),
+              //  'ea_document'=>htmlspecialchars($this->input->post('ea_document',true)),  
+            ];
+         // insert data into database
+        $this->user_ac_model->insert($data);
+        $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
+        Check your email to get the approval from the admin</div>'); 
+        redirect('user/login/Auth/login'); 
+        }
+    }
+
+    public function employer_reg()
+    { 
+        $user_id=$this->user_ep_model->last_user_id();
+        $this->form_validation->set_rules('e_phonenumber','Phone Number', 'required|trim|min_length[10]',[
+            'min_length'=> 'Phone number too short'
+        ]);
+        $this->form_validation->set_rules('e_businessemail','Email', 'required|trim|valid_email|is_unique[user_ep.ep_businessemail]',[
+            'is_unique'=>'This email has already registered!'
+        ]);
+        if($this->form_validation->run()== false)
+        {
+            $data['title']="Employer Registration";
+            $this->load->view('external/templates/header',$data);
+            $this->load->view('user/registration/employers_registration_view');
+           // $this->load->view('external/templates/footer');
+        }
+        else
+        {
+            $data=
+            [
+                'user_id'=>$user_id,
+                'e_phonenumber'=>htmlspecialchars($this->input->post('e_phonenumber',true)),
+                'e_businessemail'=>htmlspecialchars($this->input->post('e_businessemail',true)),
+                'e_nationality'=>htmlspecialchars($this->input->post('e_nationality',true)),
+                'e_gender'=>htmlspecialchars($this->input->post('e_gender',true)),
+                'e_dob'=>htmlspecialchars($this->input->post('e_dob',true)),
+                'e_jobtitle'=>htmlspecialchars($this->input->post('e_jobtitle',true)),
+              //  'ea_document'=>htmlspecialchars($this->input->post('ea_document',true)),  
+            ];
+         // insert data into database
+        $this->user_e_model->insert($data);
+        $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
+        Check your email to get the approval from the admin</div>'); 
+        redirect('user/login/Auth/login'); 
+        }
     }
 
     public function logout()

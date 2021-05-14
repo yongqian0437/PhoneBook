@@ -40,7 +40,7 @@
 										<div class="pl-4">
 											<div class="number pt-4 pl-4 pb-1" style="font-size:18px; color:green; font-weight:900;">01</div>
 										</div>
-										<div class="pl-4 pb-3" style="font-size:14px; color:black; ">Select your role before you fill in your detail in the registration form.</div>
+										<div class="pl-4 pb-3" style="font-size:14px; color:black;">Select your role before you fill in your detail in the registration form.</div>
 
 										<div class="pl-4">
 											<div class="number pt-4 pl-4 pb-1" style="font-size:18px; color:green; font-weight:900;">02</div>
@@ -63,55 +63,55 @@
 							<div class="card h-100" id='card2' ">
                                 <div class=" card-body">
 								<center>
-									<div class="pt-5 px-5" style="font-size:23px; letter-spacing: 8px; color:#787878; font-weight:700;">ACADEMIC COUNSELOR REGISTRATION PAGE</div>
+									<div class="pt-5 px-5" style="font-size:23px; letter-spacing: 8px; color:#787878; font-weight:700;">EDUCATION PARTNER REGISTRATION PAGE</div>
 								</center>
 								<!-- Input fields (Form) -->
-								<form method="post" action="<?= base_url('user/login/Auth/ac_reg');?>">
+                                <form method="post" action="<?= base_url('user/login/Auth/ep_reg');?>">
 									<!-- Phone number and business email-->
 									<div class="form-row pt-4 px-3">
 										<div class="form-group col-md-6 px-2">
-											<input type="number" name="ac_phonenumber" class="form-control border-bottom" id="ac_phonenumber" style="border: 0;" placeholder="Enter your phone number" value="<?=set_value('ac_phonenumber') ?>">
-											<?= form_error('ac_phonenumber','<small class="text-danger pl-3">','</small>');?>
-										</div>
+											<input type="number" name="ep_phonenumber" class="form-control border-bottom" id="ep_phonenumber" style="border: 0;" placeholder="Enter your phone number" value="<?=set_value('ep_phonenumber') ?>">
+                                            <?= form_error('ep_phonenumber','<small class="text-danger pl-3">','</small>');?>
+                                        </div>
 										<div class="form-group col-md-6 px-2">
-											<input type="email" name="ac_businessemail" class="form-control border-bottom" id="ac_businessemail" style="border: 0;" placeholder="Enter your business email" value="<?=set_value('ac_businessemail') ?>">
-											<?= form_error('ac_businessemail','<small class="text-danger pl-3">','</small>');?>
+											<input type="email" name="ep_businessemail" class="form-control border-bottom" id="ep_businessemail" style="border: 0;" placeholder="Enter your business email" value="<?=set_value('ep_businessemail') ?>">
+                                            <?= form_error('ep_businessemail','<small class="text-danger pl-3">','</small>');?>
 										</div>
 									</div>
 									<!-- Nationality -->
 									<div class="form-row pt-3 px-3">
 										<div class="form-group col-md-12 px-2">
-											<input type="text" name="ac_nationality" class="form-control border-bottom" id="ac_nationality" style="border: 0;" placeholder="Enter your nationality" required>
+											<input type="text" name="ep_nationality" class="form-control border-bottom" id="ep_nationality" style="border: 0;" placeholder="Enter your nationality" required>
 										</div>
 									</div>
 									<!-- Date and gender -->
 									<div class="form-row pt-3 pb-3 px-3">
 										<div class="form-group col-md-6 px-2">
-											<input type="date" name="ac_dob" class="form-control border-bottom" id="ac_dob" style="border: 0;" required>
+											<input type="date" name="ep_dob" class="form-control border-bottom" id="ep_dob" style="border: 0;" required>
 										</div>
 										<div class="form-holder mb-3 ml-3" style="align-self: flex-end; transform: translateY(4px);">
 											<div class="checkbox-tick">
 												<label class="male ml-3">
-													<input type="radio" name="ac_gender" value="male" required> Male<br>
+													<input type="radio" name="ep_gender" value="male" required> Male<br>
 													<span class="checkmark"></span>
 												</label>
 												<label class="female ml-5">
-													<input type="radio" name="ac_gender" value="female" required> Female<br>
+													<input type="radio" name="ep_gender" value="female" required> Female<br>
 													<span class="checkmark"></span>
 												</label>
 											</div>
 										</div>
 									</div>
-									<!-- University  -->
+									<!-- Job Title  -->
 									<div class="form-row px-3">
 										<div class="form-group col-md-12 px-2">
-											<input type="type" name="ac_university" class="form-control border-bottom" id="ac_university" style="border: 0;" placeholder="Enter your university" required>
+											<input type="type" name="ep_jobtitle" class="form-control border-bottom" id="ep_jobtitle" style="border: 0;" placeholder="Enter your job title" required>
 										</div>
 									</div>
 									<!-- Upload Document -->
 									<div class="form-row pt-2 px-4">
 										<div class="form-group col-md-12 px-2">
-											<input type="file" class="custom-file-input" id="form-group" name="ac_document">
+											<input type="file" class="custom-file-input" id="form-group" name="ep_document">
 											<label class="custom-file-label" for="customFile">Upload a file</label>
 										</div>
 									</div>

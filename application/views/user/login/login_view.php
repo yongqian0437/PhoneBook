@@ -64,6 +64,7 @@
                                 <center>
                                     <div class="pt-5 px-5" style="font-size:23px; letter-spacing: 8px; color:#787878; font-weight:700;">LOGIN PAGE</div>
                                 </center>
+                                <?=$this->session->flashdata('message')?> 
                                 <!-- Input fields (Form) -->
                                 <form class="user" method="post" action=" <?=base_url('user/login/Auth/login'); ?>">
                                     <!-- Email-->

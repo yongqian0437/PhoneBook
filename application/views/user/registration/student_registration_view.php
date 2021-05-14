@@ -1,271 +1,139 @@
-<style>
-    @import url('https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i');
+<!-- Jquery plugin -->
+<script src="<?php echo base_url() ?>/assets/vendor/jquery/jquery.min.js"></script>
 
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: 'Nunito';
-        font-weight: 600;
-    }
 
-    body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 10px;
-        background: #6B9080;
-        font-size: 15px;
-    }
+<!-- Page level custom scripts -->
 
-    .container {
-        max-width: 900px;
-        width: 100%;
-        background-color: #EAF4F4;
-        padding: 25px 30px;
-        border-radius: 5px;
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
-    }
+<!-- Set base url to javascript variable-->
+<script type="text/javascript">
+	var base_url = "<?php echo base_url(); ?>";
+</script>
+<link href="<?php echo base_url() ?>assets/css/forms.css" rel="stylesheet">
 
-    .container .title {
-        font-size: 25px;
-        font-weight: 900;
-        position: relative;
-    }
+<body id="page-top" style='background-color:#f9f6f1;'>
 
-    .container .title::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        height: 3px;
-        width: 30px;
-        border-radius: 5px;
-        background: linear-gradient(135deg, #71b7e6, #9b59b6);
-    }
+	<!-- Page Wrapper -->
+	<div id="wrapper">
 
-    .content form .user-details {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        margin: 20px 0 12px 0;
-    }
+		<!-- Content Wrapper -->
+		<div id="content-wrapper" class="d-flex flex-column">
 
-    form .user-details .input-box {
-        margin-bottom: 15px;
-        width: calc(100% / 2 - 20px);
-    }
+			<!-- Main Content -->
+			<div id="content">
 
-    form .input-box span.details {
-        display: block;
-        font-weight: 600;
-        margin-bottom: 5px;
-    }
+				<!-- Begin Page Content -->
+				<div class="container-fluid ">
 
-    .user-details .input-box input {
-        height: 45px;
-        width: 100%;
-        outline: none;
-        font-size: 16px;
-        border-radius: 5px;
-        padding-left: 15px;
-        border: 1px solid #ccc;
-        border-bottom-width: 2px;
-        transition: all 0.3s ease;
-    }
+					<!-- Cards for registration -->
+					<div class="row justify-content-md-center pt-5" style='background-color:#f9f6f1;'>
 
-    .user-details .input-box input:focus,
-    .user-details .input-box input:valid {
-        border-color: #9b59b6;
-    }
+						<!-- Steps -->
+						<div class="col-xl-3">
+							<div class="card h-100 " id='card1'>
+								<div class="card-body" style="background-color:#DAE7E0">
 
-    form .gender-details .gender-title {
-        font-size: 20px;
-        font-weight: 600;
-    }
+									<div class="pl-3 pr-3 pt-4">
+										<div class="pl-4" style="font-size:16px; font-weight:700; color:black;">Join Interactive Joint Education Employability System (iJEES) in</div>
+										<div class="pt-2 pl-4 pb-3" style="font-size:38px; color:green; font-weight:900;">3 STEPS</div>
 
-    form .category {
-        display: flex;
-        width: 30%;
-        margin: 14px 0;
-        justify-content: space-between;
-    }
+										<div class="pl-4">
+											<div class="number pt-4 pl-4 pb-1" style="font-size:18px; color:green; font-weight:900;">01</div>
+										</div>
+										<div class="pl-4 pb-3" style="font-size:14px; color:black;">Select your role before you fill in your detail in the registration form.</div>
 
-    form .category label {
-        display: flex;
-        align-items: center;
-        cursor: pointer;
-    }
+										<div class="pl-4">
+											<div class="number pt-4 pl-4 pb-1" style="font-size:18px; color:green; font-weight:900;">02</div>
+										</div>
+										<div class="pl-4 pb-3" style="font-size:14px; color:black;">If you already have an existing account, login now with your credentials. </div>
 
-    form .category label .dot {
-        height: 18px;
-        width: 18px;
-        border-radius: 50%;
-        margin-right: 10px;
-        background: #d9d9d9;
-        border: 5px solid transparent;
-        transition: all 0.3s ease;
-    }
+										<div class="pl-4">
+											<div class="number pt-4 pl-4 pb-1" style="font-size:18px; color:green; font-weight:900;">03</div>
+										</div>
+										<div class="pl-4 pb-5" style="font-size:14px; color:black;">After login, you are on the main page based on your role. </div>
 
-    #dot-1:checked~.category label .one,
-    #dot-2:checked~.category label .two {
-        background: #9b59b6;
-        border-color: #d9d9d9;
-    }
+									</div>
 
-    form input[type="radio"] {
-        display: none;
-    }
+								</div>
+							</div>
+						</div>
 
-    form .button {
-        height: 45px;
-        width: 100%;
-        margin: 35px 0
-    }
+						<!-- Form -->
+						<div class="col-xl-5 ">
+							<div class="card h-100" id='card2' ">
+                                <div class=" card-body">
+								<center>
+									<div class="pt-5 px-5" style="font-size:23px; letter-spacing: 8px; color:#787878; font-weight:700;">STUDENT REGISTRATION PAGE</div>
+								</center>
+								<!-- Input fields (Form) -->
+                                <form method="post" action="<?= base_url('user/login/Auth/student_reg');?>">
+									<!-- Phone number and nationality-->
+									<div class="form-row pt-4 px-3">
+										<div class="form-group col-md-6 px-2">
+											<input type="number" name="student_phonenumber" class="form-control border-bottom" id="student_phonenumber" style="border: 0;" placeholder="Enter your phone number" value="<?=set_value('student_phonenumber') ?>">
+                                            <?= form_error('student_phonenumber','<small class="text-danger pl-3">','</small>');?>
+										</div>
+										<div class="form-group col-md-6 px-2">
+											<input type="type" name="student_nationality" class="form-control border-bottom" id="student_nationality" style="border: 0;" placeholder="Enter your nationality" required>
+										</div>
+									</div>
+									<!-- Date and gender -->
+									<div class="form-row pt-3 pb-3 px-3">
+										<div class="form-group col-md-6 px-2">
+											<input type="date" name="student_dob" class="form-control border-bottom" id="student_dob" style="border: 0;" required>
+										</div>
+										<div class="form-holder mb-3 ml-3" style="align-self: flex-end; transform: translateY(4px);">
+											<div class="checkbox-tick">
+												<label class="male ml-3">
+													<input type="radio" name="student_gender" value="male" required> Male<br>
+													<span class="checkmark"></span>
+												</label>
+												<label class="female ml-5">
+													<input type="radio" name="student_gender" value="female" required> Female<br>
+													<span class="checkmark"></span>
+												</label>
+											</div>
+										</div>
+									</div>
+									<!-- Interest -->
+									<div class="form-row px-3">
+										<div class="form-group col-md-12 px-2">
+											<input type="type" name="student_interest" class="form-control border-bottom" id="student_interest" style="border: 0;" placeholder="Enter your interest" required>
+										</div>
+									</div>
+                                    <!-- Current Level -->
+									<div class="form-row px-3">
+										<div class="form-group col-md-12 px-2">
+											<input type="type" name="student_currentlevel" class="form-control border-bottom" id="student_currentlevel" style="border: 0;" placeholder="Enter your current level" required>
+										</div>
+									</div>
+									<!-- Terms & Condition -->
+									<div class="T&C ml-4 mt-2">
+										<label> Please accept our <a href="https://newinti.edu.my/legal/privacy/">terms and conditions</a>
+										</label>
+									</div>
+									<!-- Submit button -->
+									<div class="pt-2 pr-3">
+										<button type="submit" class="btn btn-success" style="float:right; width:23%;">Register <i class="fas fa-check"></i></button>
+									</div>
 
-    form .button input {
-        height: 100%;
-        width: 100%;
-        border-radius: 5px;
-        border: none;
-        color: #000000;
-        font-size: 18px;
-        font-weight: 600;
-        letter-spacing: 1px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        background: #CCE3DE;
-    }
+								</form>
+								<!-- End of Input fields (Form) -->
+							</div>
+						</div>
+					</div>
 
-    form .button input:hover {
-        background: #6B9080;
-    }
+				</div>
+				<!-- END OF ROW -->
+				<!-- END OF FORM -->
+			</div>
+			<!-- /.container-fluid -->
+		</div>
+		<!-- End of Main Content -->
 
-    @media(max-width: 584px) {
-        .container {
-            max-width: 100%;
-        }
-
-        form .user-details .input-box {
-            margin-bottom: 15px;
-            width: 100%;
-        }
-
-        form .category {
-            width: 100%;
-        }
-
-        .content form .user-details {
-            max-height: 300px;
-            overflow-y: scroll;
-        }
-
-        .user-details::-webkit-scrollbar {
-            width: 5px;
-        }
-    }
-
-    @media(max-width: 459px) {
-        .container .content .category {
-            flex-direction: column;
-        }
-    }
-
-    form .user-details .input-box2 {
-        margin-bottom: 15px;
-        width: calc(100% / 1 - 0px);
-    }
-
-    form .input-box2 span.details {
-        display: block;
-        font-weight: 600;
-        margin-bottom: 5px;
-    }
-
-    .user-details .input-box2 input {
-        height: 45px;
-        width: 100%;
-        outline: none;
-        font-size: 16px;
-        border-radius: 5px;
-        padding-left: 15px;
-        border: 1px solid #ccc;
-        border-bottom-width: 2px;
-        transition: all 0.3s ease;
-    }
-
-    .user-details .input-box2 input:focus,
-    .user-details .input-box2 input:valid {
-        border-color: #9b59b6;
-    }
-</style>
-
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Registration Form</title>
-    
-</head>
-
-<body>
-    <div class="container">
-        <div class="title">Student Registration Form</div>
-        <div class="content">
-            
-            <form method="post" action="<?= base_url('user/login/Auth/student_reg');?>">
-            
-                <div class="user-details">
-                    <div class="input-box">
-                        <span class="details">Phone Number</span>
-                        <input type="number" placeholder="Enter Phone Number" name="student_phonenumber" required>  
-                    </div>
-                    <div class="input-box">
-                        <span class="details">Nationality</span>
-                        <input type="text" placeholder="Enter Nationality" name="student_nationality" required>
-                    </div>
-
-                    <div class="input-box">
-                        <span class="details">Date of Birth</span>
-                        <input type="date" name="student_dob"required>
-                    </div>
-                    <div class="input-box">
-                        <span class="details">Interests</span>
-                        <input type="text" placeholder="Enter Interests" name="student_interest" required>
-                    </div>
-
-                    <div class="input-box2">
-                        <span class="details">Current Level</span>
-                        <input type="text" placeholder="Enter Current Level" name="student_currentlevel" required>
-                    </div>
-
-                <div class="gender-details">
-                    <input type="radio" name="student_gender" id="dot-1" value="Male">
-                    <input type="radio" name="student_gender" id="dot-2" value="Female">
-                    <span class="gender-title">Gender</span>
-                    <div class="category">
-                        <label for="dot-1">
-                            <span class="dot one"></span>
-                            <span class="gender">Male</span>
-                        </label>
-                        <label for="dot-2">
-                            <span class="dot two"></span>
-                            <span class="gender">Female</span>
-                        </label>
-                    </div>
-              </div>
-
-              
-                <div class="button">
-                    <input type="submit" value="Register">
-                </div>
-                
-            </form>
-        </div>
-    </div>
-
- 
-</body>
-</html>
+		<script>
+			// File appear on select
+			$(".custom-file-input").on("change", function() {
+				var fileName = $(this).val().split("\\").pop();
+				$(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+			});
+		</script>

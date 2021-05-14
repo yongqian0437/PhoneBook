@@ -1,4 +1,3 @@
-
 <!-- Jquery plugin -->
 <script src="<?php echo base_url() ?>/assets/vendor/jquery/jquery.min.js"></script>
 
@@ -71,18 +70,20 @@
                                     <!-- First and last name-->
                                     <div class="form-row pt-5 px-3">
                                         <div class="form-group col-md-6 px-2">
-                                            <input type="type" name="user_fname" class="form-control border-bottom" id="user_fname" style="border: 0;" placeholder="Enter your first name" required>
+                                            <input type="type" name="user_fname" class="form-control border-bottom" id="user_fname" style="border: 0;" placeholder="Enter your first name" value="<?=set_value('user_fname') ?>">
+                                            <?= form_error('user_fname','<small class="text-danger pl-3">','</small>');?>
                         
                                         </div>
                                         <div class="form-group col-md-6 px-2">
-                                            <input type="type" name="user_lname" class="form-control border-bottom" id="user_lname" style="border: 0;" placeholder="Enter your last name">
-                                           
+                                            <input type="type" name="user_lname" class="form-control border-bottom" id="user_lname" style="border: 0;" placeholder="Enter your last name" value="<?=set_value('user_lname') ?>">  
+                                            <?= form_error('user_lname','<small class="text-danger pl-3">','</small>');?> 
                                         </div>
                                     </div>
                                     <!-- Email-->
                                     <div class="form-row pt-3 px-3">
                                         <div class="form-group col-md-12 px-2">
-                                            <input type="email" name="user_email" class="form-control border-bottom" id="user_email" style="border: 0;" placeholder="Enter your email address" >
+                                            <input type="email" name="user_email" class="form-control border-bottom" id="user_email" style="border: 0;" placeholder="Enter your email address" value="<?=set_value('user_email') ?>">
+                                            <?= form_error('user_email','<small class="text-danger pl-3">','</small>');?>
                                           
                                         </div>
                                     </div>
