@@ -23,17 +23,6 @@ class Admin_dashboard extends CI_Controller {
 
     public function users_accounts_nav()
     {
-        // $data['title']= 'All users';
-        // $data['users']=$this->user_model->search_email();
-        // $this->load->view('internal/templates/header',$data);
-        // $this->load->view('internal/templates/sidenav',$data);
-        // $this->load->view('internal/templates/topbar',$data);
-        // $result=$this->user_model->index();
-        // $data=array('userslist'=>$result);
-        // $data['users']=$this->user_model->searchdata();
-        // $this->load->view('internal/admin_panel/users_accounts_view',$data);
-        // $this->load->view('internal/templates/footer');
-
         $data['title']= 'All users';
         $data['users']=$this->user_model->search_email();
        // $data['user_student']=$this->db->get_where('user_student');
@@ -168,7 +157,6 @@ class Admin_dashboard extends CI_Controller {
         $this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav',$data);
        // $this->load->view('internal/templates/topbar',$data);
-
         $condition=0;
         $data['users']=$this->user_model->pendingdata($condition);
         $this->load->view('internal/admin_panel/users_accounts_view',$data);

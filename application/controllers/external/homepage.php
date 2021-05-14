@@ -14,12 +14,12 @@ class homepage extends CI_Controller {
         $data['users']=$this->user_model->search_email();
 
     //---------------------Need to wait Ariane for the templates--------------------//
-    // $this->load->view('templates/header',$data);
-    // $this->load->view('templates/sidebar',$data);
-    // $this->load->view('templates/topbar',$data);
-    $this->load->view('external/homepage_view',$data);
-    // $this->load->view('templates/footer');
-    
+        $this->load->view('external/templates/header',$data);
+    //$this->load->view('external/templates/sidenav',$data);
+        $this->load->view('external/templates/topnav',$data);
+        $this->load->view('external/homepage_view',$data);
+        $this->load->view('external/templates/footer');
+        
        
     }
 

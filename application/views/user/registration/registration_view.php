@@ -1,89 +1,131 @@
-<div class="container">
 
-<div class="card o-hidden border-0 shadow-lg my-5 col-lg-7 mx-auto">
-    <div class="card-body p-0">
-        <!-- Nested Row within Card Body -->
-        <div class="row">
-            
-            <div class="col-lg">
-                <div class="p-5">
-                    <div class="text-center">
-                        <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+<!-- Jquery plugin -->
+<script src="<?php echo base_url() ?>/assets/vendor/jquery/jquery.min.js"></script>
+
+
+<!-- Page level custom scripts -->
+
+<!-- Set base url to javascript variable-->
+<script type="text/javascript">
+    var base_url = "<?php echo base_url(); ?>";
+</script>
+<link href="<?php echo base_url() ?>assets/css/forms.css" rel="stylesheet">
+
+
+<body id="page-top" style='background-color:#f9f6f1;'>
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid ">
+
+                    <!-- Cards for registration -->
+                    <div class="row justify-content-md-center pt-5" style='background-color:#f9f6f1;'>
+
+                        <!-- Steps -->
+                        <div class="col-xl-3">
+                            <div class="card h-100 " id='card1'>
+                                <div class="card-body" style="background-color:#DAE7E0">
+
+                                    <div class="pl-3 pr-3 pt-4">
+                                        <div class="pl-4" style="font-size:16px; font-weight:700; color:black;">Join Interactive Joint Education Employability System (iJEES) in</div>
+                                        <div class="pt-2 pl-4 pb-3" style="font-size:38px; color:green; font-weight:900;">3 STEPS</div>
+
+                                        <div class="pl-4">
+                                            <div class="number pt-4 pl-4 pb-1" style="font-size:18px; color:green; font-weight:900;">01</div>
+                                        </div>
+                                        <div class="pl-4 pb-3" style="font-size:14px; color:black;">Select your role before you fill in your detail in the registration form.</div>
+
+                                        <div class="pl-4">
+                                            <div class="number pt-4 pl-4 pb-1" style="font-size:18px; color:green; font-weight:900;">02</div>
+                                        </div>
+                                        <div class="pl-4 pb-3" style="font-size:14px; color:black;">If you already have an existing account, login now with your credentials. </div>
+
+                                        <div class="pl-4">
+                                            <div class="number pt-4 pl-4 pb-1" style="font-size:18px; color:green; font-weight:900;">03</div>
+                                        </div>
+                                        <div class="pl-4 pb-5" style="font-size:14px; color:black;">After login, you are on the main page based on your role. </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Form -->
+                        <div class="col-xl-5 ">
+                            <div class="card h-100" id='card2' ">
+                                <div class=" card-body">
+                                <center>
+                                    <div class="pt-5 px-5" style="font-size:23px; letter-spacing: 8px; color:#787878; font-weight:700;">ROLE REGISTRATION PAGE</div>
+                                </center>
+                                <!-- Input fields (Form) -->
+                                <form class="user" method="post" action="<?= base_url('user/login/Auth/registration');?>">
+                                    <!-- First and last name-->
+                                    <div class="form-row pt-5 px-3">
+                                        <div class="form-group col-md-6 px-2">
+                                            <input type="type" name="user_fname" class="form-control border-bottom" id="user_fname" style="border: 0;" placeholder="Enter your first name" required>
+                        
+                                        </div>
+                                        <div class="form-group col-md-6 px-2">
+                                            <input type="type" name="user_lname" class="form-control border-bottom" id="user_lname" style="border: 0;" placeholder="Enter your last name">
+                                           
+                                        </div>
+                                    </div>
+                                    <!-- Email-->
+                                    <div class="form-row pt-3 px-3">
+                                        <div class="form-group col-md-12 px-2">
+                                            <input type="email" name="user_email" class="form-control border-bottom" id="user_email" style="border: 0;" placeholder="Enter your email address" >
+                                          
+                                        </div>
+                                    </div>
+                                    <!-- Password and confirm password -->
+                                    <div class="form-row pt-3 pb-3 px-3">
+                                        <div class="form-group col-md-6 px-2">
+                                            <input type="password" name="user_password" class="form-control border-bottom" id="password" style="border: 0;" placeholder="Enter your password">
+                                             <?= form_error('user_password','<small class="text-danger pl-3">','</small>');?>
+                                        </div>
+                                        <div class="form-group col-md-6 px-2">
+                                            <input type="password" name="user_password2" class="form-control border-bottom" id="user_password2" style="border: 0;" placeholder="Confirm your password" required>
+                                        </div>
+                                    </div>
+                                    <!-- Select your role -->
+                                    <div class="form-row px-3">
+                                        <div class="form-group col-md-12 px-2">
+                                            <select name="user_role" id="user_role" class="form-control form-select border-bottom" style="border: 0;" required>
+                                                <option value="" selected disabled>Please select a role</option>
+                                                <option value="Student">Student</option>
+                                                <option value="Employer">Employer</option>
+                                                <option value="Education Agent">Education Agent</option>
+                                                <option value="Education Partner">Education Partner</option>
+                                                <option value="Academic Couselor">Academic Counselor</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <!-- Submit button -->
+                                    <div class="pt-2 pr-4">
+                                        <button type="submit" class="btn btn-success" style="float:right; width:23%;">Submit <i class="fas fa-check"></i></button>
+                                    </div>
+
+                                </form>
+                                <!-- End of Input fields (Form) -->
+
+                            </div>
+                        </div>
                     </div>
-                    <form class="user" method="post" action="<?= base_url('user/login/Auth/registration');?>">
-                        <div class="form-group row">
-                            <div class="col-sm-6 mb-3 mb-sm-0">
-                            <label for="user_email" style=" color:black"; >First Name</label>
-                                <input type="text" class="form-control  " id="user_fname"
-                                name="user_fname"   placeholder="Enter your first name" value="<?=set_value('user_fname') ?>">
-                                <?= form_error('user_fname','<small class="text-danger pl-3">','</small>');?>
-                            </div>
-                            <div class="col-sm-6">
-                            <label for="user_email" style=" color:black"; >Last Name</label>
-                            <input type="text" class="form-control " id="user_lname"
-                                name="user_lname"  placeholder="Enter your last name" value="<?=set_value('user_lname') ?>">
-                                <?= form_error('user_lname','<small class="text-danger pl-3">','</small>');?>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                        <label for="user_email" style=" color:black"; >Email Address</label>
-                            <input type="email" class="form-control  " id="user_email"
-                                name="user_email" placeholder="Enter your email address" value="<?=set_value('user_email') ?>">
-                                <?= form_error('user_email','<small class="text-danger pl-3">','</small>');?>
-                        </div>
-                        <div class="form-group row">
-                            <div class="col-sm-6 mb-3 mb-sm-0">
-                            <label for="user_email" style=" color:black"; >Password</label>
-                                <input type="password" class="form-control "
-                                    id="user_password" name="user_password" placeholder="Enter your password">
-                                    <?= form_error('user_password','<small class="text-danger pl-3">','</small>');?>
-                            </div>
-                            <div class="col-sm-6">
-                            <label for="user_email" style=" color:black"; >Confirm Password</label>
-                                <input type="password" class="form-control "
-                                    id="user_password2" name="user_password2"placeholder="Enter password again">
-                            </div>
-                        </div>
 
-                       
-                        <div class="form-group">
-                        <label for="user_role" style=" color:black"; >Role</label>
-                        <select class="form-control " id="user_role"
-                        name="user_role" >
-                        <option value="Student">Student</option>
-                        <option value="Education Partner">Education Partner</option>
-                        <option value="Education Agent">Education Agent</option>
-                        <option value="Academic Couselor">Academic Couselor</option>
-                        <option value="Employer">Employer</option>
-                        <!-- <option value="admin">Admin</option> -->
-                        </select>
-                        </div>
-                        
-                          
-
-                        
-                        
-                        <button type="submit" class="btn btn-outline-success btn-user btn-block">
-                            Continue
-                        </button>
-                    
-                        <hr>
-                        
-                    </form>
-
-                 
-                        <div class="text-center">
-                        <a class="small" href="forgot-password.html">Forgot Password?</a>
-                       </div>
-                    <div class="text-center">
-                        <a class="small" href="<?=base_url("user/login"); ?>">Already have an account? Login!</a>
-                    </div>
                 </div>
+                <!-- END OF ROW -->
+                <!-- END OF FORM -->
+
             </div>
+            <!-- /.container-fluid -->
         </div>
-    </div>
-</div>
-
-
-</div>
-
+        <!-- End of Main Content -->

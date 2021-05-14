@@ -133,10 +133,25 @@ class Auth extends CI_Controller
                 //------------------ change later-------------------(wait for wc)//
                  $this->load->view('user/registration/student_registration_view');
             }
-            else
+            else if($user_role=="Education Partner")
             {
                  //------------------ change later-------------------(wait for wc)//
                 // $this->load->view('user/registration/ep_registration_view');
+            }
+            else if($user_role=="Academic Couselor")
+            {
+                 //------------------ change later-------------------(wait for wc)//
+                // $this->load->view('user/registration/ac_registration_view');
+            }
+            else if($user_role=="Education Agent")
+            {
+                 //------------------ change later-------------------(wait for wc)//
+                // $this->load->view('user/registration/ea_registration_view');
+            }
+            else
+            {
+                 //------------------ change later-------------------(wait for wc)//
+                // $this->load->view('user/registration/e_registration_view');
             }
         }
     }

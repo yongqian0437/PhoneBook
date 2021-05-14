@@ -13,11 +13,11 @@ class Level_2_dashboard extends CI_Controller
         $data['title']= 'My Profile';
         $data['users']=$this->user_model->search_email();
         //---------------------Need to wait Ariane for the templates--------------------//
-        // $this->load->view('templates/header',$data);
-        // $this->load->view('templates/sidebar',$data);
-        // $this->load->view('templates/topbar',$data)
+         $this->load->view('internal/templates/header',$data);
+         $this->load->view('internal/templates/sidenav',$data);
+        // $this->load->view('internal/templates/topbar',$data)
         $this->load->view('internal/level_2/level_2_dashboard_view',$data);
-        // $this->load->view('templates/footer');  
+        $this->load->view('internal/templates/footer');  
     } 
 }
 ?>
