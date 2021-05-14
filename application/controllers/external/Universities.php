@@ -35,15 +35,14 @@ class Universities extends CI_Controller {
 		$universities = $this->universities_model->select_all();
 
 		$data = array();
+		$base_url = base_url();
 
 		foreach($universities as $r) {
 
-		if($r->uni_approval == true){
-			$approval = '<button type="button" class="btn btn-success" onclick="changeApproval('.$r->uni_id.')">Approved</button>' ;
-		}
-		else{
-			$approval = '<button type="button" class="btn btn-danger" onclick="changeApproval('.$r->uni_id.')">Pending</button>' ;
-		}
+		$logo = $base_url.$r->uni_logo;
+
+		$image = '<img style=" height:85px; width: 250px; object-fit: contain;" src="'.$logo.'" alt="logo"><br><br>'; 
+
 		$action = '<a style = "border-radius:10px; background-color:#6B9080; color:white; height:auto; width:auto%;" href="" class = "btn btn-icon-split">
 						<span class = "icon text-white-600">
 							<i class = "fas fa-info-circle p-1"></i>
@@ -52,7 +51,7 @@ class Universities extends CI_Controller {
 				   </a>';
 
 			$data[] = array(
-					$approval,
+					$image,
 					$r->uni_name,
 					$r->uni_totalcourses,
 					$r->uni_qsrank,
@@ -71,22 +70,6 @@ class Universities extends CI_Controller {
 		exit();
      }
 
-
-	 function switch_approval(){
-
-		$uni_id = $this->input->post('uni_id'); 
-		$uni_data = $this->universities_model->get_uni_with_id($uni_id);
-
-		if($uni_data[0]->uni_approval == 1){
-			$data['uni_approval'] = 0;
-		}
-
-		else{
-			$data['uni_approval'] = 1;
-		}
-		$this->universities_model->update($data, $uni_id);
-
-	 }
 
 	
 }

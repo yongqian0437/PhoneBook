@@ -48,8 +48,8 @@ class Compare extends CI_Controller {
 				<td scope="col"></td>
 				<td scope="col">
                     <center>
-                        <img style=" height:85px; width: 250px;" src="'.$logo1.'" alt="logo1"><br><br>
-                        <a style = "border-radius:10px; background-color:#6B9080; color:white; height:auto; width:auto; object-fit: cover;" href="" class = "btn btn-icon-split">
+                        <img style=" height:85px; width: 250px; object-fit: contain;" src="'.$logo1.'" alt="logo1"><br><br>
+                        <a style = "border-radius:10px; background-color:#6B9080; color:white; height:auto; width:auto; " href="" class = "btn btn-icon-split">
                             <span class = "icon text-white-600">
                                 <i class = "fas fa-university p-1"></i>
                             </span>
@@ -59,8 +59,8 @@ class Compare extends CI_Controller {
                 </td>
 				<td scope="col">
                     <center>
-                        <img style=" height:85px; width: 250px;" src="'.$logo2.'" alt="logo2"><br><br>
-                        <a style = "border-radius:10px; background-color:#6B9080; color:white; height:auto; width:auto; object-fit: cover;" href="" class = "btn btn-icon-split">
+                        <img style=" height:85px; width: 250px;  object-fit: contain;" src="'.$logo2.'" alt="logo2"><br><br>
+                        <a style = "border-radius:10px; background-color:#6B9080; color:white; height:auto; width:auto;" href="" class = "btn btn-icon-split">
                             <span class = "icon text-white-600">
                                 <i class = "fas fa-university p-1"></i>
                             </span>
@@ -70,8 +70,8 @@ class Compare extends CI_Controller {
                 </td>
 				<td scope="col">
                     <center>
-                        <img style=" height:85px; width: 250px;" src="'.$logo3.'" alt="logo3"><br><br>
-                        <a style = "border-radius:10px; background-color:#6B9080; color:white; height:auto; width:auto; object-fit: cover;" href="" class = "btn btn-icon-split">
+                        <img style=" height:85px; width: 250px; object-fit: contain;" src="'.$logo3.'" alt="logo3"><br><br>
+                        <a style = "border-radius:10px; background-color:#6B9080; color:white; height:auto; width:auto; " href="" class = "btn btn-icon-split">
                             <span class = "icon text-white-600">
                                 <i class = "fas fa-university p-1"></i>
                             </span>

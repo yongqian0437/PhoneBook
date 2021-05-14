@@ -9,7 +9,12 @@ $(document).ready(function(){
         "columnDefs": [{
             "width": "15%",
             "targets": [4]
-        },]
+        },
+        {
+            "width": "20%",
+            "targets": [0]
+        }
+        ]
     });
 
     //Styling for search bar in datatables
@@ -23,17 +28,3 @@ $(document).ready(function(){
 
 }); // end of ready function
 
-function changeApproval(id){
-
-    $.ajax({
-        url: base_url + "external/Universities/switch_approval",
-        method:"POST",
-        data:{uni_id:id},
-        success:function(data)
-        {
-            var xin_table = $("#table_university").DataTable();
-            xin_table.ajax.reload();
-        }
-    });
-    
-}

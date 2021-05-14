@@ -266,7 +266,7 @@ tr:nth-child(even) {
 
                 <!-- TABLE  -->
                 <div class="row justify-content-md-center px-2 pb-5">   
-                    <div class="col-xl-11 px-5" >
+                    <div class="col-xl-12 px-5" >
                         <table class="table py-2" id = 'table_view'>
                             
                         </table>

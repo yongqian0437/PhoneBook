@@ -25,9 +25,9 @@ table{
 }
 
 tr{
-    border-bottom: 1px solid black;
-    border-top: 1px solid black;
+   
     border-collapse: collapse;
+    vertical-align: center;
 }
 
 /* styling for datatables pagination */
@@ -38,6 +38,21 @@ tr{
 /* styling for datatables search */
 #table_university_filter{
     font-size:20px;
+}
+
+table.dataTable tbody td {
+  vertical-align: middle;
+  text-align: center !important;
+  border-top: 2px solid black !important;
+}
+
+table.dataTable thead th {
+  text-align: center !important;
+  vertical-align: middle;
+  border-top: 2px solid black !important;
+  color:black !important;
+  font-size: 1.1em !important;
+  font-weight:700 !important;
 }
 
 </style>
@@ -60,29 +75,21 @@ tr{
                 <!-- Begin Page Content -->
                 <div style = 'background-color:white;' class="container-fluid">
 
-                <!-- Page Heading -->
-                <div class="d-sm-flex align-items-center justify-content-between mb-4 pt-5">
-                    <h1 class="h3 mb-0 text-gray-800"><b>UNIVERISTY<b></h1>
-                </div>
-                <hr style = "border: 2px solid #EAF4F4;">
-
-                <br>
-
                 <!-- Content Row -->
 
-                <div class="row">
+                <div class="row pt-5">
                     <div class="col-12">
-                        <div class="card" style = " border: 2px solid #b5b3ae;">
-                            <div class="card-body ">
+                        <div class="card border-dark">
+                            <div class="card-body">
                                 <div class="pb-3" style="display: flex; flex-direction: row; justify-content: space-between; background-color: #A4C3B2, color:white;">
                                     <?php $uni_count = count($university_data) ?>
-                                    <h4 style = "opacity:0.7; font-weight:700;"> <?php echo $uni_count ?> UNIVERSITIES</h4>
+                                    <h4 style = " font-weight:700;"><span style = "color:#6B9080">(<?php echo $uni_count ?>)</span><span style = "color:black; opacity:0.3;"><i> UNIVERSITIES</i></span></h4>
                                 </div>
                                 <div class="table-responsive">
-                                    <table id="table_university" class="table table-striped ">
+                                    <table id="table_university" class="table ">
                                         <thead>
                                             <tr>
-                                                <th>University</th>
+                                                <th style = "">University</th>
                                                 <th>University Name</th>
                                                 <th>Course Offered</th>
                                                 <th>QS World Ranking</th>
@@ -95,6 +102,7 @@ tr{
                         </div>
                     </div>
                 </div>
+                <br><br><br><br>
 
 
                 
