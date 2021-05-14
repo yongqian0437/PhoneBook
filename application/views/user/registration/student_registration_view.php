@@ -108,7 +108,7 @@
 									</div>
 									<!-- Terms & Condition -->
 									<div class="T&C ml-4 mt-2">
-										<label> Please accept our <a href="https://newinti.edu.my/legal/privacy/">terms and conditions</a>
+										<label><input type="checkbox"> Please accept our <a href="https://newinti.edu.my/legal/privacy/">terms and conditions</a>
 										</label>
 									</div>
 									<!-- Submit button -->
