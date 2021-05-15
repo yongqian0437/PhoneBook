@@ -8,7 +8,6 @@ class Auth extends CI_Controller
         parent::__construct();
         $this->load->library('form_validation');
         $this->load->library('email');
-        // this->load->model("modelname");
         $this->load->model(['user_student_model','user_ep_model','user_ac_model','user_ea_model',
         'user_e_model']);
     }
@@ -24,11 +23,11 @@ class Auth extends CI_Controller
             $this->load->view('external/templates/header',$data);
             $this->load->view('user/login/login_view');
             $this->load->view('external/templates/footer');
-           }
-           else
-           {
-             $this->_login();
-           }     
+        }
+        else
+        {
+            $this->_login();
+        }     
     }
     
     private function _login()
@@ -104,6 +103,7 @@ class Auth extends CI_Controller
             'min_length'=> 'Password too short'
         ]);
         $this->form_validation->set_rules('user_password2','Password', 'required|trim|matches[user_password]');
+        
         if($this->form_validation->run()== false)
         {
             $data['title']="User Registration";
@@ -158,8 +158,7 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules('student_phonenumber','Phone Number', 'required|trim|min_length[10]',[
             'min_length'=> 'Phone number too short'
         ]);
-       // $this->load->view('user/registration/student_registration_view');
-        //
+
         if($this->form_validation->run()== false)
         {
             $data['title']="Student Registration";
@@ -198,6 +197,7 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules('ep_businessemail','Email', 'required|trim|valid_email|is_unique[user_ep.ep_businessemail]',[
             'is_unique'=>'This email has already registered!'
         ]);
+
         if($this->form_validation->run()== false)
         {
             $data['title']="Education Partner Registration";
@@ -235,6 +235,7 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules('ea_businessemail','Email', 'required|trim|valid_email|is_unique[user_ep.ep_businessemail]',[
             'is_unique'=>'This email has already registered!'
         ]);
+
         if($this->form_validation->run()== false)
         {
             $data['title']="Education Agent Registration";
@@ -271,6 +272,7 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules('ac_businessemail','Email', 'required|trim|valid_email|is_unique[user_ep.ep_businessemail]',[
             'is_unique'=>'This email has already registered!'
         ]);
+
         if($this->form_validation->run()== false)
         {
             $data['title']="Academic Couselor Registration";
@@ -308,6 +310,7 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules('e_businessemail','Email', 'required|trim|valid_email|is_unique[user_ep.ep_businessemail]',[
             'is_unique'=>'This email has already registered!'
         ]);
+
         if($this->form_validation->run()== false)
         {
             $data['title']="Employer Registration";
@@ -340,11 +343,9 @@ class Auth extends CI_Controller
     {
         $this->session->unset_userdata('user_email');
         $this->session->unset_userdata('user_role');
-
         $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
         You have been logout</div>');
-        redirect('user/login/login_view');
-     
+        redirect('user/login/Auth/login'); 
     }
 }
 

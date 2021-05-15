@@ -1,16 +1,16 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Admin_dashboard extends CI_Controller {
-
+class Admin_dashboard extends CI_Controller 
+{
     public function __construct()
     {
         parent:: __construct();
         $this->load->helper('form');
-       // $this->load->model('user_model');
-       $this->load->model(['user_student_model','user_ep_model','user_ac_model','user_ea_model',
+        $this->load->model(['user_student_model','user_ep_model','user_ac_model','user_ea_model',
         'user_e_model']);
     }
+
     public function index()
     {
         $data['title']= 'All users';
@@ -25,13 +25,11 @@ class Admin_dashboard extends CI_Controller {
     {
         $data['title']= 'All users';
         $data['users']=$this->user_model->search_email();
-       // $data['user_student']=$this->db->get_where('user_student');
         $this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav',$data);
         $this->load->view('internal/templates/topbar',$data);
         $result=$this->user_model->index();
         $data=array('userslist'=>$result);
-        //$data['users']=$this->user_model->searchdata();
         $this->load->view('internal/admin_panel/users_accounts_view',$data);
         $this->load->view('internal/templates/footer');  
     }
@@ -61,7 +59,7 @@ class Admin_dashboard extends CI_Controller {
             $users=$this->user_model->search_id($id);
               if($users['user_approval']==1)
             { 
-                 $this->_sendEmail();
+                $this->_sendEmail();
                 $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
                 User account is approved</div>');
             }
@@ -113,7 +111,7 @@ class Admin_dashboard extends CI_Controller {
         ];
        
         $this->email->initialize($config);
-        $this->email->from('yeepengtheong@gmail.com','Capstone Project 2021');//------------change the email account later------//
+        $this->email->from('g3cap2100@gmail.com','Capstone Project 2021');
         $this->email->to($email);
         $this->email->subject('Account Verification');
 

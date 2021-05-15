@@ -11,7 +11,7 @@
                            
                             <div class="col-lg">
                                 <div class="p-5">                   
-                                <center>
+                                          <center>
                                             <div class="pt-5 px-5" style="font-size:23px; letter-spacing: 8px; color:#787878; font-weight:700;">EDUCATION AGENT REGISTRATION PAGE</div>
                                           </center>
                                            <!-- Input fields (Form) -->
@@ -63,7 +63,6 @@
                                             <br>
                                           <a href="<?=base_url();?>internal/admin_panel/Admin_dashboard/users_accounts_nav" class="btn btn-primary">Back</a>
                                           </form>    
-                                         
                                 </div>
                             </div>
                         </div>

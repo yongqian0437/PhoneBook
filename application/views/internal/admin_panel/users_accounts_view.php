@@ -62,7 +62,7 @@
                                  <?php } else if($re->user_role=='Employer') {?> 
                                     <a href="<?= base_url(); ?>internal/admin_panel/Users_information/detail_employer/<?php echo $re->user_id;?>" class="btn btn-secondary">View</th> 
 
-                                <?php } ?> 
+                            <?php } ?> 
                             </td>
 
                             <?php } else{ ?>
@@ -93,12 +93,6 @@
                             <?php }?>
                             </tr>    
                             <?php endforeach ;?>
-
-
-                         
-                            
-                   
-                  
                     </tbody>
                 </table>
         </div>

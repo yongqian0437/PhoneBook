@@ -48,17 +48,6 @@ class user_model extends CI_Model
         return $this->db->update('users',$data);
     }
 
-  // --------------------Reference for datatable---------------------//
-    // public function searchdata()
-    // {
-    //     $keyword=$this->input->post('keyword',true);
-    //     $this->db->like('user_fname', $keyword);
-    //     $this->db->or_like('user_lname', $keyword);
-    //     $this->db->or_like('user_email', $keyword);
-    //     $this->db->or_like('user_role', $keyword);
-    //     return $this->db->get('users')->result_array();
-    // }
-
        public function  approvedata($condition)
     {
         $this->db->where('user_approval', $condition);
@@ -98,5 +87,4 @@ class user_model extends CI_Model
     {
         return $this->db->get_where('users', ['user_email'=>$user_email])->row_array();
     }
-
 }

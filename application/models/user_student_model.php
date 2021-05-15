@@ -18,9 +18,12 @@ class user_student_model extends CI_Model
     function insert($data)
     {
         $this->db->insert('user_student', $data);
-        if ($this->db->affected_rows() > 0) {
+        if ($this->db->affected_rows() > 0) 
+        {
             return true;
-        } else {
+        } 
+        else 
+        {
             return false;
         }
     }
@@ -28,9 +31,12 @@ class user_student_model extends CI_Model
     function update($data, $id)
     {
         $this->db->where('student_id', $id);
-        if ($this->db->update('user_student', $data)) {
+        if ($this->db->update('user_student', $data)) 
+        {
             return true;
-        } else {
+        } 
+        else 
+        {
             return false;
         }
     }
@@ -39,9 +45,12 @@ class user_student_model extends CI_Model
     {
         $this->db->where('student_id', $id);
         $this->db->delete('user_student');
-        if ($this->db->affected_rows() > 0) {
+        if ($this->db->affected_rows() > 0) 
+        {
             return true;
-        } else {
+        } 
+        else 
+        {
             return false;
         }
     }

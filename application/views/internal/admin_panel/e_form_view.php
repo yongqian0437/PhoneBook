@@ -11,7 +11,7 @@
                            
                             <div class="col-lg">
                                 <div class="p-5">                   
-                                <center>
+                                          <center>
                                             <div class="pt-5 px-5" style="font-size:23px; letter-spacing: 8px; color:#787878; font-weight:700;">EMPLOYER REGISTRATION PAGE</div>
                                           </center>
                                           <!-- Input fields (Form) -->

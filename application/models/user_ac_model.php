@@ -17,9 +17,12 @@ class user_ac_model extends CI_Model
     function insert($data)
     {
         $this->db->insert('user_ac', $data);
-        if ($this->db->affected_rows() > 0) {
+        if ($this->db->affected_rows() > 0) 
+        {
             return true;
-        } else {
+        } 
+        else 
+        {
             return false;
         }
     }
@@ -27,9 +30,12 @@ class user_ac_model extends CI_Model
     function update($data, $id)
     {
         $this->db->where('ac_id', $id);
-        if ($this->db->update('user_ac', $data)) {
+        if ($this->db->update('user_ac', $data)) 
+        {
             return true;
-        } else {
+        } 
+        else 
+        {
             return false;
         }
     }
@@ -38,9 +44,12 @@ class user_ac_model extends CI_Model
     {
         $this->db->where('ac_id', $id);
         $this->db->delete('user_ac');
-        if ($this->db->affected_rows() > 0) {
+        if ($this->db->affected_rows() > 0) 
+        {
             return true;
-        } else {
+        } 
+        else 
+        {
             return false;
         }
     }

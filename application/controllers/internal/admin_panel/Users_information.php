@@ -9,25 +9,21 @@ class Users_information extends CI_Controller
         $this->load->model(['user_student_model','user_ep_model','user_ac_model','user_ea_model','user_e_model']);
     }
 
-    //---------------------------wait ariane for the sidebar--------------------//
     public function students_info()
     {  
         $data['title']= 'Student';
         $data['users']=$this->user_model->search_email();
-       // $data['user_student']=$this->db->get_where('user_student');
         $this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav',$data);
         $this->load->view('internal/templates/topbar',$data);
         $result=$this->user_student_model->index();
         $data=array('studentlist'=>$result);
-       // $data['users']=$this->user_model->searchdata();
         $this->load->view('internal/admin_panel/student_view',$data);
         $this->load->view('internal/templates/footer');  
     }
 
     public function detail_student ($id)
     {
-      //  $data['users']=$this->db->get_where('users',['user_email'=>$this->session->userdata('user_email')])->row_array();
          $data['title']="Detail of Student";
          $data['student']=$this->user_student_model->student_details($id);        
          $this->load->view('internal/templates/header',$data);
@@ -41,7 +37,6 @@ class Users_information extends CI_Controller
     {
         $data['title']= 'Education Partner';
         $data['users']=$this->user_model->search_email();
-        //$data['user_ep']=$this->db->get_where('user_ep');
         $this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav',$data);
         // $this->load->view('templates/topbar',$data);
@@ -66,7 +61,6 @@ class Users_information extends CI_Controller
     {
         $data['title']= 'Academic Couselor';
         $data['users']=$this->user_model->search_email();
-       // $data['user_ac']=$this->db->get_where('user_ac');
         $this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav',$data);
         $this->load->view('internal/templates/topbar',$data);
@@ -91,7 +85,6 @@ class Users_information extends CI_Controller
     {
         $data['title']= 'Education Agent';
         $data['users']=$this->user_model->search_email();
-       // $data['user_ea']=$this->db->get_where('user_ea');
         $this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav',$data);
         $this->load->view('internal/templates/topbar',$data);
@@ -116,7 +109,6 @@ class Users_information extends CI_Controller
     {
         $data['title']= 'Employer';
         $data['users']=$this->user_model->search_email();
-       // $data['user_ea']=$this->db->get_where('user_ea');
         $this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav',$data);
         $this->load->view('internal/templates/topbar',$data);
@@ -137,6 +129,5 @@ class Users_information extends CI_Controller
         $this->load->view('internal/templates/footer');
     }
 }
-
 
 ?>

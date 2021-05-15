@@ -11,7 +11,7 @@
                            
                             <div class="col-lg">
                                 <div class="p-5">                   
-                                <center>
+                                          <center>
                                             <div class="pt-5 px-5" style="font-size:23px; letter-spacing: 8px; color:#787878; font-weight:700;">ACADEMIC COUNSELOR REGISTRATION PAGE</div>
                                           </center>
                                           <!-- Input fields (Form) -->
@@ -56,7 +56,7 @@
                                             <!-- University  -->
                                             <div class="form-row px-3">
                                               <div class="form-group col-md-12 px-2">
-                                              <input  class="form-control border-bottom" style="border: 0;" placeholder= "Nationality: <?=$ac['ac_university'];?>" >
+                                              <input  class="form-control border-bottom" style="border: 0;" placeholder= "University: <?=$ac['ac_university'];?>" >
                                               </div>
                                             </div>
                                             <!-- Upload Document -->
