@@ -34,7 +34,7 @@
                                         <div class="form-holder mb-3 ml-3" style="align-self: flex-end; transform: translateY(4px);">
                                             <div class="checkbox-tick">
                                               <label class="male ml-3">
-                                              <?php if($student ['student_gender']=="Male"||"male"){?>
+                                              <?php if($student ['student_gender']=="Male"||$student ['student_gender']=="male"){?>
                                                 <input type="radio" name="student_gender" value="male" checked>Male<br>
                                                 <span class="checkmark"></span>
                                               </label>
@@ -57,10 +57,10 @@
                                         <div class="form-row px-3">
                                           <div class="form-group col-md-12 px-2">
                                           <input  class="form-control border-bottom" style="border: 0;" placeholder= "Current Level:<?=$student ['student_currentlevel'];?>" >
-                                          <br>
-                                          <a href="<?=base_url();?>internal/admin_panel/Admin_dashboard/users_accounts_nav" class="btn btn-primary">Back</a>
                                           </div>
                                         </div>
+                                        <br>
+                                          <a href="<?=base_url();?>internal/admin_panel/Admin_dashboard/users_accounts_nav" class="btn btn-primary">Back</a>
                                       </form>
                                 </div>
                             </div>
