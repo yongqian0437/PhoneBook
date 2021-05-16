@@ -106,7 +106,7 @@
                                                 <option value="Employer">Employer</option>
                                                 <option value="Education Agent">Education Agent</option>
                                                 <option value="Education Partner">Education Partner</option>
-                                                <option value="Academic Couselor">Academic Counselor</option>
+                                                <option value="Academic Counsellor">Academic Counsellor</option>
                                             </select>
                                         </div>
                                     </div>

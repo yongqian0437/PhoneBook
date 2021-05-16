@@ -135,7 +135,7 @@ class Auth extends CI_Controller
             {
                 redirect("user/login/Auth/ep_reg");
             }
-            else if($user_role=="Academic Couselor")
+            else if($user_role=="Academic Counsellor")
             {
                 redirect("user/login/Auth/ac_reg");
             }

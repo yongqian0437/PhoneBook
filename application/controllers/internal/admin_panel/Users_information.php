@@ -59,7 +59,7 @@ class Users_information extends CI_Controller
 
     public function ac_info()
     {
-        $data['title']= 'Academic Couselor';
+        $data['title']= 'Academic Counsellor';
         $data['users']=$this->user_model->search_email();
         $this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav',$data);
@@ -70,9 +70,9 @@ class Users_information extends CI_Controller
         $this->load->view('internal/templates/footer');   
     }
 
-    public function detail_academic_couselor ($id)
+    public function detail_academic_counsellor ($id)
     {
-        $data['title']="Detail of Education Partner";
+        $data['title']="Detail of Academic Counsellor";
         $data['ac']=$this->user_ac_model->ac_details($id);        
         $this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav',$data);

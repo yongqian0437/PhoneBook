@@ -12,11 +12,11 @@
                             <div class="col-lg">
                                 <div class="p-5">                   
                                           <center>
-                                            <div class="pt-5 px-5" style="font-size:23px; letter-spacing: 8px; color:#787878; font-weight:700;">ACADEMIC COUNSELOR REGISTRATION PAGE</div>
+                                            <div class="pt-5 px-5" style="font-size:23px; letter-spacing: 8px; color:#787878; font-weight:700;">ACADEMIC COUNSELLOR REGISTRATION PAGE</div>
                                           </center>
                                           <!-- Input fields (Form) -->
                                           <form>
-                                          <center><b><p class="card-title">Academic Couselor ID: <?=$ac['ac_id'];?></p></b></center>
+                                          <center><b><p class="card-title">Academic Counsellor ID: <?=$ac['ac_id'];?></p></b></center>
                                             <!-- Phone number and business email-->
                                             <div class="form-row pt-4 px-3">
                                               <div class="form-group col-md-7 px-2">

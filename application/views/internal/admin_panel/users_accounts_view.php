@@ -50,9 +50,9 @@
                                     <a href="<?= base_url(); ?>internal/admin_panel/Users_information/detail_education_partner/<?php echo $re->user_id;?>" class="btn btn-secondary">View</th> 
                                 
 
-                                <!--user is academic couselor-->
-                                <?php } else if($re->user_role=='Academic Couselor') {?> 
-                                    <a href="<?= base_url(); ?>internal/admin_panel/Users_information/detail_academic_couselor/<?php echo $re->user_id;?>" class="btn btn-secondary">View</th> 
+                                <!--user is academic counsellor-->
+                                <?php } else if($re->user_role=='Academic Counsellor') {?> 
+                                    <a href="<?= base_url(); ?>internal/admin_panel/Users_information/detail_academic_counsellor/<?php echo $re->user_id;?>" class="btn btn-secondary">View</th> 
 
                                 <!--user is education agent-->
                                 <?php } else if($re->user_role=='Education Agent') {?> 
@@ -77,9 +77,9 @@
                                 <?php } else if($re->user_role=='Education Partner') {?> 
                                     <a href="<?= base_url(); ?>internal/admin_panel/Users_information/detail_education_partner/<?php echo $re->user_id;?>" class="btn btn-secondary">View</th>
                             
-                                <!--user is academic couselor-->
-                                <?php } else if($re->user_role=='Academic Couselor') {?> 
-                                    <a href="<?= base_url(); ?>internal/admin_panel/Users_information/detail_academic_couselor/<?php echo $re->user_id;?>" class="btn btn-secondary">View</th> 
+                                <!--user is academic counsellor-->
+                                <?php } else if($re->user_role=='Academic Counsellor') {?> 
+                                    <a href="<?= base_url(); ?>internal/admin_panel/Users_information/detail_academic_counsellor/<?php echo $re->user_id;?>" class="btn btn-secondary">View</th> 
                             
                                 <!--user is education agent-->
                                  <?php } else if($re->user_role=='Education Agent') {?> 
