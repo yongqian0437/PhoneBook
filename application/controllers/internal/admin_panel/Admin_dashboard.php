@@ -102,8 +102,8 @@ class Admin_dashboard extends CI_Controller
         [
             'protocol'=>'smtp',
             'smtp_host'=>'ssl://smtp.googlemail.com',
-            'smtp_user'=>'yeepengtheong@gmail.com',
-            'smtp_pass'=>'01139962936',
+            'smtp_user'=>'g3cap2100@gmail.com',
+            'smtp_pass'=>'ijees2021',
             'smtp_port'=>465,
             'mailtype'=>'html',
             'charset'=>'utf-8',
