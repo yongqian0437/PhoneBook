@@ -14,6 +14,7 @@
                                           <center>
                                             <div class="pt-5 px-5" style="font-size:23px; letter-spacing: 8px; color:#787878; font-weight:700;">EDUCATION AGENT REGISTRATION PAGE</div>
                                           </center>
+                                          <br>
                                            <!-- Input fields (Form) -->
                                            <form>
                                            <center><b><p class="card-title">Education Agent ID: <?=$ea['ea_id'];?></p></b></center>
@@ -23,21 +24,18 @@
                                               <div class="form-group col-md-7 px-2">
                                                 <input  class="form-control border-bottom" style="border: 0;" placeholder= "Phone Number: <?=$ea['ea_phonenumber'];?>" readonly>
                                               </div>
+                                               <!-- Nationality -->
+                                               <div class="form-group col-md-5 px-2">
+                                              <input  class="form-control border-bottom" style="border: 0;" placeholder= "Nationality: <?=$ea['ea_nationality'];?>"readonly >
+                                              </div>
                                               <div class="form-group col-md-7 px-2">
                                               <input  class="form-control border-bottom" style="border: 0;" placeholder= "Business Email: <?=$ea['ea_businessemail'];?>" readonly>
                                               </div>
-                                            </div>
-                                            <!-- Nationality -->
-                                            <div class="form-row pt-3 px-3">
-                                              <div class="form-group col-md-12 px-2">
-                                              <input  class="form-control border-bottom" style="border: 0;" placeholder= "Nationality: <?=$ea['ea_nationality'];?>"readonly >
-                                              </div>
-                                            </div>
-                                            <!-- Date and gender -->
-                                            <div class="form-row pt-3 pb-3 px-3">
-                                              <div class="form-group col-md-6 px-2">
+                                               <!-- Date-->
+                                              <div class="form-group col-md-7 px-2">
                                               <input  class="form-control border-bottom" style="border: 0;" placeholder= "Date of Birth: <?=$ea['ea_dob'];?>" readonly>
                                               </div>
+                                               <!-- Gender-->
                                               <div class="form-holder mb-3 ml-3" style="align-self: flex-end; transform: translateY(4px);">
                                                 <div class="checkbox-tick">
                                                   <label class="male ml-3">
@@ -53,14 +51,14 @@
                                                   </label>
                                                 </div>
                                               </div>
+                                             
                                             </div>
-                                            <!-- Upload Document -->
-                                            <div class="form-row pt-2 px-4">
+                                          <!-- Upload Document -->
+                                          <div class="form-row pt-2 px-4">
                                               <div class="form-group col-md-12 px-2">
-                                                <input type="file" class="custom-file-input" id="form-group" name="ea_document">
+                                                <input type="file" class="custom-file-input" id="form-group" name="e_document">
                                                 <label class="custom-file-label" for="customFile">Upload a file</label>
                                               </div>
-                                            </div>
                                             <br>
                                           <a href="<?=base_url();?>internal/admin_panel/Admin_dashboard/users_accounts_nav" class="btn btn-primary">Back</a>
                                           </form>    

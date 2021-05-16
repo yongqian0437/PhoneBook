@@ -16,6 +16,7 @@
                                           </center>
                                           <!-- Input fields (Form) -->
                                           <form>
+                                          <br>
                                           <center><b><p class="card-title">Academic Counsellor ID: <?=$ac['ac_id'];?></p></b></center>
                                           <center><b><p class="card-title">Submit Date: <?=$ac['ac_submitdate'];?></p></b></center>
                                             <!-- Phone number and business email-->
@@ -23,21 +24,18 @@
                                               <div class="form-group col-md-7 px-2">
                                                 <input  class="form-control border-bottom" style="border: 0;" placeholder= "Phone Number: <?=$ac['ac_phonenumber'];?>" readonly>
                                               </div>
+                                               <!-- Nationality -->
+                                               <div class="form-group col-md-5 px-2">
+                                              <input  class="form-control border-bottom" style="border: 0;" placeholder= "Nationality: <?=$ac['ac_nationality'];?>" readonly>
+                                              </div>
                                               <div class="form-group col-md-7 px-2">
                                               <input  class="form-control border-bottom" style="border: 0;" placeholder= "Business Email: <?=$ac['ac_businessemail'];?>"readonly >
                                               </div>
-                                            </div>
-                                            <!-- Nationality -->
-                                            <div class="form-row pt-3 px-3">
-                                              <div class="form-group col-md-12 px-2">
-                                              <input  class="form-control border-bottom" style="border: 0;" placeholder= "Nationality: <?=$ac['ac_nationality'];?>" readonly>
-                                              </div>
-                                            </div>
-                                            <!-- Date and gender -->
-                                            <div class="form-row pt-3 pb-3 px-3">
-                                              <div class="form-group col-md-6 px-2">
+                                              <!-- Date-->
+                                              <div class="form-group col-md-7 px-2">
                                               <input  class="form-control border-bottom" style="border: 0;" placeholder= "Date of Birth: <?=$ac['ac_dob'];?>"readonly >
                                               </div>
+                                              <!-- Gender -->
                                               <div class="form-holder mb-3 ml-3" style="align-self: flex-end; transform: translateY(4px);">
                                                 <div class="checkbox-tick">
                                                  <?php if($ac['ac_gender']=="Male"||$ac['ac_gender']=="male"){?>
@@ -53,20 +51,18 @@
                                                   </label>
                                                 </div>
                                               </div>
-                                            </div>
-                                            <!-- University  -->
-                                            <div class="form-row px-3">
+                                               
+                                               <!-- University  -->
                                               <div class="form-group col-md-12 px-2">
                                               <input  class="form-control border-bottom" style="border: 0;" placeholder= "University: <?=$ac['ac_university'];?>" readonly>
                                               </div>
                                             </div>
-                                            <!-- Upload Document -->
-                                            <div class="form-row pt-2 px-4">
+                                           <!-- Upload Document -->
+                                           <div class="form-row pt-2 px-4">
                                               <div class="form-group col-md-12 px-2">
-                                                <input type="file" class="custom-file-input" id="form-group" name="ac_document">
+                                                <input type="file" class="custom-file-input" id="form-group" name="e_document">
                                                 <label class="custom-file-label" for="customFile">Upload a file</label>
                                               </div>
-                                            </div>
                                             <br>
                                           <a href="<?=base_url();?>internal/admin_panel/Admin_dashboard/users_accounts_nav" class="btn btn-primary">Back</a>
                                           </form>    

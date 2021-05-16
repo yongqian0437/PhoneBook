@@ -59,7 +59,7 @@
 
 						<!-- Form -->
 						<div class="col-xl-5 ">
-							<div class="card h-100" id='card2' ">
+							<div class="card h-100" id='card2' >
                                 <div class=" card-body">
 								<center>
 									<div class="pt-5 px-5" style="font-size:23px; letter-spacing: 8px; color:#787878; font-weight:700;">STUDENT REGISTRATION PAGE</div>
@@ -102,10 +102,21 @@
 									</div>
                                     <!-- Current Level -->
 									<div class="form-row px-3">
-										<div class="form-group col-md-12 px-2">
-											<input type="type" name="student_currentlevel" class="form-control border-bottom" id="student_currentlevel" style="border: 0;" placeholder="Enter your current level" required>
-										</div>
-									</div>
+                                        <div class="form-group col-md-12 px-2">
+                                            <select name="student_currentlevel" id="student_currentlevel" class="form-control form-select border-bottom" style="border: 0;" required>
+                                                <option value="" selected disabled>Please select your current level </option>
+                                                <option value="Foundation">Foundation</option>
+												<option value="Certificate">Certificate</option>
+                                                <option value="Diploma">Diploma</option>
+                                                <option value="Degree">Degree</option>
+                                                <option value="Doctorate">Doctorate</option>
+                                                <option value="Advanced Diploma">Advanced Diploma</option>
+												<option value="Graduate Certificate &Graduate Diploma">Graduate Certificate and Graduate Diploma</option>
+												<option value="Postgraduate Certificate & Postgraduate Diploma">Postgraduate Certificate and Postgraduate Diploma</option>
+												<option value="Other">Other</option>
+											</select>
+                                        </div>
+                                    </div>
 									<!-- Terms & Condition -->
 									<div class="T&C ml-4 mt-2">
 										<label><input type="checkbox"> Please accept our <a href="https://newinti.edu.my/legal/privacy/">terms and conditions</a>

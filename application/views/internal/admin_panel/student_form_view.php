@@ -17,6 +17,7 @@
                                         <!-- Input fields (Form) -->
                                       <form>
                                         <!-- Phone number and nationality-->
+                                        <br>
                                       <center><b><p class="card-title">Student ID: <?=$student ['student_id'];?></p></b></center>
                                       <center><b><p class="card-title">Submit Date: <?=$student ['student_submitdate'];?></p></b></center>
                                         <div class="form-row pt-4 px-3">
@@ -26,13 +27,12 @@
                                         <div class="form-group col-md-5 px-2">
                                           <input  class="form-control border-bottom" style="border: 0;" placeholder= "Nationality: <?=$student ['student_nationality'];?>"readonly>
                                         </div>
-                                        </div>
-                                        <!-- Date and gender -->
-                                        <div class="form-row pt-3 pb-3 px-3">
-                                          <div class="form-group col-md-6 px-2">
+                                        <!-- Date-->
+                                        <div class="form-group col-md-7 px-2">
                                             <input  class="form-control border-bottom" style="border: 0;" placeholder= "Date of Birth:<?=$student ['student_dob'];?>" readonly>
                                           </div>
-                                        <div class="form-holder mb-3 ml-3" style="align-self: flex-end; transform: translateY(4px);">
+                                          <!--Gender -->
+                                          <div class="form-holder mb-3 ml-3" style="align-self: flex-end; transform: translateY(4px);">
                                             <div class="checkbox-tick">
                                               <label class="male ml-3">
                                               <?php if($student ['student_gender']=="Male"||$student ['student_gender']=="male"){?>
@@ -47,15 +47,11 @@
                                               </label>
                                             </div>
                                           </div>
-                                        </div>
-                                        <!-- Interest -->
-                                        <div class="form-row px-3">
+                                           <!-- Interest -->
                                           <div class="form-group col-md-12 px-2">
                                           <input  class="form-control border-bottom" style="border: 0;" placeholder= "Interest:<?=$student ['student_interest'];?>" readonly>
                                           </div>
-                                        </div>
-                                        <!-- Current Level -->
-                                        <div class="form-row px-3">
+                                          <!-- Current Level -->
                                           <div class="form-group col-md-12 px-2">
                                           <input  class="form-control border-bottom" style="border: 0;" placeholder= "Current Level:<?=$student ['student_currentlevel'];?>" readonly>
                                           </div>
