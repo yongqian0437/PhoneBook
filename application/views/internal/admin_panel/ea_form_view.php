@@ -20,22 +20,22 @@
                                             <!-- Phone number and business email-->
                                             <div class="form-row pt-4 px-3">
                                               <div class="form-group col-md-7 px-2">
-                                                <input  class="form-control border-bottom" style="border: 0;" placeholder= "Phone Number: <?=$ea['ea_phonenumber'];?>" >
+                                                <input  class="form-control border-bottom" style="border: 0;" placeholder= "Phone Number: <?=$ea['ea_phonenumber'];?>" readonly>
                                               </div>
                                               <div class="form-group col-md-7 px-2">
-                                              <input  class="form-control border-bottom" style="border: 0;" placeholder= "Business Email: <?=$ea['ea_businessemail'];?>" >
+                                              <input  class="form-control border-bottom" style="border: 0;" placeholder= "Business Email: <?=$ea['ea_businessemail'];?>" readonly>
                                               </div>
                                             </div>
                                             <!-- Nationality -->
                                             <div class="form-row pt-3 px-3">
                                               <div class="form-group col-md-12 px-2">
-                                              <input  class="form-control border-bottom" style="border: 0;" placeholder= "Nationality: <?=$ea['ea_nationality'];?>" >
+                                              <input  class="form-control border-bottom" style="border: 0;" placeholder= "Nationality: <?=$ea['ea_nationality'];?>"readonly >
                                               </div>
                                             </div>
                                             <!-- Date and gender -->
                                             <div class="form-row pt-3 pb-3 px-3">
                                               <div class="form-group col-md-6 px-2">
-                                              <input  class="form-control border-bottom" style="border: 0;" placeholder= "Date of Birth: <?=$ea['ea_dob'];?>" >
+                                              <input  class="form-control border-bottom" style="border: 0;" placeholder= "Date of Birth: <?=$ea['ea_dob'];?>" readonly>
                                               </div>
                                               <div class="form-holder mb-3 ml-3" style="align-self: flex-end; transform: translateY(4px);">
                                                 <div class="checkbox-tick">

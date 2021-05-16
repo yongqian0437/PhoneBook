@@ -20,16 +20,16 @@
                                       <center><b><p class="card-title">Student ID: <?=$student ['student_id'];?></p></b></center>
                                         <div class="form-row pt-4 px-3">
                                         <div class="form-group col-md-7 px-2">
-                                          <input  class="form-control border-bottom" style="border: 0;" placeholder= "Phone Number: <?=$student ['student_phonenumber'];?>" >
+                                          <input  class="form-control border-bottom" style="border: 0;" placeholder= "Phone Number: <?=$student ['student_phonenumber'];?>"readonly>
                                         </div>
                                         <div class="form-group col-md-5 px-2">
-                                          <input  class="form-control border-bottom" style="border: 0;" placeholder= "Nationality: <?=$student ['student_nationality'];?>" >
+                                          <input  class="form-control border-bottom" style="border: 0;" placeholder= "Nationality: <?=$student ['student_nationality'];?>"readonly>
                                         </div>
                                         </div>
                                         <!-- Date and gender -->
                                         <div class="form-row pt-3 pb-3 px-3">
                                           <div class="form-group col-md-6 px-2">
-                                            <input  class="form-control border-bottom" style="border: 0;" placeholder= "Date of Birth:<?=$student ['student_dob'];?>" >
+                                            <input  class="form-control border-bottom" style="border: 0;" placeholder= "Date of Birth:<?=$student ['student_dob'];?>" readonly>
                                           </div>
                                         <div class="form-holder mb-3 ml-3" style="align-self: flex-end; transform: translateY(4px);">
                                             <div class="checkbox-tick">
@@ -50,13 +50,13 @@
                                         <!-- Interest -->
                                         <div class="form-row px-3">
                                           <div class="form-group col-md-12 px-2">
-                                          <input  class="form-control border-bottom" style="border: 0;" placeholder= "Interest:<?=$student ['student_interest'];?>" >
+                                          <input  class="form-control border-bottom" style="border: 0;" placeholder= "Interest:<?=$student ['student_interest'];?>" readonly>
                                           </div>
                                         </div>
                                         <!-- Current Level -->
                                         <div class="form-row px-3">
                                           <div class="form-group col-md-12 px-2">
-                                          <input  class="form-control border-bottom" style="border: 0;" placeholder= "Current Level:<?=$student ['student_currentlevel'];?>" >
+                                          <input  class="form-control border-bottom" style="border: 0;" placeholder= "Current Level:<?=$student ['student_currentlevel'];?>" readonly>
                                           </div>
                                         </div>
                                         <br>

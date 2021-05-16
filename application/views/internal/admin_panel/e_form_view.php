@@ -20,22 +20,22 @@
                                             <!-- Phone number and business email-->
                                             <div class="form-row pt-4 px-3">
                                               <div class="form-group col-md-7 px-2">
-                                                <input  class="form-control border-bottom" style="border: 0;" placeholder= "Phone Number: <?=$e['e_phonenumber'];?>" >
+                                                <input  class="form-control border-bottom" style="border: 0;" placeholder= "Phone Number: <?=$e['e_phonenumber'];?>" readonly>
                                               </div>
                                               <div class="form-group col-md-7 px-2">
-                                              <input  class="form-control border-bottom" style="border: 0;" placeholder= "Business Email: <?=$e['e_businessemail'];?>" >
+                                              <input  class="form-control border-bottom" style="border: 0;" placeholder= "Business Email: <?=$e['e_businessemail'];?>" readonly>
                                               </div>
                                             </div>
                                             <!-- Nationality -->
                                             <div class="form-row pt-3 px-3">
                                               <div class="form-group col-md-12 px-2">
-                                              <input  class="form-control border-bottom" style="border: 0;" placeholder= "Nationality: <?=$e['e_nationality'];?>" >
+                                              <input  class="form-control border-bottom" style="border: 0;" placeholder= "Nationality: <?=$e['e_nationality'];?>"readonly >
                                               </div>
                                             </div>
                                             <!-- Date and gender -->
                                             <div class="form-row pt-3 pb-3 px-3">
                                               <div class="form-group col-md-6 px-2">
-                                              <input  class="form-control border-bottom" style="border: 0;" placeholder= "Date of Birth: <?=$e['e_dob'];?>" >
+                                              <input  class="form-control border-bottom" style="border: 0;" placeholder= "Date of Birth: <?=$e['e_dob'];?>" readonly>
                                               </div>
                                               <div class="form-holder mb-3 ml-3" style="align-self: flex-end; transform: translateY(4px);">
                                                 <div class="checkbox-tick">
@@ -56,7 +56,7 @@
                                             <!-- Job Title  -->
                                             <div class="form-row px-3">
                                               <div class="form-group col-md-12 px-2">
-                                              <input  class="form-control border-bottom" style="border: 0;" placeholder= "Job Title: <?=$e['e_jobtitle'];?>" >
+                                              <input  class="form-control border-bottom" style="border: 0;" placeholder= "Job Title: <?=$e['e_jobtitle'];?>" readonly>
                                               </div>
                                             </div>
                                             <!-- Upload Document -->
