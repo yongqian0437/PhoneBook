@@ -103,11 +103,26 @@
 										</div>
 									</div>
 									<!-- University  -->
-									<div class="form-row px-3">
+									<!-- <div class="form-row px-3">
 										<div class="form-group col-md-12 px-2">
 											<input type="type" name="ac_university" class="form-control border-bottom" id="ac_university" style="border: 0;" placeholder="Enter your university" required>
 										</div>
-									</div>
+									</div> -->
+									<!-- Select your university -->
+                                    <div class="form-row px-3">
+                                        <div class="form-group col-md-12 px-2">
+										<select name="ac_university" id="ac_university" class="form-control form-select form-select-md">
+                                            <option value="ac_university" selected disabled>Please select a university</option>
+                                            <?php
+                                                foreach($university_data as $u) {
+                                                   echo '<option value="'.$u->uni_name.'">'.$u->	uni_name.'</option>';
+													//echo "<option value='$u->uni_name'>$u->uni_name</option>"
+                                                }
+                                            ?>
+                                        </select>
+                                            </select>
+                                        </div>
+                                    </div>
 									<!-- Upload Document -->
 									<div class="form-row pt-2 px-4">
 										<div class="form-group col-md-12 px-2">

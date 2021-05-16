@@ -9,7 +9,7 @@ class Auth extends CI_Controller
         $this->load->library('form_validation');
         $this->load->library('email');
         $this->load->model(['user_student_model','user_ep_model','user_ac_model','user_ea_model',
-        'user_e_model']);
+        'user_e_model','universities_model']);
     }
     
     public function login()
@@ -265,6 +265,7 @@ class Auth extends CI_Controller
 
     public function ac_reg()
     { 
+        $data['university_data'] = $this->universities_model->select_all_approved_only(); // get from eddie's branch
         $user_id=$this->user_ep_model->last_user_id();
         $this->form_validation->set_rules('ac_phonenumber','Phone Number', 'required|trim|min_length[10]',[
             'min_length'=> 'Phone number too short'
@@ -277,7 +278,7 @@ class Auth extends CI_Controller
         {
             $data['title']="Academic Couselor Registration";
             $this->load->view('external/templates/header',$data);
-            $this->load->view('user/registration/ac_registration_view');
+            $this->load->view('user/registration/ac_registration_view',$data);// get data from model
            // $this->load->view('external/templates/footer');
         }
         else
