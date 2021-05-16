@@ -24,6 +24,7 @@
                             <th>Gender/th>
                             <th>DOB</th>
                             <th>Job title</th>
+                            <th>Submit Date</th>
                         </tr>
                     </thead>
                     
@@ -39,6 +40,7 @@
                             ."<td>$ep->ep_gender</td>"
                             ."<td>$ep->ep_dob</td>"
                             ."<td>$ep->ep_jobtitle</td>" 
+                            ."<td>$ep->ep_submitdate</td>" 
                             ."</tr>"
                     ?>
                     </tbody>

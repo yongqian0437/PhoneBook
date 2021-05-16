@@ -17,6 +17,7 @@
                                            <!-- Input fields (Form) -->
                                            <form>
                                            <center><b><p class="card-title">Education Agent ID: <?=$ea['ea_id'];?></p></b></center>
+                                           <center><b><p class="card-title">Submit Date: <?=$ea['ea_submitdate'];?></p></b></center>
                                             <!-- Phone number and business email-->
                                             <div class="form-row pt-4 px-3">
                                               <div class="form-group col-md-7 px-2">

@@ -25,6 +25,7 @@
                             <th>DOB</th>
                             <th>Document</th>
                             <th>Jobtitle</th>
+                            <th>Submite Date</th>
                         </tr>
                     </thead>
                     
@@ -41,6 +42,7 @@
                                 ."<td>$e->e_dob</td>"
                                 ."<td>$e->e_document</td>" 
                                 ."<td>$e->e_jobtitle</td>" 
+                                ."<td>$e->e_submitdate</td>" 
                                 ."</tr>" 
                     ?>
                     </tbody>

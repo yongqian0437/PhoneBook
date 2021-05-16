@@ -23,8 +23,9 @@
                             <th>University</th>
                             <th>Nationality</th>
                             <th>Gender</th>
-                            <th>Date of birth</th>
+                            <th>DOB</th>
                             <th>Document</th>
+                            <th>Submit Date</th>
                         </tr>
                     </thead>
                     
@@ -41,6 +42,7 @@
                                 ."<td>$ac->ac_gender</td>"
                                 ."<td>$ac->ac_dob</td>" 
                                 ."<td>$ac->ac_document</td>" 
+                                ."<td>$ac->ac_submitdate</td>" 
                                 ."</tr>" 
                     ?>
                     </tbody>

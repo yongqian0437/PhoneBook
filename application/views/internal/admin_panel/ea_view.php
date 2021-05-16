@@ -24,6 +24,7 @@
                             <th>Gender/th>
                             <th>DOB</th>
                             <th>Document</th>
+                            <th>Submit Date</th>
                         </tr>
                     </thead>
                     
@@ -39,6 +40,7 @@
                                 ."<td>$ea->ea_gender</td>"
                                 ."<td>$ea->ea_dob</td>"
                                 ."<td>$ea->ea_document</td>" 
+                                ."<td>$ea->ea_submitdate</td>" 
                                 ."</tr>" 
                     ?>
                     </tbody>

@@ -24,6 +24,7 @@
                             <th>DOB</th>
                             <th>Interest</th>
                             <th>Study Level</th>
+                            <th>Submit Date</th>
                         </tr>
                     </thead>
                     
@@ -39,6 +40,7 @@
                                 ."<td>$student->student_dob</td>"
                                 ."<td>$student->student_interest</td>"
                                 ."<td>$student->student_currentlevel</td>" 
+                                ."<td>$student->student_submitdate</td>" 
                                 ."</tr>" 
                     ?>
                     </tbody>

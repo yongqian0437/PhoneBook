@@ -18,6 +18,7 @@
                                       <form>
                                         <!-- Phone number and nationality-->
                                       <center><b><p class="card-title">Student ID: <?=$student ['student_id'];?></p></b></center>
+                                      <center><b><p class="card-title">Submit Date: <?=$student ['student_submitdate'];?></p></b></center>
                                         <div class="form-row pt-4 px-3">
                                         <div class="form-group col-md-7 px-2">
                                           <input  class="form-control border-bottom" style="border: 0;" placeholder= "Phone Number: <?=$student ['student_phonenumber'];?>"readonly>

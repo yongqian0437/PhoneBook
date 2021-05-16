@@ -12,11 +12,12 @@
                             <div class="col-lg">
                                 <div class="p-5">                   
                                           <center>
-                                            <div class="pt-5 px-5" style="font-size:23px; letter-spacing: 8px; color:#787878; font-weight:700;">Education PARTNER REGISTRATION PAGE</div>
+                                            <div class="pt-5 px-5" style="font-size:23px; letter-spacing: 8px; color:#787878; font-weight:700;">EDUCATION PARTNER REGISTRATION PAGE</div>
                                           </center>
                                           <!-- Input fields (Form) -->
                                           <form>
                                           <center><b><p class="card-title">Education Partner ID: <?=$ep['ep_id'];?></p></b></center>
+                                          <center><b><p class="card-title">Submit Date: <?=$ep['ep_submitdate'];?></p></b></center>
                                             <!-- Phone number and business email-->
                                             <div class="form-row pt-4 px-3">
                                               <div class="form-group col-md-7 px-2">
