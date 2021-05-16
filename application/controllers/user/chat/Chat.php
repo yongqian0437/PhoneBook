@@ -8,7 +8,7 @@ class Chat extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('user_model', 'chat_model');
+        $this->load->model(['user_model', 'chat_model']);
         $this->load->helper('string');
         date_default_timezone_set('Asia/Kuala_Lumpur');
     }
