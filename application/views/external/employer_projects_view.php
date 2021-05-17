@@ -1,5 +1,41 @@
 <!-- Will transfer styling in a separate css file later -->
 
+<!-- Bootstrap core JavaScript-->
+<script src="<?php echo base_url()?>/assets/vendor/jquery/jquery.min.js"></script>
+<script src="<?php echo base_url()?>/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="<?php echo base_url()?>/assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.apply_emp').click(function () {
+            var ep_id = $(this).data('id');
+            //alert(ep_id);
+            $.ajax({
+                url: 'Employer_projects/send_emp_application/',
+                type: 'post',
+                data: {ep_id: ep_id},
+                success: function() { 
+                    // $('.modal-body').html(response);
+                    // $('#emp_modal').modal('show');
+                    swal({
+                        title: "Thank you!",
+                        text: "Your application has been submitted to the employer.",
+                        icon: "success",
+                        button: "OK",
+                    });
+                    // Will disable all 'Apply' buttons
+                    // $('.apply_emp')$("#btnSubmit").attr("disabled", true);
+                }
+            });
+        });
+    });
+
+</script>
+
 <body id="page-top">
 
     <!-- Page Wrapper -->
@@ -23,7 +59,33 @@
                     <!-- Content Row. 1 row = 3 cards -->
                     <div class="row">
 
+                    <!-- <php foreach ($eps as $ep): var_dump($ep); ?> hello <br><br> <php endforeach; die;?> -->
+
                         <?php foreach ($eps as $ep): ?>
+
+                            <!------------------------------------------------------MODAL TESTING------------------------------------------------------------------------------->
+
+                            <!-- Modal -->
+                            <div class="modal fade" id="emp_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+
+                            <!------------------------------------------------------MODAL TESTING------------------------------------------------------------------------------->
+
                             <div class="col-lg-4 mb-4">
                                 <div class="card shadow mb-4 h-100"> <!-- h-100 to make cards same height despite some content being lesser than some-->
                                     <div class="card-header py-3" style="background-color: #EAF4F4" >
@@ -53,9 +115,11 @@
                                         </ul>
                                         <br>
                                         <!-- 2 Bottom Buttons -->
+                                        <!-- *Check if session is established. If yes, show the buttons -->
+                                        <!-- **Check if there is existing student_id and emp_id in the same row. If yes, disable the apply button -->
                                         <div class="bottom-buttons" style="position: absolute; bottom: 0; right: 0; margin: 0px 10px 10px 0px">
                                             <button type="button" class="btn" style="background-color: #A4C3B2; color:#FFFFFF">View</button>
-                                            <button type="button" class="btn" style="background-color: #A4C3B2; color:#FFFFFF">Apply</button>
+                                            <button type="button" class="btn apply_emp" style="background-color: #A4C3B2; color:#FFFFFF"  data-id="<?= $ep['emp_id'] ?>">Apply</button>
                                         </div>
                                     </div>
                                 </div>
