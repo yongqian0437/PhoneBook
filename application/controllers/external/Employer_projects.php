@@ -17,14 +17,14 @@ class Employer_projects extends CI_Controller
         
         // WIP
         // Get EPs that are approved and their details
-        $eps= $this->employer_projects_model->full_details();
+        $eps= $this->employer_projects_model->approved_eps();
         $data['eps'] = $eps;
 
         // var_dump($eps);
         // die;
             
         $this->load->view('external/templates/header', $data);
-        $this->load->view('external/employer_projects_view', $eps); 
+        $this->load->view('external/employer_projects_view', $data); 
         $this->load->view('external/templates/footer');
     }
 }

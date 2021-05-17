@@ -52,7 +52,7 @@ class employer_projects_model extends CI_Model
     }
 
     // WIP
-    function full_details()
+    function approved_eps()
     {
         $this->db->select('')
                  ->from('employer_projects')
