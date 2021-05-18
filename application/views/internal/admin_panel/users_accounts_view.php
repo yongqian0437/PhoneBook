@@ -20,7 +20,6 @@
                             <th>First Name</th>
                             <th>Last Name</th>
                             <th>Email</th>
-                            <th>Password</th>
                             <th>Role</th>
                             <th>Action</th>
                         </tr>
@@ -34,7 +33,6 @@
                             ."<td>$re->user_fname</td>"
                             ."<td>$re->user_lname</td>"
                             ."<td>$re->user_email</td>"
-                            ."<td>$re->user_password</td>"
                             ."<td>$re->user_role</td>";   
                       ?>
                            <?php if($re->user_approval==1){?>

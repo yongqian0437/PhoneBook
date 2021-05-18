@@ -21,7 +21,7 @@
                             <th>Contact Number</th>
                             <th>Business email</th>
                             <th>Nationality</th>
-                            <th>Gender/th>
+                            <th>Gender</th>
                             <th>DOB</th>
                             <th>Job title</th>
                             <th>Submit Date</th>

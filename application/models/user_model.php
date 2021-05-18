@@ -67,11 +67,12 @@ class user_model extends CI_Model
         return $this->db->get('users')->result_array();
     }
 
-   public function get_role()
-    {
-        $row = $this->db->select("*")->limit(1)->order_by('user_id',"DESC")->get("users")->row();
-        return $row->user_role; //it will provide latest record.
-    }
+    //----------------delete later (18/May/2021)----------//
+//    public function get_role()
+//     {
+//         $row = $this->db->select("*")->limit(1)->order_by('user_id',"DESC")->get("users")->row();
+//         return $row->user_role; //it will provide latest record.
+//     }
 
    public function search_email()
     {
@@ -86,5 +87,11 @@ class user_model extends CI_Model
     public function valid_email($user_email)
     {
         return $this->db->get_where('users', ['user_email'=>$user_email])->row_array();
+    }
+
+       public function reg_id()
+    {
+        return $this->db->get('users')->row;
+      
     }
 }

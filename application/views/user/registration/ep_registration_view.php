@@ -115,14 +115,9 @@
 											<label class="custom-file-label" for="customFile">Upload a file</label>
 										</div>
 									</div>
-									<!-- Terms & Condition -->
-									<div class="T&C ml-4">
-										<label><input type="checkbox"> Please accept our <a href="https://newinti.edu.my/legal/privacy/">terms and conditions</a>
-										</label>
-									</div>
 									<!-- Submit button -->
 									<div class="pt-2 pr-3">
-										<button type="submit" class="btn btn-success" style="float:right; width:23%;">Register <i class="fas fa-check"></i></button>
+										<button type="submit" class="btn btn-success" style="float:right; width:23%;">Register<i class="fas fa-check"></i></button>
 									</div>
 
 								</form>

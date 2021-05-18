@@ -50,4 +50,10 @@ class courses_model extends CI_Model
         $this->db->where($condition);
         return $this->db->get('courses')->result();
     }
+
+    public function last_course_id()
+    {
+     $row = $this->db->select("*")->limit(1)->order_by('course_id',"DESC")->get("courses")->row();
+     return $row->course_id; //it will provide latest or last record id.
+    }
 }

@@ -100,6 +100,7 @@
 											<input type="type" name="student_interest" class="form-control border-bottom" id="student_interest" style="border: 0;" placeholder="Enter your interest" required>
 										</div>
 									</div>
+									
                                     <!-- Current Level -->
 									<div class="form-row px-3">
                                         <div class="form-group col-md-12 px-2">
