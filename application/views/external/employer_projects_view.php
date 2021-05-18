@@ -72,24 +72,24 @@
                         <?php foreach ($eps as $ep): ?>
                             <div class="col-lg-4 mb-4">
                                 <div class="card mb-4 h-100"> <!-- h-100 to make cards same height despite some content being lesser than some-->
-                                    <div class="card-header py-3" style="background-color: #40916c" >
-                                        <h6 class="m-0 font-weight-bold" style="color: #edf2f4"><?= $ep['c_name']?></h6>
+                                    <div class="card-header py-3">
+                                        <h6 class="m-0 font-weight-bold company_name"><?= $ep['c_name']?></h6>
                                     </div>
                                     <div class="card-body" >
                                         <ul class="list-group list-group-flush">
-                                            <li class="list-group-item" style="text-align: center;">
-                                            <img class="img-fluid" src="<?= base_url("assets/img/company_logos/{$ep['c_logo']}");?>" width="300" style="margin-bottom: 30px; "/>
+                                            <li class="list-group-item list_class">
+                                            <img class="img-fluid img_class" src="<?= base_url("assets/img/company_logos/{$ep['c_logo']}");?>" width="300";/>
                                                 <h6><b>Project Title: <?= $ep['emp_title']?></b></h6>
                                             </li>
                                             <li class="list-group-item" >
                                                 <table>
                                                     <tr>
-                                                        <th style="vertical-align: top">Level: </th>
-                                                        <td style="text-align: left;"><?= $ep['emp_level']?></td>
+                                                        <th>Level: </th>
+                                                        <td><?= $ep['emp_level']?></td>
                                                     </tr>
                                                     <tr>
-                                                        <th style="vertical-align: top">Field: </th>
-                                                        <td style="text-align: left;"><?= $ep['emp_area']?></td>
+                                                        <th>Field: </th>
+                                                        <td><?= $ep['emp_area']?></td>
                                                     </tr>
                                                 </table>
                                             </li>
@@ -98,18 +98,16 @@
                                             </li>
                                         </ul>
                                         <br>
-                                        <div class="testing"></div>
                                         <!-- 2 Bottom Buttons -->
                                         <!-- *Check if session is established. If yes, show the buttons -->
-                                        <div class="bottom_buttons" style="position: absolute; bottom: 0; right: 0; margin: 0px 10px 10px 0px">
-                                            <button type="button" class="btn" style="background-color: #8993a3; color:#FFFFFF">View</button>
+                                        <div class="bottom_buttons">
+                                            <a class="btn view_doc" href="<?=base_url('assets/uploads/employer_projects/'.$ep['emp_document'])?>" role="button" target="_blank" style="background-color: #8993a3; color:#FFFFFF">View</a>
                                         <!-- **Check if student has already applied to this specific EP. If yes, disable the apply button -->
-                                            <?php 
-                                                $response = $this->emp_applicants_model->past_application($ep['emp_id'], '123'); // later replace with session's student_id
+                                            <?php $response = $this->emp_applicants_model->past_application($ep['emp_id'], '123'); // later replace with session's student_id
                                                 if ($response == true) { ?>
-                                                    <button type="button" class="btn apply_emp" style="background-color: #0077b6; color:#FFFFFF"  data-id="<?= $ep['emp_id'] ?>" disabled>Applied</button>
+                                                    <button type="button" class="btn applied_emp" disabled>Applied</button>
                                             <?php } else { ?>
-                                                <button type="button" class="btn apply_emp" style="background-color: #67b99a; color:#FFFFFF"  data-id="<?= $ep['emp_id'] ?>">Apply Now</button>
+                                                <button type="button" class="btn apply_emp" data-id="<?= $ep['emp_id'] ?>">Apply Now</button>
                                             <?php } ?>
                                         </div>
                                     </div>
