@@ -42,6 +42,9 @@ tr{
 
 table.dataTable tbody td {
   vertical-align: middle;
+  color:black !important;
+  font-size: 1.0em !important;
+
   text-align: center !important;
   border-top: 2px solid black !important;
 }
