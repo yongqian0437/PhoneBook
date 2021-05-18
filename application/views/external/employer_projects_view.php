@@ -8,32 +8,40 @@
 <script src="<?php echo base_url()?>/assets/vendor/jquery-easing/jquery.easing.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-
 <script type="text/javascript">
-    $(document).ready(function () {
+    $(function () {
+        // To apply for a specific EP
         $('.apply_emp').click(function () {
             var ep_id = $(this).data('id');
-            //alert(ep_id);
-            $.ajax({
-                url: 'Employer_projects/send_emp_application/',
-                type: 'post',
-                data: {ep_id: ep_id},
-                success: function() { 
-                    // $('.modal-body').html(response);
-                    // $('#emp_modal').modal('show');
-                    swal({
-                        title: "Thank you!",
-                        text: "Your application has been submitted to the employer.",
-                        icon: "success",
-                        button: "OK",
-                    });
-                    // Will disable all 'Apply' buttons
-                    // $('.apply_emp')$("#btnSubmit").attr("disabled", true);
-                }
-            });
+            // Ask user for confirmation
+            swal({
+                    title: "Confirm application?",
+                    text: "This application will be submitted to the employer.\nUpon reviewal, you will be contacted.",
+                    icon: "info",
+                    buttons: ['Cancel', 'Confirm']
+                })
+                // Send application into db once confirmed
+                .then((send_application) => {
+                    if (send_application) {
+                        $.ajax({
+                            url: 'Employer_projects/send_emp_application/',
+                            type: 'post',
+                            data: {ep_id: ep_id},
+                            success: function() { 
+                                swal({
+                                    title: "Thank you!",
+                                    text: "Your application has been submitted.",
+                                    icon: "success",
+                                })
+                                .then((send_application) => {
+                                    location.reload();
+                                });
+                            }
+                        });
+                    }
+                });
         });
     });
-
 </script>
 
 <body id="page-top">
@@ -62,34 +70,10 @@
                     <!-- <php foreach ($eps as $ep): var_dump($ep); ?> hello <br><br> <php endforeach; die;?> -->
 
                         <?php foreach ($eps as $ep): ?>
-
-                            <!------------------------------------------------------MODAL TESTING------------------------------------------------------------------------------->
-
-                            <!-- Modal -->
-                            <div class="modal fade" id="emp_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered" role="document">
-                                <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                </div>
-                                </div>
-                            </div>
-                            </div>
-
-                            <!------------------------------------------------------MODAL TESTING------------------------------------------------------------------------------->
-
                             <div class="col-lg-4 mb-4">
-                                <div class="card shadow mb-4 h-100"> <!-- h-100 to make cards same height despite some content being lesser than some-->
-                                    <div class="card-header py-3" style="background-color: #EAF4F4" >
-                                        <h6 class="m-0 font-weight-bold" style="color: #6B9080"><?= $ep['c_name']?></h6>
+                                <div class="card mb-4 h-100"> <!-- h-100 to make cards same height despite some content being lesser than some-->
+                                    <div class="card-header py-3" style="background-color: #40916c" >
+                                        <h6 class="m-0 font-weight-bold" style="color: #edf2f4"><?= $ep['c_name']?></h6>
                                     </div>
                                     <div class="card-body" >
                                         <ul class="list-group list-group-flush">
@@ -104,7 +88,7 @@
                                                         <td style="text-align: left;"><?= $ep['emp_level']?></td>
                                                     </tr>
                                                     <tr>
-                                                        <th style="vertical-align: top">Area: </th>
+                                                        <th style="vertical-align: top">Field: </th>
                                                         <td style="text-align: left;"><?= $ep['emp_area']?></td>
                                                     </tr>
                                                 </table>
@@ -114,12 +98,19 @@
                                             </li>
                                         </ul>
                                         <br>
+                                        <div class="testing"></div>
                                         <!-- 2 Bottom Buttons -->
                                         <!-- *Check if session is established. If yes, show the buttons -->
-                                        <!-- **Check if there is existing student_id and emp_id in the same row. If yes, disable the apply button -->
-                                        <div class="bottom-buttons" style="position: absolute; bottom: 0; right: 0; margin: 0px 10px 10px 0px">
-                                            <button type="button" class="btn" style="background-color: #A4C3B2; color:#FFFFFF">View</button>
-                                            <button type="button" class="btn apply_emp" style="background-color: #A4C3B2; color:#FFFFFF"  data-id="<?= $ep['emp_id'] ?>">Apply</button>
+                                        <div class="bottom_buttons" style="position: absolute; bottom: 0; right: 0; margin: 0px 10px 10px 0px">
+                                            <button type="button" class="btn" style="background-color: #8993a3; color:#FFFFFF">View</button>
+                                        <!-- **Check if student has already applied to this specific EP. If yes, disable the apply button -->
+                                            <?php 
+                                                $response = $this->emp_applicants_model->past_application($ep['emp_id'], '123'); // later replace with session's student_id
+                                                if ($response == true) { ?>
+                                                    <button type="button" class="btn apply_emp" style="background-color: #0077b6; color:#FFFFFF"  data-id="<?= $ep['emp_id'] ?>" disabled>Applied</button>
+                                            <?php } else { ?>
+                                                <button type="button" class="btn apply_emp" style="background-color: #67b99a; color:#FFFFFF"  data-id="<?= $ep['emp_id'] ?>">Apply Now</button>
+                                            <?php } ?>
                                         </div>
                                     </div>
                                 </div>

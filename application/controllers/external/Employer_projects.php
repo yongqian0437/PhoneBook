@@ -15,15 +15,11 @@ class Employer_projects extends CI_Controller
     public function index()
     {
         $data['title'] = "Employer Projects";
-        
-        // WIP
+
         // Get EPs that are approved and their details
         $eps= $this->employer_projects_model->approved_eps();
         $data['eps'] = $eps;
 
-        // var_dump($eps);
-        // die;
-            
         $this->load->view('external/templates/header', $data);
         $this->load->view('external/employer_projects_view', $data); 
         $this->load->view('external/templates/footer');
@@ -31,7 +27,7 @@ class Employer_projects extends CI_Controller
 
     public function send_emp_application() {
         // check if session is established. replace with session's student_id
-        $student_id = '1';
+        $student_id = '123';
 
         $data = 
         [
@@ -41,14 +37,18 @@ class Employer_projects extends CI_Controller
         ];
         
         $this->emp_applicants_model->insert($data);
-
-        // $response = '';
-        // if ($emp == true) {
-        //     $response = 'success';
-        // } else {
-        //     $response = 'application fail';
-        // }
-
-        //echo json_encode($response); // remove later
     }
+
+    // public function check_past_application(){
+    //     $student_id = '123'; // get from session later
+    //     $emp_id = $this->input->post('ep_id');
+    //     $response = '';
+    //     $query = $this->emp_applicants_model->past_application($emp_id, $student_id);
+    //     if ($query == true) {
+    //         $response = '1';
+    //     } else {
+    //         $response = '2';
+    //     }
+    //     echo json_encode($response); // remove later
+    // }
 }
