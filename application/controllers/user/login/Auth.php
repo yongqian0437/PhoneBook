@@ -8,6 +8,7 @@ class Auth extends CI_Controller
         parent::__construct();
         $this->load->library('form_validation');
         $this->load->library('email');
+        $this->load->helper('form');
         $this->load->model(['user_student_model','user_ep_model','user_ac_model','user_ea_model',
         'user_e_model','universities_model','company_model','courses_model']);
     }
@@ -49,7 +50,7 @@ class Auth extends CI_Controller
                     [
                         'user_email'=>$users['user_email'],
                         'user_role'=>$users['user_role'],
-                        'user_role'$users['user_id']
+                        'user_id'=>$users['user_id']
                     ];
                        //----------------- set session----------------//
                     $this->session->set_userdata($data);
@@ -153,7 +154,24 @@ class Auth extends CI_Controller
                 redirect("user/login/Auth/company");
             }
         }
-        
+    }
+
+    public function upload_doc($path, $file_input_name) 
+    {
+        if ($_FILES){
+            $config['upload_path'] = $path;
+            $config['allowed_types'] = 'jpeg|jpg|png|txt|pdf|docx|xlsx|pptx|rtf';
+            $this->load->library('upload', $config);
+            if (!$this->upload->do_upload($file_input_name)) {
+                echo json_encode([
+                    'status' => 0,
+                    'message' => '<span style="color:#900;">' . $this->upload->display_errors() . '<span>'
+                ]);
+            } else {
+                $doc_data = ($this->upload->data());
+                return $doc_data;
+            }   
+        }
     }
 
     public function student_reg()
@@ -330,6 +348,8 @@ class Auth extends CI_Controller
         }
         else
         {
+            $ea_document = $this->upload_doc('./assets/uploads/education_agents', 'ea_document');
+
             $data=
             [
                 'user_id'=>$user_id,
@@ -338,13 +358,14 @@ class Auth extends CI_Controller
                 'ea_nationality'=>htmlspecialchars($this->input->post('ea_nationality',true)),
                 'ea_gender'=>htmlspecialchars($this->input->post('ea_gender',true)),
                 'ea_dob'=>htmlspecialchars($this->input->post('ea_dob',true)),
-              //  'ea_document'=>htmlspecialchars($this->input->post('ea_document',true)),  
+                'ea_document'=>$ea_document['file_name'],
             ];
-         // insert data into database
-        $this->user_ea_model->insert($data);
-        $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
-        Check your email to get the approval from the admin</div>'); 
-        redirect('user/login/Auth/login'); 
+
+            // insert data into database
+            $this->user_ea_model->insert($data);
+            $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
+            Check your email to get the approval from the admin</div>'); 
+            redirect('user/login/Auth/login'); 
         }
     }
 
@@ -473,7 +494,3 @@ class Auth extends CI_Controller
         redirect('user/login/Auth/login'); 
     }
 }
-
-
-
-

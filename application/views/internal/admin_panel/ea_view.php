@@ -39,7 +39,9 @@
                                 ."<td>$ea->ea_nationality</td>"
                                 ."<td>$ea->ea_gender</td>"
                                 ."<td>$ea->ea_dob</td>"
-                                ."<td>$ea->ea_document</td>" 
+                                ."<td><a class='btn btn-primary btn-block' href='"
+                                .base_url()
+                                ."assets/uploads/education_agents/$ea->ea_document' role='button' target='_blank'>View</a></td>" 
                                 ."<td>$ea->ea_submitdate</td>" 
                                 ."</tr>" 
                     ?>
