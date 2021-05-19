@@ -235,9 +235,7 @@ class Auth extends CI_Controller
     
     public function university()
     {
-        $this->form_validation->set_rules('uni_email','Email', 'required|trim|valid_email|is_unique[universities.uni_email]',[
-            'is_unique'=>'This email has already registered!'
-        ]);
+        $this->form_validation->set_rules('uni_name','University Name', 'required|trim');
 
         if($this->form_validation->run()== false)
         {
@@ -263,6 +261,18 @@ class Auth extends CI_Controller
 
           // insert data into database
           $this->universities_model->insert($data);
+
+          $uni_email= $this->input->post('uni_email');
+          $uni=$this->universities_model->valid_email($uni_email);
+          $university=
+          [
+              'uni_id'=>$uni['uni_id'],
+              'uni_name'=>$uni['uni_name'],
+              'uni_email'=>$uni['uni_email'],
+          ];
+
+          $this->session->set_userdata($university);
+
           $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
           Check your email to get the approval from the admin</div>'); 
           redirect('user/login/Auth/course'); 
@@ -273,7 +283,8 @@ class Auth extends CI_Controller
     public function course()
     {
         $this->form_validation->set_rules('course_name','Course Name', 'required|trim');
-        $uni_id=$this->universities_model->last_uni_id();
+        $uni_id= $this->session->userdata('uni_id');
+        //$uni_id=$this->universities_model->last_uni_id();
         if($this->form_validation->run()== false)
         {
         $data['title']="Course";
@@ -300,6 +311,18 @@ class Auth extends CI_Controller
 
           // insert data into database
           $this->courses_model->insert($data);
+
+          $course_name= $this->input->post('course_name');
+          $co=$this->courses_model->valid_course_name($course_name);
+          $course=
+          [
+              'course_id'=>$co['course_id'],
+              'uni_id'=>$co['uni_id'],
+              'course_name'=>$co['course_name'],
+          ];
+
+          $this->session->set_userdata($course);
+
           redirect('user/login/Auth/ep_reg'); 
         }
           
@@ -307,9 +330,12 @@ class Auth extends CI_Controller
 
     public function ep_reg()
     { 
-        $user_id=$this->user_ep_model->last_user_id();
-        $uni_id=$this->universities_model->last_uni_id();
-        $course_id=$this->courses_model->last_course_id();
+        $user_id= $this->session->userdata('user_id');
+        $uni_id= $this->session->userdata('uni_id');
+        $course_id= $this->session->userdata('course_id');
+        // $user_id=$this->user_ep_model->last_user_id();
+        // $uni_id=$this->universities_model->last_uni_id();
+       // $course_id=$this->courses_model->last_course_id();
         $this->form_validation->set_rules('ep_phonenumber','Phone Number', 'required|trim|min_length[5]',[
             'min_length'=> 'Phone number too short'
         ]);
@@ -436,7 +462,7 @@ class Auth extends CI_Controller
 
     public function company()
     {
-        $user_id=$this->session->set_userdata($user);
+        
         $this->form_validation->set_rules('c_name','Compnay Name', 'required|trim');
         $this->form_validation->set_rules('c_phonenumber','Phone Number', 'required|trim|min_length[5]',[
             'min_length'=> 'Phone number too short'
@@ -450,6 +476,7 @@ class Auth extends CI_Controller
         }
         else
         {
+            
             $data=
                 [
                 //  'uni_logo'=>htmlspecialchars($this->input->post('uni_logo',true)),  
@@ -464,7 +491,6 @@ class Auth extends CI_Controller
 
                   // insert data into database
                 $this->company_model->insert($data);
-                $this->session->set_userdata($user);
 
                 $c_email= $this->input->post('c_email');
                 $com=$this->company_model->valid_email($c_email);
@@ -485,10 +511,10 @@ class Auth extends CI_Controller
 
     public function employer_reg()
     { 
-        //  $user_id= $this->session->set_userdata('user_id');
-        // $c_id=$this->session->set_userdata('c_id');
-        $user_id=$this->user_ep_model->last_user_id();
-        $c_id=$this->company_model->last_c_id();
+        $user_id= $this->session->userdata('user_id');
+        $c_id=$this->session->userdata('c_id');
+        // $user_id=$this->user_ep_model->last_user_id();
+        // $c_id=$this->company_model->last_c_id();
         $this->form_validation->set_rules('e_phonenumber','Phone Number', 'required|trim|min_length[5]',[
             'min_length'=> 'Phone number too short'
         ]);
@@ -502,6 +528,7 @@ class Auth extends CI_Controller
             $this->load->view('external/templates/header',$data);
             $this->load->view('user/registration/employers_registration_view');
            // $this->load->view('external/templates/footer');
+           
         }
         else
         {

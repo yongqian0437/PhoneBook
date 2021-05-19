@@ -51,11 +51,16 @@ class universities_model extends CI_Model
         return $this->db->get('universities')->result();
     }
 
-    public function last_uni_id()
+    public function valid_email($uni_email)
     {
-     $row = $this->db->select("*")->limit(1)->order_by('uni_id',"DESC")->get("universities")->row();
-     return $row->uni_id; //it will provide latest or last record id.
+        return $this->db->get_where('universities', ['uni_email'=>$uni_email])->row_array();
     }
+
+    // public function last_uni_id()
+    // {
+    //  $row = $this->db->select("*")->limit(1)->order_by('uni_id',"DESC")->get("universities")->row();
+    //  return $row->uni_id; //it will provide latest or last record id.
+    // }
 
     function select_all_approved_only() //new function 
     {

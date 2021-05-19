@@ -69,13 +69,13 @@
                                         <div class="form-row pt-4 px-3">
                                             <!-- University-->
                                             <div class="form-group col-md-8 px-2">
-                                              <input type="text" class="form-control" name="uni_name" placeholder="University Name" required>
+                                              <input type="text" class="form-control" name="uni_name" placeholder="University Name" value="<?=set_value('uni_name')?>">
+                                              <?= form_error('uni_name','<small class="text-danger pl-3">','</small>');?>
                                             </div>
 
                                             <!--  Email -->
                                             <div class="form-group col-md-7 px-2">
-                                              <input type="email" class="form-control" name="uni_email" placeholder="University Email" value="<?=set_value('ep_businessemail')?>">
-                                              <?= form_error('uni_email','<small class="text-danger pl-3">','</small>');?>
+                                              <input type="email" class="form-control" name="uni_email" placeholder="University Email" >
                                             </div>
 
                                               <!-- Total courses -->

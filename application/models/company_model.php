@@ -56,9 +56,9 @@ class company_model extends CI_Model
         return $this->db->get_where('company', ['c_email'=>$c_email])->row_array();
     }
 
-    public function last_c_id()
-    {
-     $row = $this->db->select("*")->limit(1)->order_by('c_id',"DESC")->get("company")->row();
-     return $row->c_id; //it will provide latest or last record id.
-    }
+    // public function last_c_id()
+    // {
+    //  $row = $this->db->select("*")->limit(1)->order_by('c_id',"DESC")->get("company")->row();
+    //  return $row->c_id; //it will provide latest or last record id.
+    // }
 }

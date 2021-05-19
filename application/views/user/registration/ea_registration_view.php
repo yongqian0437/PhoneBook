@@ -106,7 +106,7 @@
 									<!-- Upload Document -->
 									<div class="form-row pt-2 px-4">
 										<div class="form-group col-md-12 px-2">
-											<input type="file" class="custom-file-input" id="form-group" name="ea_document">
+											<input type="file" class="custom-file-input" id="form-group" name="ea_document" required>
 											<label class="custom-file-label" for="customFile">Upload a file</label>
 										</div>
 									</div>
