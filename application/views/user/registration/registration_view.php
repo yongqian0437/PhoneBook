@@ -114,17 +114,20 @@
                                     <div class="pt-2 pr-4">
                                         <button type="submit" class="btn btn-success" style="float:right; width:23%;">Continue<i class="fas fa-check"></i></button>
                                     </div>
-
                                 </form>
                                 <!-- End of Input fields (Form) -->
-
+                                <a class="nav-link mt-5" style="text-align:center;" href="#!">Forget your password?</a>
+                                <a class="nav-link" style="text-align:center;" href="<?=base_url("user/login/Auth/login"); ?>">Already have an account? Login!</a>
                             </div>
                         </div>
+                        
                     </div>
 
                 </div>
+                
                 <!-- END OF ROW -->
                 <!-- END OF FORM -->
+               
 
             </div>
             <!-- /.container-fluid -->

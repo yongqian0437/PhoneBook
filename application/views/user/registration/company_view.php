@@ -96,8 +96,7 @@
 
                                             <!--Company Email-->
                                             <div class="form-group col-md-12 px-2">
-                                                <input type="email" class="form-control" name="c_email" placeholder="Company Email"  value="<?=set_value('c_email')?>">    
-                                                <?= form_error('c_email','<small class="text-danger pl-3">','</small>');?>
+                                                <input type="email" class="form-control" name="c_email" placeholder="Company Email" >    
                                             </div>
 
                                             <!-- Company Website-->

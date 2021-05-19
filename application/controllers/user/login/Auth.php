@@ -23,7 +23,7 @@ class Auth extends CI_Controller
             $data['title']='User Login';
             $this->load->view('external/templates/header',$data);
             $this->load->view('user/login/login_view');
-            $this->load->view('external/templates/footer');
+           // $this->load->view('external/templates/footer');
         }
         else
         {
@@ -116,7 +116,7 @@ class Auth extends CI_Controller
             $data['title']="User Registration";
             $this->load->view('external/templates/header',$data);
             $this->load->view('user/registration/registration_view');
-            $this->load->view('external/templates/footer');
+            //$this->load->view('external/templates/footer');
         }
         else
         {
@@ -342,7 +342,6 @@ class Auth extends CI_Controller
                 'ep_jobtitle'=>htmlspecialchars($this->input->post('ep_jobtitle',true)),  
             ];
         
-    //-----------------------get id from the university and course id-----------------------//
          // insert data into database
             $this->user_ep_model->insert($data);
             $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
@@ -437,13 +436,10 @@ class Auth extends CI_Controller
 
     public function company()
     {
+        $user_id=$this->session->set_userdata($user);
         $this->form_validation->set_rules('c_name','Compnay Name', 'required|trim');
         $this->form_validation->set_rules('c_phonenumber','Phone Number', 'required|trim|min_length[5]',[
             'min_length'=> 'Phone number too short'
-        ]);
-
-        $this->form_validation->set_rules('c_email','Email', 'required|trim|valid_email|is_unique[company.c_email]',[
-            'is_unique'=>'This email has already registered!'
         ]);
 
         if($this->form_validation->run()== false)
