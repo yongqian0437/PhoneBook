@@ -48,8 +48,10 @@ class Auth extends CI_Controller
                     $data=
                     [
                         'user_email'=>$users['user_email'],
-                        'user_role'=>$users['user_role']
+                        'user_role'=>$users['user_role'],
+                        'user_role'$users['user_id']
                     ];
+                       //----------------- set session----------------//
                     $this->session->set_userdata($data);
                     // check user role is admin
                     if($users['user_role']=="Admin")
@@ -123,9 +125,11 @@ class Auth extends CI_Controller
                 'user_role'=>htmlspecialchars($this->input->post('user_role',true)),
                 'user_approval'=>0,
             ];
+
         
             // insert data into database
-            $this->user_model->insert($data);
+            $this->user_model->insert($data);//---------- add the variable name---------//
+         
             $user_role= $this->input->post('user_role');
             if($user_role=="Student")
             {
