@@ -39,6 +39,9 @@
                             ."<td>$ep->ep_nationality</td>"
                             ."<td>$ep->ep_gender</td>"
                             ."<td>$ep->ep_dob</td>"
+                            ."<td><a class='btn btn-primary btn-block' href='"
+                            .base_url()
+                            ."assets/uploads/education_partner/$ep->ep_document' role='button' target='_blank'>View</a></td>" 
                             ."<td>$ep->ep_jobtitle</td>" 
                             ."<td>$ep->ep_submitdate</td>" 
                             ."</tr>"

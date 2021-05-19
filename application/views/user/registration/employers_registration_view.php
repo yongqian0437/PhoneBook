@@ -66,24 +66,26 @@
 									<div class="pt-5 px-5" style="font-size:23px; letter-spacing: 8px; color:#787878; font-weight:700;">EMPLOYER REGISTRATION PAGE</div>
 								</center>
 								<!-- Input fields (Form) -->
-								<form method="post" action="<?= base_url('user/login/Auth/employer_reg');?>">
+								<form method="post" action="<?= base_url('user/login/Auth/employer_reg');?>" enctype="multipart/form-data">
+								<?= form_open_multipart('') ?>
 									<!-- Phone number and business email-->
 									<div class="form-row pt-4 px-3">
-										<div class="form-group col-md-6 px-2">
+										<div class="form-group col-md-7 px-2">
 											<input type="number" name="e_phonenumber" class="form-control border-bottom" id="e_phonenumber" style="border: 0;" placeholder="Enter your phone number" value="<?=set_value('e_phonenumber') ?>">
                                             <?= form_error('e_phonenumber','<small class="text-danger pl-3">','</small>');?>
 										</div>
+
+										<!-- Nationality -->
+										<div class="form-group col-md-6 px-2">
+											<input type="text" name="e_nationality" class="form-control border-bottom" id="e_nationality" style="border: 0;" placeholder="Enter your nationality" required>
+										</div>
+										
 										<div class="form-group col-md-6 px-2">
 											<input type="email" name="e_businessemail" class="form-control border-bottom" id="e_businessemail" style="border: 0;" placeholder="Enter your business email" value="<?=set_value('e_businessemail') ?>">
                                             <?= form_error('e_businessemail','<small class="text-danger pl-3">','</small>');?>
 										</div>
 									</div>
-									<!-- Nationality -->
-									<div class="form-row pt-3 px-3">
-										<div class="form-group col-md-12 px-2">
-											<input type="text" name="e_nationality" class="form-control border-bottom" id="e_nationality" style="border: 0;" placeholder="Enter your nationality" required>
-										</div>
-									</div>
+									
 									<!-- Date and gender -->
 									<div class="form-row pt-3 pb-3 px-3">
 										<div class="form-group col-md-6 px-2">
@@ -117,7 +119,7 @@
 									</div>
 									<!-- Terms & Condition -->
 									<div class="T&C ml-4">
-										<label><input type="checkbox"> Please accept our <a href="https://newinti.edu.my/legal/privacy/">terms and conditions</a>
+										<label><input type="checkbox" required> Please accept our <a href="https://newinti.edu.my/legal/privacy/">terms and conditions</a>
 										</label>
 									</div>
 									<!-- Submit button -->

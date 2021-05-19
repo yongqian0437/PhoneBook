@@ -48,11 +48,13 @@ class Auth extends CI_Controller
                 {
                     $data=
                     [
+                        'user_fname'=>$users['user_fname'],
+                        'user_lname'=>$users['user_lname'],
                         'user_email'=>$users['user_email'],
                         'user_role'=>$users['user_role'],
-                        'user_id'=>$users['user_id']
+                        'user_id'=>$users['user_id'],
                     ];
-                       //----------------- set session----------------//
+
                     $this->session->set_userdata($data);
                     // check user role is admin
                     if($users['user_role']=="Admin")
@@ -92,6 +94,7 @@ class Auth extends CI_Controller
             Account does not exist!</div>');
             redirect('user/login/Auth/login');
         }
+        
     }
 
     public function registration()
@@ -126,16 +129,29 @@ class Auth extends CI_Controller
                 'user_role'=>htmlspecialchars($this->input->post('user_role',true)),
                 'user_approval'=>0,
             ];
-
         
             // insert data into database
-            $this->user_model->insert($data);//---------- add the variable name---------//
-         
+            $this->user_model->insert($data);
+           
+            $user_email= $this->input->post('user_email');
+            $user_password=$this->input->post('user_password');
+            $users=$this->user_model->valid_email($user_email);
+
+            $user=
+            [
+                'user_fname'=>$users['user_fname'],
+                'user_lname'=>$users['user_lname'],
+                'user_email'=>$users['user_email'],
+                'user_role'=>$users['user_role'],
+                'user_id'=>$users['user_id'],
+            ];
+
+            $this->session->set_userdata($user);
             $user_role= $this->input->post('user_role');
             if($user_role=="Student")
             {
-                redirect("user/login/Auth/student_reg");
-                
+                redirect("user/login/Auth/student_reg"); 
+               
             }
             else if($user_role=="Education Partner")
             {
@@ -176,7 +192,8 @@ class Auth extends CI_Controller
 
     public function student_reg()
     {
-        $user_id=$this->user_student_model->last_user_id();// get the id from student model
+       // $user_id=$this->user_student_model->last_user_id();// get the id from student model
+        $user_id=$this->session->userdata('user_id');
         $data['title']="Student Registration";
        
         $this->form_validation->set_rules('student_phonenumber','Phone Number', 'required|trim|min_length[5]',[
@@ -208,8 +225,12 @@ class Auth extends CI_Controller
        
         $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
         Check your email to get the approval from the admin</div>');
+        
+         //$this->session->unset_userdata($data);
+     
         redirect('user/login/Auth/login');
         }
+        
     }
     
     public function university()
@@ -305,6 +326,8 @@ class Auth extends CI_Controller
         }
         else
         {
+            $ep_document = $this->upload_doc('./assets/uploads/education_partner', 'ep_document');
+            
             $data=
             [
                 'user_id'=>$user_id,
@@ -315,8 +338,8 @@ class Auth extends CI_Controller
                 'ep_nationality'=>htmlspecialchars($this->input->post('ep_nationality',true)),
                 'ep_gender'=>htmlspecialchars($this->input->post('ep_gender',true)),
                 'ep_dob'=>htmlspecialchars($this->input->post('ep_dob',true)),
+                'ep_document'=>$ep_document['file_name'], 
                 'ep_jobtitle'=>htmlspecialchars($this->input->post('ep_jobtitle',true)),  
-                //'ep_document'=>htmlspecialchars($this->input->post('ep_document',true)),
             ];
         
     //-----------------------get id from the university and course id-----------------------//
@@ -331,7 +354,8 @@ class Auth extends CI_Controller
 
     public function ea_reg()
     { 
-        $user_id=$this->user_ep_model->last_user_id();
+        //$user_id=$this->user_ep_model->last_user_id();
+        $user_id=$this->session->userdata('user_id');
         $this->form_validation->set_rules('ea_phonenumber','Phone Number', 'required|trim|min_length[5]',[
             'min_length'=> 'Phone number too short'
         ]);
@@ -372,7 +396,8 @@ class Auth extends CI_Controller
     public function ac_reg()
     { 
         $data['university_data'] = $this->universities_model->select_all_approved_only(); // get from eddie's branch
-        $user_id=$this->user_ep_model->last_user_id();
+        //$user_id=$this->user_ep_model->last_user_id();
+        $user_id=$this->session->userdata('user_id');
         $this->form_validation->set_rules('ac_phonenumber','Phone Number', 'required|trim|min_length[5]',[
             'min_length'=> 'Phone number too short'
         ]);
@@ -389,6 +414,8 @@ class Auth extends CI_Controller
         }
         else
         {
+            $ac_document = $this->upload_doc('./assets/uploads/academic_counsellor', 'ac_document');
+
             $data=
             [
                 'user_id'=>$user_id,
@@ -398,7 +425,7 @@ class Auth extends CI_Controller
                 'ac_nationality'=>htmlspecialchars($this->input->post('ac_nationality',true)),
                 'ac_gender'=>htmlspecialchars($this->input->post('ac_gender',true)),
                 'ac_dob'=>htmlspecialchars($this->input->post('ac_dob',true)),
-              //  'ea_document'=>htmlspecialchars($this->input->post('ea_document',true)),  
+                'ac_document'=>$ac_document['file_name'],
             ];
          // insert data into database
         $this->user_ac_model->insert($data);
@@ -414,6 +441,7 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules('c_phonenumber','Phone Number', 'required|trim|min_length[5]',[
             'min_length'=> 'Phone number too short'
         ]);
+
         $this->form_validation->set_rules('c_email','Email', 'required|trim|valid_email|is_unique[company.c_email]',[
             'is_unique'=>'This email has already registered!'
         ]);
@@ -438,8 +466,22 @@ class Auth extends CI_Controller
                     //'c_logo'=>htmlspecialchars($this->input->post('c_logo',true)),
                 ];
 
-          // insert data into database
-          $this->company_model->insert($data);
+                  // insert data into database
+                $this->company_model->insert($data);
+                $this->session->set_userdata($user);
+
+                $c_email= $this->input->post('c_email');
+                $com=$this->company_model->valid_email($c_email);
+                $company=
+                [
+                    'c_id'=>$com['c_id'],
+                    'c_name'=>$com['c_name'],
+                    'c_registrationnum'=>$com['c_registrationnum'],
+                    'c_email'=>$com['c_email'],
+                ];
+    
+                $this->session->set_userdata($company);
+         
           redirect('user/login/Auth/employer_reg'); 
         }
           
@@ -447,6 +489,8 @@ class Auth extends CI_Controller
 
     public function employer_reg()
     { 
+        //  $user_id= $this->session->set_userdata('user_id');
+        // $c_id=$this->session->set_userdata('c_id');
         $user_id=$this->user_ep_model->last_user_id();
         $c_id=$this->company_model->last_c_id();
         $this->form_validation->set_rules('e_phonenumber','Phone Number', 'required|trim|min_length[5]',[
@@ -465,6 +509,8 @@ class Auth extends CI_Controller
         }
         else
         {
+            $e_document = $this->upload_doc('./assets/uploads/employer', 'e_document');
+
             $data=
             [
                 'user_id'=>$user_id,
@@ -475,7 +521,7 @@ class Auth extends CI_Controller
                 'e_gender'=>htmlspecialchars($this->input->post('e_gender',true)),
                 'e_dob'=>htmlspecialchars($this->input->post('e_dob',true)),
                 'e_jobtitle'=>htmlspecialchars($this->input->post('e_jobtitle',true)),
-              //  'ea_document'=>htmlspecialchars($this->input->post('ea_document',true)),  
+                'e_document'=>$e_document['file_name'], 
             ];
          // insert data into database
         $this->user_e_model->insert($data);

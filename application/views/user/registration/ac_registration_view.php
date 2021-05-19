@@ -66,7 +66,8 @@
 									<div class="pt-5 px-5" style="font-size:23px; letter-spacing: 8px; color:#787878; font-weight:700;">ACADEMIC COUNSELLOR REGISTRATION PAGE</div>
 								</center>
 								<!-- Input fields (Form) -->
-								<form method="post" action="<?= base_url('user/login/Auth/ac_reg');?>">
+								<form method="post" action="<?= base_url('user/login/Auth/ac_reg');?>" enctype="multipart/form-data">
+								<?= form_open_multipart('') ?>
 									<!-- Phone number and business email-->
 									<div class="form-row pt-4 px-3">
 										<div class="form-group col-md-6 px-2">
@@ -132,7 +133,7 @@
 									</div>
 									<!-- Terms & Condition -->
 									<div class="T&C ml-4">
-										<label><input type="checkbox"> Please accept our <a href="https://newinti.edu.my/legal/privacy/">terms and conditions</a>
+										<label><input type="checkbox" required> Please accept our <a href="https://newinti.edu.my/legal/privacy/">terms and conditions</a>
 										</label>
 									</div>
 									<!-- Submit button -->

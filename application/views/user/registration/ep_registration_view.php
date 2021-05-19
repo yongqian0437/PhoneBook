@@ -66,7 +66,8 @@
 									<div class="pt-5 px-5" style="font-size:23px; letter-spacing: 8px; color:#787878; font-weight:700;">EDUCATION PARTNER REGISTRATION PAGE</div>
 								</center>
 								<!-- Input fields (Form) -->
-                                <form method="post" action="<?= base_url('user/login/Auth/ep_reg');?>">
+                                <form method="post" action="<?= base_url('user/login/Auth/ep_reg');?>" enctype="multipart/form-data">
+								<?= form_open_multipart('') ?>
 									<!-- Phone number and business email-->
 									<div class="form-row pt-4 px-3">
 										<div class="form-group col-md-6 px-2">
@@ -119,7 +120,6 @@
 									<div class="pt-2 pr-3">
 										<button type="submit" class="btn btn-success" style="float:right; width:23%;">Register<i class="fas fa-check"></i></button>
 									</div>
-
 								</form>
 								<!-- End of Input fields (Form) -->
 							</div>

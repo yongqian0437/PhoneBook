@@ -56,4 +56,10 @@ class universities_model extends CI_Model
      $row = $this->db->select("*")->limit(1)->order_by('uni_id',"DESC")->get("universities")->row();
      return $row->uni_id; //it will provide latest or last record id.
     }
+
+    function select_all_approved_only() //new function 
+    {
+        $this->db->where('uni_approval', 1);
+        return $this->db->get('universities')->result();
+    }
 }

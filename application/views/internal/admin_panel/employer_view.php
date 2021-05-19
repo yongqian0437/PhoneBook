@@ -41,6 +41,9 @@
                                 ."<td>$e->e_gender</td>"
                                 ."<td>$e->e_dob</td>"
                                 ."<td>$e->e_document</td>" 
+                                ."<td><a class='btn btn-primary btn-block' href='"
+                                .base_url()
+                                ."assets/uploads/employer/$e->e_document' role='button' target='_blank'>View</a></td>" 
                                 ."<td>$e->e_jobtitle</td>" 
                                 ."<td>$e->e_submitdate</td>" 
                                 ."</tr>" 

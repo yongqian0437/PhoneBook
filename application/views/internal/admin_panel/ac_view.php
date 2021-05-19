@@ -41,7 +41,9 @@
                                 ."<td>$ac->ac_nationality</td>"
                                 ."<td>$ac->ac_gender</td>"
                                 ."<td>$ac->ac_dob</td>" 
-                                ."<td>$ac->ac_document</td>" 
+                                ."<td><a class='btn btn-primary btn-block' href='"
+                                .base_url()
+                                ."assets/uploads/academic_counsellor/$ac->ac_document' role='button' target='_blank'>View</a></td>" 
                                 ."<td>$ac->ac_submitdate</td>" 
                                 ."</tr>" 
                     ?>

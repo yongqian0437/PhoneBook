@@ -57,14 +57,14 @@
                                               <input  class="form-control border-bottom" style="border: 0;" placeholder= "University: <?=$ac['ac_university'];?>" readonly>
                                               </div>
                                             </div>
-                                           <!-- Upload Document -->
-                                           <div class="form-row pt-2 px-4">
-                                              <div class="form-group col-md-12 px-2">
-                                                <input type="file" class="custom-file-input" id="form-group" name="e_document">
-                                                <label class="custom-file-label" for="customFile">Upload a file</label>
-                                              </div>
-                                            <br>
-                                          <a href="<?=base_url();?>internal/admin_panel/Admin_dashboard/users_accounts_nav" class="btn btn-primary">Back</a>
+
+                                            <!-- Upload Document -->
+                                            <div class="pt-3 text-center">
+                                              <a class="btn btn-primary" href="<?=base_url('assets/uploads/academic_counsellor/'.$ac['ac_document'])?>" role="button" target="_blank">View Uploaded Document</a>
+                                            </div>
+                                            <div class="form-row pt-2 px-4">
+                                              <a href="<?=base_url();?>internal/admin_panel/Admin_dashboard/users_accounts_nav" class="btn btn-primary">Back</a>
+                                            </div>
                                           </form>    
                                 </div>
                             </div>
