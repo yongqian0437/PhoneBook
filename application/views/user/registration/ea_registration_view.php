@@ -1,117 +1,166 @@
-<!DOCTYPE html>
-<html>
+<!-- Jquery plugin -->
+<script src="<?php echo base_url() ?>/assets/vendor/jquery/jquery.min.js"></script>
 
-<head>
-	<meta charset="utf-8">
-	<title>Education Agent Registration Form</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="author" content="colorlib.com">
 
-	<!-- MATERIAL DESIGN ICONIC FONT -->
-	<link href="<?php echo base_url() ?>assets/fonts/material-design-iconic-font/css/material-design-iconic-font.css" rel="stylesheet">
-	<!-- Custom styles for this template-->
-	<link href="<?php echo base_url() ?>assets/css/registration.css" rel="stylesheet">
-	<link href="<?php echo base_url() ?>assets/scss/registration.scss" rel="stylesheet">
-</head>
+<!-- Page level custom scripts -->
 
-<body>
-	<div class="wrapper">
-		<form action="" id="wizard">
-			<!-- SECTION 1 -->
-			<h2></h2>
-			<section>
-				<div class="inner">
-					<div class="image-holder">
-						<img src="assets/img/forms/Registration_steps.jpg" alt="">
-					</div>
-					<div class="form-content">
-						<div class="form-header">
-							<h3>Education Agent Registration</h3>
-						</div>
-						<p>Please fill your business contact details</p>
-						<div class="form-row">
-							<div class="form-holder">
-								<input type="text" name="ea_phonenumber" placeholder="Phone Number" class="form-control" required>
+<!-- Set base url to javascript variable-->
+<script type="text/javascript">
+	var base_url = "<?php echo base_url(); ?>";
+</script>
+
+<style>
+	.number {
+		overflow: hidden;
+		text-align: center;
+	}
+
+	.number:before,
+	.number:after {
+		background-color: #000;
+		content: "";
+		display: inline-block;
+		height: 1px;
+		position: relative;
+		vertical-align: middle;
+		width: 70%;
+	}
+
+	.number:before {
+		right: 0.7em;
+		margin-left: -90%;
+	}
+
+	.number:after {
+		left: 0.7em;
+		margin-right: -20%;
+	}
+</style>
+
+<body id="page-top" style='background-color:#f9f6f1;'>
+
+	<!-- Page Wrapper -->
+	<div id="wrapper">
+
+		<!-- Content Wrapper -->
+		<div id="content-wrapper" class="d-flex flex-column">
+
+			<!-- Main Content -->
+			<div id="content">
+
+				<!-- Begin Page Content -->
+				<div class="container-fluid ">
+
+					<!-- Cards for registration -->
+					<div class="row justify-content-md-center pt-5" style='background-color:#f9f6f1;'>
+
+						<!-- Steps -->
+						<div class="col-xl-3">
+							<div class="card h-100 " id='card1'>
+								<div class="card-body" style="background-color:#DAE7E0">
+
+									<div class="pl-3 pr-3 pt-4">
+										<div class="pl-4" style="font-size:16px; font-weight:700; color:black;">Join Interactive Joint Education Employability System (iJEES) in</div>
+										<div class="pt-2 pl-4 pb-3" style="font-size:38px; color:green; font-weight:900;">3 STEPS</div>
+
+										<div class="pl-4">
+											<div class="number pt-4 pl-4 pb-1" style="font-size:18px; color:green; font-weight:900;">01</div>
+										</div>
+										<div class="pl-4 pb-3" style="font-size:14px; color:black;">Select your role before you fill in your detail in the registration form.</div>
+
+										<div class="pl-4">
+											<div class="number pt-4 pl-4 pb-1" style="font-size:18px; color:green; font-weight:900;">02</div>
+										</div>
+										<div class="pl-4 pb-3" style="font-size:14px; color:black;">If you already have an existing account, login now with your credentials. </div>
+
+										<div class="pl-4">
+											<div class="number pt-4 pl-4 pb-1" style="font-size:18px; color:green; font-weight:900;">03</div>
+										</div>
+										<div class="pl-4 pb-5" style="font-size:14px; color:black;">After login, you are on the main page based on your role. </div>
+
+									</div>
+
+								</div>
 							</div>
-							<div class="form-holder">
-								<input type="text" name="ea_businessemail" placeholder="Business Email" class="form-control" required>
+						</div>
+
+						<!-- Form -->
+						<div class="col-xl-5 ">
+							<div class="card h-100" id='card2' ">
+                                <div class=" card-body">
+								<center>
+									<div class="pt-5 px-5" style="font-size:23px; letter-spacing: 8px; color:#787878; font-weight:700;">EDUCATION AGENT REGISTRATION PAGE</div>
+								</center>
+								<!-- Input fields (Form) -->
+								<form>
+									<!-- Phone number and business email-->
+									<div class="form-row pt-4 px-3">
+										<div class="form-group col-md-6 px-2">
+											<input type="number" name="ea_phonenumber" class="form-control border-bottom" id="ea_phonenumber" style="border: 0;" placeholder="Enter your phone number" required>
+										</div>
+										<div class="form-group col-md-6 px-2">
+											<input type="type" name="ea_businessemail" class="form-control border-bottom" id="ea_businessemail" style="border: 0;" placeholder="Enter your business email" required>
+										</div>
+									</div>
+									<!-- Nationality -->
+									<div class="form-row pt-3 px-3">
+										<div class="form-group col-md-12 px-2">
+											<input type="email" name="ea_nationality" class="form-control border-bottom" id="ea_nationality" style="border: 0;" placeholder="Enter your nationality" required>
+										</div>
+									</div>
+									<!-- Date and gender -->
+									<div class="form-row pt-3 pb-3 px-3">
+										<div class="form-group col-md-6 px-2">
+											<input type="date" name="ea_dob" class="form-control border-bottom" id="ea_dob" style="border: 0;" required>
+										</div>
+										<div class="form-holder mb-3 ml-3" style="align-self: flex-end; transform: translateY(4px);">
+											<div class="checkbox-tick">
+												<label class="male ml-3">
+													<input type="radio" name="ea_gender" value="male" required> Male<br>
+													<span class="checkmark"></span>
+												</label>
+												<label class="female ml-5">
+													<input type="radio" name="ea_gender" value="female" required> Female<br>
+													<span class="checkmark"></span>
+												</label>
+											</div>
+										</div>
+									</div>
+									<!-- Upload Document -->
+									<div class="form-row pt-2 px-4">
+										<div class="form-group col-md-12 px-2">
+											<input type="file" class="custom-file-input" id="form-group" name="ea_document">
+											<label class="custom-file-label" for="customFile">Upload a file</label>
+										</div>
+									</div>
+									<!-- Terms & Condition -->
+									<div class="T&C ml-4">
+										<label> Please accept our <a href="https://newinti.edu.my/legal/privacy/">terms and conditions</a>
+										</label>
+									</div>
+									<!-- Submit button -->
+									<div class="pt-2 pr-3">
+										<button type="submit" class="btn btn-success" style="float:right; width:23%;">Register <i class="fas fa-check"></i></button>
+									</div>
+
+								</form>
+								<!-- End of Input fields (Form) -->
 							</div>
 						</div>
 					</div>
+
 				</div>
-			</section>
+				<!-- END OF ROW -->
+				<!-- END OF FORM -->
+			</div>
+			<!-- /.container-fluid -->
+		</div>
+		<!-- End of Main Content -->
 
-			<!-- SECTION 2 -->
-			<h2></h2>
-			<section>
-				<div class="inner">
-					<div class="image-holder">
-						<img src="assets/img/forms/Registration_steps.jpg" alt="">
-					</div>
-					<div class="form-content">
-						<div class="form-header">
-							<h3>Education Agent Registration</h3>
-						</div>
-						<p>Please fill your personal details</p>
-						<div class="form-row">
-							<div class="form-holder">
-								<input type="text" name="ea_nationality" placeholder="Nationality" class="form-control">
-							</div>
-							<div class="form-holder">
-								<input type="date" name="ea_dob" placeholder="Date of Birth" class="form-control">
-							</div>
-						</div>
-						<div class="form-holder" style="align-self: flex-end; transform: translateY(4px);">
-							<div class="checkbox-tick">
-								<label class="male">
-									<input type="radio" name="ea_gender" value="male" checked> Male<br>
-									<span class="checkmark"></span>
-								</label>
-								<label class="female">
-									<input type="radio" name="ea_gender" value="female"> Female<br>
-									<span class="checkmark"></span>
-								</label>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<!-- SECTION 3 -->
-			<h2></h2>
-			<section>
-				<div class="inner">
-					<div class="image-holder">
-						<img src="assets/img/forms/Registration_steps.jpg" alt="">
-					</div>
-					<div class="form-content">
-						<div class="form-header">
-							<h3>Education Agent Registration</h3>
-						</div>
-						<p>Please fill in your employers details</p>
-							<div class="form-holder">
-								<input type="file" name="ea_document" class="form-control">
-							</div>
-						<div class="checkbox-circle mt-24">
-							<label>
-								<input type="checkbox" checked required> I do accept the <a href="#">terms and conditions</a> of your site.
-								<span class="checkmark"></span>
-							</label>
-						</div>
-					</div>
-				</div>
-			</section>
-		</form>
-	</div>
-
-	<!-- JQUERY -->
-	<script src="<?php echo base_url() ?>assets/js/additional/jquery-3.3.1.min.js"></script>
-
-	<!-- JQUERY STEP -->
-	<script src="<?php echo base_url() ?>assets/js/additional/jquery.steps.js"></script>
-	<script src="<?php echo base_url() ?>assets/js/additional/main.js"></script>
-	<!-- Template created and distributed by Colorlib -->
-
-</body>
-
-</html>
+		<script>
+			// File appear on select
+			$(".custom-file-input").on("change", function() {
+				var fileName = $(this).val().split("\\").pop();
+				$(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+			});
+		</script>

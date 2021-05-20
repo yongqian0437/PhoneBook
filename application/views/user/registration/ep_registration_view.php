@@ -37,6 +37,7 @@
 	}
 </style>
 
+
 <body id="page-top" style='background-color:#f9f6f1;'>
 
 	<!-- Page Wrapper -->
@@ -89,38 +90,38 @@
 							<div class="card h-100" id='card2' ">
                                 <div class=" card-body">
 								<center>
-									<div class="pt-5 px-5" style="font-size:23px; letter-spacing: 8px; color:#787878; font-weight:700;">EMPLOYER REGISTRATION PAGE</div>
+									<div class="pt-5 px-5" style="font-size:23px; letter-spacing: 8px; color:#787878; font-weight:700;">EDUCATION PARTNER REGISTRATION PAGE</div>
 								</center>
 								<!-- Input fields (Form) -->
 								<form>
 									<!-- Phone number and business email-->
 									<div class="form-row pt-4 px-3">
 										<div class="form-group col-md-6 px-2">
-											<input type="number" name="e_phonenumber" class="form-control border-bottom" id="e_phonenumber" style="border: 0;" placeholder="Enter your phone number" required>
+											<input type="number" name="ep_phonenumber" class="form-control border-bottom" id="ep_phonenumber" style="border: 0;" placeholder="Enter your phone number" required>
 										</div>
 										<div class="form-group col-md-6 px-2">
-											<input type="type" name="e_businessemail" class="form-control border-bottom" id="e_businessemail" style="border: 0;" placeholder="Enter your business email" required>
+											<input type="type" name="ep_businessemail" class="form-control border-bottom" id="ep_businessemail" style="border: 0;" placeholder="Enter your business email" required>
 										</div>
 									</div>
 									<!-- Nationality -->
 									<div class="form-row pt-3 px-3">
 										<div class="form-group col-md-12 px-2">
-											<input type="email" name="e_nationality" class="form-control border-bottom" id="e_nationality" style="border: 0;" placeholder="Enter your nationality" required>
+											<input type="email" name="ep_nationality" class="form-control border-bottom" id="ep_nationality" style="border: 0;" placeholder="Enter your nationality" required>
 										</div>
 									</div>
 									<!-- Date and gender -->
 									<div class="form-row pt-3 pb-3 px-3">
 										<div class="form-group col-md-6 px-2">
-											<input type="date" name="e_dob" class="form-control border-bottom" id="e_dob" style="border: 0;" required>
+											<input type="date" name="ep_dob" class="form-control border-bottom" id="ep_dob" style="border: 0;" required>
 										</div>
 										<div class="form-holder mb-3 ml-3" style="align-self: flex-end; transform: translateY(4px);">
 											<div class="checkbox-tick">
 												<label class="male ml-3">
-													<input type="radio" name="e_gender" value="male" required> Male<br>
+													<input type="radio" name="ep_gender" value="male" required> Male<br>
 													<span class="checkmark"></span>
 												</label>
 												<label class="female ml-5">
-													<input type="radio" name="e_gender" value="female" required> Female<br>
+													<input type="radio" name="ep_gender" value="female" required> Female<br>
 													<span class="checkmark"></span>
 												</label>
 											</div>
@@ -129,13 +130,13 @@
 									<!-- Job Title  -->
 									<div class="form-row px-3">
 										<div class="form-group col-md-12 px-2">
-											<input type="type" name="e_jobtitle" class="form-control border-bottom" id="e_jobtitle" style="border: 0;" placeholder="Enter your job title" required>
+											<input type="type" name="ep_jobtitle" class="form-control border-bottom" id="ep_jobtitle" style="border: 0;" placeholder="Enter your job title" required>
 										</div>
 									</div>
 									<!-- Upload Document -->
 									<div class="form-row pt-2 px-4">
 										<div class="form-group col-md-12 px-2">
-											<input type="file" class="custom-file-input" id="form-group" name="e_document">
+											<input type="file" class="custom-file-input" id="form-group" name="ep_document">
 											<label class="custom-file-label" for="customFile">Upload a file</label>
 										</div>
 									</div>

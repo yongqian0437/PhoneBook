@@ -1,4 +1,58 @@
-<!-- Jquery plugin -->
+<!-- <body id="page-top" style='background-color:#f9f6f1;'>
+
+  <form>
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-8 col-xl-6">
+          <div class="row">
+            <div class="col text-center pt-4">
+              <h2 style="color:black; font-weight:700">Course Applicants Registration Form</h2>
+            </div>
+          </div> -->
+
+          <!-- University Short Profile -->
+          <!-- <div class="form-outline mt-4">
+            <textarea class="form-control" rows="3" name="uni_shortprofile" placeholder="Applicant Address" required></textarea>
+          </div> -->
+
+          <!--Logo & University Name -->
+          <!-- <div class="row align-items-center mt-3">
+          <div class="col">
+              <input type="text" class="form-control" name="uni_name" placeholder="Applicant Identification" required>
+            </div>
+            <div class="col">
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="customFile" name="uni_logo" required>
+                <label class="custom-file-label" for="customFile">Applicant Document</label>
+              </div>
+            </div>
+          </div> -->
+
+          <!-- Term and Conditions & Register Button -->
+          <!-- <div class="row justify-content-start mt-4">
+            <div class="col">
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input type="checkbox" class="form-check-input" required>
+                  I Read and Accept <a href="https://newinti.edu.my/legal/privacy/">Terms and Conditions</a>
+                </label>
+              </div>
+              <button type="submit" class="btn btn-success mt-4" style="float:right; width:23%;">Apply</i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+  </form> -->
+  
+
+  <!-- <script>
+    $(".custom-file-input").on("change", function() {
+      var fileName = $(this).val().split("\\").pop();
+      $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+    });
+  </script> -->
+
+
+  <!-- Jquery plugin -->
 <script src="<?php echo base_url() ?>/assets/vendor/jquery/jquery.min.js"></script>
 
 
@@ -66,7 +120,7 @@
 										<div class="pl-4">
 											<div class="number pt-4 pl-4 pb-1" style="font-size:18px; color:green; font-weight:900;">01</div>
 										</div>
-										<div class="pl-4 pb-3" style="font-size:14px; color:black;">Select your role before you fill in your detail in the registration form.</div>
+										<div class="pl-4 pb-3" style="font-size:14px; color:black; ">Select your role before you fill in your detail in the registration form.</div>
 
 										<div class="pl-4">
 											<div class="number pt-4 pl-4 pb-1" style="font-size:18px; color:green; font-weight:900;">02</div>
@@ -89,54 +143,54 @@
 							<div class="card h-100" id='card2' ">
                                 <div class=" card-body">
 								<center>
-									<div class="pt-5 px-5" style="font-size:23px; letter-spacing: 8px; color:#787878; font-weight:700;">EMPLOYER REGISTRATION PAGE</div>
+									<div class="pt-5 px-5" style="font-size:23px; letter-spacing: 8px; color:#787878; font-weight:700;">ACADEMIC COUNSELOR REGISTRATION PAGE</div>
 								</center>
 								<!-- Input fields (Form) -->
 								<form>
 									<!-- Phone number and business email-->
 									<div class="form-row pt-4 px-3">
 										<div class="form-group col-md-6 px-2">
-											<input type="number" name="e_phonenumber" class="form-control border-bottom" id="e_phonenumber" style="border: 0;" placeholder="Enter your phone number" required>
+											<input type="number" name="ac_phonenumber" class="form-control border-bottom" id="ac_phonenumber" style="border: 0;" placeholder="Enter your phone number" required>
 										</div>
 										<div class="form-group col-md-6 px-2">
-											<input type="type" name="e_businessemail" class="form-control border-bottom" id="e_businessemail" style="border: 0;" placeholder="Enter your business email" required>
+											<input type="type" name="ac_businessemail" class="form-control border-bottom" id="ac_businessemail" style="border: 0;" placeholder="Enter your business email" required>
 										</div>
 									</div>
 									<!-- Nationality -->
 									<div class="form-row pt-3 px-3">
 										<div class="form-group col-md-12 px-2">
-											<input type="email" name="e_nationality" class="form-control border-bottom" id="e_nationality" style="border: 0;" placeholder="Enter your nationality" required>
+											<input type="email" name="ac_nationality" class="form-control border-bottom" id="ac_nationality" style="border: 0;" placeholder="Enter your nationality" required>
 										</div>
 									</div>
 									<!-- Date and gender -->
 									<div class="form-row pt-3 pb-3 px-3">
 										<div class="form-group col-md-6 px-2">
-											<input type="date" name="e_dob" class="form-control border-bottom" id="e_dob" style="border: 0;" required>
+											<input type="date" name="ac_dob" class="form-control border-bottom" id="ac_dob" style="border: 0;" required>
 										</div>
 										<div class="form-holder mb-3 ml-3" style="align-self: flex-end; transform: translateY(4px);">
 											<div class="checkbox-tick">
 												<label class="male ml-3">
-													<input type="radio" name="e_gender" value="male" required> Male<br>
+													<input type="radio" name="ac_gender" value="male" required> Male<br>
 													<span class="checkmark"></span>
 												</label>
 												<label class="female ml-5">
-													<input type="radio" name="e_gender" value="female" required> Female<br>
+													<input type="radio" name="ac_gender" value="female" required> Female<br>
 													<span class="checkmark"></span>
 												</label>
 											</div>
 										</div>
 									</div>
-									<!-- Job Title  -->
+									<!-- University  -->
 									<div class="form-row px-3">
 										<div class="form-group col-md-12 px-2">
-											<input type="type" name="e_jobtitle" class="form-control border-bottom" id="e_jobtitle" style="border: 0;" placeholder="Enter your job title" required>
+											<input type="type" name="ac_university" class="form-control border-bottom" id="ac_university" style="border: 0;" placeholder="Enter your university" required>
 										</div>
 									</div>
 									<!-- Upload Document -->
 									<div class="form-row pt-2 px-4">
 										<div class="form-group col-md-12 px-2">
-											<input type="file" class="custom-file-input" id="form-group" name="e_document">
-											<label class="custom-file-label" for="customFile">Upload a file</label>
+											<input type="file" class="custom-file-input" id="form-group" name="ac_document">
+											<label class="custom-file-label" for="customFile">Upload Document</label>
 										</div>
 									</div>
 									<!-- Terms & Condition -->
