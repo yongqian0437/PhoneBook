@@ -23,6 +23,7 @@
                             <th>Nationality</th>
                             <th>Gender</th>
                             <th>DOB</th>
+                            <th>Document</th>
                             <th>Job title</th>
                             <th>Submit Date</th>
                         </tr>

@@ -68,7 +68,7 @@
                                <form method="post" action="<?= base_url('user/login/Auth/university');?>">
                                         <div class="form-row pt-4 px-3">
                                             <!-- University-->
-                                            <div class="form-group col-md-8 px-2">
+                                            <div class="form-group col-md-12 px-2">
                                               <input type="text" class="form-control" name="uni_name" placeholder="University Name" value="<?=set_value('uni_name')?>">
                                               <?= form_error('uni_name','<small class="text-danger pl-3">','</small>');?>
                                             </div>
@@ -85,7 +85,7 @@
 
                                             <!-- University Short Profile -->
                                             <div class="form-group col-md-12 px-2">
-                                              <textarea class="form-control" rows="2" name="uni_shortprofile" placeholder="Short Profile" required></textarea>
+                                              <textarea class="form-control" rows="6" name="uni_shortprofile" placeholder="Short Profile" required></textarea>
                                             </div>
 
                                             <!-- Country -->

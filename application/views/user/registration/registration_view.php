@@ -112,7 +112,7 @@
                                     </div>
                                     <!-- Submit button -->
                                     <div class="pt-2 pr-4">
-                                        <button type="submit" class="btn btn-success" style="float:right; width:23%;">Continue<i class="fas fa-check"></i></button>
+                                        <button type="submit" class="btn btn-success" style="float:right; width:auto;">Continue <i class="fas fa-check"></i></button>
                                     </div>
                                 </form>
                                 <!-- End of Input fields (Form) -->
