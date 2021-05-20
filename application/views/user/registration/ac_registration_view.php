@@ -138,7 +138,7 @@
 									</div>
 									<!-- Submit button -->
 									<div class="pt-2 pr-3">
-										<button type="submit" class="btn btn-success" style="float:right; width:23%;">Register <i class="fas fa-check"></i></button>
+										<button type="submit" class="btn btn-success" style="float:right; width:auto;">Register <i class="fas fa-check"></i></button>
 									</div>
 
 								</form>

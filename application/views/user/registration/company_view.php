@@ -106,7 +106,7 @@
                                             
                                             <!-- Term and Conditions & Register Button -->
                                             <div class="col">
-                                                   <button type="submit" class="btn btn-success mt-4" style="float:right; width:25%;">Continue<i class="fas fa-check"></i></button>
+                                                   <button type="submit" class="btn btn-success mt-4" style="float:right; width:auto;">Continue <i class="fas fa-check"></i></button>
                                             </div>
                                             </div>
                                           </form>    
