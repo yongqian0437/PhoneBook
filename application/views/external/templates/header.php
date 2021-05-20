@@ -21,4 +21,10 @@
     <!-- Additional styles -->
     <link href="<?php echo base_url() ?>/assets/css/projects.css" rel="stylesheet">
 
+    <?php
+        if (isset($include_css)) {
+            echo '<link href="' . base_url() . 'assets/css/' . $include_css . '.css" rel="stylesheet">';
+        }
+    ?>
+
 </head>
