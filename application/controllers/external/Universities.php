@@ -16,8 +16,6 @@ class Universities extends CI_Controller {
 	public function index()
 	{
 		$data['university_data'] = $this->universities_model->select_all_approved_only(); 
-		
-
 		$this->load->view('external/universities_view', $data);
         $this->load->view('external/templates/header');
         $this->load->view('external/templates/footer');
@@ -53,6 +51,7 @@ class Universities extends CI_Controller {
 			$data[] = array(
 					$image,
 					$r->uni_name,
+					$r->uni_country,
 					$r->uni_totalcourses,
 					$r->uni_qsrank,
 					$action,

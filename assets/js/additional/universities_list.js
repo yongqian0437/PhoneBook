@@ -1,18 +1,22 @@
 $(document).ready(function(){
     $("#table_university").DataTable({
-        "bInfo" : false,
-        "ordering": false,
+        "bInfo" : false, //remove 'showing entires * out of *
+        "ordering": false,  //remove order(up down icon) for each attributes
         ajax: {
             url: base_url + "external/universities/universities_list",
             type: "GET",
         },
         "columnDefs": [{
             "width": "15%",
-            "targets": [4]
+            "targets": [5]
         },
         {
             "width": "20%",
             "targets": [0]
+        },
+        {
+            "width": "13%",
+            "targets": [4]
         }
         ]
     });

@@ -94,6 +94,7 @@ table.dataTable thead th {
                                             <tr>
                                                 <th style = "">University</th>
                                                 <th>University Name</th>
+                                                <th>Country</th>
                                                 <th>Course Offered</th>
                                                 <th>QS World Ranking</th>
                                                 <th></th>
