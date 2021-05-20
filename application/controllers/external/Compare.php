@@ -16,6 +16,8 @@ class Compare extends CI_Controller {
 	public function index()
 	{
 		$data['university_data'] = $this->universities_model->select_all_approved_only(); 
+		$data['include_js'] = 'compare';
+
 		// $user = array(
 		// 	'user_id' => '01',
 		// 	'user_fname' => 'Thomas',

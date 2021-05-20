@@ -16,7 +16,7 @@
 <!-- End of Page Wrapper -->
 
     <!-- Bootstrap core JavaScript-->
-    <!-- <script src="<?php echo base_url()?>/assets/vendor/jquery/jquery.min.js"></script> -->
+    <script src="<?php echo base_url()?>/assets/vendor/jquery/jquery.min.js"></script>
     <script src="<?php echo base_url()?>/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
@@ -31,6 +31,12 @@
     <!-- Page level custom scripts -->
     <script src="<?php echo base_url()?>/assets/js/demo/chart-area-demo.js"></script>
     <script src="<?php echo base_url()?>/assets/js/demo/chart-pie-demo.js"></script>
+
+    <?php 
+    if (isset($include_js)) {
+        echo '<script src="' . base_url() . 'assets/js/additional/' . $include_js . '.js"></script>';
+    }
+    ?>
 
 </body>
 
