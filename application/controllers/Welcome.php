@@ -21,7 +21,8 @@ class Welcome extends CI_Controller {
 	public function index()
 	{
 		// $this->load->view('welcome_message');
-
+		$data['include_js'] = 'file_name'; // js file that is specific to ur page. ignore file extension (.js)
+		$data['include_css'] = 'file_name'; // css file that is specific to ur page. ignore file extension (.css)
 		$this->load->view('external/templates/header');
 		$this->load->view('external/templates/footer');
 		// $this->load->view('external/university_form_view');
