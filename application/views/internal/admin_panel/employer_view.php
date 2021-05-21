@@ -16,7 +16,7 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>EmployerID</th>
+                            <th>Employer ID</th>
                             <th>User ID</th>
                             <th>Contact Number</th>
                             <th>Business email</th>
@@ -40,7 +40,6 @@
                                 ."<td>$e->e_nationality</td>"
                                 ."<td>$e->e_gender</td>"
                                 ."<td>$e->e_dob</td>"
-                                ."<td>$e->e_document</td>" 
                                 ."<td><a class='btn btn-primary btn-block' href='"
                                 .base_url()
                                 ."assets/uploads/employer/$e->e_document' role='button' target='_blank'>View</a></td>" 

@@ -68,36 +68,36 @@
 								<!-- Input fields (Form) -->
 								<form method="post" action="<?= base_url('user/login/Auth/employer_reg');?>" enctype="multipart/form-data">
 								<?= form_open_multipart('') ?>
-									<!-- Phone number and business email-->
+									<!-- Business email-->
 									<div class="form-row pt-4 px-3">
-										<div class="form-group col-md-7 px-2">
-											<input type="number" name="e_phonenumber" class="form-control border-bottom" id="e_phonenumber" style="border: 0;" placeholder="Enter your phone number" value="<?=set_value('e_phonenumber') ?>">
+										<div class="form-group col-md-12 px-2">
+											<input type="email" name="e_businessemail" class="form-control border-bottom" id="e_businessemail" style="border: 0;" placeholder="Enter your business email" value="<?=set_value('e_businessemail') ?>" required>
+                                            <?= form_error('e_businessemail','<small class="text-danger pl-3">','</small>');?>
+										</div>
+									</div>
+									<div class="form-row px-3">
+										<!-- Phone number -->
+										<div class="form-group col-md-6 px-2">
+											<input type="number" name="e_phonenumber" class="form-control border-bottom" id="e_phonenumber" style="border: 0;" placeholder="Enter your phone number" value="<?=set_value('e_phonenumber') ?>" required>
                                             <?= form_error('e_phonenumber','<small class="text-danger pl-3">','</small>');?>
 										</div>
-
 										<!-- Nationality -->
 										<div class="form-group col-md-6 px-2">
 											<input type="text" name="e_nationality" class="form-control border-bottom" id="e_nationality" style="border: 0;" placeholder="Enter your nationality" required>
 										</div>
-										
-										<div class="form-group col-md-6 px-2">
-											<input type="email" name="e_businessemail" class="form-control border-bottom" id="e_businessemail" style="border: 0;" placeholder="Enter your business email" value="<?=set_value('e_businessemail') ?>">
-                                            <?= form_error('e_businessemail','<small class="text-danger pl-3">','</small>');?>
-										</div>
 									</div>
-									
 									<!-- Date and gender -->
 									<div class="form-row pt-3 pb-3 px-3">
 										<div class="form-group col-md-6 px-2">
 											<input type="date" name="e_dob" class="form-control border-bottom" id="e_dob" style="border: 0;" required>
 										</div>
-										<div class="form-holder mb-3 ml-3" style="align-self: flex-end; transform: translateY(4px);">
+										<div class="form-holder mb-3 ml-6" style="align-self: flex-end; transform: translateY(4px);">
 											<div class="checkbox-tick">
 												<label class="male ml-3">
 													<input type="radio" name="e_gender" value="male" required> Male<br>
 													<span class="checkmark"></span>
 												</label>
-												<label class="female ml-5">
+												<label class="female ml-3">
 													<input type="radio" name="e_gender" value="female" required> Female<br>
 													<span class="checkmark"></span>
 												</label>
@@ -119,7 +119,7 @@
 									</div>
 									<!-- Terms & Condition -->
 									<div class="T&C ml-4">
-										<label><input type="checkbox" required> Please accept our <a href="https://newinti.edu.my/legal/privacy/">terms and conditions</a>
+										<label><input type="checkbox" required> Please accept our <a href="https://newinti.edu.my/legal/privacy/" target="_blank">terms and conditions</a>
 										</label>
 									</div>
 									<!-- Submit button -->

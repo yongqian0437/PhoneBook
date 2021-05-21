@@ -70,14 +70,14 @@
                                     <!-- Email-->
                                     <div class="form-row pt-5 px-3">
                                         <div class="form-group col-md-12 px-2">
-                                            <input type="email" name="user_email" class="form-control border-bottom" id="email" style="border: 0;" placeholder="Enter your email address" value="<?=set_value('user_email');?>">
+                                            <input type="email" name="user_email" class="form-control border-bottom" id="email" style="border: 0;" placeholder="Enter your email address" value="<?=set_value('user_email');?>" required>
                                             <?= form_error('user_email','<small class="text-danger pl-3">','</small>');?>
                                         </div>
                                     </div>
                                     <!-- Password and confirm password -->
                                     <div class="form-row pt-3 pb-3 px-3">
                                         <div class="form-group col-md-12 px-2">
-                                            <input type="password" name="user_password" class="form-control border-bottom" id="password" style="border: 0;" placeholder="Enter your password">
+                                            <input type="password" name="user_password" class="form-control border-bottom" id="password" style="border: 0;" placeholder="Enter your password" required>
                                             <?= form_error('user_password','<small class="text-danger pl-3">','</small>');?>
                                         </div>
                                     </div>

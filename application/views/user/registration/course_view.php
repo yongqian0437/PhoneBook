@@ -69,7 +69,7 @@
                                         <div class="form-row pt-4 px-3">
                                              <!-- Course Name -->
                                             <div class="form-group col-md-12 px-2">
-                                              <input type="text" class="form-control border-bottom" style="border: 0;" name="course_name" placeholder="Course Name" value="<?=set_value('course_name')?>">
+                                              <input type="text" class="form-control border-bottom" style="border: 0;" name="course_name" placeholder="Course Name" value="<?=set_value('course_name')?>" required>
                                               <?= form_error('course_name','<small class="text-danger pl-3">','</small>');?>
                                             </div>
 

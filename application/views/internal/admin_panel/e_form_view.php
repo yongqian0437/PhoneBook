@@ -1,4 +1,11 @@
-<div class="container">
+<!-- Content Wrapper -->
+<div id="content-wrapper" >
+
+<!-- Main Content -->
+<div id="content">    
+    
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
         <!-- Outer Row -->
         <div class="row justify-content-center">
 
@@ -21,17 +28,22 @@
                                           <center><b><p class="card-title">Submit Date: <?=$e['e_submitdate'];?></p></b></center>
                                             <!-- Phone number and business email-->
                                             <div class="form-row pt-4 px-3">
-                                              <div class="form-group col-md-7 px-2">
+                                              <div class="form-group col-md-12 px-2">
                                                 <input  class="form-control border-bottom" style="border: 0;" placeholder= "Phone Number: <?=$e['e_phonenumber'];?>" readonly>
                                               </div>
+                                            </div>
+                                            <div class="form-row px-3">
                                               <!-- Nationality -->
-                                              <div class="form-group col-md-5 px-2">
+                                              <div class="form-group col-md-12 px-2">
                                               <input  class="form-control border-bottom" style="border: 0;" placeholder= "Nationality: <?=$e['e_nationality'];?>"readonly >
                                               </div>
-                                        
-                                              <div class="form-group col-md-7 px-2">
+                                            </div>
+                                            <div class="form-row px-3">
+                                              <div class="form-group col-md-12 px-2">
                                               <input  class="form-control border-bottom" style="border: 0;" placeholder= "Business Email: <?=$e['e_businessemail'];?>" readonly>
                                               </div>
+                                            </div>
+                                            <div class="form-row px-3">
                                                <!-- Date -->
                                               <div class="form-group col-md-7 px-2">
                                               <input  class="form-control border-bottom" style="border: 0;" placeholder= "Date of Birth: <?=$e['e_dob'];?>" readonly>
@@ -52,11 +64,12 @@
                                                   </label>
                                                 </div>
                                               </div>
+                                            </div>
+                                            <div class="form-row px-3">
                                               <div class="form-group col-md-12 px-2">
-                                              <input  class="form-control border-bottom" style="border: 0;" placeholder= "Job Title: <?=$e['e_jobtitle'];?>" readonly>
+                                                <input  class="form-control border-bottom" style="border: 0;" placeholder= "Job Title: <?=$e['e_jobtitle'];?>" readonly>
                                               </div>
                                             </div>
-
                                              <!-- Upload Document -->
                                              <div class="pt-3 text-center">
                                               <a class="btn btn-primary" href="<?=base_url('assets/uploads/employer/'.$e['e_document'])?>" role="button" target="_blank">View Uploaded Document</a>

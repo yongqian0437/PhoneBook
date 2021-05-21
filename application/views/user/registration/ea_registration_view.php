@@ -68,20 +68,21 @@
 								<!-- Input fields (Form) -->
                                 <form method="post" action="<?= base_url('user/login/Auth/ea_reg');?>" enctype="multipart/form-data">
 								<?= form_open_multipart('') ?>
-									<!-- Phone number and business email-->
 									<div class="form-row pt-4 px-3">
-										<div class="form-group col-md-6 px-2">
-											<input type="number" name="ea_phonenumber" class="form-control border-bottom" id="ea_phonenumber" style="border: 0;" placeholder="Enter your phone number" value="<?=set_value('ea_phonenumber') ?>">
-                                            <?= form_error('ea_phonenumber','<small class="text-danger pl-3">','</small>');?>
-										</div>
-										<div class="form-group col-md-6 px-2">
-											<input type="email" name="ea_businessemail" class="form-control border-bottom" id="ea_businessemail" style="border: 0;" placeholder="Enter your business email" value="<?=set_value('ep_businessemail') ?>">
+										<!-- Business email-->
+										<div class="form-group col-md-12 px-2">
+											<input type="email" name="ea_businessemail" class="form-control border-bottom" id="ea_businessemail" style="border: 0;" placeholder="Enter your business email" value="<?=set_value('ep_businessemail') ?>" required>
                                             <?= form_error('ea_businessemail','<small class="text-danger pl-3">','</small>');?>
 										</div>
 									</div>
+									<div class="form-row px-3">
+										<!-- Phone number -->
+										<div class="form-group col-md-6 px-2">
+											<input type="number" name="ea_phonenumber" class="form-control border-bottom" id="ea_phonenumber" style="border: 0;" placeholder="Enter your phone number" value="<?=set_value('ea_phonenumber') ?>" required>
+                                            <?= form_error('ea_phonenumber','<small class="text-danger pl-3">','</small>');?>
+										</div>
 									<!-- Nationality -->
-									<div class="form-row pt-3 px-3">
-										<div class="form-group col-md-12 px-2">
+										<div class="form-group col-md-6 px-2">
 											<input type="text" name="ea_nationality" class="form-control border-bottom" id="ea_nationality" style="border: 0;" placeholder="Enter your nationality" required>
 										</div>
 									</div>
@@ -90,13 +91,13 @@
 										<div class="form-group col-md-6 px-2">
 											<input type="date" name="ea_dob" class="form-control border-bottom" id="ea_dob" style="border: 0;" required>
 										</div>
-										<div class="form-holder mb-3 ml-3" style="align-self: flex-end; transform: translateY(4px);">
+										<div class="form-holder mb-3 ml-6" style="align-self: flex-end; transform: translateY(4px);">
 											<div class="checkbox-tick">
 												<label class="male ml-3">
 													<input type="radio" name="ea_gender" value="male" required> Male<br>
 													<span class="checkmark"></span>
 												</label>
-												<label class="female ml-5">
+												<label class="female ml-3">
 													<input type="radio" name="ea_gender" value="female" required> Female<br>
 													<span class="checkmark"></span>
 												</label>
@@ -104,7 +105,7 @@
 										</div>
 									</div>
 									<!-- Upload Document -->
-									<div class="form-row pt-2 px-4">
+									<div class="form-row px-4">
 										<div class="form-group col-md-12 px-2">
 											<input type="file" class="custom-file-input" id="form-group" name="ea_document" required>
 											<label class="custom-file-label" for="customFile">Upload a file</label>

@@ -69,18 +69,18 @@
                                         <div class="form-row pt-4 px-3">
                                             <!-- University-->
                                             <div class="form-group col-md-12 px-2">
-                                              <input type="text" class="form-control border-bottom" style="border: 0;" name="uni_name" placeholder="University Name" value="<?=set_value('uni_name')?>">
+                                              <input type="text" class="form-control border-bottom" style="border: 0;" name="uni_name" placeholder="University Name" value="<?=set_value('uni_name')?>" required>
                                               <?= form_error('uni_name','<small class="text-danger pl-3">','</small>');?>
                                             </div>
 
                                             <!--  Email -->
-                                            <div class="form-group col-md-7 px-2">
-                                              <input type="email" class="form-control border-bottom" style="border: 0;" name="uni_email" placeholder="University Email" >
+                                            <div class="form-group col-md-12 px-2">
+                                              <input type="email" class="form-control border-bottom" style="border: 0;" name="uni_email" placeholder="University Email" required>
                                             </div>
 
-                                              <!-- Total courses -->
-                                              <div class="form-group col-md-5 px-2">
-                                              <input type="text" class="form-control border-bottom" style="border: 0;" name="uni_totalcourses" placeholder="Total Courses" required>
+                                            <!-- Hotline-->
+                                            <div class="form-group col-md-12 px-2">
+                                              <input type="number" class="form-control border-bottom" style="border: 0;" name="uni_hotline" placeholder="University Hotline" required>
                                             </div>
 
                                             <!-- University Short Profile -->
@@ -115,11 +115,6 @@
                                                 <input type="number" class="form-control border-bottom" style="border: 0;" name="uni_totalstudents" placeholder="Total Students" required>
                                             </div>
 
-                                            <!-- Hotline-->
-                                            <div class="form-group col-md-6 px-2">
-                                              <input type="number" class="form-control border-bottom" style="border: 0;" name="uni_hotline" placeholder="University Hotline" required>
-                                            </div>
-                                            
                                             <!-- Term and Conditions & Register Button -->
                                             <div class="col">
                                                    <button type="submit" class="btn btn-success mt-4" style="float:right; width:auto;">Continue <i class="fas fa-check"></i></button>

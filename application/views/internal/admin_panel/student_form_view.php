@@ -1,4 +1,11 @@
-<div class="container">
+<!-- Content Wrapper -->
+<div id="content-wrapper" >
+
+<!-- Main Content -->
+<div id="content">    
+    
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
         <!-- Outer Row -->
         <div class="row justify-content-center">
 
@@ -21,20 +28,24 @@
                                       <center><b><p class="card-title">Student ID: <?=$student ['student_id'];?></p></b></center>
                                       <center><b><p class="card-title">Submit Date: <?=$student ['student_submitdate'];?></p></b></center>
                                         <div class="form-row pt-4 px-3">
-                                        <div class="form-group col-md-7 px-2">
-                                          <input  class="form-control border-bottom" style="border: 0;" placeholder= "Phone Number: <?=$student ['student_phonenumber'];?>"readonly>
+                                          <div class="form-group col-md-12 px-2">
+                                            <input  class="form-control border-bottom" style="border: 0;" placeholder= "Phone Number: <?=$student ['student_phonenumber'];?>"readonly>
+                                          </div>
                                         </div>
-                                        <div class="form-group col-md-5 px-2">
-                                          <input  class="form-control border-bottom" style="border: 0;" placeholder= "Nationality: <?=$student ['student_nationality'];?>"readonly>
+                                        <div class="form-row px-3">
+                                          <div class="form-group col-md-12 px-2">
+                                            <input  class="form-control border-bottom" style="border: 0;" placeholder= "Nationality: <?=$student ['student_nationality'];?>"readonly>
+                                          </div>
                                         </div>
-                                        <!-- Date-->
-                                        <div class="form-group col-md-7 px-2">
-                                            <input  class="form-control border-bottom" style="border: 0;" placeholder= "Date of Birth:<?=$student ['student_dob'];?>" readonly>
+                                        <div class="form-row px-3">
+                                          <!-- Date-->
+                                          <div class="form-group col-md-7 px-2">
+                                            <input  class="form-control border-bottom" style="border: 0;" placeholder= "Date of Birth: <?=$student ['student_dob'];?>" readonly>
                                           </div>
                                           <!--Gender -->
                                           <div class="form-holder mb-3 ml-3" style="align-self: flex-end; transform: translateY(4px);">
                                             <div class="checkbox-tick">
-                                              <label class="male ml-3">
+                                              <label class="male ml-5">
                                               <?php if($student ['student_gender']=="Male"||$student ['student_gender']=="male"){?>
                                                 <input type="radio" name="student_gender" value="male" checked>Male<br>
                                                 <span class="checkmark"></span>
@@ -47,17 +58,22 @@
                                               </label>
                                             </div>
                                           </div>
-                                           <!-- Interest -->
+                                        </div>
+                                        <div class="form-row px-3">
+                                          <!-- Interest -->
                                           <div class="form-group col-md-12 px-2">
-                                          <input  class="form-control border-bottom" style="border: 0;" placeholder= "Interest:<?=$student ['student_interest'];?>" readonly>
-                                          </div>
-                                          <!-- Current Level -->
-                                          <div class="form-group col-md-12 px-2">
-                                          <input  class="form-control border-bottom" style="border: 0;" placeholder= "Current Level:<?=$student ['student_currentlevel'];?>" readonly>
+                                            <input  class="form-control border-bottom" style="border: 0;" placeholder= "Interest: <?=$student ['student_interest'];?>" readonly>
                                           </div>
                                         </div>
-                                        <br>
+                                        <div class="form-row px-3">
+                                          <!-- Current Level -->
+                                          <div class="form-group col-md-12 px-2">
+                                            <input  class="form-control border-bottom" style="border: 0;" placeholder= "Current Level: <?=$student ['student_currentlevel'];?>" readonly>
+                                          </div>
+                                        </div>
+                                        <div class="form-row pt-2 px-4">
                                           <a href="<?=base_url();?>internal/admin_panel/Admin_dashboard/users_accounts_nav" class="btn btn-primary">Back</a>
+                                        </div>
                                       </form>
                                 </div>
                             </div>

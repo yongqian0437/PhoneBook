@@ -69,7 +69,7 @@
 									<!-- Phone number and nationality-->
 									<div class="form-row pt-4 px-3">
 										<div class="form-group col-md-6 px-2">
-											<input type="number" name="student_phonenumber" class="form-control border-bottom" id="student_phonenumber" style="border: 0;" placeholder="Enter your phone number" value="<?=set_value('student_phonenumber') ?>">
+											<input type="number" name="student_phonenumber" class="form-control border-bottom" id="student_phonenumber" style="border: 0;" placeholder="Enter your phone number" value="<?=set_value('student_phonenumber') ?>" required>
                                             <?= form_error('student_phonenumber','<small class="text-danger pl-3">','</small>');?>
 										</div>
 										<div class="form-group col-md-6 px-2">
@@ -120,7 +120,7 @@
                                     </div>
 									<!-- Terms & Condition -->
 									<div class="T&C ml-4 mt-2">
-										<label><input type="checkbox"> Please accept our <a href="https://newinti.edu.my/legal/privacy/">terms and conditions</a>
+										<label><input type="checkbox" required> Please accept our <a href="https://newinti.edu.my/legal/privacy/">terms and conditions</a>
 										</label>
 									</div>
 									<!-- Submit button -->

@@ -251,7 +251,7 @@ class Auth extends CI_Controller
                     'uni_name'=>htmlspecialchars($this->input->post('uni_name',true)),
                     'uni_shortprofile'=>htmlspecialchars($this->input->post('uni_shortprofile',true)),
                     'uni_country'=>htmlspecialchars($this->input->post('uni_country',true)),
-                    'uni_totalcourses'=>htmlspecialchars($this->input->post('uni_totalcourses',true)),
+                // 'uni_totalcourses'=>htmlspecialchars($this->input->post('uni_totalcourses',true)),
                     'uni_hotline'=>htmlspecialchars($this->input->post('uni_hotline',true)),
                     'uni_email'=>htmlspecialchars($this->input->post('uni_email',true)),
                     'uni_address'=>htmlspecialchars($this->input->post('uni_address',true)),

@@ -69,7 +69,7 @@
                                             <div class="form-row pt-4 px-3">
                                              <!-- Company Name -->
                                             <div class="form-group col-md-12 px-2">
-                                              <input type="text" class="form-control border-bottom" style="border: 0;" name="c_name" placeholder="Company Name" value="<?=set_value('course_name')?>">
+                                              <input type="text" class="form-control border-bottom" style="border: 0;" name="c_name" placeholder="Company Name" value="<?=set_value('course_name')?>" required>
                                               <?= form_error('c_name','<small class="text-danger pl-3">','</small>');?>
                                             </div>
 
@@ -86,7 +86,7 @@
 
                                             <!-- Company Registration Number-->
                                             <div class="form-group col-md-8 px-2">
-                                              <input type="text" class="form-control border-bottom" style="border: 0;" name="c_registrationnum" placeholder="Company Registration Number">
+                                              <input type="text" class="form-control border-bottom" style="border: 0;" name="c_registrationnum" placeholder="Company Registration Number" required>
                                             </div>
 
                                             <!-- Company Address -->
@@ -96,7 +96,7 @@
 
                                             <!--Company Email-->
                                             <div class="form-group col-md-12 px-2">
-                                                <input type="email" class="form-control border-bottom" style="border: 0;" name="c_email" placeholder="Company Email" >    
+                                                <input type="email" class="form-control border-bottom" style="border: 0;" name="c_email" placeholder="Company Email" required>    
                                             </div>
 
                                             <!-- Company Website-->

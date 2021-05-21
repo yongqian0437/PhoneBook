@@ -70,19 +70,19 @@
                                     <!-- First and last name-->
                                     <div class="form-row pt-5 px-3">
                                         <div class="form-group col-md-6 px-2">
-                                            <input type="type" name="user_fname" class="form-control border-bottom" id="user_fname" style="border: 0;" placeholder="Enter your first name" value="<?=set_value('user_fname') ?>">
+                                            <input type="type" name="user_fname" class="form-control border-bottom" id="user_fname" style="border: 0;" placeholder="Enter your first name" value="<?=set_value('user_fname') ?>" required>
                                             <?= form_error('user_fname','<small class="text-danger pl-3">','</small>');?>
                         
                                         </div>
                                         <div class="form-group col-md-6 px-2">
-                                            <input type="type" name="user_lname" class="form-control border-bottom" id="user_lname" style="border: 0;" placeholder="Enter your last name" value="<?=set_value('user_lname') ?>">  
+                                            <input type="type" name="user_lname" class="form-control border-bottom" id="user_lname" style="border: 0;" placeholder="Enter your last name" value="<?=set_value('user_lname') ?>" required>  
                                             <?= form_error('user_lname','<small class="text-danger pl-3">','</small>');?> 
                                         </div>
                                     </div>
                                     <!-- Email-->
                                     <div class="form-row pt-3 px-3">
                                         <div class="form-group col-md-12 px-2">
-                                            <input type="email" name="user_email" class="form-control border-bottom" id="user_email" style="border: 0;" placeholder="Enter your email address" value="<?=set_value('user_email') ?>">
+                                            <input type="email" name="user_email" class="form-control border-bottom" id="user_email" style="border: 0;" placeholder="Enter your email address" value="<?=set_value('user_email') ?>" required>
                                             <?= form_error('user_email','<small class="text-danger pl-3">','</small>');?>
                                           
                                         </div>
@@ -90,7 +90,7 @@
                                     <!-- Password and confirm password -->
                                     <div class="form-row pt-3 pb-3 px-3">
                                         <div class="form-group col-md-6 px-2">
-                                            <input type="password" name="user_password" class="form-control border-bottom" id="password" style="border: 0;" placeholder="Enter your password">
+                                            <input type="password" name="user_password" class="form-control border-bottom" id="password" style="border: 0;" placeholder="Enter your password" required>
                                              <?= form_error('user_password','<small class="text-danger pl-3">','</small>');?>
                                         </div>
                                         <div class="form-group col-md-6 px-2">

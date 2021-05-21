@@ -68,20 +68,21 @@
 								<!-- Input fields (Form) -->
                                 <form method="post" action="<?= base_url('user/login/Auth/ep_reg');?>" enctype="multipart/form-data">
 								<?= form_open_multipart('') ?>
-									<!-- Phone number and business email-->
 									<div class="form-row pt-4 px-3">
-										<div class="form-group col-md-6 px-2">
-											<input type="number" name="ep_phonenumber" class="form-control border-bottom" id="ep_phonenumber" style="border: 0;" placeholder="Enter your phone number" value="<?=set_value('ep_phonenumber') ?>">
-                                            <?= form_error('ep_phonenumber','<small class="text-danger pl-3">','</small>');?>
-                                        </div>
-										<div class="form-group col-md-6 px-2">
-											<input type="email" name="ep_businessemail" class="form-control border-bottom" id="ep_businessemail" style="border: 0;" placeholder="Enter your business email" value="<?=set_value('ep_businessemail') ?>">
+										<!-- Business email-->
+										<div class="form-group col-md-12 px-2">
+											<input type="email" name="ep_businessemail" class="form-control border-bottom" id="ep_businessemail" style="border: 0;" placeholder="Enter your business email" value="<?=set_value('ep_businessemail') ?>" required>
                                             <?= form_error('ep_businessemail','<small class="text-danger pl-3">','</small>');?>
 										</div>
 									</div>
-									<!-- Nationality -->
-									<div class="form-row pt-3 px-3">
-										<div class="form-group col-md-12 px-2">
+									<div class="form-row px-3">
+										<!-- Phone number -->
+										<div class="form-group col-md-6 px-2">
+											<input type="number" name="ep_phonenumber" class="form-control border-bottom" id="ep_phonenumber" style="border: 0;" placeholder="Enter your phone number" value="<?=set_value('ep_phonenumber') ?>" required>
+                                            <?= form_error('ep_phonenumber','<small class="text-danger pl-3">','</small>');?>
+                                        </div>
+										<!-- Nationality -->
+										<div class="form-group col-md-6 px-2">
 											<input type="text" name="ep_nationality" class="form-control border-bottom" id="ep_nationality" style="border: 0;" placeholder="Enter your nationality" required>
 										</div>
 									</div>
@@ -90,13 +91,13 @@
 										<div class="form-group col-md-6 px-2">
 											<input type="date" name="ep_dob" class="form-control border-bottom" id="ep_dob" style="border: 0;" required>
 										</div>
-										<div class="form-holder mb-3 ml-3" style="align-self: flex-end; transform: translateY(4px);">
+										<div class="form-holder mb-3 ml-6" style="align-self: flex-end; transform: translateY(4px);">
 											<div class="checkbox-tick">
 												<label class="male ml-3">
 													<input type="radio" name="ep_gender" value="male" required> Male<br>
 													<span class="checkmark"></span>
 												</label>
-												<label class="female ml-5">
+												<label class="female ml-3">
 													<input type="radio" name="ep_gender" value="female" required> Female<br>
 													<span class="checkmark"></span>
 												</label>
@@ -115,6 +116,11 @@
 											<input type="file" class="custom-file-input" id="form-group" name="ep_document" required>
 											<label class="custom-file-label" for="customFile">Upload a file</label>
 										</div>
+									</div>
+									<!-- Terms & Condition -->
+									<div class="T&C ml-4 mt-2">
+										<label><input type="checkbox" required> Please accept our <a href="https://newinti.edu.my/legal/privacy/">terms and conditions</a>
+										</label>
 									</div>
 									<!-- Submit button -->
 									<div class="pt-2 pr-3">
