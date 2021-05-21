@@ -57,7 +57,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-5 ">
+                        <div class="col-xl-6 ">
                             <div class="card h-100" id='card2' ">
                                 <div class=" card-body">
                                 <center>
@@ -69,55 +69,55 @@
                                         <div class="form-row pt-4 px-3">
                                             <!-- University-->
                                             <div class="form-group col-md-12 px-2">
-                                              <input type="text" class="form-control" name="uni_name" placeholder="University Name" value="<?=set_value('uni_name')?>">
+                                              <input type="text" class="form-control border-bottom" style="border: 0;" name="uni_name" placeholder="University Name" value="<?=set_value('uni_name')?>">
                                               <?= form_error('uni_name','<small class="text-danger pl-3">','</small>');?>
                                             </div>
 
                                             <!--  Email -->
                                             <div class="form-group col-md-7 px-2">
-                                              <input type="email" class="form-control" name="uni_email" placeholder="University Email" >
+                                              <input type="email" class="form-control border-bottom" style="border: 0;" name="uni_email" placeholder="University Email" >
                                             </div>
 
                                               <!-- Total courses -->
                                               <div class="form-group col-md-5 px-2">
-                                              <input type="text" class="form-control" name="uni_totalcourses" placeholder="Total Courses" required>
+                                              <input type="text" class="form-control border-bottom" style="border: 0;" name="uni_totalcourses" placeholder="Total Courses" required>
                                             </div>
 
                                             <!-- University Short Profile -->
                                             <div class="form-group col-md-12 px-2">
-                                              <textarea class="form-control" rows="6" name="uni_shortprofile" placeholder="Short Profile" required></textarea>
+                                              <textarea class="form-control border-bottom" style="border: 0;" rows="6" name="uni_shortprofile" placeholder="Short Profile" required></textarea>
                                             </div>
 
                                             <!-- Country -->
                                             <div class="form-group col-md-7 px-2">
-                                              <input type="text" class="form-control" name="uni_country" placeholder="Country of University" required>
+                                              <input type="text" class="form-control border-bottom" style="border: 0;" name="uni_country" placeholder="Country of University" required>
                                             </div>
 
                                              <!--Logo-->
                                              <div class="form-group col-md-5 px-2">
-                                                <input type="file" class="custom-file-input" id="form-group" name="uni_logo">
-                                                <label class="custom-file-label" for="customFile">Upload logo</label>
+                                                <input type="file" class="custom-file-input " id="form-group" name="uni_logo">
+                                                <label class="custom-file-label border-bottom" style="border: 0;" for="customFile">Upload logo</label>
                                              </div>
 
                                             <!-- Address -->
                                             <div class="form-group col-md-12 px-2">
-                                               <textarea class="form-control" rows="2" name="uni_address" placeholder="University Address" required></textarea>
+                                               <textarea class="form-control border-bottom" style="border: 0;" rows="2" name="uni_address" placeholder="University Address" required></textarea>
                                             </div>
 
                                             <!-- QS Ranking, Employability Rank & Total Students -->
                                             <div class="form-group col-md-6 px-2">
-                                                <input type="number" class="form-control" name="uni_qsrank" placeholder="QS Ranking" required>
+                                                <input type="number" class="form-control border-bottom" style="border: 0;" name="uni_qsrank" placeholder="QS Ranking" required>
                                             </div>
                                             <div class="form-group col-md-6 px-2">
-                                                <input type="number" class="form-control" name="uni_employabilityrank" placeholder="Employability Rank" required>
+                                                <input type="number" class="form-control border-bottom" style="border: 0;" name="uni_employabilityrank" placeholder="Employability Rank" required>
                                             </div>
                                             <div class="form-group col-md-6 px-2">
-                                                <input type="number" class="form-control" name="uni_totalstudents" placeholder="Total Students" required>
+                                                <input type="number" class="form-control border-bottom" style="border: 0;" name="uni_totalstudents" placeholder="Total Students" required>
                                             </div>
 
                                             <!-- Hotline-->
                                             <div class="form-group col-md-6 px-2">
-                                              <input type="number" class="form-control" name="uni_hotline" placeholder="University Hotline" required>
+                                              <input type="number" class="form-control border-bottom" style="border: 0;" name="uni_hotline" placeholder="University Hotline" required>
                                             </div>
                                             
                                             <!-- Term and Conditions & Register Button -->

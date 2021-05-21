@@ -58,7 +58,7 @@
 						</div>
 
 						<!-- Form -->
-						<div class="col-xl-5 ">
+						<div class="col-xl-6 ">
 							<div class="card h-100" id='card2' >
                                 <div class=" card-body">
 								<center>

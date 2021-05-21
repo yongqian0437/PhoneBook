@@ -69,48 +69,48 @@
                                         <div class="form-row pt-4 px-3">
                                              <!-- Course Name -->
                                             <div class="form-group col-md-12 px-2">
-                                              <input type="text" class="form-control" name="course_name" placeholder="Course Name" value="<?=set_value('course_name')?>">
+                                              <input type="text" class="form-control border-bottom" style="border: 0;" name="course_name" placeholder="Course Name" value="<?=set_value('course_name')?>">
                                               <?= form_error('course_name','<small class="text-danger pl-3">','</small>');?>
                                             </div>
 
                                             <!-- Course Area-->
                                             <div class="form-group col-md-6 px-2">
-                                              <input type="text" class="form-control" name="course_area" placeholder="Course Area" required>
+                                              <input type="text" class="form-control border-bottom" style="border: 0;" name="course_area" placeholder="Course Area" required>
                                             </div>
 
                                             <!-- Course Level -->
                                             <div class="form-group col-md-6 px-2">
-                                              <input type="text" class="form-control" name="course_level" placeholder="Course Level" required>
+                                              <input type="text" class="form-control border-bottom" style="border: 0;" name="course_level" placeholder="Course Level" required>
                                             </div>
 
                                             <!-- Course Duration-->
                                             <div class="form-group col-md-6 px-2">
-                                              <input type="number" class="form-control" name="course_duration" placeholder="Course Duration" required>
+                                              <input type="number" class="form-control border-bottom" style="border: 0;" name="course_duration" placeholder="Course Duration" required>
                                             </div>
 
                                             <!-- Course Fee-->
                                             <div class="form-group col-md-6 px-2">
-                                              <input type="number" class="form-control" name="course_fee" placeholder="Course Fee" required>
+                                              <input type="number" class="form-control border-bottom" style="border: 0;" name="course_fee" placeholder="Course Fee" required>
                                             </div>
                              
                                             <!-- Course Short Profile -->
                                             <div class="form-group col-md-12 px-2">
-                                               <textarea class="form-control" name="course_shortprofile" placeholder="Course Short Profile" required></textarea>
+                                               <textarea class="form-control border-bottom" style="border: 0;" name="course_shortprofile" placeholder="Course Short Profile" required></textarea>
                                             </div>
 
                                             <!-- Course Structure -->
                                             <div class="form-group col-md-12 px-2">
-                                                <input type="text" class="form-control" name="course_structure" placeholder="Course Structure" required>
+                                                <input type="text" class="form-control border-bottom" style="border: 0;" name="course_structure" placeholder="Course Structure" required>
                                             </div>
 
                                              <!-- Course Requirement -->
                                             <div class="form-group col-md-12 px-2">
-                                                <input type="text" class="form-control" name="course_requirements" placeholder="Course Requirements" required>
+                                                <input type="text" class="form-control border-bottom" style="border: 0;" name="course_requirements" placeholder="Course Requirements" required>
                                             </div>
 
                                              <!-- Course Career Opportunities-->
                                              <div class="form-group col-md-12 px-2">
-                                              <input type="text" class="form-control" name="course_careeropportunities" placeholder="Course Career Opportunities-" required>
+                                              <input type="text" class="form-control border-bottom" style="border: 0;" name="course_careeropportunities" placeholder="Course Career Opportunities-" required>
                                             </div>
 
                                             <!-- Course Intake-->

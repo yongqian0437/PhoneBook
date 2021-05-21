@@ -57,7 +57,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-5 ">
+                        <div class="col-xl-6 ">
                             <div class="card h-100" id='card2' ">
                                 <div class=" card-body">
                                 <center>
@@ -69,39 +69,39 @@
                                             <div class="form-row pt-4 px-3">
                                              <!-- Company Name -->
                                             <div class="form-group col-md-12 px-2">
-                                              <input type="text" class="form-control" name="c_name" placeholder="Company Name" value="<?=set_value('course_name')?>">
+                                              <input type="text" class="form-control border-bottom" style="border: 0;" name="c_name" placeholder="Company Name" value="<?=set_value('course_name')?>">
                                               <?= form_error('c_name','<small class="text-danger pl-3">','</small>');?>
                                             </div>
 
                                             <!-- Company Phone Number-->
                                             <div class="form-group col-md-7 px-2">
-                                              <input type="number" class="form-control" name="c_phonenumber" placeholder="Company Phone Number" required>
+                                              <input type="number" class="form-control border-bottom" style="border: 0;" name="c_phonenumber" placeholder="Company Phone Number" required>
                                             </div>
 
                                             <!--Logo-->
                                             <div class="form-group col-md-5 px-2">
                                                 <input type="file" class="custom-file-input" id="form-group" name="c_logo">
-                                                <label class="custom-file-label" for="customFile">Upload logo</label>
+                                                <label class="custom-file-label border-bottom" style="border: 0;" for="customFile">Upload logo</label>
                                              </div>
 
                                             <!-- Company Registration Number-->
                                             <div class="form-group col-md-8 px-2">
-                                              <input type="text" class="form-control" name="c_registrationnum" placeholder="Company Registration Number">
+                                              <input type="text" class="form-control border-bottom" style="border: 0;" name="c_registrationnum" placeholder="Company Registration Number">
                                             </div>
 
                                             <!-- Company Address -->
                                             <div class="form-group col-md-12 px-2">
-                                              <input type="text" class="form-control" name="c_address" placeholder="Company Address" required>
+                                              <input type="text" class="form-control border-bottom" style="border: 0;" name="c_address" placeholder="Company Address" required>
                                             </div>
 
                                             <!--Company Email-->
                                             <div class="form-group col-md-12 px-2">
-                                                <input type="email" class="form-control" name="c_email" placeholder="Company Email" >    
+                                                <input type="email" class="form-control border-bottom" style="border: 0;" name="c_email" placeholder="Company Email" >    
                                             </div>
 
                                             <!-- Company Website-->
                                             <div class="form-group col-md-12 px-2">
-                                              <input type="text" class="form-control" name="c_website" placeholder="Company Website" required>
+                                              <input type="text" class="form-control border-bottom" style="border: 0;" name="c_website" placeholder="Company Website" required>
                                             </div>
                                             
                                             <!-- Term and Conditions & Register Button -->

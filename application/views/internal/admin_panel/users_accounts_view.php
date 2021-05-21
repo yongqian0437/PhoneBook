@@ -64,7 +64,7 @@
                             </td>
 
                             <?php } else{ ?>
-                            <td><a href="<?= base_url(); ?>internal/admin_panel/Admin_dashboard/update_acc_approval?slname=<?php echo $re->user_lname;?>&semail=<?php echo $re->user_email;?>&spassword=<?php echo $re->user_password;?>&sid=<?php echo $re->user_id;?>&sapproval=<?php echo $re->user_approval;?>" class="btn btn-warning">Pending</a>
+                            <td><a href="<?= base_url(); ?>internal/admin_panel/Admin_dashboard/update_acc_approval?slname=<?php echo $re->user_lname;?>&sfname=<?php echo $re->user_fname;?>&semail=<?php echo $re->user_email;?>&spassword=<?php echo $re->user_password;?>&sid=<?php echo $re->user_id;?>&sapproval=<?php echo $re->user_approval;?>" class="btn btn-warning">Pending</a>
                                 <a href="<?= base_url(); ?>internal/admin_panel/Admin_dashboard/decline_acc?slname=<?php echo $re->user_lname;?>&semail=<?php echo $re->user_email;?>&spassword=<?php echo $re->user_password;?>&sid=<?php echo $re->user_id;?>&sapproval=<?php echo $re->user_approval;?>" class="btn btn-info"  onclick=" return confirm ('Confirm to decline?');">Decline</a>
 
                                 <!--user is student-->

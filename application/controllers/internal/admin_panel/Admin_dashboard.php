@@ -94,6 +94,7 @@ class Admin_dashboard extends CI_Controller
         private function _sendEmail()
     {
         $lname=$_REQUEST['slname'];
+        $fname=$_REQUEST['sfname'];
         $id=$_REQUEST['sid'];
         $email=$_REQUEST['semail'];
         $password=$_REQUEST['spassword'];
@@ -117,7 +118,9 @@ class Admin_dashboard extends CI_Controller
 
         if($users['user_approval']==1)
         {
-            $this->email->message("Congratulations ". $lname." .Your account is activated "."<br><p>This is your email address and password<p>"."Email Address :".$email."<br> Password: ".$password);
+            $this->email->message("Welcome, "."$fname ". "$lname ". ". Thank you for registering and being part of iJEES, INTI's Interactive Joint Education Employability System."."<br><br>Congratulations! Your account has been approved and is now activated. <br><br>You may now login to the system at any time. Your credentials are the same as the ones you have provided upon registration:<br><br>".
+            "Email Address :".$email."<br> Password: ".$password);
+            // $this->email->message("Welcome ".$fname . $lname." .Thank you for registering and being part of iJEES, INTI's Interactive Joint Education Employability System.  "."<br><p>This is your email address and password<p>"."Email Address :".$email."<br> Password: ".$password);
         }
         else
         {

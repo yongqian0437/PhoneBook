@@ -275,64 +275,64 @@ class Auth extends CI_Controller
 
           $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
           Check your email to get the approval from the admin</div>'); 
-          redirect('user/login/Auth/course'); 
-        }
-          
-    }
-
-    public function course()
-    {
-        $this->form_validation->set_rules('course_name','Course Name', 'required|trim');
-        $uni_id= $this->session->userdata('uni_id');
-        //$uni_id=$this->universities_model->last_uni_id();
-        if($this->form_validation->run()== false)
-        {
-        $data['title']="Course";
-        $this->load->view('external/templates/header',$data);
-        $this->load->view('user/registration/course_view');
-        }
-        else
-        {
-            $data=
-                [
-                //  'uni_logo'=>htmlspecialchars($this->input->post('uni_logo',true)),  
-                    'uni_id'=>$uni_id,
-                    'course_area'=>htmlspecialchars($this->input->post('course_area',true)),
-                    'course_level'=>htmlspecialchars($this->input->post('course_level',true)),
-                    'course_name'=>htmlspecialchars($this->input->post('course_name',true)),
-                    'course_duration'=>htmlspecialchars($this->input->post('course_duration',true)),
-                    'course_fee'=>htmlspecialchars($this->input->post('course_fee',true)),
-                    'course_shortprofile'=>htmlspecialchars($this->input->post('course_shortprofile',true)),
-                    'course_structure'=>htmlspecialchars($this->input->post('course_structure',true)),
-                    'course_requirements'=>htmlspecialchars($this->input->post('course_requirements',true)),
-                    'course_intake'=>htmlspecialchars($this->input->post('course_intake',true)),
-                    'course_careeropportunities'=>htmlspecialchars($this->input->post('course_careeropportunities',true)),
-                ];
-
-          // insert data into database
-          $this->courses_model->insert($data);
-
-          $course_name= $this->input->post('course_name');
-          $co=$this->courses_model->valid_course_name($course_name);
-          $course=
-          [
-              'course_id'=>$co['course_id'],
-              'uni_id'=>$co['uni_id'],
-              'course_name'=>$co['course_name'],
-          ];
-
-          $this->session->set_userdata($course);
-
           redirect('user/login/Auth/ep_reg'); 
         }
           
     }
 
+    // public function course()
+    // {
+    //     $this->form_validation->set_rules('course_name','Course Name', 'required|trim');
+    //     $uni_id= $this->session->userdata('uni_id');
+    //     //$uni_id=$this->universities_model->last_uni_id();
+    //     if($this->form_validation->run()== false)
+    //     {
+    //     $data['title']="Course";
+    //     $this->load->view('external/templates/header',$data);
+    //     $this->load->view('user/registration/course_view');
+    //     }
+    //     else
+    //     {
+    //         $data=
+    //             [
+    //             //  'uni_logo'=>htmlspecialchars($this->input->post('uni_logo',true)),  
+    //                 'uni_id'=>$uni_id,
+    //                 'course_area'=>htmlspecialchars($this->input->post('course_area',true)),
+    //                 'course_level'=>htmlspecialchars($this->input->post('course_level',true)),
+    //                 'course_name'=>htmlspecialchars($this->input->post('course_name',true)),
+    //                 'course_duration'=>htmlspecialchars($this->input->post('course_duration',true)),
+    //                 'course_fee'=>htmlspecialchars($this->input->post('course_fee',true)),
+    //                 'course_shortprofile'=>htmlspecialchars($this->input->post('course_shortprofile',true)),
+    //                 'course_structure'=>htmlspecialchars($this->input->post('course_structure',true)),
+    //                 'course_requirements'=>htmlspecialchars($this->input->post('course_requirements',true)),
+    //                 'course_intake'=>htmlspecialchars($this->input->post('course_intake',true)),
+    //                 'course_careeropportunities'=>htmlspecialchars($this->input->post('course_careeropportunities',true)),
+    //             ];
+
+    //       // insert data into database
+    //       $this->courses_model->insert($data);
+
+    //       $course_name= $this->input->post('course_name');
+    //       $co=$this->courses_model->valid_course_name($course_name);
+    //       $course=
+    //       [
+    //           'course_id'=>$co['course_id'],
+    //           'uni_id'=>$co['uni_id'],
+    //           'course_name'=>$co['course_name'],
+    //       ];
+
+    //       $this->session->set_userdata($course);
+
+    //       redirect('user/login/Auth/ep_reg'); 
+    //     }
+          
+    // }
+
     public function ep_reg()
     { 
         $user_id= $this->session->userdata('user_id');
         $uni_id= $this->session->userdata('uni_id');
-        $course_id= $this->session->userdata('course_id');
+        //$course_id= $this->session->userdata('course_id');
         // $user_id=$this->user_ep_model->last_user_id();
         // $uni_id=$this->universities_model->last_uni_id();
        // $course_id=$this->courses_model->last_course_id();
@@ -358,7 +358,7 @@ class Auth extends CI_Controller
             [
                 'user_id'=>$user_id,
                 'uni_id'=>$uni_id,
-                'course_id'=>$course_id,
+                //'course_id'=>$course_id,
                 'ep_phonenumber'=>htmlspecialchars($this->input->post('ep_phonenumber',true)),
                 'ep_businessemail'=>htmlspecialchars($this->input->post('ep_businessemail',true)),
                 'ep_nationality'=>htmlspecialchars($this->input->post('ep_nationality',true)),
