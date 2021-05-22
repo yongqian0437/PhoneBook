@@ -6,7 +6,8 @@ class Users_information extends CI_Controller
     public function __construct()
     {
         parent:: __construct();
-        $this->load->model(['user_student_model','user_ep_model','user_ac_model','user_ea_model','user_e_model']);
+        $this->load->model(['user_student_model','user_ep_model','user_ac_model','user_ea_model','user_e_model',
+        'company_model','universities_model']);
     }
 
     public function students_info()
@@ -54,6 +55,17 @@ class Users_information extends CI_Controller
         $this->load->view('internal/templates/sidenav',$data);
         // $this->load->view('templates/topbar',$data);
         $this->load->view('internal/admin_panel/ep_form_view',$data);
+        $this->load->view('internal/templates/footer');
+    }
+
+    public function university($uni_id)
+    {
+        $data['title']="Detail of University";
+        //$company['c']=$this->company_model->c_details($c_id);
+        $university['uni']=$this->universities_model->uni_details($uni_id);
+        $this->load->view('internal/templates/header',$data);
+        $this->load->view('internal/templates/sidenav',$data);
+        $this->load->view('internal/admin_panel/university_form_view',$university);
         $this->load->view('internal/templates/footer');
     }
 
@@ -121,11 +133,23 @@ class Users_information extends CI_Controller
     public function detail_employer($id)
     {
         $data['title']="Detail of Employer";
-        $data['e']=$this->user_e_model->e_details($id);        
+        $employer['e']=$this->user_e_model->e_details($id);
         $this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav',$data);
         // $this->load->view('templates/topbar',$data);
-        $this->load->view('internal/admin_panel/e_form_view',$data);
+        $this->load->view('internal/admin_panel/e_form_view',$employer);
+        $this->load->view('internal/templates/footer');
+        //$user_id=$this->company($id);
+        //redirect('internal/admin_panel/Users_information/company',$employer); 
+    }
+
+    public function company($c_id)
+    {
+        $data['title']="Detail of Company";
+        $company['c']=$this->company_model->c_details($c_id);
+        $this->load->view('internal/templates/header',$data);
+        $this->load->view('internal/templates/sidenav',$data);
+        $this->load->view('internal/admin_panel/company_form_view',$company);
         $this->load->view('internal/templates/footer');
     }
 }

@@ -1,4 +1,11 @@
-<div class="container">
+<!-- Content Wrapper -->
+<div id="content-wrapper" >
+
+<!-- Main Content -->
+<div id="content">    
+    
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
         <!-- Outer Row -->
         <div class="row justify-content-center">
 
@@ -21,16 +28,22 @@
                                           <center><b><p class="card-title">Submit Date: <?=$ac['ac_submitdate'];?></p></b></center>
                                             <!-- Phone number and business email-->
                                             <div class="form-row pt-4 px-3">
-                                              <div class="form-group col-md-7 px-2">
+                                              <div class="form-group col-md-12 px-2">
                                                 <input  class="form-control border-bottom" style="border: 0;" placeholder= "Phone Number: <?=$ac['ac_phonenumber'];?>" readonly>
                                               </div>
-                                               <!-- Nationality -->
-                                               <div class="form-group col-md-5 px-2">
-                                              <input  class="form-control border-bottom" style="border: 0;" placeholder= "Nationality: <?=$ac['ac_nationality'];?>" readonly>
+                                            </div>
+                                            <div class="form-row 4 px-3">
+                                              <!-- Nationality -->
+                                              <div class="form-group col-md-12 px-2">
+                                                <input  class="form-control border-bottom" style="border: 0;" placeholder= "Nationality: <?=$ac['ac_nationality'];?>" readonly>
                                               </div>
-                                              <div class="form-group col-md-7 px-2">
+                                            </div>
+                                            <div class="form-row 4 px-3">
+                                              <div class="form-group col-md-12 px-2">
                                               <input  class="form-control border-bottom" style="border: 0;" placeholder= "Business Email: <?=$ac['ac_businessemail'];?>"readonly >
                                               </div>
+                                            </div>
+                                            <div class="form-row 4 px-3">
                                               <!-- Date-->
                                               <div class="form-group col-md-7 px-2">
                                               <input  class="form-control border-bottom" style="border: 0;" placeholder= "Date of Birth: <?=$ac['ac_dob'];?>"readonly >
@@ -51,7 +64,8 @@
                                                   </label>
                                                 </div>
                                               </div>
-                                               
+                                            </div>
+                                            <div class="form-row 4 px-3">
                                                <!-- University  -->
                                               <div class="form-group col-md-12 px-2">
                                               <input  class="form-control border-bottom" style="border: 0;" placeholder= "University: <?=$ac['ac_university'];?>" readonly>
@@ -78,6 +92,3 @@
 
     
     </div>
-
-
-

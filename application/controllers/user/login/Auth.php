@@ -462,7 +462,6 @@ class Auth extends CI_Controller
 
     public function company()
     {
-        
         $this->form_validation->set_rules('c_name','Compnay Name', 'required|trim');
         $this->form_validation->set_rules('c_phonenumber','Phone Number', 'required|trim|min_length[5]',[
             'min_length'=> 'Phone number too short'

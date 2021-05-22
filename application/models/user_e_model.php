@@ -70,4 +70,9 @@ class user_e_model extends CI_Model
     {
      return $this->db->get_where('user_e',['user_id'=>$id])->row_array();
     }
+
+//     public function getcompanyid($c_id)
+//     {
+//      return $this->db->get_where('user_e',['c_id'=>$c_id])->row_array();
+//     }
 }

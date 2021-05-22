@@ -1,4 +1,11 @@
-<div class="container">
+<!-- Content Wrapper -->
+<div id="content-wrapper" >
+
+<!-- Main Content -->
+<div id="content">    
+    
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
         <!-- Outer Row -->
         <div class="row justify-content-center">
 
@@ -21,24 +28,30 @@
                                            <center><b><p class="card-title">Submit Date: <?=$ea['ea_submitdate'];?></p></b></center>
                                             <!-- Phone number and business email-->
                                             <div class="form-row pt-4 px-3">
-                                              <div class="form-group col-md-7 px-2">
+                                              <div class="form-group col-md-12 px-2">
                                                 <input  class="form-control border-bottom" style="border: 0;" placeholder= "Phone Number: <?=$ea['ea_phonenumber'];?>" readonly>
                                               </div>
+                                            </div>
+                                            <div class="form-row px-3">
                                                <!-- Nationality -->
-                                               <div class="form-group col-md-5 px-2">
-                                              <input  class="form-control border-bottom" style="border: 0;" placeholder= "Nationality: <?=$ea['ea_nationality'];?>"readonly >
+                                               <div class="form-group col-md-12 px-2">
+                                                <input  class="form-control border-bottom" style="border: 0;" placeholder= "Nationality: <?=$ea['ea_nationality'];?>"readonly >
                                               </div>
-                                              <div class="form-group col-md-7 px-2">
-                                              <input  class="form-control border-bottom" style="border: 0;" placeholder= "Business Email: <?=$ea['ea_businessemail'];?>" readonly>
+                                            </div>
+                                            <div class="form-row px-3">
+                                              <div class="form-group col-md-12 px-2">
+                                                <input  class="form-control border-bottom" style="border: 0;" placeholder= "Business Email: <?=$ea['ea_businessemail'];?>" readonly>
                                               </div>
+                                            </div>
+                                            <div class="form-row px-3">
                                                <!-- Date-->
                                               <div class="form-group col-md-7 px-2">
-                                              <input  class="form-control border-bottom" style="border: 0;" placeholder= "Date of Birth: <?=$ea['ea_dob'];?>" readonly>
+                                                <input  class="form-control border-bottom" style="border: 0;" placeholder= "Date of Birth: <?=$ea['ea_dob'];?>" readonly>
                                               </div>
                                                <!-- Gender-->
                                               <div class="form-holder mb-3 ml-3" style="align-self: flex-end; transform: translateY(4px);">
                                                 <div class="checkbox-tick">
-                                                  <label class="male ml-3">
+                                                  <label class="male ml-5">
                                                   <?php if($ea['ea_gender']=="Male"||$ea['ea_gender']=="male"){?>
                                                     <input type="radio" name="ea_gender" value="male" checked> Male<br>
                                                     <span class="checkmark"></span>

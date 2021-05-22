@@ -1,4 +1,11 @@
-<div class="container">
+<!-- Content Wrapper -->
+<div id="content-wrapper" >
+
+<!-- Main Content -->
+<div id="content">    
+    
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
         <!-- Outer Row -->
         <div class="row justify-content-center">
 
