@@ -50,4 +50,16 @@ class employer_projects_model extends CI_Model
         $this->db->where($condition);
         return $this->db->get('employer_projects')->result();
     }
+
+    // WIP
+    function approved_eps()
+    {
+        $this->db->select('')
+                 ->from('employer_projects')
+                 ->join('user_e', 'user_e.e_id = employer_projects.e_id')
+                 ->join('company', 'company.c_id = user_e.c_id')
+                 ->where('emp_approval', '1');
+        return $this->db->get()->result_array();
+    }
+
 }
