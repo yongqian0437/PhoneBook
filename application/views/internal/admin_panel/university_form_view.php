@@ -78,6 +78,16 @@
                                         <input  class="form-control border-bottom" style="border: 0;" placeholder= "University Hotline: <?=$uni['uni_hotline'];?>" readonly>
                                     </div>
 
+                                    <!-- Upload University Logo-->
+                                    <div class="form-group col-md-6 px-2">
+                                        <a class="btn btn-primary" href="<?=base_url('assets/img/reg_uni_logo/'.$uni['uni_logo'])?>" role="button" target="_blank">View University Logo</a>
+                                    </div>
+
+                                    <!-- Upload University Background-->
+                                    <div class="form-group col-md-6 px-2">
+                                        <a class="btn btn-primary" href="<?=base_url('assets/img/reg_uni_background/'.$uni['uni_background'])?>" role="button" target="_blank">View University Background</a>
+                                    </div>
+
                                     <div class="d-grid gap-2 d-md-block">
                                         <!-- <a href="<?=base_url();?>internal/admin_panel/Admin_dashboard/users_accounts_nav" class="btn btn-primary">Back</a> -->
                                     <a href="<?=base_url();?>internal/admin_panel/Users_information/detail_education_partner/<?php echo $this->session->userdata('user_id');?>" class="btn btn-primary">Back</a>

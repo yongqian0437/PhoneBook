@@ -43,8 +43,8 @@
                                               <input  class="form-control border-bottom" style="border: 0;" placeholder= "Business Email: <?=$ep['ep_businessemail'];?>" readonly>
                                               </div>
                                             </div>
-                                            <div class="form-row px-3"
-                                                <!-- Date -->
+                                            <div class="form-row px-3">
+                                              <!-- Date -->
                                               <div class="form-group col-md-7 px-2">
                                               <input  class="form-control border-bottom" style="border: 0;" placeholder= "Date of Birth: <?=$ep['ep_dob'];?>" readonly>
                                               </div>
@@ -75,6 +75,7 @@
                                             <div class="pt-3 text-center">
                                               <a class="btn btn-primary" href="<?=base_url('assets/uploads/education_partner/'.$ep['ep_document'])?>" role="button" target="_blank">View Uploaded Document</a>
                                             </div>
+                                            
                                             <div class="d-grid gap-2 d-md-block">
                                               <a href="<?=base_url();?>internal/admin_panel/Admin_dashboard/users_accounts_nav" class="btn btn-primary">Back</a>
                                               <a style=float:right href="<?=base_url();?>internal/admin_panel/Users_information/university/<?php echo $ep['uni_id'];?>" class="btn btn-primary">Continue</a>

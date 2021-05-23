@@ -190,6 +190,24 @@ class Auth extends CI_Controller
         }
     }
 
+    public function upload_img($path, $file_input_name) 
+    {
+        if ($_FILES){
+            $config['upload_path'] = $path;
+            $config['allowed_types'] = 'jpeg|jpg|png';
+            $this->load->library('upload', $config);
+            if (!$this->upload->do_upload($file_input_name)) {
+                echo json_encode([
+                    'status' => 0,
+                    'message' => '<span style="color:#900;">' . $this->upload->display_errors() . '<span>'
+                ]);
+            } else {
+                $doc_data = ($this->upload->data());
+                return $doc_data;
+            }   
+        }
+    }
+
     public function student_reg()
     {
        // $user_id=$this->user_student_model->last_user_id();// get the id from student model
@@ -245,12 +263,13 @@ class Auth extends CI_Controller
         }
         else
         {
-              $uni_logo= $this->upload_doc('./assets/img/reg_uni_logo', 'uni_logo');
-    
+              $uni_logo= $this->upload_img('./assets/img/reg_uni_logo', 'uni_logo');
+              $uni_background= $this->upload_img('./assets/img/reg_uni_background', 'uni_background');
+              
             $data=
                 [
-                //  'uni_logo'=>htmlspecialchars($this->input->post('uni_logo',true)),  
                     'uni_logo'=>$uni_logo['file_name'],
+                    'uni_background'=>$uni_background['file_name'],
                     'uni_name'=>htmlspecialchars($this->input->post('uni_name',true)),
                     'uni_shortprofile'=>htmlspecialchars($this->input->post('uni_shortprofile',true)),
                     'uni_country'=>htmlspecialchars($this->input->post('uni_country',true)),
@@ -478,10 +497,11 @@ class Auth extends CI_Controller
         }
         else
         {
-            
+            $c_logo= $this->upload_img('./assets/img/reg_c_logo', 'c_logo');
             $data=
                 [
                 //  'uni_logo'=>htmlspecialchars($this->input->post('uni_logo',true)),  
+                    'c_logo'=>$c_logo['file_name'],
                     'c_name'=>htmlspecialchars($this->input->post('c_name',true)),
                     'c_registrationnum'=>htmlspecialchars($this->input->post('c_registrationnum',true)),
                     'c_address'=>htmlspecialchars($this->input->post('c_address',true)),

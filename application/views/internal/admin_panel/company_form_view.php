@@ -40,19 +40,24 @@
                                     <input  class="form-control border-bottom" style="border: 0;" placeholder= "Registration Number: <?=$c['c_registrationnum'];?>" readonly>
                                 </div>
 
-                               <!-- Company Address -->
-                               <div class="form-group col-md-12 px-2">
-                               <input  class="form-control border-bottom" style="border: 0;" placeholder= "Company Address: <?=$c['c_address'];?>" readonly>
+                                <!-- Company Address -->
+                                <div class="form-group col-md-12 px-2">
+                                    <input  class="form-control border-bottom" style="border: 0;" placeholder= "Company Address: <?=$c['c_address'];?>" readonly>
                                 </div>
 
                                 <!--Company Email-->
                                 <div class="form-group col-md-12 px-2">
-                                <input  class="form-control border-bottom" style="border: 0;" placeholder= "Email Address: <?=$c['c_email'];?>" readonly>
+                                    <input  class="form-control border-bottom" style="border: 0;" placeholder= "Email Address: <?=$c['c_email'];?>" readonly>
                                 </div>
 
                                 <!-- Company Website-->
                                 <div class="form-group col-md-12 px-2">
-                                <input  class="form-control border-bottom" style="border: 0;" placeholder= "Website: <?=$c['c_website'];?>" readonly>
+                                    <input  class="form-control border-bottom" style="border: 0;" placeholder= "Website: <?=$c['c_website'];?>" readonly>
+                                </div>
+
+                                <!-- Upload Company Logo-->
+                                <div class="pt-3 text-center">
+                                    <a class="btn btn-primary" href="<?=base_url('assets/img/reg_c_logo/'.$c['c_logo'])?>" role="button" target="_blank">View Company Logo</a>
                                 </div>
                                   
                                 <div class="d-grid gap-2 d-md-block">

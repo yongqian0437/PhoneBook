@@ -96,15 +96,15 @@
 
                                              <!--Logo-->
                                              <div class="form-group col-md-5 px-2">
-                                                <input type="file" class="custom-file-input " id="form-group" name="uni_logo">
+                                                <input type="file" class="custom-file-input " id="form-group" name="uni_logo" required>
                                                 <label class="custom-file-label border-bottom" style="border: 0;" for="customFile">Upload logo</label>
                                              </div>
 
-                                              <!--Background-->
-                                              <div class="form-group col-md-12 px-2">
-                                                <input type="file" class="custom-file-input " id="form-group" name="uni_background">
+                                            <!--Background-->
+                                            <div class="form-group col-md-12 px-2">
+                                                <input type="file" class="custom-file-input " id="form-group" name="uni_background" required>
                                                 <label class="custom-file-label border-bottom" style="border: 0;" for="customFile">Upload University Background</label>
-                                             </div>
+                                            </div>
 
                                             <!-- Address -->
                                             <div class="form-group col-md-12 px-2">
