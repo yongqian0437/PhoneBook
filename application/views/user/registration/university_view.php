@@ -65,7 +65,8 @@
                                 </center>
 
                                <!-- Form -->
-                               <form method="post" action="<?= base_url('user/login/Auth/university');?>">
+                               <form method="post" action="<?= base_url('user/login/Auth/university');?>" enctype="multipart/form-data">
+                               <?= form_open_multipart('') ?>
                                         <div class="form-row pt-4 px-3">
                                             <!-- University-->
                                             <div class="form-group col-md-12 px-2">
@@ -97,6 +98,12 @@
                                              <div class="form-group col-md-5 px-2">
                                                 <input type="file" class="custom-file-input " id="form-group" name="uni_logo">
                                                 <label class="custom-file-label border-bottom" style="border: 0;" for="customFile">Upload logo</label>
+                                             </div>
+
+                                              <!--Background-->
+                                              <div class="form-group col-md-12 px-2">
+                                                <input type="file" class="custom-file-input " id="form-group" name="uni_background">
+                                                <label class="custom-file-label border-bottom" style="border: 0;" for="customFile">Upload University Background</label>
                                              </div>
 
                                             <!-- Address -->

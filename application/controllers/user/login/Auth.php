@@ -245,11 +245,12 @@ class Auth extends CI_Controller
         }
         else
         {
-            $uni_logo= $this->upload_doc('./assets/img/reg_uni_logo', 'uni_logo');
+              $uni_logo= $this->upload_doc('./assets/img/reg_uni_logo', 'uni_logo');
+    
             $data=
                 [
                 //  'uni_logo'=>htmlspecialchars($this->input->post('uni_logo',true)),  
-                    'uni_logo'=>$uni_logo['filename'],
+                    'uni_logo'=>$uni_logo['file_name'],
                     'uni_name'=>htmlspecialchars($this->input->post('uni_name',true)),
                     'uni_shortprofile'=>htmlspecialchars($this->input->post('uni_shortprofile',true)),
                     'uni_country'=>htmlspecialchars($this->input->post('uni_country',true)),

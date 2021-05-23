@@ -55,8 +55,9 @@
                                 <input  class="form-control border-bottom" style="border: 0;" placeholder= "Website: <?=$c['c_website'];?>" readonly>
                                 </div>
                                   
-                                <div class="form-row pt-2 px-4">
-                                    <a href="<?=base_url();?>internal/admin_panel/Admin_dashboard/users_accounts_nav" class="btn btn-primary">Back</a>
+                                <div class="d-grid gap-2 d-md-block">
+                                    <!-- <a href="<?=base_url();?>internal/admin_panel/Admin_dashboard/users_accounts_nav" class="btn btn-primary">Back</a> -->
+                                    <a href="<?=base_url();?>internal/admin_panel/Users_information/detail_employer/<?php echo $this->session->userdata('user_id');?>" class="btn btn-primary">Back</a>
                                 </div>
 
                                  <!--Logo-->

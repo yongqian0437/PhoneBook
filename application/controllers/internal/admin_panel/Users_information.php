@@ -43,14 +43,25 @@ class Users_information extends CI_Controller
         // $this->load->view('templates/topbar',$data);
         $result=$this->user_ep_model->index();
         $data=array('eplist'=>$result);
+        $this->session->set_userdata($data); 
         $this->load->view('internal/admin_panel/ep_view',$data);
         $this->load->view('internal/templates/footer');   
     }
 
-    public function detail_education_partner ($id)
+    public function detail_education_partner ($id)//get user id to find ep details
     {
         $data['title']="Detail of Education Partner";
-        $data['ep']=$this->user_ep_model->ep_details($id);        
+        $data['ep']=$this->user_ep_model->ep_details($id); 
+        $ep_information=$this->user_ep_model->ep_details($id); 
+        $ep_info=
+        [
+            'ep_id'=> $ep_information['ep_id'],
+            'user_id'=> $ep_information['user_id'],
+            
+        ];
+
+        $this->session->set_userdata($ep_info);
+       
         $this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav',$data);
         // $this->load->view('templates/topbar',$data);
@@ -61,7 +72,7 @@ class Users_information extends CI_Controller
     public function university($uni_id)
     {
         $data['title']="Detail of University";
-        //$company['c']=$this->company_model->c_details($c_id);
+        $data['ep']=$this->user_ep_model->ep_details($uni_id); 
         $university['uni']=$this->universities_model->uni_details($uni_id);
         $this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav',$data);
@@ -134,6 +145,14 @@ class Users_information extends CI_Controller
     {
         $data['title']="Detail of Employer";
         $employer['e']=$this->user_e_model->e_details($id);
+        $e_information=$this->user_e_model->e_details($id);
+        $e_info=
+        [
+            'e_id'=> $e_information['e_id'],
+            'user_id'=> $e_information['user_id'],
+        ];
+
+        $this->session->set_userdata($e_info);
         $this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav',$data);
         // $this->load->view('templates/topbar',$data);

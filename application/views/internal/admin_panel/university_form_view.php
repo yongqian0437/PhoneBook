@@ -79,8 +79,11 @@
                                     </div>
 
                                     <div class="d-grid gap-2 d-md-block">
-                                        <a href="<?=base_url();?>internal/admin_panel/Admin_dashboard/users_accounts_nav" class="btn btn-primary">Back</a>
+                                        <!-- <a href="<?=base_url();?>internal/admin_panel/Admin_dashboard/users_accounts_nav" class="btn btn-primary">Back</a> -->
+                                    <a href="<?=base_url();?>internal/admin_panel/Users_information/detail_education_partner/<?php echo $this->session->userdata('user_id');?>" class="btn btn-primary">Back</a>
                                     </div>
+
+                                    
 
                                 </form>
                                             
