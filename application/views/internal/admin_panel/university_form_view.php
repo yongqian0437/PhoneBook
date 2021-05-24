@@ -39,7 +39,7 @@ img {
                                     </div>
 
                                     <!--  Email -->
-                                    <div class="form-group col-md-7 px-2">
+                                    <div class="form-group col-md-12 px-2">
                                         <input  class="form-control border-bottom" style="border: 0;" placeholder= "University Email: <?=$uni['uni_email'];?>" readonly>
                                     </div>
 
