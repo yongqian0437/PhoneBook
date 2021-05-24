@@ -4,7 +4,7 @@
 <div id="wrapper">
 
 <!-- Sidebar -->
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: #6B9080">
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
@@ -48,9 +48,9 @@
                 </a>
             </li>
 
-            <!-- Nav Item - Logout -->
-            <li class="nav-item">
-                <a class="nav-link" href="">
+             <!-- Nav Item - Logout -->
+             <li class="nav-item">
+                <a class="nav-link" href="<?=base_url('user/login/Auth/logout')  ;?>">
                     <i class="fas fa-sign-out-alt"></i>
                     <span>Logout</span>
                 </a>
@@ -87,9 +87,9 @@
                 </a>
             </li>
 
-            <!-- Nav Item - Logout -->
-            <li class="nav-item">
-                <a class="nav-link" href="">
+             <!-- Nav Item - Logout -->
+             <li class="nav-item">
+                <a class="nav-link" href="<?=base_url('user/login/Auth/logout')  ;?>">
                     <i class="fas fa-sign-out-alt"></i>
                     <span>Logout</span>
                 </a>
@@ -136,7 +136,7 @@
 
             <!-- Nav Item - Logout -->
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="<?=base_url('user/login/Auth/logout')  ;?>">
                     <i class="fas fa-sign-out-alt"></i>
                     <span>Logout</span>
                 </a>
@@ -159,7 +159,7 @@
 
             <!-- Nav Item - Chat -->
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="<?=base_url('user/chat/Chat');?>">
                     <i class="fas fa-comment"></i>
                     <span>Chat Room</span>
                 </a>
@@ -181,9 +181,9 @@
                 </a>
             </li>
 
-            <!-- Nav Item - Logout -->
-            <li class="nav-item">
-                <a class="nav-link" href="">
+             <!-- Nav Item - Logout -->
+             <li class="nav-item">
+                <a class="nav-link" href="<?=base_url('user/login/Auth/logout')  ;?>">
                     <i class="fas fa-sign-out-alt"></i>
                     <span>Logout</span>
                 </a>

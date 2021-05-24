@@ -111,9 +111,11 @@ class user_model extends CI_Model
 
     function students_list()
     {
-        $this->db->select('user_id, user_email, user_fname, user_lname, user_role');
-        $this->db->where('user_role', 'Student');
-        return $this->db->get('users')->result_array();
+        $this->db->select('users.user_id, user_email, user_fname, user_lname, student_interest, student_currentlevel');
+        $this->db->from('users');
+        $this->db->join('user_student', 'user_student.user_id = users.user_id');
+        $this->db->where('users.user_role', 'Student');
+        return $this->db->get()->result_array();
     }
 
     function counsellors_list() // join users table + user_ac table to get info from both tables

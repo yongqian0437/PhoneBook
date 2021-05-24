@@ -15,7 +15,7 @@ class Chat extends CI_Controller
 
     public function index()
     {
-        $data['title'] = '';
+        $data['title'] = 'Chat Room';
         $data['sub_title'] = '';
         $data['chat_title'] = 'Select Contact to Chat With';
         $data['profile_pic'] = base_url('assets/img/chat_user/profile_pic.png');
@@ -27,7 +27,6 @@ class Chat extends CI_Controller
         {
             $list = $this->user_model->counsellors_list(); // check in model
             $list2 = $this->user_model->employers_list(); // check in model
-            $data['title'] = 'All Academic Counsellors and Employers';
             $data['sub_title'] = 'Academic Counsellors';
             $data['sub_title2'] = 'Employers';
             $userslist2 = [];
@@ -68,7 +67,6 @@ class Chat extends CI_Controller
         else if ($this->session->userdata['user_role'] == 'Employer' || $this->session->userdata['user_role'] == 'Academic Counsellor') 
         {
             $list = $this->user_model->students_list(); // check in model
-            $data['title'] = 'All Students';
             $data['sub_title'] = 'Students';
 
             // Students List
@@ -81,7 +79,8 @@ class Chat extends CI_Controller
                     'user_email' => $user['user_email'],
                     'user_fname' => $user['user_fname'],
                     'user_lname' => $user['user_lname'],
-                    'user_role'  => $user['user_role'],
+                    'student_interest' => $user['student_interest'],
+                    'student_currentlevel' => $user['student_currentlevel']
                 ];
             }
         }
@@ -90,16 +89,18 @@ class Chat extends CI_Controller
         // die;
 
         $data['userslist'] = $userslist;
-        $this->load->view(''); // header
+        $data['include_css'] = 'chat';
+        $data['include_js'] = 'chat';
+        $this->load->view('internal/templates/header', $data); // header
         $this->load->view('internal/templates/sidenav'); // sidenav
         $this->load->view('user/chat/chat_view', $data);
-        $this->load->view(''); // footer
+        $this->load->view('internal/templates/footer', $data); // footer
     }
 
     public function send_text_message ()
     {
         $post = $this->input->post();
-        $message = 'NULL';
+        $text_message = 'NULL';
         $attachment_name = '';
         $file_ext = '';
         $mime_type = '';
@@ -114,14 +115,14 @@ class Chat extends CI_Controller
         } 
         else 
         {
-            $message = reduce_multiples($post['message'], ' ');
+            $text_message = reduce_multiples($post['text_message'], ' ');
         } 
 
         $data = 
         [
             'sender_id'         => $this->session->userdata['user_id'],
             'receiver_id'       => $post['receiver_id'],
-            'message'           => $message,
+            'message'           => $text_message,
             'attachment_name'   => $attachment_name,
             'file_extension'    => $file_ext,
             'mime_type'         => $mime_type,
@@ -160,8 +161,6 @@ class Chat extends CI_Controller
                     'status' => 0,
                     'message' => '<span style="color:#900;">' . $this->upload->display_errors() . '<span>'
                 ]);
-                die; // remove later
-
             } 
             else 
             {
@@ -175,15 +174,17 @@ class Chat extends CI_Controller
     public function get_chat_history()
     {
         $receiver_id = $this->input->get('receiver_id');
+        // var_dump($receiver_id);
+        // die;
         $Logged_sender_id = $this->session->userdata['user_id'];
         
-        $history = $this->chat_room_model->receiver_chat_history($receiver_id); // check in model
+        $history = $this->chat_model->receiver_chat_history($receiver_id); // check in model
         //print_r($history);
         foreach ($history as $chat):
             $message_id = $chat['chat_id'];
             $sender_id = $chat['sender_id'];
             $userName = $this->user_model->get_name($chat['sender_id']); // check in model
-            $userPic = base_url('uploads/user_profiles/profile_pic.png'); // Set default user picture
+            $userPic = base_url('assets/img/chat_user/profile_pic.png'); // Set default user picture
             $message = $chat['message'];
             $messagedatetime = date('d M h:i A', strtotime($chat['message_date_time']));
 ?>
@@ -212,13 +213,12 @@ class Chat extends CI_Controller
                     $messageBody = '';
                     // Appends text on the right to $messageBody
                     $messageBody .= '<div class="attachment">';
-                    $messageBody .= '<h4>Attachments:</h4>';
-                    $messageBody .= '<p class="filename">';
+                    $messageBody .= '<h6>Attachments:</h6>';
+                    $messageBody .= '<p class="filename font-weight-bold">';
                     $messageBody .= $attachment_name;
-                    $messageBody .= '</p>';
-
+                    $messageBody .= '<br><br></p>';
                     $messageBody .= '<div class="pull-' . $classBtn . '">';
-                    $messageBody .= '<a download href="' . $document_url . '"><button type="button" id="' . $message_id . '" class="btn btn-primary btn-sm btn-flat btnFileOpen">Open</button></a>';
+                    $messageBody .= '<a download href="' . $document_url . '" target="_blank"><button type="button" id="' . $message_id . '" class="btn btn-primary btn-sm btn-flat btnFileOpen">Open</button></a>';
                     $messageBody .= '</div>';
                     $messageBody .= '</div>';
                 }
@@ -282,7 +282,7 @@ class Chat extends CI_Controller
         $receiver_id = $this->input->get('receiver_id');
 
         // Get messages that were sent to the specific receiver
-        $messagelist = $this->chat_room_model->receiver_message_list($receiver_id) ; // check in model
+        $messagelist = $this->chat_model->receiver_message_list($receiver_id) ; // check in model
 
         foreach ($messagelist as $row) 
         {
@@ -293,7 +293,7 @@ class Chat extends CI_Controller
         }
 
         // Delete the messages sent
-        $this->chat_room_model->clear_chat_by_id($receiver_id) ; // check in model
+        $this->chat_model->clear_chat_by_id($receiver_id) ; // check in model
     }
 
 }

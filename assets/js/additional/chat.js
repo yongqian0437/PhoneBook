@@ -1,9 +1,7 @@
-<script src="<?php echo base_url('/assets/js/chat/chat.js') ?>"></script>
-
 // jQuery short-hand for $(document).ready(function() {});
 $(function () {
     // Allows user to send message by tapping the 'Enter' key
-	$('.message').keypress(function (event) {
+	$('#message').keypress(function (event) {
 		var keycode = (event.keyCode ? event.keyCode : event.which);
 		// keycode '13' refers to the 'Enter' key on the keyboard
 		if (keycode == '13') {
@@ -13,7 +11,8 @@ $(function () {
 
     // change in view (btnSend) ~
 	$('.btn_send').click(function () {
-		send_text($('.message').val());
+		send_text($('#message').val());
+		
 	});
 
     // change in view (selectVendor) ~
@@ -109,6 +108,7 @@ function display_message(message) {
 }
 
 function send_text(message) {
+	//alert(message);
 	var text_message = message.trim();
 	if (text_message != '') {
 		//console.log(message);
@@ -132,11 +132,11 @@ function send_text(message) {
 		});
 
 		scroll_down();
-		$('.message').val('');
-		$('.message').focus();
+		$('#message').val('');
+		$('#message').focus();
 	} 
     else {
-		$('.message').focus();
+		$('#message').focus();
 	}
 }
 
