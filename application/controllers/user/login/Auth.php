@@ -134,7 +134,7 @@ class Auth extends CI_Controller
             $this->user_model->insert($data);
            
             $user_email= $this->input->post('user_email');
-            $user_password=$this->input->post('user_password');
+           // $user_password=$this->input->post('user_password');
             $users=$this->user_model->valid_email($user_email);
 
             $user=
@@ -197,16 +197,19 @@ class Auth extends CI_Controller
             $config['allowed_types'] = 'jpeg|jpg|png';
             $this->load->library('upload', $config);
             if (!$this->upload->do_upload($file_input_name)) {
-                echo json_encode([
-                    'status' => 0,
-                    'message' => '<span style="color:#900;">' . $this->upload->display_errors() . '<span>'
-                ]);
+                // echo json_encode([
+                //     'status' => 0,
+                //     'message' => '<span style="color:#900;">' . $this->upload->display_errors() . '<span>'
+                // ]);
+                echo "fail";
+                redirect('user/login/Auth/university');
             } else {
-                $doc_data = ($this->upload->data());
+                $doc_data = $this->upload->data();
                 return $doc_data;
             }   
         }
     }
+
 
     public function student_reg()
     {
@@ -263,9 +266,10 @@ class Auth extends CI_Controller
         }
         else
         {
-              $uni_logo= $this->upload_img('./assets/img/reg_uni_logo', 'uni_logo');
-              $uni_background= $this->upload_img('./assets/img/reg_uni_background', 'uni_background');
-              
+                $uni_background= $this->upload_img('./assets/img/reg_uni', 'uni_background');  
+                $uni_logo= $this->upload_img('./assets/img/reg_uni', 'uni_logo');
+              //$uni_background= $this->upload_img('./assets/img/reg_uni_background', 'uni_background');
+            
             $data=
                 [
                     'uni_logo'=>$uni_logo['file_name'],

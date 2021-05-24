@@ -1,3 +1,9 @@
+<style>
+img {
+  border-radius: 50%;
+}
+</style>
+
 <!-- Content Wrapper -->
 <div id="content-wrapper" >
 
@@ -25,7 +31,8 @@
                                <!-- Form -->
                                 <form>
                                 <center><b><p class="card-title">University ID: <?=$uni['uni_id'];?></p></b></center>
-                                
+                                <center><img class="img-fluid img_class"  src="<?= base_url("assets/img/reg_uni/{$uni['uni_logo']}");?>" width="100";/></center>
+                                <br>
                                     <!-- University-->
                                     <div class="form-group col-md-12 px-2">
                                         <input  class="form-control border-bottom" style="border: 0;" placeholder= "University Name: <?=$uni['uni_name'];?>" readonly>
@@ -78,11 +85,6 @@
                                         <input  class="form-control border-bottom" style="border: 0;" placeholder= "University Hotline: <?=$uni['uni_hotline'];?>" readonly>
                                     </div>
 
-                                    <!-- Upload University Logo-->
-                                    <div class="form-group col-md-6 px-2">
-                                        <a class="btn btn-primary" href="<?=base_url('assets/img/reg_uni_logo/'.$uni['uni_logo'])?>" role="button" target="_blank">View University Logo</a>
-                                    </div>
-
                                     <!-- Upload University Background-->
                                     <div class="form-group col-md-6 px-2">
                                         <a class="btn btn-primary" href="<?=base_url('assets/img/reg_uni_background/'.$uni['uni_background'])?>" role="button" target="_blank">View University Background</a>
@@ -92,8 +94,6 @@
                                         <!-- <a href="<?=base_url();?>internal/admin_panel/Admin_dashboard/users_accounts_nav" class="btn btn-primary">Back</a> -->
                                     <a href="<?=base_url();?>internal/admin_panel/Users_information/detail_education_partner/<?php echo $this->session->userdata('user_id');?>" class="btn btn-primary">Back</a>
                                     </div>
-
-                                    
 
                                 </form>
                                             
