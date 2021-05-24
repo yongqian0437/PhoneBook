@@ -1,16 +1,4 @@
-<!-- Jquery plugin -->
-<script src="<?php echo base_url()?>/assets/vendor/jquery/jquery.min.js"></script>
 
-<!-- Datatables plugins -->
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jq-3.3.1/dt-1.10.24/datatables.min.css"/>
-<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.3.1/dt-1.10.24/datatables.min.js"></script>
-
-<!-- University js file -->
-<script src="<?php echo base_url('/assets/js/additional/universities_list.js') ?>"></script>
-
-<!-- Page level custom scripts -->
-
-<!-- <script type="text/javascript" src="DataTables/datatables.min.js"></script> -->
 
 <!-- Set base url to javascript variable-->
 <script type="text/javascript">

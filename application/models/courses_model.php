@@ -79,4 +79,12 @@ class courses_model extends CI_Model
 
     }
 
+    function course_field_dropdown($uni_id)
+    {
+        $this->db->where('uni_id', $uni_id);
+        $this->db->order_by('course_area');
+        $this->db->group_by('course_area');
+        return $this->db->get('courses')->result();
+    }
+
 }

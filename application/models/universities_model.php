@@ -63,4 +63,9 @@ class universities_model extends CI_Model
         return $this->db->get('universities')->result();
     }
 
+    function get_uni_detail($id)
+    {
+        $this->db->where('uni_id', $id);
+        return $this->db->get('universities')->row();
+    }
 }

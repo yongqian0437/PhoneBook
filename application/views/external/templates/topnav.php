@@ -12,7 +12,7 @@
     font-weight: 600;
 }
 
-.btn:hover{
+#register_btn:hover{
     opacity:0.90;
 }
 
@@ -86,11 +86,13 @@
             </a>
         </li> -->
 
-        <hr id = "nav_line">
 
         <!-- If user is sign in. Will display user name and user logo -->
         <?php if($this->session->has_userdata('user_id')){ ?>
          <!-- Nav Item - User Information -->
+
+         <hr id = "nav_line">
+
             <li class="nav-item dropdown no-arrow pl-1" style = "">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -116,7 +118,7 @@
         <?php } else { ?>
             <li class="nav-item pl-1">
                 <a class="nav-link" href="#">
-                    <button type="button" class="btn" style="background-color: white; color: #6B9080; font-size: 0.9em; border-radius:15px; font-weight: 800;">Login / Register</button>
+                    <button type="button" id = "register_btn" class="btn" style="background-color: white; color: #6B9080; font-size: 0.9em; border-radius:15px; font-weight: 800;">Login / Register</button>
                 </a>
             </li>
         <?php } ?>
