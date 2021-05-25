@@ -15,6 +15,7 @@ class Chat extends CI_Controller
 
     public function index()
     {
+        $user_role = $this->session->userdata('user_role');
         $data['title'] = 'Chat Room';
         $data['sub_title'] = '';
         $data['chat_title'] = 'Select Contact to Chat With';
@@ -41,8 +42,7 @@ class Chat extends CI_Controller
                     'user_email' => $user['user_email'],
                     'user_fname' => $user['user_fname'],
                     'user_lname' => $user['user_lname'],
-                    'user_role'  => $user['user_role'],
-                    'ac_businessemail' => $user['ac_businessemail']
+                    'ac_university' => $user['ac_university']
                 ];
             }
 
@@ -52,11 +52,11 @@ class Chat extends CI_Controller
                 $userslist2[] = 
                 [
                     'user_id'    => $user2['user_id'],
-                    'user_email' => $user2['user_email'],
                     'user_fname' => $user2['user_fname'],
                     'user_lname' => $user2['user_lname'],
-                    'user_role'  => $user2['user_role'],
-                    'e_businessemail'  => $user2['e_businessemail']
+                    'c_name'     => $user2['c_name'],
+                    'c_logo'     => $user2['c_logo'],
+                    'e_jobtitle' => $user2['e_jobtitle']
                 ];
             }
 
@@ -92,7 +92,12 @@ class Chat extends CI_Controller
         $data['include_css'] = 'chat';
         $data['include_js'] = 'chat';
         $this->load->view('internal/templates/header', $data); // header
-        $this->load->view('internal/templates/sidenav'); // sidenav
+        
+        // Load sidenav if user is a Level 2 user
+        if ($user_role != "Student") {
+            $this->load->view('internal/templates/sidenav'); // sidenav
+        }
+        
         $this->load->view('user/chat/chat_view', $data);
         $this->load->view('internal/templates/footer', $data); // footer
     }
@@ -206,7 +211,7 @@ class Chat extends CI_Controller
 
                 if ($mime_type[0] == 'image') 
                 {
-                    $messageBody .= '<img src="' . $document_url . '" onClick="ViewAttachmentImage(' . "'" . $document_url . "'" . ',' . "'" . $attachment_name . "'" . ');" class="attachmentImgCls">';
+                    $messageBody .= '<img src="' . $document_url . '" onClick="ViewAttachmentImage(' . "'" . $document_url . "'" . ',' . "'" . $attachment_name . "'" . ');" class="attachmentImgCls" style="width: 200px">';
                 } 
                 else 
                 {
@@ -236,17 +241,29 @@ class Chat extends CI_Controller
         ?>
                 <!-- Message is displayed to the left by default -indicating that it is from another user- -->
                 <div class="direct-chat-msg">
-                    <div class="direct-chat-info clearfix">
-                        <span class="direct-chat-name pull-left"><?= $userName; ?></span>
-                        <span class="direct-chat-timestamp pull-right"><?= $messagedatetime; ?></span>
+
+                    <div class="row" style="width: 100%">
+                        <div class="col-1"></div>
+                        <div class="col-11">
+                            <div class="direct-chat-info clearfix">
+                                <span class="direct-chat-name pull-left"><?= $userName; ?></span>
+                                <span class="direct-chat-timestamp pull-right"><?= $messagedatetime; ?></span>
+                            </div>
+                        </div>
                     </div>
-                    <!-- /.direct-chat-info -->
-                   <img class="direct-chat-img" src="<?= $userPic; ?>" alt="<?= $userName; ?>">
-                    <!-- /.direct-chat-img -->
-                    <div class="direct-chat-text">
-                        <?= $messageBody; ?>
+
+                    <div class="row" style="width: 100%">
+                        <div class="col-1 d-flex justify-content-end">
+                            <img class="direct-chat-img" src="<?= $userPic; ?>" alt="<?= $userName; ?>">
+                        </div>
+                        <div class="col-9">
+                            <div class="direct-chat-text" >
+                                    <?= $messageBody; ?>
+                            </div>
+                        </div>
+                        <div class="col-2"></div>
                     </div>
-                    <!-- /.direct-chat-text -->
+
                 </div>
                 <!-- /.direct-chat-msg -->
         <?php 
@@ -257,17 +274,28 @@ class Chat extends CI_Controller
         ?>
                 <!-- Message is displayed to the right -->
                 <div class="direct-chat-msg right">
-                    <div class="direct-chat-info clearfix">
-                        <span class="direct-chat-name pull-right"><?= $userName; ?></span>
-                        <span class="direct-chat-timestamp pull-left"><?= $messagedatetime; ?></span>
+                
+                    <div class="row" style="width: 100%">
+                        <div class="col-11">
+                            <div class="direct-chat-info clearfix" style="text-align: right;">
+                                <span class="direct-chat-name"><?= $userName; ?></span>
+                                <span class="direct-chat-timestamp"><?= $messagedatetime; ?></span>
+                            </div>
+                        </div>
                     </div>
-                    <!-- /.direct-chat-info -->
-                    <img class="direct-chat-img" src="<?= $userPic; ?>" alt="<?= $userName; ?>"> 
-                    <!-- /.direct-chat-img -->
-                    <div class="direct-chat-text">
-                        <?= $messageBody; ?>
+
+                    <div class="row" style="width: 100%">
+                        <div class="col-2"></div>
+                        <div class="col-9 right d-flex justify-content-end">
+                            <div class="direct-chat-text" >
+                                    <?= $messageBody; ?>
+                            </div>
+                        </div>
+                        <div class="col-1 d-flex justify-content-start">
+                            <img class="direct-chat-img" src="<?= $userPic; ?>" alt="<?= $userName; ?>">
+                        </div>
                     </div>
-                    <!-- /.direct-chat-text -->
+
                 </div>
                 <!-- /.direct-chat-msg -->
         <?php 

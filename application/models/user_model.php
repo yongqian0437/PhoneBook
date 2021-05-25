@@ -102,36 +102,38 @@ class user_model extends CI_Model
     
     function employers_list() // join 'users' table + 'user_e' table to get info from both tables
     {
-        $this->db->select('users.user_id, user_email, user_fname, user_lname, user_role, e_businessemail');
-        $this->db->from('users');
-        $this->db->join('user_e', 'user_e.user_id = users.user_id');
-        $this->db->where('users.user_role', 'Employer');
+        $this->db->select('users.user_id, user_fname, user_lname, c_name, c_logo, e_jobtitle')
+                 ->from('users')
+                 ->join('user_e', 'user_e.user_id = users.user_id')
+                 ->join('company', 'company.c_id = user_e.c_id')
+                 ->where('users.user_role', 'Employer');
         return $this->db->get()->result_array();
     }
 
     function students_list()
     {
-        $this->db->select('users.user_id, user_email, user_fname, user_lname, student_interest, student_currentlevel');
-        $this->db->from('users');
-        $this->db->join('user_student', 'user_student.user_id = users.user_id');
-        $this->db->where('users.user_role', 'Student');
+        $this->db->select('users.user_id, user_email, user_fname, user_lname, student_interest, student_currentlevel')
+                 ->from('users')
+                 ->join('user_student', 'user_student.user_id = users.user_id')
+                 ->where('users.user_role', 'Student');
         return $this->db->get()->result_array();
     }
 
     function counsellors_list() // join users table + user_ac table to get info from both tables
     {
-        $this->db->select('users.user_id, user_email, user_fname, user_lname, user_role, ac_businessemail');
-        $this->db->from('users');
-        $this->db->join('user_ac', 'user_ac.user_id = users.user_id');
-        $this->db->where('user_role', 'Academic Counsellor');
+        $this->db->select('users.user_id, user_email, user_fname, user_lname, ac_university') // uni_logo
+                 ->from('users')
+                 ->join('user_ac', 'user_ac.user_id = users.user_id')
+                //  ->join('universities', 'universities.uni_name = user_ac.ac_university')
+                 ->where('user_role', 'Academic Counsellor');
         return $this->db->get()->result_array();
     }
 
     function get_user_data()
     {
         // $id = $this->session->userdata['user_id'];
-        $this->db->select('user_id, user_email, user_fname, user_lname, user_role');
-        $this->db->where('user_id', $this->session->userdata['user_id']);
+        $this->db->select('user_id, user_email, user_fname, user_lname, user_role')
+                 ->where('user_id', $this->session->userdata['user_id']);
         $this->db->limit(1);
         return $this->db->get('users')->row_array(); // row() || result () won't work.. why? array of objects. row_array returns a single result row. an object!! check with var_dump
     }

@@ -25,25 +25,20 @@
     overflow-x: hidden;
     padding: 0;
   }
-  .direct-chat.chat-pane-open {
-    -webkit-transform: translate(0, 0);
-    -ms-transform: translate(0, 0);
-    -o-transform: translate(0, 0);
-    transform: translate(0, 0);
-  }
+
   .direct-chat-messages {
-    -webkit-transform: translate(0, 0);
-    -ms-transform: translate(0, 0);
-    -o-transform: translate(0, 0);
-    transform: translate(0, 0);
     padding: 10px;
     height: 250px;
     overflow: auto;
   }
-  .direct-chat-msg,
-  .direct-chat-text {
+  .direct-chat-msg {
     display: block;
   }
+
+  .direct-chat-text {
+    width: fit-content;
+  }
+
   .direct-chat-msg {
     margin-bottom: 10px;
   }
@@ -55,14 +50,7 @@
   .direct-chat-msg:after {
     clear: both;
   }
-  .direct-chat-msg:before,
-  .direct-chat-msg:after {
-    content: " ";
-    display: table;
-  }
-  .direct-chat-msg:after {
-    clear: both;
-  }
+
   .direct-chat-messages {
     -webkit-transition: -webkit-transform 0.5s ease-in-out;
     -moz-transition: -moz-transform 0.5s ease-in-out;
@@ -75,7 +63,7 @@
     padding: 5px 10px; 
     background: #bfc4e0; /*********************this is the receiver's chat bubble colour*************************/
     border: 1px solid #bfc4e0;
-    margin: 5px 0 0 50px;
+    margin: 5px 0 0 0;
     color: #444444;
   }
   .direct-chat-text:after,
@@ -97,10 +85,6 @@
   .direct-chat-text:before {
     border-width: 6px;
     margin-top: -6px;
-  }
-  .right .direct-chat-text {
-    margin-right: 50px;
-    margin-left: 0;
   }
   .right .direct-chat-text:after,
   .right .direct-chat-text:before {

@@ -2,6 +2,10 @@
 $(document).ready(function() {
   $('#dataTable').DataTable();
 
+  $('table.display').DataTable({
+    "lengthMenu": [ 5, 10, 25, 50],
+  });
+
   $('#chat_table').DataTable({
     "lengthMenu": [ 5, 10, 25, 50],
     // "bInfo": false, // show x of y 
@@ -12,4 +16,5 @@ $(document).ready(function() {
     //   "targets": [0]
     // }]
   });
+  
 });
