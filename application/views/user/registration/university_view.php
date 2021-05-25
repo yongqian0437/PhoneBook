@@ -58,12 +58,12 @@
                             </div>
                         </div>
                         <div class="col-xl-6 ">
-                            <div class="card h-100" id='card2' ">
+                            <div class="card h-100" id='card2' >
                                 <div class=" card-body">
                                 <center>
                                     <div class="pt-5 px-5" style="font-size:23px; letter-spacing: 8px; color:#787878; font-weight:700;">UNIVERSITY INFORMATION FORM</div>
                                 </center>
-
+                                <?=$this->session->flashdata('message')?> 
                                <!-- Form -->
                                <form method="post" action="<?= base_url('user/login/Auth/university');?>" enctype="multipart/form-data">
                                <?= form_open_multipart('') ?>
@@ -79,14 +79,9 @@
                                               <input type="email" class="form-control border-bottom" style="border: 0;" name="uni_email" placeholder="University Email" >
                                             </div>
 
-                                              <!-- Total courses -->
-                                              <div class="form-group col-md-5 px-2">
-                                              <input type="text" class="form-control border-bottom" style="border: 0;" name="uni_totalcourses" placeholder="Total Courses" required>
-                                            </div>
-
                                             <!-- University Short Profile -->
                                             <div class="form-group col-md-12 px-2">
-                                              <textarea class="form-control border-bottom" style="border: 0;" rows="6" name="uni_shortprofile" placeholder="Short Profile" required></textarea>
+                                              <textarea class="form-control border-bottom" style="border: 0;" rows="6" name="uni_shortprofile" placeholder="Short Profile"></textarea>
                                             </div>
 
                                             <!-- Country -->
@@ -96,8 +91,9 @@
 
                                              <!--Logo-->
                                              <div class="form-group col-md-5 px-2">
-                                                <input type="file" class="custom-file-input " id="form-group" name="uni_logo" required>
+                                                <input type="file" class="custom-file-input " id="form-group" name="uni_logo" value="<?=set_value('uni_logo')?>">
                                                 <label class="custom-file-label border-bottom" style="border: 0;" for="customFile">Upload logo</label>
+                                                <?= form_error('uni_logo','<small class="text-danger pl-3">','</small>');?>
                                              </div>
 
                                             <!--Background-->
@@ -147,3 +143,10 @@
             <!-- /.container-fluid -->
         </div>
         <!-- End of Main Content -->
+
+        <script>
+            $(".custom-file-input").on("change", function() {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+            });
+        </script>

@@ -120,21 +120,36 @@ class Auth extends CI_Controller
         }
         else
         {
-            $data=
-            [
-                'user_fname'=>htmlspecialchars($this->input->post('user_fname',true)),
-                'user_lname'=>htmlspecialchars($this->input->post('user_lname',true)),
-                'user_email'=>htmlspecialchars($this->input->post('user_email',true)),
-                'user_password'=>htmlspecialchars($this->input->post('user_password',true)),
-                'user_role'=>htmlspecialchars($this->input->post('user_role',true)),
-                'user_approval'=>0,
-            ];
+
+            if($this->input->post('user_role')=="Student")
+            {
+                $data=
+                [
+                    'user_fname'=>htmlspecialchars($this->input->post('user_fname',true)),
+                    'user_lname'=>htmlspecialchars($this->input->post('user_lname',true)),
+                    'user_email'=>htmlspecialchars($this->input->post('user_email',true)),
+                    'user_password'=>htmlspecialchars($this->input->post('user_password',true)),
+                    'user_role'=>htmlspecialchars($this->input->post('user_role',true)),
+                    'user_approval'=>1,
+                ];
+            }
+            else
+            {
+                $data=
+                [
+                    'user_fname'=>htmlspecialchars($this->input->post('user_fname',true)),
+                    'user_lname'=>htmlspecialchars($this->input->post('user_lname',true)),
+                    'user_email'=>htmlspecialchars($this->input->post('user_email',true)),
+                    'user_password'=>htmlspecialchars($this->input->post('user_password',true)),
+                    'user_role'=>htmlspecialchars($this->input->post('user_role',true)),
+                    'user_approval'=>0,
+                ];
+            }
         
             // insert data into database
             $this->user_model->insert($data);
            
             $user_email= $this->input->post('user_email');
-           // $user_password=$this->input->post('user_password');
             $users=$this->user_model->valid_email($user_email);
 
             $user=
@@ -178,11 +193,11 @@ class Auth extends CI_Controller
             $config['upload_path'] = $path;
             $config['allowed_types'] = 'jpeg|jpg|png|txt|pdf|docx|xlsx|pptx|rtf';
             $this->load->library('upload', $config);
-            if (!$this->upload->do_upload($file_input_name)) {
-                echo json_encode([
-                    'status' => 0,
-                    'message' => '<span style="color:#900;">' . $this->upload->display_errors() . '<span>'
-                ]);
+            if (!$this->upload->do_upload($file_input_name)) 
+            {
+                $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
+                The file format is not correct</div>');
+                redirect('user/login/Auth/ep_reg');
             } else {
                 $doc_data = ($this->upload->data());
                 return $doc_data;
@@ -196,12 +211,10 @@ class Auth extends CI_Controller
             $config['upload_path'] = $path;
             $config['allowed_types'] = 'jpeg|jpg|png';
             $this->load->library('upload', $config);
-            if (!$this->upload->do_upload($file_input_name)) {
-                // echo json_encode([
-                //     'status' => 0,
-                //     'message' => '<span style="color:#900;">' . $this->upload->display_errors() . '<span>'
-                // ]);
-                echo "fail";
+            if (!$this->upload->do_upload($file_input_name)) 
+            {
+                $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
+                The file format must be in "png, jpg or jpeg"</div>');
                 redirect('user/login/Auth/university');
             } else {
                 $doc_data = $this->upload->data();
@@ -247,8 +260,6 @@ class Auth extends CI_Controller
         $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
         Check your email to get the approval from the admin</div>');
         
-         //$this->session->unset_userdata($data);
-     
         redirect('user/login/Auth/login');
         }
         
@@ -257,7 +268,10 @@ class Auth extends CI_Controller
     public function university()
     {
         $this->form_validation->set_rules('uni_name','University Name', 'required|trim');
-
+        // $this->form_validation->set_rules('uni_shortprofile','Short Profile', 'required|trim|max_length[255]',[
+        //     'min_length'=> 'Short Profile too long'
+        // ]);
+       
         if($this->form_validation->run()== false)
         {
         $data['title']="University";
@@ -268,8 +282,7 @@ class Auth extends CI_Controller
         {
                 $uni_background= $this->upload_img('./assets/img/reg_uni', 'uni_background');  
                 $uni_logo= $this->upload_img('./assets/img/reg_uni', 'uni_logo');
-              //$uni_background= $this->upload_img('./assets/img/reg_uni_background', 'uni_background');
-            
+               
             $data=
                 [
                     'uni_logo'=>$uni_logo['file_name'],
@@ -277,7 +290,6 @@ class Auth extends CI_Controller
                     'uni_name'=>htmlspecialchars($this->input->post('uni_name',true)),
                     'uni_shortprofile'=>htmlspecialchars($this->input->post('uni_shortprofile',true)),
                     'uni_country'=>htmlspecialchars($this->input->post('uni_country',true)),
-                    'uni_totalcourses'=>htmlspecialchars($this->input->post('uni_totalcourses',true)),
                     'uni_hotline'=>htmlspecialchars($this->input->post('uni_hotline',true)),
                     'uni_email'=>htmlspecialchars($this->input->post('uni_email',true)),
                     'uni_address'=>htmlspecialchars($this->input->post('uni_address',true)),

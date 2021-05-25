@@ -31,8 +31,8 @@ img {
                                <!-- Form -->
                                 <form>
                                 <center><b><p class="card-title">University ID: <?=$uni['uni_id'];?></p></b></center>
-                                <center><img class="img-fluid img_class"  src="<?= base_url("assets/img/reg_uni/{$uni['uni_logo']}");?>" width="100";/></center>
-                                <br>
+                                <center><img class="img-fluid img_class"  src="<?= base_url("assets/img/reg_uni/{$uni['uni_logo']}");?>" width="350";/></center>
+                                <div class="form-row pt-4 px-3">
                                     <!-- University-->
                                     <div class="form-group col-md-12 px-2">
                                         <input  class="form-control border-bottom" style="border: 0;" placeholder= "University Name: <?=$uni['uni_name'];?>" readonly>
@@ -43,26 +43,15 @@ img {
                                         <input  class="form-control border-bottom" style="border: 0;" placeholder= "University Email: <?=$uni['uni_email'];?>" readonly>
                                     </div>
 
-                                    <!-- Total courses -->
-                                    <div class="form-group col-md-5 px-2">
-                                        <input  class="form-control border-bottom" style="border: 0;" placeholder= "Total courses: <?=$uni['uni_totalcourses'];?>" readonly>
-                                    </div>
-
                                     <!-- University Short Profile -->
                                     <div class="form-group col-md-12 px-2">
-                                        
-                                        <textarea class="form-control border-bottom" style="border: 0;" placeholder= "University Short Profile: <?=$uni['uni_shortprofile'];?>" readonly></textarea>
+                                        <textarea class="form-control border-bottom" rows="10" style="border: 0;" placeholder= "University Short Profile: <?=$uni['uni_shortprofile'];?>" readonly></textarea>
                                     </div>
 
                                     <!-- Country -->
                                     <div class="form-group col-md-6 px-2">
                                         <input  class="form-control border-bottom" style="border: 0;" placeholder= "Country: <?=$uni['uni_country'];?>" readonly>
                                     </div>
-
-                                    <!--Logo-->
-                                    <!-- <div class="form-group col-md-5 px-2">
-                                        <input  class="form-control border-bottom" style="border: 0;" placeholder= "University Logo: <?=$uni['uni_logo'];?>" readonly>
-                                    </div> -->
 
                                     <!-- Address -->
                                     <div class="form-group col-md-12 px-2">
@@ -87,16 +76,14 @@ img {
 
                                     <!-- Upload University Background-->
                                     <div class="form-group col-md-6 px-2">
-                                        <a class="btn btn-primary" href="<?=base_url('assets/img/reg_uni_background/'.$uni['uni_background'])?>" role="button" target="_blank">View University Background</a>
+                                        <a class="btn btn-primary" href="<?=base_url('assets/img/reg_uni/'.$uni['uni_background'])?>" role="button" target="_blank">View University Background</a>
                                     </div>
+                                </div>
 
                                     <div class="d-grid gap-2 d-md-block">
                                         <!-- <a href="<?=base_url();?>internal/admin_panel/Admin_dashboard/users_accounts_nav" class="btn btn-primary">Back</a> -->
                                     <a href="<?=base_url();?>internal/admin_panel/Users_information/detail_education_partner/<?php echo $this->session->userdata('user_id');?>" class="btn btn-primary">Back</a>
-                                    </div>
-
                                 </form>
-                                            
                                 </div>
                             </div>
                         </div>
