@@ -1,3 +1,9 @@
+<style>
+img {
+  border-radius: 50%;
+}
+</style>
+
 <!-- Content Wrapper -->
 <div id="content-wrapper" >
 
@@ -25,6 +31,8 @@
                                <!-- Form -->
                                 <form>
                                 <center><b><p class="card-title">Company ID: <?=$c['c_id'];?></p></b></center>
+                                <center><img class="img-fluid img_class"  src="<?= base_url("assets/img/reg_uni/{$c['c_logo']}");?>" width="250";/></center>
+                                <br>
                                  <!-- Company Name -->
                                  <div class="form-group col-md-12 px-2">
                                     <input  class="form-control border-bottom" style="border: 0;" placeholder= "Company Name: <?=$c['c_name'];?>" readonly>
