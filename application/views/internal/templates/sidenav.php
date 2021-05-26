@@ -34,7 +34,7 @@
 
             <!-- Nav Item - Chat -->
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="<?=base_url('user/chat/Chat');?>">
                     <i class="fas fa-comment"></i>
                     <span>Chat Room</span>
                 </a>

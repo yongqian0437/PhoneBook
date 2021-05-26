@@ -38,7 +38,7 @@
     color:#FFFFFF;
 }
 
-.apply_emp, .apply_emp:hover {
+.apply_reg, .apply_reg:hover, .apply_emp, .apply_emp:hover {
     background-color: #67b99a;
     color:#FFFFFF;
 }

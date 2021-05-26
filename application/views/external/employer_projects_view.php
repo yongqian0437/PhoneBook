@@ -98,17 +98,27 @@
                                             </li>
                                         </ul>
                                         <br>
+
                                         <!-- 2 Bottom Buttons -->
-                                        <!-- *Check if session is established. If yes, show the buttons -->
                                         <div class="bottom_buttons">
                                             <a class="btn view_doc" href="<?=base_url('assets/uploads/employer_projects/'.$ep['emp_document'])?>" role="button" target="_blank" style="background-color: #8993a3; color:#FFFFFF">View</a>
-                                        <!-- **Check if student has already applied to this specific EP. If yes, disable the apply button -->
-                                            <?php $response = $this->emp_applicants_model->past_application($ep['emp_id'], '123'); // later replace with session's student_id
-                                                if ($response == true) { ?>
-                                                    <button type="button" class="btn applied_emp" disabled>Applied</button>
-                                            <?php } else { ?>
-                                                <button type="button" class="btn apply_emp" data-id="<?= $ep['emp_id'] ?>">Apply Now</button>
-                                            <?php } ?>
+
+                                            <!-- *Check if session is established and if the role is a Student. If yes, show the 'Apply Now' button -->
+                                            <?php if ($user_role == 'Student') { ?> 
+                                                <!-- **Check if student has already applied to this specific EP. If yes, disable the apply button -->
+                                                    <?php $response = $this->emp_applicants_model->past_application($ep['emp_id'], $student_id);
+                                                        if ($response == true) { ?>
+                                                            <button type="button" class="btn applied_emp" disabled>Applied</button>
+                                                    <?php } else { ?>
+                                                        <button type="button" class="btn apply_emp" data-id="<?= $ep['emp_id'] ?>">Apply Now</button>
+                                                    <?php } ?>
+                                                
+                                                <?php } else { ?>
+                                        
+                                                <!-- ***If Student is not logged in, 'Apply Now' button will redirect to Login page -->   
+                                                    <a class="btn apply_reg" href="<?= base_url('user/login/Auth/login');?>">Apply Now</a>
+
+                                                <?php } ?>
                                         </div>
                                     </div>
                                 </div>

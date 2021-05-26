@@ -26,12 +26,12 @@
                     </div>
 
                     <!-- Card Body -->
-                    <div class="card-body">
+                    <div class="card-body" style="height: 400px">
                         <!-- Direct Chat-->
                         <div class="direct-chat direct-chat-primary">
         
                                 <!--Conversations are loaded here-->
-                                <div class="direct-chat-messages" id="content">
+                                <div class="direct-chat-messages" id="content" style="height: 290px">
                                     <div id="dump_content"></div>
                                 </div>
 

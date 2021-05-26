@@ -11,6 +11,11 @@ class Chat extends CI_Controller
         $this->load->model(['user_model', 'chat_model']);
         $this->load->helper('string');
         date_default_timezone_set('Asia/Kuala_Lumpur');
+
+        // Checks if session is set and if user signed in has a role. If not, deny his/her access.
+        if (!$this->session->userdata('user_id') || !$this->session->userdata('user_role')){  
+            redirect('user/login/Auth/login');
+        }
     }
 
     public function index()

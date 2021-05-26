@@ -7,6 +7,11 @@ class Users_information extends CI_Controller
     {
         parent:: __construct();
         $this->load->model(['user_student_model','user_ep_model','user_ac_model','user_ea_model','user_e_model']);
+        
+        // Checks if session is set and if user is signed in as Admin (authorised access). If not, deny his/her access.
+        if (!$this->session->userdata('user_id') || $this->session->userdata('user_role') != "Admin"){  
+            redirect('user/login/Auth/login');
+        }
     }
 
     public function students_info()
