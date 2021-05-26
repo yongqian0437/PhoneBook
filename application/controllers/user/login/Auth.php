@@ -23,7 +23,7 @@ class Auth extends CI_Controller
             $data['title']='User Login';
             $this->load->view('external/templates/header',$data);
             $this->load->view('user/login/login_view');
-           // $this->load->view('external/templates/footer');
+            $this->load->view('external/templates/footer');
         }
         else
         {
@@ -116,7 +116,7 @@ class Auth extends CI_Controller
             $data['title']="User Registration";
             $this->load->view('external/templates/header',$data);
             $this->load->view('user/registration/registration_view');
-            //$this->load->view('external/templates/footer');
+            $this->load->view('external/templates/footer');
         }
         else
         {
@@ -268,9 +268,6 @@ class Auth extends CI_Controller
     public function university()
     {
         $this->form_validation->set_rules('uni_name','University Name', 'required|trim');
-        // $this->form_validation->set_rules('uni_shortprofile','Short Profile', 'required|trim|max_length[255]',[
-        //     'min_length'=> 'Short Profile too long'
-        // ]);
        
         if($this->form_validation->run()== false)
         {
@@ -318,62 +315,10 @@ class Auth extends CI_Controller
           
     }
 
-    // public function course()
-    // {
-    //     $this->form_validation->set_rules('course_name','Course Name', 'required|trim');
-    //     $uni_id= $this->session->userdata('uni_id');
-    //     //$uni_id=$this->universities_model->last_uni_id();
-    //     if($this->form_validation->run()== false)
-    //     {
-    //     $data['title']="Course";
-    //     $this->load->view('external/templates/header',$data);
-    //     $this->load->view('user/registration/course_view');
-    //     }
-    //     else
-    //     {
-    //         $data=
-    //             [
-    //             //  'uni_logo'=>htmlspecialchars($this->input->post('uni_logo',true)),  
-    //                 'uni_id'=>$uni_id,
-    //                 'course_area'=>htmlspecialchars($this->input->post('course_area',true)),
-    //                 'course_level'=>htmlspecialchars($this->input->post('course_level',true)),
-    //                 'course_name'=>htmlspecialchars($this->input->post('course_name',true)),
-    //                 'course_duration'=>htmlspecialchars($this->input->post('course_duration',true)),
-    //                 'course_fee'=>htmlspecialchars($this->input->post('course_fee',true)),
-    //                 'course_shortprofile'=>htmlspecialchars($this->input->post('course_shortprofile',true)),
-    //                 'course_structure'=>htmlspecialchars($this->input->post('course_structure',true)),
-    //                 'course_requirements'=>htmlspecialchars($this->input->post('course_requirements',true)),
-    //                 'course_intake'=>htmlspecialchars($this->input->post('course_intake',true)),
-    //                 'course_careeropportunities'=>htmlspecialchars($this->input->post('course_careeropportunities',true)),
-    //             ];
-
-    //       // insert data into database
-    //       $this->courses_model->insert($data);
-
-    //       $course_name= $this->input->post('course_name');
-    //       $co=$this->courses_model->valid_course_name($course_name);
-    //       $course=
-    //       [
-    //           'course_id'=>$co['course_id'],
-    //           'uni_id'=>$co['uni_id'],
-    //           'course_name'=>$co['course_name'],
-    //       ];
-
-    //       $this->session->set_userdata($course);
-
-    //       redirect('user/login/Auth/ep_reg'); 
-    //     }
-          
-    // }
-
     public function ep_reg()
     { 
         $user_id= $this->session->userdata('user_id');
         $uni_id= $this->session->userdata('uni_id');
-        //$course_id= $this->session->userdata('course_id');
-        // $user_id=$this->user_ep_model->last_user_id();
-        // $uni_id=$this->universities_model->last_uni_id();
-       // $course_id=$this->courses_model->last_course_id();
         $this->form_validation->set_rules('ep_phonenumber','Phone Number', 'required|trim|min_length[5]',[
             'min_length'=> 'Phone number too short'
         ]);
@@ -386,7 +331,7 @@ class Auth extends CI_Controller
             $data['title']="Education Partner Registration";
             $this->load->view('external/templates/header',$data);
             $this->load->view('user/registration/ep_registration_view');
-           // $this->load->view('external/templates/footer');
+            $this->load->view('external/templates/footer');
         }
         else
         {
@@ -417,7 +362,6 @@ class Auth extends CI_Controller
 
     public function ea_reg()
     { 
-        //$user_id=$this->user_ep_model->last_user_id();
         $user_id=$this->session->userdata('user_id');
         $this->form_validation->set_rules('ea_phonenumber','Phone Number', 'required|trim|min_length[5]',[
             'min_length'=> 'Phone number too short'
@@ -459,7 +403,6 @@ class Auth extends CI_Controller
     public function ac_reg()
     { 
         $data['university_data'] = $this->universities_model->select_all_approved_only(); // get from eddie's branch
-        //$user_id=$this->user_ep_model->last_user_id();
         $user_id=$this->session->userdata('user_id');
         $this->form_validation->set_rules('ac_phonenumber','Phone Number', 'required|trim|min_length[5]',[
             'min_length'=> 'Phone number too short'
@@ -473,7 +416,7 @@ class Auth extends CI_Controller
             $data['title']="Academic Couselor Registration";
             $this->load->view('external/templates/header',$data);
             $this->load->view('user/registration/ac_registration_view',$data);// get data from model
-           // $this->load->view('external/templates/footer');
+            $this->load->view('external/templates/footer');
         }
         else
         {
@@ -516,7 +459,6 @@ class Auth extends CI_Controller
             $c_logo= $this->upload_img('./assets/img/reg_c_logo', 'c_logo');
             $data=
                 [
-                //  'uni_logo'=>htmlspecialchars($this->input->post('uni_logo',true)),  
                     'c_logo'=>$c_logo['file_name'],
                     'c_name'=>htmlspecialchars($this->input->post('c_name',true)),
                     'c_registrationnum'=>htmlspecialchars($this->input->post('c_registrationnum',true)),
@@ -524,7 +466,6 @@ class Auth extends CI_Controller
                     'c_phonenumber'=>htmlspecialchars($this->input->post('c_phonenumber',true)),
                     'c_website'=>htmlspecialchars($this->input->post('c_website',true)),
                     'c_email'=>htmlspecialchars($this->input->post('c_email',true)),
-                    //'c_logo'=>htmlspecialchars($this->input->post('c_logo',true)),
                 ];
 
                   // insert data into database
@@ -565,7 +506,7 @@ class Auth extends CI_Controller
             $data['title']="Employer Registration";
             $this->load->view('external/templates/header',$data);
             $this->load->view('user/registration/employers_registration_view');
-           // $this->load->view('external/templates/footer');
+            $this->load->view('external/templates/footer');
            
         }
         else
@@ -599,5 +540,138 @@ class Auth extends CI_Controller
         $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
         You have been logout</div>');
         redirect('user/login/Auth/login'); 
+    }
+
+    public function _sendEmail()
+    {
+        $lname=$_REQUEST['slname'];
+        $fname=$_REQUEST['sfname'];
+        $id=$_REQUEST['sid'];
+        $email=$_REQUEST['semail'];
+        $password=$_REQUEST['spassword'];
+        $users=$this->user_model->search_id($id);
+        $config=
+        [
+            'protocol'=>'smtp',
+            'smtp_host'=>'ssl://smtp.googlemail.com',
+            'smtp_user'=>'g3cap2100@gmail.com',
+            'smtp_pass'=>'ijees2021',
+            'smtp_port'=>465,
+            'mailtype'=>'html',
+            'charset'=>'utf-8',
+            'newline'=>"\r\n"
+        ];
+       
+        $this->email->initialize($config);
+        $this->email->from('g3cap2100@gmail.com','Capstone Project 2021');
+        $this->email->to($email);
+        $this->email->subject('Account Verification');
+
+        if($users['user_approval']==1)
+        {
+            $this->email->message("Welcome, "."$fname ". "$lname ". ". Thank you for registering and being part of iJEES, INTI's Interactive Joint Education Employability System."."<br><br>Congratulations! Your account has been approved and is now activated. <br><br>You may now login to the system at any time. Your credentials are the same as the ones you have provided upon registration:<br><br>".
+            "Email Address :".$email."<br> Password: ".$password);
+            // $this->email->message("Welcome ".$fname . $lname." .Thank you for registering and being part of iJEES, INTI's Interactive Joint Education Employability System.  "."<br><p>This is your email address and password<p>"."Email Address :".$email."<br> Password: ".$password);
+        }
+        else
+        {
+            $this->email->message("Sorry ". $lname." .Your account is rejected ");
+        }
+
+        if($this->email->send())
+        {
+            return true;
+        }
+        else
+        {
+            echo $this->email->print_debugger();   
+        }
+    }
+
+    public function Email($user_email,$link,$message)
+    {
+        
+        $config=
+        [
+            'protocol'=>'smtp',
+            'smtp_host'=>'ssl://smtp.googlemail.com',
+            'smtp_user'=>'g3cap2100@gmail.com',
+            'smtp_pass'=>'ijees2021',
+            'smtp_port'=>465,
+            'mailtype'=>'html',
+            'charset'=>'utf-8',
+            'newline'=>"\r\n"
+        ];
+       
+        $this->email->initialize($config);
+        $this->email->from('g3cap2100@gmail.com','Capstone Project 2021');
+        $this->email->to($user_email);
+        $this->email->subject($link);
+        $this->email->message($message);
+
+        if($this->email->send())
+        {
+            $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
+            Check your email to reset your password</div>');
+            redirect('user/login/Auth/login');
+        }
+        else
+        {
+            echo $this->email->print_debugger();   
+        }
+    }
+
+    public function forgotPassword()
+    {
+        $data['title']='Forgot Password';
+        $this->load->view('external/templates/header',$data);
+        $this->load->view('user/forgot_password');
+        $this->load->view('external/templates/footer');
+    }
+
+    public function resetlink()
+    {
+        $user_email= $this->input->post('user_email');
+        $result=$this->db->query("select* from users where user_email='".$user_email."'")->result_array();
+
+        if(count($result)>0)
+        {
+           $tokan=rand(1000,9999);
+
+           $this->user_model->updatepassword($tokan,$user_email);
+           //$this->db->query("update users set user_password='".$tokan."'where user_email='".$user_email."'");
+           $message="Please click on password reset link <br> <a href='".base_url('user/login/Auth/reset?tokan=').$tokan."'>Reset Password</a>";
+           $this->Email($user_email,'Reset Password Link',$message);
+        }
+        else
+        {
+            $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
+            Email is not registred or activated</div>');
+            redirect('user/login/Auth/forgotPassword'); 
+        }
+    }
+
+    public function reset()
+    {
+        $data['tokan']=$this->input->get('tokan');
+        $data['title']='Reset Password';
+        $_SESSION['tokan']=$data['tokan'];
+        $this->load->view('external/templates/header',$data);
+        $this->load->view('user/reset_password');
+        $this->load->view('external/templates/footer');
+    }
+
+    public function updatepassword()
+    {
+        $_SESSION['tokan'];
+        $data=$this->input->post();
+        if($data['user_password']==$data['user_password2'])
+        {
+            $this->user_model->changepassword($data);
+            //$this->db->query("update users set user_password='".$data['user_password']."'where user_password='".$_SESSION['tokan']."'");
+        }
+        $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
+        Your password has changed successfully</div>');
+        redirect('user/login/Auth/login');
     }
 }

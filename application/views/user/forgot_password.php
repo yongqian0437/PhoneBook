@@ -62,11 +62,11 @@
                             <div class="card h-100" id='card2' ">
                                 <div class=" card-body">
                                 <center>
-                                    <div class="pt-5 px-5" style="font-size:23px; letter-spacing: 8px; color:#787878; font-weight:700;">LOGIN PAGE</div>
+                                    <div class="pt-5 px-5" style="font-size:23px; letter-spacing: 8px; color:#787878; font-weight:700;">FORGOT YOUR PASSWORD?</div>
                                 </center>
                                 <?=$this->session->flashdata('message')?> 
                                 <!-- Input fields (Form) -->
-                                <form class="user" method="post" action=" <?=base_url('user/login/Auth/login'); ?>">
+                                <form class="user" method="post" action=" <?=base_url('user/login/Auth/resetlink'); ?>">
                                     <!-- Email-->
                                     <div class="form-row pt-5 px-3">
                                         <div class="form-group col-md-12 px-2">
@@ -74,21 +74,16 @@
                                             <?= form_error('user_email','<small class="text-danger pl-3">','</small>');?>
                                         </div>
                                     </div>
-                                    <!-- Password and confirm password -->
-                                    <div class="form-row pt-3 pb-3 px-3">
-                                        <div class="form-group col-md-12 px-2">
-                                            <input type="password" name="user_password" class="form-control border-bottom" id="password" style="border: 0;" placeholder="Enter your password">
-                                            <?= form_error('user_password','<small class="text-danger pl-3">','</small>');?>
-                                        </div>
-                                    </div>
+                                   
                                     <!-- Submit button -->
                                     <div class="pt-1 pr-4">
-                                        <button type="submit" class="btn btn-success" style="float:right; width:23%;">Login <i class="fas fa-check"></i></button>
+                                        <button type="submit" class="btn btn-success" style="float:right; width:auto">Reset Password<i class="fas fa-check"></i></button>
                                     </div>
                                 </form>
                                 <!-- End of Input fields (Form) -->
-                                    <a class="nav-link mt-5" style="text-align:center;" href="<?=base_url("user/login/Auth/forgotPassword"); ?>">Forget your password?</a>
-                                    <a class="nav-link" style="text-align:center;" href="<?= base_url('user/login/Auth/registration');?>">Register an account</a>
+                                 <!-- End of Input fields (Form) -->
+                                 <a class="nav-link mt-5" style="text-align:center;" href="<?=base_url("user/login/Auth/login"); ?>">Back to Login</a>
+                                   
                             </div>
                         </div>
                     </div>

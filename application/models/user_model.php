@@ -67,13 +67,6 @@ class user_model extends CI_Model
         return $this->db->get('users')->result_array();
     }
 
-    //----------------delete later (18/May/2021)----------//
-//    public function get_role()
-//     {
-//         $row = $this->db->select("*")->limit(1)->order_by('user_id',"DESC")->get("users")->row();
-//         return $row->user_role; //it will provide latest record.
-//     }
-
    public function search_email()
     {
         return $this->db->get_where('users',['user_email'=>$this->session->userdata('user_email')])->row_array();
@@ -93,5 +86,20 @@ class user_model extends CI_Model
     {
         return $this->db->get('users')->row;
       
+    }
+
+    public function checkemail($user_email)
+    {
+        return $this->db->get_where('users', ['user_email'=>$user_email,'user_approval'=>1])->row_array();
+    }
+
+    public function updatepassword ($tokan,$user_email)
+    {
+       return $this->db->query("update users set user_password='".$tokan."'where user_email='".$user_email."'");
+    }
+
+    public function changepassword($data)
+    {
+        $this->db->query("update users set user_password='".$data['user_password']."'where user_password='".$_SESSION['tokan']."'");
     }
 }

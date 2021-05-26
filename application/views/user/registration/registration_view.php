@@ -116,7 +116,7 @@
                                     </div>
                                 </form>
                                 <!-- End of Input fields (Form) -->
-                                <a class="nav-link mt-5" style="text-align:center;" href="#!">Forget your password?</a>
+                                <a class="nav-link mt-5" style="text-align:center;" href="<?=base_url("user/login/Auth/forgotPassword"); ?>">Forget your password?</a>
                                 <a class="nav-link" style="text-align:center;" href="<?=base_url("user/login/Auth/login"); ?>">Already have an account? Login!</a>
                             </div>
                         </div>
