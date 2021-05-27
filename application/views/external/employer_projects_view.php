@@ -44,6 +44,9 @@
     });
 </script>
 
+<!-- Top Navigation -->
+<?php $this->load->view('external/templates/topnav');?>
+
 <body id="page-top">
 
     <!-- Page Wrapper -->
@@ -57,9 +60,8 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    <div style="background-color: green; display:block;">Navigation bar here<br><br><br></div> <!-- Remove this later -->
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-1 text-gray-800"><?= $title ?></h1>
+                    <h1 class="h3 mb-1 text-gray-800 pt-4"><?= $title ?></h1>
                     <p class="mb-4">To provide students the opportunity to gain real, hands-on work experience while still studying, 
                     INTI has built close ties with the industry to develop employer projects – a programme that enables students to work 
                     on actual business case studies and industry-relevant problems.</p> <!-- Edit description later -->

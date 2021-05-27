@@ -9,7 +9,8 @@
 	var base_url = "<?php echo base_url(); ?>";
 </script>
 
-<link href="<?php echo base_url() ?>assets/css/forms.css" rel="stylesheet">
+<!-- Top Navigation -->
+<?php $this->load->view('external/templates/topnav');?>
 
 <body id="page-top" style='background-color:#f9f6f1;'>
 
@@ -26,7 +27,7 @@
 				<div class="container-fluid ">
 
 					<!-- Cards for registration -->
-					<div class="row justify-content-md-center pt-5" style='background-color:#f9f6f1;'>
+					<div class="row justify-content-md-center pt-5 pb-5" style='background-color:#f9f6f1;'>
 
 						<!-- Steps -->
 						<div class="col-xl-3">

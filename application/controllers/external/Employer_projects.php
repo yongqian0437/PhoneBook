@@ -22,7 +22,7 @@ class Employer_projects extends CI_Controller
             $student_details = $this->user_student_model->student_details($user_id);
             $data['student_id'] = $student_details['student_id'];
         }
-        $data['title'] = "Employer Projects";
+        $data['title'] = "iJEES | Employer Projects";
 
         // Get EPs that are approved and their details
         $eps= $this->employer_projects_model->approved_eps();

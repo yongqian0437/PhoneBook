@@ -1,3 +1,10 @@
+<!-- Top Navigation -->
+<?php if ($user_role == 'Student') {
+    $this->load->view('external/templates/topnav');
+} ?>
+
+<body id="page-top">
+
 <!-- Content Wrapper -->
 <div id="content-wrapper" class="d-flex flex-column">
 

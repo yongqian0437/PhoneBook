@@ -1,15 +1,10 @@
-<!-- Jquery plugin -->
-<script src="<?php echo base_url() ?>/assets/vendor/jquery/jquery.min.js"></script>
-
-
-<!-- Page level custom scripts -->
-
 <!-- Set base url to javascript variable-->
 <script type="text/javascript">
     var base_url = "<?php echo base_url(); ?>";
 </script>
-<link href="<?php echo base_url() ?>assets/css/forms.css" rel="stylesheet">
 
+<!-- Top Navigation -->
+<?php $this->load->view('external/templates/topnav');?>
 
 <body id="page-top" style='background-color:#f9f6f1;'>
 
@@ -26,7 +21,7 @@
                 <div class="container-fluid ">
 
                     <!-- Cards for registration -->
-                    <div class="row justify-content-md-center pt-5" style='background-color:#f9f6f1;'>
+                    <div class="row justify-content-md-center pt-5 pb-5" style='background-color:#f9f6f1;'>
 
                         <!-- Steps -->
                         <div class="col-xl-3">
@@ -115,9 +110,17 @@
                                         <button type="submit" class="btn btn-success" style="float:right; width:auto;">Continue <i class="fas fa-check"></i></button>
                                     </div>
                                 </form>
+                                <br><br>
                                 <!-- End of Input fields (Form) -->
-                                <a class="nav-link mt-5" style="text-align:center;" href="<?=base_url("user/login/Auth/forgotPassword"); ?>">Forget your password?</a>
-                                <a class="nav-link" style="text-align:center;" href="<?=base_url("user/login/Auth/login"); ?>">Already have an account? Login!</a>
+                                <center>
+                                <div class="pt-5 pb-4">
+                                    <a style="text-align:center;" href="<?=base_url("user/login/Auth/forgotPassword"); ?>">Forget your password?</a>
+                                </div>
+                                <div class="pb-2">
+                                    <a style="text-align:center;" href="<?=base_url("user/login/Auth/login"); ?>">Already have an account? Login!</a>
+                                </div>
+                                </center>
+                                
                             </div>
                         </div>
                         

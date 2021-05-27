@@ -1,31 +1,27 @@
-<!-- Jquery plugin -->
-<script src="<?php echo base_url() ?>/assets/vendor/jquery/jquery.min.js"></script>
-
-
-<!-- Page level custom scripts -->
-
 <!-- Set base url to javascript variable-->
 <script type="text/javascript">
     var base_url = "<?php echo base_url(); ?>";
 </script>
 
-<link href="<?php echo base_url() ?>assets/css/forms.css" rel="stylesheet">
+<!-- Top Navigation -->
+<?php $this->load->view('external/templates/topnav');?>
+
 <body id="page-top" style='background-color:#f9f6f1;'>
 
     <!-- Page Wrapper -->
     <div id="wrapper">
 
         <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
+        <div id="content-wrapper" class="d-flex flex-column" >
 
             <!-- Main Content -->
             <div id="content">
 
                 <!-- Begin Page Content -->
-                <div class="container-fluid ">
+                <div class="container-fluid">
 
                     <!-- Cards for registration -->
-                    <div class="row justify-content-md-center pt-5" style='background-color:#f9f6f1;'>
+                    <div class="row justify-content-md-center pt-5 pb-5" style='background-color:#f9f6f1;'>
 
                         <!-- Steps -->
                         <div class="col-xl-3">
@@ -59,44 +55,52 @@
 
                         <!-- Form -->
                         <div class="col-xl-6 ">
-                            <div class="card h-100" id='card2' ">
-                                <div class=" card-body">
-                                <center>
-                                    <div class="pt-5 px-5" style="font-size:23px; letter-spacing: 8px; color:#787878; font-weight:700;">LOGIN PAGE</div>
-                                </center>
-                                <?=$this->session->flashdata('message')?> 
-                                <!-- Input fields (Form) -->
-                                <form class="user" method="post" action=" <?=base_url('user/login/Auth/login'); ?>">
-                                    <!-- Email-->
-                                    <div class="form-row pt-5 px-3">
-                                        <div class="form-group col-md-12 px-2">
-                                            <input type="email" name="user_email" class="form-control border-bottom" id="email" style="border: 0;" placeholder="Enter your email address" value="<?=set_value('user_email');?>" required>
-                                            <?= form_error('user_email','<small class="text-danger pl-3">','</small>');?>
+                            <div class="card h-100" id='card2'>
+                                <div class="card-body">
+                                    <center>
+                                        <div class="pt-5 px-5" style="font-size:23px; letter-spacing: 8px; color:#787878; font-weight:700;">LOGIN PAGE</div>
+                                    </center>
+                                    <?=$this->session->flashdata('message')?> 
+                                    <!-- Input fields (Form) -->
+                                    <form class="user" method="post" action=" <?=base_url('user/login/Auth/login'); ?>">
+                                        <!-- Email-->
+                                        <div class="form-row pt-5 px-3">
+                                            <div class="form-group col-md-12 px-2">
+                                                <input type="email" name="user_email" class="form-control border-bottom" id="email" style="border: 0;" placeholder="Enter your email address" value="<?=set_value('user_email');?>" required>
+                                                <?= form_error('user_email','<small class="text-danger pl-3">','</small>');?>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <!-- Password and confirm password -->
-                                    <div class="form-row pt-3 pb-3 px-3">
-                                        <div class="form-group col-md-12 px-2">
-                                            <input type="password" name="user_password" class="form-control border-bottom" id="password" style="border: 0;" placeholder="Enter your password" required>
-                                            <?= form_error('user_password','<small class="text-danger pl-3">','</small>');?>
+                                        <!-- Password and confirm password -->
+                                        <div class="form-row pt-3 pb-3 px-3">
+                                            <div class="form-group col-md-12 px-2">
+                                                <input type="password" name="user_password" class="form-control border-bottom" id="password" style="border: 0;" placeholder="Enter your password" required>
+                                                <?= form_error('user_password','<small class="text-danger pl-3">','</small>');?>
+                                            </div>
                                         </div>
+                                        <!-- Submit button -->
+                                        <div class="pt-1 pr-4">
+                                            <button type="submit" class="btn btn-success" style="float:right; width:23%;">Login <i class="fas fa-check"></i></button>
+                                        </div>
+                                        <br>
+                                        <br>
+                                    </form>
+                                    <!-- End of Input fields (Form) -->
+                                    <center>
+                                    <div class="pt-5 pb-3">
+                                        <a class="mt-5" style="text-align:center;" href="<?=base_url("user/login/Auth/forgotPassword"); ?>">Forget your password?</a>
                                     </div>
-                                    <!-- Submit button -->
-                                    <div class="pt-1 pr-4">
-                                        <button type="submit" class="btn btn-success" style="float:right; width:23%;">Login <i class="fas fa-check"></i></button>
-                                    </div>
-                                </form>
-                                <!-- End of Input fields (Form) -->
-                                    <a class="nav-link mt-5" style="text-align:center;" href="<?=base_url("user/login/Auth/forgotPassword"); ?>">Forget your password?</a>
-                                    <a class="nav-link" style="text-align:center;" href="<?= base_url('user/login/Auth/registration');?>">Register an account</a>
+                                        <a class="" style="text-align:center;" href="<?= base_url('user/login/Auth/registration');?>">Register an account</a>
+                                    </center>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <!-- END OF ROW -->
-                <!-- END OF FORM -->
+                        <!-- End for registration -->
 
+                    </div>
+                    <!-- END OF ROW -->
+                    <!-- END OF FORM -->
+
+                </div>
+                <!-- /.container-fluid -->
             </div>
-            <!-- /.container-fluid -->
-        </div>
-        <!-- End of Main Content -->
+            <!-- End of Main Content -->

@@ -21,7 +21,8 @@ class Chat extends CI_Controller
     public function index()
     {
         $user_role = $this->session->userdata('user_role');
-        $data['title'] = 'Chat Room';
+        $data['user_role'] = $user_role;
+        $data['title'] = 'iJEES | Chat Room';
         $data['sub_title'] = '';
         $data['chat_title'] = 'Select Contact to Chat With';
         $data['profile_pic'] = base_url('assets/img/chat_user/profile_pic.png');

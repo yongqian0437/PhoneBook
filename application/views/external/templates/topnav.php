@@ -64,7 +64,7 @@
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" style="background-color: #6B9080;"
                 aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#" style = "color: white;" >
+                <a class="dropdown-item" href="<?=base_url('external/Employer_projects');?>" style = "color: white;" >
                     Employer Projects
                 </a>
                 <a class="dropdown-item" href="#" style = "color: white;" >
@@ -78,7 +78,7 @@
         </li>
 
         <li class="nav-item px-2">
-            <a class="nav-link" href="#">Have a Chat</a>
+            <a class="nav-link" href="<?=base_url('user/chat/Chat');?>">Have a Chat</a>
         </li>
         <!-- <li class="nav-item pl-2">
             <a class="nav-link" href="#" >
@@ -88,7 +88,7 @@
 
 
         <!-- If user is sign in. Will display user name and user logo -->
-        <?php if($this->session->has_userdata('user_id')){ ?>
+        <?php if($this->session->has_userdata('user_id')){ ?> <!------------------------------------CHANGE THIS LATER------------------------------------------>
          <!-- Nav Item - User Information -->
 
          <hr id = "nav_line">
@@ -97,18 +97,17 @@
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span class="mr-2 d-none d-lg-inline small pr-2" style = "color: white; font-weight:700; font-size:0.9em;"><?php echo $this->session->userdata('user_lname');?></span>
-                    <img class="img-profile rounded-circle pl-1"
-                        src="img/undraw_profile.svg">
+                    <img class="img-profile rounded-circle" src="<?= base_url('assets/img/chat_user/profile_pic.png');?>">
                 </a>
                 <!-- Dropdown - User Information -->
-                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" style="background-color: #6B9080; 
+                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" style="background-color: #6B9080;" 
                     aria-labelledby="userDropdown">
                     <a class="dropdown-item" href="#" style = "color: white;">
                         <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                         Profile
                     </a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#" style = "color: white;">
+                    <a class="dropdown-item" href="<?=base_url('user/login/Auth/logout');?>" style = "color: white;">
                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                         Logout
                     </a>
@@ -117,7 +116,7 @@
         <!-- If user is not sign in -->
         <?php } else { ?>
             <li class="nav-item pl-1">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="<?=base_url('user/login/Auth/login');?>">
                     <button type="button" id = "register_btn" class="btn" style="background-color: white; color: #6B9080; font-size: 0.9em; border-radius:15px; font-weight: 800;">Login / Register</button>
                 </a>
             </li>
