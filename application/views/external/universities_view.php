@@ -34,7 +34,7 @@ table.dataTable tbody td {
   font-size: 1.0em !important;
   text-align: center !important;
   border-bottom: 1px solid black !important;
-  
+  font-weight:500;
 }
 
 table.dataTable thead th {

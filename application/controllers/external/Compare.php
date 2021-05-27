@@ -15,12 +15,14 @@ class Compare extends CI_Controller {
 
 	public function index()
 	{
-		$data['university_data'] = $this->universities_model->select_all_approved_only(); 
-		$data['include_js'] = 'compare';
+		
 		$data['title'] = 'iJEES | Comparison';
 
-		$this->load->view('external/compare_view', $data);
-        $this->load->view('external/templates/header');
+		$data['university_data'] = $this->universities_model->select_all_approved_only(); 
+		$data['include_js'] = 'compare';
+		$data['include_css'] = 'compare';
+		$this->load->view('external/templates/header', $data);
+		$this->load->view('external/compare_view');
         $this->load->view('external/templates/footer');
 	}
 

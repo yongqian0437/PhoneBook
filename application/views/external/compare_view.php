@@ -10,9 +10,9 @@
 
 <!-- Styles-->
 <style>
-    
+
 html {
-  scroll-behavior: smooth;
+scroll-behavior: smooth;
 }
 
 table {
@@ -26,16 +26,17 @@ th{
     color:#1a1918;
     font-size:19px;
     width:30px;
-    font-weight: bolder;
+    font-weight: 700;
 }
 
 td{
     color:#1a1918;
     font-size:17px;
+    font-weight: 500;
 }
 
 tr:nth-child(even) {
-  background-color: #EAF4F4;
+background-color: #EAF4F4;
 }
 </style>
 
@@ -251,7 +252,7 @@ tr:nth-child(even) {
                     </div>
 
                     <div class="col-xl-3 col-md-6 mb-4">
-                        <a style = 'border-radius:20px;' href="#table_view" onclick="generateTable()" id = 'proceed_btn' class = 'btn btn-SUCCESS btn-lg btn-icon-split'>
+                        <a style = 'border-radius:20px;' href="#table_view" onclick="generateTable()" id = 'proceed_btn' class = 'btn btn-success btn-lg btn-icon-split'>
                             <span class = 'icon text-white-600'>
                             <i class = 'fas fa-arrow-down fa-2x p-1'></i>
                             </span>
