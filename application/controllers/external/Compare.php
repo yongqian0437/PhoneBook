@@ -17,18 +17,8 @@ class Compare extends CI_Controller {
 	{
 		$data['university_data'] = $this->universities_model->select_all_approved_only(); 
 		$data['include_js'] = 'compare';
-		$data['title'] = 'iJEES | Compare';
+		$data['title'] = 'iJEES | Comparison';
 
-		// $user = array(
-		// 	'user_id' => '01',
-		// 	'user_fname' => 'Thomas',
-		// 	'user_lname' => 'Edison',
-		// 	'user_email' => 'lol',
-		// 	'user_role' => 'student',
-		// 	'user_approval' => '1'
-		// );
-		// $this->session->set_userdata($user);
-		// $data['user_data'] = $this->session->userdata('user_id');
 		$this->load->view('external/compare_view', $data);
         $this->load->view('external/templates/header');
         $this->load->view('external/templates/footer');

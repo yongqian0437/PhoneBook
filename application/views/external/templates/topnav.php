@@ -12,6 +12,10 @@
     font-weight: 600;
 }
 
+.dropdown-item:hover {
+    background: rgba(255, 255, 255, 0.2) !important; 
+}
+
 #register_btn:hover{
     opacity:0.90;
 }
