@@ -77,7 +77,7 @@
 										</div>
 									</div>
 									<!-- Date and gender -->
-									<div class="form-row pt-3 pb-3 px-3">
+									<div class="form-row pt-3 px-3">
 										<div class="form-group col-md-6 px-2">
 											<input type="date" name="student_dob" class="form-control border-bottom" id="student_dob" style="border: 0;" required>
 										</div>
@@ -95,14 +95,14 @@
 										</div>
 									</div>
 									<!-- Interest -->
-									<div class="form-row px-3">
+									<div class="form-row pt-3 px-3">
 										<div class="form-group col-md-12 px-2">
 											<input type="type" name="student_interest" class="form-control border-bottom" id="student_interest" style="border: 0;" placeholder="Enter your interest" required>
 										</div>
 									</div>
 									
                                     <!-- Current Level -->
-									<div class="form-row px-3">
+									<div class="form-row pt-3 px-3">
                                         <div class="form-group col-md-12 px-2">
                                             <select name="student_currentlevel" id="student_currentlevel" class="form-control form-select border-bottom" style="border: 0;" required>
                                                 <option value="" selected disabled>Please select your current level </option>
@@ -119,12 +119,12 @@
                                         </div>
                                     </div>
 									<!-- Terms & Condition -->
-									<div class="T&C ml-4 mt-2">
+									<div class="T&C ml-4 mt-2 pt-3">
 										<label><input type="checkbox" required> Please accept our <a href="https://newinti.edu.my/legal/privacy/">terms and conditions</a>
 										</label>
 									</div>
 									<!-- Submit button -->
-									<div class="pt-2 pr-3">
+									<div class="pt-4 pr-3">
 										<button type="submit" class="btn btn-success" style="float:right; width:auto;">Register <i class="fas fa-check"></i></button>
 									</div>
 

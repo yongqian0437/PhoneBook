@@ -413,7 +413,7 @@ class Auth extends CI_Controller
 
         if($this->form_validation->run()== false)
         {
-            $data['title']="Academic Couselor Registration";
+            $data['title']="Academic Counsellor Registration";
             $this->load->view('external/templates/header',$data);
             $this->load->view('user/registration/ac_registration_view',$data);// get data from model
             $this->load->view('external/templates/footer');

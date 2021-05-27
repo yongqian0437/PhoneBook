@@ -67,51 +67,58 @@
                                <!-- Form -->
                                 <form method="post" action="<?= base_url('user/login/Auth/company');?>" enctype="multipart/form-data">
                                 <?= form_open_multipart('') ?>    
-                                            <div class="form-row pt-4 px-3">
+                                        <div class="form-row pt-4 px-3">
                                              <!-- Company Name -->
                                             <div class="form-group col-md-12 px-2">
                                               <input type="text" class="form-control border-bottom" style="border: 0;" name="c_name" placeholder="Company Name" value="<?=set_value('course_name')?>" required>
                                               <?= form_error('c_name','<small class="text-danger pl-3">','</small>');?>
                                             </div>
-
-                                            <!-- Company Phone Number-->
-                                            <div class="form-group col-md-7 px-2">
-                                              <input type="number" class="form-control border-bottom" style="border: 0;" name="c_phonenumber" placeholder="Company Phone Number" required>
-                                            </div>
-
-                                            <!--Logo-->
-                                            <div class="form-group col-md-5 px-2">
-                                                <input type="file" class="custom-file-input" id="form-group" name="c_logo" required>
-                                                <label class="custom-file-label border-bottom" style="border: 0;" for="customFile">Upload logo</label>
-                                             </div>
-
+                                        </div>
+                                        <div class="form-row pt-3 px-3">
                                             <!-- Company Registration Number-->
-                                            <div class="form-group col-md-8 px-2">
+                                            <div class="form-group col-md-12 px-2">
                                               <input type="text" class="form-control border-bottom" style="border: 0;" name="c_registrationnum" placeholder="Company Registration Number" required>
                                             </div>
-
+                                        </div>
+                                        <div class="form-row pt-3 px-4">
+                                             <!--Logo-->
+                                            <div class="form-group col-md-12 px-2">
+                                                <input type="file" class="custom-file-input" id="form-group" name="c_logo" value="<?=set_value('c_logo')?>">
+                                                <label class="custom-file-label border-bottom" style="border: 0;" for="customFile">Upload Company Logo</label>
+                                                <p style="font-size: 14px">*Accepted file formats are only in .JPG, .JPEG and .PNG</p>
+                                                <?= form_error('c_logo','<small class="text-danger pl-3">','</small>');?>
+                                            </div>
+                                        </div>
+                                        <div class="form-row pt-3 px-3">
                                             <!-- Company Address -->
                                             <div class="form-group col-md-12 px-2">
                                               <input type="text" class="form-control border-bottom" style="border: 0;" name="c_address" placeholder="Company Address" required>
                                             </div>
-
+                                        </div>
+                                        <div class="form-row pt-3 px-3">
+                                            <!-- Company Phone Number-->
+                                            <div class="form-group col-md-12 px-2">
+                                              <input type="number" class="form-control border-bottom" style="border: 0;" name="c_phonenumber" placeholder="Company Phone Number" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-row pt-3 px-3">
                                             <!--Company Email-->
                                             <div class="form-group col-md-12 px-2">
                                                 <input type="email" class="form-control border-bottom" style="border: 0;" name="c_email" placeholder="Company Email" required>    
                                             </div>
-
+                                        </div>
+                                        <div class="form-row pt-3 px-3">
                                             <!-- Company Website-->
                                             <div class="form-group col-md-12 px-2">
                                               <input type="text" class="form-control border-bottom" style="border: 0;" name="c_website" placeholder="Company Website" required>
                                             </div>
-                                            
-                                            <!-- Term and Conditions & Register Button -->
+                                        </div>
+                                        <div class="form-row pt-4 px-3">
+                                            <!-- Continue Button -->
                                             <div class="col">
                                                    <button type="submit" class="btn btn-success mt-4" style="float:right; width:auto;">Continue <i class="fas fa-check"></i></button>
                                             </div>
-                                            </div>
-                                          </form>    
-
+                                        </div>
                                 </form>
                                 <!-- End of Input fields (Form) -->
 

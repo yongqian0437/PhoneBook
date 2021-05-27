@@ -88,7 +88,7 @@
                                         </div>
                                     </div>
                                     <!-- Password and confirm password -->
-                                    <div class="form-row pt-3 pb-3 px-3">
+                                    <div class="form-row pt-3 px-3">
                                         <div class="form-group col-md-6 px-2">
                                             <input type="password" name="user_password" class="form-control border-bottom" id="password" style="border: 0;" placeholder="Enter your password" required>
                                              <?= form_error('user_password','<small class="text-danger pl-3">','</small>');?>
@@ -98,7 +98,7 @@
                                         </div>
                                     </div>
                                     <!-- Select your role -->
-                                    <div class="form-row px-3">
+                                    <div class="form-row pt-3 px-3">
                                         <div class="form-group col-md-12 px-2">
                                             <select name="user_role" id="user_role" class="form-control form-select border-bottom" style="border: 0;" required>
                                                 <option value="" selected disabled>Please select a role</option>
@@ -111,7 +111,7 @@
                                         </div>
                                     </div>
                                     <!-- Submit button -->
-                                    <div class="pt-2 pr-4">
+                                    <div class="pt-4 pr-4">
                                         <button type="submit" class="btn btn-success" style="float:right; width:auto;">Continue <i class="fas fa-check"></i></button>
                                     </div>
                                 </form>

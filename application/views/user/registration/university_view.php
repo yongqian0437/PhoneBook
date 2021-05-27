@@ -68,61 +68,75 @@
                                <form method="post" action="<?= base_url('user/login/Auth/university');?>" enctype="multipart/form-data">
                                <?= form_open_multipart('') ?>
                                         <div class="form-row pt-4 px-3">
-                                            <!-- University-->
+                                            <!-- University Name-->
                                             <div class="form-group col-md-12 px-2">
                                               <input type="text" class="form-control border-bottom" style="border: 0;" name="uni_name" placeholder="University Name" value="<?=set_value('uni_name')?>" required>
                                               <?= form_error('uni_name','<small class="text-danger pl-3">','</small>');?>
                                             </div>
-
-                                            <!--  Email -->
-                                            <div class="form-group col-md-12 px-2">
-                                              <input type="email" class="form-control border-bottom" style="border: 0;" name="uni_email" placeholder="University Email" required>
-                                            </div>
-
-                                            <!-- Hotline-->
-                                            <div class="form-group col-md-12 px-2">
-                                              <input type="number" class="form-control border-bottom" style="border: 0;" name="uni_hotline" placeholder="University Hotline" required>
-                                            </div>
-
-                                            <!-- University Short Profile -->
-                                            <div class="form-group col-md-12 px-2">
-                                              <textarea class="form-control border-bottom" style="border: 0;" rows="6" name="uni_shortprofile" placeholder="Short Profile"></textarea>
-                                            </div>
-
-                                            <!-- Country -->
-                                            <div class="form-group col-md-7 px-2">
-                                              <input type="text" class="form-control border-bottom" style="border: 0;" name="uni_country" placeholder="Country of University" required>
-                                            </div>
-
-                                             <!--Logo-->
-                                             <div class="form-group col-md-5 px-2">
-                                                <input type="file" class="custom-file-input " id="form-group" name="uni_logo" value="<?=set_value('uni_logo')?>">
-                                                <label class="custom-file-label border-bottom" style="border: 0;" for="customFile">Upload logo</label>
-                                                <?= form_error('uni_logo','<small class="text-danger pl-3">','</small>');?>
-                                             </div>
-
-                                            <!--Background-->
-                                            <div class="form-group col-md-12 px-2">
-                                                <input type="file" class="custom-file-input " id="form-group" name="uni_background" required>
-                                                <label class="custom-file-label border-bottom" style="border: 0;" for="customFile">Upload University Background</label>
-                                            </div>
-
+                                        </div>
+                                        <div class="form-row pt-3 px-3">
                                             <!-- Address -->
                                             <div class="form-group col-md-12 px-2">
                                                <textarea class="form-control border-bottom" style="border: 0;" rows="2" name="uni_address" placeholder="University Address" required></textarea>
                                             </div>
-
-                                            <!-- QS Ranking, Employability Rank & Total Students -->
+                                        </div>
+                                        <div class="form-row pt-3 px-3">
+                                            <!--  Email -->
+                                            <div class="form-group col-md-12 px-2">
+                                              <input type="email" class="form-control border-bottom" style="border: 0;" name="uni_email" placeholder="University Email" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-row pt-3 px-3">
+                                            <!-- Hotline-->
+                                            <div class="form-group col-md-12 px-2">
+                                              <input type="number" class="form-control border-bottom" style="border: 0;" name="uni_hotline" placeholder="University Hotline" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-row pt-3 px-3">
+                                            <!-- University Short Profile -->
+                                            <div class="form-group col-md-12 px-2">
+                                              <textarea class="form-control border-bottom" style="border: 0;" rows="6" name="uni_shortprofile" placeholder="Short Profile"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-row pt-3 px-3">
+                                            <!-- Country -->
+                                            <div class="form-group col-md-12 px-2">
+                                              <input type="text" class="form-control border-bottom" style="border: 0;" name="uni_country" placeholder="Country of University" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-row pt-3 px-4">
+                                             <!--Logo-->
+                                             <div class="form-group col-md-12 px-2">
+                                                <input type="file" class="custom-file-input " id="form-group" name="uni_logo" value="<?=set_value('uni_logo')?>">
+                                                <label class="custom-file-label border-bottom" style="border: 0;" for="customFile">Upload University Logo</label>
+                                                <p style="font-size: 14px">*Accepted file formats are only in .JPG, .JPEG and .PNG</p>
+                                                <?= form_error('uni_logo','<small class="text-danger pl-3">','</small>');?>
+                                             </div>
+                                        </div>
+                                        <div class="form-row pt-3 px-4">
+                                            <!--Background-->
+                                            <div class="form-group col-md-12 px-2">
+                                                <input type="file" class="custom-file-input " id="form-group" name="uni_background" required>
+                                                <label class="custom-file-label border-bottom" style="border: 0;" for="customFile">Upload a picture of the University building</label>
+                                                <p style="font-size: 14px">*Accepted file formats are only in .JPG, .JPEG and .PNG</p>
+                                            </div>
+                                        </div>
+                                        <div class="form-row pt-3 px-3">
+                                            <!-- QS Ranking & Employability Rank -->
                                             <div class="form-group col-md-6 px-2">
                                                 <input type="number" class="form-control border-bottom" style="border: 0;" name="uni_qsrank" placeholder="QS Ranking" required>
                                             </div>
                                             <div class="form-group col-md-6 px-2">
                                                 <input type="number" class="form-control border-bottom" style="border: 0;" name="uni_employabilityrank" placeholder="Employability Rank" required>
                                             </div>
+                                        </div>
+                                        <div class="form-row pt-3 px-3">
+                                            <!-- Total Students -->
                                             <div class="form-group col-md-6 px-2">
                                                 <input type="number" class="form-control border-bottom" style="border: 0;" name="uni_totalstudents" placeholder="Total Students" required>
                                             </div>
-
+                                        </div>
+                                        <div class="form-row pt-4 px-3">
                                             <!-- Term and Conditions & Register Button -->
                                             <div class="col">
                                                    <button type="submit" class="btn btn-success mt-4" style="float:right; width:auto;">Continue <i class="fas fa-check"></i></button>

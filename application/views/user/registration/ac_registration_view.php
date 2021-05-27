@@ -75,7 +75,7 @@
 											<?= form_error('ac_businessemail','<small class="text-danger pl-3">','</small>');?>
 										</div>
 									</div>
-									<div class="form-row px-3">
+									<div class="form-row pt-3 px-3">
 										<!-- Phone number -->
 										<div class="form-group col-md-6 px-2">
 											<input type="number" name="ac_phonenumber" class="form-control border-bottom" id="ac_phonenumber" style="border: 0;" placeholder="Enter your phone number" value="<?=set_value('ac_phonenumber') ?>" required>
@@ -87,7 +87,7 @@
 										</div>
 									</div>
 									<!-- Date and gender -->
-									<div class="form-row pb-3 px-3">
+									<div class="form-row pt-3 px-3">
 										<div class="form-group col-md-6 px-2">
 											<input type="date" name="ac_dob" class="form-control border-bottom" id="ac_dob" style="border: 0;" required>
 										</div>
@@ -104,14 +104,8 @@
 											</div>
 										</div>
 									</div>
-									<!-- University  -->
-									<!-- <div class="form-row px-3">
-										<div class="form-group col-md-12 px-2">
-											<input type="type" name="ac_university" class="form-control border-bottom" id="ac_university" style="border: 0;" placeholder="Enter your university" required>
-										</div>
-									</div> -->
 									<!-- Select your university -->
-                                    <div class="form-row px-3">
+                                    <div class="form-row pt-3 px-3">
                                         <div class="form-group col-md-12 px-2">
 										<select name="ac_university" id="ac_university" class="form-control form-select" required>
                                             <option value="" selected disabled >Please select a university</option>
@@ -126,19 +120,20 @@
                                         </div>
                                     </div>
 									<!-- Upload Document -->
-									<div class="form-row pt-2 px-4">
+									<div class="form-row pt-3 px-4">
 										<div class="form-group col-md-12 px-2">
 											<input type="file" class="custom-file-input" id="form-group" name="ac_document" required>
-											<label class="custom-file-label" for="customFile">Upload a file</label>
+											<label class="custom-file-label" for="customFile">Upload document</label>	
+											<p style="font-size: 14px">*Required document: Job Offer Letter in .PDF file format</p>
 										</div>
 									</div>
 									<!-- Terms & Condition -->
-									<div class="T&C ml-4">
+									<div class="T&C ml-4 pt-3">
 										<label><input type="checkbox" required> Please accept our <a href="https://newinti.edu.my/legal/privacy/" target="_blank">terms and conditions</a>
 										</label>
 									</div>
 									<!-- Submit button -->
-									<div class="pt-2 pr-3">
+									<div class="pt-4 pr-3">
 										<button type="submit" class="btn btn-success" style="float:right; width:auto;">Register <i class="fas fa-check"></i></button>
 									</div>
 

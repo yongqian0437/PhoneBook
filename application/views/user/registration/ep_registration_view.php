@@ -75,7 +75,7 @@
                                             <?= form_error('ep_businessemail','<small class="text-danger pl-3">','</small>');?>
 										</div>
 									</div>
-									<div class="form-row px-3">
+									<div class="form-row pt-3 px-3">
 										<!-- Phone number -->
 										<div class="form-group col-md-6 px-2">
 											<input type="number" name="ep_phonenumber" class="form-control border-bottom" id="ep_phonenumber" style="border: 0;" placeholder="Enter your phone number" value="<?=set_value('ep_phonenumber') ?>" required>
@@ -87,7 +87,7 @@
 										</div>
 									</div>
 									<!-- Date and gender -->
-									<div class="form-row pt-3 pb-3 px-3">
+									<div class="form-row pt-3 px-3">
 										<div class="form-group col-md-6 px-2">
 											<input type="date" name="ep_dob" class="form-control border-bottom" id="ep_dob" style="border: 0;" required>
 										</div>
@@ -105,25 +105,26 @@
 										</div>
 									</div>
 									<!-- Job Title  -->
-									<div class="form-row px-3">
+									<div class="form-row pt-3 px-3">
 										<div class="form-group col-md-12 px-2">
 											<input type="type" name="ep_jobtitle" class="form-control border-bottom" id="ep_jobtitle" style="border: 0;" placeholder="Enter your job title" required>
 										</div>
 									</div>
 									<!-- Upload Document -->
-									<div class="form-row pt-2 px-4">
+									<div class="form-row pt-3 px-4">
 										<div class="form-group col-md-12 px-2">
 											<input type="file" class="custom-file-input" id="form-group" name="ep_document" required>
-											<label class="custom-file-label" for="customFile">Upload a file</label>
+											<label class="custom-file-label" for="customFile">Upload document</label>
+											<p style="font-size: 14px">*Required document: University verification in .PDF file format</p>
 										</div>
 									</div>
 									<!-- Terms & Condition -->
-									<div class="T&C ml-4 mt-2">
+									<div class="T&C ml-4 mt-2 pt-3">
 										<label><input type="checkbox" required> Please accept our <a href="https://newinti.edu.my/legal/privacy/">terms and conditions</a>
 										</label>
 									</div>
 									<!-- Submit button -->
-									<div class="pt-2 pr-3">
+									<div class="pt-4 pr-3">
 										<button type="submit" class="btn btn-success" style="float:right; width:auto">Register <i class="fas fa-check"></i></button>
 									</div>
 								</form>
