@@ -28,11 +28,13 @@
         if (isset($include_js)) {
             echo '<script src="' . base_url() . 'assets/js/additional/' . $include_js . '.js"></script>';
         } 
+        if (isset($include_js2)) {
+            echo $include_js2;
+        } 
+        if (isset($include_js3)) {
+            echo $include_js3;
+        } 
     ?>
 
 </body>
-<!-- Datatables plugins -->
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jq-3.3.1/dt-1.10.24/datatables.min.css"/>
-<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.3.1/dt-1.10.24/datatables.min.js"></script>
-
 </html>

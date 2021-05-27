@@ -17,6 +17,8 @@ class Universities extends CI_Controller {
 	{
 		$data['university_data'] = $this->universities_model->select_all_approved_only(); 
 		$data['include_js'] = 'universities_list';
+		$data['include_js2'] = '<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jq-3.3.1/dt-1.10.24/datatables.min.css"/>';
+		$data['include_js3'] = '<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.3.1/dt-1.10.24/datatables.min.js"></script>';
 		$data['title'] = 'iJEES | University';
 		$this->load->view('external/universities_view', $data);
         $this->load->view('external/templates/header');
