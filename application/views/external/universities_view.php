@@ -67,6 +67,12 @@ table.dataTable thead th {
                 <!-- Begin Page Content -->
                 <div style = 'background-color:white;' class="container-fluid">
 
+                <!-- Page Heading -->
+                <div class="d-sm-flex align-items-center justify-content-between mb-4 pt-5">
+                    <h1 class="h3 mb-0 text-gray-800"><b>UNIVERSITIES<b></h1>
+                </div>
+                <div style = "text-align: justify; font-weight:500;">Find your ideal university without having to leave your home! Your journey to uni starts here. Discover universities that students are looking at the most. Remember, there’s no such thing as the best university in the world. What’s best depends on who you are, what you want from your student experience, and what you want your future to be like. Find the option that is best for you, order that next prospectus and immerse yourself in the university experience that you long for.</div>
+
                 <!-- Content Row -->
 
                 <div class="row pt-5">
@@ -75,7 +81,9 @@ table.dataTable thead th {
                             <div class="card-body">
                                 <div class="pb-3" style="display: flex; flex-direction: row; justify-content: space-between; background-color: #A4C3B2, color:white;">
                                     <?php $uni_count = count($university_data) ?>
-                                    <h4 style = " font-weight:700;"><span style = "color:#6B9080">(<?php echo $uni_count ?>)</span><span style = "color:black; opacity:0.3;"><i> UNIVERSITIES</i></span></h4>
+                                    <div style = "background-color:#1dd3b0; border-radius:10px; width:auto; height:auto;">
+                                        <div class = "px-3 pt-2 "><h4 style = " font-weight:700;"><span style = "color:white"><?php echo $uni_count ?></span><span style = "color:white; "> UNIVERSITIES</span></h4></div>
+                                    </div>
                                 </div>
                                 <div class="table-responsive">
                                     <table id="table_university" class="table ">
