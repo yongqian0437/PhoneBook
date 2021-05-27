@@ -258,7 +258,7 @@ class Auth extends CI_Controller
         $this->user_student_model->insert($data);
        
         $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
-        Check your email to get the approval from the admin</div>');
+        You have registered successfully</div>');
         
         redirect('user/login/Auth/login');
         }
