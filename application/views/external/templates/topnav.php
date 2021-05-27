@@ -88,7 +88,7 @@
 
 
         <!-- If user is sign in. Will display user name and user logo -->
-        <?php if($this->session->has_userdata('user_id')){ ?> <!------------------------------------CHANGE THIS LATER------------------------------------------>
+        <?php if($this->session->has_userdata('has_login')){ ?> <!------------------------------------CHANGE THIS LATER------------------------------------------>
          <!-- Nav Item - User Information -->
 
          <hr id = "nav_line">

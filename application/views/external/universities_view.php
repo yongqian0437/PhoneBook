@@ -69,7 +69,7 @@ table.dataTable thead th {
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4 pt-5">
-                    <h1 class="h3 mb-0 text-gray-800"><b>UNIVERSITIES<b></h1>
+                    <h1 class="h3 mb-0 text-gray-800"><b>Universities<b></h1>
                 </div>
                 <div style = "text-align: justify; font-weight:500;">Find your ideal university without having to leave your home! Your journey to uni starts here. Discover universities that students are looking at the most. Remember, there’s no such thing as the best university in the world. What’s best depends on who you are, what you want from your student experience, and what you want your future to be like. Find the option that is best for you, order that next prospectus and immerse yourself in the university experience that you long for.</div>
 
@@ -79,7 +79,7 @@ table.dataTable thead th {
                     <div class="col-12">
                         <div class="card border-dark">
                             <div class="card-body">
-                                <div class="pb-3" style="display: flex; flex-direction: row; justify-content: space-between; background-color: #A4C3B2; color:white;">
+                                <div class="pb-3" style="display: flex; flex-direction: row; justify-content: space-between; color:white;">
                                     <?php $uni_count = count($university_data) ?>
                                     <div style = "background-color:#1dd3b0; border-radius:10px; width:auto; height:auto;">
                                         <div class = "px-3 pt-2 "><h4 style = " font-weight:700;"><span style = "color:white"><?php echo $uni_count ?></span><span style = "color:white; "> UNIVERSITIES</span></h4></div>

@@ -15,6 +15,25 @@ class Auth extends CI_Controller
     
     public function login()
     {
+        //Dont allow user to access login page
+        if ($this->session->userdata('has_login') ){  
+
+            if($this->session->userdata('user_role') =="Admin")
+            {
+                redirect('internal/admin_panel/Admin_dashboard');
+            }
+            // check user role is  AC,EA,E,EP
+            else if ($this->session->userdata('user_role')!="Student")
+            {
+                redirect('internal/level_2/Level_2_dashboard/profile_level_2');
+            }
+                // check user role is  student
+            else
+            {
+                redirect('external/homepage/profile_level_1');
+            }
+        }
+
         $this->form_validation->set_rules('user_email','Email','trim|required|valid_email');
         $this->form_validation->set_rules('user_password','Password','trim|required');
         
@@ -54,6 +73,7 @@ class Auth extends CI_Controller
                         'user_email'=>$users['user_email'],
                         'user_role'=>$users['user_role'],
                         'user_id'=>$users['user_id'],
+                        'has_login'=>1,
                     ];
 
                     $this->session->set_userdata($data);
@@ -557,6 +577,7 @@ class Auth extends CI_Controller
         $this->session->unset_userdata('user_id');
         $this->session->unset_userdata('user_email');
         $this->session->unset_userdata('user_role');
+        $this->session->unset_userdata('has_login');
         $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
         You have been logout</div>');
         redirect('user/login/Auth/login'); 
