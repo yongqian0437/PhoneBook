@@ -67,4 +67,9 @@ class universities_model extends CI_Model
         $this->db->where('uni_approval', 1);
         return $this->db->get('universities')->result();
     }
+
+    public function uni_details($uni_id)
+    {
+        return $this->db->get_where('universities', ['uni_id'=>$uni_id])->row_array();
+    }
 }

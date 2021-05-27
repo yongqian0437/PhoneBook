@@ -6,7 +6,8 @@ class Users_information extends CI_Controller
     public function __construct()
     {
         parent:: __construct();
-        $this->load->model(['user_student_model','user_ep_model','user_ac_model','user_ea_model','user_e_model']);
+        $this->load->model(['user_student_model','user_ep_model','user_ac_model','user_ea_model','user_e_model',
+        'company_model','universities_model']);
         
         // Checks if session is set and if user is signed in as Admin (authorised access). If not, deny his/her access.
         if (!$this->session->userdata('user_id') || $this->session->userdata('user_role') != "Admin"){  
@@ -47,18 +48,40 @@ class Users_information extends CI_Controller
         // $this->load->view('templates/topbar',$data);
         $result=$this->user_ep_model->index();
         $data=array('eplist'=>$result);
+        $this->session->set_userdata($data); 
         $this->load->view('internal/admin_panel/ep_view',$data);
         $this->load->view('internal/templates/footer');   
     }
 
-    public function detail_education_partner ($id)
+    public function detail_education_partner ($id)//get user id to find ep details
     {
         $data['title']="Detail of Education Partner";
-        $data['ep']=$this->user_ep_model->ep_details($id);        
+        $data['ep']=$this->user_ep_model->ep_details($id); 
+        $ep_information=$this->user_ep_model->ep_details($id); 
+        $ep_info=
+        [
+            'ep_id'=> $ep_information['ep_id'],
+            'user_id'=> $ep_information['user_id'],
+            
+        ];
+
+        $this->session->set_userdata($ep_info);
+       
         $this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav',$data);
         // $this->load->view('templates/topbar',$data);
         $this->load->view('internal/admin_panel/ep_form_view',$data);
+        $this->load->view('internal/templates/footer');
+    }
+
+    public function university($uni_id)
+    {
+        $data['title']="Detail of University";
+        $data['ep']=$this->user_ep_model->ep_details($uni_id); 
+        $university['uni']=$this->universities_model->uni_details($uni_id);
+        $this->load->view('internal/templates/header',$data);
+        $this->load->view('internal/templates/sidenav',$data);
+        $this->load->view('internal/admin_panel/university_form_view',$university);
         $this->load->view('internal/templates/footer');
     }
 
@@ -126,11 +149,31 @@ class Users_information extends CI_Controller
     public function detail_employer($id)
     {
         $data['title']="Detail of Employer";
-        $data['e']=$this->user_e_model->e_details($id);        
+        $employer['e']=$this->user_e_model->e_details($id);
+        $e_information=$this->user_e_model->e_details($id);
+        $e_info=
+        [
+            'e_id'=> $e_information['e_id'],
+            'user_id'=> $e_information['user_id'],
+        ];
+
+        $this->session->set_userdata($e_info);
         $this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav',$data);
         // $this->load->view('templates/topbar',$data);
-        $this->load->view('internal/admin_panel/e_form_view',$data);
+        $this->load->view('internal/admin_panel/e_form_view',$employer);
+        $this->load->view('internal/templates/footer');
+        //$user_id=$this->company($id);
+        //redirect('internal/admin_panel/Users_information/company',$employer); 
+    }
+
+    public function company($c_id)
+    {
+        $data['title']="Detail of Company";
+        $company['c']=$this->company_model->c_details($c_id);
+        $this->load->view('internal/templates/header',$data);
+        $this->load->view('internal/templates/sidenav',$data);
+        $this->load->view('internal/admin_panel/company_form_view',$company);
         $this->load->view('internal/templates/footer');
     }
 }

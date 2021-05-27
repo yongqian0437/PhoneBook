@@ -74,8 +74,9 @@
                                              <div class="pt-3 text-center">
                                               <a class="btn btn-primary" href="<?=base_url('assets/uploads/employer/'.$e['e_document'])?>" role="button" target="_blank">View Uploaded Document</a>
                                             </div>
-                                            <div class="form-row pt-2 px-4">
+                                            <div class="d-grid gap-2 d-md-block">
                                               <a href="<?=base_url();?>internal/admin_panel/Admin_dashboard/users_accounts_nav" class="btn btn-primary">Back</a>
+                                              <a style=float:right href="<?=base_url();?>internal/admin_panel/Users_information/company/<?php echo $e['c_id'];?>" class="btn btn-primary">Continue</a>
                                             </div>
                                           </form>    
                                 </div>
