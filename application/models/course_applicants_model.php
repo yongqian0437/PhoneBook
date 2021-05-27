@@ -50,4 +50,12 @@ class course_applicants_model extends CI_Model
         $this->db->where($condition);
         return $this->db->get('course_applicants')->result();
     }
+
+    function find_data_with_id($id) 
+    {
+        $this->db->where('user_id', $id);
+        return $this->db->get('user_student')->row();
+    }
+
+
 }
