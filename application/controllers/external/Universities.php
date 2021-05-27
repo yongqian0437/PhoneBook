@@ -78,10 +78,49 @@ class Universities extends CI_Controller {
 		$data['title'] = 'iJEES | University';
 		$data['uni_detail'] = $this->universities_model->get_uni_detail($uni_id);
 		$data['course_field'] = $this->courses_model->course_field_dropdown($uni_id);
+		$data['include_js'] = 'university_detail';
 
 		$this->load->view('external/universitiy_detail_view', $data);
 		$this->load->view('external/templates/header');
 		$this->load->view('external/templates/footer');
+	}
+
+	public function fetch_course_list()
+	{
+		$course_data = $this->courses_model->get_course_with_course_area($this->input->post('course_area'), $this->input->post('uni_id')); 
+
+		$output = "";
+
+		foreach($course_data as $row)
+		{
+			$output .= 
+			'
+			<div class = "row pt-2  pb-2" style = "border-top:1px solid rgba(169, 169, 169, .5);">
+				<div class="col-md-7 pt-2 pl-2" >
+					<div style = "font-size:1.0em; color:black; font-weight:700;">'.$row->course_name.'</div>
+					<div style = "font-size:0.8em; color:grey;">'.$row->course_level.'</div>
+				</div>
+				<div class="col-md-1 pt-2" >
+					<center>
+						<div style = "font-size:1.0em; color:black; font-weight:600;">'.$row->course_duration.'</div>
+						<div style = "font-size:0.8em; color:grey;">years</div>
+					</center>
+				</div>
+				<div class="col-md-1 pt-2" >
+					<center>
+						<div style = "font-size:1.0em; color:black; font-weight:600;">RM '.$row->course_fee.'</div>
+						<div style = "font-size:0.8em; color:grey;">per year</div>
+					</center>
+				</div>
+				<div class="col-md-3 pt-2 pl-5">
+					<button type="button" href = "" class="btn btn-sm " style = "background-color:#A4C3B2; color:white; font-size:0.9em;">View</button>
+					<button type="button" href = "" class="btn btn-sm" style = "background-color:#A4C3B2; color:white; font-size:0.9em;">Apply</button>
+				</div>
+			</div>
+			';
+		}
+
+		echo $output;
 	}
  
 }

@@ -87,4 +87,21 @@ class courses_model extends CI_Model
         return $this->db->get('courses')->result();
     }
 
+    function get_course_with_course_area($course_area, $uni_id)
+    {
+        if($course_area == 'all'){
+            $this->db->where('uni_id', $uni_id);
+            $this->db->order_by('course_area');
+            $this->db->order_by("course_level", "asc"); 
+            return $this->db->get('courses')->result();
+        }
+        else{
+            $this->db->where('uni_id', $uni_id);
+            $this->db->where('course_area', $course_area);
+            $this->db->order_by('course_area');
+            $this->db->order_by("course_level", "asc"); 
+            return $this->db->get('courses')->result();
+        }
+    }
+
 }

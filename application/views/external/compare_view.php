@@ -18,6 +18,8 @@ html {
 table {
     table-layout: fixed;
     word-wrap: break-word;
+    border-top: 2px solid black !important;
+
 }
 
 th{
@@ -57,8 +59,9 @@ tr:nth-child(even) {
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4 pt-5">
                     <h1 class="h3 mb-0 text-gray-800"><b>COMPARE COURSES<b></h1>
+                    <p></p>
                 </div>
-                <hr style = "border: 2px solid #EAF4F4;">
+                <hr style = "height:2px; background-color:#EAF4F4">
 
                 <br>
 
@@ -265,6 +268,7 @@ tr:nth-child(even) {
                 <!-- TABLE  -->
                 <div class="row justify-content-md-center px-2 pb-5">   
                     <div class="col-xl-12 px-5" >
+                        <h3 style = "font-weight:700;" ></h3>
                         <table class="table py-2" id = 'table_view'>
                             
                         </table>

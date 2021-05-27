@@ -32,15 +32,16 @@ table.dataTable tbody td {
   vertical-align: middle;
   color:black !important;
   font-size: 1.0em !important;
-
   text-align: center !important;
-  border-top: 2px solid black !important;
+  border-bottom: 1px solid black !important;
+  
 }
 
 table.dataTable thead th {
   text-align: center !important;
   vertical-align: middle;
   border-top: 2px solid black !important;
+  border-bottom: 2px solid black !important;
   color:black !important;
   font-size: 1.1em !important;
   font-weight:700 !important;

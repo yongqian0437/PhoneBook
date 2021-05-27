@@ -25,7 +25,7 @@ $(document).ready(function(){
         var level1 = document.getElementById("level_1").value;
 
         if(uni1 != "" && level1 != ""){
-            $('#course_class_1').show();
+            $('#course_class_1').fadeIn(1000);
 
             $.ajax({
                 url: base_url + "external/Compare/fetch_courses",
@@ -45,7 +45,7 @@ $(document).ready(function(){
         var level2 = document.getElementById("level_2").value;
 
         if(uni2 != "" && level2 != ""){
-            $('#course_class_2').show();
+            $('#course_class_2').fadeIn(1000);
 
             $.ajax({
                 url: base_url + "external/Compare/fetch_courses",
@@ -65,7 +65,7 @@ $(document).ready(function(){
         var level3 = document.getElementById("level_3").value;
 
         if(uni3 != "" && level3 != ""){
-            $('#course_class_3').show();
+            $('#course_class_3').fadeIn(1000);
 
             $.ajax({
                 url: base_url + "external/Compare/fetch_courses",
@@ -97,8 +97,11 @@ function generateTable() {
             success:function(data)
             {
              $('#table_view').html(data);
+             $("h3").empty().append("Compare Table");
             }
         });
+        $('#table_view').hide();
+        $("#table_view").fadeIn(2000);
     }
     else{
         swal({
