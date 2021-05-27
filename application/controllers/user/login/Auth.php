@@ -213,16 +213,25 @@ class Auth extends CI_Controller
             $this->load->library('upload', $config);
             if (!$this->upload->do_upload($file_input_name)) 
             {
-                $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
-                The file format must be in "png, jpg or jpeg"</div>');
-                redirect('user/login/Auth/university');
+                if($this->session->userdata('user_role')=="Education Partner")
+                {
+                    $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
+                    The file format must be in "png, jpg or jpeg"</div>');
+                    redirect('user/login/Auth/university');
+                }
+                else
+                {
+                    $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
+                    The file format must be in "png, jpg or jpeg"</div>');
+                    redirect('user/login/Auth/company');
+                }
+
             } else {
                 $doc_data = $this->upload->data();
                 return $doc_data;
-            }   
+            }
         }
     }
-
 
     public function student_reg()
     {

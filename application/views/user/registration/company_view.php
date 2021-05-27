@@ -63,6 +63,7 @@
                                 <center>
                                     <div class="pt-5 px-5" style="font-size:23px; letter-spacing: 8px; color:#787878; font-weight:700;">COMPANY INFORMATION FORM</div>
                                 </center>
+                                <?=$this->session->flashdata('message')?>
 
                                <!-- Form -->
                                 <form method="post" action="<?= base_url('user/login/Auth/company');?>" enctype="multipart/form-data">
@@ -134,3 +135,10 @@
             <!-- /.container-fluid -->
         </div>
         <!-- End of Main Content -->
+
+        <script>
+            $(".custom-file-input").on("change", function() {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+            });
+        </script>
