@@ -89,7 +89,7 @@ class Auth extends CI_Controller
                     }
                      // check user role is  student
                     else
-                        redirect('external/homepage/profile_level_1');
+                        redirect('external/homepage');
                 }
                 // if password is incorrect
                 else
