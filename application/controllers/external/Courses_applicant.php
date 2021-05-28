@@ -29,7 +29,7 @@ class Courses_applicant extends CI_Controller
 
         // if($this->session->has_userdata('user_id')){
 
-        // $data['title'] = 'iJEES | Homepage';
+        $data['title'] = 'iJEES | Course Applicant Page';
         $this->load->view('external/templates/header' , $data);
         $this->load->view('user/registration/courses_applicant_registration_view');
         $this->load->view('external/templates/footer');
