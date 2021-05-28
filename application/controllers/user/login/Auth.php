@@ -306,7 +306,7 @@ class Auth extends CI_Controller
         $data['title']="iJEES | University Registration";
         $data['include_css']="forms";
         $this->load->view('external/templates/header',$data);
-        $this->load->view('user/registration/university_view');
+        $this->load->view('user/registration/university_registration_view');
         $this->load->view('external/templates/footer');
         }
         else
@@ -490,7 +490,7 @@ class Auth extends CI_Controller
         $data['title']="iJEES | Company Registration";
         $data['include_css']="forms";
         $this->load->view('external/templates/header',$data);
-        $this->load->view('user/registration/company_view');
+        $this->load->view('user/registration/company_registration_view');
         $this->load->view('external/templates/footer');
         }
         else

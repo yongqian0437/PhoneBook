@@ -1,5 +1,8 @@
 <link href="<?php echo base_url() ?>/assets/scss/courses-styles.scss" rel="stylesheet">
 
+<!-- Top Navigation -->
+<?php $this->load->view('external/templates/topnav');?>
+
 <body id="page-top">
 
     <!-- Page Wrapper -->
