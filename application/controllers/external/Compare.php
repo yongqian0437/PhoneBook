@@ -46,6 +46,14 @@ class Compare extends CI_Controller {
 		$logo2 = $base_url.$uni_data2[0]->uni_logo;
 		$logo3 = $base_url.$uni_data3[0]->uni_logo;
 
+		$course_link1 = $base_url."external/Courses/view_course/".$course_data1[0]->course_id;
+		$course_link2 = $base_url."external/Courses/view_course/".$course_data2[0]->course_id;
+		$course_link3 = $base_url."external/Courses/view_course/".$course_data3[0]->course_id;
+
+		$uni_link1 = $base_url."external/Universities/university_detail/".$uni_data1[0]->uni_id;
+		$uni_link2 = $base_url."external/Universities/university_detail/".$uni_data2[0]->uni_id;
+		$uni_link3 = $base_url."external/Universities/university_detail/".$uni_data3[0]->uni_id;
+
 		$output = 
 		'<tbody>
 			<tr>
@@ -53,7 +61,7 @@ class Compare extends CI_Controller {
 				<td scope="col">
                     <center>
                         <img style=" height:85px; width: 250px; object-fit: contain;" src="'.$logo1.'" alt="logo1"><br><br>
-                        <a style = "border-radius:10px; background-color:#6B9080; color:white; height:auto; width:auto; " href="" class = "btn btn-icon-split">
+                        <a style = "border-radius:10px; background-color:#6B9080; color:white; height:auto; width:auto; " href="'.$uni_link1.'" class = "btn btn-icon-split">
                             <span class = "icon text-white-600">
                                 <i class = "fas fa-university p-1"></i>
                             </span>
@@ -64,7 +72,7 @@ class Compare extends CI_Controller {
 				<td scope="col">
                     <center>
                         <img style=" height:85px; width: 250px;  object-fit: contain;" src="'.$logo2.'" alt="logo2"><br><br>
-                        <a style = "border-radius:10px; background-color:#6B9080; color:white; height:auto; width:auto;" href="" class = "btn btn-icon-split">
+                        <a style = "border-radius:10px; background-color:#6B9080; color:white; height:auto; width:auto;" href="'.$uni_link2.'" class = "btn btn-icon-split">
                             <span class = "icon text-white-600">
                                 <i class = "fas fa-university p-1"></i>
                             </span>
@@ -75,7 +83,7 @@ class Compare extends CI_Controller {
 				<td scope="col">
                     <center>
                         <img style=" height:85px; width: 250px; object-fit: contain;" src="'.$logo3.'" alt="logo3"><br><br>
-                        <a style = "border-radius:10px; background-color:#6B9080; color:white; height:auto; width:auto; " href="" class = "btn btn-icon-split">
+                        <a style = "border-radius:10px; background-color:#6B9080; color:white; height:auto; width:auto; " href="'.$uni_link3.'" class = "btn btn-icon-split">
                             <span class = "icon text-white-600">
                                 <i class = "fas fa-university p-1"></i>
                             </span>
@@ -143,11 +151,11 @@ class Compare extends CI_Controller {
                     <td>
                         <center>
                             <span>
-                                <a style = "border-radius:10px; background-color:#6B9080; color:white; height:auto; width:auto;" href="" class = "btn btn-icon-split pr-1">
+                                <a style = "border-radius:10px; background-color:#6B9080; color:white; height:auto; width:auto;" href="'.$course_link1.'" class = "btn btn-icon-split pr-1">
                                     <span class = "icon text-white-600">
                                         <i class = "fas fa-book p-1"></i>
                                     </span>
-                                    <span style = "" class = "text">View Courses</span>
+                                    <span style = "" class = "text">View Course</span>
                                 </a>
                                 <a style = "border-radius:10px; background-color:#6B9080; color:white; height:auto; width:auto%;" href="" class = "btn btn-icon-split">
                                     <span class = "icon text-white-600">
@@ -161,11 +169,11 @@ class Compare extends CI_Controller {
                     <td>  
                         <center>  
                             <span>
-                                <a style = "border-radius:10px; background-color:#6B9080; color:white; height:auto; width:auto;" href="" class = "btn btn-icon-split pr-1">
+                                <a style = "border-radius:10px; background-color:#6B9080; color:white; height:auto; width:auto;" href="'.$course_link2.'" class = "btn btn-icon-split pr-1">
                                     <span class = "icon text-white-600">
                                         <i class = "fas fa-book p-1"></i>
                                     </span>
-                                    <span style = "" class = "text">View Courses</span>
+                                    <span style = "" class = "text">View Course</span>
                                 </a>
                                 <a style = "border-radius:10px; background-color:#6B9080; color:white; height:auto; width:auto%;" href="" class = "btn btn-icon-split">
                                     <span class = "icon text-white-600">
@@ -179,11 +187,11 @@ class Compare extends CI_Controller {
                     <td>
                         <center>
                             <span>
-                                <a style = "border-radius:10px; background-color:#6B9080; color:white; height:auto; width:auto;" href="" class = "btn btn-icon-split pr-1">
+                                <a style = "border-radius:10px; background-color:#6B9080; color:white; height:auto; width:auto;" href="'.$course_link3.'" class = "btn btn-icon-split pr-1">
                                     <span class = "icon text-white-600">
                                         <i class = "fas fa-book p-1"></i>
                                     </span>
-                                    <span style = "" class = "text">View Courses</span>
+                                    <span style = "" class = "text">View Course</span>
                                 </a>
                                 <a style = "border-radius:10px; background-color:#6B9080; color:white; height:auto; width:auto%;" href="" class = "btn btn-icon-split">
                                     <span class = "icon text-white-600">

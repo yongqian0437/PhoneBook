@@ -3,6 +3,15 @@
 <!-- Top Navigation -->
 <?php $this->load->view('external/templates/topnav');?>
 
+<style>
+#logo{
+    border-radius:50% 50% 50% 50%;
+    width:20vh;
+    height:20vh;
+    object-fit: scale-down;
+    background-color:white;
+}
+</style>
 <body id="page-top">
 
     <!-- Page Wrapper -->
@@ -12,27 +21,24 @@
         <div id="content-wrapper" class="d-flex flex-column">
 
             <!-- Main Content -->
-            <div id="content">
+            <div id="content" >
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
-
-                    <!-- Page Heading -->
-
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">COURSE DETAIL</h1>
-                    </div>
-
+                <div class="container-fluid" >
 
                     <!-- Content Row -->
                     <div class="d-flex container py-4">
                         <?php if (!empty($course_data)) {
                             foreach ($course_data as $courses) { ?>
                                 <div class="col-12">
-                                    <div class="course-cover-img" style="background-image: url('https://www.asc2017.net/public/2017/03/07/utar-kampar-campus-lake-view.jpg');">
+                                    <div class="course-cover-img" style="background-image: url('<?php echo base_url($uni_data->uni_banner); ?>');">
                                         <div class="fallbak">
                                             <div class="row">
                                                 <div class="col-4">
-                                                    <img class="course-uni-logo" src="<?php echo 'https://www.rocapply.com/assets/pictures/universities/logos/taylors%20university%20Logo.jpg'; ?>" />
+                                                    <div class="pt-5 pl-2 pb-1">
+                                                        <div style="width:25vh; height:25vh; border-radius:100%; margin:auto; background-color:white;">
+                                                            <center><img  src="<?php echo base_url($uni_data->uni_logo); ?>" alt="uni_logo" id = "logo" class ="pt-5"></center>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <div class="col-5 align-self-end">
                                                     <div>
@@ -52,9 +58,9 @@
                                             <div class="col-12 d-flex justify-content-center mb-3">
                                                 <div class="row">
                                                     <div>
-                                                        <button type="button" class="btn btn-secondary course-ave-buttons">Apply</button>
-                                                        <button type="button" class="btn btn-secondary course-ave-buttons">View University</button>
-                                                        <button type="button" class="btn btn-secondary course-ave-buttons">Enquire</button>
+                                                        <a type="button" class="btn btn-secondary course-ave-buttons">Apply</a>
+                                                        <a type="button" href = "<?php echo base_url() . 'external/Universities/university_detail/' . $courses->uni_id ?>" class="btn btn-secondary course-ave-buttons">View University</a>
+                                                        <a type="button" href = "<?php echo base_url() . 'user/chat/Chat/'?>" class="btn btn-secondary course-ave-buttons">Enquire</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -111,7 +117,7 @@
                                 </div>
 
                     </div>
-                </div>
+
             </div>
             <!-- /.container-fluid -->
         </div>

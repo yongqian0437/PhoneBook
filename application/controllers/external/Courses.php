@@ -9,6 +9,8 @@ class Courses extends CI_Controller
 		parent::__construct();
 		$this->load->model('user_model');
 		$this->load->model('courses_model');
+		$this->load->model('universities_model');
+
 
 		//example  $this->user_model->select_all('users');
 	}
@@ -21,6 +23,7 @@ class Courses extends CI_Controller
 		$data['course_data'] = $this->courses_model->select_all();
 		$data['dropdown_area'] = $this->courses_model->filter_dropdown('course_area');
 		$data['dropdown_country'] = $this->courses_model->filter_dropdown('course_country');
+		$data['title'] = 'iJEES | Courses';
 		$this->load->view('external/templates/header', $data);
 		$this->load->view('external/courses_view');  // view num 1 - jordan
 		$this->load->view('external/templates/footer');
@@ -29,6 +32,9 @@ class Courses extends CI_Controller
 	public function view_course($id)
 	{
 		$data['course_data'] = $this->courses_model->select_condition($id, 'courses');
+		$data['uni_data'] = $this->universities_model->get_uni_detail($data['course_data'][0]->uni_id);
+		$data['title'] = 'iJEES | Courses Detail';
+
 		$this->load->view('external/templates/header', $data);
 		$this->load->view('external/courses_detail_view'); //view num 2 - jordan
 		$this->load->view('external/templates/footer');
@@ -64,7 +70,7 @@ class Courses extends CI_Controller
 	{
 		$data['dropdown_area'] = $this->courses_model->filter_dropdown('course_area');
 		$data['dropdown_country'] = $this->courses_model->filter_dropdown('course_country');
-
+		$data['title'] = 'iJEES | Courses';
 
 		$course_area = $this->input->post('course_areaid');
 		$course_level = $this->input->post('course_levelid');

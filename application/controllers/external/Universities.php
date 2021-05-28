@@ -50,7 +50,7 @@ class Universities extends CI_Controller {
 						<span class = "icon text-white-600">
 							<i class = "fas fa-info-circle p-1"></i>
 						</span>
-						<span style = "" class = "text">University Info</span>
+						<span style = "" class = "text">Info</span>
 					</a>';
 
 			$data[] = array(
@@ -90,11 +90,14 @@ class Universities extends CI_Controller {
 	public function fetch_course_list()
 	{
 		$course_data = $this->courses_model->get_course_with_course_area($this->input->post('course_area'), $this->input->post('uni_id')); 
-
+		$base_url = base_url();
 		$output = "";
 
 		foreach($course_data as $row)
 		{
+
+			$course_link = $base_url."external/Courses/view_course/".$row->course_id;
+
 			$output .= 
 			'
 			<div class = "row pt-2  pb-2" style = "border-top:1px solid rgba(169, 169, 169, .5);">
@@ -115,7 +118,7 @@ class Universities extends CI_Controller {
 					</center>
 				</div>
 				<div class="col-md-3 pt-2 pl-5">
-					<button type="button" href = "" class="btn btn-sm " style = "background-color:#A4C3B2; color:white; font-size:0.9em;">View</button>
+					<a type="button" href = "'.$course_link.'" class="btn btn-sm " style = "background-color:#A4C3B2; color:white; font-size:0.9em;">View</a>
 					<button type="button" href = "" class="btn btn-sm" style = "background-color:#A4C3B2; color:white; font-size:0.9em;">Apply</button>
 				</div>
 			</div>

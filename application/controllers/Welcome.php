@@ -20,10 +20,6 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		// $data['title'] = 'iJEES | Homepage';
-		// $this->load->view('external/homepage_view' , $data);
-		// $this->load->view('external/templates/header');
-		// $this->load->view('user/registration/courses_applicant_registration_view');
-		// $this->load->view('external/templates/footer');
+		redirect('external/homepage');
 	}
 }

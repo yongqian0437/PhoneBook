@@ -68,14 +68,20 @@ table.dataTable thead th {
                 <div style = 'background-color:white;' class="container-fluid">
 
                 <!-- Page Heading -->
-                <div class="d-sm-flex align-items-center justify-content-between mb-4 pt-5">
-                    <h1 class="h3 mb-0 text-gray-800"><b>Universities<b></h1>
+                <div class="d-sm-flex align-items-center justify-content-between mb-2 px-5">
+                    <h1 class="h3 mb-0 text-gray-800 pt-3">Universities</h1>
                 </div>
-                <div style = "text-align: justify; font-weight:500;">Find your ideal university without having to leave your home! Your journey to uni starts here. Discover universities that students are looking at the most. Remember, there’s no such thing as the best university in the world. What’s best depends on who you are, what you want from your student experience, and what you want your future to be like. Find the option that is best for you, order that next prospectus and immerse yourself in the university experience that you long for.</div>
+
+                <div class="py-2 px-5" style="text-align: justify; font-weight:500;">Find your ideal university without having to leave your home! Your journey to uni starts here. Discover universities that students are looking at the most. Remember, there’s no such thing as the best university in the world. What’s best depends on who you are, what you want from your student experience, and what you want your future to be like. Find the option that is best for you, order that next prospectus and immerse yourself in the university experience that you long for.
+                </div>
+
+                <div class="px-5 pb-4">
+                    <hr style=" width :100%; height:2px; background-color:#EAF4F4">
+                </div>
 
                 <!-- Content Row -->
 
-                <div class="row pt-5">
+                <div class="row pt-1 px-5">
                     <div class="col-12">
                         <div class="card border-dark">
                             <div class="card-body">
