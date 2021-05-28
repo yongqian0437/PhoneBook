@@ -56,13 +56,20 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-1 text-gray-800 pt-4">Employer Projects</h1>
-                    <p class="mb-4">To provide students the opportunity to gain real, hands-on work experience while still studying, 
+                    <h1 class="h3 mb-1 text-gray-800 pt-4 px-4 pb-2 font-weight-bold">Employer Projects</h1>
+                    <p class="mb-4 px-4">To provide students the opportunity to gain real, hands-on work experience while still studying, 
                     INTI has built close ties with the industry to develop employer projects – a programme that enables students to work 
-                    on actual business case studies and industry-relevant problems.</p> <!-- Edit description later -->
+                    on actual business case studies and industry-relevant problems. Through these projects, students are presented with 
+                    immediate challenges faced by businesses, and are required to work together in teams to develop and present their proposals.
+                    Through these projects, students are presented with immediate challenges faced by businesses, and are required to work together
+                    in teams to develop and present their proposals.</p> <!-- Edit description later -->
+
+                    <div class="px-4 pb-5">
+                        <hr style=" width :100%; height:2px; background-color:#EAF4F4">
+                    </div>
 
                     <!-- Content Row. 1 row = 3 cards -->
-                    <div class="row">
+                    <div class="row px-4">
 
                     <!-- <php foreach ($eps as $ep): var_dump($ep); ?> hello <br><br> <php endforeach; die;?> -->
 

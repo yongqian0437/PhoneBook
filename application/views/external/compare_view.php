@@ -58,14 +58,14 @@ background-color: #EAF4F4;
                 <div style = 'background-color:white;' class="container-fluid">
 
                 <!-- Page Heading -->
-                <div class="d-sm-flex align-items-center justify-content-between mb-2 px-5">
-                    <h1 class="h3 mb-0 text-gray-800 pt-3">Compare Courses</h1>
+                <div class="d-sm-flex align-items-center justify-content-between mb-2 px-4">
+                    <h1 class="h3 mb-0 text-gray-800 pt-4 font-weight-bold">Compare Courses</h1>
                 </div>
 
-                <div class="py-2 px-5" style="text-align: justify; font-weight:500;">Finding the right college and programme is a complicated process, but iJEES is here to help! A great way to research what's best for you and start to build your list is to compare your options side-by-side. Find the college that's the best fit for you by using our comparison tool. Students can quickly compare several programmes and universities they’re interested in – and then click through to a university profile page for more details. Application submission may also be done right after.
+                <div class="py-2 px-4" style="text-align: justify; font-weight:500;">Finding the right college and programme is a complicated process, but iJEES is here to help! A great way to research what's best for you and start to build your list is to compare your options side-by-side. Find the college that's the best fit for you by using our comparison tool. Students can quickly compare several programmes and universities they’re interested in – and then click through to a university profile page for more details. Application submission may also be done right after.
                 </div>
 
-                <div class="px-5 pb-4">
+                <div class="px-4 pb-4">
                     <hr style=" width :100%; height:2px; background-color:#EAF4F4">
                 </div>
 

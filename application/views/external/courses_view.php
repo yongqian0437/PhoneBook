@@ -18,15 +18,15 @@
                 <div class="container-fluid" style="background-color:white;">
 
                     <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-2 px-5">
-                        <h1 class="h3 mb-0 text-gray-800 pt-3">Course list</h1>
+                    <div class="d-sm-flex align-items-center justify-content-between mb-2 px-4">
+                        <h1 class="h3 mb-0 text-gray-800 pt-4 font-weight-bold">Courses</h1>
                     </div>
-                    <div class="py-2 px-5" style="text-align: justify; font-weight:500;">Choosing the right course to study is probably one of the most important decisions you can make in your life. This can be a confusing and difficult time if you are unprepared. Look no further because with iJEES, you are given the opportunity to find your path and chase your future with one of our courses that is made readily available for you! Want to explore your academic capabilities? Seeking international study options to match your own interests and resources? Discover what you can do by searching and comparing courses from universities across the world in different subject areas. Join our mission to make study choice transparent, globally.
+                    <div class="py-2 px-4" style="text-align: justify; font-weight:500;">Choosing the right course to study is probably one of the most important decisions you can make in your life. This can be a confusing and difficult time if you are unprepared. Look no further because with iJEES, you are given the opportunity to find your path and chase your future with one of our courses that is made readily available for you! Want to explore your academic capabilities? Seeking international study options to match your own interests and resources? Discover what you can do by searching and comparing courses from universities across the world in different subject areas. Join our mission to make study choice transparent, globally.
                     </div>
                     <div class="px-5 pb-4">
                         <hr style=" width :100%; height:2px; background-color:#EAF4F4">
                     </div>
-                    <div class="col-12 px-5">
+                    <div class="col-12 px-4">
                         <form method="post" name="filter" action="<?php echo base_url() . 'external/Courses/course_filter' ?>">
                             <div class="row px-3">
                                 <div class="form-group mr-2"><br>

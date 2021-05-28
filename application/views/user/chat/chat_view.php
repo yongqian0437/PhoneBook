@@ -15,12 +15,23 @@
     <div class="container-fluid">
 
         <!-- Page Heading -->
-        <div class="d-sm-flex align-items-center justify-content-between mb-4 pt-3">
-            <h1 class="h3 mb-0 text-gray-800">Chat Room</h1>
+        <div class="d-sm-flex align-items-center justify-content-between mb-2 pt-4 px-4">
+            <h1 class="h3 mb-0 text-gray-800 font-weight-bold">Chat Room</h1>
+        </div>
+
+        <p class="mb-4 px-4">To provide students the opportunity to gain real, hands-on work experience while still studying, 
+        INTI has built close ties with the industry to develop employer projects – a programme that enables students to work 
+        on actual business case studies and industry-relevant problems. Through these projects, students are presented with 
+        immediate challenges faced by businesses, and are required to work together in teams to develop and present their proposals.
+        Through these projects, students are presented with immediate challenges faced by businesses, and are required to work together
+        in teams to develop and present their proposals.</p> <!---------------------- Edit description later ------------------------>
+
+        <div class="px-4 pb-3">
+            <hr style=" width :100%; height:2px; background-color:#EAF4F4">
         </div>
 
         <!-- Content Row -->
-        <div class="row">
+        <div class="row px-4">
 
             <!-- FIRST CARD -->
             <div class="col-xl-12 col-lg-12" id="chat_section">
@@ -83,7 +94,7 @@
             <!--chat section ends-->
         </div>
 
-        <div class="row">
+        <div class="row px-4">
             <!-- SECOND CARD -->
             <div class="col-xl-12 col-lg-12">
                 <div class="card mb-4">
