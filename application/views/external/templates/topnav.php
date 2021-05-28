@@ -51,7 +51,7 @@
         </li>
 
         <li class="nav-item px-2">
-            <a class="nav-link" href="#">Courses</a>
+            <a class="nav-link" href="<?php echo base_url('external/courses');?>">Courses</a>
         </li>
 
         <li class="nav-item px-2">

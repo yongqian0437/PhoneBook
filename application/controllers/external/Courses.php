@@ -77,4 +77,7 @@ class Courses extends CI_Controller
 		$this->load->view('external/courses_view');
 		$this->load->view('external/templates/footer');
 	}
+
+	// -------------------------- WC TO INCLUDE COURSES_APPLICANT FUNCTIONS HERE ----------------------------------------------
+	//  ------------------------- **COURSES_APPLICANT.PHP CONTROLLER IS TO BE DELETE** ----------------------------------------------
 }
