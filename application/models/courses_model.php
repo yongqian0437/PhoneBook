@@ -45,30 +45,47 @@ class courses_model extends CI_Model
         return $this->db->get('courses')->result();
     }
 
-    function select_condition($condition)
+
+
+    function select_condition($id)
     {
-        $this->db->where($condition);
+        $this->db->where('course_id', $id);
         return $this->db->get('courses')->result();
     }
 
-    function filter_course($course_area, $course_level, $course_intake)
+    function filter_dropdown($attribute)
+    {
+        $this->db->group_by($attribute);
+
+        return $this->db->get('courses')->result();
+    }
+
+    function filter_course($course_area, $course_level, $course_intake, $course_country, $course_fee)
     {
 
+
         if ($course_area != "") {
-            $this->db->like('course_area', $course_area);
+            $this->db->where('course_area', $course_area);
         }
         if ($course_level != "") {
-            $this->db->like('course_level', $course_level);
+            $this->db->where('course_level', $course_level);
         }
-        /* if ($course_area != "") {
-            $this->db->where('coruses', $course_fee);
-        } */
         if ($course_intake != "") {
-            $this->db->like('course_intake', $course_intake);
+            $this->db->where('course_intake', $course_intake);
         }
-        $query = $this->db->get('courses');
+        if ($course_country != "") {
+            $this->db->where('course_country', $course_country);
+        }
+        if ($course_fee != "") {
+            if ($course_fee == "a") {
+                $this->db->order_by('course_fee', 'ASC');
+            } else {
+                $this->db->order_by('course_fee', 'DESC');
+            }
+        }
+        $query = $this->db->get('courses')->result();
 
-        if ($query->num_rows() > 0) {
+        if (count($query) > 0) {
             return $query;
         } else {
             return false;

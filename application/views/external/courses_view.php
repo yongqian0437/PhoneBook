@@ -1,4 +1,4 @@
-<link href="<?php echo base_url() ?>/external/styles.scss" rel="stylesheet">
+<link href="<?php echo base_url() ?>/assets/scss/courses-styles.scss" rel="stylesheet">
 
 <body id="page-top">
 
@@ -11,243 +11,75 @@
             <!-- Main Content -->
             <div id="content">
 
-                <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
-                    <!-- Sidebar Toggle (Topbar) -->
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-bars"></i>
-                    </button>
-
-                    <!- <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div>
-                        </form>
-
-                        <!-- Topbar Navbar -->
-                        <ul class="navbar-nav ml-auto">
-
-                            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                            <li class="nav-item dropdown no-arrow d-sm-none">
-                                <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-search fa-fw"></i>
-                                </a>
-                                <!-- Dropdown - Messages -->
-                                <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
-                                    <form class="form-inline mr-auto w-100 navbar-search">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                                            <div class="input-group-append">
-                                                <button class="btn btn-primary" type="button">
-                                                    <i class="fas fa-search fa-sm"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </li>
-
-                            <!-- Nav Item - Alerts -->
-                            <li class="nav-item dropdown no-arrow mx-1">
-                                <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-bell fa-fw"></i>
-                                    <!-- Counter - Alerts -->
-                                    <span class="badge badge-danger badge-counter">3+</span>
-                                </a>
-                                <!-- Dropdown - Alerts -->
-                                <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
-                                    <h6 class="dropdown-header">
-                                        Alerts Center
-                                    </h6>
-                                    <a class="dropdown-item d-flex align-items-center" href="#">
-                                        <div class="mr-3">
-                                            <div class="icon-circle bg-primary">
-                                                <i class="fas fa-file-alt text-white"></i>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div class="small text-gray-500">December 12, 2019</div>
-                                            <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                                        </div>
-                                    </a>
-                                    <a class="dropdown-item d-flex align-items-center" href="#">
-                                        <div class="mr-3">
-                                            <div class="icon-circle bg-success">
-                                                <i class="fas fa-donate text-white"></i>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div class="small text-gray-500">December 7, 2019</div>
-                                            $290.29 has been deposited into your account!
-                                        </div>
-                                    </a>
-                                    <a class="dropdown-item d-flex align-items-center" href="#">
-                                        <div class="mr-3">
-                                            <div class="icon-circle bg-warning">
-                                                <i class="fas fa-exclamation-triangle text-white"></i>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div class="small text-gray-500">December 2, 2019</div>
-                                            Spending Alert: We've noticed unusually high spending for your account.
-                                        </div>
-                                    </a>
-                                    <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-                                </div>
-                            </li>
-
-                            <!-- Nav Item - Messages -->
-                            <li class="nav-item dropdown no-arrow mx-1">
-                                <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-envelope fa-fw"></i>
-                                    <!-- Counter - Messages -->
-                                    <span class="badge badge-danger badge-counter">7</span>
-                                </a>
-                                <!-- Dropdown - Messages -->
-                                <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
-                                    <h6 class="dropdown-header">
-                                        Message Center
-                                    </h6>
-                                    <a class="dropdown-item d-flex align-items-center" href="#">
-                                        <div class="dropdown-list-image mr-3">
-                                            <img class="rounded-circle" src="img/undraw_profile_1.svg" alt="...">
-                                            <div class="status-indicator bg-success"></div>
-                                        </div>
-                                        <div class="font-weight-bold">
-                                            <div class="text-truncate">Hi there! I am wondering if you can help me with a
-                                                problem I've been having.</div>
-                                            <div class="small text-gray-500">Emily Fowler · 58m</div>
-                                        </div>
-                                    </a>
-                                    <a class="dropdown-item d-flex align-items-center" href="#">
-                                        <div class="dropdown-list-image mr-3">
-                                            <img class="rounded-circle" src="img/undraw_profile_2.svg" alt="...">
-                                            <div class="status-indicator"></div>
-                                        </div>
-                                        <div>
-                                            <div class="text-truncate">I have the photos that you ordered last month, how
-                                                would you like them sent to you?</div>
-                                            <div class="small text-gray-500">Jae Chun · 1d</div>
-                                        </div>
-                                    </a>
-                                    <a class="dropdown-item d-flex align-items-center" href="#">
-                                        <div class="dropdown-list-image mr-3">
-                                            <img class="rounded-circle" src="img/undraw_profile_3.svg" alt="...">
-                                            <div class="status-indicator bg-warning"></div>
-                                        </div>
-                                        <div>
-                                            <div class="text-truncate">Last month's report looks great, I am very happy with
-                                                the progress so far, keep up the good work!</div>
-                                            <div class="small text-gray-500">Morgan Alvarez · 2d</div>
-                                        </div>
-                                    </a>
-                                    <a class="dropdown-item d-flex align-items-center" href="#">
-                                        <div class="dropdown-list-image mr-3">
-                                            <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="...">
-                                            <div class="status-indicator bg-success"></div>
-                                        </div>
-                                        <div>
-                                            <div class="text-truncate">Am I a good boy? The reason I ask is because someone
-                                                told me that people say this to all dogs, even if they aren't good...</div>
-                                            <div class="small text-gray-500">Chicken the Dog · 2w</div>
-                                        </div>
-                                    </a>
-                                    <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-                                </div>
-                            </li>
-
-                            <div class="topbar-divider d-none d-sm-block"></div>
-
-                            <!-- Nav Item - User Information -->
-                            <li class="nav-item dropdown no-arrow">
-                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                                    <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
-                                </a>
-                                <!-- Dropdown - User Information -->
-                                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                    <a class="dropdown-item" href="#">
-                                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                        Profile
-                                    </a>
-                                    <a class="dropdown-item" href="#">
-                                        <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                                        Settings
-                                    </a>
-                                    <a class="dropdown-item" href="#">
-                                        <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                                        Activity Log
-                                    </a>
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                        Logout
-                                    </a>
-                                </div>
-                            </li>
-
-                        </ul>
-
-                </nav>
-                <!-- End of Topbar -->
-
                 <!-- Begin Page Content -->
-                <div class="container-fluid">
+                <div class="container-fluid" style="background-color:white;">
 
                     <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4 px-5">
+                    <div class="d-sm-flex align-items-center justify-content-between mb-2 px-5">
                         <h1 class="h3 mb-0 text-gray-800">Course list</h1>
                     </div>
-
-                    <!-- Earnings (Monthly) Card Example -->
-                    <div class="col-12 mb-4 px-5">
+                    <div class="py-2 px-5" style="text-align: justify; font-weight:500;">Choosing the right course to study is probably one of the most important decisions you can make in your life. This can be a confusing and difficult time if you are unprepared. Look no further because with iJEES, you are given the opportunity to find your path and chase your future with one of our courses that is made readily available for you! Want to explore your academic capabilities? Seeking international study options to match your own interests and resources? Discover what you can do by searching and comparing courses from universities across the world in different subject areas. Join our mission to make study choice transparent, globally.
+                    </div>
+                    <div class="px-5">
+                        <hr style=" width :100%; height:2px; background-color:#EAF4F4">
+                    </div>
+                    <div class="col-12 px-5">
                         <form method="post" name="filter" action="<?php echo base_url() . 'external/Courses/course_filter' ?>">
-                            <div class="row">
-                                <div class="form-group"><br>
+                            <div class="row px-3">
+                                <div class="form-group mr-2"><br>
                                     <label for="course_area">Course area</label><br>
-                                    <select name="course_areaid" id="filter_1" class="form-control form-select form-select-lg">
+                                    <select name="course_areaid" id="filter_1" class="form-control form-select form-select-lg btn-sm">
                                         <option value="" selected disabled>Filter area</option>
-                                        <option value="IT & Computer Science">IT & Computer Science</option>
-                                        <option value="Health Science">Health Science</option>
+                                        <?php
+                                        foreach ($dropdown_area as $dropdown_data) {
+                                            echo '<option value="' . $dropdown_data->course_area . '">' . $dropdown_data->course_area . '</option>';
+                                        }
+                                        ?>
                                     </select>
                                 </div>
-                                <div class="form-group"><br>
+                                <div class="form-group mr-2"><br>
                                     <label for="course_level">Course level</label><br>
-                                    <select name="course_levelid" id="filter_2" class="form-control form-select form-select-lg">
+                                    <select name="course_levelid" id="filter_2" class="form-control form-select form-select-lg btn-sm">
                                         <option value="" selected disabled>Filter level</option>
                                         <option value="Bachelor Degree / Honours Degree">Bachelor Degree / Honours Degree</option>
                                         <option value="Foundation Studies">Foundation</option>
+                                        <option value="Master">Master</option>
+                                        <option value="ADP">American Degree Program</option>
                                     </select>
                                 </div>
-                                <div class="form-group"><br>
+                                <div class="form-group mr-2"><br>
                                     <label for="course_intake">Course intake</label><br>
-                                    <select name="course_intakeid" id="filter_3" class="form-control form-select form-select-lg">
+                                    <select name="course_intakeid" id="filter_3" class="form-control form-select form-select-lg btn-sm">
                                         <option value="" selected disabled>Filter intake</option>
                                         <option value="July 2021">July</option>
                                         <option value="Aug 2021">August</option>
+                                        <option value="Jan 2021">January</option>
+                                        <option value="Apr 2021">April</option>
                                     </select>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-6 py-4">
-                                    <div class="form-group">
-                                        <label for="formControlRange">Price Range</label>
-                                        <input type="range" class="form-control-range" id="formControlRange">
-                                    </div>
+                                <div class="form-group mr-2"><br>
+                                    <label for="uni_country">Course location</label><br>
+                                    <select name="course_countryid" id="filter_4" class="form-control form-select form-select-lg btn-sm">
+                                        <option value="" selected disabled>Filter location</option>
+                                        <?php
+                                        foreach ($dropdown_country as $dropdown_data) {
+                                            echo '<option value="' . $dropdown_data->course_country . '">' . $dropdown_data->course_country . '</option>';
+                                        }
+                                        ?>
+                                    </select>
                                 </div>
-                                <div class="col-2 ml-5">
-                                    <div class="form-group mt-5">
-                                        <button class="btn btn-primary float-right">Submit</button>
-                                    </div>
+                                <div class="form-group mr-3"><br>
+                                    <label for="course_fee">Course Fee</label><br>
+                                    <select name="course_feeid" id="filter_5" class="form-control form-select form-select-lg btn-sm">
+                                        <option value="" selected disabled>Sort fee</option>
+                                        <option value="a">Low - High</option>
+                                        <option value="d">High - Low</option>
+                                    </select>
+                                </div>
+                                <div class="form-group align-self-end pull-right">
+                                    <button class="button-custom-color">Search</button>
                                 </div>
                             </div>
-
                         </form>
 
                         <?php if (!empty($course_data)) {
@@ -257,13 +89,17 @@
                                         <div class="col-9 ">
                                             <h5 class="font-weight-bold"><?php echo $courses->course_name ?></h5>
 
-
-                                            <p><?php echo $courses->course_shortprofile ?></p>
-                                            <h5>RM<?php echo $courses->course_fee ?></h5>
+                                            <div>
+                                                <p class="courselist-short-desc"><?php echo $courses->course_shortprofile ?></p>
+                                            </div>
+                                            <div>
+                                                <h5>RM<?php echo $courses->course_fee ?></h5>
+                                                <p><?php echo $courses->course_country ?></p>
+                                            </div>
                                         </div>
                                         <div class=" col-3 mt-5 ">
-                                            <button type="button" class="btn  btn-primary float-right">View</button>
-                                            <button type="button" class="btn  btn-primary float-right">Apply</button>
+                                            <a type=" button" class="button-custom-color float-right">Apply</a>
+                                            <a href="<?php echo base_url() . 'external/Courses/view_course/' . $courses->course_id ?>" class="button-custom-color float-right mr-1">View</a>
                                         </div>
                                     </div>
                                 </div>
@@ -275,7 +111,10 @@
                             <h3>Records not found</h3>
 
                         <?php } ?>
-                        <h2>test</h2>
+                        <div class="pb-5"></div>
+                        <div class="pb-5"></div>
+                        <div class="pb-5"></div>
+
                     </div>
 
                 </div>

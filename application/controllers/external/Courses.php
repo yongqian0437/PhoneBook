@@ -19,17 +19,19 @@ class Courses extends CI_Controller
 	{
 
 		$data['course_data'] = $this->courses_model->select_all();
-		$this->load->view('external/courses_view', $data);  // view num 1 - jordan
-		$this->load->view('external/templates/header');
-		//$this->load->view('external/templates/header'); for nav
+		$data['dropdown_area'] = $this->courses_model->filter_dropdown('course_area');
+		$data['dropdown_country'] = $this->courses_model->filter_dropdown('course_country');
+		$this->load->view('external/templates/header', $data);
+		$this->load->view('external/courses_view');  // view num 1 - jordan
 		$this->load->view('external/templates/footer');
 	}
 
 	public function view_course($id)
 	{
 		$data['course_data'] = $this->courses_model->select_condition($id, 'courses');
-		$this->load->view('external/courses_detail_view', $data); //view num 2 - jordan
-
+		$this->load->view('external/templates/header', $data);
+		$this->load->view('external/courses_detail_view'); //view num 2 - jordan
+		$this->load->view('external/templates/footer');
 	}
 
 	public function course_form_application($id)
@@ -37,7 +39,6 @@ class Courses extends CI_Controller
 		$data['course_data'] = $this->courses_model->select_condition($id, 'courses');
 		$this->load->view('external/courses_applicants_view', $data); //view num 3 - wei cheng
 	}
-	//  echo $course_data->course_name;
 
 	public function submit_course_form_application($id)
 	{
@@ -61,20 +62,19 @@ class Courses extends CI_Controller
 
 	public function course_filter()
 	{
-		$this->load->view('external/templates/header');
-		$this->load->view('external/templates/footer');
+		$data['dropdown_area'] = $this->courses_model->filter_dropdown('course_area');
+		$data['dropdown_country'] = $this->courses_model->filter_dropdown('course_country');
+
 
 		$course_area = $this->input->post('course_areaid');
 		$course_level = $this->input->post('course_levelid');
-		/* $course_fee = $this->input->post('course_fee'); */
 		$course_intake = $this->input->post('course_intakeid');
+		$course_country = $this->input->post('course_countryid');
+		$course_fee = $this->input->post('course_feeid');
 
-		$data['course_data'] = $this->courses_model->filter_course($course_area, $course_level, $course_intake);
-		$this->load->view('external/courses_view', $data);
+		$data['course_data'] = $this->courses_model->filter_course($course_area, $course_level, $course_intake, $course_country, $course_fee);
+		$this->load->view('external/templates/header', $data);
+		$this->load->view('external/courses_view');
+		$this->load->view('external/templates/footer');
 	}
-
-
-	// tested link: localhost/ijees/external/Courses/#
-
-
 }
