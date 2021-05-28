@@ -37,12 +37,11 @@
 <nav class="navbar sticky-top navbar-expand topbar"  style="background-color: #6B9080;">
 
     <!-- Logo Image-->
-    <nav class="navbar navbar-light bg-light">  
-        <a class="navbar-brand py-0" href="#">
-            <img src="<?php echo base_url('');?>" width="30" height="20" alt="">
+    <!-- <nav class="navbar navbar-light bg-light">   -->
+        <a class="navbar-brand py-0 " href="<?php echo base_url('external/homepage');?>">
+            <img src="<?php echo base_url('assets/img/iJEES_Logo.png');?>" height="100" alt="">
         </a>
-    </nav>
-
+    <!-- </nav> -->
 
     <!-- Float left Group -->
     <ul class="navbar-nav ml-auto">
@@ -97,7 +96,7 @@
 
          <hr id = "nav_line">
 
-            <li class="nav-item dropdown no-arrow pl-1" style = "">
+            <li class="nav-item dropdown no-arrow pl-1">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span class="mr-2 d-none d-lg-inline small pr-2" style = "color: white; font-weight:700; font-size:0.9em;"><?php echo $this->session->userdata('user_lname');?></span>
