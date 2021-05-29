@@ -311,8 +311,8 @@ class Auth extends CI_Controller
         }
         else
         {
-                $uni_background= $this->upload_img('./assets/img/reg_uni', 'uni_background');  
-                $uni_logo= $this->upload_img('./assets/img/reg_uni', 'uni_logo');
+                $uni_background= $this->upload_img('./assets/img/universities', 'uni_background');  
+                $uni_logo= $this->upload_img('./assets/img/universities', 'uni_logo');
                
             $data=
                 [
@@ -495,7 +495,7 @@ class Auth extends CI_Controller
         }
         else
         {
-            $c_logo= $this->upload_img('./assets/img/reg_c_logo', 'c_logo');
+            $c_logo= $this->upload_img('./assets/img/company_logos', 'c_logo');
             $data=
                 [
                     'c_logo'=>$c_logo['file_name'],

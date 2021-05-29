@@ -31,7 +31,7 @@ img {
                                <!-- Form -->
                                 <form>
                                 <center><b><p class="card-title">Company ID: <?=$c['c_id'];?></p></b></center>
-                                <center><img class="img-fluid img_class"  src="<?= base_url("assets/img/reg_uni/{$c['c_logo']}");?>" width="250";/></center>
+                                <center><img class="img-fluid img_class"  src="<?= base_url("assets/img/universities/{$c['c_logo']}");?>" width="250";/></center>
                                 <br>
                                  <!-- Company Name -->
                                  <div class="form-group col-md-12 px-2">
@@ -65,7 +65,7 @@ img {
 
                                 <!-- Upload Company Logo-->
                                 <div class="pt-3 text-center">
-                                    <a class="btn btn-primary" href="<?=base_url('assets/img/reg_c_logo/'.$c['c_logo'])?>" role="button" target="_blank">View Company Logo</a>
+                                    <a class="btn btn-primary" href="<?=base_url('assets/img/company_logos/'.$c['c_logo'])?>" role="button" target="_blank">View Company Logo</a>
                                 </div>
                                   
                                 <div class="d-grid gap-2 d-md-block">
