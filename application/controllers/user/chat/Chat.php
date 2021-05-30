@@ -44,11 +44,12 @@ class Chat extends CI_Controller
             {
                 $userslist[] = 
                 [
-                    'user_id'    => $user['user_id'],
-                    'user_email' => $user['user_email'],
-                    'user_fname' => $user['user_fname'],
-                    'user_lname' => $user['user_lname'],
-                    'ac_university' => $user['ac_university']
+                        'user_id'    => $user['user_id'],
+                        'user_email' => $user['user_email'],
+                        'user_fname' => $user['user_fname'],
+                        'user_lname' => $user['user_lname'],
+                    'ac_university'  => $user['ac_university'],
+                        'uni_logo'   => $user['uni_logo']
                 ];
             }
 

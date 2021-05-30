@@ -142,7 +142,7 @@
                                                         echo "<thead style='background-color: #57cc99'>";
                                                         echo    "<tr>";
                                                         echo        "<th style='color: #FFFFFF;'>Chat</th>";
-                                                        // echo        "<th style='color: #FFFFFF;'>Logo</th>";
+                                                        echo        "<th style='color: #FFFFFF;'>Logo</th>";
                                                         echo        "<th style='color: #FFFFFF;'>University</th>";
                                                         echo        "<th style='color: #FFFFFF;'>First Name</th>";
                                                         echo        "<th style='color: #FFFFFF;'>Last Name</th>";
@@ -156,7 +156,7 @@
                                                             <tr style='background-color: #f0faf6'>
                                                                 <td class="select_user" id="<?php echo $user['user_id']; ?>" title="<?php echo $user['user_fname'] . ' ' .$user['user_lname'];  ?>">
                                                                     <a href="#chat_section" style="display:block; background-color: #5e6472; color:white; text-align: center; font-weight: 700;">Chat</a></td>
-                                                                <!-- <td><img class="img-fluid img_class" src="<= base_url("assets/img/company_logos/{$user2['uni_logo']}");?>" width="150";/></td> -->
+                                                                <td><img class="img-fluid img_class" src="<?= base_url($user['uni_logo']);?>" width="100";/></td>
                                                                 <td><?php echo $user['ac_university']; ?></td>
                                                                 <td><?php echo $user['user_fname']; ?></td>                                     
                                                                 <td><?php echo $user['user_lname']; ?></td>
