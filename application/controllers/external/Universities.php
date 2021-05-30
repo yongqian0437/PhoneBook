@@ -40,26 +40,27 @@ class Universities extends CI_Controller {
 
 		foreach($universities as $r) {
 
-		$logo = $base_url.$r->uni_logo;
+			$logo = $base_url.$r->uni_logo;
+			$total_course = $this->courses_model->get_totalcourse_for_uni($r->uni_id);
 
-		$image = '<img style=" height:85px; width: 250px; object-fit: contain;" src="'.$logo.'" alt="logo"><br><br>'; 
+			$image = '<img style=" height:85px; width: 250px; object-fit: contain;" src="'.$logo.'" alt="logo"><br><br>'; 
 
-		$uni_link = $base_url."external/Universities/university_detail/".$r->uni_id;
+			$uni_link = $base_url."external/Universities/university_detail/".$r->uni_id;
 
-		$action = '<a style = "border-radius:10px; background-color:#6B9080; color:white; height:auto; width:auto%;" href="'.$uni_link.'" class = "btn btn-icon-split">
-						<span class = "icon text-white-600">
-							<i class = "fas fa-info-circle p-1"></i>
-						</span>
-						<span style = "" class = "text">Info</span>
-					</a>';
+			$action = '<a style = "border-radius:10px; background-color:#6B9080; color:white; height:auto; width:auto%;" href="'.$uni_link.'" class = "btn btn-icon-split">
+							<span class = "icon text-white-600">
+								<i class = "fas fa-info-circle p-1"></i>
+							</span>
+							<span style = "" class = "text">Info</span>
+						</a>';
 
 			$data[] = array(
-					$image,
-					$r->uni_name,
-					$r->uni_country,
-					$r->uni_totalcourses,
-					$r->uni_qsrank,
-					$action,
+				$image,
+				$r->uni_name,
+				$r->uni_country,
+				$total_course,
+				$r->uni_qsrank,
+				$action,
 			);
 		}
 
@@ -80,10 +81,10 @@ class Universities extends CI_Controller {
 		$data['title'] = 'iJEES | University';
 		$data['uni_detail'] = $this->universities_model->get_uni_detail($uni_id);
 		$data['course_field'] = $this->courses_model->course_field_dropdown($uni_id);
+		$data['total_course'] = $this->courses_model->get_totalcourse_for_uni($uni_id);
 		$data['include_js'] = 'university_detail';
 		$this->load->view('external/templates/header' ,$data);
-
-		$this->load->view('external/universitiy_detail_view', $data);
+		$this->load->view('external/universitiy_detail_view');
 		$this->load->view('external/templates/footer');
 	}
 

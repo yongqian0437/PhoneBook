@@ -172,7 +172,7 @@ th{
                                 </div>
                                 <div class = "row">
                                     <div class="col-md-12" >
-                                    <div  class = "float-right pr-3" style = " vertical-align:bottom; font-size:1.6em; font-weight:700; color:white;"><?php echo $uni_detail->uni_totalcourses?> Courses</div>
+                                    <div  class = "float-right pr-3" style = " vertical-align:bottom; font-size:1.6em; font-weight:700; color:white;"><?php echo $total_course?> Courses</div>
                                     </div>
                                 </div>
                             </div>

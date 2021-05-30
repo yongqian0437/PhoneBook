@@ -154,4 +154,11 @@ class courses_model extends CI_Model
             return false;
         }
     }
+
+    function get_totalcourse_for_uni($uni_id)
+    {
+        $this->db->where('uni_id', $uni_id);
+        $query = $this->db->get('courses')->result();
+        return count($query);
+    }
 }
