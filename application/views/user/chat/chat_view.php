@@ -19,16 +19,23 @@
             <h1 class="h3 mb-0 text-gray-800 font-weight-bold">Chat Room</h1>
         </div>
 
-        <p class="mb-4 px-4">To provide students the opportunity to gain real, hands-on work experience while still studying, 
-        INTI has built close ties with the industry to develop employer projects – a programme that enables students to work 
-        on actual business case studies and industry-relevant problems. Through these projects, students are presented with 
-        immediate challenges faced by businesses, and are required to work together in teams to develop and present their proposals.
-        Through these projects, students are presented with immediate challenges faced by businesses, and are required to work together
-        in teams to develop and present their proposals.</p> <!---------------------- Edit description later ------------------------>
+        <p class="mb-4 px-4">
+        <?php if ($user_role == 'Student') { ?> iJEES' Chat Room makes it easy for you to connect with Academic Counsellors and Employers that are registered in iJEES anywhere, anytime. This section is a one-stop service for communication to take place. 
+        The Academic Counsellors and Employers listed here are always ready to answer your enquiries towards a university, course or employer project (EP) that you may have. <br><br>
+        
+        To begin chatting, follow these simple steps:<br><br>
+        1. Scroll down and View 'All Contacts'<br>
+        2. A list of Academic Counsellors and Employers, along with their details will be displayed<br>
+        3. You may search for a user according to the University or Company name<br>
+        4. Once you have found who you are looking for, click 'Chat'<br><br>
+
+        Communication that takes place here will be monitored, and any exhange of documents will be of consent. </p>
 
         <div class="px-4 pb-3">
             <hr style=" width :100%; height:2px; background-color:#EAF4F4">
         </div>
+
+        <?php } ?>
 
         <!-- Content Row -->
         <div class="row px-4">
@@ -134,7 +141,7 @@
                                                     <?php
                                                         echo "<thead style='background-color: #57cc99'>";
                                                         echo    "<tr>";
-                                                        echo        "<th style='color: #FFFFFF;'>ID</th>";
+                                                        echo        "<th style='color: #FFFFFF;'>Chat</th>";
                                                         // echo        "<th style='color: #FFFFFF;'>Logo</th>";
                                                         echo        "<th style='color: #FFFFFF;'>University</th>";
                                                         echo        "<th style='color: #FFFFFF;'>First Name</th>";
@@ -148,7 +155,7 @@
                                                         foreach ($userslist as $user) : ?>
                                                             <tr style='background-color: #f0faf6'>
                                                                 <td class="select_user" id="<?php echo $user['user_id']; ?>" title="<?php echo $user['user_fname'] . ' ' .$user['user_lname'];  ?>">
-                                                                    <a href="#"><?php echo $user['user_id']; ?></a></td>
+                                                                    <a href="#chat_section" style="display:block; background-color: #5e6472; color:white; text-align: center; font-weight: 700;">Chat</a></td>
                                                                 <!-- <td><img class="img-fluid img_class" src="<= base_url("assets/img/company_logos/{$user2['uni_logo']}");?>" width="150";/></td> -->
                                                                 <td><?php echo $user['ac_university']; ?></td>
                                                                 <td><?php echo $user['user_fname']; ?></td>                                     
@@ -176,7 +183,7 @@
                                                     <?php
                                                         echo "<thead style='background-color: #00afb9'>";
                                                         echo    "<tr>";
-                                                        echo        "<th style='color: #FFFFFF;'>ID</th>";
+                                                        echo        "<th style='color: #FFFFFF;'>Chat</th>";
                                                         echo        "<th style='color: #FFFFFF;'>Logo</th>";
                                                         echo        "<th style='color: #FFFFFF;'>Company</th>";
                                                         echo        "<th style='color: #FFFFFF;'>First Name</th>";
@@ -191,7 +198,7 @@
                                                         foreach ($userslist2 as $user2) : ?>
                                                             <tr style='background-color: #ebf9fa'>
                                                                 <td class="select_user" id="<?php echo $user2['user_id']; ?>" title="<?php echo $user2['user_fname'] . ' ' .$user2['user_lname'];  ?>">
-                                                                    <a href="#"><?php echo $user2['user_id']; ?></a></td>
+                                                                    <a href="#chat_section" style="display:block; background-color: #5e6472; color:white; text-align: center; font-weight: 700;">Chat</a></td>
                                                                 <td><img class="img-fluid img_class" src="<?= base_url("assets/img/company_logos/{$user2['c_logo']}");?>" width="200";/></td>
                                                                 <td><?php echo $user2['c_name']; ?></td>
                                                                 <td><?php echo $user2['user_fname']; ?></td>                                        
@@ -217,7 +224,7 @@
                                                 <?php
                                                     echo "<thead style='background-color: #57cc99'>";
                                                     echo    "<tr>";
-                                                    echo        "<th style='color: #FFFFFF;'>ID</th>";
+                                                    echo        "<th style='color: #FFFFFF;'>Chat</th>";
                                                     echo        "<th style='color: #FFFFFF;'>First Name</th>";
                                                     echo        "<th style='color: #FFFFFF;'>Last Name</th>";
                                                     echo        "<th style='color: #FFFFFF;'>Field of Interest</th>";
@@ -231,7 +238,7 @@
                                                         foreach($userslist as $user): ?>
                                                             <tr style='background-color: #f0faf6'>
                                                                 <td class="select_user" id="<?php echo $user['user_id']; ?>" title="<?php echo $user['user_fname'] . ' ' .$user['user_lname'];  ?>">
-                                                                    <a href="#"><?php echo $user['user_id']; ?></a></td>
+                                                                    <a  href="#chat_section" style="display:block; background-color: #5e6472; color:white; text-align: center; font-weight: 700;">Chat</a></td>
                                                                 <td><?php echo $user['user_fname']; ?></td>                                      
                                                                 <td><?php echo $user['user_lname']; ?></td>                                   
                                                                 <td><?php echo $user['student_interest']; ?></td>
