@@ -1,7 +1,7 @@
 <link href="<?php echo base_url() ?>/assets/scss/courses-styles.scss" rel="stylesheet">
 
 <!-- Top Navigation -->
-<?php $this->load->view('external/templates/topnav');?>
+<?php $this->load->view('external/templates/topnav'); ?>
 
 <body id="page-top">
 
@@ -44,20 +44,33 @@
                                     <label for="course_level">Course level</label><br>
                                     <select name="course_levelid" id="filter_2" class="form-control form-select form-select-lg btn-sm">
                                         <option value="" selected disabled>Filter level</option>
-                                        <option value="Bachelor Degree / Honours Degree">Bachelor Degree / Honours Degree</option>
-                                        <option value="Foundation Studies">Foundation</option>
-                                        <option value="Master">Master</option>
-                                        <option value="ADP">American Degree Program</option>
+                                        <option value="Bachelor Degree">Bachelor Degree</option>
+                                        <option value="Foundation">Foundation</option>
+                                        <option value="Diploma">Diploma</option>
+                                        <option value="Masters">Masters</option>
+                                        <option value="Advanced Diploma">Advanced Diploma</option>
+                                        <option value="Certificate">Certificate</option>
+                                        <option value="Doctorate">Doctorate</option>
+                                        <option value="Graduate Certificate & Graduate Diploma">Graduate Certificate & Graduate Diploma</option>
+                                        <option value="Postgraduate Certificate  Postgraduate Diploma">Postgraduate Certificate Postgraduate Diploma</option>
                                     </select>
                                 </div>
                                 <div class="form-group mr-2"><br>
                                     <label for="course_intake">Course intake</label><br>
                                     <select name="course_intakeid" id="filter_3" class="form-control form-select form-select-lg btn-sm">
                                         <option value="" selected disabled>Filter intake</option>
-                                        <option value="July 2021">July</option>
-                                        <option value="Aug 2021">August</option>
-                                        <option value="Jan 2021">January</option>
-                                        <option value="Apr 2021">April</option>
+                                        <option value="January">January</option>
+                                        <option value="February">February</option>
+                                        <option value="March">March</option>
+                                        <option value="April">April</option>
+                                        <option value="May">May</option>
+                                        <option value="June">June</option>
+                                        <option value="July">July</option>
+                                        <option value="August">August</option>
+                                        <option value="September">September</option>
+                                        <option value="October">October</option>
+                                        <option value="November">November</option>
+                                        <option value="December">December</option>
                                     </select>
                                 </div>
                                 <div class="form-group mr-2"><br>
