@@ -23,7 +23,7 @@
                     </div>
                     <div class="py-2 px-4" style="text-align: justify; font-weight:500;">Choosing the right course to study is probably one of the most important decisions you can make in your life. This can be a confusing and difficult time if you are unprepared. Look no further because with iJEES, you are given the opportunity to find your path and chase your future with one of our courses that is made readily available for you! Want to explore your academic capabilities? Seeking international study options to match your own interests and resources? Discover what you can do by searching and comparing courses from universities across the world in different subject areas. Join our mission to make study choice transparent, globally.
                     </div>
-                    <div class="px-5 pb-4">
+                    <div class="px-4 pb-4">
                         <hr style=" width :100%; height:2px; background-color:#EAF4F4">
                     </div>
                     <div class="col-12 px-4">
@@ -103,8 +103,10 @@
                                 <div class="card-body shadow mb-4">
                                     <div class="row">
                                         <div class="col-9 ">
-                                            <h5 class="font-weight-bold"><?php echo $courses->course_name ?></h5>
-
+                                            <div class="row justify-content-between">
+                                                <h5 class="font-weight-bold mr-3"><?php echo $courses->course_name ?></h5>
+                                                <p><?php echo $courses->course_area ?></p>
+                                            </div>
                                             <div>
                                                 <p class="courselist-short-desc"><?php echo $courses->course_shortprofile ?></p>
                                             </div>

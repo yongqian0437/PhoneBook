@@ -33,7 +33,7 @@ class Courses extends CI_Controller
 	{
 		$data['course_data'] = $this->courses_model->select_condition($id, 'courses');
 		$data['uni_data'] = $this->universities_model->get_uni_detail($data['course_data'][0]->uni_id);
-		$data['title'] = 'iJEES | Courses Detail';
+		$data['title'] = 'iJEES | Course Detail';
 
 		$this->load->view('external/templates/header', $data);
 		$this->load->view('external/courses_detail_view'); //view num 2 - jordan

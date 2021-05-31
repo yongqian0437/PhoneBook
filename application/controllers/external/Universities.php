@@ -119,8 +119,8 @@ class Universities extends CI_Controller {
 					</center>
 				</div>
 				<div class="col-md-3 pt-2 pl-5">
-					<a type="button" href = "'.$course_link.'" class="btn btn-sm " style = "background-color:#A4C3B2; color:white; font-size:0.9em;">View</a>
-					<button type="button" href = "" class="btn btn-sm" style = "background-color:#A4C3B2; color:white; font-size:0.9em;">Apply</button>
+					<a type="button" target="_blank" href = "'.$course_link.'" class="btn btn-sm " style = "background-color:#A4C3B2; color:white; font-size:0.9em;">View</a>
+					<button type="button" target="_blank" href = "" class="btn btn-sm" style = "background-color:#A4C3B2; color:white; font-size:0.9em;">Apply</button>
 				</div>
 			</div>
 			';
