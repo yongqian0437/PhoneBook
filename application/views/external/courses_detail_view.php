@@ -59,8 +59,8 @@
                                             <div class="col-12 d-flex justify-content-center mb-3">
                                                 <div class="row">
                                                     <div>
-                                                        <a type="button" class="btn btn-secondary course-ave-buttons">Apply</a>
-                                                        <a type="button" href="<?php echo base_url() . 'external/Universities/university_detail/' . $courses->uni_id ?>" class="btn btn-secondary course-ave-buttons">View University</a>
+                                                        <a type="button" target="_blank" class="btn btn-secondary course-ave-buttons">Apply</a>
+                                                        <a type="button" target="_blank" href="<?php echo base_url() . 'external/Universities/university_detail/' . $courses->uni_id ?>" class="btn btn-secondary course-ave-buttons">View University</a>
                                                         <a type="button" href="<?php echo base_url() . 'user/chat/Chat/' ?>" class="btn btn-secondary course-ave-buttons">Enquire</a>
                                                     </div>
                                                 </div>
@@ -130,7 +130,7 @@
                                                         <!-- Card Content - Collapse -->
                                                         <div class="collapse show" id="collapseCard3">
                                                             <div class="card-body">
-                                                                <p><?php echo $courses->course_requirements ?></p>
+                                                                <p style = "white-space: pre-wrap; word-break: break-word;"><?php echo $courses->course_requirements ?></p>
                                                                 </p>
                                                             </div>
                                                         </div>

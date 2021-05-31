@@ -143,11 +143,15 @@ background-color: #EAF4F4;
                                         <label for="level1">LEVEL</label><br>
                                         <select name="level1_id" id="level_1" class="form-control form-select form-select-lg">
                                             <option value="" selected disabled>Please select a level</option>
-                                            <option value="certificate">Certificate</option>
-                                            <option value="diploma">Diploma</option>
-                                            <option value="foundation">Foundation</option>
-                                            <option value="degree">Degree</option>
-                                            <option value="master">Master</option>
+                                            <option value="Foundation">Foundation</option>
+                                            <option value="Certificate">Certificate</option>
+                                            <option value="Diploma">Diploma</option>
+                                            <option value="Bachelor Degree">Bachelor Degree</option>
+                                            <option value="Masters">Masters</option>
+                                            <option value="Doctorate">Doctorate</option>
+                                            <option value="Advanced Diploma">Advanced Diploma</option>
+                                            <option value="Graduate Certificate &Graduate Diploma">Graduate Certificate and Graduate Diploma</option>
+                                            <option value="Postgraduate Certificate & Postgraduate Diploma">Postgraduate Certificate and Postgraduate Diploma</option>
                                         </select>
                                     </div>  
                                     <!-- COURSE INPUT -->
@@ -182,11 +186,15 @@ background-color: #EAF4F4;
                                         <label for="level2">LEVEL</label><br>
                                         <select name="level2_id" id="level_2" class="form-control form-select form-select-lg">
                                             <option value="" selected disabled>Please select a level</option>
-                                            <option value="certificate">Certificate</option>
-                                            <option value="diploma">Diploma</option>
-                                            <option value="foundation">Foundation</option>
-                                            <option value="degree">Degree</option>
-                                            <option value="master">Master</option>
+                                            <option value="Foundation">Foundation</option>
+                                            <option value="Certificate">Certificate</option>
+                                            <option value="Diploma">Diploma</option>
+                                            <option value="Bachelor Degree">Bachelor Degree</option>
+                                            <option value="Masters">Masters</option>
+                                            <option value="Doctorate">Doctorate</option>
+                                            <option value="Advanced Diploma">Advanced Diploma</option>
+                                            <option value="Graduate Certificate &Graduate Diploma">Graduate Certificate and Graduate Diploma</option>
+                                            <option value="Postgraduate Certificate & Postgraduate Diploma">Postgraduate Certificate and Postgraduate Diploma</option>
                                         </select>
                                     </div>  
                                     <!-- COURSE INPUT -->
@@ -221,11 +229,15 @@ background-color: #EAF4F4;
                                         <label for="level3">LEVEL</label><br>
                                         <select name="level3_id" id="level_3" class="form-control form-select form-select-lg">
                                             <option value="" selected disabled>Please select a level</option>
-                                            <option value="certificate">Certificate</option>
-                                            <option value="diploma">Diploma</option>
-                                            <option value="foundation">Foundation</option>
-                                            <option value="degree">Degree</option>
-                                            <option value="master">Master</option>
+                                            <option value="Foundation">Foundation</option>
+                                            <option value="Certificate">Certificate</option>
+                                            <option value="Diploma">Diploma</option>
+                                            <option value="Bachelor Degree">Bachelor Degree</option>
+                                            <option value="Masters">Masters</option>
+                                            <option value="Doctorate">Doctorate</option>
+                                            <option value="Advanced Diploma">Advanced Diploma</option>
+                                            <option value="Graduate Certificate &Graduate Diploma">Graduate Certificate and Graduate Diploma</option>
+                                            <option value="Postgraduate Certificate & Postgraduate Diploma">Postgraduate Certificate and Postgraduate Diploma</option>
                                         </select>
                                     </div>  
                                     <!-- COURSE INPUT -->
@@ -256,7 +268,7 @@ background-color: #EAF4F4;
                     </div>
 
                     <div class="col-xl-3 col-md-6 mb-4">
-                        <a style = 'border-radius:20px;' href="#table_view" onclick="generateTable()" id = 'proceed_btn' class = 'btn btn-success btn-lg btn-icon-split'>
+                        <a style = 'border-radius:20px;' onclick="generateTable()" id = 'proceed_btn' class = 'btn btn-success btn-lg btn-icon-split'>
                             <span class = 'icon text-white-600'>
                             <i class = 'fas fa-arrow-down fa-2x p-1'></i>
                             </span>
