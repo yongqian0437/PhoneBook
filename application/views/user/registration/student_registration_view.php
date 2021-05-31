@@ -93,7 +93,7 @@
 									<!-- Interest -->
 									<div class="form-row pt-3 px-3">
 										<div class="form-group col-md-12 px-2">
-											<input type="type" name="student_interest" class="form-control border-bottom" id="student_interest" style="border: 0;" placeholder="Enter your interest" required>
+											<input type="type" name="student_interest" class="form-control border-bottom" id="student_interest" style="border: 0;" placeholder="Enter your interest (e.g: IT, Arts, Law)" required>
 										</div>
 									</div>
 									
@@ -116,7 +116,7 @@
                                     </div>
 									<!-- Terms & Condition -->
 									<div class="T&C ml-4 mt-2 pt-3">
-										<label><input type="checkbox" required> Please accept our <a href="https://newinti.edu.my/legal/privacy/">terms and conditions</a>
+										<label><input type="checkbox" required> Please accept our <a href="https://newinti.edu.my/legal/privacy/" target="_blank">terms and conditions</a>
 										</label>
 									</div>
 									<!-- Submit button -->

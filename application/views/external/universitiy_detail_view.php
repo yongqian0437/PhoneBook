@@ -156,7 +156,7 @@ th{
                 <!-- Banner with logo-->
                 <div class = "row pt-1 px-0" >
                     <div class="col-md-12" >
-                        <div class="course-cover-img" style="background-image: url('<?php echo base_url($uni_detail->uni_banner); ?>');">                            
+                        <div class="course-cover-img" style="background-image: url('<?php echo base_url($uni_detail->uni_background); ?>');">                            
                             <div id = "foreground">
                                 <div class = "row pt-5" >
                                     <div class="col-md-12" >
@@ -257,7 +257,7 @@ th{
                                     <div class="card-body" style = "">
                                         <!-- UNIVERSITIY INPUT -->
                                         <div class="form-row pt-2">
-                                            <label for="course_field" class="col-sm-1 text-right col-form-label" style = "color:black;">Course Field: </label>
+                                            <label for="course_field" class="col-sm-2 text-right col-form-label" style = "color:black;">Course Field: </label>
                                             <div class="col-sm-3">
                                                 <select name="course_field" id="course_field" class="form-control form-select form-select-sm">
                                                     <option value="all" selected>All</option>

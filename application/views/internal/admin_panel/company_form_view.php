@@ -1,9 +1,3 @@
-<style>
-img {
-  border-radius: 50%;
-}
-</style>
-
 <!-- Content Wrapper -->
 <div id="content-wrapper" >
 
@@ -15,7 +9,7 @@ img {
         <!-- Outer Row -->
         <div class="row justify-content-center">
 
-            <div class="col-lg-7">
+            <div class="col-lg-9">
 
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
@@ -31,48 +25,54 @@ img {
                                <!-- Form -->
                                 <form>
                                 <center><b><p class="card-title">Company ID: <?=$c['c_id'];?></p></b></center>
-                                <center><img class="img-fluid img_class"  src="<?= base_url("assets/img/universities/{$c['c_logo']}");?>" width="250";/></center>
+                                <center><img class="img-fluid img_class"  src="<?= base_url("assets/img/company_logos/{$c['c_logo']}");?>" width="250";/></center>
                                 <br>
-                                 <!-- Company Name -->
-                                 <div class="form-group col-md-12 px-2">
-                                    <input  class="form-control border-bottom" style="border: 0;" placeholder= "Company Name: <?=$c['c_name'];?>" readonly>
-                                 </div>
-
-                                 <!-- Company Phone Number-->
-                                 <div class="form-group col-md-7 px-2">
-                                    <input  class="form-control border-bottom" style="border: 0;" placeholder= "Phone Number: <?=$c['c_phonenumber'];?>" readonly>
+                                <div class="form-row px-3">
+                                    <!-- Company Name -->
+                                    <div class="form-group col-md-12 px-2">
+                                        <input  class="form-control border-bottom" style="border: 0;" placeholder= "Company Name: <?=$c['c_name'];?>" readonly>
+                                    </div>
                                 </div>
-
-                                <!-- Company Registration Number-->
-                                <div class="form-group col-md-8 px-2">
-                                    <input  class="form-control border-bottom" style="border: 0;" placeholder= "Registration Number: <?=$c['c_registrationnum'];?>" readonly>
+                                <div class="form-row px-3">
+                                    <!-- Company Phone Number-->
+                                    <div class="form-group col-md-12 px-2">
+                                        <input  class="form-control border-bottom" style="border: 0;" placeholder= "Phone Number: <?=$c['c_phonenumber'];?>" readonly>
+                                    </div>
                                 </div>
-
-                                <!-- Company Address -->
-                                <div class="form-group col-md-12 px-2">
-                                    <input  class="form-control border-bottom" style="border: 0;" placeholder= "Company Address: <?=$c['c_address'];?>" readonly>
+                                <div class="form-row px-3">
+                                    <!-- Company Registration Number-->
+                                    <div class="form-group col-md-12 px-2">
+                                        <input  class="form-control border-bottom" style="border: 0;" placeholder= "Registration Number: <?=$c['c_registrationnum'];?>" readonly>
+                                    </div>
                                 </div>
-
-                                <!--Company Email-->
-                                <div class="form-group col-md-12 px-2">
-                                    <input  class="form-control border-bottom" style="border: 0;" placeholder= "Email Address: <?=$c['c_email'];?>" readonly>
+                                <div class="form-row px-3">
+                                    <!-- Company Address -->
+                                    <div class="form-group col-md-12 px-2">
+                                        <textarea class="form-control border-bottom" rows="6" style="border: 0;" placeholder= "Company Address: <?=$c['c_address'];?>" readonly></textarea>
+                                    </div>
                                 </div>
-
-                                <!-- Company Website-->
-                                <div class="form-group col-md-12 px-2">
-                                    <input  class="form-control border-bottom" style="border: 0;" placeholder= "Website: <?=$c['c_website'];?>" readonly>
+                                <div class="form-row px-3">
+                                    <!--Company Email-->
+                                    <div class="form-group col-md-12 px-2">
+                                        <input  class="form-control border-bottom" style="border: 0;" placeholder= "Email Address: <?=$c['c_email'];?>" readonly>
+                                    </div>
                                 </div>
-
-                                <!-- Upload Company Logo-->
-                                <div class="pt-3 text-center">
-                                    <a class="btn btn-primary" href="<?=base_url('assets/img/company_logos/'.$c['c_logo'])?>" role="button" target="_blank">View Company Logo</a>
+                                <div class="form-row px-3">
+                                    <!-- Company Website-->
+                                    <div class="form-group col-md-12 px-2">
+                                        <input  class="form-control border-bottom" style="border: 0;" placeholder= "Website: <?=$c['c_website'];?>" readonly>
+                                    </div>
                                 </div>
-                                  
-                                <div class="d-grid gap-2 d-md-block">
-                                    <!-- <a href="<?=base_url();?>internal/admin_panel/Admin_dashboard/users_accounts_nav" class="btn btn-primary">Back</a> -->
-                                    <a href="<?=base_url();?>internal/admin_panel/Users_information/detail_employer/<?php echo $this->session->userdata('user_id');?>" class="btn btn-primary">Back</a>
+                                    <!-- Upload Company Logo-->
+                                    <div class="pt-3 text-center">
+                                        <a class="btn btn-primary" href="<?=base_url('assets/img/company_logos/'.$c['c_logo'])?>" role="button" target="_blank">View Company Logo</a>
+                                    </div>
+                                <div class="form-row px-3">
+                                    <div class="d-grid gap-2 d-md-block">
+                                        <!-- <a href="<?=base_url();?>internal/admin_panel/Admin_dashboard/users_accounts_nav" class="btn btn-primary">Back</a> -->
+                                        <a href="<?=base_url();?>internal/admin_panel/Users_information/detail_employer/<?php echo $this->session->userdata('user_id');?>" class="btn btn-primary">Back</a>
+                                    </div>
                                 </div>
-
                                  <!--Logo-->
                                 <!-- <div class="form-group col-md-5 px-2">
                                     <input type="file" class="custom-file-input" id="form-group" name="c_logo">

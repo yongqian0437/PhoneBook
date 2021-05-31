@@ -15,7 +15,7 @@ img {
         <!-- Outer Row -->
         <div class="row justify-content-center">
 
-            <div class="col-lg-7">
+            <div class="col-lg-9">
 
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
@@ -37,49 +37,57 @@ img {
                                     <div class="form-group col-md-12 px-2">
                                         <input  class="form-control border-bottom" style="border: 0;" placeholder= "University Name: <?=$uni['uni_name'];?>" readonly>
                                     </div>
-
+                                </div>
+                                <div class="form-row px-3">
                                     <!--  Email -->
                                     <div class="form-group col-md-12 px-2">
                                         <input  class="form-control border-bottom" style="border: 0;" placeholder= "University Email: <?=$uni['uni_email'];?>" readonly>
                                     </div>
-
+                                </div>
+                                <div class="form-row px-3">
+                                    <!-- Hotline-->
+                                    <div class="form-group col-md-12 px-2">
+                                        <input  class="form-control border-bottom" style="border: 0;" placeholder= "University Hotline: <?=$uni['uni_hotline'];?>" readonly>
+                                    </div>
+                                </div>
+                                <div class="form-row px-3">
+                                    <!-- Country -->
+                                    <div class="form-group col-md-12 px-2">
+                                        <input  class="form-control border-bottom" style="border: 0;" placeholder= "Country: <?=$uni['uni_country'];?>" readonly>
+                                    </div>
+                                </div>
+                                <div class="form-row px-3">
                                     <!-- University Short Profile -->
                                     <div class="form-group col-md-12 px-2">
                                         <textarea class="form-control border-bottom" rows="10" style="border: 0;" placeholder= "University Short Profile: <?=$uni['uni_shortprofile'];?>" readonly></textarea>
                                     </div>
-
-                                    <!-- Country -->
-                                    <div class="form-group col-md-6 px-2">
-                                        <input  class="form-control border-bottom" style="border: 0;" placeholder= "Country: <?=$uni['uni_country'];?>" readonly>
-                                    </div>
-
+                                </div>
+                                <div class="form-row px-3">
                                     <!-- Address -->
                                     <div class="form-group col-md-12 px-2">
-                                        <input  class="form-control border-bottom" style="border: 0;" placeholder= "University Address: <?=$uni['uni_address'];?>" readonly>
-                                    </div>
-
-                                    <!-- QS Ranking, Employability Rank & Total Students -->
-                                    <div class="form-group col-md-6 px-2">
-                                        <input  class="form-control border-bottom" style="border: 0;" placeholder= "University QS Ranking: <?=$uni['uni_qsrank'];?>" readonly>
-                                    </div>
-                                    <div class="form-group col-md-6 px-2">
-                                        <input  class="form-control border-bottom" style="border: 0;" placeholder= "University Employabilityrank: <?=$uni['uni_employabilityrank'];?>" readonly>
-                                    </div>
-                                    <div class="form-group col-md-6 px-2">
-                                        <input  class="form-control border-bottom" style="border: 0;" placeholder= "Total Students: <?=$uni['uni_totalstudents'];?>" readonly>
-                                    </div>
-
-                                    <!-- Hotline-->
-                                    <div class="form-group col-md-6 px-2">
-                                        <input  class="form-control border-bottom" style="border: 0;" placeholder= "University Hotline: <?=$uni['uni_hotline'];?>" readonly>
-                                    </div>
-
-                                    <!-- Upload University Background-->
-                                    <div class="form-group col-md-6 px-2">
-                                        <a class="btn btn-primary" href="<?=base_url('assets/img/universities/'.$uni['uni_background'])?>" role="button" target="_blank">View University Background</a>
+                                        <textarea class="form-control border-bottom" rows="6" style="border: 0;" placeholder= "University Address: <?=$uni['uni_address'];?>" readonly></textarea>
                                     </div>
                                 </div>
-
+                                <div class="form-row px-3">
+                                    <!-- QS Ranking, Employability Rank & Total Students -->
+                                    <div class="form-group col-md-12 px-2">
+                                        <input  class="form-control border-bottom" style="border: 0;" placeholder= "University QS Ranking: <?=$uni['uni_qsrank'];?>" readonly>
+                                    </div>
+                                </div>
+                                <div class="form-row px-3">
+                                    <div class="form-group col-md-12 px-2">
+                                        <input  class="form-control border-bottom" style="border: 0;" placeholder= "University Employability Rank: <?=$uni['uni_employabilityrank'];?>" readonly>
+                                    </div>
+                                </div>
+                                <div class="form-row px-3">
+                                    <div class="form-group col-md-12 px-2">
+                                        <input  class="form-control border-bottom" style="border: 0;" placeholder= "Total Students: <?=$uni['uni_totalstudents'];?>" readonly>
+                                    </div>
+                                </div>
+                                    <!-- Upload University Background-->
+                                    <div class="form-group col-md-12 px-2 pt-3 text-center">
+                                        <a class="btn btn-primary" href="<?=base_url('assets/img/universities/'.$uni['uni_background'])?>" role="button" target="_blank">View University Background</a>
+                                    </div>
                                     <div class="d-grid gap-2 d-md-block">
                                         <!-- <a href="<?=base_url();?>internal/admin_panel/Admin_dashboard/users_accounts_nav" class="btn btn-primary">Back</a> -->
                                     <a href="<?=base_url();?>internal/admin_panel/Users_information/detail_education_partner/<?php echo $this->session->userdata('user_id');?>" class="btn btn-primary">Back</a>

@@ -30,7 +30,7 @@
                         <?php if (!empty($course_data)) {
                             foreach ($course_data as $courses) { ?>
                                 <div class="col-12">
-                                    <div class="course-cover-img" style="background-image: url('<?php echo base_url($uni_data->uni_banner); ?>');">
+                                    <div class="course-cover-img" style="background-image: url('<?php echo base_url($uni_data->uni_background); ?>');">
                                         <div class="fallbak">
                                             <div class="row">
                                                 <div class="col-4">
