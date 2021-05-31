@@ -1,9 +1,3 @@
-<style>
-img {
-  border-radius: 50%;
-}
-</style>
-
 <!-- Content Wrapper -->
 <div id="content-wrapper" >
 
@@ -31,7 +25,7 @@ img {
                                <!-- Form -->
                                 <form>
                                 <center><b><p class="card-title">University ID: <?=$uni['uni_id'];?></p></b></center>
-                                <center><img class="img-fluid img_class"  src="<?= base_url("assets/img/universities/{$uni['uni_logo']}");?>" width="350";/></center>
+                                <center><img class="img-fluid img_class"  src="<?= base_url("{$uni['uni_logo']}");?>" width="250";/></center>
                                 <div class="form-row pt-4 px-3">
                                     <!-- University-->
                                     <div class="form-group col-md-12 px-2">
@@ -86,7 +80,7 @@ img {
                                 </div>
                                     <!-- Upload University Background-->
                                     <div class="form-group col-md-12 px-2 pt-3 text-center">
-                                        <a class="btn btn-primary" href="<?=base_url('assets/img/universities/'.$uni['uni_background'])?>" role="button" target="_blank">View University Background</a>
+                                        <a class="btn btn-primary" href="<?=base_url("{$uni['uni_background']}")?>" role="button" target="_blank">View University Background</a>
                                     </div>
                                     <div class="d-grid gap-2 d-md-block">
                                         <!-- <a href="<?=base_url();?>internal/admin_panel/Admin_dashboard/users_accounts_nav" class="btn btn-primary">Back</a> -->

@@ -47,7 +47,7 @@ class Employer_projects extends CI_Controller
         [
             'emp_id'            => $this->input->post('ep_id'),
             'student_id'        => $student_id,
-            'submitted_time'    => date('Y-m-d h:i:s A'),
+            'emp_app_submitdate'    => date('Y-m-d h:i:s A'),
         ];
         
         $this->emp_applicants_model->insert($data);

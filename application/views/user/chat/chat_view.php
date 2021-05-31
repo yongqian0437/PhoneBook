@@ -156,7 +156,7 @@
                                                             <tr style='background-color: #f0faf6'>
                                                                 <td class="select_user" id="<?php echo $user['user_id']; ?>" title="<?php echo $user['user_fname'] . ' ' .$user['user_lname'];  ?>">
                                                                     <a href="#chat_section" style="display:block; background-color: #5e6472; color:white; text-align: center; font-weight: 700;">Chat</a></td>
-                                                                <td><img class="img-fluid img_class" src="<?= base_url($user['uni_logo']);?>" width="100";/></td>
+                                                                <td><img class="img-fluid img_class" src="<?= base_url($user['uni_logo']);?>" width="200";/></td>
                                                                 <td><?php echo $user['ac_university']; ?></td>
                                                                 <td><?php echo $user['user_fname']; ?></td>                                     
                                                                 <td><?php echo $user['user_lname']; ?></td>
