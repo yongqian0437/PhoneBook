@@ -102,15 +102,15 @@
                                         <div class="form-group col-md-12 px-2">
                                             <select name="student_currentlevel" id="student_currentlevel" class="form-control form-select border-bottom" style="border: 0;" required>
                                                 <option value="" selected disabled>Please select your current level </option>
-                                                <option value="Foundation">Foundation</option>
+												<option value="Foundation">Foundation</option>
 												<option value="Certificate">Certificate</option>
-                                                <option value="Diploma">Diploma</option>
-                                                <option value="Degree">Degree</option>
-                                                <option value="Doctorate">Doctorate</option>
-                                                <option value="Advanced Diploma">Advanced Diploma</option>
-												<option value="Graduate Certificate &Graduate Diploma">Graduate Certificate and Graduate Diploma</option>
+												<option value="Diploma">Diploma</option>
+												<option value="Bachelor Degree">Bachelor Degree</option>
+												<option value="Masters">Masters</option>
+												<option value="Doctorate">Doctorate</option>
+												<option value="Advanced Diploma">Advanced Diploma</option>
+												<option value="Graduate Certificate & Graduate Diploma">Graduate Certificate and Graduate Diploma</option>
 												<option value="Postgraduate Certificate & Postgraduate Diploma">Postgraduate Certificate and Postgraduate Diploma</option>
-												<option value="Other">Other</option>
 											</select>
                                         </div>
                                     </div>
