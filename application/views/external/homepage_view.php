@@ -20,19 +20,28 @@
                         <ol class="carousel-indicators">
                             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
                         </ol>
                         <div class="carousel-inner" role="listbox">
                             <div class="carousel-item active">
-                                <img class="d-block h-20 w-100" style="margin-left:auto; margin-right:auto;" src="<?php echo base_url('assets/img/Carousel/Testing1.png') ?>" alt="First slide">
+                                <img class="d-block h-20 w-100" style="margin-left:auto; margin-right:auto;" src="<?php echo base_url('assets/img/Carousel/global.png') ?>" alt="First slide">
                                 <div class="carousel-caption d-none d-md-block" style="left:0; top:0; height:100%; width:100%; text-align:center;">
-                                    <h1 class="ml-5 mt-5 pt-5" style="font-weight:600; font-size:3rem;">Your Best Online Education Consultant</h1>
-                                    <h1 class="ml-5 mt-4" style="font-weight:400; font-size:1.5rem;">Gain access to multiple education consultants with</h1>
-                                    <h1 class="ml-5" style="font-weight:400; font-size:1.5rem;">years of experience right at your fingertips.</h1>
-                                    <a href="#!" class="btn btn-danger btn-lg ml-5 mt-5" style="border-radius:10px;">TAKE A TOUR WITH US !</a>
+                                    <h1 class="ml-5 mt-5 pt-5" style="font-weight:600; font-size:3.5rem;">A modern global education plan</h1>
+                                    <h1 class="ml-5 mt-4" style="font-weight:400; font-size:1.75rem;">A single point of entry and a global marketplace</h1>
+                                    <h1 class="ml-5" style="font-weight:400; font-size:1.75rem;">for education and employability for all</h1>
+                                    <a href="<?=base_url('user/login/Auth/login');?>" class="btn btn-danger btn-lg ml-3 mt-5" style="border-radius:10px;">SIGN UP AND JOIN US</a>
                                 </div>
                             </div>
                             <div class="carousel-item">
-                                <img class="d-block h-20 w-100" style="margin-left:auto;  margin-right:auto; " src="<?php echo base_url('assets/img/Carousel/Testing2.png') ?>" alt="Second slide">
+                                <img class="d-block h-20 w-100" style="margin-left:auto;  margin-right:auto; " src="<?php echo base_url('assets/img/Carousel/employment.png') ?>" alt="Second slide">
+                                <div class="carousel-caption d-none d-md-block" style="left:0%; top:0%; height:100%; width:100%;">
+                                    <h1 class="ml-5 mt-5 pt-5" style="font-weight:600; font-size:3.5rem;">Your Best Online Education Consultant</h1>
+                                    <h1 class="ml-5 mt-5" style="font-weight:400; font-size:1.75rem;">Gain access to multiple education consultants with</h1>
+                                    <h1 class="ml-5 " style="font-weight:400; font-size:1.75rem;">years of experience right at your fingertips</h1>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img class="d-block h-20 w-100" style="margin-left:auto;  margin-right:auto; " src="<?php echo base_url('assets/img/Carousel/grad.png') ?>" alt="Second slide">
                                 <div class="carousel-caption d-none d-md-block" style="left:0%; top:0%; height:100%; width:100%;">
                                     <h1 class="ml-5 mt-5 pt-5" style="font-weight:600; font-size:3.5rem;">Start your journey with us</h1>
                                     <h1 class="ml-5 mt-5" style="font-weight:400; font-size:1.75rem;"><i>Welcome opportuniJEES, meet with any of our professional counsellors</i></h1>
