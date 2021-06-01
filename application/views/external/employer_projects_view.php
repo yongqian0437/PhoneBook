@@ -57,15 +57,16 @@
                 <div class="container-fluid">
                     <!-- Page Heading -->
                     <h1 class="h3 mb-1 text-gray-800 pt-4 px-4 pb-2 font-weight-bold">Employer Projects</h1>
-                    <p class="mb-4 px-4">To provide students the opportunity to gain real, hands-on work experience while still studying, 
+                    <p class="mb-4 px-4" style="text-align: justify;">To provide students the opportunity to gain real, hands-on work experience while still studying, 
                     INTI has built close ties with the industry to develop employer projects – a programme that enables students to work 
                     on actual business case studies and industry-relevant problems. Through these projects, students are presented with 
                     immediate challenges faced by businesses, and are required to work together in teams to develop and present their proposals.
                     Through these projects, students are presented with immediate challenges faced by businesses, and are required to work together
                     in teams to develop and present their proposals.</p> <!-- Edit description later -->
 
-                    <div class="px-4 pb-5">
+                    <div class="px-4 pb-4">
                         <hr style=" width :100%; height:2px; background-color:#EAF4F4">
+                        <p class="pt-2 font-weight-bold"><i>*To apply for an EP or view further details of the project, you are required to be logged in to the system or register for an account if you don't have one yet.</i></p>
                     </div>
 
                     <!-- Content Row. 1 row = 3 cards -->
@@ -105,10 +106,12 @@
 
                                         <!-- 2 Bottom Buttons -->
                                         <div class="bottom_buttons">
-                                            <a class="btn view_doc" href="<?=base_url('assets/uploads/employer_projects/'.$ep['emp_document'])?>" role="button" target="_blank" style="background-color: #8993a3; color:#FFFFFF">View</a>
 
-                                            <!-- *Check if session is established and if the role is a Student. If yes, show the 'Apply Now' button -->
+                                            <!-- *Check if session is established and if the role is a Student. If yes, show the 'View' and 'Apply Now' button -->
                                             <?php if ($user_role == 'Student') { ?> 
+                                                <!-- 'View' button becomes visible once student is logged in -->
+                                                <a class="btn view_doc" href="<?=base_url('assets/uploads/employer_projects/'.$ep['emp_document'])?>" role="button" target="_blank" style="background-color: #8993a3; color:#FFFFFF">View</a>
+
                                                 <!-- **Check if student has already applied to this specific EP. If yes, disable the apply button -->
                                                     <?php $response = $this->emp_applicants_model->past_application($ep['emp_id'], $student_id);
                                                         if ($response == true) { ?>

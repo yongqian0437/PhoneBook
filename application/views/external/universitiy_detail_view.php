@@ -5,7 +5,7 @@
 
 <style>
 #logo{
-    border-radius:50% 50% 50% 50%;
+    border-radius:50% 50% 15% 15%;
     width:170px;
     height:170px;
     object-fit: scale-down;

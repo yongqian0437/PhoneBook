@@ -124,7 +124,7 @@
 										<div class="form-group col-md-12 px-2">
 											<input type="file" class="custom-file-input" id="form-group" name="ac_document" required>
 											<label class="custom-file-label" for="customFile">Upload document</label>	
-											<p style="font-size: 14px">*Required document: Job Offer Letter in .PDF file format</p>
+											<p style="font-size: 14px">*Required document: Employment Verification Letter in .PDF file format</p>
 										</div>
 									</div>
 									<!-- Terms & Condition -->
