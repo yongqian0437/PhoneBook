@@ -5,9 +5,9 @@
 
 <style>
 #logo{
-    border-radius:50% 50% 15% 15%;
-    width:170px;
-    height:170px;
+    border-radius:35% 35% 0% 0%;
+    width:20vh;
+    height:20vh;
     object-fit: scale-down;
     background-color:white;
 }
@@ -161,8 +161,10 @@ th{
                                 <div class = "row pt-5" >
                                     <div class="col-md-12" >
                                     <center>
-                                        <div style="width:200px; height:200px; border-radius:100%; margin:0 auto; background-color:white;">
-                                            <img  src="<?php echo base_url($uni_detail->uni_logo); ?>" alt="uni_logo" id = "logo" class ="pt-5">
+                                        <div style="width:200px; height:200px; border-radius:100%; inline-block; background-color:white;">
+                                            <div class = "pt-2">
+                                                <img src="<?php echo base_url($uni_detail->uni_logo); ?>" alt="uni_logo" id = "logo" class ="pt-5">
+                                            </div>
                                         </div>
                                     </center>
                                     <center>
@@ -217,7 +219,9 @@ th{
                                                 <div style ="text-align:center; color:black; font-size:2.4em; font-weight:600;"><?php echo $uni_detail->uni_qsrank?></div>
                                                 <div style ="text-align:center; color:black; font-size:1.1em;">World Ranking</div>
                                                 <!-- Star condition for world ranking-->
-                                                <?php if($uni_detail->uni_qsrank <= 5){?>
+                                                <?php if($uni_detail->uni_name == "INTI International University"){?>
+                                                    <i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i><i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i><i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i><i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i><i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i>                                               
+                                                <?php } elseif($uni_detail->uni_qsrank <= 5){?>
                                                     <i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i><i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i><i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i><i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i><i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i>
                                                 <?php } elseif($uni_detail->uni_qsrank <= 10){?>
                                                     <i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i><i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i><i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i><i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i>
@@ -254,7 +258,7 @@ th{
                             <!-- Courses content-->
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                 <div class="card border-left-info shadow h-100 ">
-                                    <div class="card-body">
+                                    <div class="card-body" style = "">
                                         <!-- UNIVERSITIY INPUT -->
                                         <div class="form-row pt-2">
                                             <label for="course_field" class="col-sm-2 text-right col-form-label" style = "color:black;">Course Field: </label>
