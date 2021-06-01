@@ -110,12 +110,11 @@
                                                         <!-- Card Content - Collapse -->
                                                         <div class="collapse show" id="collapseCard3">
                                                             <div class="card-body">
-                                                                <p><b>Course Fee:</b> RM<?php echo $courses->course_fee ?> -
-                                                                    <?php echo $courses->course_duration ?> year(s)
-                                                                <p><b>Course intake:</b> <?php echo $courses->course_intake ?></p>
-                                                                <p><b>Course level:</b> <?php echo $courses->course_level ?></p>
-                                                                <p><b>Course location:</b> <?php echo $courses->course_country ?></p>
-                                                                </p>
+                                                                <p><b>Course Fee:</b> RM<?php echo $courses->course_fee ?> per year -
+                                                                    <?php echo $courses->course_duration ?> year(s) </p>
+                                                                <p><b>Intake(s):</b> <?php echo $courses->course_intake ?></p>
+                                                                <p><b>Level:</b> <?php echo $courses->course_level ?></p>
+                                                                <p><b>Location:</b> <?php echo $courses->course_country ?></p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -130,7 +129,7 @@
                                                         <!-- Card Content - Collapse -->
                                                         <div class="collapse show" id="collapseCard3">
                                                             <div class="card-body">
-                                                                <p style = "white-space: pre-wrap; word-break: break-word;"><?php echo $courses->course_requirements ?></p>
+                                                                <p style="white-space: pre-wrap; word-break: break-word;"><?php echo $courses->course_requirements ?></p>
                                                                 </p>
                                                             </div>
                                                         </div>
