@@ -114,7 +114,7 @@ class Universities extends CI_Controller {
 				</div>
 				<div class="col-md-1 pt-2" >
 					<center>
-						<div style = "font-size:1.0em; color:black; font-weight:600;">RM '.$row->course_fee.'</div>
+						<div style = "font-size:1.0em; color:black; font-weight:600;">RM '. number_format($row->course_fee) .'</div>
 						<div style = "font-size:0.8em; color:grey;">per year</div>
 					</center>
 				</div>

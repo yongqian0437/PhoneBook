@@ -100,9 +100,9 @@ class Compare extends CI_Controller {
 			</tr>
 			<tr>
 				<th scope="row">Tuition Fee (RM)</th>
-				<td>RM '.$course_data1[0]->course_fee.'</td>
-				<td>RM '.$course_data2[0]->course_fee.'</td>
-				<td>RM '.$course_data3[0]->course_fee.'</td>
+				<td>RM '. number_format($course_data1[0]->course_fee) .'</td>
+				<td>RM '. number_format($course_data2[0]->course_fee).'</td>
+				<td>RM '. number_format($course_data3[0]->course_fee).'</td>
 			</tr>
 			<tr>
 				<th scope="row">Country</th>
@@ -124,9 +124,9 @@ class Compare extends CI_Controller {
 			</tr>
 			<tr>
 				<th scope="row">Duration (Year)</th>
-				<td>'.$course_data1[0]->course_duration.' year</td>
-				<td>'.$course_data2[0]->course_duration.' year</td>
-				<td>'.$course_data3[0]->course_duration.' year</td>
+				<td>'.$course_data1[0]->course_duration.' years</td>
+				<td>'.$course_data2[0]->course_duration.' years</td>
+				<td>'.$course_data3[0]->course_duration.' years</td>
 			</tr>
 			<tr>
 				<th scope="row">Intake</th>

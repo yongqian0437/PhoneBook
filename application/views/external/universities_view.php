@@ -95,10 +95,10 @@ table.dataTable thead th {
                                     <table id="table_university" class="table ">
                                         <thead>
                                             <tr>
-                                                <th style = "">University</th>
+                                                <th>University</th>
                                                 <th>University Name</th>
                                                 <th>Country</th>
-                                                <th>Course Offered</th>
+                                                <th>Courses Offered</th>
                                                 <th>QS World Ranking</th>
                                                 <th></th>
                                             </tr>

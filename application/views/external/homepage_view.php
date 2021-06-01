@@ -100,7 +100,7 @@
                                     <p class="card-text">Understand your goals and ambitions, and choose the university that suits you</p>
                                 </div>
                                 <div class="card-footer text-right mr-4">
-                                    <a href="https://www.topuniversities.com/blog/how-choose-university-6-tips" class="btn btn-outline-secondary btn-icon-right">
+                                    <a href="https://www.topuniversities.com/blog/how-choose-university-6-tips" target="_blank" class="btn btn-outline-secondary btn-icon-right">
                                         <span>LEARN MORE
                                             <img src="https://static3.avast.com/1/web/i/v2/components/arrow-m-right-orange.png" height="24">
                                         </span>
@@ -114,7 +114,7 @@
                                     <p class="card-text">Understand which certificate in the market has workplace priority and is certified around the world</p>
                                 </div>
                                 <div class="card-footer text-right mr-4">
-                                    <a href="https://www.worldcertification.org" class="btn btn-outline-secondary btn-icon-right">
+                                    <a href="https://www.worldcertification.org" target="_blank" class="btn btn-outline-secondary btn-icon-right">
                                         <span>LEARN MORE
                                             <img src="https://static3.avast.com/1/web/i/v2/components/arrow-m-right-orange.png" height="24">
                                         </span>
@@ -128,7 +128,7 @@
                                     <p class="card-text">Top universities are the catalyst for attracting the brightest talents and international partner for academic collaboration</p>
                                 </div>
                                 <div class="card-footer text-right mr-4">
-                                    <a href="https://www.topuniversities.com/university-rankings/world-university-rankings/2021" class="btn btn-outline-secondary btn-icon-right">
+                                    <a href="https://www.topuniversities.com/university-rankings/world-university-rankings/2021" target="_blank" class="btn btn-outline-secondary btn-icon-right">
                                         <span>LEARN MORE
                                             <img src="https://static3.avast.com/1/web/i/v2/components/arrow-m-right-orange.png" height="24">
                                         </span>
@@ -142,7 +142,7 @@
                                     <p class="card-text">Gain an insight into your chances of getting employed upon graduation.</p>
                                 </div>
                                 <div class="card-footer text-right mr-4">
-                                    <a href="https://www.topuniversities.com/university-rankings/employability-rankings/2020" class="btn btn-outline-secondary btn-icon-right">
+                                    <a href="https://www.topuniversities.com/university-rankings/employability-rankings/2020" target="_blank" class="btn btn-outline-secondary btn-icon-right">
                                         <span>LEARN MORE
                                             <img src="https://static3.avast.com/1/web/i/v2/components/arrow-m-right-orange.png" height="24">
                                         </span>

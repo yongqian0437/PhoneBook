@@ -254,7 +254,7 @@ th{
                             <!-- Courses content-->
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                 <div class="card border-left-info shadow h-100 ">
-                                    <div class="card-body" style = "">
+                                    <div class="card-body">
                                         <!-- UNIVERSITIY INPUT -->
                                         <div class="form-row pt-2">
                                             <label for="course_field" class="col-sm-2 text-right col-form-label" style = "color:black;">Course Field: </label>
