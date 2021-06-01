@@ -7,6 +7,7 @@ class Courses extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
+		header('Cache-Control: no-cache');
 		$this->load->model('user_model');
 		$this->load->model('courses_model');
 		$this->load->model('universities_model');
