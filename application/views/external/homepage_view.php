@@ -26,7 +26,7 @@
                             <div class="carousel-item active">
                                 <img class="d-block h-20 w-100" style="margin-left:auto; margin-right:auto;" src="<?php echo base_url('assets/img/Carousel/global.png') ?>" alt="First slide">
                                 <div class="carousel-caption d-none d-md-block" style="left:0; top:0; height:100%; width:100%; text-align:center;">
-                                    <h1 class="ml-5 mt-5 pt-5" style="font-weight:600; font-size:3.5rem;">A modern global education plan</h1>
+                                    <h1 class="ml-5 mt-5 pt-5" style="font-weight:600; font-size:3.25rem;">Modern Global Education and Employability Plan</h1>
                                     <h1 class="ml-5 mt-4" style="font-weight:400; font-size:1.75rem;">A single point of entry and a global marketplace</h1>
                                     <h1 class="ml-5" style="font-weight:400; font-size:1.75rem;">for education and employability for all</h1>
                                     <a href="<?=base_url('user/login/Auth/login');?>" class="btn btn-danger btn-lg ml-3 mt-5" style="border-radius:10px;">SIGN UP AND JOIN US</a>
@@ -36,16 +36,16 @@
                                 <img class="d-block h-20 w-100" style="margin-left:auto;  margin-right:auto; " src="<?php echo base_url('assets/img/Carousel/employment.png') ?>" alt="Second slide">
                                 <div class="carousel-caption d-none d-md-block" style="left:0%; top:0%; height:100%; width:100%;">
                                     <h1 class="ml-5 mt-5 pt-5" style="font-weight:600; font-size:3.5rem;">Your Best Online Education Consultant</h1>
-                                    <h1 class="ml-5 mt-5" style="font-weight:400; font-size:1.75rem;">Gain access to multiple education consultants with</h1>
-                                    <h1 class="ml-5 " style="font-weight:400; font-size:1.75rem;">years of experience right at your fingertips</h1>
+                                    <h1 class="ml-5 mt-5" style="font-weight:400; font-size:1.75rem;">Gain access to multiple education consultants and industry employer </h1>
+                                    <h1 class="ml-5 " style="font-weight:400; font-size:1.75rem;">partners with years of experience right at your fingertips</h1>
                                 </div>
                             </div>
                             <div class="carousel-item">
                                 <img class="d-block h-20 w-100" style="margin-left:auto;  margin-right:auto; " src="<?php echo base_url('assets/img/Carousel/grad.png') ?>" alt="Second slide">
                                 <div class="carousel-caption d-none d-md-block" style="left:0%; top:0%; height:100%; width:100%;">
                                     <h1 class="ml-5 mt-5 pt-5" style="font-weight:600; font-size:3.5rem;">Start your journey with us</h1>
-                                    <h1 class="ml-5 mt-5" style="font-weight:400; font-size:1.75rem;"><i>Welcome opportuniJEES, meet with any of our professional counsellors</i></h1>
-                                    <h1 class="ml-5 " style="font-weight:400; font-size:1.75rem;"><i>to help you make your choice of university easier</i></h1>
+                                    <h1 class="ml-5 mt-5" style="font-weight:400; font-size:1.75rem;"><i>Welcoming opportuniJEES, meet with any of our professionals to help you</i></h1>
+                                    <h1 class="ml-5 " style="font-weight:400; font-size:1.75rem;"><i>make the right choice for your future</i></h1>
                                 </div>
                             </div>
                         </div>
@@ -67,31 +67,31 @@
                                 <div class="card-body">
                                     <div class="badge badge-primary badge-sm">FOR STUDENTS</div>
                                     <div class="card-title">Personal online consultants everywhere you go</div>
-                                    <p class="card-text">We provide one-to-one consulting and give you the best advice before you enter college / university.</p>
-                                </div>
-                            </div>
-
-                            <div class="card card-primary text-center" style="cursor:pointer; transition:all .5s ease-in-out;">
-                                <img class="card-img-top" src="https://static3.avast.com/10001215/web/i/index2/for-partners.jpg" alt="Card image cap">
-                                <div class="card-body">
-                                    <div class="badge badge-primary badge-sm">FOR BUSINESS</div>
-                                    <div class="card-title">Expand iJEES business to the world</div>
-                                    <p class="card-text">We're trying to expand our business around the world</p>
+                                    <p class="card-text">We provide one-to-one consulting and give you the best advice before you enter college / university</p>
                                 </div>
                             </div>
 
                             <div class="card card-primary text-center" style="cursor:pointer; transition:all .5s ease-in-out;">
                                 <img class="card-img-top" src="<?php echo base_url('assets/img/Card-primary/partner.png') ?>" alt="Card image cap">
                                 <div class="card-body">
-                                    <div class="badge badge-primary badge-sm">FOR PARTNERS</div>
+                                    <div class="badge badge-primary badge-sm">FOR EDUCATION PARTNERS</div>
                                     <div class="card-title">Provide partner cooperation opportunities</div>
-                                    <p class="card-text">We partner with the world’s leading colleges and universities that offer the best courses for a reasonable price</p>
+                                    <p class="card-text">We partner with the world's leading colleges and universities that offer the best courses for a reasonable price</p>
+                                </div>
+                            </div>
+
+                            <div class="card card-primary text-center" style="cursor:pointer; transition:all .5s ease-in-out;">
+                                <img class="card-img-top" src="https://static3.avast.com/10001215/web/i/index2/for-partners.jpg" alt="Card image cap">
+                                <div class="card-body">
+                                    <div class="badge badge-primary badge-sm">FOR EMPLOYER PARTNERS</div>
+                                    <div class="card-title">Expand employability across the world</div>
+                                    <p class="card-text pb-3">We build close ties with our collaborative industry partners to develop Employer Projects that would maximise our students' employability</p>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Details and Article -->
-                        <h2 class="mt-5 pt-5" style="font-weight:800; color:black;">More details and article</h2>
+                        <h2 class="mt-5 pt-5" style="font-weight:800; color:black;">More details and articles</h2>
                         <div class="card-deck">
                             <div class="card card-secondary" style="cursor:pointer; transition:all .5s ease-in-out;">
                                 <img class="card-img-top" src="<?php echo base_url('assets/img/Card-secondary/details1.jpg') ?>" alt="Card image cap">
@@ -110,7 +110,7 @@
                             <div class="card card-secondary" style="cursor:pointer; transition:all .5s ease-in-out;">
                                 <img class="card-img-top" src="<?php echo base_url('assets/img/Card-secondary/details2.jpg') ?>" alt="Card image cap">
                                 <div class="card-body">
-                                    <div class="card-title">Certificate that accredited over the world</div>
+                                    <div class="card-title">Certificates that are globally accredited</div>
                                     <p class="card-text">Understand which certificate in the market has workplace priority and is certified around the world</p>
                                 </div>
                                 <div class="card-footer text-right mr-4">
@@ -213,10 +213,10 @@
                             <div class="col col-image" style="background-image: url('<?php echo base_url('assets/img/Overview/Short2.png'); ?>');">
                                 &nbsp;
                             </div>
-                            <div class="col col-text col-left">
+                            <div class="col col-text col-left"> 
                                 <div class="Aligner-item">
                                     <h1 class="overview">Partners around the world</h1>
-                                    <p class="overview mt-4" style="animation: left_to_right 2s ease; width: 100%;">We have university partners around the world, there will always be a university for you.
+                                    <p class="overview mt-4" style="animation: left_to_right 2s ease; width: 100%;">We have university partners around the world, let us help you find the right one.  
                                     </p>
                                 </div>
                             </div>
