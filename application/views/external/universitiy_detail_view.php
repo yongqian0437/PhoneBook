@@ -161,7 +161,7 @@ th{
                                 <div class = "row pt-5" >
                                     <div class="col-md-12" >
                                     <center>
-                                        <div style="width:200px; height:200px; border-radius:100%; inline-block; background-color:white;">
+                                        <div style="width:200px; height:200px; border-radius:100%; background-color:white;">
                                             <div class = "pt-2">
                                                 <img src="<?php echo base_url($uni_detail->uni_logo); ?>" alt="uni_logo" id = "logo" class ="pt-5">
                                             </div>
