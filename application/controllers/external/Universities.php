@@ -33,7 +33,7 @@ class Universities extends CI_Controller {
 		$length = intval($this->input->get("length"));
 
 
-		$universities = $this->universities_model->select_all();
+		$universities = $this->universities_model->select_all_sort_list();
 
 		$data = array();
 		$base_url = base_url();
