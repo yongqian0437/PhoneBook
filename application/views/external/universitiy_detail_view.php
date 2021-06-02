@@ -6,8 +6,8 @@
 <style>
 #logo{
     border-radius:35% 35% 0% 0%;
-    width:20vh;
-    height:20vh;
+    width:150px;
+    height:150px;
     object-fit: scale-down;
     background-color:white;
 }
