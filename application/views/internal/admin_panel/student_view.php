@@ -16,7 +16,7 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>Student ID</th>
+                            <th>No</th>
                             <th>User ID</th>
                             <th>Contact Number</th>
                             <th>Nationality</th>
