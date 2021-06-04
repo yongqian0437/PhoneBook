@@ -1,5 +1,18 @@
 // jQuery short-hand for $(document).ready(function() {});
 $(function () {
+	$('.chat_table').DataTable({
+		"lengthMenu": [3, 5, 10],
+	  });
+	  
+	$('.chat_table tbody').on('click', 'td', function () {
+	// change in view (selectVendor) ~
+	chat_section(1);
+	var receiver_id = $(this).attr('id');
+	//alert(receiver_id);
+	$('#receiver_id').val(receiver_id); // change in view (#ReciverId_txt) ~
+	$('#receiver_name').html($(this).attr('title')); // change in view (#ReciverName_txt) ~
+	get_chat_history(receiver_id); 
+
     // Allows user to send message by tapping the 'Enter' key
 	$('#message').keypress(function (event) {
 		var keycode = (event.keyCode ? event.keyCode : event.which);
@@ -14,17 +27,7 @@ $(function () {
 		send_text($('#message').val());
 		
 	});
-
-    // change in view (selectVendor) ~
-	$('.select_user').click(function () {
-		chat_section(1);
-		var receiver_id = $(this).attr('id');
-		//alert(receiver_id);
-		$('#receiver_id').val(receiver_id); // change in view (#ReciverId_txt) ~
-		$('#receiver_name').html($(this).attr('title')); // change in view (#ReciverName_txt) ~
-		get_chat_history(receiver_id); 
-	});
-
+	
     // change in view and css (upload_attachmentfile) ~
 	$('.upload_attachment').change(function () {
 
@@ -54,6 +57,7 @@ $(function () {
 				// alert('Local error callback');
 			}
 		});
+	});
 	});
 
     // change in view (clear_chat) ~
