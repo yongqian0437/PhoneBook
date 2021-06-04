@@ -110,11 +110,19 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <!-- Nav Item - Course Application -->
+            <!-- Nav Item - University -->
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url('internal/level_2/educational_partner/ep_university');?>">
+                    <i class="fas fa-book"></i>
+                    <span>University</span>
+                </a>
+            </li>
+
+            <!-- Nav Item - Course -->
             <li class="nav-item">
                 <a class="nav-link" href="">
                     <i class="fas fa-book"></i>
-                    <span>University Courses</span>
+                    <span>Courses</span>
                 </a>
             </li>
 

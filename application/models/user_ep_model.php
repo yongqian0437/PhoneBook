@@ -75,5 +75,14 @@ class user_ep_model extends CI_Model
     {
      return $this->db->get_where('user_ep',['user_id'=>$id])->row_array();
     }
+
+    public function get_uni_from_ep($user_id)
+    {
+        $this->db->where('user_id', $user_id);
+        $ep_query = $this->db->get('user_ep')->row();
+
+        $this->db->where('uni_id', $ep_query->uni_id);
+        return $this->db->get('universities')->row();
+    }
     
 }
