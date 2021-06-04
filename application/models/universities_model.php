@@ -93,4 +93,11 @@ class universities_model extends CI_Model
         return $this->db->get('universities')->result();
     }
 
+    function sorted_uni_dropdown()
+    {
+        $this->db->where('uni_approval', 1);
+        $this->db->order_by('uni_name', 'ASC');
+        return $this->db->get('universities')->result();
+    }
+
 }

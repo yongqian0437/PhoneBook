@@ -44,6 +44,20 @@ background-color: #EAF4F4;
     top:0.8em;
     position: absolute;
 }
+
+#cancel:hover {
+    opacity: 0.6;
+}
+
+#add_selection_btn:hover {
+    transform: scale(0.95);
+}
+
+#add_icon:hover {
+    transform: scale(0.95);
+    color:#16a88c !important;
+}
+
 </style>
 
 <!-- Top Navigation -->
@@ -272,7 +286,7 @@ background-color: #EAF4F4;
                         <div class="col-xl-1 col-md-6 mb-4" id = "forth_selection">
                             <div class="card h-100 py-2 pt-5" id = 'card3' style = "border:0; ">
                                 <div class="card-body pt-5" >
-                                    <a class="btn pt-5" onclick="addThirdSelection()" ><i  class = "fas fa-plus-circle" style = "color:#1dd3b0; font-size:4.4em; "></i></a>
+                                    <a class="btn pt-5" onclick="addThirdSelection()" id = "add_selection_btn"><i  id = "add_icon" class = "fas fa-plus-circle" style = "color:#1dd3b0; font-size:4.4em; "></i></a>
                                 </div>
                             </div>
                         </div>

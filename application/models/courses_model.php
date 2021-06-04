@@ -73,6 +73,7 @@ class courses_model extends CI_Model
     {
         $this->db->where('uni_id', $uni_id);
         $this->db->where('course_level', $course_level);
+        $this->db->order_by('course_name', 'ASC');
         $query = $this->db->get('courses');
 
         if ($query->num_rows() > 0) {

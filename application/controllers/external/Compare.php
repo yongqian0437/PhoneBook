@@ -18,7 +18,7 @@ class Compare extends CI_Controller {
 		
 		$data['title'] = 'iJEES | Comparison';
 
-		$data['university_data'] = $this->universities_model->select_all_approved_only(); 
+		$data['university_data'] = $this->universities_model->sorted_uni_dropdown(); 
 		$data['include_js'] = 'compare';
 		$data['include_css'] = 'compare';
 		$this->load->view('external/templates/header', $data);
