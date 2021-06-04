@@ -30,22 +30,26 @@
                     </thead>
                     
                     <tbody>
+                    <?php $count=1;?>
+                    <?php foreach($ealist->result() as $ea):?>
+                    
                     <?php
-                        foreach($ealist->result() as $ea)
-                            echo "<tr>"
-                                ."<td>$ea->ea_id</td>"
-                                ."<td>$ea->user_id</td>"
-                                ."<td>$ea->ea_phonenumber</td>"
-                                ."<td>$ea->ea_businessemail</td>"
-                                ."<td>$ea->ea_nationality</td>"
-                                ."<td>$ea->ea_gender</td>"
-                                ."<td>$ea->ea_dob</td>"
-                                ."<td><a class='btn btn-primary btn-block' href='"
-                                .base_url()
-                                ."assets/uploads/education_agents/$ea->ea_document' role='button' target='_blank'>View</a></td>" 
-                                ."<td>$ea->ea_submitdate</td>" 
-                                ."</tr>" 
+                        echo "<tr>"
+                            ."<td>$count</td>"
+                            ."<td>$ea->user_id</td>"
+                            ."<td>$ea->ea_phonenumber</td>"
+                            ."<td>$ea->ea_businessemail</td>"
+                            ."<td>$ea->ea_nationality</td>"
+                            ."<td>$ea->ea_gender</td>"
+                            ."<td>$ea->ea_dob</td>"
+                            ."<td><a class='btn btn-primary btn-block' href='"
+                            .base_url()
+                            ."assets/uploads/education_agents/$ea->ea_document' role='button' target='_blank'>View</a></td>" 
+                            ."<td>$ea->ea_submitdate</td>" 
+                            ."</tr>" 
                     ?>
+                    <?php $count++; ?>
+                    <?php endforeach ;?>
                     </tbody>
                 </table>
         </div>

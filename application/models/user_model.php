@@ -48,14 +48,14 @@ class user_model extends CI_Model
         return $this->db->update('users',$data);
     }
 
-       public function  approvedata($condition)
+       public function  activated_acc($condition)
     {
         $this->db->where('user_approval', $condition);
         return $this->db->get('users')->result_array();
 
     }
 
-    public function  pendingdata($condition)
+    public function inactivate_acc($condition)
     {
         $this->db->where('user_approval', $condition);
         return $this->db->get('users')->result_array();
@@ -164,4 +164,19 @@ class user_model extends CI_Model
 
         return $res['user_fname'];
     }
+
+
+    public function inactivate_user($row)
+    {
+        return $this->db->query("update users set user_approval= 0 where user_id=$row LIMIT 1");
+    }
+
+    public function activate_user($row)
+    {
+        return $this->db->query("update users set user_approval= 1 where user_id=$row LIMIT 1");
+    }
+
+
+
+    
 }

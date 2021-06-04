@@ -31,10 +31,13 @@
                     </thead>
                     
                     <tbody>
+
+                    <?php $count=1;?>
+                    <?php foreach($eplist->result() as $ep):?>
+
                     <?php
-                        foreach($eplist->result() as $ep)
                         echo "<tr>"
-                            ."<td>$ep->ep_id</td>"
+                            ."<td>$count</td>"
                             ."<td>$ep->user_id</td>"
                             ."<td>$ep->ep_phonenumber</td>"
                             ."<td>$ep->ep_businessemail</td>"
@@ -48,6 +51,9 @@
                             ."<td>$ep->ep_submitdate</td>" 
                             ."</tr>"
                     ?>
+                    <?php $count++; ?>
+                    <?php endforeach ;?>
+
                     </tbody>
                 </table>
         </div>

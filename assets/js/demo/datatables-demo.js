@@ -1,22 +1,41 @@
 // Call the dataTables jQuery plugin
-$(document).ready(function() {
+$(document).ready(function () {
   $('#dataTable').DataTable();
 
   $('table.display').DataTable({
-    "lengthMenu": [ 5, 10, 25, 50],
+    "lengthMenu": [5, 10, 25, 50],
   });
 
 
   $('#all_users_table').DataTable({
-    "lengthMenu": [ 5, 10, 25, 50],
+    "lengthMenu": [5, 10, 25, 50],
+    "scrollX": true,
     "columnDefs": [{
-      "width": "11%",
-      "targets": [4]
+      "width": "20%",
+      "targets": [6]
+    }]
+  });
+
+  $('#activated_table').DataTable({
+    "lengthMenu": [5, 10, 25, 50],
+    "scrollX": true,
+    "columnDefs": [{
+      "width": "20%",
+      "targets": [7]
+    }]
+  });
+
+  $('#inactivate_table').DataTable({
+    "lengthMenu": [5, 10, 25, 50],
+    "scrollX": true,
+    "columnDefs": [{
+      "width": "20%",
+      "targets": [7]
     }]
   });
 
   $('#chat_table').DataTable({
-    "lengthMenu": [ 5, 10, 25, 50],
+    "lengthMenu": [5, 10, 25, 50],
     // "bInfo": false, // show x of y 
     //"paging": false,
     // "ordering": false,
@@ -25,5 +44,5 @@ $(document).ready(function() {
     //   "targets": [0]
     // }]
   });
-  
+
 });

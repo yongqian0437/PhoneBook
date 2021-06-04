@@ -8,7 +8,7 @@ class Admin_dashboard extends CI_Controller
         parent:: __construct();
         $this->load->helper('form');
         $this->load->model(['user_student_model','user_ep_model','user_ac_model','user_ea_model',
-        'user_e_model']);
+        'user_e_model','user_model']);
 
         // Checks if session is set and if user is signed in as Admin (authorised access). If not, deny his/her access.
         if (!$this->session->userdata('user_id') || $this->session->userdata('user_role') != "Admin"){  
@@ -29,19 +29,6 @@ class Admin_dashboard extends CI_Controller
     public function users_accounts_nav()
     {
         $data['title']= 'All users';
-        $data['users']=$this->user_model->search_email();
-        $this->load->view('internal/templates/header',$data);
-        $this->load->view('internal/templates/sidenav',$data);
-        $this->load->view('internal/templates/topbar',$data);
-        $result=$this->user_model->index();
-        $data=array('userslist'=>$result);
-        $this->load->view('internal/admin_panel/users_accounts_view',$data);
-        $this->load->view('internal/templates/footer');  
-    }
-
-    public function users_activated()
-    {
-        $data['title']= 'Users Activated';
         $data['users']=$this->user_model->search_email();
         $this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav',$data);
@@ -155,32 +142,123 @@ class Admin_dashboard extends CI_Controller
         }
     }
 
-    public function show_approve_acc()
+    // public function show_approve_acc()
+    // { 
+    //     $data['title']= 'Approved';
+    //     $data['users']=$this->user_model->search_email();
+    //     $this->load->view('internal/templates/header',$data);
+    //     $this->load->view('internal/templates/sidenav',$data);
+    //      $this->load->view('internal/templates/topbar',$data);
+
+    //     $condition=1;
+    //     $data['users']=$this->user_model->approvedata($condition);
+    //     $this->load->view('internal/admin_panel/users_accounts_view',$data);
+    //     $this->load->view('internal/templates/footer'); 
+    // }
+
+    public function show_activated_acc()
     { 
-        $data['title']= 'Approved';
+        $data['title']= 'Users Activated';
         $data['users']=$this->user_model->search_email();
         $this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav',$data);
-       // $this->load->view('templates/topbar',$data);
-
+        $this->load->view('internal/templates/topbar',$data);
         $condition=1;
-        $data['users']=$this->user_model->approvedata($condition);
-        $this->load->view('internal/admin_panel/users_accounts_view',$data);
+        $result=$this->user_model->activated_acc($condition);
+        $data=array('userslist'=>$result);
+        $this->load->view('internal/admin_panel/activated_acc_view',$data);
         $this->load->view('internal/templates/footer'); 
+      
+    
     }
 
-    public function show_pending_acc()
+    public function show_inactivate_acc()
     {
-        $data['title']= 'Approved';
+        $data['title']= 'Users Inactivated';
         $data['users']=$this->user_model->search_email();
         $this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav',$data);
-       // $this->load->view('internal/templates/topbar',$data);
+        $this->load->view('internal/templates/topbar',$data);
         $condition=0;
-        $data['users']=$this->user_model->pendingdata($condition);
-        $this->load->view('internal/admin_panel/users_accounts_view',$data);
+        $result=$this->user_model->inactivate_acc($condition);
+        $data=array('userslist'=>$result);
+        $this->load->view('internal/admin_panel/inactivate_acc_view',$data);
         $this->load->view('internal/templates/footer'); 
     }
+
+    public function inactivate_all_acc()
+    {
+        $data['title']= 'Updated Successfully';
+        $this->load->view('internal/templates/header',$data);
+        $this->load->view('internal/templates/sidenav',$data);
+        $this->load->view('internal/templates/topbar',$data);
+        if(isset($_POST['inactivate_all_acc']))
+        {
+            if(!empty($this->input->post('checkbox_value')))
+            {
+                $checknum=$this->input->post('checkbox_value');
+                $checked_id=[];
+                $condition=array(0);
+
+                foreach($checknum as $row)
+                {
+                   array_push($checked_id,$row);
+                   $this->load->model('user_model');
+                   $up_approval=$this->user_model->inactivate_user($row);
+                  
+                }
+                
+                $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
+                The accounts are updated</div>');
+                redirect('internal/admin_panel/Admin_dashboard/show_activated_acc');
+            }
+            else 
+            {
+                $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
+                Please select any number</div>');
+                redirect('internal/admin_panel/Admin_dashboard/show_activated_acc');
+            }
+        }
+        $this->load->view('internal/templates/footer'); 
+    }
+
+    public function activate_all_acc()
+    {
+        $data['title']= 'Updated Successfully';
+        $this->load->view('internal/templates/header',$data);
+        $this->load->view('internal/templates/sidenav',$data);
+        $this->load->view('internal/templates/topbar',$data);
+        if(isset($_POST['activate_all_acc']))
+        {
+            if(!empty($this->input->post('checkbox_value')))
+            {
+                $checknum=$this->input->post('checkbox_value');
+                $checked_id=[];
+                $condition=array(0);
+
+                foreach($checknum as $row)
+                {
+                   array_push($checked_id,$row);
+                   $this->load->model('user_model');
+                   $up_approval=$this->user_model->activate_user($row);
+                  
+                }
+                
+                $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
+                The accounts are updated</div>');
+                redirect('internal/admin_panel/Admin_dashboard/show_inactivate_acc');
+            }
+            else 
+            {
+                $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
+                Please select any number</div>');
+                redirect('internal/admin_panel/Admin_dashboard/show_inactivate_acc');
+            }
+        }
+        
+        $this->load->view('internal/templates/footer'); 
+    }
+
 }
 
 

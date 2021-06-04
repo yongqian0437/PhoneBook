@@ -31,23 +31,28 @@
                     </thead>
                     
                     <tbody>
+
+                    <?php $count=1;?>
+                    <?php foreach($elist->result() as $e):?>
+
                     <?php
-                        foreach($elist->result() as $e)
-                            echo "<tr>"
-                                ."<td>$e->e_id</td>"
-                                ."<td>$e->user_id</td>"
-                                ."<td>$e->e_phonenumber</td>"
-                                ."<td>$e->e_businessemail</td>"
-                                ."<td>$e->e_nationality</td>"
-                                ."<td>$e->e_gender</td>"
-                                ."<td>$e->e_dob</td>"
-                                ."<td><a class='btn btn-primary btn-block' href='"
-                                .base_url()
-                                ."assets/uploads/employer/$e->e_document' role='button' target='_blank'>View</a></td>" 
-                                ."<td>$e->e_jobtitle</td>" 
-                                ."<td>$e->e_submitdate</td>" 
-                                ."</tr>" 
+                        echo "<tr>"
+                            ."<td>$count</td>"
+                            ."<td>$e->user_id</td>"
+                            ."<td>$e->e_phonenumber</td>"
+                            ."<td>$e->e_businessemail</td>"
+                            ."<td>$e->e_nationality</td>"
+                            ."<td>$e->e_gender</td>"
+                            ."<td>$e->e_dob</td>"
+                            ."<td><a class='btn btn-primary btn-block' href='"
+                            .base_url()
+                            ."assets/uploads/employer/$e->e_document' role='button' target='_blank'>View</a></td>" 
+                            ."<td>$e->e_jobtitle</td>" 
+                            ."<td>$e->e_submitdate</td>" 
+                            ."</tr>" 
                     ?>
+                    <?php $count++; ?>
+                    <?php endforeach ;?>
                     </tbody>
                 </table>
         </div>

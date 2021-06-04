@@ -29,10 +29,12 @@
                     </thead>
                     
                     <tbody>
-                    <?php
-                        foreach($studentlist->result() as $student)
+
+                    <?php $count=1;?>
+                    <?php foreach($studentlist->result() as $student):?>
+                    <?php 
                             echo "<tr>"
-                                ."<td>$student->student_id</td>"
+                                ."<td>$count</td>"
                                 ."<td>$student->user_id</td>"
                                 ."<td>$student->student_phonenumber</td>"
                                 ."<td>$student->student_nationality</td>"
@@ -43,7 +45,12 @@
                                 ."<td>$student->student_submitdate</td>" 
                                 ."</tr>" 
                     ?>
+                     <?php $count++; ?>
+                     <?php endforeach ;?>
+                     
                     </tbody>
+                   
+
                 </table>
         </div>
     </div>

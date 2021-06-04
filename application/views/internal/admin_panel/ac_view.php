@@ -31,23 +31,28 @@
                     </thead>
                     
                     <tbody>
-                    <?php
-                        foreach($aclist->result() as $ac)
-                            echo "<tr>"
-                                ."<td>$ac->ac_id</td>"
-                                ."<td>$ac->user_id</td>"
-                                ."<td>$ac->ac_phonenumber</td>"
-                                ."<td>$ac->ac_businessemail</td>"
-                                ."<td>$ac->ac_university</td>"
-                                ."<td>$ac->ac_nationality</td>"
-                                ."<td>$ac->ac_gender</td>"
-                                ."<td>$ac->ac_dob</td>" 
-                                ."<td><a class='btn btn-primary btn-block' href='"
-                                .base_url()
-                                ."assets/uploads/academic_counsellor/$ac->ac_document' role='button' target='_blank'>View</a></td>" 
-                                ."<td>$ac->ac_submitdate</td>" 
-                                ."</tr>" 
+                   
+                    <?php $count=1;?>
+                    <?php foreach($aclist->result() as $ac):?>
+                    <?php  
+                    echo "<tr>"
+                    ."<td>$count</td>"
+                    ."<td>$ac->user_id</td>"
+                    ."<td>$ac->ac_phonenumber</td>"
+                    ."<td>$ac->ac_businessemail</td>"
+                    ."<td>$ac->ac_university</td>"
+                    ."<td>$ac->ac_nationality</td>"
+                    ."<td>$ac->ac_gender</td>"
+                    ."<td>$ac->ac_dob</td>" 
+                    ."<td><a class='btn btn-primary btn-block' href='"
+                    .base_url()
+                    ."assets/uploads/academic_counsellor/$ac->ac_document' role='button' target='_blank'>View</a></td>" 
+                    ."<td>$ac->ac_submitdate</td>" 
+                    ."</tr>" 
                     ?>
+                     <?php $count++; ?>
+                     <?php endforeach ;?>
+
                     </tbody>
                 </table>
         </div>
