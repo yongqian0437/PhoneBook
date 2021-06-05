@@ -86,8 +86,8 @@ label{
                         <!-- Card-->
                         <div class="card ">
                             <div class="card-body">
-                                <form method="post" action=" <?=base_url('internal/level_2/educational_partner/ep_university/after_edit_university/'.$university_data->uni_id); ?>">
-
+                                <form method="post" action=" <?=base_url('internal/level_2/educational_partner/ep_university/after_edit_university/'.$university_data->uni_id); ?>" enctype="multipart/form-data">
+                                    <?= form_open_multipart('') ?>
                                     <div class="form-row">
                                         <div class="form-group col-md-6 px-4 pr-5">
                                             <label for="uni_name">University Name</label>

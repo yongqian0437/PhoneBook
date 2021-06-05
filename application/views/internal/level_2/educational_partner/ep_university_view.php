@@ -1,47 +1,17 @@
 <style>
-.image-preview {
-    width: 300px;
-    height: 150px;
-    border: 2px solid #dddddd;
-    margin-top: 15px;
-
-    display: flex;
-    align-items:center;
-    justify-content:center;
-    font-weight: bold;
-    color: #cccccc;
-}
-
-.image-preview__image{
-    display: none;
-    width: 295px;
-    object-fit: contain;
-    height: 145px;
-}
-
-.image-preview2 {
-    width: 300px;
-    height: 150px;
-    border: 2px solid #dddddd;
-    margin-top: 15px;
-
-    display: flex;
-    align-items:center;
-    justify-content:center;
-    font-weight: bold;
-    color: #cccccc;
-}
-
-.image-preview__image2{
-    display: none;
-    width: 295px;
-    object-fit: contain;
-    height: 145px;
-}
 
 label{
     color:black;
 }
+
+input[readonly] {
+    background-color: rgba(192,192,192,0.1) !important ;
+}
+
+textarea[readonly] {
+    background-color: rgba(192,192,192,0.1) !important ;
+}
+
 </style>
 
 <body id="page-top">

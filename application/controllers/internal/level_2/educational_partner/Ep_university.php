@@ -12,6 +12,10 @@ class Ep_university extends CI_Controller {
 		$this->load->model('courses_model');
 		$this->load->model('universities_model');
 
+		// Checks if session is set and if user signed in has a role. If not, deny his/her access.
+        if (!$this->session->userdata('user_id') || !$this->session->userdata('user_role')){  
+            redirect('user/login/Auth/login');
+        }
 	}
 
 	public function index()
@@ -45,12 +49,20 @@ class Ep_university extends CI_Controller {
 
 		if($_FILES['uni_background']['name'] != "") {
 			$uni_background = $this->upload_img('./assets/img/universities', 'uni_background');  
-			$data['uni_background'] = $uni_background['file_name'];
+			$uni_background_path = "assets/img/universities/".$uni_background['file_name'];
+			$data = [
+				'uni_background'=>$uni_background_path,
+			];
+			$this->universities_model->update($data, $uni_id);
 		}
 
 		if($_FILES['uni_logo']['name'] != "") {
 			$uni_logo= $this->upload_img('./assets/img/universities', 'uni_logo');
-			$data['uni_logo'] = $uni_logo['file_name'];
+			$uni_logo_path = "assets/img/universities/".$uni_logo['file_name'];
+			$data = [
+				'uni_logo'=>$uni_logo_path,
+			];
+			$this->universities_model->update($data, $uni_id);
 		}
 
 		$data=

@@ -84,5 +84,11 @@ class user_ep_model extends CI_Model
         $this->db->where('uni_id', $ep_query->uni_id);
         return $this->db->get('universities')->row();
     }
+
+    public function get_course_for_uni($uni_id)
+    {
+        $this->db->where('uni_id', $uni_id);
+        return $this->db->get('courses')->result();
+    }
     
 }

@@ -120,7 +120,7 @@
 
             <!-- Nav Item - Course -->
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="<?php echo base_url('internal/level_2/educational_partner/ep_courses');?>">
                     <i class="fas fa-book"></i>
                     <span>Courses</span>
                 </a>
