@@ -9,6 +9,11 @@ class course_applicants_model extends CI_Model
         $this->load->database();
     }
 
+    public function index()
+    {
+        return $this->db->get('course_applicants');
+    }
+
     function insert($data)
     {
         $this->db->insert('course_applicants', $data);
@@ -55,6 +60,16 @@ class course_applicants_model extends CI_Model
     {
         $this->db->where('user_id', $id);
         return $this->db->get('user_student')->row();
+    }
+
+    public function search_id($search_id)
+    {
+        return $this->db->get_where('course_applicants',['c_applicant_method'=>$search_id]);
+    }
+
+    public function valid_ea($c_applicant_method)
+    {
+        return $this->db->get_where('course_applicants', ['c_applicant_method'=>$c_applicant_method])->row_array();
     }
 
 

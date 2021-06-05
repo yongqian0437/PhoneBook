@@ -312,12 +312,14 @@ class Auth extends CI_Controller
         else
         {
                 $uni_background= $this->upload_img('./assets/img/universities', 'uni_background');  
+                $uni_background_path = "assets/img/universities/".$uni_background['file_name'];
                 $uni_logo= $this->upload_img('./assets/img/universities', 'uni_logo');
+                $uni_logo_path = "assets/img/universities/".$uni_logo['file_name'];
                
             $data=
                 [
-                    'uni_logo'=>$uni_logo['file_name'],
-                    'uni_background'=>$uni_background['file_name'],
+                    'uni_logo'=>$uni_logo_path,
+                    'uni_background'=>$uni_background_path,
                     'uni_name'=>htmlspecialchars($this->input->post('uni_name',true)),
                     'uni_shortprofile'=>htmlspecialchars($this->input->post('uni_shortprofile',true)),
                     'uni_country'=>htmlspecialchars($this->input->post('uni_country',true)),
@@ -430,6 +432,7 @@ class Auth extends CI_Controller
 
             // insert data into database
             $this->user_ea_model->insert($data);
+           
             $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
             Check your email to get the approval from the admin</div>'); 
             redirect('user/login/Auth/login'); 
