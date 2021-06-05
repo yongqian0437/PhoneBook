@@ -113,7 +113,7 @@
             <!-- Nav Item - University -->
             <li class="nav-item">
                 <a class="nav-link" href="<?php echo base_url('internal/level_2/educational_partner/ep_university');?>">
-                    <i class="fas fa-book"></i>
+                    <i class="fas fa-university"></i>
                     <span>University</span>
                 </a>
             </li>
