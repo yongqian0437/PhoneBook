@@ -151,12 +151,6 @@ class Compare extends CI_Controller {
                                     </span>
                                     <span style = "" class = "text">View Course</span>
                                 </a>
-                                <a style = "border-radius:10px; background-color:#6B9080; color:white; height:auto; width:auto%;" target="_blank" href="" class = "btn btn-icon-split">
-                                    <span class = "icon text-white-600">
-                                        <i class = "fas fa-edit p-1"></i>
-                                    </span>
-                                    <span style = "" class = "text">Apply</span>
-                                </a>
                             </span>
                         </center>
                     </td>
@@ -169,12 +163,6 @@ class Compare extends CI_Controller {
                                     </span>
                                     <span style = "" class = "text">View Course</span>
                                 </a>
-                                <a style = "border-radius:10px; background-color:#6B9080; color:white; height:auto; width:auto%;" target="_blank" href="" class = "btn btn-icon-split">
-                                    <span class = "icon text-white-600">
-                                        <i class = "fas fa-edit p-1"></i>
-                                    </span>
-                                    <span style = "" class = "text">Apply</span>
-                                </a>
                             </span>
                         </center>
                     </td>
@@ -186,12 +174,6 @@ class Compare extends CI_Controller {
                                         <i class = "fas fa-book p-1"></i>
                                     </span>
                                     <span style = "" class = "text">View Course</span>
-                                </a>
-                                <a style = "border-radius:10px; background-color:#6B9080; color:white; height:auto; width:auto%;" target="_blank" href="" class = "btn btn-icon-split">
-                                    <span class = "icon text-white-600">
-                                        <i class = "fas fa-edit p-1"></i>
-                                    </span>
-                                    <span style = "" class = "text">Apply</span>
                                 </a>
                             </span>
                         </center>
@@ -298,12 +280,6 @@ class Compare extends CI_Controller {
                                     </span>
                                     <span style = "" class = "text">View Course</span>
                                 </a>
-                                <a style = "border-radius:10px; background-color:#6B9080; color:white; height:auto; width:auto%;" target="_blank" href="" class = "btn btn-icon-split">
-                                    <span class = "icon text-white-600">
-                                        <i class = "fas fa-edit p-1"></i>
-                                    </span>
-                                    <span style = "" class = "text">Apply</span>
-                                </a>
                             </span>
                         </center>
                     </td>
@@ -315,12 +291,6 @@ class Compare extends CI_Controller {
                                         <i class = "fas fa-book p-1"></i>
                                     </span>
                                     <span style = "" class = "text">View Course</span>
-                                </a>
-                                <a style = "border-radius:10px; background-color:#6B9080; color:white; height:auto; width:auto%;" target="_blank" href="" class = "btn btn-icon-split">
-                                    <span class = "icon text-white-600">
-                                        <i class = "fas fa-edit p-1"></i>
-                                    </span>
-                                    <span style = "" class = "text">Apply</span>
                                 </a>
                             </span>
                         </center>
