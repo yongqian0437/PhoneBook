@@ -167,7 +167,7 @@
 
             <!-- Nav Item - Employer Projects -->
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="<?=base_url('internal/level_2/Employer/Employer_emps');?>">
                     <i class="fas fa-user-tie"></i>
                     <span>Employer Projects (EPs)</span>
                 </a>

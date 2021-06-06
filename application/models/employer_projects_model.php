@@ -62,4 +62,16 @@ class employer_projects_model extends CI_Model
         return $this->db->get()->result_array();
     }
 
+    function get_emps_from_employer($e_id)
+    {
+        $this->db->where('e_id', $e_id);
+        return $this->db->get('employer_projects')->result();
+    }
+
+    function get_emp_with_id($emp_id)
+    {
+        $this->db->where('emp_id', $emp_id);
+        return $this->db->get('employer_projects')->result();
+    }
+
 }
