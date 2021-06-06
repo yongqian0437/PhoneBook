@@ -208,13 +208,13 @@ class Admin_dashboard extends CI_Controller
                   
                 }
                 
-                $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
+                $this->session->set_flashdata('message','<div class="alert alert-success" role="alert" id="alert_message">
                 The accounts are updated</div>');
                 redirect('internal/admin_panel/Admin_dashboard/show_activated_acc');
             }
             else 
             {
-                $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
+                $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert" id="alert_message">
                 Please select any number</div>');
                 redirect('internal/admin_panel/Admin_dashboard/show_activated_acc');
             }
@@ -244,13 +244,13 @@ class Admin_dashboard extends CI_Controller
                   
                 }
                 
-                $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
+                $this->session->set_flashdata('message','<div class="alert alert-success" role="alert" id="alert_message">
                 The accounts are updated</div>');
                 redirect('internal/admin_panel/Admin_dashboard/show_inactivate_acc');
             }
             else 
             {
-                $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
+                $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert" id="alert_message">
                 Please select any number</div>');
                 redirect('internal/admin_panel/Admin_dashboard/show_inactivate_acc');
             }

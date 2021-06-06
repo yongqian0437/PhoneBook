@@ -94,7 +94,7 @@ class Auth extends CI_Controller
                 // if password is incorrect
                 else
                 {
-                    $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
+                    $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert" id="alert_message">
                     Wrong password!</div>');
                     redirect('user/login/Auth/login');
                 }
@@ -102,7 +102,7 @@ class Auth extends CI_Controller
             // if account is not approved by admin
             else
             {
-                $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
+                $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert" id="alert_message">
                 Email has not been activated!</div>');
                 redirect('user/login/Auth/login');
             }
@@ -111,7 +111,7 @@ class Auth extends CI_Controller
         // if user account does not exist
         else
         {
-            $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
+            $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert" id="alert_message">
             Account does not exist!</div>');
             redirect('user/login/Auth/login');
         }
@@ -217,7 +217,7 @@ class Auth extends CI_Controller
             $this->load->library('upload', $config);
             if (!$this->upload->do_upload($file_input_name)) 
             {
-                $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
+                $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert" id="alert_message">
                 The file format is not correct</div>');
                 redirect('user/login/Auth/ep_reg');
             } else {
@@ -289,7 +289,7 @@ class Auth extends CI_Controller
         // insert data into database
         $this->user_student_model->insert($data);
        
-        $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
+        $this->session->set_flashdata('message','<div class="alert alert-success" role="alert" id="alert_message">
         You have registered successfully</div>');
         
         redirect('user/login/Auth/login');
@@ -344,8 +344,8 @@ class Auth extends CI_Controller
 
           $this->session->set_userdata($university);
 
-          $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
-          Check your email to get the approval from the admin</div>'); 
+        //   $this->session->set_flashdata('message','<div class="alert alert-success" role="alert" id="alert_message">
+        //   Check your email to get the approval from the admin</div>'); 
           redirect('user/login/Auth/ep_reg'); 
         }
           
@@ -390,7 +390,7 @@ class Auth extends CI_Controller
         
          // insert data into database
             $this->user_ep_model->insert($data);
-            $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
+            $this->session->set_flashdata('message','<div class="alert alert-success" role="alert" id="alert_message">
             Check your email to get the approval from the admin</div>'); 
             redirect('user/login/Auth/login'); 
         }
@@ -433,7 +433,7 @@ class Auth extends CI_Controller
             // insert data into database
             $this->user_ea_model->insert($data);
            
-            $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
+            $this->session->set_flashdata('message','<div class="alert alert-success" role="alert" id="alert_message">
             Check your email to get the approval from the admin</div>'); 
             redirect('user/login/Auth/login'); 
         }
@@ -475,7 +475,7 @@ class Auth extends CI_Controller
             ];
          // insert data into database
         $this->user_ac_model->insert($data);
-        $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
+        $this->session->set_flashdata('message','<div class="alert alert-success" role="alert" id="alert_message">
         Check your email to get the approval from the admin</div>'); 
         redirect('user/login/Auth/login'); 
         }
@@ -569,7 +569,7 @@ class Auth extends CI_Controller
             ];
          // insert data into database
         $this->user_e_model->insert($data);
-        $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
+        $this->session->set_flashdata('message','<div class="alert alert-success" role="alert" id="alert_message">
         Check your email to get the approval from the admin</div>');
         redirect('user/login/Auth/login'); 
         }
@@ -581,7 +581,7 @@ class Auth extends CI_Controller
         $this->session->unset_userdata('user_email');
         $this->session->unset_userdata('user_role');
         $this->session->unset_userdata('has_login');
-        $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
+        $this->session->set_flashdata('message','<div class="alert alert-success" role="alert" id="alert_message">
         You have been logout</div>');
         redirect('user/login/Auth/login'); 
     }
@@ -655,7 +655,7 @@ class Auth extends CI_Controller
 
         if($this->email->send())
         {
-            $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
+            $this->session->set_flashdata('message','<div class="alert alert-success" role="alert" id="alert_message">
             Check your email to reset your password</div>');
             redirect('user/login/Auth/login');
         }
@@ -690,7 +690,7 @@ class Auth extends CI_Controller
         }
         else
         {
-            $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
+            $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert" id="alert_message">
             Email is not registred or activated</div>');
             redirect('user/login/Auth/forgotPassword'); 
         }
@@ -715,7 +715,7 @@ class Auth extends CI_Controller
             $this->user_model->changepassword($data);
             //$this->db->query("update users set user_password='".$data['user_password']."'where user_password='".$_SESSION['tokan']."'");
         }
-        $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
+        $this->session->set_flashdata('message','<div class="alert alert-success" role="alert" id="alert_message">
         Your password has changed successfully</div>');
         redirect('user/login/Auth/login');
     }

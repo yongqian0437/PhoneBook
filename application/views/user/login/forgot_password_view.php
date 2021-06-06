@@ -1,6 +1,16 @@
+<!-- Jquery plugin -->
+<script src="<?php echo base_url() ?>/assets/vendor/jquery/jquery.min.js"></script>
+
 <!-- Set base url to javascript variable-->
 <script type="text/javascript">
     var base_url = "<?php echo base_url(); ?>";
+</script>
+
+<script>
+//Js to remove alert message after university information is edited
+setTimeout(function() {
+    $('#alert_message').fadeOut();
+}, 5000); // <-- time in milliseconds
 </script>
 
 <!-- Top Navigation -->

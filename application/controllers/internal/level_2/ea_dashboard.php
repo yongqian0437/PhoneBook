@@ -58,7 +58,7 @@ class ea_dashboard extends CI_Controller
             $this->load->library('upload', $config);
             if (!$this->upload->do_upload($file_input_name)) 
             {
-                $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
+                $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert" id="alert_message">
                 The file format is not correct</div>');
                 redirect('internal/level_2/ea_dashboard/course_applicant_reg');
             } else {
@@ -125,7 +125,7 @@ class ea_dashboard extends CI_Controller
             ];
             $this->session->set_userdata($course_applicant);
        
-        $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
+        $this->session->set_flashdata('message','<div class="alert alert-success" role="alert" id="alert_message">
         You have registered successfully</div>');
         
         redirect('internal/level_2/ea_dashboard/add_course_application');

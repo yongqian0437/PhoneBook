@@ -9,6 +9,13 @@
     var base_url = "<?php echo base_url(); ?>";
 </script>
 
+<script>
+//Js to remove alert message after university information is edited
+setTimeout(function() {
+    $('#alert_message').fadeOut();
+}, 5000); // <-- time in milliseconds
+</script>
+
 <link href="<?php echo base_url() ?>assets/css/forms.css" rel="stylesheet">
 <body id="page-top" style='background-color:#f9f6f1;'>
 
