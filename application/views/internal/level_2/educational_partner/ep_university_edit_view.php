@@ -91,11 +91,11 @@ label{
                                     <div class="form-row">
                                         <div class="form-group col-md-6 px-4 pr-5">
                                             <label for="uni_name">University Name</label>
-                                            <input type="text" class="form-control" id="uni_name" name = "uni_name" placeholder="Enter university name" value = "<?= $university_data->uni_name?>">
+                                            <input type="text" class="form-control" id="uni_name" name = "uni_name" placeholder="Enter university name" value = "<?= $university_data->uni_name?>" required>
                                         </div>
                                         <div class="form-group col-md-6 px-4 pl-5">
                                             <label for="uni_country">University Country</label>
-                                            <select name="uni_country" id="uni_country" class="form-control form-select" >
+                                            <select name="uni_country" id="uni_country" class="form-control form-select" required>
                                                     <option value="<?= $university_data->uni_country?>" selected><?= $university_data->uni_country?></option>
                                                     <option value="Afghanistan">Afghanistan</option>
                                                     <option value="Åland Islands">Åland Islands</option>
@@ -348,51 +348,51 @@ label{
                                     <div class="form-row">
                                         <div class="form-group col-md-12 px-4 pt-4">
                                             <label for="uni_shortprofile">University Shortprofile</label>
-                                            <textarea type="text" class="form-control" rows="10" id="uni_shortprofile" name = "uni_shortprofile" placeholder="Enter shortprofile"><?= $university_data->uni_shortprofile?></textarea>
+                                            <textarea type="text" class="form-control" rows="10" id="uni_shortprofile" name = "uni_shortprofile" placeholder="Enter shortprofile" required><?= $university_data->uni_shortprofile?></textarea>
                                         </div>
                                     </div>
 
                                     <div class="form-row">
                                         <div class="form-group col-md-12 px-4 pt-4">
                                             <label for="uni_fun_fact">University Fun Fact</label>
-                                            <textarea type="text" class="form-control" rows="5" id="uni_fun_fact" name = "uni_fun_fact" placeholder="Enter fun fact"><?= $university_data->uni_fun_fact?></textarea>
+                                            <textarea type="text" class="form-control" rows="5" id="uni_fun_fact" name = "uni_fun_fact" placeholder="Enter fun fact" required><?= $university_data->uni_fun_fact?></textarea>
                                         </div>
                                     </div>
 
                                     <div class="form-row pt-4">
                                         <div class="form-group col-md-6 px-4 pr-5">
                                             <label for="uni_hotline">University Hotline</label>
-                                            <input type="text" class="form-control" id="uni_hotline" name = "uni_hotline" placeholder="Enter hotline" value = "<?= $university_data->uni_hotline?>">
+                                            <input type="text" class="form-control" id="uni_hotline" name = "uni_hotline" placeholder="Enter hotline" value = "<?= $university_data->uni_hotline?>" required>
                                         </div>
                                         <div class="form-group col-md-6 px-4 pl-5">
                                             <label for="uni_email">University Email</label>
-                                            <input type="email" class="form-control" id="uni_email" name = "uni_email" placeholder="Enter email" value = "<?= $university_data->uni_email?>">
+                                            <input type="email" class="form-control" id="uni_email" name = "uni_email" placeholder="Enter email" value = "<?= $university_data->uni_email?>" required>
                                         </div>
                                     </div>
 
                                     <div class="form-row pt-4">
                                         <div class="form-group col-md-6 px-4 pr-5">
                                             <label for="uni_address">University Address</label>
-                                            <input type="text" class="form-control" id="uni_address" name = "uni_address" placeholder="Enter address" value = "<?= $university_data->uni_address?>">
+                                            <input type="text" class="form-control" id="uni_address" name = "uni_address" placeholder="Enter address" value = "<?= $university_data->uni_address?>" required>
                                         </div>
                                         <div class="form-group col-md-6 px-4 pl-5">
                                             <label for="uni_website">University Website</label>
-                                            <input type="text" class="form-control" id="uni_website" name = "uni_website" placeholder="Enter website" value = "<?= $university_data->uni_website?>">
+                                            <input type="text" class="form-control" id="uni_website" name = "uni_website" placeholder="Enter website" value = "<?= $university_data->uni_website?>" required>
                                         </div>
                                     </div>
 
                                     <div class="form-row pt-5">
                                         <div class="form-group col-md-4 px-4 pr-5">
                                             <label for="uni_qsrank">University QS Rank</label>
-                                            <input type="number" class="form-control" id="uni_qsrank" name = "uni_qsrank" placeholder="Enter QS ranking" value = "<?= $university_data->uni_qsrank?>">
+                                            <input type="number" class="form-control" id="uni_qsrank" name = "uni_qsrank" placeholder="Enter QS ranking" value = "<?= $university_data->uni_qsrank?>" required>
                                         </div>
                                         <div class="form-group col-md-4 px-4 pr-5">
                                             <label for="uni_employabilityrank">University Employability Rank</label>
-                                            <input type="number" class="form-control" id="uni_employabilityrank" name = "uni_employabilityrank" placeholder="Enter employability rank" value = "<?= $university_data->uni_employabilityrank?>">
+                                            <input type="number" class="form-control" id="uni_employabilityrank" name = "uni_employabilityrank" placeholder="Enter employability rank" value = "<?= $university_data->uni_employabilityrank?>" required> 
                                         </div>
                                         <div class="form-group col-md-4 px-4 ">
                                             <label for="uni_totalstudents">University Total Students</label>
-                                            <input type="number" class="form-control" id="uni_totalstudents" name = "uni_totalstudents" placeholder="Enter total student" value = "<?= $university_data->uni_totalstudents?>">
+                                            <input type="number" class="form-control" id="uni_totalstudents" name = "uni_totalstudents" placeholder="Enter total student" value = "<?= $university_data->uni_totalstudents?>" required>
                                         </div>
                                     </div>
 

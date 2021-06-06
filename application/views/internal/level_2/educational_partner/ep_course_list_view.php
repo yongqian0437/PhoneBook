@@ -12,8 +12,29 @@ td{
 <!-- Set base url to javascript variable-->
 <script type="text/javascript">
     var base_url = "<?php echo base_url();?>";
-   
 </script>
+
+<!-- Pop up after user added a new course-->
+<?php if($this->session->flashdata('insert_message')){?>
+<script>
+    var courseName = "<?php echo $this->session->flashdata('course_name');?>";
+    Swal.fire({
+        icon: 'success',
+        text: courseName + '" has been added',
+    })
+</script>
+<?php } ?>
+
+<!-- Pop up after user edit course information-->
+<?php if($this->session->flashdata('edit_message')){?>
+<script>
+    var courseName = "<?php echo $this->session->flashdata('course_name');?>";
+    Swal.fire({
+        icon: 'success',
+        text: 'Information of "' + courseName + '" has been edited',
+    })
+</script>
+<?php } ?>
 
 <body id="page-top">
 
