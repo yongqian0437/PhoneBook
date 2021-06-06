@@ -78,7 +78,7 @@ class Ep_university extends CI_Controller {
 		];
 		$this->universities_model->update($data, $uni_id);
 
-		$this->session->set_flashdata('edit_message','<div class="alert alert-success px-4	" role="alert">
+		$this->session->set_flashdata('edit_message','<div id = "alert_message" class="alert alert-success px-4	" role="alert">
 		University Information has been edited</div>'); 
 
 		redirect('internal/level_2/educational_partner/ep_university');

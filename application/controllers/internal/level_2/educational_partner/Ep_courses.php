@@ -94,7 +94,17 @@ class Ep_courses extends CI_Controller {
 
     function submit_added_course($uni_id)
     {
-
+        $data=
+		[
+			'uni_name'=>htmlspecialchars($this->input->post('uni_name')),
+			'uni_shortprofile'=>htmlspecialchars($this->input->post('uni_shortprofile')),
+			'uni_country'=>htmlspecialchars($this->input->post('uni_country')),
+			'uni_hotline'=>htmlspecialchars($this->input->post('uni_hotline')),
+			'uni_email'=>htmlspecialchars($this->input->post('uni_email')),
+			'uni_address'=>htmlspecialchars($this->input->post('uni_address')),
+			'uni_qsrank'=>htmlspecialchars($this->input->post('uni_qsrank')),
+			'uni_employabilityrank'=>htmlspecialchars($this->input->post('uni_employabilityrank')),
+		];
     }
 
     function delete_course()
