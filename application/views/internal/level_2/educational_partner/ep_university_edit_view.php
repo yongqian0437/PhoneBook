@@ -77,7 +77,7 @@ label{
                         </ol>
                     </div>
                     <div class = "col-xl-1">
-                        <a type="button" href = "<?= base_url('internal/level_2/educational_partner/ep_university'); ?>" class="btn btn-primary">Back</a>
+                        <a type="button" href = "<?= base_url('internal/level_2/educational_partner/ep_university'); ?>" class="btn btn-primary">Back<i class="fas fa-undo pl-1"></i></a>
                     </div>
                 </div>
                 <!-- Content Row -->
@@ -505,7 +505,7 @@ label{
 
                                     <!-- Edit button -->
                                     <div class ="pr-4">
-                                        <button  type="submit" class="btn btn-primary " style = "float:right;" >Edit</button>
+                                        <button  type="submit" class="btn btn-primary " style = "float:right;" >Submit<i class="fas fa-check pl-2"></i></button>
                                     </div>
 
                                 </form>

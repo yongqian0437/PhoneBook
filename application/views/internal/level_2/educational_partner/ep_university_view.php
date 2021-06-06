@@ -45,7 +45,7 @@ textarea[readonly] {
                     </div>
                     <div class = "col-xl-1">
                         <?php if($university_data->uni_approval){ ?>
-                        <a type="button" href = "<?= base_url('internal/level_2/educational_partner/ep_university/edit_university'); ?>" class="btn btn-primary">Edit</a>
+                        <a type="button" href = "<?= base_url('internal/level_2/educational_partner/ep_university/edit_university'); ?>" class="btn btn-primary">Edit<i class="fas fa-edit pl-2"></i></a>
                         <?php } ?>
                     </div>
                 </div>
@@ -167,26 +167,3 @@ textarea[readonly] {
 
                 </div>
                 <!-- End of Main Content -->
-
-                <script>
-                    function overview_tab() {
-                        $('#courses').hide();
-                        $('#contact').hide();
-                        $('#home').show();
-                    }
-
-                    function courses_tab() {
-                        $('#home').hide();
-                        $('#contact').hide();
-                        $('#courses').show();
-                    }
-
-                    function contact_tab() {
-                        $('#home').hide();
-                        $('#courses').hide();
-                        $('#contact').show();
-                    }
-
-                </script>
-
-                    onclick="courses_tab()"
