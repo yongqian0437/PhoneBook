@@ -44,7 +44,9 @@ textarea[readonly] {
                         </ol>
                     </div>
                     <div class = "col-xl-1">
+                        <?php if($university_data->uni_approval){ ?>
                         <a type="button" href = "<?= base_url('internal/level_2/educational_partner/ep_university/edit_university'); ?>" class="btn btn-primary">Edit</a>
+                        <?php } ?>
                     </div>
                 </div>
                 <!-- Content Row -->
@@ -53,6 +55,8 @@ textarea[readonly] {
                         <!-- Card-->
                         <div class="card ">
                             <div class="card-body">
+                            <!-- Check for uni approval -->
+                            <?php if($university_data->uni_approval){ ?>
                             <?=$this->session->flashdata('edit_message')?> 
                                 <form action="">
                                     <div class="form-row">
@@ -137,6 +141,19 @@ textarea[readonly] {
 
 
                                 </form>
+                                <?php } else{ ?>
+                                    <div class="row justify-content-md-center">   
+                                        <div class="col-xl-3 col-md-6">
+                                            <div  class="card h-100 shadow">
+                                                <div class="card-body">
+                                                    <div style = "text-align:center;">This university is still pending approval.</div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php } ?>
+
                             </div>
                         </div>
                         <!-- /. Card -->
@@ -150,3 +167,26 @@ textarea[readonly] {
 
                 </div>
                 <!-- End of Main Content -->
+
+                <script>
+                    function overview_tab() {
+                        $('#courses').hide();
+                        $('#contact').hide();
+                        $('#home').show();
+                    }
+
+                    function courses_tab() {
+                        $('#home').hide();
+                        $('#contact').hide();
+                        $('#courses').show();
+                    }
+
+                    function contact_tab() {
+                        $('#home').hide();
+                        $('#courses').hide();
+                        $('#contact').show();
+                    }
+
+                </script>
+
+                    onclick="courses_tab()"
