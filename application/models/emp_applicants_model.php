@@ -56,14 +56,27 @@ class emp_applicants_model extends CI_Model
     {
         $condition = "`emp_id`= '$emp_id' AND `student_id` = '$student_id'";
         $this->db->select('emp_applicant_id')
-                 ->from('emp_applicants')
-                 ->where($condition)
-                 ->limit(1);
+            ->from('emp_applicants')
+            ->where($condition)
+            ->limit(1);
         $result = $this->db->get()->result_array();
         // $condition = $this->db->get()->result_array();
         if ($result)
             return true;
         else
             return false;
+    }
+
+    function get_user_emp($user_id) //get employer projects that a student applied for (used in level 1 user profile page)
+    {
+        $this->db->select('*')
+            ->from('users')
+            ->join('user_student', 'user_student.user_id = users.user_id')
+            ->join('emp_applicants', 'emp_applicants.student_id = user_student.student_id')
+            ->join('employer_projects', 'employer_projects.emp_id = emp_applicants.emp_id')
+            ->join('user_e', 'user_e.e_id = employer_projects.e_id')
+            ->join('company', 'company.c_id = user_e.c_id')
+            ->where('users.user_id', $user_id);
+        return $this->db->get()->result_array();
     }
 }
