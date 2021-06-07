@@ -161,7 +161,7 @@ class Ea_course_application extends CI_Controller
        foreach($course_applicants as $ca) {
           $edit_link = $base_url."internal/level_2/education_agent/ea_course_application/edit_course_application/".$ca->c_applicant_id;
 
-          $delete = '<span><button type="button" onclick="delete_course_application('.$ca->c_applicant_id.')" class="btn icon-btn btn-xs btn-danger waves-effect waves-light delete" ><span class="fas fa-trash"></span></button></span>';
+          $delete = '<span><button type="button" onclick="delete_course_applicant('.$ca->c_applicant_id.')" class="btn icon-btn btn-xs btn-danger waves-effect waves-light delete" ><span class="fas fa-trash"></span></button></span>';
           $edit_opt = '<span class = "px-1"><a type="button" href = "'.$edit_link.'"class="btn icon-btn btn-xs btn-primary waves-effect waves-light"><span class="fas fa-pencil-alt"></span></a></span>';
           $view = '<span><button type="button" onclick="view_course_application('.$ca->c_applicant_id.')" class="btn icon-btn btn-xs btn-info waves-effect waves-light" data-toggle="modal" data-target="#view_course_application"><span class="fas fa-eye"></span></button></span>';
           $function = $view.$edit_opt.$delete;
@@ -189,6 +189,11 @@ class Ea_course_application extends CI_Controller
        echo json_encode($output);
        exit();
    }
+
+    function delete_course_applicant()
+    {
+        $this->course_applicants_model->delete($this->input->post('c_applicant_id'));
+    }
 
    function view_course_applicant()
     {
