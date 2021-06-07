@@ -136,7 +136,7 @@
 
             <!-- Nav Item - My R&DP Application -->
             <li class="nav-item">
-                <a class="nav-link" href="<?php echo base_url('internal/level_2/educational_partner/ep_rd_project');?>">
+                <a class="nav-link" href="<?php echo base_url('internal/level_2/educational_partner/Ep_my_rd_project');?>">
                     <i class="fas fa-list"></i>
                     <span>My R&D Projects</span>
                 </a>

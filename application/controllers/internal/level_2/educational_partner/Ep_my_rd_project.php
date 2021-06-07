@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Ep_rd_project extends CI_Controller {
+class Ep_my_rd_project extends CI_Controller {
 
 	public function __construct()
 	{
