@@ -177,8 +177,9 @@ background-color: #EAF4F4;
                                             <option value="Masters">Masters</option>
                                             <option value="Doctorate">Doctorate</option>
                                             <option value="Advanced Diploma">Advanced Diploma</option>
-                                            <option value="Graduate Certificate &Graduate Diploma">Graduate Certificate and Graduate Diploma</option>
-                                            <option value="Postgraduate Certificate & Postgraduate Diploma">Postgraduate Certificate and Postgraduate Diploma</option>
+                                            <option value="Graduate Certificate and Graduate Diploma">Graduate Certificate and Graduate Diploma</option>
+                                            <option value="Postgraduate Certificate and Postgraduate Diploma">Postgraduate Certificate and Postgraduate Diploma</option>
+                                            <option value="Others">Others</option>
                                         </select>
                                     </div>  
                                     <!-- COURSE INPUT -->
@@ -221,8 +222,9 @@ background-color: #EAF4F4;
                                             <option value="Masters">Masters</option>
                                             <option value="Doctorate">Doctorate</option>
                                             <option value="Advanced Diploma">Advanced Diploma</option>
-                                            <option value="Graduate Certificate &Graduate Diploma">Graduate Certificate and Graduate Diploma</option>
-                                            <option value="Postgraduate Certificate & Postgraduate Diploma">Postgraduate Certificate and Postgraduate Diploma</option>
+                                            <option value="Graduate Certificate and Graduate Diploma">Graduate Certificate and Graduate Diploma</option>
+                                            <option value="Postgraduate Certificate and Postgraduate Diploma">Postgraduate Certificate and Postgraduate Diploma</option>
+                                            <option value="Others">Others</option>
                                         </select>
                                     </div>  
                                     <!-- COURSE INPUT -->
@@ -265,8 +267,9 @@ background-color: #EAF4F4;
                                             <option value="Masters">Masters</option>
                                             <option value="Doctorate">Doctorate</option>
                                             <option value="Advanced Diploma">Advanced Diploma</option>
-                                            <option value="Graduate Certificate &Graduate Diploma">Graduate Certificate and Graduate Diploma</option>
-                                            <option value="Postgraduate Certificate & Postgraduate Diploma">Postgraduate Certificate and Postgraduate Diploma</option>
+                                            <option value="Graduate Certificate and Graduate Diploma">Graduate Certificate and Graduate Diploma</option>
+                                            <option value="Postgraduate Certificate and Postgraduate Diploma">Postgraduate Certificate and Postgraduate Diploma</option>
+                                            <option value="Others">Others</option>
                                         </select>
                                     </div>  
                                     <!-- COURSE INPUT -->

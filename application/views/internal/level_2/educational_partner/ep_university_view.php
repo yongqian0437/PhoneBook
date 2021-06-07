@@ -44,7 +44,7 @@ setTimeout(function() {
 
                 <!-- Breadcrumn -->
                 <div class="row" >
-                    <div class="breadcrumb-wrapper col-xl-11">
+                    <div class="breadcrumb-wrapper col-xl-9">
                         <ol class="breadcrumb" style = "background-color:rgba(0, 0, 0, 0);">
                             <li class="breadcrumb-item">
                                 <a href=""><i class="fas fa-tachometer-alt"></i> Home</a>
@@ -52,9 +52,11 @@ setTimeout(function() {
                             <li class="breadcrumb-item active">University</li>
                         </ol>
                     </div>
-                    <div class = "col-xl-1">
+                    <div class = "col-xl-3">
                         <?php if($university_data->uni_approval){ ?>
-                        <a type="button" href = "<?= base_url('internal/level_2/educational_partner/ep_university/edit_university'); ?>" class="btn btn-primary">Edit<i class="fas fa-edit pl-2"></i></a>
+                        <div class = "d-flex justify-content-end">
+                            <a type="button" href = "<?= base_url('internal/level_2/educational_partner/ep_university/edit_university'); ?>" class="btn btn-primary">Edit<i class="fas fa-edit pl-2"></i></a>
+                        </div>
                         <?php } ?>
                     </div>
                 </div>

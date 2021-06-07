@@ -57,7 +57,7 @@ td{
 
                 <!-- Breadcrumn -->
                 <div class="row" >
-                    <div class="breadcrumb-wrapper col-xl-10">
+                    <div class="breadcrumb-wrapper col-xl-9">
                         <ol class="breadcrumb" style = "background-color:rgba(0, 0, 0, 0);">
                             <li class="breadcrumb-item">
                                 <a href=""><i class="fas fa-tachometer-alt"></i> Home</a>
@@ -65,8 +65,10 @@ td{
                             <li class="breadcrumb-item active">Courses</li>
                         </ol>
                     </div>
-                    <div class = "col-xl-2">
-                        <a type="button" href = "<?= base_url('internal/level_2/educational_partner/ep_courses/add_course'); ?>" class="btn btn-primary">Add a course<i class="fas fa-plus pl-2"></i></a>
+                    <div class = "col-xl-3 " >
+                        <div class = "d-flex justify-content-end">
+                            <a type="button" href = "<?= base_url('internal/level_2/educational_partner/ep_courses/add_course'); ?>" class="btn btn-primary">Add a course<i class="fas fa-plus pl-2"></i></a>
+                        </div>
                     </div>
                 </div>
                 <!-- Content Row -->

@@ -97,4 +97,15 @@ class user_ep_model extends CI_Model
         return $this->db->get('courses')->row();
     }
     
+    public function get_rd_for_ep($ep_id)
+    {
+        $this->db->where('ep_id', $ep_id);
+        return $this->db->get('rd_projects')->row();
+    }
+
+    public function get_ep_detail_with_user_id($user_id)
+    {
+        $this->db->where('user_id', $user_id);
+        return $this->db->get('user_ep')->row();
+    }
 }
