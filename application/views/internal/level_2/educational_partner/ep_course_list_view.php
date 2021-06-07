@@ -20,7 +20,7 @@ td{
     var courseName = "<?php echo $this->session->flashdata('course_name');?>";
     Swal.fire({
         icon: 'success',
-        text: courseName + '" has been added',
+        text: '"' + courseName + '" has been added',
     })
 </script>
 <?php } ?>
@@ -31,7 +31,7 @@ td{
     var courseName = "<?php echo $this->session->flashdata('course_name');?>";
     Swal.fire({
         icon: 'success',
-        text: 'Information of "' + courseName + '" has been edited',
+        text: '"' + courseName + '" has been edited',
     })
 </script>
 <?php } ?>

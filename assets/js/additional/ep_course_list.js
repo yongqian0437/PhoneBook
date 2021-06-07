@@ -1,6 +1,7 @@
 $(document).ready(function(){
     $("#table_courses").DataTable({
-
+        //make table responsive
+        "bAutoWidth":false,
         ajax: {
             url: base_url + "internal/level_2/educational_partner/ep_courses/course_list",
             type: "GET",
@@ -11,6 +12,12 @@ $(document).ready(function(){
         }
         ]
     });
+
+    $(window).resize(function() {
+        oTable.fnDraw(false)        
+    });
+
+    
 
 }); // end of ready function
 
