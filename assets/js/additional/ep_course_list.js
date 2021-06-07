@@ -13,12 +13,6 @@ $(document).ready(function(){
         ]
     });
 
-    $(window).resize(function() {
-        oTable.fnDraw(false)        
-    });
-
-    
-
 }); // end of ready function
 
 function delete_course(course_id){
