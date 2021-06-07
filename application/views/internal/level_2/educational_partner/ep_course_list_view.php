@@ -79,7 +79,7 @@ td{
                             <div class="card-body">
                             
                             <div class="table-responsive">
-                                <table id="table_courses" class="table">
+                                <table id="table_courses" class="table table-striped">
                                     <thead>
                                         <tr>
                                             <th>No.</th>
