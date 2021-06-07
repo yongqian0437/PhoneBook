@@ -8,6 +8,7 @@ class Employer_emps extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model(['user_model', 'user_e_model', 'company_model', 'employer_projects_model']);
+        date_default_timezone_set('Asia/Kuala_Lumpur');
         
         // Checks if session is set and if user is signed in as Employer (authorised access). If not, deny his/her access.
         // if (!$this->session->userdata('user_id') || $this->session->userdata('user_role') != "Employer"){  
@@ -109,13 +110,13 @@ class Employer_emps extends CI_Controller
     {
         if ($_FILES){
             $config['upload_path'] = $path;
-            $config['allowed_types'] = 'jpeg|jpg|png|txt|pdf|docx|xlsx|pptx|rtf';
+            $config['allowed_types'] = 'pdf';
             $this->load->library('upload', $config);
             if (!$this->upload->do_upload($file_input_name)) 
             {
                 $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
-                The file format is not correct</div>');
-                redirect('internal/level_2/Employer/Employer_emps/add_emp');
+                The file format must be in ".PDF"</div>');
+               // redirect('internal/level_2/Employer/Employer_emps/add_emp');
             } else {
                 $doc_data = ($this->upload->data());
                 return $doc_data;
@@ -126,7 +127,7 @@ class Employer_emps extends CI_Controller
     function submit_added_emp($e_id)
     {
         $emp_document = $this->upload_doc('./assets/uploads/employer_projects', 'emp_document');
-
+        
         $data=
 		[
             'e_id'=>$e_id,
@@ -146,22 +147,57 @@ class Employer_emps extends CI_Controller
         redirect('internal/level_2/employer/employer_emps');
     }
 
-    function edit_course($course_id)
+    function delete_emp()
+    {
+        $this->employer_projects_model->delete($this->input->post('emp_id'));
+    }
+
+    function edit_emp($emp_id)
     {
         
         $data['title'] = 'iJEES | Edit Employer Project';
         $e_details = $this->user_e_model->e_details($this->session->userdata('user_id'));
         $data['e_details'] = $e_details;
-        $data['company_details'] = $this->company_model->c_details($e_details['c_id']); 
-
-        // $data['university_data'] = $this->user_ep_model->get_uni_from_ep($this->session->userdata('user_id'));
-        // $data['course_data'] = $this->user_ep_model->get_course_detail($course_id);
+        $data['company_details'] = $this->company_model->c_details($e_details['c_id']);
+        $data['emp_details'] = $this->employer_projects_model->emp_details($emp_id);
+        // var_dump($data['emp_details']);
+        // die;
 
 		$this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav');
         $this->load->view('internal/templates/topbar');
         $this->load->view('internal/level_2/employer/employer_edit_emp_view');
         $this->load->view('internal/templates/footer'); 
+    }
+
+    function submit_edit_emp($emp_id)
+    {
+        if($_FILES['emp_document']['name'] != "") {
+			$emp_document = $this->upload_doc('./assets/uploads/employer_projects', 'emp_document');
+			$data = [
+				'emp_document' => $emp_document['file_name'],
+			];
+			$this->employer_projects_model->update($data, $emp_id);
+		}
+
+        $e_details = $this->user_e_model->e_details($this->session->userdata('user_id'));
+        $data=
+		[
+            'e_id'=>$e_details['e_id'],
+            'emp_date'=>date("Y-m-d"),
+            'emp_title'=>htmlspecialchars($this->input->post('emp_title')),
+			'emp_area'=>htmlspecialchars($this->input->post('emp_area')),
+			'emp_level'=>htmlspecialchars($this->input->post('emp_level')),
+			'emp_description'=>htmlspecialchars($this->input->post('emp_description')),
+            'emp_approval' => 0, // default is 0. will be send to admin for approval.
+		];
+      
+        $this->employer_projects_model->update($data, $emp_id);
+
+        $this->session->set_flashdata('edit_message', 1); 
+        $this->session->set_flashdata('emp_title', $this->input->post('emp_title')); 
+
+        redirect('internal/level_2/employer/employer_emps');
     }
 
     function view_emp()
@@ -202,7 +238,7 @@ class Employer_emps extends CI_Controller
                 </tr>
                 <tr>
                     <th scope="row">Document</th>
-                    <td><a class="btn btn-primary" href="'.base_url("assets/uploads/employer_projects/").$emp_detail[0]->emp_document.'" role="button" target="_blank">View Uploaded Document</a></td>
+                    <td><a href="'.base_url("assets/uploads/employer_projects/").$emp_detail[0]->emp_document.'" target="_blank">'.$emp_detail[0]->emp_document.'</a></td>
             </tbody>
         </table>
         

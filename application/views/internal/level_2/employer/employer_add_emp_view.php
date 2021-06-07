@@ -22,7 +22,7 @@ label{
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Add Employer Project (EP)</h1>
+                    <h1 class="h3 mb-0 text-gray-800">Add Employer Project</h1>
                 </div>
 
                 <!-- Breadcrumb -->
@@ -35,7 +35,7 @@ label{
                             <li class="breadcrumb-item">
                                 <a href="<?= base_url('internal/level_2/employer/employer_emps'); ?>"></i>Employer Projects (EPs)</a>
                             </li>
-                            <li class="breadcrumb-item active">Add an EP</li>
+                            <li class="breadcrumb-item active">Add Employer Project</li>
                         </ol>
                     </div>
                     <div class = "col-xl-3">

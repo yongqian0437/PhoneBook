@@ -74,4 +74,10 @@ class employer_projects_model extends CI_Model
         return $this->db->get('employer_projects')->result();
     }
 
+    public function emp_details($emp_id)
+    {
+     return $this->db->get_where('employer_projects',['emp_id'=>$emp_id])->row_array();
+    }
+
+
 }
