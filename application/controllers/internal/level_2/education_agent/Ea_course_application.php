@@ -23,7 +23,7 @@ class Ea_course_application extends CI_Controller
         $data['title']= 'Course Application';
         $data['include_js'] ='ea_course_application_list';
         $user_id=$this->session->userdata('user_id');
-        $data['course_applicants']=$this->course_applicants_model->get_cas_with_id($user_id);
+        $data['course_applicants']=$this->course_applicants_model->get_user_id($user_id);
         
         $this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav');
@@ -152,14 +152,14 @@ class Ea_course_application extends CI_Controller
        //$e_details = $this->user_e_model->e_details($this->session->userdata('user_id'));
       // $employer_projects = $this->employer_projects_model->get_emps_from_employer($e_details['e_id']);
       
-       $course_applicants=$this->course_applicants_model->get_cas_with_id($this->session->userdata('user_id'));
+       $course_applicants=$this->course_applicants_model->get_user_id($this->session->userdata('user_id'));
        $counter = 1;
 
        $data = array();
        $base_url = base_url();
 
        foreach($course_applicants as $ca) {
-          $edit_link = $base_url."internal/level_2/education_agent/ea_course_application/edit_course_application/".$ca->c_applicant_id;
+          $edit_link = $base_url."internal/level_2/education_agent/ea_course_application/edit_course_applicant/".$ca->c_applicant_id;
 
           $delete = '<span><button type="button" onclick="delete_course_applicant('.$ca->c_applicant_id.')" class="btn icon-btn btn-xs btn-danger waves-effect waves-light delete" ><span class="fas fa-trash"></span></button></span>';
           $edit_opt = '<span class = "px-1"><a type="button" href = "'.$edit_link.'"class="btn icon-btn btn-xs btn-primary waves-effect waves-light"><span class="fas fa-pencil-alt"></span></a></span>';
@@ -189,6 +189,75 @@ class Ea_course_application extends CI_Controller
        echo json_encode($output);
        exit();
    }
+
+   function edit_course_applicant($c_applicant_id)
+    {
+        $data['title'] = 'iJEES | Edit Course Application Form';
+       // $data['university_data'] = $this->user_ep_model->get_uni_from_ep($this->session->userdata('user_id'));
+       // $data['course_data'] = $this->user_ep_model->get_course_detail($course_id);
+    //    $user_id=$this->session->userdata('user_id');
+    //    $data['course_applicants']=$this->course_applicants_model->get_cas_with_id($user_id);
+       $data['edit_course_applicant']=$this->course_applicants_model->get_cas_id($c_applicant_id);
+    //    var_dump($data['edit_course_applicant']);
+    //    die;
+		$this->load->view('internal/templates/header',$data);
+        $this->load->view('internal/templates/sidenav');
+        $this->load->view('internal/templates/topbar');
+        $this->load->view('internal/level_2/education_agent/ea_edit_course_applicant_view');
+        $this->load->view('internal/templates/footer'); 
+    }
+
+    function submit_edit_course_applicant($c_applicant_id)
+    {
+        // $university_data = $this->user_ep_model->get_uni_from_ep($this->session->userdata('user_id'));
+        // $data=
+		// [
+        //     'uni_id'=>$university_data->uni_id,
+		// 	'course_name'=>htmlspecialchars($this->input->post('course_name')),
+		// 	'course_area'=>htmlspecialchars($this->input->post('course_area')),
+		// 	'course_level'=>htmlspecialchars($this->input->post('course_level')),
+		// 	'course_duration'=>htmlspecialchars($this->input->post('course_duration')),
+		// 	'course_fee'=>htmlspecialchars($this->input->post('course_fee')),
+		// 	'course_shortprofile'=>htmlspecialchars($this->input->post('course_shortprofile')),
+		// 	'course_requirements'=>htmlspecialchars($this->input->post('course_requirements')),
+		// 	'course_country'=>htmlspecialchars($this->input->post('course_country')),
+        //     'course_intake'=>htmlspecialchars($this->input->post('course_intake')),
+        //     'course_careeropportunities'=>htmlspecialchars($this->input->post('course_careeropportunities')),
+		// ];
+        
+        $data['title']="iJEES | Course Applicant Registration";
+
+            $c_applicant_document= $this->upload_doc('./assets/uploads/course_applicant_form', 'c_applicant_document');
+            $user_id=$this->session->userdata('user_id');
+            $data=
+            [
+                'c_applicant_method'=>$user_id,
+                'c_applicant_fname'=>htmlspecialchars($this->input->post('c_applicant_fname',true)),
+                'c_applicant_lname'=>htmlspecialchars($this->input->post('c_applicant_lname',true)),
+                'c_applicant_phonenumber'=>htmlspecialchars($this->input->post('c_applicant_phonenumber',true)),
+                'c_applicant_email'=>htmlspecialchars($this->input->post('c_applicant_email',true)),
+                'c_applicant_nationality'=>htmlspecialchars($this->input->post('c_applicant_nationality',true)),
+                'c_applicant_gender'=>htmlspecialchars($this->input->post('c_applicant_gender',true)),
+                'c_applicant_dob'=>htmlspecialchars($this->input->post('c_applicant_dob',true)),
+                'c_applicant_currentlevel'=>htmlspecialchars($this->input->post('c_applicant_currentlevel',true)),
+                'c_applicant_address'=>htmlspecialchars($this->input->post('c_applicant_address',true)),
+                'c_applicant_identification'=>htmlspecialchars($this->input->post('c_applicant_identification',true)),
+                'c_applicant_document'=>$c_applicant_document['file_name'],
+                
+            ];
+
+        $this->course_applicants_model->update($data, $c_applicant_id);
+       
+        $this->session->set_flashdata('message','<div class="alert alert-success" role="alert" id="alert_message">
+        You have updated successfully</div>');
+
+        $this->session->set_flashdata('edit_message', 1); 
+        $this->session->set_flashdata('c_applicant_id', $c_applicant_id); 
+
+        redirect('internal/level_2/education_agent/ea_course_application');
+
+    }
+    
 
     function delete_course_applicant()
     {

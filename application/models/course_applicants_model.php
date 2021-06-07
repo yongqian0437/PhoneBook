@@ -78,10 +78,16 @@ class course_applicants_model extends CI_Model
     //    return $this->db->get('course_applicants')->result();
     // }
 
-    public function get_cas_with_id($user_id)
+    public function get_user_id($user_id)
     {
        $this->db->where('c_applicant_method',$user_id);
        return $this->db->get('course_applicants')->result();
+    }
+
+    public function get_cas_id($c_applicant_id)
+    {
+       $this->db->where('c_applicant_id',$c_applicant_id);
+       return $this->db->get('course_applicants')->row();
     }
 
 

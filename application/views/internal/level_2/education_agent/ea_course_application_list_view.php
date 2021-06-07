@@ -4,6 +4,27 @@
 <script type="text/javascript">
     var base_url = "<?php echo base_url();?>";
 </script>
+<!-- Pop up after user added a new course-->
+<?php if($this->session->flashdata('insert_message')){?>
+<script>
+    var courseName = "<?php echo $this->session->flashdata('course_name');?>";
+    Swal.fire({
+        icon: 'success',
+        text: courseName + '" has been added',
+    })
+</script>
+<?php } ?>
+
+<!-- Pop up after user edit course information-->
+<?php if($this->session->flashdata('edit_message')){?>
+<script>
+    var c_applicant_id = "<?php echo $this->session->flashdata('c_applicant_id');?>";
+    Swal.fire({
+        icon: 'success',
+        text: 'Information of Course Applicant ID "' + c_applicant_id + '" has been edited',
+    })
+</script>
+<?php } ?>
 <body id="page-top">
 
     <!-- Page Wrapper -->
@@ -35,11 +56,11 @@
                             <li class="breadcrumb-item active">Course Applicants</li>
                         </ol>
                     </div>
-                    <div class = "col-xl-2">
+                    <div class = "col-xl-5">
                         <a type="button" href = "<?= base_url('internal/level_2/education_agent/ea_course_application/add_course_application'); ?>" class="btn btn-primary">Add New Course Applicant Form<i class="fas fa-plus pl-2"></i></a>
                     </div>
                 </div>
-
+                <br>
                 <!-- Content Row -->
                 <div class="row">
                     <div class="col-xl-12">
