@@ -64,7 +64,7 @@ class Ep_courses extends CI_Controller {
 				$r->course_area,
 				$r->course_level,
                 $r->course_duration,
-				"RM ".$r->course_fee,
+				"RM ".number_format($r->course_fee),
                 $function,
 			);
 
@@ -188,7 +188,7 @@ class Ep_courses extends CI_Controller {
                 </tr>
                 <tr>
                     <th scope="row">Fee</th>
-                    <td>RM '.$course_detail[0]->course_fee.'</td>
+                    <td>RM '.number_format($course_detail[0]->course_fee).'</td>
                 </tr>
                 <tr>
                     <th scope="row">Intake</th>

@@ -126,11 +126,19 @@
                 </a>
             </li>
 
-            <!-- Nav Item - R&DP -->
+            <!-- Nav Item - Browse R&DP -->
             <li class="nav-item">
                 <a class="nav-link" href="">
                     <i class="fas fa-search"></i>
-                    <span>R&D Projects</span>
+                    <span>Browse R&D Projects</span>
+                </a>
+            </li>
+
+            <!-- Nav Item - My R&DP Application -->
+            <li class="nav-item">
+                <a class="nav-link" href="">
+                    <i class="fas fa-list"></i>
+                    <span>My R&D Projects</span>
                 </a>
             </li>
 
