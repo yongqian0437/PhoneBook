@@ -73,4 +73,5 @@ class course_applicants_model extends CI_Model
     }
 
 
+
 }
