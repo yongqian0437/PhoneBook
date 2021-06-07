@@ -1,18 +1,18 @@
-// $(document).ready(function () {
-//     $("#table_course_applicant").DataTable({
+$(document).ready(function () {
+    $("#table_course_applicants").DataTable({
 
-//         ajax: {
-//             url: base_url + "internal/level_2/education_agent/course_application/course_application_list",
-//             type: "GET",
-//         },
-//         "columnDefs": [{
-//             // "width": "15%",
-//             // "targets": [6]
-//         }
-//         ]
-//     });
+        ajax: {
+            url: base_url + "internal/level_2/education_agent/ea_course_application/course_application_list",
+            type: "GET",
+        },
+        "columnDefs": [{
+            // "width": "15%",
+            // "targets": [6]
+        }
+        ]
+    });
 
-// }); // end of ready function
+}); // end of ready function
 
 // function delete_course(course_id){
 
@@ -49,15 +49,15 @@
 //       })
 // }
 
-// function view_course(course_id) {
+function view_course_applicant(user_id) {
 
-//     $.ajax({
-//         url: base_url + "internal/level_2/educational_agent/ep_courses/view_course",
-//         method: "POST",
-//         data: { course_id: course_id },
-//         success: function (data) {
-//             $('#course_information').html(data);
+    $.ajax({
+        url: base_url + "internal/level_2/educational_agent/ea_course_application/view_course_applicant",
+        method: "POST",
+        data: { user_id: user_id },
+        success: function (data) {
+            $('#course_applicant_information').html(data);
 
-//         }
-//     });
-// }
+        }
+    });
+}

@@ -62,14 +62,26 @@ class course_applicants_model extends CI_Model
         return $this->db->get('user_student')->row();
     }
 
-    public function search_id($search_id)
-    {
-        return $this->db->get_where('course_applicants',['c_applicant_method'=>$search_id]);
-    }
+    // public function search_id($search_id)
+    // {
+    //     return $this->db->get_where('course_applicants',['c_applicant_method'=>$search_id]);
+    // }
 
     public function valid_ea($c_applicant_method)
     {
         return $this->db->get_where('course_applicants', ['c_applicant_method'=>$c_applicant_method])->row_array();
+    }
+
+    // public function search_id($user_id)
+    // {
+    //    $this->db->where('c_applicant_method',$user_id);
+    //    return $this->db->get('course_applicants')->result();
+    // }
+
+    public function get_cas_with_id($user_id)
+    {
+       $this->db->where('c_applicant_method',$user_id);
+       return $this->db->get('course_applicants')->result();
     }
 
 

@@ -73,7 +73,7 @@
 
             <!-- Nav Item - New Course Application -->
             <li class="nav-item">
-                <a class="nav-link" href="<?=base_url('internal/level_2/education_agent/course_applicantion/course_application_list');?>">
+                <a class="nav-link" href="<?=base_url('internal/level_2/education_agent/ea_course_application');?>">
                     <i class="fas fa-plus-square"></i>
                     <span>New Student Application</span>
                 </a>

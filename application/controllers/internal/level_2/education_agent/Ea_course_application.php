@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class course_applicantion extends CI_Controller 
+class Ea_course_application extends CI_Controller 
 {
 
     public function __construct()
@@ -20,7 +20,16 @@ class course_applicantion extends CI_Controller
 
     public function index()
     {
-      
+        $data['title']= 'Course Application';
+        $data['include_js'] ='ea_course_application_list';
+        $user_id=$this->session->userdata('user_id');
+        $data['course_applicants']=$this->course_applicants_model->get_cas_with_id($user_id);
+        
+        $this->load->view('internal/templates/header',$data);
+        $this->load->view('internal/templates/sidenav');
+        $this->load->view('internal/templates/topbar');
+        $this->load->view('internal/level_2/education_agent/ea_course_application_list_view');
+        $this->load->view('internal/templates/footer');  
     }
 
     // public function course_application_list()
@@ -35,7 +44,7 @@ class course_applicantion extends CI_Controller
     //     //$result=$this->course_applicants_model->index();
     //     $data=array('calist'=>$result);
     //     //$data['calist']=$this->course_applicants_model->search_id($search_id);
-    //     $this->load->view('internal/level_2/education_agent/course_applicantion_view',$data);
+    //     $this->load->view('internal/level_2/education_agent/ea_course_application_list_view',$data);
     //     $this->load->view('internal/templates/footer');  
     // }
 
@@ -46,7 +55,7 @@ class course_applicantion extends CI_Controller
         $this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav',$data);
         $this->load->view('internal/templates/topbar',$data);
-        $this->load->view('user/registration/ea_course_application_view',$data);
+        $this->load->view('user/registration/ea_course_application_list_view',$data);
         $this->load->view('internal/templates/footer');  
     }
 
@@ -60,7 +69,7 @@ class course_applicantion extends CI_Controller
             {
                 $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert" id="alert_message">
                 The file format is not correct</div>');
-                redirect('internal/level_2/course_applicantion/course_applicant_reg');
+                redirect('internal/level_2/ea_course_application/course_applicant_reg');
             } else {
                 $doc_data = ($this->upload->data());
                 return $doc_data;
@@ -90,7 +99,7 @@ class course_applicantion extends CI_Controller
             $this->load->view('internal/templates/header',$data);
             $this->load->view('internal/templates/sidenav',$data);
             $this->load->view('internal/templates/topbar',$data);
-            $this->load->view('user/registration/ea_course_application_view',$data);
+            $this->load->view('user/registration/ea_course_application_list_view',$data);
             $this->load->view('internal/templates/footer'); 
         }
         else
@@ -128,40 +137,42 @@ class course_applicantion extends CI_Controller
         $this->session->set_flashdata('message','<div class="alert alert-success" role="alert" id="alert_message">
         You have registered successfully</div>');
         
-        redirect('internal/level_2/course_applicantion/add_course_application');
+        redirect('internal/level_2/ea_course_application/add_course_application');
         }
         
     }
    //------------------------------------------------ New Code added------------------------------------------------//
-   public function emp_list()
+   public function course_application_list()
    {
        // Datatables Variables
        $draw = intval($this->input->get("draw"));
        $start = intval($this->input->get("start"));
        $length = intval($this->input->get("length"));
 
-       $e_details = $this->user_e_model->e_details($this->session->userdata('user_id'));
-       $employer_projects = $this->employer_projects_model->get_emps_from_employer($e_details['e_id']);
-
+       //$e_details = $this->user_e_model->e_details($this->session->userdata('user_id'));
+      // $employer_projects = $this->employer_projects_model->get_emps_from_employer($e_details['e_id']);
+      
+       $course_applicants=$this->course_applicants_model->get_cas_with_id($this->session->userdata('user_id'));
        $counter = 1;
 
        $data = array();
        $base_url = base_url();
 
-       foreach($employer_projects as $r) {
-           $edit_link = $base_url."internal/level_2/Employer/Employer_emps/edit_emp/".$r->emp_id;
+       foreach($course_applicants as $ca) {
+          $edit_link = $base_url."internal/level_2/education_agent/ea_course_application/edit_course_application/".$ca->c_applicant_id;
 
-           $delete = '<span><button type="button" onclick="delete_emp('.$r->emp_id.')" class="btn icon-btn btn-xs btn-danger waves-effect waves-light delete" ><span class="fas fa-trash"></span></button></span>';
-           $edit_opt = '<span class = "px-1"><a type="button" href = "'.$edit_link.'"class="btn icon-btn btn-xs btn-primary waves-effect waves-light"><span class="fas fa-pencil-alt"></span></a></span>';
-           $view = '<span><button type="button" onclick="view_emp('.$r->emp_id.')" class="btn icon-btn btn-xs btn-info waves-effect waves-light" data-toggle="modal" data-target="#view_emp"><span class="fas fa-eye"></span></button></span>';
-           $function = $view.$edit_opt.$delete;
+          $delete = '<span><button type="button" onclick="delete_course_application('.$ca->c_applicant_id.')" class="btn icon-btn btn-xs btn-danger waves-effect waves-light delete" ><span class="fas fa-trash"></span></button></span>';
+          $edit_opt = '<span class = "px-1"><a type="button" href = "'.$edit_link.'"class="btn icon-btn btn-xs btn-primary waves-effect waves-light"><span class="fas fa-pencil-alt"></span></a></span>';
+          $view = '<span><button type="button" onclick="view_course_application('.$ca->c_applicant_id.')" class="btn icon-btn btn-xs btn-info waves-effect waves-light" data-toggle="modal" data-target="#view_course_application"><span class="fas fa-eye"></span></button></span>';
+          $function = $view.$edit_opt.$delete;
 
            $data[] = array(
                $counter,
-               $r->emp_title,
-               $r->emp_area,
-               $r->emp_level,
-               $r->emp_date,
+               $ca->c_applicant_fname,
+               $ca->c_applicant_lname,
+               $ca->c_applicant_nationality,
+               $ca->c_applicant_currentlevel,
+               $ca->c_app_submitdate,
                $function,
            );
 
@@ -170,15 +181,54 @@ class course_applicantion extends CI_Controller
 
        $output = array(
            "draw" => $draw,
-           "recordsTotal" => count($employer_projects),
-           "recordsFiltered" =>count($employer_projects),
+           "recordsTotal" => count($course_applicants),
+           "recordsFiltered" =>count($course_applicants),
            "data" => $data
        );
 
        echo json_encode($output);
        exit();
    }
+
+   function view_course_applicant()
+    {
+        $ca_detail = $this->course_applicants->get_ca_with_id($this->session->userdata('user_id'));
+
+        $output ='
+        <table class="table table-striped" style = "border:0;">
+            <tbody>
+                <tr>
+                    <th scope="row">First Name</th>
+                    <td>'.$ca_detail[0]->c_applicant_fname.'</td>
+                </tr>
+                <tr>
+                    <th scope="row">Last Name</th>
+                    <td>'.$ca_detail[0]->c_applicant_lname.'</td>
+                </tr>
+                <tr>
+                    <th scope="row">Nationality</th>
+                    <td>RM '.$ca_detail[0]->c_applicant_nationality.'</td>
+                </tr>
+                <tr>
+                    <th scope="row">Gender</th>
+                    <td>RM '.$ca_detail[0]->c_applicant_gender.'</td>
+                </tr>
+               
+                <tr>
+                    <th scope="row">Current Level</th>
+                    <td>RM '.$ca_detail[0]->c_applicant_currentlevel.'</td>
+                </tr>
+                <tr>
+                    <th scope="row">Submit Date</th>
+                    <td>RM '.$ca_detail[0]->c_app_submitdate.'</td>
+                </tr>
+            </tbody>
+        </table>';
+
+        echo $output;
+    }
 }
+
 
 
 ?>
