@@ -68,7 +68,7 @@ label{
                     <div class="breadcrumb-wrapper col-xl-9">
                         <ol class="breadcrumb" style = "background-color:rgba(0, 0, 0, 0);">
                             <li class="breadcrumb-item">
-                                <a href=""><i class="fas fa-tachometer-alt"></i> Home</a>
+                                <a href="<?php echo base_url('internal/level_2/educational_partner/ep_dashboard');?>"><i class="fas fa-tachometer-alt"></i> Home</a>
                             </li>
                             <li class="breadcrumb-item">
                                 <a href="<?php echo base_url('internal/level_2/educational_partner/ep_university');?>"> University</a>

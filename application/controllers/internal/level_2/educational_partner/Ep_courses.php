@@ -90,7 +90,7 @@ class Ep_courses extends CI_Controller {
 		$this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav');
         $this->load->view('internal/templates/topbar');
-        $this->load->view('internal/level_2/educational_partner/ep_add_course_view');
+        $this->load->view('internal/level_2/educational_partner/ep_course_add_view');
         $this->load->view('internal/templates/footer');  
     }
 
@@ -133,7 +133,7 @@ class Ep_courses extends CI_Controller {
 		$this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav');
         $this->load->view('internal/templates/topbar');
-        $this->load->view('internal/level_2/educational_partner/ep_edit_course_view');
+        $this->load->view('internal/level_2/educational_partner/ep_course_edit_view');
         $this->load->view('internal/templates/footer'); 
     }
 
