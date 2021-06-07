@@ -1,12 +1,14 @@
 $(document).ready(function(){
     $("#table_emps").DataTable({
+        //make table responsive
+        "bAutoWidth":false,
         ajax: {
             url: base_url + "internal/level_2/employer/employer_emps/emp_list",
             type: "GET",
         },
         "columnDefs": [{
-            // "width": "18%",
-            // "targets": [5]
+            "width": "18%",
+            "targets": [6]
         }
         ]
     });

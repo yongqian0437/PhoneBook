@@ -51,20 +51,27 @@ class Employer_emps extends CI_Controller
 		$data = array();
 		$base_url = base_url();
 
-		foreach($employer_projects as $r) {
-            $edit_link = $base_url."internal/level_2/Employer/Employer_emps/edit_emp/".$r->emp_id;
+		foreach($employer_projects as $emp) {
+            $edit_link = $base_url."internal/level_2/Employer/Employer_emps/edit_emp/".$emp->emp_id;
 
-            $delete = '<span><button type="button" onclick="delete_emp('.$r->emp_id.')" class="btn icon-btn btn-xs btn-danger waves-effect waves-light delete" ><span class="fas fa-trash"></span></button></span>';
+            $delete = '<span><button type="button" onclick="delete_emp('.$emp->emp_id.')" class="btn icon-btn btn-xs btn-danger waves-effect waves-light delete" ><span class="fas fa-trash"></span></button></span>';
 			$edit_opt = '<span class = "px-1"><a type="button" href = "'.$edit_link.'"class="btn icon-btn btn-xs btn-primary waves-effect waves-light"><span class="fas fa-pencil-alt"></span></a></span>';
-			$view = '<span><button type="button" onclick="view_emp('.$r->emp_id.')" class="btn icon-btn btn-xs btn-info waves-effect waves-light" data-toggle="modal" data-target="#view_emp"><span class="fas fa-eye"></span></button></span>';
+			$view = '<span><button type="button" onclick="view_emp('.$emp->emp_id.')" class="btn icon-btn btn-xs btn-info waves-effect waves-light" data-toggle="modal" data-target="#view_emp"><span class="fas fa-eye"></span></button></span>';
 			$function = $view.$edit_opt.$delete;
+
+            if ($emp->emp_approval == 0) {
+                $status = "Pending Approval";
+            } else {
+                $status = "Approved";
+            }
 
 			$data[] = array(
 				$counter,
-				$r->emp_title,
-				$r->emp_area,
-				$r->emp_level,
-                $r->emp_date,
+				$emp->emp_title,
+				$emp->emp_area,
+				$emp->emp_level,
+                $emp->emp_date,
+                $status,
                 $function,
 			);
 
@@ -82,22 +89,89 @@ class Employer_emps extends CI_Controller
 		exit();
 	}
 
-    // function add_emp()
-    // {
-    //     $data['title'] = 'iJEES | Add Employer Project';
-    //     $e_details = $this->user_e_model->e_details($this->session->userdata('user_id'));
-    //     $data['company_details'] = $this->company_model->c_details($e_details['c_id']); 
+    function add_emp()
+    {
+        $data['title'] = 'iJEES | Add Employer Project (EP)';
+        $e_details = $this->user_e_model->e_details($this->session->userdata('user_id'));
+        $data['e_details'] = $e_details;
+        $data['company_details'] = $this->company_model->c_details($e_details['c_id']); 
+        // var_dump($data['company_details']);
+        // die;
 
-	// 	$this->load->view('internal/templates/header',$data);
-    //     $this->load->view('internal/templates/sidenav');
-    //     $this->load->view('internal/templates/topbar');
-    //     $this->load->view('internal/level_2/employer/employer_add_emp_view');
-    //     $this->load->view('internal/templates/footer');  
-    // }
+		$this->load->view('internal/templates/header',$data);
+        $this->load->view('internal/templates/sidenav');
+        $this->load->view('internal/templates/topbar');
+        $this->load->view('internal/level_2/employer/employer_add_emp_view');
+        $this->load->view('internal/templates/footer');  
+    }
+
+    function upload_doc($path, $file_input_name) 
+    {
+        if ($_FILES){
+            $config['upload_path'] = $path;
+            $config['allowed_types'] = 'jpeg|jpg|png|txt|pdf|docx|xlsx|pptx|rtf';
+            $this->load->library('upload', $config);
+            if (!$this->upload->do_upload($file_input_name)) 
+            {
+                $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
+                The file format is not correct</div>');
+                redirect('internal/level_2/Employer/Employer_emps/add_emp');
+            } else {
+                $doc_data = ($this->upload->data());
+                return $doc_data;
+            }   
+        }
+    }
+
+    function submit_added_emp($e_id)
+    {
+        $emp_document = $this->upload_doc('./assets/uploads/employer_projects', 'emp_document');
+
+        $data=
+		[
+            'e_id'=>$e_id,
+            'emp_title'=>htmlspecialchars($this->input->post('emp_title')),
+			'emp_area'=>htmlspecialchars($this->input->post('emp_area')),
+			'emp_level'=>htmlspecialchars($this->input->post('emp_level')),
+			'emp_description'=>htmlspecialchars($this->input->post('emp_description')),
+			'emp_document' => $emp_document['file_name'],
+            'emp_approval' => 0, // default is 0. will be send to admin for approval.
+		];
+
+        $this->employer_projects_model->insert($data);
+
+        $this->session->set_flashdata('insert_message', 1); 
+        $this->session->set_flashdata('emp_title', $this->input->post('emp_title')); 
+
+        redirect('internal/level_2/employer/employer_emps');
+    }
+
+    function edit_course($course_id)
+    {
+        
+        $data['title'] = 'iJEES | Edit Employer Project';
+        $e_details = $this->user_e_model->e_details($this->session->userdata('user_id'));
+        $data['e_details'] = $e_details;
+        $data['company_details'] = $this->company_model->c_details($e_details['c_id']); 
+
+        // $data['university_data'] = $this->user_ep_model->get_uni_from_ep($this->session->userdata('user_id'));
+        // $data['course_data'] = $this->user_ep_model->get_course_detail($course_id);
+
+		$this->load->view('internal/templates/header',$data);
+        $this->load->view('internal/templates/sidenav');
+        $this->load->view('internal/templates/topbar');
+        $this->load->view('internal/level_2/employer/employer_edit_emp_view');
+        $this->load->view('internal/templates/footer'); 
+    }
 
     function view_emp()
     {
         $emp_detail = $this->employer_projects_model->get_emp_with_id($this->input->post('emp_id'));
+        if ($emp_detail[0]->emp_approval == 0) {
+            $status = "Pending Approval";
+        } else {
+            $status = "Approved";
+        }
 
         $output ='
         <table class="table table-striped" style = "border:0;">
@@ -105,6 +179,10 @@ class Employer_emps extends CI_Controller
                 <tr>
                     <th scope="row">Date Submitted</th>
                     <td>'.$emp_detail[0]->emp_date.'</td>
+                </tr>
+                <tr>
+                    <th scope="row">Status</th>
+                    <td>'.$status.'</td>
                 </tr>
                 <tr>
                     <th scope="row">Project Title</th>
@@ -120,8 +198,11 @@ class Employer_emps extends CI_Controller
                 </tr>
                 <tr>
                     <th scope="row">Description</th>
-                    <td>RM '.$emp_detail[0]->emp_description.'</td>
+                    <td>'.$emp_detail[0]->emp_description.'</td>
                 </tr>
+                <tr>
+                    <th scope="row">Document</th>
+                    <td><a class="btn btn-primary" href="'.base_url("assets/uploads/employer_projects/").$emp_detail[0]->emp_document.'" role="button" target="_blank">View Uploaded Document</a></td>
             </tbody>
         </table>
         

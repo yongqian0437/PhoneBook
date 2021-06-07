@@ -1,6 +1,41 @@
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="sweetalert2.min.js"></script>
+<link rel="stylesheet" href="sweetalert2.min.css">
+<style>
+th{
+    color:black;
+}
+td{
+    color: rgba(0,0,0,0.7);
+}
+</style>
+<!-- Set base url to javascript variable-->
 <script type="text/javascript">
     var base_url = "<?php echo base_url();?>";
 </script>
+
+<!-- Pop up after user added a new employer project-->
+<?php if($this->session->flashdata('insert_message')){?>
+<script>
+    var empName = "<?php echo $this->session->flashdata('emp_title');?>";
+    Swal.fire({
+        icon: 'success',
+        text: '"' + empName + '" has been added',
+    })
+</script>
+<?php } ?>
+
+<!-- Pop up after user edit employer project information-->
+<?php if($this->session->flashdata('edit_message')){?>
+<script>
+    var empName = "<?php echo $this->session->flashdata('emp_title');?>";
+    Swal.fire({
+        icon: 'success',
+        text: '"' + empName + '" has been edited',
+    })
+</script>
+<?php } ?>
+
 <body id="page-top">
 
     <!-- Page Wrapper -->
@@ -19,12 +54,12 @@
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800"><?=$company_details['c_name']?>'s Employer Projects</h1>
+                    <h1 class="h3 mb-0 text-gray-800"><?=$company_details['c_name']?>'s Employer Projects (EPs)</h1>
                 </div>
 
                 <!-- Breadcrumb -->
                 <div class="row" >
-                    <div class="breadcrumb-wrapper col-xl-10">
+                    <div class="breadcrumb-wrapper col-xl-9">
                         <ol class="breadcrumb" style = "background-color:rgba(0, 0, 0, 0);">
                             <li class="breadcrumb-item">
                                 <a href=""><i class="fas fa-tachometer-alt"></i> Home</a>
@@ -32,8 +67,10 @@
                             <li class="breadcrumb-item active">Employer Projects (EPs)</li>
                         </ol>
                     </div>
-                    <div class = "col-xl-2">
-                        <a type="button" href = "<?= base_url('internal/level_2/employer/Employer_emps/add_emp'); ?>" class="btn btn-primary">Add a project<i class="fas fa-plus pl-2"></i></a>
+                    <div class = "col-xl-3">
+                        <div class = "d-flex justify-content-end">
+                            <a type="button" href = "<?= base_url('internal/level_2/employer/Employer_emps/add_emp'); ?>" class="btn btn-primary">Add an EP<i class="fas fa-plus pl-2"></i></a>
+                        </div>
                     </div>
                 </div>
 
@@ -41,7 +78,7 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <!-- Card-->
-                        <div class="card ">
+                        <div class="card">
                             <div class="card-body">
                             
                             <div class="table-responsive">
@@ -52,7 +89,8 @@
                                             <th>EP Title</th>
                                             <th>EP Area</th>
                                             <th>EP Level</th>
-                                            <th>EP Date</th>
+                                            <th>Submit Date</th>
+                                            <th>Status</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
