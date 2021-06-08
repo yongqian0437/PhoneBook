@@ -151,7 +151,7 @@
                 </a>
                 <div id="rd_applicants_collapse" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<?=base_url('internal///');?>">My Applicants</a>
+                        <a class="collapse-item" href="<?=base_url('internal///');?>">My Applications</a>
                         <a class="collapse-item" href="<?=base_url('internal///');?>">Project Partners</a>
                     </div>
                 </div>
