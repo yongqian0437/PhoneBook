@@ -84,10 +84,10 @@ td{
                                         <tr>
                                             <th>No.</th>
                                             <th>Course Name</th>
-                                            <th>Course Area</th>
-                                            <th>Course Level</th>
-                                            <th>Course Duration</th>
-                                            <th>Course Fee</th>
+                                            <th>Area</th>
+                                            <th>Level</th>
+                                            <th>Duration</th>
+                                            <th>Fee</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>

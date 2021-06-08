@@ -84,10 +84,10 @@ td{
                                         <tr>
                                             <th>No.</th>
                                             <th>R&D Title</th>
-                                            <th>R&D Organisation</th>
-                                            <th>R&d person in charge</th>
+                                            <th>Organisation</th>
+                                            <th>Person in charge</th>
                                             <th>Submit Date</th>
-                                            <th>Approval</th>
+                                            <th>Status</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>

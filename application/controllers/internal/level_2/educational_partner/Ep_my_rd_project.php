@@ -62,10 +62,10 @@ class Ep_my_rd_project extends CI_Controller {
 			$function = $view.$edit_opt.$delete;
 
 			if($r->rd_approval){
-				$approval = 'Yes';
+				$approval = '<button type="button" style = "cursor: default;" class="btn btn-success">Approved</button>';
 			}
 			else{
-				$approval = 'No';
+				$approval = '<button type="button" style = "cursor: default;" class="btn btn-warning">Pending</button>';
 			}
 
 			$data[] = array(
@@ -104,11 +104,12 @@ class Ep_my_rd_project extends CI_Controller {
         $this->load->view('internal/templates/footer');  
     }
 
-	function submit_add_rd_project($uni_id)
+	function submit_add_rd_project()
     {
         //get ep details with user id
 		$ep_data = $this->user_ep_model->get_ep_detail_with_user_id($this->session->userdata('user_id'));       
-		
+        $rd_document = $this->upload_doc('./assets/uploads/rd_projects', 'rd_document');
+
 		$data=
 		[
             'ep_id'=>$ep_data->ep_id,
@@ -120,10 +121,12 @@ class Ep_my_rd_project extends CI_Controller {
 			'rd_pic_email'=>htmlspecialchars($this->input->post('rd_pic_email')),
 			'rd_scope'=>htmlspecialchars($this->input->post('rd_scope')),
 			'rd_objective'=>htmlspecialchars($this->input->post('rd_objective')),
+            'rd_document'=>$rd_document['file_name'], 
+            'rd_approval'=>0,
 		];
 
 
-        $this->courses_model->insert($data);
+        $this->rd_projects_model->insert($data);
 
         $this->session->set_flashdata('insert_message', 1); 
         $this->session->set_flashdata('rd_title', $this->input->post('rd_title')); 
@@ -135,9 +138,24 @@ class Ep_my_rd_project extends CI_Controller {
     {
         $rd_detail = $this->user_ep_model->get_one_rd_detail($this->input->post('rd_id'));
 
+        if($rd_detail->rd_approval){
+            $approval = '<button type="button" style = "cursor: default;" class="btn btn-success">Approved</button>';
+        }
+        else{
+            $approval = '<button type="button" style = "cursor: default;" class="btn btn-warning">Pending</button>';
+        }
+
         $output ='
         <table class="table table-striped" style = "border:0;">
             <tbody>
+                <tr>
+                    <th scope="row">Submit Date</th>
+                    <td>'.$rd_detail->rd_submitdate.'</td>
+                </tr>
+                <tr>
+                    <th scope="row">Status</th>
+                    <td>'.$approval.'</td>
+                </tr>
                 <tr>
                     <th scope="row">Title</th>
                     <td>'.$rd_detail->rd_title.'</td>
@@ -170,9 +188,9 @@ class Ep_my_rd_project extends CI_Controller {
                     <th scope="row">R&D Objective</th>
                     <td style = "white-space: pre-wrap; word-break: break-word; text-align: justify;">'.$rd_detail->rd_objective.'</td>
                 </tr>
-				<tr>
-                    <th scope="row">Submit Date</th>
-                    <td>'.$rd_detail->rd_submitdate.'</td>
+                <tr>
+                    <th scope="row">Document</th>
+                    <td><a href="'.base_url("assets/uploads/rd_projects/").$rd_detail->rd_document.'" target="_blank">'.$rd_detail->rd_document.'</a></td>
                 </tr>
             </tbody>
         </table>
@@ -203,8 +221,16 @@ class Ep_my_rd_project extends CI_Controller {
 	function submit_edit_my_rd_project($rd_id)
     {
 		//get ep details with user id
-		$ep_data = $this->user_ep_model->get_ep_detail_with_user_id($this->session->userdata('user_id'));       
-		
+		$ep_data = $this->user_ep_model->get_ep_detail_with_user_id($this->session->userdata('user_id')); 
+
+        if($_FILES['rd_document']['name'] != "") {
+            $rd_document = $this->upload_doc('./assets/uploads/rd_projects', 'rd_document');
+            $data = [
+				'rd_document'=>$rd_document['file_name'], 
+			];
+            $this->rd_projects_model->update($data, $rd_id);
+        }
+
 		$data=
 		[
             'ep_id'=>$ep_data->ep_id,
@@ -224,6 +250,24 @@ class Ep_my_rd_project extends CI_Controller {
         $this->session->set_flashdata('rd_title', $this->input->post('rd_title')); 
 
         redirect('internal/level_2/educational_partner/ep_my_rd_project');
+    }
+
+    public function upload_doc($path, $file_input_name) 
+    {
+        if ($_FILES){
+            $config['upload_path'] = $path;
+            $config['allowed_types'] = 'jpeg|jpg|png|txt|pdf|docx|xlsx|pptx|rtf';
+            $this->load->library('upload', $config);
+            if (!$this->upload->do_upload($file_input_name)) 
+            {
+                $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
+                The file format is not correct</div>');
+                redirect('user/login/Auth/ep_reg');
+            } else {
+                $doc_data = ($this->upload->data());
+                return $doc_data;
+            }   
+        }
     }
     
 

@@ -22,7 +22,7 @@ label{
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Edit R&D Project</h1>
+                    <h1 class="h3 mb-0 text-gray-800">Add R&D Project</h1>
                 </div>
 
                 <!-- Breadcrumn -->
@@ -35,7 +35,7 @@ label{
                             <li class="breadcrumb-item">
                                 <a href="<?= base_url('internal/level_2/educational_partner/ep_my_rd_project'); ?>"></i>R&D Projects</a>
                             </li>
-                            <li class="breadcrumb-item active">Edit R&D Project</li>
+                            <li class="breadcrumb-item active">Add R&D Project</li>
                         </ol>
                     </div>
                     <div class = "col-xl-3">
@@ -50,17 +50,17 @@ label{
                         <!-- Card-->
                         <div class="card ">
                             <div class="card-body">
-                                <form method="post" action=" <?=base_url('internal/level_2/educational_partner/ep_my_rd_project//'); ?>" enctype="multipart/form-data">
+                                <form method="post" action=" <?=base_url('internal/level_2/educational_partner/ep_my_rd_project/submit_add_rd_project/'); ?>" enctype="multipart/form-data">
                                 <?= form_open_multipart('') ?>
 
                                 <div class="form-row pt-4">
                                     <div class="form-group col-md-6 px-4 pr-5">
                                         <label for="course_name">R&D Project Title</label>
-                                        <textarea type="text" row = "2" class="form-control" id="rd_title" name = "rd_title" placeholder="Enter title" required></textarea>
+                                        <textarea type="text" rows = "2" class="form-control" id="rd_title" name = "rd_title" placeholder="Enter title" required></textarea>
                                     </div>
                                     <div class="form-group col-md-6 px-4 pl-5">
                                         <label for="rd_organisation">R&D Project Organisation</label>
-                                        <textarea type="text" class="form-control" id="rd_organisation" name = "rd_organisation" placeholder="Enter organisation" required></textarea>
+                                        <textarea type="text" rows = "2" class="form-control" id="rd_organisation" name = "rd_organisation" placeholder="Enter organisation" required></textarea>
                                     </div>
                                 </div>
 
@@ -89,19 +89,34 @@ label{
                                 <div class="form-row pt-4">
                                     <div class="form-group col-md-12 px-4 ">
                                         <label for="rd_scope">R&D Project Scope</label>
-                                        <textarea type="text" class="form-control" row = "4" id="rd_scope" name = "rd_scope" placeholder="Enter R&D project scope"required></textarea>
+                                        <textarea type="text" class="form-control" rows = "4" id="rd_scope" name = "rd_scope" placeholder="Enter R&D project scope"required></textarea>
                                     </div>
                                 </div>
 
                                 <div class="form-row pt-4">
-                                    <div class="form-group col-md-12 px-4 ">
+                                    <div class="form-group col-md-12 px-4">
                                         <label for="rd_objective">R&D Project Objective</label>
-                                        <textarea type="text" class="form-control" row = "4" id="rd_objective" name = "rd_objective" placeholder="Enter R&D project objective"required></textarea>
+                                        <textarea type="text" class="form-control" rows="4" id="rd_objective" name = "rd_objective" placeholder="Enter R&D project objective" required></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="form-row pt-4">
+                                    <div class="form-group col-md-12 px-4">
+                                        <label>Document</label>
+                                        <p>You are required to download the following template and fill in the required information regarding the Employer Project that you are about to request to be posted on iJEES. Once done, proceed to upload it.</p>
+                                        <div>(<a href="<?= base_url('/assets/uploads/rd_projects/template-research.pdf')?>" download>R&D Project Document Template 2021</a>)</div>
+                                    </div>
+                                </div>
+                                <div class="form-row  px-4">
+                                    <div class="form-group col-md-12">
+                                        <input type="file"  accept=".pdf" class="custom-file-input " id="rd_document" name="rd_document" required>
+                                        <label class="custom-file-label" for="customFile">Select a document</label>
+                                        <div style = "color:red; font-size:0.9em;">*Required document: COMPLETED R&D project document in .PDF file format</div>
                                     </div>
                                 </div>
                                    
                                 <!-- Edit button -->
-                                <div class ="pr-4">
+                                <div class ="pr-4 pt-4">
                                     <button  type="submit" class="btn btn-primary " style = "float:right;" >Submit<i class="fas fa-check pl-2"></i></button>
                                 </div>
 
@@ -120,3 +135,11 @@ label{
 
                 </div>
                 <!-- End of Main Content -->
+
+                <script>
+                // File appear on select
+                $(".custom-file-input").on("change", function() {
+                    var fileName = $(this).val().split("\\").pop();
+                    $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+                });
+                </script>

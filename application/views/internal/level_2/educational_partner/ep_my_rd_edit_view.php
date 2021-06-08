@@ -56,11 +56,11 @@ label{
                                 <div class="form-row pt-4">
                                     <div class="form-group col-md-6 px-4 pr-5">
                                         <label for="course_name">R&D Project Title</label>
-                                        <textarea type="text" row = "2" class="form-control" id="rd_title" name = "rd_title" placeholder="Enter title" required><?=$rd_detail->rd_title?></textarea>
+                                        <textarea type="text" rows = "2" class="form-control" id="rd_title" name = "rd_title" placeholder="Enter title" required><?=$rd_detail->rd_title?></textarea>
                                     </div>
                                     <div class="form-group col-md-6 px-4 pl-5">
                                         <label for="rd_organisation">R&D Project Organisation</label>
-                                        <textarea type="text" class="form-control" id="rd_organisation" name = "rd_organisation" placeholder="Enter organisation" required><?=$rd_detail->rd_organisation?></textarea>
+                                        <textarea type="text" rows = "2" class="form-control" id="rd_organisation" name = "rd_organisation" placeholder="Enter organisation" required><?=$rd_detail->rd_organisation?></textarea>
                                     </div>
                                 </div>
 
@@ -89,19 +89,46 @@ label{
                                 <div class="form-row pt-4">
                                     <div class="form-group col-md-12 px-4 ">
                                         <label for="rd_scope">R&D Project Scope</label>
-                                        <textarea type="text" class="form-control" row = "4" id="rd_scope" name = "rd_scope" placeholder="Enter R&D project scope"required><?=$rd_detail->rd_scope?></textarea>
+                                        <textarea type="text" class="form-control" rows = "6" id="rd_scope" name = "rd_scope" placeholder="Enter R&D project scope"required><?=$rd_detail->rd_scope?></textarea>
                                     </div>
                                 </div>
 
                                 <div class="form-row pt-4">
                                     <div class="form-group col-md-12 px-4 ">
                                         <label for="rd_objective">R&D Project Objective</label>
-                                        <textarea type="text" class="form-control" row = "4" id="rd_objective" name = "rd_objective" placeholder="Enter R&D project objective"required><?=$rd_detail->rd_objective?></textarea>
+                                        <textarea type="text" class="form-control" rows = "6" id="rd_objective" name = "rd_objective" placeholder="Enter R&D project objective"required><?=$rd_detail->rd_objective?></textarea>
                                     </div>
                                 </div>
-                                   
+
+                                <div class="py-4">
+                                    <hr style=" width :100%; height:1px; background-color: rgba(0, 0, 0, 0.3); ;">
+                                </div>
+
+                                <div class="form-row pt-4">
+                                    <div class="form-group col-md-5 pl-5">
+                                        <div style = "color:black;" >Current Document</div>
+                                    </div>
+
+                                    <div class="form-group col-md-6 ">
+                                        <div style = "color:black;">New Document</div>
+                                        <div>(<a href="<?= base_url('/assets/uploads/rd_projects/template-research.pdf')?>" download>R&D Project Document Template 2021</a>)</div>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-5 pl-5">
+                                        <a href="<?=base_url("assets/uploads/rd_projects/").$rd_detail->rd_document?>" target="_blank"><?=$rd_detail->rd_document?></a>
+                                    </div>
+
+                                    <div class="form-group col-md-6 ">
+                                        <input type="file"  accept=".pdf" class="custom-file-input px-4" id="rd_document" name="rd_document" >
+                                        <label class="custom-file-label" for="customFile">Select a document</label>
+                                        <div style = "color:red; font-size:0.9em;">*Required document: COMPLETED R&D project document in .PDF file format</div>
+                                    </div>
+                                </div>
+
                                 <!-- Edit button -->
-                                <div class ="pr-4">
+                                <div class ="pr-4 pt-4">
                                     <button  type="submit" class="btn btn-primary " style = "float:right;" >Submit<i class="fas fa-check pl-2"></i></button>
                                 </div>
 
@@ -114,7 +141,15 @@ label{
                     </div>                   
                 </div>
                 <!-- /. Content Row -->
-
+                <script>
+                // File appear on select
+                $(".custom-file-input").on("change", function() {
+                    var fileName = $(this).val().split("\\").pop();
+                    $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+                });
+                </script>
+                
+                
                 </div>
                 <!-- /.container-fluid -->
 

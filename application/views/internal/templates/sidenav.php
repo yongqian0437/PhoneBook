@@ -144,10 +144,17 @@
 
             <!-- Nav Item - R&DP Application -->
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#rd_applicants_collapse"
+                    aria-expanded="true" aria-controls="rd_applicants_collapse">
                     <i class="fas fa-plus-square"></i>
                     <span>R&D Projects Application</span>
                 </a>
+                <div id="rd_applicants_collapse" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="<?=base_url('internal///');?>">My Applicants</a>
+                        <a class="collapse-item" href="<?=base_url('internal///');?>">Project Partners</a>
+                    </div>
+                </div>
             </li>
 
             <!-- Nav Item - Logout -->
