@@ -44,15 +44,16 @@
                                     <label for="course_level">Course level</label><br>
                                     <select name="course_levelid" id="filter_2" class="form-control form-select form-select-lg btn-sm">
                                         <option value="" selected disabled>Filter level</option>
-                                        <option value="Bachelor Degree">Bachelor Degree</option>
                                         <option value="Foundation">Foundation</option>
-                                        <option value="Diploma">Diploma</option>
-                                        <option value="Masters">Masters</option>
-                                        <option value="Advanced Diploma">Advanced Diploma</option>
                                         <option value="Certificate">Certificate</option>
+                                        <option value="Diploma">Diploma</option>
+                                        <option value="Bachelor Degree">Bachelor Degree</option>
+                                        <option value="Masters">Masters</option>
                                         <option value="Doctorate">Doctorate</option>
-                                        <option value="Graduate Certificate & Graduate Diploma">Graduate Certificate & Graduate Diploma</option>
-                                        <option value="Postgraduate Certificate  Postgraduate Diploma">Postgraduate Certificate Postgraduate Diploma</option>
+                                        <option value="Advanced Diploma">Advanced Diploma</option>
+                                        <option value="Graduate Certificate and Graduate Diploma">Graduate Certificate and Graduate Diploma</option>
+                                        <option value="Postgraduate Certificate and Postgraduate Diploma">Postgraduate Certificate and Postgraduate Diploma</option>
+                                        <option value="Others">Others</option>
                                     </select>
                                 </div>
                                 <div class="form-group mr-2"><br>
@@ -93,7 +94,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group align-self-end pull-right">
-                                    <button class="button-custom-color">Search</button>  
+                                    <button class="button-custom-color">Search</button>
                                 </div>
                             </div>
                         </form>
@@ -101,18 +102,18 @@
                         <?php if (!empty($course_data)) {
                             foreach ($course_data as $courses) { ?>
                                 <div class="card-body shadow mb-4">
-                                    <div class="row">  
-                                        <div class="col-9 "> 
+                                    <div class="row">
+                                        <div class="col-9 ">
                                             <div class="row justify-content-between">
-                                                <h5 class="font-weight-bold ml-2 pl-1"><?php echo $courses->course_name ?></h5> 
-                                            </div>  
+                                                <h5 class="font-weight-bold ml-2 pl-1"><?php echo $courses->course_name ?></h5>
+                                            </div>
                                             <div>
-                                            <p><i><?php echo $courses->course_area ?></i></p>
+                                                <p><i><?php echo $courses->course_area ?></i></p>
                                                 <p class="courselist-short-desc"><?php echo $courses->course_shortprofile ?></p>
                                             </div>
                                             <div>
-                                                <!-- <h5>RM<?php echo $courses->course_fee ?></h5> --> 
-                                                <h5><?php echo $courses->course_country ?></h5> 
+                                                <!-- <h5>RM<?php echo $courses->course_fee ?></h5> -->
+                                                <h5><?php echo $courses->course_country ?></h5>
                                             </div>
                                         </div>
                                         <div class=" col-3 mt-5 ">
