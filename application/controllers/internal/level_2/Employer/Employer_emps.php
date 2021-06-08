@@ -61,9 +61,9 @@ class Employer_emps extends CI_Controller
 			$function = $view.$edit_opt.$delete;
 
             if ($emp->emp_approval == 0) {
-                $status = "Pending Approval";
+                $status = '<button type="button" style = "cursor: default;" class="btn btn-warning">Pending</button>';
             } else {
-                $status = "Approved";
+                $status = '<button type="button" style = "cursor: default;" class="btn btn-success">Approved</button>';
             }
 
 			$data[] = array(
@@ -204,9 +204,9 @@ class Employer_emps extends CI_Controller
     {
         $emp_detail = $this->employer_projects_model->get_emp_with_id($this->input->post('emp_id'));
         if ($emp_detail[0]->emp_approval == 0) {
-            $status = "Pending Approval";
+            $status = '<button type="button" style = "cursor: default;" class="btn btn-warning">Pending</button>';
         } else {
-            $status = "Approved";
+            $status = '<button type="button" style = "cursor: default;" class="btn btn-success">Approved</button>';
         }
 
         $output ='

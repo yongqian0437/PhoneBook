@@ -82,7 +82,7 @@ td{
                             <div class="card-body">
                             
                             <div class="table-responsive">
-                                <table id="table_emps" class="table">
+                                <table id="table_emps" class="table table-striped">
                                     <thead>
                                         <tr>
                                             <th>No.</th>
@@ -107,7 +107,7 @@ td{
 
                 <!-- Modal -->
                 <div class="modal fade" id="view_emp" tabindex="-1" role="dialog" aria-labelledby="view_empLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-xl" role="document">
+                    <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                         <div class="modal-header" style = "background-color:#6B9080;">
                             <h5 class="modal-title" id="view_empLabel" style ="color:white;">Employer Project Information</h5>

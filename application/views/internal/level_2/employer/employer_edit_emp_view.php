@@ -106,7 +106,7 @@ label{
                                     </div>
                                     <div class="form-row px-4 pt-4">
                                         <div class="form-group col-md-12">
-                                            <input type="file"  accept=".pdf" class="custom-file-input" id="form-group" name="emp_document">
+                                            <input type="file"  accept=".pdf" class="custom-file-input" id="emp_document" name="emp_document">
 											<label class="custom-file-label" for="customFile"><?=$emp_details['emp_document']?></label>
                                             <div style = "color:red; font-size:0.9em;">*Required document: COMPLETED Employer Project Proposal in .PDF file format</div>  
                                         </div>
