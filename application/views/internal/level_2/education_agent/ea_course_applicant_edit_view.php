@@ -28,43 +28,43 @@ setTimeout(function() {
                             <div class="col-lg">
                                 <div class="p-5">                   
                                         <center>
-                                        <div class="pt-5 px-5" style="font-size:23px; letter-spacing: 8px; color:#787878; font-weight:700;">COURSES APPLICANT REGISTRATION PAGE</div>
+                                        <div class="pt-5 px-5" style="font-size:23px; letter-spacing: 8px; color:#787878; font-weight:700;">EDIT COURSES APPLICANT REGISTRATION</div>
                                         </center>
                                         <?=$this->session->flashdata('message')?> 
 
                                           <!-- Input fields (Form) -->
-                                        <form method="post" action="<?= base_url('internal/level_2/education_agent/ea_course_application/submit_edit_course_applicant/'.$edit_course_applicant->c_applicant_id);?>" enctype="multipart/form-data">
+                                        <form method="post" action="<?= base_url('internal/level_2/education_agent/ea_course_application/submit_edit_course_applicant/'.$edit_course_applicant['c_applicant_id'])?>" enctype="multipart/form-data">
 										<?= form_open_multipart('') ?>
 
                                         <!--Course Applicant first Name -->
                                         <div class="form-row pt-3 px-3">
 											<div class="form-group col-md-6 px-2">
-												<input type="text" name="c_applicant_fname" class="form-control border-bottom" id="c_applicant_fname" style="border: 0;" placeholder="Enter Course Applicant First Name" value = "<?=$edit_course_applicant->c_applicant_fname?>" required>
+												<input type="text" name="c_applicant_fname" class="form-control border-bottom" id="c_applicant_fname" style="border: 0;" placeholder="Enter Course Applicant First Name" value = "<?=$edit_course_applicant['c_applicant_fname']?>" required>
 											</div>
                                             <div class="form-group col-md-6 px-2">
-												<input type="text" name="c_applicant_lname" class="form-control border-bottom" id="c_applicant_lname" style="border: 0;" placeholder="Enter Course Applicant Last Name" value = "<?=$edit_course_applicant->c_applicant_lname?>" required>
+												<input type="text" name="c_applicant_lname" class="form-control border-bottom" id="c_applicant_lname" style="border: 0;" placeholder="Enter Course Applicant Last Name" value = "<?=$edit_course_applicant['c_applicant_lname']?>" required>
 											</div>
 										</div>
                                         
                                         <!--Phone Number-->
                                         <div class="form-row pt-3 px-3">
 											<div class="form-group col-md-12 px-2">
-												<input type="number" name="c_applicant_phonenumber" class="form-control border-bottom" id="c_applicant_phonenumber" style="border: 0;" placeholder="Enter Course Applicant Phone Number" value = "<?=$edit_course_applicant->c_applicant_phonenumber?>" required>
+												<input type="number" name="c_applicant_phonenumber" class="form-control border-bottom" id="c_applicant_phonenumber" style="border: 0;" placeholder="Enter Course Applicant Phone Number" value = "<?=$edit_course_applicant['c_applicant_phonenumber']?>" required>
 											</div>
 										</div>
 
                                         <!--Email Address-->
                                         <div class="form-row pt-3 px-3">
 											<div class="form-group col-md-12 px-2">
-												<input type="email" name="c_applicant_email" class="form-control border-bottom" id="c_applicant_email" style="border: 0;" placeholder="Enter Course Applicant Email Address" value = "<?=$edit_course_applicant->c_applicant_email?>"required>
+												<input type="email" name="c_applicant_email" class="form-control border-bottom" id="c_applicant_email" style="border: 0;" placeholder="Enter Course Applicant Email Address" value = "<?=$edit_course_applicant['c_applicant_email']?>"required>
 											</div>
                                         </div>
 
                                         <!--Course Applicant Nationality -->
                                         <div class="form-row pt-4 px-3">
                                         <div class="form-group col-md-12 px-2">
-                                                <select name="c_applicant_nationality" id="c_applicant_nationality" class="form-control form-select border-bottom" style="border: 0;"  value = "<? $edit_course_applicant->c_applicant_nationality?>" required>
-                                                    <option value=""  >Please select your nationality</option>
+                                                <select name="c_applicant_nationality" id="c_applicant_nationality" class="form-control form-select border-bottom" style="border: 0;" required>
+                                                    <option value = "<?=$edit_course_applicant['c_applicant_nationality']?>" selected><?=$edit_course_applicant['c_applicant_nationality']?></option>
                                                     <option value="Afghanistan">Afghanistan</option>
                                                     <option value="Åland Islands">Åland Islands</option>
                                                     <option value="Albania">Albania</option>
@@ -316,18 +316,30 @@ setTimeout(function() {
                                         <!--Course Applicant DOB and Gender -->
                                         <div class="form-row pt-3 px-3">
                                         <div class="form-group col-md-6 px-2">
-											<input type="date" name="c_applicant_dob" class="form-control border-bottom" id="c_applicant_dob" style="border: 0;" value = "<?=$edit_course_applicant->c_applicant_dob?>" required>
+											<input type="date" name="c_applicant_dob" class="form-control border-bottom" id="c_applicant_dob" style="border: 0;"  value = "<?=$edit_course_applicant['c_applicant_dob']?>" required>
 										</div>
 										<div class="form-holder mb-3 ml-3" style="align-self: flex-end; transform: translateY(4px);">
-											<div class="checkbox-tick">
+											<div class="checkbox-tick" checked="checked">
+                                           
+                                            <?php if($edit_course_applicant['c_applicant_gender']=="Male"||$edit_course_applicant['c_applicant_gender']=="male"){?>
 												<label class="male ml-3">
-													<input type="radio" name="c_applicant_gender" value="male"  required> Male<br>  <!-- value = "<?=$edit_course_applicant->c_applicant_gender?>" -->
+													<input type="radio" name="c_applicant_gender" checked=checked required> Male<br>  
 													<span class="checkmark"></span>
 												</label>
 												<label class="female ml-5">
-													<input type="radio" name="c_applicant_gender" value="female" value = "<?=$edit_course_applicant->c_applicant_gender?>" required> Female<br>     <!-- value = "<?=$edit_course_applicant->c_applicant_gender?>" -->
+													<input type="radio" name="c_applicant_gender" required> Female<br>    
 													<span class="checkmark"></span>
 												</label>
+                                                <?php } else {?> 
+                                                    <label class="male ml-3">
+													<input type="radio" name="c_applicant_gender" required> Male<br>  
+													<span class="checkmark"></span>
+												</label>
+												<label class="female ml-5">
+													<input type="radio" name="c_applicant_gender" checked=checked required> Female<br>    
+													<span class="checkmark"></span>
+												</label>
+                                                    <?php }?>
 											</div>
 										</div>
 									   </div>
@@ -335,8 +347,8 @@ setTimeout(function() {
                                         <!-- Current Level -->
                                         <div class="form-row pt-3 px-3">
                                             <div class="form-group col-md-12 px-2">
-                                                <select name="c_applicant_currentlevel" id="c_applicant_currentlevel" class="form-control form-select border-bottom" style="border: 0;" value = "<?=$edit_course_applicant->c_applicant_currentlevel?>" required>
-                                                    <option value="" selected disabled>Please select your current level </option>
+                                                <select name="c_applicant_currentlevel" id="c_applicant_currentlevel" class="form-control form-select border-bottom" style="border: 0;" required>
+                                                <option value = "<?=$edit_course_applicant['c_applicant_currentlevel']?>" selected><?=$edit_course_applicant['c_applicant_currentlevel']?></option>
                                                     <option value="Foundation">Foundation</option>
                                                     <option value="Certificate">Certificate</option>
                                                     <option value="Diploma">Diploma</option>
@@ -353,39 +365,46 @@ setTimeout(function() {
                                         <!--Home Address-->
                                         <div class="form-row pt-3 px-3">
 											<div class="form-group col-md-12 px-2">
-												<input type="text" name="c_applicant_address" class="form-control border-bottom" id="c_applicant_address" style="border: 0;" placeholder="Enter Course Applicant Home Address" value = "<?=$edit_course_applicant->c_applicant_address?>" required>
+												<input type="text" name="c_applicant_address" class="form-control border-bottom" id="c_applicant_address" style="border: 0;" placeholder="Enter Course Applicant Home Address" value = "<?=$edit_course_applicant['c_applicant_address']?>" required>
 											</div>
 										</div>
 
 										<!-- Application Identification -->
 										<div class="form-row pt-3 px-3">
 											<div class="form-group col-md-12 px-2">
-												<input type="text" name="c_applicant_identification" class="form-control border-bottom" id="c_applicant_identification" style="border: 0;" placeholder="Enter Identification Card No. or Passport No." value = "<?=$edit_course_applicant->c_applicant_identification?>" required>
+												<input type="text" name="c_applicant_identification" class="form-control border-bottom" id="c_applicant_identification" style="border: 0;" placeholder="Enter Identification Card No. or Passport No." value = "<?=$edit_course_applicant['c_applicant_identification']?>" required>
 											</div>
 										</div>
 										
 										<!-- Upload Document -->
-										<div class="form-row pt-4 px-4">
+										<!-- <div class="form-row pt-4 px-4">
 											<div class="form-group col-md-12 px-2">
-												<input type="file" class="custom-file-input" id="customFile" name="c_applicant_document" accept="application/pdf" value = "<?=$edit_course_applicant->c_applicant_document?>" required>
-												<label class="custom-file-label" for="customFile">Upload Document</label>
-												<p style="font-size: 14px">*Required document: Latest Academic Transcript in .PDF file format</p>
+												<input type="file" class="custom-file-input" id="customFile" name="c_applicant_document" accept="application/pdf">
+												<label class="custom-file-label" for="customFile" value = "<?=$edit_course_applicant['c_applicant_document']?>"><?=$edit_course_applicant['c_applicant_document']?></label>
+												<p style="color:red; font-size: 14px">*Required document: Latest Academic Transcript in .PDF file format</p>
 											</div>
-										</div>
+										</div> -->
 
-										<!-- Terms & Condition -->
-										<div class="row justify-content-start mt-4 ml-2">
-											<div class="col">
-												<div class="form-check">
-													<label class="form-check-label">
-														<input type="checkbox" class="form-check-input" required>
-														Please accept our <a href="https://newinti.edu.my/legal/privacy/">terms and conditions</a>
-													</label>
-												</div>
-												<!-- Submit button -->
-												<div class="pt-2 pr-3">
-													<button type="submit" class="btn btn-success" style="float:right; width:23%;">Submit <i class="fas fa-check"></i></button>
-												</div>
+                                        <div class="form-row px-4 pt-4">
+                                        <div class="form-group col-md-12">
+                                            <input type="file"  accept=".pdf" class="custom-file-input" id="c_applicant_document" name="c_applicant_document">
+											<label class="custom-file-label" for="customFile"><?=$edit_course_applicant['c_applicant_document']?></label>
+                                            <div style = "color:red; font-size:0.9em;">*Required document: COMPLETED Employer Project Proposal in .PDF file format</div>  
+                                        </div>
+                                    </div>
+
+                                    <!-- <div class="form-row px-4 pt-4">
+                                        <div class="form-group col-md-12">
+                                            <input type="file"  accept=".pdf" class="custom-file-input" id="emp_document" name="emp_document">
+											<label class="custom-file-label" for="customFile"><?=$emp_details['emp_document']?></label>
+                                            <div style = "color:red; font-size:0.9em;">*Required document: COMPLETED Employer Project Proposal in .PDF file format</div>  
+                                        </div>
+                                    </div> -->
+                                    
+                                        <!-- Submit button -->
+                                        <div class="pt-2 pr-3">
+                                            <button type="submit" class="btn btn-success" style="float:right; width:23%;">Submit <i class="fas fa-check"></i></button>
+                                        </div>
 									</form>   
                                 </div>
                             </div>

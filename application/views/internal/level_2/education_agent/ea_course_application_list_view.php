@@ -1,16 +1,28 @@
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="sweetalert2.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <link rel="stylesheet" href="sweetalert2.min.css">
 <script type="text/javascript">
     var base_url = "<?php echo base_url();?>";
 </script>
+
+<script>
+$(document).ready(function(){
+    $("#course_application_form #select-all").click(function(){
+        $("#course_application_form input[type='checkbox']").prop('checked',this.checked);
+    });
+});
+
+</script>
+
 <!-- Pop up after user added a new course-->
 <?php if($this->session->flashdata('insert_message')){?>
 <script>
-    var courseName = "<?php echo $this->session->flashdata('course_name');?>";
+    var c_applicant_id = "<?php echo $this->session->flashdata('c_applicant_id');?>";
     Swal.fire({
         icon: 'success',
-        text: courseName + '" has been added',
+      //  text: courseName + '" has been added',
+        text: 'Information of Course Applicant ID "' + c_applicant_id + '" has been added',
     })
 </script>
 <?php } ?>
@@ -25,6 +37,8 @@
     })
 </script>
 <?php } ?>
+
+
 <body id="page-top">
 
     <!-- Page Wrapper -->
@@ -42,34 +56,42 @@
                 <!---------------------------------------------------CODE BEGINS------------------------------------------------------------->
 
                 <!-- Page Heading -->
-                <!-- <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800"><?=$company_details['c_name']?>'s Employer Projects</h1>
-                </div> -->
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <h1 class="h3 mb-0 text-gray-800">Course Applications</h1>
+                </div>
 
                 <!-- Breadcrumb -->
-                <div class="row" >
-                    <div class="breadcrumb-wrapper col-xl-10">
+                    <div class="row" >
+                    <div class="breadcrumb-wrapper col-xl-8">
                         <ol class="breadcrumb" style = "background-color:rgba(0, 0, 0, 0);">
                             <li class="breadcrumb-item">
-                                <a href=""><i class="fas fa-tachometer-alt"></i> Home</a>
+                                <a href="<?php echo base_url('internal/level_2/educational_partner/ep_dashboard');?>"><i class="fas fa-tachometer-alt"></i> Home</a>
                             </li>
+                            
                             <li class="breadcrumb-item active">Course Applicants</li>
                         </ol>
                     </div>
-                    <div class = "col-xl-5">
+                    <div class = "col-xl-4">
+                        <div class = "d-flex justify-content-end">
                         <a type="button" href = "<?= base_url('internal/level_2/education_agent/ea_course_application/add_course_application'); ?>" class="btn btn-primary">Add New Course Applicant Form<i class="fas fa-plus pl-2"></i></a>
+                        </div>
                     </div>
                 </div>
-                <br>
                 <!-- Content Row -->
                 <div class="row">
                     <div class="col-xl-12">
                         <!-- Card-->
                         <div class="card ">
+                        <?=$this->session->flashdata('message')?> 
                             <div class="card-body">
                             
                             <div class="table-responsive">
-                                <table id="table_course_applicants" class="table">
+
+                            <form id= "course_application_form" method="post" action="<?= base_url('internal/level_2/education_agent/ea_course_application/delete_all_course_application');?>">
+                                
+                                        <!-- <button type="submit" class="btn btn-warning" name="delete_all">Delete All</button> -->
+                                        <!-- <button type="submit" class="btn btn-danger" name="delete_all"><i class="fas fa-plus pl-2"></i>Delete All</button> -->
+                                          <table id="table_course_applicants" class="table">
                                     <thead>
                                         <tr>
                                         <th>No</th>
@@ -92,7 +114,7 @@
                 </div>
                 <!-- /. Content Row -->
 
-                <!-- Modal -->
+                <!--Modal-->
                 <div class="modal fade" id="view_course_application" tabindex="-1" role="dialog" aria-labelledby="view_casLabel" aria-hidden="true">
                     <div class="modal-dialog modal-xl" role="document">
                         <div class="modal-content">
@@ -102,8 +124,9 @@
                             <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
+                        
                         <div class="modal-body" >
-                            <div id = "view_course_applicant">
+                            <div id = "course_application_information">
 
                             </div>
                         </div>

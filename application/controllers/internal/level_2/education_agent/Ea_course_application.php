@@ -8,7 +8,7 @@ class Ea_course_application extends CI_Controller
 	{
 		parent::__construct();
 	
-        $this->load->model(['user_model','course_applicants_model']);
+        $this->load->model(['user_model','course_applicants_model','universities_model','courses_model']);
         $this->load->library('form_validation');
         $this->load->helper('form');
         // Checks if session is set and if user is signed in as Level 2 user (authorised access). If not, deny his/her access.
@@ -20,7 +20,7 @@ class Ea_course_application extends CI_Controller
 
     public function index()
     {
-        $data['title']= 'Course Application';
+        $data['title']= 'iJEES | Course Application';
         $data['include_js'] ='ea_course_application_list';
         $user_id=$this->session->userdata('user_id');
         $data['course_applicants']=$this->course_applicants_model->get_user_id($user_id);
@@ -32,32 +32,24 @@ class Ea_course_application extends CI_Controller
         $this->load->view('internal/templates/footer');  
     }
 
-    // public function course_application_list()
-    // {
-        
-    //     $data['title']= 'Course Application';
-    //     $this->load->view('internal/templates/header',$data);
-    //     $this->load->view('internal/templates/sidenav',$data);
-    //     $this->load->view('internal/templates/topbar',$data);
-    //     $search_id=$this->session->userdata('user_id');
-    //     $result=$this->course_applicants_model->search_id($search_id);
-    //     //$result=$this->course_applicants_model->index();
-    //     $data=array('calist'=>$result);
-    //     //$data['calist']=$this->course_applicants_model->search_id($search_id);
-    //     $this->load->view('internal/level_2/education_agent/ea_course_application_list_view',$data);
-    //     $this->load->view('internal/templates/footer');  
-    // }
-
     public function add_course_application()
     {
-        $data['title']= 'Add Student Application';
+        $data['title']= 'iJEES | Add Student Application';
+        $data['include_js'] ='ea_course_application_add';
         $data['users']=$this->user_model->search_email();
+        $data['university_data'] = $this->universities_model->select_all_approved_only(); 
+        // var_dump( $data['university_data']);
         $this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav',$data);
         $this->load->view('internal/templates/topbar',$data);
-        $this->load->view('user/registration/ea_course_application_list_view',$data);
+        $this->load->view('internal/level_2/education_agent/ea_course_application_add_view',$data);
         $this->load->view('internal/templates/footer');  
     }
+
+    function fetch_courses()
+	{
+	  echo $this->courses_model->fetch_courses_id($this->input->post('uni_id'));
+	}
 
     public function upload_doc($path, $file_input_name) 
     {
@@ -69,7 +61,7 @@ class Ea_course_application extends CI_Controller
             {
                 $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert" id="alert_message">
                 The file format is not correct</div>');
-                redirect('internal/level_2/ea_course_application/course_applicant_reg');
+               // redirect('internal/level_2/ea_course_application/submit_added_registration_page');
             } else {
                 $doc_data = ($this->upload->data());
                 return $doc_data;
@@ -77,10 +69,10 @@ class Ea_course_application extends CI_Controller
         }
     }
 
-    public function course_applicant_reg()
+    public function submit_added_registration_page()
     {
         $data['title']="iJEES | Course Applicant Registration";
-       
+        $get_course_id=$this->courses_model->fetch_courses_id($this->input->post('uni_id'));
         $this->form_validation->set_rules('c_applicant_phonenumber','Phone Number', 'required|trim|min_length[5]',[
             'min_length'=> 'Phone number too short'
         ]);
@@ -99,11 +91,12 @@ class Ea_course_application extends CI_Controller
             $this->load->view('internal/templates/header',$data);
             $this->load->view('internal/templates/sidenav',$data);
             $this->load->view('internal/templates/topbar',$data);
-            $this->load->view('user/registration/ea_course_application_list_view',$data);
+            $this->load->view('internal/level_2/education_agent/ea_course_application_add_view',$data);
             $this->load->view('internal/templates/footer'); 
         }
         else
         {
+            
             $c_applicant_document= $this->upload_doc('./assets/uploads/course_applicant_form', 'c_applicant_document');
             $user_id=$this->session->userdata('user_id');
             $data=
@@ -119,6 +112,7 @@ class Ea_course_application extends CI_Controller
                 'c_applicant_currentlevel'=>htmlspecialchars($this->input->post('c_applicant_currentlevel',true)),
                 'c_applicant_address'=>htmlspecialchars($this->input->post('c_applicant_address',true)),
                 'c_applicant_identification'=>htmlspecialchars($this->input->post('c_applicant_identification',true)),
+                'course_id'=>htmlspecialchars($this->input->post('course1_id',true)),
                 'c_applicant_document'=>$c_applicant_document['file_name'],
                 
             ];
@@ -134,14 +128,38 @@ class Ea_course_application extends CI_Controller
             ];
             $this->session->set_userdata($course_applicant);
        
-        $this->session->set_flashdata('message','<div class="alert alert-success" role="alert" id="alert_message">
-        You have registered successfully</div>');
-        
-        redirect('internal/level_2/ea_course_application/add_course_application');
+        $this->session->set_flashdata('insert_message', 1); 
+        $this->session->set_flashdata('course_name', $this->input->post('course_name')); 
+
+        redirect('internal/level_2/education_agent/ea_course_application');
         }
         
     }
-   //------------------------------------------------ New Code added------------------------------------------------//
+
+    function submit_added_course_applicant($uni_id)
+    {
+        $data=
+		[
+            'uni_id'=>$uni_id,
+			'course_name'=>htmlspecialchars($this->input->post('course_name')),
+			'course_area'=>htmlspecialchars($this->input->post('course_area')),
+			'course_level'=>htmlspecialchars($this->input->post('course_level')),
+			'course_duration'=>htmlspecialchars($this->input->post('course_duration')),
+			'course_fee'=>htmlspecialchars($this->input->post('course_fee')),
+			'course_shortprofile'=>htmlspecialchars($this->input->post('course_shortprofile')),
+			'course_requirements'=>htmlspecialchars($this->input->post('course_requirements')),
+			'course_country'=>htmlspecialchars($this->input->post('course_country')),
+            'course_intake'=>htmlspecialchars($this->input->post('course_intake')),
+            'course_careeropportunities'=>htmlspecialchars($this->input->post('course_careeropportunities')),
+		];
+
+        $this->courses_model->insert($data);
+        $this->session->set_flashdata('insert_message', 1); 
+        $this->session->set_flashdata('c_applicant_id', $c_applicant_id); 
+
+        redirect('internal/level_2/educational_partner/ep_courses');
+    }
+  
    public function course_application_list()
    {
        // Datatables Variables
@@ -149,9 +167,6 @@ class Ea_course_application extends CI_Controller
        $start = intval($this->input->get("start"));
        $length = intval($this->input->get("length"));
 
-       //$e_details = $this->user_e_model->e_details($this->session->userdata('user_id'));
-      // $employer_projects = $this->employer_projects_model->get_emps_from_employer($e_details['e_id']);
-      
        $course_applicants=$this->course_applicants_model->get_user_id($this->session->userdata('user_id'));
        $counter = 1;
 
@@ -163,10 +178,11 @@ class Ea_course_application extends CI_Controller
 
           $delete = '<span><button type="button" onclick="delete_course_applicant('.$ca->c_applicant_id.')" class="btn icon-btn btn-xs btn-danger waves-effect waves-light delete" ><span class="fas fa-trash"></span></button></span>';
           $edit_opt = '<span class = "px-1"><a type="button" href = "'.$edit_link.'"class="btn icon-btn btn-xs btn-primary waves-effect waves-light"><span class="fas fa-pencil-alt"></span></a></span>';
-          $view = '<span><button type="button" onclick="view_course_application('.$ca->c_applicant_id.')" class="btn icon-btn btn-xs btn-info waves-effect waves-light" data-toggle="modal" data-target="#view_course_application"><span class="fas fa-eye"></span></button></span>';
-          $function = $view.$edit_opt.$delete;
-
-           $data[] = array(
+          $view = '<span><button type="button" onclick="view_course_applicant('.$ca->c_applicant_id.')" class="btn icon-btn btn-xs btn-info waves-effect waves-light" data-toggle="modal" data-target="#view_course_application"><span class="fas fa-eye"></span></button></span>';
+         
+         $function = $view.$edit_opt.$delete;
+           
+          $data[] = array(
                $counter,
                $ca->c_applicant_fname,
                $ca->c_applicant_lname,
@@ -193,41 +209,28 @@ class Ea_course_application extends CI_Controller
    function edit_course_applicant($c_applicant_id)
     {
         $data['title'] = 'iJEES | Edit Course Application Form';
-       // $data['university_data'] = $this->user_ep_model->get_uni_from_ep($this->session->userdata('user_id'));
-       // $data['course_data'] = $this->user_ep_model->get_course_detail($course_id);
-    //    $user_id=$this->session->userdata('user_id');
-    //    $data['course_applicants']=$this->course_applicants_model->get_cas_with_id($user_id);
-       $data['edit_course_applicant']=$this->course_applicants_model->get_cas_id($c_applicant_id);
-    //    var_dump($data['edit_course_applicant']);
-    //    die;
+        $data['edit_course_applicant']=$this->course_applicants_model->get_cas_with_id($c_applicant_id);
+        
 		$this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav');
         $this->load->view('internal/templates/topbar');
-        $this->load->view('internal/level_2/education_agent/ea_edit_course_applicant_view');
+        $this->load->view('internal/level_2/education_agent/ea_course_applicant_edit_view');
         $this->load->view('internal/templates/footer'); 
     }
 
     function submit_edit_course_applicant($c_applicant_id)
     {
-        // $university_data = $this->user_ep_model->get_uni_from_ep($this->session->userdata('user_id'));
-        // $data=
-		// [
-        //     'uni_id'=>$university_data->uni_id,
-		// 	'course_name'=>htmlspecialchars($this->input->post('course_name')),
-		// 	'course_area'=>htmlspecialchars($this->input->post('course_area')),
-		// 	'course_level'=>htmlspecialchars($this->input->post('course_level')),
-		// 	'course_duration'=>htmlspecialchars($this->input->post('course_duration')),
-		// 	'course_fee'=>htmlspecialchars($this->input->post('course_fee')),
-		// 	'course_shortprofile'=>htmlspecialchars($this->input->post('course_shortprofile')),
-		// 	'course_requirements'=>htmlspecialchars($this->input->post('course_requirements')),
-		// 	'course_country'=>htmlspecialchars($this->input->post('course_country')),
-        //     'course_intake'=>htmlspecialchars($this->input->post('course_intake')),
-        //     'course_careeropportunities'=>htmlspecialchars($this->input->post('course_careeropportunities')),
-		// ];
-        
         $data['title']="iJEES | Course Applicant Registration";
 
-            $c_applicant_document= $this->upload_doc('./assets/uploads/course_applicant_form', 'c_applicant_document');
+        // if($_FILES['c_applicant_document']['name'] != "") {
+		// 	$c_applicant_document = $this->upload_doc('./assets/uploads/course_applicant_form', 'c_app_document');
+		// 	$data = [
+		// 		'c_applicant_document' =>$c_applicant_document['file_name'],
+		// 	];
+		// 	$this->course_applicants_model->update($data, $c_applicant_id);
+		// }
+
+           $c_applicant_document= $this->upload_doc('./assets/uploads/course_applicant_form', 'c_applicant_document');
             $user_id=$this->session->userdata('user_id');
             $data=
             [
@@ -264,45 +267,57 @@ class Ea_course_application extends CI_Controller
         $this->course_applicants_model->delete($this->input->post('c_applicant_id'));
     }
 
-   function view_course_applicant()
+    function view_course_applicant()
     {
-        $ca_detail = $this->course_applicants->get_ca_with_id($this->session->userdata('user_id'));
-
-        $output ='
+       $ca_detail= $this->course_applicants_model->get_cas_id($this->input->post('c_applicant_id'));
+    
+       $output ='
         <table class="table table-striped" style = "border:0;">
             <tbody>
                 <tr>
                     <th scope="row">First Name</th>
-                    <td>'.$ca_detail[0]->c_applicant_fname.'</td>
+                    <td>'.$ca_detail->c_applicant_fname.'</td>
                 </tr>
                 <tr>
                     <th scope="row">Last Name</th>
-                    <td>'.$ca_detail[0]->c_applicant_lname.'</td>
+                    <td>'.$ca_detail->c_applicant_lname.'</td>
                 </tr>
                 <tr>
+                    <th scope="row">Phone Number</th>
+                    <td>'.$ca_detail->c_applicant_phonenumber.'</td>
+                </tr>
+                <tr>
+                    <th scope="row">Email</th>
+                    <td>'.$ca_detail->c_applicant_email.'</td>
+               </tr>
+                <tr>
                     <th scope="row">Nationality</th>
-                    <td>RM '.$ca_detail[0]->c_applicant_nationality.'</td>
+                    <td>'.$ca_detail->c_applicant_nationality.'</td>
                 </tr>
                 <tr>
                     <th scope="row">Gender</th>
-                    <td>RM '.$ca_detail[0]->c_applicant_gender.'</td>
+                    <td>'.$ca_detail->c_applicant_gender.'</td>
                 </tr>
-               
                 <tr>
                     <th scope="row">Current Level</th>
-                    <td>RM '.$ca_detail[0]->c_applicant_currentlevel.'</td>
+                    <td>'.$ca_detail->c_applicant_currentlevel.'</td>
+                </tr>
+                <tr>
+                    <th scope="row">Address</th>
+                    <td>'.$ca_detail->c_applicant_address.'</td>
                 </tr>
                 <tr>
                     <th scope="row">Submit Date</th>
-                    <td>RM '.$ca_detail[0]->c_app_submitdate.'</td>
+                    <td>'.$ca_detail->c_app_submitdate.'</td>
                 </tr>
+                <tr>
+                    <th scope="row">Document</th>
+                    <td><a href="'.base_url("assets/uploads/course_applicant_form/").$ca_detail->c_applicant_document.'" target="_blank">'.$ca_detail->c_applicant_document.'</a></td>
             </tbody>
         </table>';
 
         echo $output;
     }
 }
-
-
 
 ?>

@@ -7,6 +7,11 @@ setTimeout(function() {
     $('#alert_message').fadeOut();
 }, 5000); // <-- time in milliseconds
 </script>
+
+<!-- Set base url to javascript variable-->
+<script type="text/javascript">
+    var base_url = "<?php echo base_url();?>";
+</script>
 <!-- Content Wrapper -->
 <div id="content-wrapper" >
 
@@ -33,7 +38,7 @@ setTimeout(function() {
                                         <?=$this->session->flashdata('message')?> 
 
                                           <!-- Input fields (Form) -->
-                                        <form method="post" action="<?= base_url('internal/level_2/education_agent/ea_course_application/course_applicant_reg');?>" enctype="multipart/form-data">
+                                        <form method="post" action="<?= base_url('internal/level_2/education_agent/ea_course_application/submit_added_registration_page');?>" enctype="multipart/form-data">
 										<?= form_open_multipart('') ?>
 
                                         <!--Course Applicant first Name -->
@@ -365,6 +370,31 @@ setTimeout(function() {
 											</div>
                                             <?= form_error('c_applicant_identification','<small class="text-danger pl-3">','</small>');?>
 										</div>
+
+                                        <!-- UNI INPUT -->
+                                        <div class="form-row pt-12 px-3">
+                                            <div class="form-group col-md-12 px-2">
+                                                <label for="university1"></label>
+                                                <select name="university1_id" id="university_1" class="form-control form-select form-select-md">
+                                                    <option value="" selected disabled>Please select a university</option>
+                                                    <?php
+                                                        foreach($university_data as $u) {
+                                                            echo '<option value="'.$u->uni_id.'">'.$u->	uni_name.'</option>';
+                                                        }
+                                                    ?>
+                                                </select>
+                                            </div>  
+                                        </div>
+
+                                         <!-- COURSE INPUT -->
+                                        <div class="form-row pt-12 px-3">
+                                            <div class="form-group col-md-12 px-2" id="course_class_1">
+                                                    <label for="course1"></label>
+                                                    <select name="course1_id" id="course_1" class="form-control form-select form-select-md">
+                                                        <option value="" selected disabled>Please select a course</option>
+                                                    </select>
+                                            </div> 
+                                        </div>   
 										
 										<!-- Upload Document -->
 										<div class="form-row pt-4 px-4">

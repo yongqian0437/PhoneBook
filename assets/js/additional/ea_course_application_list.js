@@ -53,15 +53,18 @@ function delete_course_applicant(c_applicant_id) {
     })
 }
 
-function view_course_applicant(user_id) {
+function view_course_applicant(c_applicant_id) {
 
     $.ajax({
-        url: base_url + "internal/level_2/educational_agent/ea_course_application/view_course_applicant",
+        url: base_url + "internal/level_2/education_agent/ea_course_application/view_course_applicant",
         method: "POST",
-        data: { user_id: user_id },
+        data: { c_applicant_id: c_applicant_id },
         success: function (data) {
-            $('#course_applicant_information').html(data);
+            $('#course_application_information').html(data);
 
         }
     });
 }
+
+
+
