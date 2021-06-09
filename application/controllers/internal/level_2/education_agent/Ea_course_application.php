@@ -69,7 +69,7 @@ class Ea_course_application extends CI_Controller
         }
     }
 
-    public function submit_added_registration_page()
+    public function submit_added_course_applicant()
     {
         $data['title']="iJEES | Course Applicant Registration";
         $get_course_id=$this->courses_model->fetch_courses_id($this->input->post('uni_id'));
@@ -120,45 +120,37 @@ class Ea_course_application extends CI_Controller
              // insert data into database
             $this->course_applicants_model->insert($data);
 
-            $c_applicant_method= $this->input->post('c_applicant_method');
-            $ea=$this->course_applicants_model->valid_ea($c_applicant_method);
-            $course_applicant=
-            [
-                'c_applicant_method'=>$ea['c_applicant_method'],
-            ];
-            $this->session->set_userdata($course_applicant);
-       
         $this->session->set_flashdata('insert_message', 1); 
-        $this->session->set_flashdata('course_name', $this->input->post('course_name')); 
+        $this->session->set_flashdata('c_applicant_fname', $this->input->post('c_applicant_fname')); 
 
         redirect('internal/level_2/education_agent/ea_course_application');
         }
         
     }
 
-    function submit_added_course_applicant($uni_id)
-    {
-        $data=
-		[
-            'uni_id'=>$uni_id,
-			'course_name'=>htmlspecialchars($this->input->post('course_name')),
-			'course_area'=>htmlspecialchars($this->input->post('course_area')),
-			'course_level'=>htmlspecialchars($this->input->post('course_level')),
-			'course_duration'=>htmlspecialchars($this->input->post('course_duration')),
-			'course_fee'=>htmlspecialchars($this->input->post('course_fee')),
-			'course_shortprofile'=>htmlspecialchars($this->input->post('course_shortprofile')),
-			'course_requirements'=>htmlspecialchars($this->input->post('course_requirements')),
-			'course_country'=>htmlspecialchars($this->input->post('course_country')),
-            'course_intake'=>htmlspecialchars($this->input->post('course_intake')),
-            'course_careeropportunities'=>htmlspecialchars($this->input->post('course_careeropportunities')),
-		];
+    // function submit_added_course_applicant($uni_id)
+    // {
+    //     $data=
+	// 	[
+    //         'uni_id'=>$uni_id,
+	// 		'course_name'=>htmlspecialchars($this->input->post('course_name')),
+	// 		'course_area'=>htmlspecialchars($this->input->post('course_area')),
+	// 		'course_level'=>htmlspecialchars($this->input->post('course_level')),
+	// 		'course_duration'=>htmlspecialchars($this->input->post('course_duration')),
+	// 		'course_fee'=>htmlspecialchars($this->input->post('course_fee')),
+	// 		'course_shortprofile'=>htmlspecialchars($this->input->post('course_shortprofile')),
+	// 		'course_requirements'=>htmlspecialchars($this->input->post('course_requirements')),
+	// 		'course_country'=>htmlspecialchars($this->input->post('course_country')),
+    //         'course_intake'=>htmlspecialchars($this->input->post('course_intake')),
+    //         'course_careeropportunities'=>htmlspecialchars($this->input->post('course_careeropportunities')),
+	// 	];
 
-        $this->courses_model->insert($data);
-        $this->session->set_flashdata('insert_message', 1); 
-        $this->session->set_flashdata('c_applicant_id', $c_applicant_id); 
+    //     $this->courses_model->insert($data);
+    //     $this->session->set_flashdata('insert_message', 1); 
+    //     $this->session->set_flashdata('c_applicant_id', $c_applicant_id); 
 
-        redirect('internal/level_2/educational_partner/ep_courses');
-    }
+    //     redirect('internal/level_2/educational_partner/ep_courses');
+    // }
   
    public function course_application_list()
    {
@@ -253,7 +245,7 @@ class Ea_course_application extends CI_Controller
         You have updated successfully</div>');
 
         $this->session->set_flashdata('edit_message', 1); 
-        $this->session->set_flashdata('c_applicant_id', $c_applicant_id); 
+        $this->session->set_flashdata('c_applicant_fname', $this->input->post('c_applicant_fname')); 
 
         redirect('internal/level_2/education_agent/ea_course_application');
 

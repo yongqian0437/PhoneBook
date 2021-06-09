@@ -95,4 +95,5 @@ class course_applicants_model extends CI_Model
        $this->db->where('c_applicant_id',$c_applicant_id);
        return $this->db->get('course_applicants')->row_array();
     }
+
 }

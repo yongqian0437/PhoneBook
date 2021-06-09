@@ -18,11 +18,11 @@ $(document).ready(function(){
 <!-- Pop up after user added a new course-->
 <?php if($this->session->flashdata('insert_message')){?>
 <script>
-    var c_applicant_id = "<?php echo $this->session->flashdata('c_applicant_id');?>";
+    var c_applicant_fname = "<?php echo $this->session->flashdata('c_applicant_fname');?>";
     Swal.fire({
         icon: 'success',
       //  text: courseName + '" has been added',
-        text: 'Information of Course Applicant ID "' + c_applicant_id + '" has been added',
+        text: 'Information of "' + c_applicant_fname + '" has been added',
     })
 </script>
 <?php } ?>
@@ -30,10 +30,10 @@ $(document).ready(function(){
 <!-- Pop up after user edit course information-->
 <?php if($this->session->flashdata('edit_message')){?>
 <script>
-    var c_applicant_id = "<?php echo $this->session->flashdata('c_applicant_id');?>";
+    var c_applicant_fname = "<?php echo $this->session->flashdata('c_applicant_fname');?>";
     Swal.fire({
         icon: 'success',
-        text: 'Information of Course Applicant ID "' + c_applicant_id + '" has been edited',
+        text: 'Information of "' + c_applicant_fname + '" has been edited',
     })
 </script>
 <?php } ?>
@@ -52,8 +52,6 @@ $(document).ready(function(){
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
-                <!---------------------------------------------------CODE BEGINS------------------------------------------------------------->
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
@@ -89,8 +87,6 @@ $(document).ready(function(){
 
                             <form id= "course_application_form" method="post" action="<?= base_url('internal/level_2/education_agent/ea_course_application/delete_all_course_application');?>">
                                 
-                                        <!-- <button type="submit" class="btn btn-warning" name="delete_all">Delete All</button> -->
-                                        <!-- <button type="submit" class="btn btn-danger" name="delete_all"><i class="fas fa-plus pl-2"></i>Delete All</button> -->
                                           <table id="table_course_applicants" class="table">
                                     <thead>
                                         <tr>
@@ -136,8 +132,6 @@ $(document).ready(function(){
                         </div>
                     </div>
                 </div>
-
-                <!---------------------------------------------------CODE ENDS------------------------------------------------------------->
 
                 </div>
                 <!-- ./container-fluid -->

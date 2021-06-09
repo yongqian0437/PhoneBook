@@ -38,7 +38,7 @@ setTimeout(function() {
                                         <?=$this->session->flashdata('message')?> 
 
                                           <!-- Input fields (Form) -->
-                                        <form method="post" action="<?= base_url('internal/level_2/education_agent/ea_course_application/submit_added_registration_page');?>" enctype="multipart/form-data">
+                                        <form method="post" action="<?= base_url('internal/level_2/education_agent/ea_course_application/submit_added_course_applicant');?>" enctype="multipart/form-data">
 										<?= form_open_multipart('') ?>
 
                                         <!--Course Applicant first Name -->
