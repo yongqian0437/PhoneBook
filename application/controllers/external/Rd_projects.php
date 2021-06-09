@@ -34,6 +34,7 @@ class Rd_projects extends CI_Controller
             $this->load->view('external/rd_projects_view');
             $this->load->view('internal/templates/footer');
         } else {
+            $data['ep_id'] = '';
             // var_dump($eps);
             // die;
             $this->load->view('external/templates/header', $data);
