@@ -17,8 +17,7 @@ class Rd_projects extends CI_Controller
         $data['title'] = "iJEES | R&D Projects";
         $data['include_js'] = 'rd_projects_list';
         $data['include_css'] = 'projects';
-
-        // Get EPs that are approved and their details
+        // Get RDs that are approved and their details
         $data['rds'] = $this->rd_projects_model->approved_rdps();
 
         // Check if session is established. Get User ID from session.
@@ -47,7 +46,7 @@ class Rd_projects extends CI_Controller
     {
         $data =
             [
-                'rd_id'            => $this->input->post('ep_id'),
+                'rd_id'            => $this->input->post('rd_id'),
                 'ep_owner_id'        => $this->input->post('ep_owner_id'),
                 'ep_collab_id'        => $this->input->post('ep_collab_id'),
             ];

@@ -2,10 +2,9 @@ $(document).ready(function(){
 
             // To apply for a specific EP
             $('.apply_rd').click(function() {
-                var ep_id = $(this).data('id');
-                var rd_id = $('#rd_id_data').data('id');
-                console.log(ep_id);
-                console.log(rd_id);
+                var ids = $(this).data('id');
+                var ep_id = ids[0];
+                var rd_id = ids[1];
                 // Ask user for confirmation
                 swal({
                         title: "Confirm application?",

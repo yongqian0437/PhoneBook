@@ -92,28 +92,29 @@
                                         <!-- 2 Bottom Buttons -->
 
                                         <div class="bottom_buttons">
-                                        <button type="button" onclick="view_rd(<?php echo $rd['rd_id'];?>)" class="btn icon-btn btn-xs btn-info waves-effect waves-light" data-toggle="modal" data-target="#view_rd"><span class="fas fa-eye"></span></button>
+                                            <button type="button" onclick="view_rd(<?php echo $rd['rd_id']; ?>)" class="btn icon-btn btn-xs btn-info waves-effect waves-light" data-toggle="modal" data-target="#view_rd"><span class="fas fa-eye"></span></button>
                                             <!-- *Check if session is established and if the role is a EP. If yes, show the 'View' and 'Apply Now' button -->
-                                            <?php if ($user_role == 'Education Partner') { ?> 
+                                            <?php if ($user_role == 'Education Partner') { ?>
                                                 <!-- 'View' button becomes visible once EP is logged in -->
-                                                <a class="btn view_doc" href="<?=base_url('assets/uploads/rd_projects/'.$rd['rd_document'])?>" role="button" target="_blank" style="background-color: #8993a3; color:#FFFFFF">View</a>
-
-                                                <!-- **Check if EP has already applied to this specific R&DP. If yes, disable the apply button -->
+                                                <a class="btn view_doc" href="<?= base_url('assets/uploads/rd_projects/' . $rd['rd_document']) ?>" role="button" target="_blank" style="background-color: #8993a3; color:#FFFFFF">View</a>
+                                                <?php if ($rd['ep_id'] != $ep_id) { ?>
+                                                    <!-- **Check if EP has already applied to this specific R&DP. If yes, disable the apply button -->
                                                     <?php $response = $this->rd_applicants_model->past_application($this->session->userdata('user_id'), $rd['rd_id']);
-                                                        if ($response == true) { ?>
-                                                            <button type="button" class="btn applied_rd" disabled>Applied</button>
+                                                    if ($response == true) { ?>
+                                                        <button type="button" class="btn applied_rd" style="background-color: #0077B6; color:white;" disabled>Applied</button>
                                                     <?php } else { ?>
-                                                        <button type="button" class="btn btn-success apply_rd" data-id="<?= $rd['ep_id'] ?>">Apply Now</button>
-                                                        <div style="display:none;" data-id="<?= $rd['rd_id'] ?>" id="rd_id_data"></div>                                                                                                   
+                                                        <button type="button" class="btn btn-success apply_rd" data-id="[<?= $rd['ep_id'] ?>, <?= $rd['rd_id'] ?> ]">Apply Now</button>
                                                     <?php } ?>
-                                                
-                                                <?php } else { ?>
-                                        
-                                                <!-- ***If EP is not logged in, 'Apply Now' button will redirect to Login page -->   
-                                                    <a class="btn apply_reg" href="<?= base_url('user/login/Auth/login');?>">Apply Now</a>
-
                                                 <?php } ?>
+                                            <?php } else { ?>
+                                                <?php if ($rd['ep_id'] != $ep_id) { ?>
+                                                <!-- ***If EP is not logged in, 'Apply Now' button will redirect to Login page -->
+                                                <a class="btn apply_reg" href="<?= base_url('user/login/Auth/login'); ?>">Apply Now</a>
+                                                <?php } ?>
+                                            <?php } ?>
                                         </div>
+
+                                        
                                     </div>
                                 </div>
                             </div>
