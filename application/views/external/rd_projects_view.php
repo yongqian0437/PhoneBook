@@ -109,7 +109,9 @@
                                             <?php } else { ?>
                                                 <?php if ($rd['ep_id'] != $ep_id) { ?>
                                                 <!-- ***If EP is not logged in, 'Apply Now' button will redirect to Login page -->
+                                                <?php if ($user_role != 'Student') { ?>
                                                 <a class="btn apply_reg" href="<?= base_url('user/login/Auth/login'); ?>">Apply Now</a>
+                                                <?php } ?>
                                                 <?php } ?>
                                             <?php } ?>
                                         </div>
