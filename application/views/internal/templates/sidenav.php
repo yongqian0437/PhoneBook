@@ -128,7 +128,7 @@
 
             <!-- Nav Item - Browse R&DP -->
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="<?=base_url('external/Rd_projects')  ;?>">
                     <i class="fas fa-search"></i>
                     <span>Browse R&D Projects</span>
                 </a>

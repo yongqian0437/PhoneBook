@@ -1,6 +1,6 @@
 <?php
 
-class course_applicants_model extends CI_Model
+class rd_applicants_model extends CI_Model
 {
 
     public function __construct()
@@ -11,7 +11,7 @@ class course_applicants_model extends CI_Model
 
     function insert($data)
     {
-        $this->db->insert('course_applicants', $data);
+        $this->db->insert('rd_applicants', $data);
         if ($this->db->affected_rows() > 0) {
             return true;
         } else {
@@ -21,8 +21,8 @@ class course_applicants_model extends CI_Model
 
     function update($data, $id)
     {
-        $this->db->where('c_applicant_id', $id);
-        if ($this->db->update('course_applicants', $data)) {
+        $this->db->where('rd_applicant_id', $id);
+        if ($this->db->update('rd_applicants', $data)) {
             return true;
         } else {
             return false;
@@ -31,8 +31,8 @@ class course_applicants_model extends CI_Model
 
     function delete($id)
     {
-        $this->db->where('c_applicant_id', $id);
-        $this->db->delete('course_applicants');
+        $this->db->where('rd_applicant_id', $id);
+        $this->db->delete('rd_applicants');
         if ($this->db->affected_rows() > 0) {
             return true;
         } else {
@@ -42,28 +42,24 @@ class course_applicants_model extends CI_Model
 
     function select_all()
     {
-        return $this->db->get('course_applicants')->result();
+        return $this->db->get('rd_applicants')->result();
     }
 
     function select_condition($condition)
     {
         $this->db->where($condition);
-        return $this->db->get('course_applicants')->result();
+        return $this->db->get('rd_applicants')->result();
     }
 
-    function find_data_with_id($id) 
+    //Check if there is existing ep_collab_id and emp_id in the same row (existing record of student R&DP application)
+    function past_application($user_id , $rd_id)
     {
-        $this->db->where('user_id', $id);
-        return $this->db->get('user_student')->row();
-    }
-
-    function past_application($course_id, $user_email)
-    {
-        $condition = "`course_id`= '$course_id' AND `c_applicant_email`= '$user_email' ";
-        $this->db->select('c_applicant_id')
-                 ->from('course_applicants')
-                 ->where($condition)
-                 ->limit(1);
+        $this->db->where('user_id ', $user_id);
+        $ep_data = $this->db->get('user_ep')->row();
+        $condition = "ep_collab_id = '$ep_data->ep_id' AND rd_id = '$rd_id'";
+        $this->db->from('rd_applicants')
+            ->where($condition)
+            ->limit(1);
         $result = $this->db->get()->result_array();
         // $condition = $this->db->get()->result_array();
         if ($result)
@@ -71,6 +67,4 @@ class course_applicants_model extends CI_Model
         else
             return false;
     }
-
-
 }

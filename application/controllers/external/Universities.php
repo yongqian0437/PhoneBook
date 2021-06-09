@@ -10,6 +10,7 @@ class Universities extends CI_Controller {
 		$this->load->model('user_model');
 		$this->load->model('universities_model');
 		$this->load->model('courses_model');
+		$this->load->model('course_applicants_model');		
 
 	}
 
@@ -86,16 +87,32 @@ class Universities extends CI_Controller {
 		$this->load->view('external/templates/header' ,$data);
 		$this->load->view('external/universitiy_detail_view');
 		$this->load->view('external/templates/footer');
+
 	}
 
 	public function fetch_course_list()
 	{
 		$course_data = $this->courses_model->get_course_with_course_area($this->input->post('course_area'), $this->input->post('uni_id')); 
 		$base_url = base_url();
+
 		$output = "";
 
 		foreach($course_data as $row)
 		{
+			$apply_link = $base_url."external/Courses/course_applicant/".$row->course_id;
+			if ($this->session->userdata('user_role') == 'Student') { 
+
+				$response = $this->course_applicants_model->past_application($row->course_id, $this->session->userdata('user_email'));
+
+				if ($response == true) { 
+					$apply_button = '<a type="button" target="_blank" class="btn btn-sm" style = "background-color:#3d3d3d; color:white; font-size:0.9em;" disabled>Applied</a>';
+				} else { 
+					$apply_button = '<a type="button" target="_blank" href = "'.$apply_link.'" class="btn btn-sm" style = "background-color:#A4C3B2; color:white; font-size:0.9em;">Apply</a>';
+				} 
+	   
+		    } else { 
+				$apply_button = '<a type="button" target="_blank" href = "'.$base_url.'user/login/Auth/login" class="btn btn-sm" style = "background-color:#A4C3B2; color:white; font-size:0.9em;">Apply</a>';
+		    }
 
 			$course_link = $base_url."external/Courses/view_course/".$row->course_id;
 
@@ -120,13 +137,15 @@ class Universities extends CI_Controller {
 				</div>
 				<div class="col-md-3 pt-2 pl-5">
 					<a type="button" target="_blank" href = "'.$course_link.'" class="btn btn-sm " style = "background-color:#A4C3B2; color:white; font-size:0.9em;">View</a>
-					<button type="button" target="_blank" href = "" class="btn btn-sm" style = "background-color:#A4C3B2; color:white; font-size:0.9em;">Apply</button>
+					'.$apply_button.'
 				</div>
 			</div>
 			';
 		}
 
 		echo $output;
+
+		
 	}
  
 }

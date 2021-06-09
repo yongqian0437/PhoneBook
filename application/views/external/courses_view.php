@@ -93,7 +93,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group align-self-end pull-right">
-                                    <button class="button-custom-color">Search</button>  
+                                    <button class="button-custom-color">Search</button>
                                 </div>
                             </div>
                         </form>
@@ -101,25 +101,40 @@
                         <?php if (!empty($course_data)) {
                             foreach ($course_data as $courses) { ?>
                                 <div class="card-body shadow mb-4">
-                                    <div class="row">  
-                                        <div class="col-9 "> 
+                                    <div class="row">
+                                        <div class="col-9 ">
                                             <div class="row justify-content-between">
-                                                <h5 class="font-weight-bold ml-2 pl-1"><?php echo $courses->course_name ?></h5> 
-                                            </div>  
+                                                <h5 class="font-weight-bold ml-2 pl-1"><?php echo $courses->course_name ?></h5>
+                                            </div>
                                             <div>
-                                            <p><i><?php echo $courses->course_area ?></i></p>
+                                                <p><i><?php echo $courses->course_area ?></i></p>
                                                 <p class="courselist-short-desc"><?php echo $courses->course_shortprofile ?></p>
                                             </div>
                                             <div>
-                                                <!-- <h5>RM<?php echo $courses->course_fee ?></h5> --> 
-                                                <h5><?php echo $courses->course_country ?></h5> 
+                                                <!-- <h5>RM<?php echo $courses->course_fee ?></h5> -->
+                                                <h5><?php echo $courses->course_country ?></h5>
                                             </div>
                                         </div>
                                         <div class=" col-3 mt-5 ">
-                                            <a type=" button" class="button-custom-color float-right">Apply</a>
-                                            <a href="<?php echo base_url() . 'external/Courses/view_course/' . $courses->course_id ?>" class="button-custom-color float-right mr-1">View</a>
+                                            <?php if ($user_role == 'Student') { ?>
+                                                <?php $response = $this->course_applicants_model->past_application($courses->course_id, $user_email);
+                                                if ($response == true) { ?>
+                                                    <button type=" button" class="button-disabled float-right" disabled>Applied</button>
+                                                <?php } else { ?>
+                                                    <a href="<?php echo base_url() . 'external/Courses/course_applicant/' . $courses->course_id ?>" type=" button" class="button-custom-color float-right">Apply</a>
+                                                <?php } ?>
+                                                <a href="<?php echo base_url() . 'external/Courses/view_course/' . $courses->course_id ?>" class="button-custom-color float-right mr-1">View</a>
+
+                                            <?php } else { ?>
+
+                                                <!-- ***If Student is not logged in, 'Apply Now' button will redirect to Login page -->
+                                                <a class="button-custom-color float-right" href="<?= base_url('user/login/Auth/login'); ?>">Apply</a>
+                                                <a href="<?php echo base_url() . 'external/Courses/view_course/' . $courses->course_id ?>" class="button-custom-color float-right mr-1">View</a>
+
+                                            <?php } ?>
                                         </div>
                                     </div>
+
                                 </div>
 
                             <?php } ?>
