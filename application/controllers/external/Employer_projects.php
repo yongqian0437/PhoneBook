@@ -27,8 +27,6 @@ class Employer_projects extends CI_Controller
         // Get EPs that are approved and their details
         $eps= $this->employer_projects_model->approved_eps();
         $data['eps'] = $eps;
-        // var_dump($eps);
-        // die;
         $data['include_css'] = 'projects';
         $this->load->view('external/templates/header', $data);
         $this->load->view('external/employer_projects_view', $data); 

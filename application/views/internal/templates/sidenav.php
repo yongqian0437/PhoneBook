@@ -175,7 +175,7 @@
 
             <!-- Nav Item - Past Applications -->
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="<?=base_url('internal/level_2/Employer/Employer_emp_applicants');?>">
                     <i class="fas fa-user-edit"></i>
                     <span>EP Applicants</span>
                 </a>

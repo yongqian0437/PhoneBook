@@ -7,7 +7,7 @@ class Employer_emps extends CI_Controller
     public function __construct()
 	{
 		parent::__construct();
-		$this->load->model(['user_model', 'user_e_model', 'company_model', 'employer_projects_model']);
+		$this->load->model(['user_e_model', 'company_model', 'employer_projects_model']);
         date_default_timezone_set('Asia/Kuala_Lumpur');
         
         // Checks if session is set and if user is signed in as Employer (authorised access). If not, deny his/her access.
@@ -149,6 +149,8 @@ class Employer_emps extends CI_Controller
 
     function delete_emp()
     {
+        $emp_details = $this->employer_projects_model->emp_details($this->input->post('emp_id'));
+        unlink('./assets/uploads/employer_projects/'.$emp_details['emp_document']);
         $this->employer_projects_model->delete($this->input->post('emp_id'));
     }
 
@@ -173,6 +175,8 @@ class Employer_emps extends CI_Controller
     function submit_edit_emp($emp_id)
     {
         if($_FILES['emp_document']['name'] != "") {
+            $original_details = $this->employer_projects_model->emp_details($emp_id);
+            unlink('./assets/uploads/employer_projects/'.$original_details['emp_document']);
 			$emp_document = $this->upload_doc('./assets/uploads/employer_projects', 'emp_document');
 			$data = [
 				'emp_document' => $emp_document['file_name'],
@@ -221,7 +225,7 @@ class Employer_emps extends CI_Controller
                     <td>'.$status.'</td>
                 </tr>
                 <tr>
-                    <th scope="row">Project Title</th>
+                    <th scope="row">Employer Project Title</th>
                     <td>'.$emp_detail[0]->emp_title.'</td>
                 </tr>
                 <tr>

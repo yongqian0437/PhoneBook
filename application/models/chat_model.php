@@ -9,7 +9,7 @@ class chat_model extends CI_Model
         $this->load->database();
     }
 
-    public function send_message($data) // check in chat.js and controller send_text_message function
+    public function send_message($data)
     {
         $res = $this->db->insert('chat', $data);
         if ($res == 1)
@@ -18,7 +18,7 @@ class chat_model extends CI_Model
             return false;
     }
 
-    public function receiver_chat_history($receiver_id) // check in controller get_chat_history function
+    public function receiver_chat_history($receiver_id)
     {
 
         $sender_id = $this->session->userdata['user_id'];
@@ -36,7 +36,7 @@ class chat_model extends CI_Model
             return false;
     }
 
-    public function receiver_message_list($receiver_id) // check in controller clear_chat function
+    public function receiver_message_list($receiver_id)
     {
         $this->db->select('*');
         $this->db->from('chat');
@@ -48,7 +48,7 @@ class chat_model extends CI_Model
             return false;
     }
 
-    public function clear_chat_by_id ($receiver_id) // check in controller clear_chat function
+    public function clear_chat_by_id ($receiver_id)
     {
         $res = $this->db->delete('chat', ['receiver_id' => $receiver_id]);
         if ($res == 1)
