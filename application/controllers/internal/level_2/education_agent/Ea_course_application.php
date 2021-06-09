@@ -38,7 +38,7 @@ class Ea_course_application extends CI_Controller
         $data['include_js'] ='ea_course_application_add';
         $data['users']=$this->user_model->search_email();
         $data['university_data'] = $this->universities_model->select_all_approved_only(); 
-        // var_dump( $data['university_data']);
+      
         $this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav',$data);
         $this->load->view('internal/templates/topbar',$data);
@@ -222,15 +222,14 @@ class Ea_course_application extends CI_Controller
     {
         $data['title']="iJEES | Course Applicant Registration";
 
-        // if($_FILES['c_applicant_document']['name'] != "") {
-		// 	$c_applicant_document = $this->upload_doc('./assets/uploads/course_applicant_form', 'c_app_document');
-		// 	$data = [
-		// 		'c_applicant_document' =>$c_applicant_document['file_name'],
-		// 	];
-		// 	$this->course_applicants_model->update($data, $c_applicant_id);
-		// }
+        if($_FILES['c_applicant_document']['name'] != "") {
+			$c_applicant_document = $this->upload_doc('./assets/uploads/course_applicant_form', 'c_applicant_document');
+			$data = [
+				'c_applicant_document' =>$c_applicant_document['file_name'],
+			];
+			$this->course_applicants_model->update($data, $c_applicant_id);
+		}
 
-           $c_applicant_document= $this->upload_doc('./assets/uploads/course_applicant_form', 'c_applicant_document');
             $user_id=$this->session->userdata('user_id');
             $data=
             [
@@ -245,7 +244,6 @@ class Ea_course_application extends CI_Controller
                 'c_applicant_currentlevel'=>htmlspecialchars($this->input->post('c_applicant_currentlevel',true)),
                 'c_applicant_address'=>htmlspecialchars($this->input->post('c_applicant_address',true)),
                 'c_applicant_identification'=>htmlspecialchars($this->input->post('c_applicant_identification',true)),
-                'c_applicant_document'=>$c_applicant_document['file_name'],
                 
             ];
 
@@ -299,12 +297,20 @@ class Ea_course_application extends CI_Controller
                     <td>'.$ca_detail->c_applicant_gender.'</td>
                 </tr>
                 <tr>
+                    <th scope="row">DOB</th>
+                    <td>'.$ca_detail->c_applicant_dob.'</td>
+                </tr>
+                <tr>
                     <th scope="row">Current Level</th>
                     <td>'.$ca_detail->c_applicant_currentlevel.'</td>
                 </tr>
                 <tr>
                     <th scope="row">Address</th>
                     <td>'.$ca_detail->c_applicant_address.'</td>
+                </tr>
+                <tr>
+                    <th scope="row">Identification</th>
+                    <td>'.$ca_detail->c_applicant_identification.'</td>
                 </tr>
                 <tr>
                     <th scope="row">Submit Date</th>
