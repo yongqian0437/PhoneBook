@@ -236,7 +236,7 @@
                 <div id="applications_collapse" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="">Courses</a>
+                        <a class="collapse-item" href="<?=base_url('internal/admin_panel/Student_application');?>">Courses</a>
                         <a class="collapse-item" href="">Employer Projects</a>
                     </div>
                 </div>
