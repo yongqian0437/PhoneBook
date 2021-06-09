@@ -5,8 +5,8 @@
 
 <script type="text/javascript">
     $(function () {
-        // To apply for a specific EP
-        $('.apply_emp').click(function () {
+        // To apply for a specific RDP
+        $('.apply_rdp').click(function () {
             var ep_id = $(this).data('id');
             // Ask user for confirmation
             swal({
@@ -19,7 +19,7 @@
                 .then((send_application) => {
                     if (send_application) {
                         $.ajax({
-                            url: 'Employer_projects/send_emp_application/',
+                            url: 'Employer_projects/send_rdp_application/',
                             type: 'post',
                             data: {ep_id: ep_id},
                             success: function() { 
@@ -99,7 +99,7 @@
                                                 </table>
                                             </li>
                                             <li class="list-group-item">
-                                                <span style="text-align: left"><?= $ep['emp_description'] ?></span>
+                                                <span style="text-align: justify"><?= $ep['emp_description'] ?></span>
                                             </li>
                                         </ul>
                                         <br>
