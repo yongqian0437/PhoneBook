@@ -11,6 +11,8 @@ class Ep_dashboard extends CI_Controller {
 		$this->load->model('user_ep_model');
 		$this->load->model('courses_model');
 		$this->load->model('universities_model');
+		$this->load->model('rd_projects_model');
+        $this->load->model('rd_applicants_model');
 
         // Checks if session is set and if user signed in has a role. If not, deny his/her access.
         if (!$this->session->userdata('user_id') || !$this->session->userdata('user_role')){  
@@ -22,8 +24,23 @@ class Ep_dashboard extends CI_Controller {
 	{
 		
 		$data['title'] = 'iJEES | Dashboard';
-		$data['university_data'] = $this->user_ep_model->get_uni_from_ep($this->session->userdata('user_id')); 
-        // $data['c'] = $this->user_ep_model->get_uni_from_ep($this->session->userdata('user_id')); 
+		$data['include_js'] = 'ep_dashboard';
+
+		//get number of course
+		$university_data = $this->user_ep_model->get_uni_from_ep($this->session->userdata('user_id')); 
+		$data['num_courses'] = count($this->user_ep_model->get_course_for_uni($university_data->uni_id));
+
+		//get number of my R&D project
+		$ep_data = $this->user_ep_model->get_ep_detail_with_user_id($this->session->userdata('user_id'));
+		$data['num_rd_projects'] = count($this->user_ep_model->get_rd_for_ep($ep_data->ep_id));
+
+		//get number of all my application
+        $ep_data = $this->user_ep_model->get_ep_detail_with_user_id($this->session->userdata('user_id'));
+		$data['num_rd_applicants'] = count($this->rd_applicants_model->all_my_applications($ep_data->ep_id));
+
+		//Get number of partners
+        $ep_data = $this->user_ep_model->get_ep_detail_with_user_id($this->session->userdata('user_id'));
+		$data['num_partners']= count($this->rd_applicants_model->all_project_partners($ep_data->ep_id));
 
 		$this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav');
