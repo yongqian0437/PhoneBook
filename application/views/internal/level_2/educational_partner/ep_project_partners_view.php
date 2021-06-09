@@ -32,7 +32,7 @@ td{
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800"><?=$university_data->uni_name?>'s Applications</h1>
+                    <h1 class="h3 mb-0 text-gray-800"><?=$university_data->uni_name?>'s Project Partners</h1>
                 </div>
 
                 <!-- Breadcrumn -->
@@ -42,7 +42,7 @@ td{
                             <li class="breadcrumb-item">
                                 <a href="<?php echo base_url('internal/level_2/educational_partner/ep_dashboard');?>"><i class="fas fa-tachometer-alt"></i> Home</a>
                             </li>
-                            <li class="breadcrumb-item active">My Applications</li>
+                            <li class="breadcrumb-item active">Project Partners</li>
                         </ol>
                     </div>
                 </div>
@@ -54,13 +54,14 @@ td{
                             <div class="card-body">
                             
                             <div class="table-responsive">
-                                <table id="table_my_app" class="table table-striped">
+                                <table id="table_project_partners" class="table table-striped">
                                     <thead>
                                         <tr>
                                             <th>No.</th>
-                                            <th>R&D Title</th>
-                                            <th>Owner</th>
-                                            <th>Person in charge</th>
+                                            <th>Partner Name</th>
+                                            <th>Partner University</th>
+                                            <th>Project Title</th>
+                                            <th>Person in Charge</th>
                                             <th>Applied Date</th>
                                             <th>Action</th>
                                         </tr>
@@ -81,13 +82,13 @@ td{
                     <div class="modal-dialog modal-xl" role="document">
                         <div class="modal-content">
                         <div class="modal-header" style = "background-color:#6B9080;">
-                            <h5 class="modal-title" id="view_my_rd_projectLabel" style ="color:white;">Applied R&D Project Information</h5>
+                            <h5 class="modal-title" id="view_my_rd_projectLabel" style ="color:white;">R&D Project Partner's Information</h5>
                             <button style ="color:white;" type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body" >
-                            <div id = "my_rd_project_information">
+                            <div id = "project_partner_information">
 
                             </div>
                         </div>
