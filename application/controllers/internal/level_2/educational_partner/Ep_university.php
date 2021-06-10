@@ -46,8 +46,12 @@ class Ep_university extends CI_Controller {
 
 	public function after_edit_university($uni_id)
 	{
+		$university_data = $this->universities_model->get_uni_with_id($uni_id); 
 
 		if($_FILES['uni_background']['name'] != "") {
+
+			unlink($university_data[0]->uni_background);
+
 			$uni_background = $this->upload_img('./assets/img/universities', 'uni_background');  
 			$uni_background_path = "assets/img/universities/".$uni_background['file_name'];
 			$data = [
@@ -57,6 +61,9 @@ class Ep_university extends CI_Controller {
 		}
 
 		if($_FILES['uni_logo']['name'] != "") {
+
+			unlink($university_data[0]->uni_logo);
+
 			$uni_logo= $this->upload_img('./assets/img/universities', 'uni_logo');
 			$uni_logo_path = "assets/img/universities/".$uni_logo['file_name'];
 			$data = [

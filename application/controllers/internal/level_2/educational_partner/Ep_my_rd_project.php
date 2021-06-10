@@ -202,6 +202,9 @@ class Ep_my_rd_project extends CI_Controller {
 
 	function delete_my_rd_project()
     {
+        $rd_data = $this->rd_projects_model->get_rd_details($this->input->post('rd_id'));
+        unlink('./assets/uploads/rd_projects/'.$rd_data->rd_document);
+
         $this->rd_projects_model->delete($this->input->post('rd_id'));
     }
 
@@ -224,6 +227,10 @@ class Ep_my_rd_project extends CI_Controller {
 		$ep_data = $this->user_ep_model->get_ep_detail_with_user_id($this->session->userdata('user_id')); 
 
         if($_FILES['rd_document']['name'] != "") {
+
+            $rd_data = $this->rd_projects_model->get_rd_details($rd_id);
+            unlink('./assets/uploads/rd_projects/'.$rd_data->rd_document);
+
             $rd_document = $this->upload_doc('./assets/uploads/rd_projects', 'rd_document');
             $data = [
 				'rd_document'=>$rd_document['file_name'], 
