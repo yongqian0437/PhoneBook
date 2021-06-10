@@ -8,7 +8,7 @@ $(document).ready(function(){
         },
         "columnDefs": [{
             "width": "15%",
-            "targets": [6]
+            "targets": [5]
         }
         ]
     });

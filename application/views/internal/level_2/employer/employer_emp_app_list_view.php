@@ -55,11 +55,10 @@ td{
                                     <thead>
                                         <tr>
                                             <th>No.</th>
-                                            <th>Student First Name</th>
-                                            <th>Last Name</th>
+                                            <th>Student Full Name</th>
                                             <th>Nationality</th>
                                             <th>EP Title</th>
-                                            <th>Submit Date</th>
+                                            <th>Applied Date</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>

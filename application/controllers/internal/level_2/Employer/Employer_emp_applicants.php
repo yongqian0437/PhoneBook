@@ -58,8 +58,7 @@ class Employer_emp_applicants extends CI_Controller
 
 			$data [] = [ 
 				$counter,
-				$emp_app['user_fname'], // from users table
-				$emp_app['user_lname'],
+				$emp_app['user_fname']. ' ' .$emp_app['user_lname'], // from users table
 				$emp_app['student_nationality'], // from students table
 				$emp_app['emp_title'], // from employer_projects table
                 $emp_app['emp_app_submitdate'], // from emp_applicants table
@@ -88,7 +87,7 @@ class Employer_emp_applicants extends CI_Controller
         <table class="table table-striped" style = "border:0;">
             <tbody>
                 <tr>
-                    <th scope="row">Date Submitted</th>
+                <th scope="row">Date Applied</th>
                     <td>'.$emp_applicant_details['emp_app_submitdate'].'</td>
                 </tr>
                 <tr>
@@ -96,12 +95,8 @@ class Employer_emp_applicants extends CI_Controller
                     <td>'.$emp_applicant_details['emp_title'].'</td>
                 </tr>
                 <tr>
-                    <th scope="row">First Name</th>
-                    <td>'.$emp_applicant_details['user_fname'].'</td>
-                </tr>
-                <tr>
-                    <th scope="row">Last Name</th>
-                    <td>'.$emp_applicant_details['user_lname'].'</td>
+                    <th scope="row">Full Name</th>
+                    <td>'.$emp_applicant_details['user_fname']. ' ' .$emp_applicant_details['user_lname'].'</td>
                 </tr>
                 <tr>
                     <th scope="row">Nationality</th>
