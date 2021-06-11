@@ -28,7 +28,7 @@ td{
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800"><?=$course_applicants['uni_name'] ?>Course Applicants</h1>
+                    <h1 class="h3 mb-0 text-gray-800"><?=$university_data['uni_name'] ?>'s Course Applicants</h1>
                 </div>
 
                 <!-- Breadcrumb -->
