@@ -73,11 +73,14 @@ class course_applicants_model extends CI_Model
     }
 
         // Get students who applied for the Course(s)
-        function get_applicants_from_course($ac_id)
+        function get_applicants_from_course($ac_id, $ac_uni_id)
         {
             $this->db->select('')
                      ->from('course_applicants')
-                     ->join('courses', 'courses.course_id = course_applicants.course_id');
+                     ->join('courses', 'courses.course_id = course_applicants.course_id')
+                     ->join('users', 'users.user_id = course_applicants.c_applicant_method') //change to user id
+                     ->join('universities', 'universities.uni_id = courses.uni_id')
+                     ->where('universities.uni_id', $ac_uni_id);
 
             return $this->db->get()->result_array();
         }
