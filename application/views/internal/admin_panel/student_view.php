@@ -1,3 +1,12 @@
+<style>
+th{
+    color:black;
+}
+td{
+    color: rgba(0,0,0,0.7);
+}
+</style>
+
 <!-- Content Wrapper -->
 <div id="content-wrapper" >
 
@@ -13,7 +22,7 @@
             <h6 class="m-0 font-weight-bold text-primary">Students</h6>
         </div>
         <div class="card-body">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table id="dataTable" class="table table-striped">  
                     <thead>
                         <tr>
                             <th>No</th>

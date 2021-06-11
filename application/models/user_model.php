@@ -42,10 +42,21 @@ class user_model extends CI_Model
         }
     }
 
-    public function update_approve($id,$data)
+    // public function update_approve($id,$data)
+    // {
+    //     $this->db->where('user_id',$id);
+    //     return $this->db->update('users',$data);
+    // }
+
+    function update_approve($id,$data)
     {
-        $this->db->where('user_id',$id);
-        return $this->db->update('users',$data);
+        $this->db->where('user_id', $id);
+        if ($this->db->update('users', $data)) {
+            return true;
+        } else {
+            return false;
+        }
+       
     }
 
        public function  activated_acc($condition)

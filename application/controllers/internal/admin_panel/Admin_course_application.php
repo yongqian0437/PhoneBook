@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Student_application extends CI_Controller 
+class Admin_course_application extends CI_Controller 
 {
 
     public function __construct()
@@ -24,7 +24,7 @@ class Student_application extends CI_Controller
         $this->load->view('internal/templates/topbar',$data);
         $result=$this->course_applicants_model->index();
         $data=array('calist'=>$result);
-        $this->load->view('internal/admin_panel/student_application_view',$data);
+        $this->load->view('internal/admin_panel/admin_course_application_view',$data);
         $this->load->view('internal/templates/footer');
     }
 }

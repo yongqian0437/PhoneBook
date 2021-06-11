@@ -3,35 +3,26 @@ $(document).ready(function () {
   $('#dataTable').DataTable();
 
   $('table.display').DataTable({
-    "lengthMenu": [5, 10, 25, 50],
+    "lengthMenu": [10, 25, 50, 100],
   });
 
 
   $('#all_users_table').DataTable({
-    "lengthMenu": [5, 10, 25, 50],
+    "lengthMenu": [10, 25, 50, 100],
     "scrollX": true,
-    "columnDefs": [{
-      "width": "20%",
-      "targets": [6]
-    }]
   });
 
+
   $('#activated_table').DataTable({
-    "lengthMenu": [5, 10, 25, 50],
+    "lengthMenu": [10, 25, 50, 100],
     "scrollX": true,
-    "columnDefs": [{
-      "width": "20%",
-      "targets": [7]
-    }]
+
   });
 
   $('#inactivate_table').DataTable({
-    "lengthMenu": [5, 10, 25, 50],
+    "lengthMenu": [10, 25, 50, 100],
     "scrollX": true,
-    "columnDefs": [{
-      "width": "20%",
-      "targets": [7]
-    }]
+
   });
 
   $('#chat_table').DataTable({
@@ -46,3 +37,4 @@ $(document).ready(function () {
   });
 
 });
+

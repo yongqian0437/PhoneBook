@@ -96,4 +96,9 @@ class course_applicants_model extends CI_Model
        return $this->db->get('course_applicants')->row_array();
     }
 
+    public function ca_details($ca_id)
+    {
+     return $this->db->get_where('course_applicants',['c_applicant_id'=>$ca_id])->row_array();
+    }
+
 }

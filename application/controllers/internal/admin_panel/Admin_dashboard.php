@@ -18,7 +18,7 @@ class Admin_dashboard extends CI_Controller
 
     public function index()
     {
-        $data['title']= 'All users';
+        $data['title']= 'iJEES | All users';
         $data['users']=$this->user_model->search_email();
         $this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav',$data);
@@ -28,7 +28,7 @@ class Admin_dashboard extends CI_Controller
 
     public function users_accounts_nav()
     {
-        $data['title']= 'All users';
+        $data['title']= 'iJEES | All users';
         $data['users']=$this->user_model->search_email();
         $this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav',$data);
@@ -38,6 +38,7 @@ class Admin_dashboard extends CI_Controller
         $this->load->view('internal/admin_panel/users_accounts_view',$data);
         $this->load->view('internal/templates/footer');  
     }
+
     
     public function update_acc_approval()
     {
@@ -65,36 +66,59 @@ class Admin_dashboard extends CI_Controller
               if($users['user_approval']==1)
             { 
                 $this->_sendEmail();
-                $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
-                User account is approved</div>');
+                $this->session->set_flashdata('message','<div class="alert alert-success" role="alert" id="alert_message">
+                User account is activated</div>');
             }
             else
             {
-               $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
-               User account is not approved</div>');
+               $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert" id="alert_message">
+               User account is not activated</div>');
             }
             redirect('internal/admin_panel/Admin_dashboard/users_accounts_nav');
         }
+
+       
+    
+        //     $id=$this->input->post('user_id');
+        //     $this->load->model('user_model','users');
+        //    // $data=$this->input->post('user_approval');
+        //     if($this->input->post('user_id')!=1){
+        //     if($this->input->post('user_approval')==1)
+        //     {
+        //         $user_approval=0;
+        //     }
+        //     else 
+        //     {
+        //         $user_approval=1;
+        //     }
+        //     $data=
+        //     array(
+        //         'user_approval'=>$user_approval
+        //     );
+        //     $up_approval=$this->user_model->update_approve($id,$data);
+        //     }
+
+        //$this->user_model->update_approve($this->input->post('user_id'),$this->input->post('user_approval'));
     }
 
-    public function delete_acc()
-    {
-        $id=$_REQUEST['sid'];
-        $this->user_model->deletedata($id);
-        $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
-        User account is deleted</div>');
-        redirect('internal/admin_panel/Admin_dashboard/users_accounts_nav');
-    }
+    // public function delete_acc()
+    // {
+    //     $id=$_REQUEST['sid'];
+    //     $this->user_model->deletedata($id);
+    //     $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
+    //     User account is deleted</div>');
+    //     redirect('internal/admin_panel/Admin_dashboard/users_accounts_nav');
+    // }
 
-    public function decline_acc()
-    {
-        $id=$_REQUEST['sid'];
-        $this->user_model->deletedata($id);
-        $this->_sendEmail();
-        $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
-        User account is declined</div>');
-        redirect('internal/admin_panel/Admin_dashboard/users_accounts_nav');
-    }
+    // public function decline_acc()
+    // {
+    //     $id=$_REQUEST['sid'];
+    //     $this->user_model->deletedata($id);
+    //    // $this->_sendEmail();
+    //     $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
+    //     User account is declined</div>');
+    //     redirect('internal/admin_panel/Admin_dashboard/users_accounts_nav');
+    // }
 
         private function _sendEmail()
     {
@@ -158,7 +182,7 @@ class Admin_dashboard extends CI_Controller
 
     public function show_activated_acc()
     { 
-        $data['title']= 'Users Activated';
+        $data['title']= 'iJEES | Active Users';
         $data['users']=$this->user_model->search_email();
         $this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav',$data);
@@ -166,15 +190,13 @@ class Admin_dashboard extends CI_Controller
         $condition=1;
         $result=$this->user_model->activated_acc($condition);
         $data=array('userslist'=>$result);
-        $this->load->view('internal/admin_panel/activated_acc_view',$data);
+        $this->load->view('internal/admin_panel/active_acc_view',$data);
         $this->load->view('internal/templates/footer'); 
-      
-    
     }
 
     public function show_inactivate_acc()
     {
-        $data['title']= 'Users Inactivated';
+        $data['title']= 'iJEES | Inactive Users';
         $data['users']=$this->user_model->search_email();
         $this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav',$data);
@@ -182,7 +204,7 @@ class Admin_dashboard extends CI_Controller
         $condition=0;
         $result=$this->user_model->inactivate_acc($condition);
         $data=array('userslist'=>$result);
-        $this->load->view('internal/admin_panel/inactivate_acc_view',$data);
+        $this->load->view('internal/admin_panel/inactive_acc_view',$data);
         $this->load->view('internal/templates/footer'); 
     }
 

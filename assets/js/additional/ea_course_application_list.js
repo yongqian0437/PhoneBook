@@ -31,8 +31,8 @@ function delete_course_applicant(c_applicant_id) {
         confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
         if (result.isConfirmed) {
-
             $.ajax({
+
                 url: base_url + "internal/level_2/education_agent/ea_course_application/delete_course_applicant",
                 method: "POST",
                 data: { c_applicant_id: c_applicant_id },

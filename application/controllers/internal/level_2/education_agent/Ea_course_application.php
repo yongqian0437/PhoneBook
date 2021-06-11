@@ -215,6 +215,9 @@ class Ea_course_application extends CI_Controller
         $data['title']="iJEES | Course Applicant Registration";
 
         if($_FILES['c_applicant_document']['name'] != "") {
+            $original_details = $this->course_applicants_model->ca_details($c_applicant_id);
+            unlink('./assets/uploads/course_applicant_form/'.$original_details['c_applicant_document']);
+       
 			$c_applicant_document = $this->upload_doc('./assets/uploads/course_applicant_form', 'c_applicant_document');
 			$data = [
 				'c_applicant_document' =>$c_applicant_document['file_name'],
@@ -254,6 +257,9 @@ class Ea_course_application extends CI_Controller
 
     function delete_course_applicant()
     {
+        //$this->course_applicants_model->delete($this->input->post('c_applicant_id'));
+        $ca_details = $this->course_applicants_model->ca_details($this->input->post('c_applicant_id'));
+        unlink('./assets/uploads/course_applicant_form/'.$ca_details['c_applicant_document']);
         $this->course_applicants_model->delete($this->input->post('c_applicant_id'));
     }
 

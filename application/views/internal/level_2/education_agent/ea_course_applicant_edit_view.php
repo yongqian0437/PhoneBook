@@ -323,20 +323,20 @@ setTimeout(function() {
                                            
                                             <?php if($edit_course_applicant['c_applicant_gender']=="Male"||$edit_course_applicant['c_applicant_gender']=="male"){?>
 												<label class="male ml-3">
-													<input type="radio" name="c_applicant_gender" checked=checked required> Male<br>  
+													<input type="radio" name="c_applicant_gender" value="male" checked="checked" required> Male<br>  
 													<span class="checkmark"></span>
 												</label>
 												<label class="female ml-5">
-													<input type="radio" name="c_applicant_gender" required> Female<br>    
+													<input type="radio" name="c_applicant_gender" value="female" required> Female<br>    
 													<span class="checkmark"></span>
 												</label>
                                                 <?php } else {?> 
                                                     <label class="male ml-3">
-													<input type="radio" name="c_applicant_gender" required> Male<br>  
+													<input type="radio" name="c_applicant_gender" value="male" required> Male<br>  
 													<span class="checkmark"></span>
 												</label>
 												<label class="female ml-5">
-													<input type="radio" name="c_applicant_gender" checked=checked required> Female<br>    
+													<input type="radio" name="c_applicant_gender" value="female" checked="checked" required> Female<br>    
 													<span class="checkmark"></span>
 												</label>
                                                     <?php }?>
