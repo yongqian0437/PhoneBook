@@ -6,11 +6,7 @@ $(document).ready(function () {
             url: base_url + "internal/level_2/education_agent/ea_course_application/course_application_list",
             type: "GET",
         },
-        "columnDefs": [{
-            "width": "20%",
-            "targets": [6]
-        }
-        ]
+
     });
 
     $(window).resize(function () {

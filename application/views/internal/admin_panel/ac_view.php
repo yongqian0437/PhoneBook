@@ -27,15 +27,15 @@ td{
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>User ID</th>
+                            <th>Full Name</th>
                             <th>Contact Number</th>
-                            <th>Business email</th>
+                            <th>Business Email</th>
                             <th>University</th>
                             <th>Nationality</th>
                             <th>Gender</th>
                             <th>DOB</th>
                             <th>Document</th>
-                            <th>Submit Date</th>
+                            <th>Submitted Date</th>
                         </tr>
                     </thead>
                     
@@ -46,16 +46,17 @@ td{
                     <?php  
                     echo "<tr>"
                     ."<td>$count</td>"
-                    ."<td>$ac->user_id</td>"
+                    ."<td>$ac->user_fname $ac->user_lname</td>"
                     ."<td>$ac->ac_phonenumber</td>"
                     ."<td>$ac->ac_businessemail</td>"
                     ."<td>$ac->ac_university</td>"
                     ."<td>$ac->ac_nationality</td>"
                     ."<td>$ac->ac_gender</td>"
                     ."<td>$ac->ac_dob</td>" 
-                    ."<td><a class='btn btn-primary btn-block' href='"
+                    ."<td style='text-align:center'><a class='btn btn-info ' href='"
                     .base_url()
-                    ."assets/uploads/academic_counsellor/$ac->ac_document' role='button' target='_blank'>View</a></td>" 
+                    ."assets/uploads/academic_counsellor/$ac->ac_document' role='button' target='_blank' ><span class='fas fa-eye'></span></a></td>" 
+                    
                     ."<td>$ac->ac_submitdate</td>" 
                     ."</tr>" 
                     ?>
@@ -68,4 +69,6 @@ td{
     </div>
 </div>
 </div>
+
+
 

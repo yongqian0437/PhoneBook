@@ -75,5 +75,13 @@ class user_ep_model extends CI_Model
     {
      return $this->db->get_where('user_ep',['user_id'=>$id])->row_array();
     }
+
+    public function full_ep_details()
+    {
+        $this->db->select('')
+        ->from('user_ep') // ep table
+        ->join('users', 'users.user_id = user_ep.user_id');// users table
+        return $this->db->get();
+    }
     
 }

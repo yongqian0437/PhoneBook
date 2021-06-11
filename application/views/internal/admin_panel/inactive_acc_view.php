@@ -56,7 +56,7 @@ td{
                     <button type="submit" class="btn btn-success" name="activate_all_acc">Activate</button>
                     
                     <br>
-                        <table class="table table-striped " style="width:100%" id="inactivate_table">
+                        <table class="table table-striped" style="width:100%" id="inactivate_table">
                     <br>
 
                         <thead>

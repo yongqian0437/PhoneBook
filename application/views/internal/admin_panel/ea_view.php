@@ -27,14 +27,14 @@ td{
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>User ID</th>
+                            <th>Full Name</th>
                             <th>Contact Number</th>
-                            <th>Business email</th>
+                            <th>Business Email</th>
                             <th>Nationality</th>
                             <th>Gender</th>
                             <th>DOB</th>
                             <th>Document</th>
-                            <th>Submit Date</th>
+                            <th>Submitted Date</th>
                         </tr>
                     </thead>
                     
@@ -45,15 +45,15 @@ td{
                     <?php
                         echo "<tr>"
                             ."<td>$count</td>"
-                            ."<td>$ea->user_id</td>"
+                            ."<td>$ea->user_fname $ea->user_lname</td>"
                             ."<td>$ea->ea_phonenumber</td>"
                             ."<td>$ea->ea_businessemail</td>"
                             ."<td>$ea->ea_nationality</td>"
                             ."<td>$ea->ea_gender</td>"
                             ."<td>$ea->ea_dob</td>"
-                            ."<td><a class='btn btn-primary btn-block' href='"
+                            ."<td style='text-align:center'><a class='btn btn-info ' href='"
                             .base_url()
-                            ."assets/uploads/education_agents/$ea->ea_document' role='button' target='_blank'>View</a></td>" 
+                            ."assets/uploads/education_agents/$ea->ea_document' role='button' target='_blank'><span class='fas fa-eye'></span></a></td>"  
                             ."<td>$ea->ea_submitdate</td>" 
                             ."</tr>" 
                     ?>

@@ -70,4 +70,12 @@ class user_ea_model extends CI_Model
     {
      return $this->db->get_where('user_ea',['user_id'=>$id])->row_array();
     }
+
+    public function full_ea_details()
+    {
+        $this->db->select('')
+        ->from('user_ea') // ea table
+        ->join('users', 'users.user_id = user_ea.user_id');// users table
+        return $this->db->get();
+    }
 }

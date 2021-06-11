@@ -69,4 +69,12 @@ class user_ac_model extends CI_Model
     {
      return $this->db->get_where('user_ac',['user_id'=>$id])->row_array();
     }
+
+    public function full_ac_details()
+    {
+        $this->db->select('')
+        ->from('user_ac') // ac table
+        ->join('users', 'users.user_id = user_ac.user_id');// users table
+        return $this->db->get();
+    }
 }

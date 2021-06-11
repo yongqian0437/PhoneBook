@@ -27,15 +27,15 @@ td{
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>User ID</th>
+                            <th>Full Name</th>
                             <th>Contact Number</th>
-                            <th>Business email</th>
+                            <th>Business Email</th>
                             <th>Nationality</th>
                             <th>Gender</th>
                             <th>DOB</th>
                             <th>Document</th>
-                            <th>Jobtitle</th>
-                            <th>Submite Date</th>
+                            <th>Job Title</th>
+                            <th>Submitted Date</th>
                         </tr>
                     </thead>
                     
@@ -47,15 +47,15 @@ td{
                     <?php
                         echo "<tr>"
                             ."<td>$count</td>"
-                            ."<td>$e->user_id</td>"
+                            ."<td>$e->user_fname $e->user_lname</td>"
                             ."<td>$e->e_phonenumber</td>"
                             ."<td>$e->e_businessemail</td>"
                             ."<td>$e->e_nationality</td>"
                             ."<td>$e->e_gender</td>"
                             ."<td>$e->e_dob</td>"
-                            ."<td><a class='btn btn-primary btn-block' href='"
+                            ."<td style='text-align:center'><a class='btn btn-info ' href='"
                             .base_url()
-                            ."assets/uploads/employer/$e->e_document' role='button' target='_blank'>View</a></td>" 
+                            ."assets/uploads/employer/$e->e_document' role='button' target='_blank'><span class='fas fa-eye'></span></a></td>" 
                             ."<td>$e->e_jobtitle</td>" 
                             ."<td>$e->e_submitdate</td>" 
                             ."</tr>" 

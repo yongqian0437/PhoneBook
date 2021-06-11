@@ -176,8 +176,7 @@ class Ea_course_application extends CI_Controller
            
           $data[] = array(
                $counter,
-               $ca->c_applicant_fname,
-               $ca->c_applicant_lname,
+               $ca->c_applicant_fname." ". $ca->c_applicant_lname,
                $ca->c_applicant_nationality,
                $ca->c_applicant_currentlevel,
                $ca->c_app_submitdate,
@@ -271,6 +270,10 @@ class Ea_course_application extends CI_Controller
         <table class="table table-striped" style = "border:0;">
             <tbody>
                 <tr>
+                    <th scope="row">Submitted Date</th>
+                    <td>'.$ca_detail->c_app_submitdate.'</td>
+                </tr>
+                <tr>
                     <th scope="row">First Name</th>
                     <td>'.$ca_detail->c_applicant_fname.'</td>
                 </tr>
@@ -309,10 +312,6 @@ class Ea_course_application extends CI_Controller
                 <tr>
                     <th scope="row">Identification</th>
                     <td>'.$ca_detail->c_applicant_identification.'</td>
-                </tr>
-                <tr>
-                    <th scope="row">Submit Date</th>
-                    <td>'.$ca_detail->c_app_submitdate.'</td>
                 </tr>
                 <tr>
                     <th scope="row">Document</th>

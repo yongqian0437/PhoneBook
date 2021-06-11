@@ -63,11 +63,10 @@ td{
                                 <th>Full Name</th>
                                 <th>Email</th>
                                 <th>Role</th>
-                                <th>Submit Date</th>
+                                <th>Submitted Date</th>
                                 <th>Status</th>
                                 <th>Action</th>
-                               
-                            </tr>
+                        </tr>
                             
                         </thead>
                         <tbody>

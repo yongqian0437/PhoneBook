@@ -90,8 +90,7 @@ $(document).ready(function(){
                                     <thead>
                                         <tr>
                                         <th>No</th>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
+                                        <th>Full Name</th>
                                         <th>Nationality</th>
                                         <th>Current Level</th>
                                         <th>Submit Date</th>
@@ -111,7 +110,7 @@ $(document).ready(function(){
 
                 <!--Modal-->
                 <div class="modal fade" id="view_course_application" tabindex="-1" role="dialog" aria-labelledby="view_casLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-xl" role="document">
+                    <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                         <div class="modal-header" style = "background-color:#6B9080;">
                             <h5 class="modal-title" id="view_casLabel" style ="color:white;">Course Applicant Information</h5>

@@ -22,7 +22,7 @@ class Users_information extends CI_Controller
         $this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav',$data);
         $this->load->view('internal/templates/topbar',$data);
-        $result=$this->user_student_model->index();
+        $result=$this->user_student_model->full_students_details();
         $data=array('studentlist'=>$result);
         $this->load->view('internal/admin_panel/student_view',$data);
         $this->load->view('internal/templates/footer');  
@@ -46,7 +46,7 @@ class Users_information extends CI_Controller
         $this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav',$data);
         // $this->load->view('templates/topbar',$data);
-        $result=$this->user_ep_model->index();
+        $result=$this->user_ep_model->full_ep_details();
         $data=array('eplist'=>$result);
         $this->session->set_userdata($data); 
         $this->load->view('internal/admin_panel/ep_view',$data);
@@ -92,7 +92,7 @@ class Users_information extends CI_Controller
         $this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav',$data);
         $this->load->view('internal/templates/topbar',$data);
-        $result=$this->user_ac_model->index();
+        $result=$this->user_ac_model->full_ac_details();
         $data=array('aclist'=>$result);
         $this->load->view('internal/admin_panel/ac_view',$data);
         $this->load->view('internal/templates/footer');   
@@ -116,7 +116,7 @@ class Users_information extends CI_Controller
         $this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav',$data);
         $this->load->view('internal/templates/topbar',$data);
-        $result=$this->user_ea_model->index();
+        $result=$this->user_ea_model->full_ea_details();
         $data=array('ealist'=>$result);
         $this->load->view('internal/admin_panel/ea_view',$data);
         $this->load->view('internal/templates/footer');   
@@ -140,7 +140,7 @@ class Users_information extends CI_Controller
         $this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav',$data);
         $this->load->view('internal/templates/topbar',$data);
-        $result=$this->user_e_model->index();
+        $result=$this->user_e_model->full_e_details();
         $data=array('elist'=>$result);
         $this->load->view('internal/admin_panel/employer_view',$data);
         $this->load->view('internal/templates/footer');   
