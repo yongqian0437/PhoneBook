@@ -25,7 +25,7 @@ class Ac_course_applicants extends CI_Controller
         $data['include_js'] = 'ac_course_applicants_list';
 
         $ac_details = $this->user_ac_model->ac_details($this->session->userdata('user_id'));
-        $data['course_applicants'] = $this->course_applicants_model->get_applicants_from_course($ac_details['ac_id']);
+        $data['course_applicants'] = $this->course_applicants_model->get_applicants_from_course($ac_details['ac_id'] , $ac_details['uni_id']);
 
         $this->load->view('internal/templates/header', $data);
         $this->load->view('internal/templates/sidenav');
@@ -42,7 +42,7 @@ class Ac_course_applicants extends CI_Controller
 		$length = intval($this->input->get("length"));
 
         $ac_details = $this->user_ac_model->ac_details($this->session->userdata('user_id'));
-        $course_applicants = $this->course_applicants_model->get_applicants_from_course($ac_details['ac_id']);
+        $course_applicants = $this->course_applicants_model->get_applicants_from_course($ac_details['ac_id'] , $ac_details['uni_id']);
 
         $counter = 1;
 
@@ -60,7 +60,7 @@ class Ac_course_applicants extends CI_Controller
 				$counter,
 				$course_app['c_applicant_fname']. ' ' .$course_app['c_applicant_lname'], // from course_applicants table
 				$course_app['c_applicant_nationality'], // from course_applicants table
-				$course_app['c_applicant_nationality'], // from courses table
+				$course_app['course_name'], // from courses table
                 $course_app['c_app_submitdate'], // from course_applicants table
                 $function,
             ];
