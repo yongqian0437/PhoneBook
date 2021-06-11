@@ -99,6 +99,14 @@ class Employer_emp_applicants extends CI_Controller
                     <td>'.$emp_applicant_details['user_fname']. ' ' .$emp_applicant_details['user_lname'].'</td>
                 </tr>
                 <tr>
+                    <th scope="row">Phone Number</th>
+                    <td>'.$emp_applicant_details['student_phonenumber'].'</td>
+                </tr>
+                <tr>
+                <th scope="row">Email</th>
+                    <td>'.$emp_applicant_details['user_email'].'</td>
+                </tr>
+                <tr>
                     <th scope="row">Nationality</th>
                     <td>'.$emp_applicant_details['student_nationality'].'</td>
                 </tr>
@@ -107,20 +115,12 @@ class Employer_emp_applicants extends CI_Controller
                     <td>'.$emp_applicant_details['student_interest'].'</td>
                 </tr>
                 <tr>
-                    <th scope="row">Level</th>
+                    <th scope="row">Current Level</th>
                     <td>'.$emp_applicant_details['student_currentlevel'].'</td>
                 </tr>
                 <tr>
                     <th scope="row">Gender</th>
                     <td>'.$emp_applicant_details['student_gender'].'</td>
-                </tr>
-                <tr>
-                    <th scope="row">Email</th>
-                    <td>'.$emp_applicant_details['user_email'].'</td>
-                </tr>
-                <tr>
-                    <th scope="row">Phone Number</th>
-                    <td>'.$emp_applicant_details['student_phonenumber'].'</td>
                 </tr>
             </tbody>
         </table>

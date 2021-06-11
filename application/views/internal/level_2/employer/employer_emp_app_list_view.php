@@ -55,7 +55,7 @@ td{
                                     <thead>
                                         <tr>
                                             <th>No.</th>
-                                            <th>Student Full Name</th>
+                                            <th>Full Name</th>
                                             <th>Nationality</th>
                                             <th>EP Title</th>
                                             <th>Applied Date</th>

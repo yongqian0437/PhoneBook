@@ -71,7 +71,7 @@ class Employer_emps extends CI_Controller
 				$emp->emp_title,
 				$emp->emp_area,
 				$emp->emp_level,
-                $emp->emp_date,
+                $emp->emp_submitdate,
                 $status,
                 $function,
 			);
@@ -188,7 +188,7 @@ class Employer_emps extends CI_Controller
         $data=
 		[
             'e_id'=>$e_details['e_id'],
-            'emp_date'=>date("Y-m-d"),
+            'emp_submitdate'=>date("Y-m-d H:i:s"),
             'emp_title'=>htmlspecialchars($this->input->post('emp_title')),
 			'emp_area'=>htmlspecialchars($this->input->post('emp_area')),
 			'emp_level'=>htmlspecialchars($this->input->post('emp_level')),
@@ -218,7 +218,7 @@ class Employer_emps extends CI_Controller
             <tbody>
                 <tr>
                     <th scope="row">Date Submitted</th>
-                    <td>'.$emp_detail[0]->emp_date.'</td>
+                    <td>'.$emp_detail[0]->emp_submitdate.'</td>
                 </tr>
                 <tr>
                     <th scope="row">Status</th>
@@ -229,7 +229,7 @@ class Employer_emps extends CI_Controller
                     <td>'.$emp_detail[0]->emp_title.'</td>
                 </tr>
                 <tr>
-                    <th scope="row">Field</th>
+                    <th scope="row">Field(s)</th>
                     <td>'.$emp_detail[0]->emp_area.'</td>
                 </tr>
                 <tr>

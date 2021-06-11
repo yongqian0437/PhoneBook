@@ -87,9 +87,9 @@ td{
                                         <tr>
                                             <th>No.</th>
                                             <th>EP Title</th>
-                                            <th>Area</th>
-                                            <th>Level</th>
-                                            <th>Submit Date</th>
+                                            <th>Field(s)</th>
+                                            <th>Current Level</th>
+                                            <th>Submitted Date</th>
                                             <th>Status</th>
                                             <th>Action</th>
                                         </tr>
