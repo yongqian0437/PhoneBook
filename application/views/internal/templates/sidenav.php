@@ -254,13 +254,14 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#applications_collapse"
                     aria-expanded="true" aria-controls="applications_collapse">
                     <i class="fas fa-file-alt"></i>
-                    <span>Student Applications</span>
+                    <span>Applicants</span>
                 </a>
                 <div id="applications_collapse" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="">Courses</a>
-                        <a class="collapse-item" href="">Employer Projects</a>
+                        <a class="collapse-item" href="">Employer Projects (EPs)</a>
+                        <a class="collapse-item" href="">R&D Projects (R&DPs)</a>
                     </div>
                 </div>
             </li>
@@ -275,9 +276,10 @@
                 <div id="content_collapse" class="collapse" aria-labelledby="headingPages"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="">University Courses</a>
-                        <a class="collapse-item" href="">Employer Projects</a>
-                        <a class="collapse-item" href="">R&D Projects</a>
+                        <a class="collapse-item" href="">Universities</a>
+                        <a class="collapse-item" href="">Courses</a>
+                        <a class="collapse-item" href="<?= base_url('internal/admin_panel/Admin_emps');?>">Employer Projects (EPs)</a>
+                        <a class="collapse-item" href="">R&D Projects (R&DPs)</a>
                     </div>
                 </div>
             </li>
