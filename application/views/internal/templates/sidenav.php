@@ -40,11 +40,11 @@
                 </a>
             </li>
 
-            <!-- Nav Item - Student Applications -->
+            <!-- Nav Item - Course Applicants -->
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="<?=base_url('internal/level_2/academic_counsellor/Ac_course_applicants');?>">
                     <i class="fas fa-file-alt"></i>
-                    <span>Student Applications</span>
+                    <span>Course Applicants</span>
                 </a>
             </li>
 

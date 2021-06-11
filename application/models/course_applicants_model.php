@@ -72,5 +72,25 @@ class course_applicants_model extends CI_Model
             return false;
     }
 
+        // Get students who applied for the Course(s)
+        function get_applicants_from_course($ac_id)
+        {
+            $this->db->select('')
+                     ->from('course_applicants')
+                     ->join('courses', 'courses.course_id = course_applicants.course_id');
+
+            return $this->db->get()->result_array();
+        }
+    
+        // Get the details of ONE applicant (student)
+        function course_applicant_details($c_applicant_id)
+        {
+            $this->db->select('')
+                     ->from('course_applicants')
+                     ->join('courses', 'courses.course_id = course_applicants.course_id')
+                     ->where('course_applicants.c_applicant_id', $c_applicant_id);
+            return $this->db->get()->row_array();
+        }
+
 
 }
