@@ -50,8 +50,6 @@ class Ep_rd_applicants extends CI_Controller {
         //Get rd applicants that mathces ep_collab_id with current ep_id
 		$rd_applicants_data = $this->rd_applicants_model->all_my_applications($ep_data->ep_id);
 
-        $counter = 1;
-
 		$data = array();
 		$base_url = base_url();
 
@@ -65,7 +63,7 @@ class Ep_rd_applicants extends CI_Controller {
 
 
 			$data[] = array(
-				$counter,
+				'',
 				$rd_owner_data->rd_title,
 				$rd_owner_data->rd_organisation,
 				$rd_owner_data->rd_pic,
@@ -73,7 +71,6 @@ class Ep_rd_applicants extends CI_Controller {
                 $function,
 			);
 
-            $counter++;
 		}
 
 		$output = array(
@@ -179,7 +176,6 @@ class Ep_rd_applicants extends CI_Controller {
         //Get rd applicants that mathces ep_collab_id with current ep_id
 		$rd_applicants_data = $this->rd_applicants_model->all_project_partners($ep_data->ep_id);
 
-        $counter = 1;
 
 		$data = array();
 		$base_url = base_url();
@@ -195,7 +191,7 @@ class Ep_rd_applicants extends CI_Controller {
 			$function = $view;
 
 			$data[] = array(
-				$counter,
+				'',
                 $ep_partner->user_fname.' '.$ep_partner->user_lname,
                 $ep_partner->uni_name,
 				$rd_owner_data->rd_title,
@@ -204,7 +200,6 @@ class Ep_rd_applicants extends CI_Controller {
                 $function,
 			);
 
-            $counter++;
 		}
 
 		$output = array(

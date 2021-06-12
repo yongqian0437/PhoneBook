@@ -47,8 +47,6 @@ class Ep_my_rd_project extends CI_Controller {
         //get rd project details with ep_id
 		$rd_project_data = $this->user_ep_model->get_rd_for_ep($ep_data->ep_id);
 
-        $counter = 1;
-
 		$data = array();
 		$base_url = base_url();
 
@@ -69,7 +67,7 @@ class Ep_my_rd_project extends CI_Controller {
 			}
 
 			$data[] = array(
-				$counter,
+				'',
 				$r->rd_title,
 				$r->rd_organisation,
 				$r->rd_pic,
@@ -77,8 +75,6 @@ class Ep_my_rd_project extends CI_Controller {
 				$approval,
                 $function,
 			);
-
-            $counter++;
 		}
 
 		$output = array(

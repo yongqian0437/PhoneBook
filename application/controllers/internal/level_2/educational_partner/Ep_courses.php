@@ -44,8 +44,6 @@ class Ep_courses extends CI_Controller {
 
 		$courses = $this->user_ep_model->get_course_for_uni($university_data->uni_id);
 
-        $counter = 1;
-
 		$data = array();
 		$base_url = base_url();
 
@@ -59,7 +57,7 @@ class Ep_courses extends CI_Controller {
 			$function = $view.$edit_opt.$delete;
 
 			$data[] = array(
-				$counter,
+				'',
 				$r->course_name,
 				$r->course_area,
 				$r->course_level,
@@ -68,7 +66,6 @@ class Ep_courses extends CI_Controller {
                 $function,
 			);
 
-            $counter++;
 		}
 
 		$output = array(
