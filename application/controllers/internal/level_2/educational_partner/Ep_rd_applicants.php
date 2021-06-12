@@ -230,36 +230,33 @@ class Ep_rd_applicants extends CI_Controller {
         <table class="table table-striped" style = "border:0;">
             <tbody>
                 <tr>
-                    <th style = "background-color: #CCE3DE; font-weight:900; font-size:1.1em;" scope="row">PARTNER DETAILS</th>
-                    <td style = "background-color: #CCE3DE;"></td>
+                    <th colspan="2" style = "background-color: #CCE3DE; font-weight:900; font-size:1.1em;" scope="row">PARTNER DETAILS</th>
                 </tr>
                 <tr>
                     <th scope="row">Partner Name</th>
                     <td>'.$ep_partner->user_fname.' '.$ep_partner->user_lname.'</td>
                 </tr>
                 <tr>
-                    <th scope="row">Partner Business Email</th>
+                    <th scope="row">Business Email</th>
                     <td>'.$ep_partner->	ep_businessemail.'</td>
                 </tr>
                 <tr>
-                    <th scope="row">Organisation</th>
+                    <th scope="row">Phone Number</th>
                     <td>'.$ep_partner->ep_phonenumber.'</td>
                 </tr>
                 <tr>
-                    <th scope="row">Partner University</th>
+                    <th scope="row">University</th>
                     <td>'.$ep_partner->uni_name.'</td>
                 </tr>
                 <tr>
-                    <th scope="row">Partner Country</th>
+                    <th scope="row">University Country</th>
                     <td>'.$ep_partner->uni_country.'</td>
                 </tr>
                 <tr>
-                    <th style = "background-color: white;" scope="row"></th>        
-                    <td style = "background-color: white;"></td>        
+                    <th olspan="2" style = "background-color: white;" scope="row"></th>        
                 <tr>
                 <tr>
-                    <th style = "background-color: #CCE3DE; font-weight:900; font-size:1.1em;" scope="row">COLLABORATION PROJECT DETAIL</th>        
-                    <td style = "background-color: #CCE3DE;"></td>        
+                    <th colspan="2" style = "background-color: #CCE3DE; font-weight:900; font-size:1.1em;" scope="row">COLLABORATION PROJECT DETAIL</th>        
                 <tr>
                     <th scope="row">Project Title</th>
                     <td>'.$rd_project_data->rd_title.'</td>

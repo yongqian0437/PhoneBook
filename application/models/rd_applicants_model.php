@@ -103,4 +103,11 @@ class rd_applicants_model extends CI_Model
         $this->db->where('rd_applicant_id', $rd_applicant_id);
         return $this->db->get('rd_applicants')->row();
     }
+
+    function sort_select_all()
+    {
+        $this->db->order_by('rd_app_submitdate', 'DESC');
+        return $this->db->get('rd_applicants')->result();
+    }
+    
 }
