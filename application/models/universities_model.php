@@ -100,4 +100,36 @@ class universities_model extends CI_Model
         return $this->db->get('universities')->result();
     }
 
+    //select all university order by submitted date
+    function all_uni_by_date()
+    {
+        $this->db->order_by('uni_submitdate', 'DESC');
+        return $this->db->get('universities')->result();
+    }
+
+    //select all university order by submitted date
+    function all_pending_uni_by_date()
+    {
+        $this->db->where('uni_approval', 0);
+        $this->db->order_by('uni_submitdate', 'DESC');
+        return $this->db->get('universities')->result();
+    }
+
+    function edit_one_approval($uni_id)
+    {
+        $this->db->where('uni_id ', $uni_id);
+        $query = $this->db->get('universities')->row();
+
+        if($query->uni_approval == 0)
+        {
+            $data = array(
+                'uni_approval' => 1
+            );
+
+            $this->db->where('uni_id ', $uni_id);
+            $this->db->update('universities', $data);
+        }
+    }
+
+
 }

@@ -1,53 +1,13 @@
 $(document).ready(function(){
-    var t = $("#table_admin_all_rd").DataTable({
+    var t = $("#table_admin_all_uni").DataTable({
         //make table responsive
         "bAutoWidth":false,
         ajax: {
-            url: base_url + "internal/admin_panel/content/Admin_rd_project/admin_all_rd_project_list",
+            url: base_url + "internal/admin_panel/content/Admin_universities/admin_all_universities_list",
             type: "GET",
         },
         "columnDefs": [{
-            "width": "18%",
-            "targets": [3]
-        },
-        {
-            "width": "10%",
-            "targets": [4]
-        },
-        {
             "width": "5%",
-            "targets": [5]
-        },
-        {
-            "width": "20%",
-            "targets": [2]
-        },
-        {
-            "searchable": false,
-            "targets": 0
-        }
-        ]
-    });
-
-    t.on( 'order.dt search.dt', function () {
-        t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
-            cell.innerHTML = i+1;
-        } );
-    } ).draw();
-
-    var t2 = $("#table_admin_pending_rd").DataTable({
-        //make table responsive
-        "bAutoWidth":false,
-        ajax: {
-            url: base_url + "internal/admin_panel/content/Admin_rd_project/admin_pending_rd_project_list",
-            type: "GET",
-        },
-        "columnDefs": [{
-            "width": "18%",
-            "targets": [4]
-        },
-        {
-            "width": "10%",
             "targets": [5]
         },
         {
@@ -55,8 +15,31 @@ $(document).ready(function(){
             "targets": [6]
         },
         {
-            "width": "20%",
-            "targets": [3]
+            "searchable": false,
+            "targets": 0
+        }
+        ]
+    });
+    t.on( 'order.dt search.dt', function () {
+        t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+            cell.innerHTML = i+1;
+        } );
+    } ).draw();
+
+    var t2 = $("#table_admin_pending_uni").DataTable({
+        //make table responsive
+        "bAutoWidth":false,
+        ajax: {
+            url: base_url + "internal/admin_panel/content/Admin_universities/admin_pending_universities_list",
+            type: "GET",
+        },
+        "columnDefs": [{
+            "width": "5%",
+            "targets": [6]
+        },
+        {
+            "width": "5%",
+            "targets": [7]
         },
         {
             "searchable": false,
@@ -71,7 +54,7 @@ $(document).ready(function(){
         } );
     } ).draw();
 
-    $('#select_all_rd').click(function() {
+    $('#select_all_uni').click(function() {
         var checked = this.checked;
         $('input[type="checkbox"]').each(function() {
             this.checked = checked;
@@ -80,21 +63,21 @@ $(document).ready(function(){
 
 }); // end of ready function
 
-function view_admin_rd_project(rd_id){
+function view_admin_university(uni_id){
 
     $.ajax({
-        url: base_url + "internal/admin_panel/content/Admin_rd_project/view_admin_rd_project",
+        url: base_url + "internal/admin_panel/content/Admin_universities/view_admin_university",
         method:"POST",
-        data:{ rd_id:rd_id},
+        data:{ uni_id:uni_id},
         success:function(data)
         {
-            $('#admin_rd_project_information').html(data);
+            $('#admin_university_information').html(data);
 
         }
     });
 }
 
-function edit_approval(rd_id){
+function edit_approval(uni_id){
 
     Swal.fire({
         title: 'Are you sure?',
@@ -108,17 +91,17 @@ function edit_approval(rd_id){
         if (result.isConfirmed) {
 
             $.ajax({
-                url: base_url + "internal/admin_panel/content/Admin_rd_project/edit_one_approval",
+                url: base_url + "internal/admin_panel/content/Admin_universities/edit_one_approval",
                 method:"POST",
-                data:{ rd_id:rd_id},
+                data:{ uni_id:uni_id},
                 success:function(data)
                 {
 
                     //reload datatable
-                    var xin_table = $("#table_admin_all_rd").DataTable();
+                    var xin_table = $("#table_admin_all_uni").DataTable();
                     xin_table.ajax.reload(null, false);
 
-                    var xin_table = $("#table_admin_pending_rd").DataTable();
+                    var xin_table = $("#table_admin_pending_uni").DataTable();
                     xin_table.ajax.reload(null, false);
                 }
             });
@@ -128,7 +111,7 @@ function edit_approval(rd_id){
 }
 
 // Approve >1 RD
-function approve_all_rd() {
+function approve_all_uni() {
 
     if($('input[type=checkbox]').is(':checked')){
 
@@ -145,26 +128,26 @@ function approve_all_rd() {
 
                 $('input[type=checkbox]:checked').each(function() {
                     //alert("Id: " + $(this).attr("id") + " Value: " + $(this).val());
-                    $rd_id = $(this).val();
+                    $uni_id = $(this).val();
             
                     $.ajax({
-                        url: base_url + "internal/admin_panel/content/Admin_rd_project/approve_rd",
+                        url: base_url + "internal/admin_panel/content/Admin_universities/approve_uni",
                         method:"POST",
-                        data:{ rd_id:$rd_id},
+                        data:{ uni_id:$uni_id},
                     });
                 });
 
                 Swal.fire(
                     'Approved!',
-                    'R&D Projects have been approved.',
+                    'Universities have been approved.',
                     'success'
                 )
                     
                 //reload both datatables
-                var xin_table = $("#table_admin_pending_rd").DataTable();
+                var xin_table = $("#table_admin_all_uni").DataTable();
                 xin_table.ajax.reload(null, false);
             
-                var xin_table2 = $("#table_admin_all_rd").DataTable();
+                var xin_table2 = $("#table_admin_pending_uni").DataTable();
                 xin_table2.ajax.reload(null, false);
             }
         })

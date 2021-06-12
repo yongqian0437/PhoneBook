@@ -15,7 +15,7 @@ class Admin_rd_project extends CI_Controller {
 	public function index()
 	{
 		$data['include_js'] = 'admin_rd_project_list';
-		$data['title'] = 'iJEES | R&D Project';
+		$data['title'] = 'iJEES | R&D Projects';
         $this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav');
         $this->load->view('internal/templates/topbar');
@@ -32,7 +32,6 @@ class Admin_rd_project extends CI_Controller {
 
 		$rd_data = $this->rd_projects_model->select_all_join();
         
-        $counter = 1;
 		$data = array();
 
 		foreach($rd_data as $r) {
@@ -46,15 +45,13 @@ class Admin_rd_project extends CI_Controller {
             }
 
 			$data[] = array(
-                $counter,
+                '',
                 $r->rd_title,
 				$r->rd_pic,
 				$r->rd_submitdate,
 				$approval,
 				$view,
 			);
-
-            $counter++;
 		}
 
 		$output = array(
@@ -77,7 +74,6 @@ class Admin_rd_project extends CI_Controller {
 
 		$rd_data = $this->rd_projects_model->select_pending_join();
         
-        $counter = 1;
 		$data = array();
 
 		foreach($rd_data as $r) {
@@ -93,15 +89,13 @@ class Admin_rd_project extends CI_Controller {
 
 			$data[] = array(
                 $checkbox,
-                $counter,
+                '',
                 $r->rd_title,
 				$r->rd_pic,
 				$r->rd_submitdate,
 				$approval,
 				$view,
 			);
-
-            $counter++;
 		}
 
 		$output = array(
@@ -184,7 +178,7 @@ class Admin_rd_project extends CI_Controller {
                     <th colspan="2" style = "background-color: #CCE3DE; font-weight:900; font-size:1.1em;" scope="row"><center>POSTER EDUCATION PARTNER DETAILS</center></th>
                 </tr>
                 <tr>
-                    <th scope="row">University</th>
+                    <th scope="row">University Name</th>
                     <td>'.$rd_detail->uni_name.'</td>
                 </tr>
                 <tr>
@@ -192,7 +186,7 @@ class Admin_rd_project extends CI_Controller {
                     <td>'.$rd_detail->uni_country.'</td>
                 </tr>
                 <tr>
-                    <th scope="row">Collaborator Name</th>
+                    <th scope="row">Owner Name</th>
                     <td>'.$rd_detail->user_fname.' '.$rd_detail->user_lname.'</td>
                 </tr>
                 <tr>

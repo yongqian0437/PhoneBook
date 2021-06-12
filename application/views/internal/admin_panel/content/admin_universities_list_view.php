@@ -36,7 +36,7 @@ td{
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">R&D Projects</h1>
+                    <h1 class="h3 mb-0 text-gray-800">Universities</h1>
                 </div>
 
                 <!-- Breadcrumn -->
@@ -46,7 +46,7 @@ td{
                             <li class="breadcrumb-item">
                                 <a href="<?php echo base_url('internal/admin_panel/ep_dashboard');?>"><i class="fas fa-tachometer-alt"></i> Home</a>
                             </li>
-                            <li class="breadcrumb-item active">R&D Projects</li>
+                            <li class="breadcrumb-item active">Universities</li>
                         </ol>
                     </div>
                 </div>
@@ -74,12 +74,13 @@ td{
                                     <div class="card-body">
                                     
                                     <div class="table-responsive">
-                                        <table id="table_admin_all_rd" class="table table-striped">
+                                        <table id="table_admin_all_uni" class="table table-striped">
                                             <thead>
                                                 <tr>
                                                     <th>No.</th>
-                                                    <th>Project Title</th>
-                                                    <th>Person in charge(PIC)</th>
+                                                    <th>University Name</th>
+                                                    <th>Country</th>
+                                                    <th>Email</th>
                                                     <th>Submitted Date</th>
                                                     <th>Status</th>
                                                     <th>Action</th>
@@ -106,16 +107,17 @@ td{
                                 <div class="card ">
                                     <div class="card-body">
                                         <div class="ml-2 mt-2 mb-4">
-                                                <span><button type="button" class="btn btn-success" onclick="approve_all_rd()">Approve All</button></span>
+                                                <span><button type="button" class="btn btn-success" onclick="approve_all_uni()">Approve All</button></span>
                                         </div>
                                         <div class="table-responsive">
-                                            <table id="table_admin_pending_rd" class="table table-striped">
+                                            <table id="table_admin_pending_uni" class="table table-striped">
                                                 <thead>
                                                     <tr>
-                                                        <th id="sort"><input type="checkbox" id="select_all_rd"></th>
+                                                        <th id="sort"><input type="checkbox" id="select_all_uni"></th>
                                                         <th>No.</th>
-                                                        <th>Project Title</th>
-                                                        <th>Person in charge(PIC)</th>
+                                                        <th>University Name</th>
+                                                        <th>Country</th>
+                                                        <th>Email</th>
                                                         <th>Submitted Date</th>
                                                         <th>Status</th>
                                                         <th>Action</th>
@@ -138,17 +140,17 @@ td{
                 
 
                 <!-- Modal -->
-                <div class="modal fade" id="view_my_rd_project" tabindex="-1" role="dialog" aria-labelledby="view_my_rd_projectLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-xl" role="document">
+                <div class="modal fade" id="view_admin_uni" tabindex="-1" role="dialog" aria-labelledby="view_admin_uniLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
                         <div class="modal-header" style = "background-color:#6B9080;">
-                            <h5 class="modal-title" id="view_my_rd_projectLabel" style ="color:white;">R&D Project Information</h5>
+                            <h5 class="modal-title" id="view_admin_uniLabel" style ="color:white;">University Information</h5>
                             <button style ="color:white;" type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body" >
-                            <div id = "admin_rd_project_information">
+                            <div id = "admin_university_information">
 
                             </div>
                         </div>

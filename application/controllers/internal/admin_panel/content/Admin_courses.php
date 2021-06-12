@@ -34,7 +34,6 @@ class Admin_courses extends CI_Controller {
 
 		$courses = $this->courses_model->course_join_uni();
         
-        $counter = 1;
 		$data = array();
 
 		foreach($courses as $r) {
@@ -42,15 +41,13 @@ class Admin_courses extends CI_Controller {
             $view = '<span><button type="button" onclick="view_admin_course('.$r->course_id.')" class="btn icon-btn btn-xs btn-info waves-effect waves-light" data-toggle="modal" data-target="#view_my_rd_project"><span class="fas fa-eye"></span></button></span>';
 
 			$data[] = array(
-                $counter,
+                '',
                 $r->uni_name,
 				$r->course_name,
 				$r->course_area,
 				$r->course_level,
 				$view,
 			);
-
-            $counter++;
 		}
 
 		$output = array(
@@ -68,6 +65,7 @@ class Admin_courses extends CI_Controller {
     {
 
         $course = $this->courses_model->one_course_join_uni($this->input->post('course_id'));
+        $total_course = $this->courses_model->get_totalcourse_for_uni($course->uni_id);
 
         $output ='
         <table class="table table-striped" style = "border:0;">
@@ -144,6 +142,10 @@ class Admin_courses extends CI_Controller {
                 <tr>
                     <th scope="row">Employability Ranking</th>
                     <td>'.$course->uni_employabilityrank.'</td>
+                </tr>
+                <tr>
+                    <th scope="row">Total Courses</th>
+                    <td>'.$total_course.'</td>
                 </tr>
                 <tr>
                     <th scope="row">Total Students</th>

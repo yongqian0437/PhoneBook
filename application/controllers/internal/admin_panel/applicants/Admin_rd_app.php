@@ -43,8 +43,6 @@ class Admin_rd_app extends CI_Controller {
         //get rd project details with ep_id
 		$rd_project_app_data = $this->rd_applicants_model->sort_select_all();
 
-        $counter = 1;
-
 		$data = array();
 		$base_url = base_url();
 
@@ -57,15 +55,13 @@ class Admin_rd_app extends CI_Controller {
 			$view = '<span><button type="button" onclick="view_rd_project('.$r->rd_applicant_id.')" class="btn icon-btn btn-xs btn-info waves-effect waves-light" data-toggle="modal" data-target="#view_my_rd_project"><span class="fas fa-eye"></span></button></span>';
 
 			$data[] = array(
-				$counter,
+				'',
 				$rd_data->rd_title,
 				$ep_owner->uni_name,
 				$ep_collab->uni_name,
                 $r->rd_app_submitdate,
                 $view,
 			);
-
-            $counter++;
 		}
 
 		$output = array(
@@ -95,6 +91,14 @@ class Admin_rd_app extends CI_Controller {
                     <th colspan="2" style = "background-color: #CCE3DE; font-weight:900; font-size:1.1em;" scope="row"><center>EDUCATION PARTNER OWNER DETAIL</center></th>
                 </tr>
                 <tr>
+                <th scope="row">University Name</th>
+                    <td>'.$ep_owner->uni_name.'</td>
+                </tr>
+                <tr>
+                    <th scope="row">University Country</th>
+                    <td>'.$ep_owner->uni_country.'</td>
+                </tr>
+                <tr>
                     <th scope="row">Owner Name</th>
                     <td>'.$ep_owner->user_fname.' '.$ep_owner->user_lname.'</td>
                 </tr>
@@ -105,14 +109,6 @@ class Admin_rd_app extends CI_Controller {
                 <tr>
                     <th scope="row">Phone Number</th>
                     <td>'.$ep_owner->ep_phonenumber.'</td>
-                </tr>
-                <tr>
-                    <th scope="row">University</th>
-                    <td>'.$ep_owner->uni_name.'</td>
-                </tr>
-                <tr>
-                    <th scope="row">University Country</th>
-                    <td>'.$ep_owner->uni_country.'</td>
                 </tr>
                 <tr>
                     <th scope="row">Nationality</th>
@@ -133,6 +129,14 @@ class Admin_rd_app extends CI_Controller {
                     <th colspan="2" style = "background-color: #CCE3DE; font-weight:900; font-size:1.1em;" scope="row"><center>EDUCATION PARTNER COLLABORATOR DETAILS</center></th>
                 </tr>
                 <tr>
+                <th scope="row">University Name</th>
+                    <td>'.$ep_collab->uni_name.'</td>
+                </tr>
+                <tr>
+                    <th scope="row">University Country</th>
+                    <td>'.$ep_collab->uni_country.'</td>
+                </tr>
+                <tr>
                     <th scope="row">Collaborator Name</th>
                     <td>'.$ep_collab->user_fname.' '.$ep_collab->user_lname.'</td>
                 </tr>
@@ -143,14 +147,6 @@ class Admin_rd_app extends CI_Controller {
                 <tr>
                 <th scope="row">Phone Number</th>
                     <td>'.$ep_collab->ep_phonenumber.'</td>
-                </tr>
-                <tr>
-                    <th scope="row">University</th>
-                    <td>'.$ep_collab->uni_name.'</td>
-                </tr>
-                <tr>
-                    <th scope="row">University Country</th>
-                    <td>'.$ep_collab->uni_country.'</td>
                 </tr>
                 <tr>
                 <th scope="row">Nationality</th>
