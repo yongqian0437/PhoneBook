@@ -66,7 +66,7 @@ class emp_applicants_model extends CI_Model
             return false;
     }
 
-    // Get students who applied for the Employer Project(s) that the Employer has posted
+    // Get students who applied for the Employer Project(s) that a specific Employer has posted
     function get_applicants_from_emps($e_id)
     {
         $this->db->select('')
@@ -84,9 +84,25 @@ class emp_applicants_model extends CI_Model
         $this->db->select('')
                  ->from('emp_applicants')
                  ->join('employer_projects', 'employer_projects.emp_id = emp_applicants.emp_id')
+                 ->join('user_e', 'user_e.e_id = employer_projects.e_id')
+                 ->join('company', 'company.c_id = user_e.c_id')
                  ->join('user_student', 'user_student.student_id = emp_applicants.student_id')
                  ->join('users', 'users.user_id = user_student.user_id')
                  ->where('emp_applicants.emp_applicant_id', $emp_applicant_id);
         return $this->db->get()->row_array();
     }
+
+    // For Admin: View details of ALL recorded EMP Applicants in the system
+    function full_emp_apps_details()
+    {
+        $this->db->select('')
+                 ->from('emp_applicants')
+                 ->join('employer_projects', 'employer_projects.emp_id = emp_applicants.emp_id')
+                 ->join('user_e', 'user_e.e_id = employer_projects.e_id')
+                 ->join('company', 'company.c_id = user_e.c_id')
+                 ->join('user_student', 'user_student.student_id = emp_applicants.student_id')
+                 ->join('users', 'users.user_id = user_student.user_id');
+        return $this->db->get()->result_array();
+    }
+
 }

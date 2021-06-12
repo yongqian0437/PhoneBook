@@ -67,15 +67,16 @@ class employer_projects_model extends CI_Model
         return $this->db->get('employer_projects')->result();
     }
 
-    function get_emp_with_id($emp_id)
+    //  View details of 1 EMP being posted 
+    function emp_details($emp_id)
     {
-        $this->db->where('emp_id', $emp_id);
-        return $this->db->get('employer_projects')->result();
-    }
-
-    public function emp_details($emp_id)
-    {
-     return $this->db->get_where('employer_projects',['emp_id'=>$emp_id])->row_array();
+        $this->db->select('')
+        ->from('employer_projects')
+        ->join('user_e', 'user_e.e_id = employer_projects.e_id')
+        ->join('company', 'company.c_id = user_e.c_id')
+        ->join('users', 'users.user_id = user_e.user_id')
+        ->where('emp_id', $emp_id);
+        return $this->db->get()->result();
     }
 
     // For Admin: View details of ALL the EMPs posted
@@ -89,18 +90,6 @@ class employer_projects_model extends CI_Model
         return $this->db->get()->result();
     }
 
-    //  For Admin: View details of 1 EMP being posted 
-    function full_emp_details_with_id($emp_id)
-    {
-        $this->db->select('')
-        ->from('employer_projects')
-        ->join('user_e', 'user_e.e_id = employer_projects.e_id')
-        ->join('company', 'company.c_id = user_e.c_id')
-        ->join('users', 'users.user_id = user_e.user_id')
-        ->where('emp_id', $emp_id);
-        return $this->db->get()->result();
-    }
- 
     // For Admin: View details of ALL Pending EMPs
     function full_pending_emps_details()
     {

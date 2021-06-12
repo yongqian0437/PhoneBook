@@ -51,24 +51,24 @@ label{
                         <!-- Card-->
                         <div class="card ">
                             <div class="card-body">
-                            <form method="post" action=" <?=base_url('internal/level_2/employer/employer_emps/submit_edit_emp/'.$emp_details['emp_id']); ?>" enctype="multipart/form-data">
+                            <form method="post" action=" <?=base_url('internal/level_2/employer/employer_emps/submit_edit_emp/'.$emp_details[0]->emp_id); ?>" enctype="multipart/form-data">
                             <?= form_open_multipart('') ?>
                                     <div class="form-row pt-4">
                                         <div class="form-group col-md-12 px-4 pr-5">
                                             <label for="emp_title">Employer Project Title</label>
-                                            <input type="text" class="form-control" id="emp_title" name = "emp_title" placeholder="Enter employer project title" value = "<?=$emp_details['emp_title']?>" required>
+                                            <input type="text" class="form-control" id="emp_title" name = "emp_title" placeholder="Enter employer project title" value = "<?=$emp_details[0]->emp_title?>" required>
                                         </div>
                                     </div>
                                     <div class="form-row pt-4">
                                         <div class="form-group col-md-6 px-4 pr-5">
                                             <label for="emp_area">Field</label>
-                                            <textarea type="text" class="form-control" rows="3" id="emp_area" name = "emp_area" placeholder="Enter employer project field (e.g: Information Technology (IT), Business, Mass Communication)" value="<?= $emp_details['emp_area']?>" required><?=$emp_details['emp_area']?></textarea>
+                                            <textarea type="text" class="form-control" rows="3" id="emp_area" name = "emp_area" placeholder="Enter employer project field (e.g: Information Technology (IT), Business, Mass Communication)" value="<?= $emp_details[0]->emp_area?>" required><?=$emp_details[0]->emp_area?></textarea>
                                             <div style = "color:red; font-size:0.9em;">*Can enter more than 1 field</div>  
                                         </div>
                                         <div class="form-group col-md-6 px-4 pr-5">
                                             <label for="emp_level">Level</label>
                                             <select name="emp_level" id="emp_level" class="form-control form-select form-select" required>
-                                                <option value="<?=$emp_details['emp_level']?>" selected><?=$emp_details['emp_level']?></option>
+                                                <option value="<?=$emp_details[0]->emp_level?>" selected><?=$emp_details[0]->emp_level?></option>
                                                 <option value="Foundation">Foundation</option>
                                                 <option value="Certificate">Certificate</option>
                                                 <option value="Diploma">Diploma</option>
@@ -85,7 +85,7 @@ label{
                                     <div class="form-row pt-4">
                                         <div class="form-group col-md-12 px-4">
                                             <label for="emp_description">Description</label>
-                                            <textarea type="text" class="form-control" rows="8" id="emp_description" name = "emp_description" placeholder="Enter employer project description" required value="<?= $emp_details['emp_description']?>"><?=$emp_details['emp_description']?></textarea>
+                                            <textarea type="text" class="form-control" rows="8" id="emp_description" name = "emp_description" placeholder="Enter employer project description" required value="<?= $emp_details[0]->emp_description?>"><?=$emp_details[0]->emp_description?></textarea>
                                         </div>
                                     </div>
                                     <div class="form-row pt-4">
@@ -102,13 +102,13 @@ label{
                                             <label>Uploaded Document</label>
                                         </div>
                                         <div class="col-md-12 px-4">
-                                            <a href="<?= base_url('/assets/uploads/employer_projects/'.$emp_details['emp_document'])?>" target="_blank"><?=$emp_details['emp_document']?></a>
+                                            <a href="<?= base_url('/assets/uploads/employer_projects/'.$emp_details[0]->emp_document)?>" target="_blank"><?=$emp_details[0]->emp_document?></a>
                                         </div>
                                     </div>
                                     <div class="form-row px-4 pt-4">
                                         <div class="form-group col-md-12">
                                             <input type="file"  accept=".pdf" class="custom-file-input" id="emp_document" name="emp_document">
-											<label class="custom-file-label" for="customFile"><?=$emp_details['emp_document']?></label>
+											<label class="custom-file-label" for="customFile"><?=$emp_details[0]->emp_document?></label>
                                             <div style = "color:red; font-size:0.9em;">*Required document: COMPLETED Employer Project Proposal in .PDF file format</div>  
                                         </div>
                                     </div>

@@ -5,12 +5,7 @@ $(document).ready(function(){
         ajax: {
             url: base_url + "internal/level_2/employer/employer_emp_applicants/emp_applicants_list",
             type: "GET",
-        },
-        "columnDefs": [{
-            "width": "15%",
-            "targets": [5]
         }
-        ]
     });
 
 }); // end of ready function

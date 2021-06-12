@@ -24,8 +24,7 @@ class Employer_emps extends CI_Controller
     {   
         $data['title'] = 'iJEES | Employer Projects (EPs)';
         $data['include_js'] = 'employer_emp_list';
-        // var_dump($this->session->userdata());
-        // die;
+
         $e_details = $this->user_e_model->e_details($this->session->userdata('user_id'));
         $data['company_details'] = $this->company_model->c_details($e_details['c_id']);
         $data['employer_projects'] = $this->employer_projects_model->get_emps_from_employer($e_details['e_id']);
@@ -96,8 +95,6 @@ class Employer_emps extends CI_Controller
         $e_details = $this->user_e_model->e_details($this->session->userdata('user_id'));
         $data['e_details'] = $e_details;
         $data['company_details'] = $this->company_model->c_details($e_details['c_id']); 
-        // var_dump($data['company_details']);
-        // die;
 
 		$this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav');
@@ -150,7 +147,7 @@ class Employer_emps extends CI_Controller
     function delete_emp()
     {
         $emp_details = $this->employer_projects_model->emp_details($this->input->post('emp_id'));
-        unlink('./assets/uploads/employer_projects/'.$emp_details['emp_document']);
+        unlink('./assets/uploads/employer_projects/'.$emp_details[0]->emp_document);
         $this->employer_projects_model->delete($this->input->post('emp_id'));
     }
 
@@ -176,7 +173,7 @@ class Employer_emps extends CI_Controller
     {
         if($_FILES['emp_document']['name'] != "") {
             $original_details = $this->employer_projects_model->emp_details($emp_id);
-            unlink('./assets/uploads/employer_projects/'.$original_details['emp_document']);
+            unlink('./assets/uploads/employer_projects/'.$original_details[0]->emp_document);
 			$emp_document = $this->upload_doc('./assets/uploads/employer_projects', 'emp_document');
 			$data = [
 				'emp_document' => $emp_document['file_name'],
@@ -188,12 +185,10 @@ class Employer_emps extends CI_Controller
         $data=
 		[
             'e_id'=>$e_details['e_id'],
-            'emp_submitdate'=>date("Y-m-d H:i:s"),
             'emp_title'=>htmlspecialchars($this->input->post('emp_title')),
 			'emp_area'=>htmlspecialchars($this->input->post('emp_area')),
 			'emp_level'=>htmlspecialchars($this->input->post('emp_level')),
 			'emp_description'=>htmlspecialchars($this->input->post('emp_description')),
-            'emp_approval' => 0, // default is 0. will be send to admin for approval.
 		];
       
         $this->employer_projects_model->update($data, $emp_id);
@@ -206,8 +201,8 @@ class Employer_emps extends CI_Controller
 
     function view_emp()
     {
-        $emp_detail = $this->employer_projects_model->get_emp_with_id($this->input->post('emp_id'));
-        if ($emp_detail[0]->emp_approval == 0) {
+        $emp_details = $this->employer_projects_model->emp_details($this->input->post('emp_id'));
+        if ($emp_details[0]->emp_approval == 0) {
             $status = '<button type="button" style = "cursor: default;" class="btn btn-warning">Pending</button>';
         } else {
             $status = '<button type="button" style = "cursor: default;" class="btn btn-success">Approved</button>';
@@ -218,7 +213,7 @@ class Employer_emps extends CI_Controller
             <tbody>
                 <tr>
                     <th scope="row">Date Submitted</th>
-                    <td>'.$emp_detail[0]->emp_submitdate.'</td>
+                    <td>'.$emp_details[0]->emp_submitdate.'</td>
                 </tr>
                 <tr>
                     <th scope="row">Status</th>
@@ -226,23 +221,23 @@ class Employer_emps extends CI_Controller
                 </tr>
                 <tr>
                     <th scope="row">Employer Project Title</th>
-                    <td>'.$emp_detail[0]->emp_title.'</td>
+                    <td>'.$emp_details[0]->emp_title.'</td>
                 </tr>
                 <tr>
                     <th scope="row">Field(s)</th>
-                    <td>'.$emp_detail[0]->emp_area.'</td>
+                    <td>'.$emp_details[0]->emp_area.'</td>
                 </tr>
                 <tr>
                     <th scope="row">Level</th>
-                    <td>'.$emp_detail[0]->emp_level.'</td>
+                    <td>'.$emp_details[0]->emp_level.'</td>
                 </tr>
                 <tr>
                     <th scope="row">Description</th>
-                    <td>'.$emp_detail[0]->emp_description.'</td>
+                    <td>'.$emp_details[0]->emp_description.'</td>
                 </tr>
                 <tr>
                     <th scope="row">Document</th>
-                    <td><a href="'.base_url("assets/uploads/employer_projects/").$emp_detail[0]->emp_document.'" target="_blank">'.$emp_detail[0]->emp_document.'</a></td>
+                    <td><a href="'.base_url("assets/uploads/employer_projects/").$emp_details[0]->emp_document.'" target="_blank">'.$emp_details[0]->emp_document.'</a></td>
             </tbody>
         </table>
         

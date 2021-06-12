@@ -20,25 +20,11 @@ class Admin_emps extends CI_Controller
     {   
         $data['title'] = 'iJEES | Employer Projects (EPs)';
         $data['include_js'] = 'admin_emp_list';
-        // var_dump($this->session->userdata());
-        // die;
-
-        // $employer_projects = $this->employer_projects_model->select_all();
-        // var_dump($employer_projects);
-        // die;
-
-        // $full_employer_projects = $this->employer_projects_model->full_emps_details();
-        // var_dump($full_employer_projects);
-        // die;
-
-        // $emp_detail = $this->employer_projects_model->get_emp_with_id(2);
-        // var_dump($emp_detail);
-        // die;
         
         $this->load->view('internal/templates/header', $data);
         $this->load->view('internal/templates/sidenav');
         $this->load->view('internal/templates/topbar');
-        $this->load->view('internal/admin_panel/admin_emp_list_view');
+        $this->load->view('internal/admin_panel/content/admin_emp_list_view');
         $this->load->view('internal/templates/footer');
     }
 
@@ -135,7 +121,7 @@ class Admin_emps extends CI_Controller
 
     function view_emp()
     {
-        $emp_detail = $this->employer_projects_model->full_emp_details_with_id($this->input->post('emp_id'));
+        $emp_detail = $this->employer_projects_model->emp_details($this->input->post('emp_id'));
         // var_dump($emp_detail);
         // die;
 

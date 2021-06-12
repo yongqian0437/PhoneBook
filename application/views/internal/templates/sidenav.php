@@ -237,7 +237,7 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="">Courses</a>
-                        <a class="collapse-item" href="">Employer Projects (EPs)</a>
+                        <a class="collapse-item" href="<?= base_url('internal/admin_panel/applicants/Admin_emp_applicants');?>">Employer Projects (EPs)</a>
                         <a class="collapse-item" href="">R&D Projects (R&DPs)</a>
                     </div>
                 </div>
