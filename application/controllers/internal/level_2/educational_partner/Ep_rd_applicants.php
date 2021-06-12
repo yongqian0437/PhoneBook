@@ -230,7 +230,7 @@ class Ep_rd_applicants extends CI_Controller {
         <table class="table table-striped" style = "border:0;">
             <tbody>
                 <tr>
-                    <th colspan="2" style = "background-color: #CCE3DE; font-weight:900; font-size:1.1em;" scope="row">PARTNER DETAILS</th>
+                    <th colspan="2" style = "background-color: #CCE3DE; font-weight:900; font-size:1.1em;" scope="row"><center>PARTNER DETAILS</center></th>
                 </tr>
                 <tr>
                     <th scope="row">Partner Name</th>
@@ -256,7 +256,7 @@ class Ep_rd_applicants extends CI_Controller {
                     <th olspan="2" style = "background-color: white;" scope="row"></th>        
                 <tr>
                 <tr>
-                    <th colspan="2" style = "background-color: #CCE3DE; font-weight:900; font-size:1.1em;" scope="row">COLLABORATION PROJECT DETAIL</th>        
+                    <th colspan="2" style = "background-color: #CCE3DE; font-weight:900; font-size:1.1em;" scope="row"><center>COLLABORATION PROJECT DETAIL</center></th>        
                 <tr>
                     <th scope="row">Project Title</th>
                     <td>'.$rd_project_data->rd_title.'</td>

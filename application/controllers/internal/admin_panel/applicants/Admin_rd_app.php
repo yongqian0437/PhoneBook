@@ -92,7 +92,7 @@ class Admin_rd_app extends CI_Controller {
         <table class="table table-striped" style = "border:0;">
             <tbody>
                 <tr>
-                    <th colspan="2" style = "background-color: #CCE3DE; font-weight:900; font-size:1.1em;" scope="row">EDUCATION PARTNER OWNER DETAIL</th>
+                    <th colspan="2" style = "background-color: #CCE3DE; font-weight:900; font-size:1.1em;" scope="row"><center>EDUCATION PARTNER OWNER DETAIL</center></th>
                 </tr>
                 <tr>
                     <th scope="row">Owner Name</th>
@@ -130,7 +130,7 @@ class Admin_rd_app extends CI_Controller {
                     <th olspan="2" style = "background-color: white;" scope="row"></th>        
                 <tr>
                 <tr>
-                    <th colspan="2" style = "background-color: #CCE3DE; font-weight:900; font-size:1.1em;" scope="row">EDUCATION PARTNER COLLABORATOR DETAILS</th>
+                    <th colspan="2" style = "background-color: #CCE3DE; font-weight:900; font-size:1.1em;" scope="row"><center>EDUCATION PARTNER COLLABORATOR DETAILS</center></th>
                 </tr>
                 <tr>
                     <th scope="row">Collaborator Name</th>
@@ -168,7 +168,7 @@ class Admin_rd_app extends CI_Controller {
                     <th olspan="2" style = "background-color: white;" scope="row"></th>        
                 <tr>
                 <tr>
-                    <th colspan="2" style = "background-color: #CCE3DE; font-weight:900; font-size:1.1em;" scope="row">COLLABORATION PROJECT DETAIL</th>        
+                    <th colspan="2" style = "background-color: #CCE3DE; font-weight:900; font-size:1.1em;" scope="row"><center>COLLABORATION PROJECT DETAIL</center></th>        
                 <tr>
                     <th scope="row">Project Title</th>
                     <td>'.$rd_data->rd_title.'</td>

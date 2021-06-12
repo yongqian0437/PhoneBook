@@ -73,7 +73,7 @@ class Admin_courses extends CI_Controller {
         <table class="table table-striped" style = "border:0;">
             <tbody>
                 <tr>
-                    <th colspan="2" style = "background-color: #CCE3DE; font-weight:900; font-size:1.1em;" scope="row">COURSE DETAILS</th>
+                    <th colspan="2" style = "background-color: #CCE3DE; font-weight:900; font-size:1.1em;" scope="row"><center>COURSE DETAILS</center></th>
                 </tr>
                 <tr>
                     <th scope="row">Course Name</th>
@@ -115,7 +115,7 @@ class Admin_courses extends CI_Controller {
                     <th olspan="2" style = "background-color: white;" scope="row"></th>        
                 <tr>
                 <tr>
-                    <th colspan="2" style = "background-color: #CCE3DE; font-weight:900; font-size:1.1em;" scope="row">UNIVERSITY DETAILS</th>
+                    <th colspan="2" style = "background-color: #CCE3DE; font-weight:900; font-size:1.1em;" scope="row"><center>UNIVERSITY DETAILS</center></th>
                 </tr>
                 <tr>
                     <th scope="row">University Name</th>

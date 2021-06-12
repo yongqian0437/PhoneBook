@@ -279,7 +279,7 @@
                         <a class="collapse-item" href="">Universities</a>
                         <a class="collapse-item" href="<?=base_url('internal/admin_panel/content/Admin_courses');?>">Courses</a>
                         <a class="collapse-item" href="<?= base_url('internal/admin_panel/Admin_emps');?>">Employer Projects (EPs)</a>
-                        <a class="collapse-item" href="">R&D Projects (R&DPs)</a>
+                        <a class="collapse-item" href="<?=base_url('internal/admin_panel/content/Admin_rd_project');?>">R&D Projects (R&DPs)</a>
                     </div>
                 </div>
             </li>
