@@ -22,7 +22,7 @@ class Admin_rd_app extends CI_Controller {
 	public function index()
 	{
 		
-		$data['title'] = 'iJEES | My R&D Project';
+		$data['title'] = 'iJEES | R&D Project Applications';
         // $data['c'] = $this->user_ep_model->get_uni_from_ep($this->session->userdata('user_id')); 
         $data['include_js'] = 'admin_rd_app';
 
@@ -79,48 +79,6 @@ class Admin_rd_app extends CI_Controller {
 		exit();
 	}
 
-	function add_rd_project()
-    {
-        $data['title'] = 'iJEES | Add R&D Project';
-        $data['university_data'] = $this->user_ep_model->get_uni_from_ep($this->session->userdata('user_id')); 
-
-		$this->load->view('internal/templates/header',$data);
-        $this->load->view('internal/templates/sidenav');
-        $this->load->view('internal/templates/topbar');
-        $this->load->view('internal/level_2/educational_partner/ep_my_rd_add_view');
-        $this->load->view('internal/templates/footer');  
-    }
-
-	function submit_add_rd_project()
-    {
-        //get ep details with user id
-		$ep_data = $this->user_ep_model->get_ep_detail_with_user_id($this->session->userdata('user_id'));       
-        $rd_document = $this->upload_doc('./assets/uploads/rd_projects', 'rd_document');
-
-		$data=
-		[
-            'ep_id'=>$ep_data->ep_id,
-			'rd_title'=>htmlspecialchars($this->input->post('rd_title')),
-			'rd_organisation'=>htmlspecialchars($this->input->post('rd_organisation')),
-			'rd_pic'=>htmlspecialchars($this->input->post('rd_pic')),
-			'rd_pic_post'=>htmlspecialchars($this->input->post('rd_pic_post')),
-			'rd_pic_dept'=>htmlspecialchars($this->input->post('rd_pic_dept')),
-			'rd_pic_email'=>htmlspecialchars($this->input->post('rd_pic_email')),
-			'rd_scope'=>htmlspecialchars($this->input->post('rd_scope')),
-			'rd_objective'=>htmlspecialchars($this->input->post('rd_objective')),
-            'rd_document'=>$rd_document['file_name'], 
-            'rd_approval'=>0,
-		];
-
-
-        $this->rd_projects_model->insert($data);
-
-        $this->session->set_flashdata('insert_message', 1); 
-        $this->session->set_flashdata('rd_title', $this->input->post('rd_title')); 
-
-        redirect('internal/level_2/educational_partner/ep_my_rd_project');
-    }
-
 	function view_admin_rd_project_app()
     {
 
@@ -134,7 +92,7 @@ class Admin_rd_app extends CI_Controller {
         <table class="table table-striped" style = "border:0;">
             <tbody>
                 <tr>
-                    <th colspan="2" style = "background-color: #CCE3DE; font-weight:900; font-size:1.1em;" scope="row">Education Partner Owner Detail</th>
+                    <th colspan="2" style = "background-color: #CCE3DE; font-weight:900; font-size:1.1em;" scope="row">EDUCATION PARTNER OWNER DETAIL</th>
                 </tr>
                 <tr>
                     <th scope="row">Owner Name</th>
@@ -172,7 +130,7 @@ class Admin_rd_app extends CI_Controller {
                     <th olspan="2" style = "background-color: white;" scope="row"></th>        
                 <tr>
                 <tr>
-                    <th colspan="2" style = "background-color: #CCE3DE; font-weight:900; font-size:1.1em;" scope="row">Education Partner Collaborator Detail</th>
+                    <th colspan="2" style = "background-color: #CCE3DE; font-weight:900; font-size:1.1em;" scope="row">EDUCATION PARTNER COLLABORATOR DETAILS</th>
                 </tr>
                 <tr>
                     <th scope="row">Collaborator Name</th>

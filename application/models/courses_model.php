@@ -157,4 +157,26 @@ class courses_model extends CI_Model
         $query = $this->db->get('courses')->result();
         return count($query);
     }
+
+    function course_join_uni()
+    {
+        $this->db->select('*');
+        $this->db->from('courses');
+        $this->db->join('universities', 'universities.uni_id = courses.uni_id');
+        $this->db->order_by('courses.uni_id');
+        $this->db->order_by('courses.course_level');                
+        $query = $this->db->get()->result();
+        return $query;
+    }
+
+    function one_course_join_uni($course_id)
+    {
+        $this->db->select('*');
+        $this->db->from('courses');
+        $this->db->where('course_id', $course_id);
+        $this->db->join('universities', 'universities.uni_id = courses.uni_id');
+        $query = $this->db->get()->row();
+        return $query;
+    }
+
 }
