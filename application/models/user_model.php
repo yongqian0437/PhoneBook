@@ -47,8 +47,7 @@ class user_model extends CI_Model
     //     $this->db->where('user_id',$id);
     //     return $this->db->update('users',$data);
     // }
-
-    function update_approve($id,$data)
+    function update($data,$id)
     {
         $this->db->where('user_id', $id);
         if ($this->db->update('users', $data)) {
@@ -78,15 +77,29 @@ class user_model extends CI_Model
         return $this->db->get('users')->result_array();
     }
 
-   public function search_email()
+
+    public function all_users_details()
+    {
+        return $this->db->get('users')->result();
+      
+    }
+
+
+    function full_active_users_details()
+    {
+        
+        return $this->db->get_where('users', ['user_approval'=>1])->result();
+    }
+
+    public function search_email()
     {
         return $this->db->get_where('users',['user_email'=>$this->session->userdata('user_email')])->row_array();
     }
 
-   public function search_id($id)
-    {
-        return $this->db->get_where('users', ['user_id'=>$id])->row_array();
-    }
+//    public function search_id($id)
+//     {
+//         return $this->db->get_where('users', ['user_id'=>$id])->row_array();
+//     }
 
     public function valid_email($user_email)
     {
@@ -187,7 +200,25 @@ class user_model extends CI_Model
         return $this->db->query("update users set user_approval= 1 where user_id=$row LIMIT 1");
     }
 
-
+    //---------NEW CODE(12/06/2021)------------------------------//
 
     
+    function full_inactive_users_details()
+    {
+        
+        return $this->db->get_where('users', ['user_approval'=>0])->result();
+    }
+
+    public function get_user_id($user_id)
+    {
+       $this->db->where('user_id',$user_id);
+       return $this->db->get('users')->row();
+    }  
+
+    // public function search_id($id)
+    // {
+    //     // return $this->db->get_where('users', ['user_id'=>$id])->row();
+    //     $this->db->where('user_id',$id);
+    //     return $this->db->get('users')->row();
+    // }
 }

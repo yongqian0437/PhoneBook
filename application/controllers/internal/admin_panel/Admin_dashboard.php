@@ -3,286 +3,683 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admin_dashboard extends CI_Controller 
 {
+
     public function __construct()
-    {
-        parent:: __construct();
-        $this->load->helper('form');
-        $this->load->model(['user_student_model','user_ep_model','user_ac_model','user_ea_model',
-        'user_e_model','user_model']);
+	{
+		parent::__construct();
+		$this->load->model(['user_model','user_student_model','user_ea_model','user_e_model','user_ep_model','user_ac_model']);
+       // date_default_timezone_set('Asia/Kuala_Lumpur');
 
         // Checks if session is set and if user is signed in as Admin (authorised access). If not, deny his/her access.
         if (!$this->session->userdata('user_id') || $this->session->userdata('user_role') != "Admin"){  
             redirect('user/login/Auth/login');
         }
-    }
+	}
 
     public function index()
-    {
-        $data['title']= 'iJEES | All users';
-        $data['users']=$this->user_model->search_email();
-        $this->load->view('internal/templates/header',$data);
-        $this->load->view('internal/templates/sidenav',$data);
-        $this->load->view('internal/templates/topbar',$data);
+    {   
+        $data['title'] = 'iJEES | All Users';
+        $data['include_js'] = 'admin_all_users_list';
+        $all_users_details=$this->user_model->all_users_details();
+       
+        // var_dump($this->session->userdata());
+        // die;
+
+        // $employer_projects = $this->employer_projects_model->select_all();
+        // var_dump($employer_projects);
+        // die;
+
+        // $full_employer_projects = $this->employer_projects_model->full_emps_details();
+        // var_dump($full_employer_projects);
+        // die;
+
+        // $emp_detail = $this->employer_projects_model->get_emp_with_id(2);
+        // var_dump($emp_detail);
+        // die;
+        
+        $this->load->view('internal/templates/header', $data);
+        $this->load->view('internal/templates/sidenav');
+        $this->load->view('internal/templates/topbar');
+        $this->load->view('internal/admin_panel/users_accounts_view');
         $this->load->view('internal/templates/footer');
     }
 
-    public function users_accounts_nav()
+    public function all_users_list()
+	{
+		// Datatables Variables
+		$draw = intval($this->input->get("draw"));
+		$start = intval($this->input->get("start"));
+		$length = intval($this->input->get("length"));
+
+       // $employer_projects = $this->employer_projects_model->full_emps_details();
+      // $data['users']=$this->user_model->search_email();
+        $all_users_details=$this->user_model->all_users_details();
+
+        $counter = 1;
+
+		$data = array();
+		$base_url = base_url();
+
+		foreach($all_users_details as $users) {
+
+			$view = '<span class = "px-1"><button type="button" onclick="view_user('.$users->user_id.')" class="btn icon-btn btn-xs btn-info waves-effect waves-light" data-toggle="modal" data-target="#view_user"><span class="fas fa-eye"></span></button></span>';
+
+            if ($users->user_approval == 0) {
+                $status = '<button type="button" onclick="activate_user('.$users->user_id.')" class="btn btn-warning">Inactive</button>';
+            } else {
+                $status = '<button type="button" onclick="deactivate_user('.$users->user_id.')" class="btn btn-success">Active</button>';
+            }
+
+			$data[] = array(
+				$counter,
+				$users->user_fname." ".$users->user_lname,
+                $users->user_email,
+                $users->user_role,
+                $users->user_submitdate,
+                $status,
+                $view,
+			);
+
+            $counter++;
+		}
+
+		$output = array(
+			"draw" => $draw,
+			"recordsTotal" => count($all_users_details),
+			"recordsFiltered" =>count($all_users_details),
+			"data" => $data
+		);
+
+		echo json_encode($output);
+		exit();
+	}
+
+    public function active_users_list()
+	{
+		// Datatables Variables
+		$draw = intval($this->input->get("draw"));
+		$start = intval($this->input->get("start"));
+		$length = intval($this->input->get("length"));
+
+        $active_users_details= $this->user_model->full_active_users_details();
+// var_dump( $inactive_users_details);
+// die;
+        $counter = 1;
+
+		$data = array();
+		$base_url = base_url();
+
+		foreach($active_users_details as $users) {
+
+			$view = '<span class = "px-1"><button type="button" onclick="view_user('.$users->user_id.')" class="btn icon-btn btn-xs btn-info waves-effect waves-light" data-toggle="modal" data-target="#view_user"><span class="fas fa-eye"></span></button></span>';
+            $status = '<button type="button" onclick="deactivate_user('.$users->user_id.')" class="btn btn-success">Active</button>';
+            $checkbox = '<input type="checkbox" onclick="check('.$users->user_id.')" value='.$users->user_id.' id='.$users->user_id.'>';
+			$data[] = array(
+                $checkbox,
+				$counter,
+				$users->user_fname." ".$users->user_lname,
+                $users->user_email,
+                $users->user_role,
+                $users->user_submitdate,
+                $status,
+                $view,
+			);
+
+            $counter++;
+		}
+
+		$output = array(
+			"draw" => $draw,
+			"recordsTotal" => count($active_users_details),
+			"recordsFiltered" =>count($active_users_details),
+			"data" => $data
+		);
+
+		echo json_encode($output);
+		exit();
+	}
+
+    public function inactive_users_list()
+	{
+		// Datatables Variables
+		$draw = intval($this->input->get("draw"));
+		$start = intval($this->input->get("start"));
+		$length = intval($this->input->get("length"));
+
+        $inactive_users_details= $this->user_model->full_inactive_users_details();
+// var_dump( $inactive_users_details);
+// die;
+        $counter = 1;
+
+		$data = array();
+		$base_url = base_url();
+
+		foreach($inactive_users_details as $users) {
+
+			$view = '<span class = "px-1"><button type="button" onclick="view_user('.$users->user_id.')" class="btn icon-btn btn-xs btn-info waves-effect waves-light" data-toggle="modal" data-target="#view_user"><span class="fas fa-eye"></span></button></span>';
+            $status = '<button type="button" onclick="activate_user('.$users->user_id.')" class="btn btn-warning">Inactive</button>';
+            $checkbox = '<input type="checkbox" onclick="check('.$users->user_id.')" value='.$users->user_id.' id='.$users->user_id.'>';
+			$data[] = array(
+                $checkbox,
+				$counter,
+				$users->user_fname." ".$users->user_lname,
+                $users->user_email,
+                $users->user_role,
+                $users->user_submitdate,
+                $status,
+                $view,
+			);
+
+            $counter++;
+		}
+
+		$output = array(
+			"draw" => $draw,
+			"recordsTotal" => count($inactive_users_details),
+			"recordsFiltered" =>count($inactive_users_details),
+			"data" => $data
+		);
+
+		echo json_encode($output);
+		exit();
+	}
+
+    function activate_user() 
     {
-        $data['title']= 'iJEES | All users';
-        $data['users']=$this->user_model->search_email();
-        $this->load->view('internal/templates/header',$data);
-        $this->load->view('internal/templates/sidenav',$data);
-        $this->load->view('internal/templates/topbar',$data);
-        $result=$this->user_model->index();
-        $data=array('userslist'=>$result);
-        $this->load->view('internal/admin_panel/users_accounts_view',$data);
-        $this->load->view('internal/templates/footer');  
+        $data = ['user_approval'=>1]; 
+        $this->user_model->update($data, $this->input->post('user_id'));
+      //  $this->send_email($this->input->post('user_id'));
     }
 
-    
-    public function update_acc_approval()
+    function deactivate_user() 
     {
-        if(isset($_REQUEST['sapproval']))
+        $data = ['user_approval'=>0]; 
+        $this->user_model->update($data, $this->input->post('user_id'));
+    }
+
+   
+
+    function view_user()
+    {
+
+       $user_detail=$this->user_model->get_user_id($this->input->post('user_id'));
+       $student_detail=$this->user_student_model->get_student_detail($this->input->post('user_id'));
+       $ea_detail=$this->user_ea_model->get_ea_detail($this->input->post('user_id'));
+       $e_detail=$this->user_e_model->get_full_e_detail($this->input->post('user_id'));
+       $ep_detail=$this->user_ep_model->get_full_ep_detail($this->input->post('user_id'));
+       $ac_detail=$this->user_ac_model->get_ac_detail($this->input->post('user_id'));
+
+        
+
+        if ($user_detail->user_approval == 0) {
+            $user_status = '<button type="button" style = "cursor: default;" class="btn btn-warning">Inactive</button>';
+        } else {
+            $user_status = '<button type="button" style = "cursor: default;" class="btn btn-success">Active</button>';
+        }
+
+        if ($ep_detail->uni_approval == 0) {
+            $ep_status = '<button type="button" style = "cursor: default;" class="btn btn-warning">Inactive</button>';
+        } else {
+            $ep_status = '<button type="button" style = "cursor: default;" class="btn btn-success">Active</button>';
+        }
+
+        $output ='
+        <table class="table table-striped" style = "border:0;">
+            <tbody>
+                <tr>
+                    <th colspan="2" style = "background-color: #CCE3DE; font-weight: 900; text-align: center; font-size: 1.1em;">USER DETAILS</th>   
+                </tr>
+                <tr>
+                    <th scope="row">Submitted Date</th>
+                    <td>'.$user_detail->user_submitdate.'</td>
+                </tr>
+                <tr>
+                    <th scope="row">Full Name</th>
+                    <td>'.$user_detail->user_fname.' '.$user_detail->user_lname.'</td>
+                </tr>
+                <tr>
+                    <th scope="row">Email</th>
+                    <td>'.$user_detail->user_email.'</td>
+                </tr>
+                <tr>
+                    <th scope="row">Role</th>
+                    <td>'.$user_detail->user_role.'</td>
+                </tr>
+                <tr>
+                    <th scope="row">Action</th>
+                    <td>'.$user_status.'</td>
+                </tr>
+                
+            </tbody>
+        </table>';
+        echo $output;
+
+        if ($user_detail->user_role == "Student") 
         {
-            $id=$_REQUEST['sid'];
-            $sapproval=$_REQUEST['sapproval'];
-            $this->load->model('user_model','users');
-    
-            if($sapproval==1)
-            {
-                $user_approval=0;
-            }
-            else 
-            {
-                $user_approval=1;
-            }
-            $data=
-            array(
-                'user_approval'=>$user_approval
-            );
-            $up_approval=$this->user_model->update_approve($id,$data);
+            $output ='
+            <table class="table table-striped" style = "border:0;">
+                <tbody>
+                    <tr>
+                        <th colspan="2" style = "background-color: white"></th>   
+                    </tr>
+                    <tr>
+                        <th colspan="2" style = "background-color: #CCE3DE; font-weight: 900; text-align: center; font-size: 1.1em;">STUDENT</th>   
+                    </tr>
+                    <tr>
+                        <th scope="row">Applied Date</th>
+                        <td>'.$student_detail->student_submitdate.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Phone Number</th>
+                        <td>'.$student_detail->student_phonenumber.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Nationality</th>
+                        <td>'.$student_detail->student_nationality.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Gender</th>
+                        <td>'.$student_detail->student_gender.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">DOB</th>
+                        <td>'.$student_detail->student_dob.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Interest</th>
+                        <td>'.$student_detail->student_interest.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Current Level</th>
+                        <td>'.$student_detail->student_currentlevel.'</td>
+                    </tr>
+                   
+                    
+                </tbody>
+            </table>';
+            echo $output;
+        }
+
+        if ($user_detail->user_role == "Education Agent") 
+        {
+            $output ='
+            <table class="table table-striped" style = "border:0;">
+                <tbody>
+                    <tr>
+                        <th colspan="2" style = "background-color: white"></th>   
+                    </tr>
+                    <tr>
+                        <th colspan="2" style = "background-color: #CCE3DE; font-weight: 900; text-align: center; font-size: 1.1em;">EDUCATION AGENT</th>   
+                    </tr>
+                    <tr>
+                        <th scope="row">Applied Date</th>
+                        <td>'.$ea_detail->ea_submitdate.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Phone Number</th>
+                        <td>'.$ea_detail->ea_phonenumber.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Business Email</th>
+                        <td>'.$ea_detail->ea_businessemail.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Nationality</th>
+                        <td>'.$ea_detail->ea_nationality.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Gender</th>
+                        <td>'.$ea_detail->ea_gender.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">DOB</th>
+                        <td>'.$ea_detail->ea_dob.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Document</th>
+                        <td><a href="'.base_url("assets/uploads/education_agents/").$ea_detail->ea_document.'" target="_blank">'.$ea_detail->ea_document.'</a></td>
+                </tbody>
+            </table>';
+            echo $output;
+        }
+
+        if ($user_detail->user_role == "Employer") 
+        {
+            $output ='
+            <table class="table table-striped" style = "border:0;">
+                <tbody>
+                    <tr>
+                        <th colspan="2" style = "background-color: white"></th>   
+                    </tr>
+                    <tr>
+                        <th colspan="2" style = "background-color: #CCE3DE; font-weight: 900; text-align: center; font-size: 1.1em;">EMPLOYER</th>   
+                    </tr>
+                    <tr>
+                        <th scope="row">Applied Date</th>
+                        <td>'.$e_detail->e_submitdate.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Phone Number</th>
+                        <td>'.$e_detail->e_phonenumber.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Business Email</th>
+                        <td>'.$e_detail->e_businessemail.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Nationality</th>
+                        <td>'.$e_detail->e_nationality.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Gender</th>
+                        <td>'.$e_detail->e_gender.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">DOB</th>
+                        <td>'.$e_detail->e_dob.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Job Title</th>
+                        <td>'.$e_detail->e_jobtitle.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Document</th>
+                        <td><a href="'.base_url("assets/uploads/employer/").$e_detail->e_document.'" target="_blank">'.$e_detail->e_document.'</a></td>
+                    <tr>
+                    <tr>
+                        <th colspan="2" style = "background-color: white"></th>   
+                    </tr>
+                    <tr>
+                        <th colspan="2" style = "background-color: #CCE3DE; font-weight: 900; text-align: center; font-size: 1.1em;">COMPANY</th>   
+                    </tr>
+                    <tr style="text-align: center">
+                        <td colspan="2"><img src="'.base_url("assets/img/company_logos/").$e_detail->c_logo.'" style="width: 250px; height: 100px; object-fit:contain;">
+                        </td>  
+                    </tr>
+                    <tr>
+                        <th scope="row">Company</th>
+                        <td>'.$e_detail->c_name.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Registration Number</th>
+                        <td>'.$e_detail->c_registrationnum.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Company Address</th>
+                        <td>'.$e_detail->c_address.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Phone Number</th>
+                        <td>'.$e_detail->c_phonenumber.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Website</th>
+                        <td>'.$e_detail->c_website.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Email</th>
+                        <td>'.$e_detail->c_email.'</td>
+                    </tr>
+                </tbody>
+            </table>';
+            echo $output;
+        }
+
+        if ($user_detail->user_role == "Education Partner") 
+        {
+            $output ='
+            <table class="table table-striped" style = "border:0;">
+                <tbody>
+                    <tr>
+                        <th colspan="2" style = "background-color: white"></th>   
+                    </tr>
+                    <tr>
+                        <th colspan="2" style = "background-color: #CCE3DE; font-weight: 900; text-align: center; font-size: 1.1em;">EDUCATION PARTNER</th>   
+                    </tr>
+                    <tr>
+                        <th scope="row">Applied Date</th>
+                        <td>'.$ep_detail->ep_submitdate.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Phone Number</th>
+                        <td>'.$ep_detail->ep_phonenumber.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Business Email</th>
+                        <td>'.$ep_detail->ep_businessemail.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Nationality</th>
+                        <td>'.$ep_detail->ep_nationality.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Gender</th>
+                        <td>'.$ep_detail->ep_gender.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">DOB</th>
+                        <td>'.$ep_detail->ep_dob.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Document</th>
+                        <td><a href="'.base_url("assets/uploads/education_partner/").$ep_detail->ep_document.'" target="_blank">'.$ep_detail->ep_document.'</a></td>
+                    <tr>
+                    <tr>
+                    <th colspan="2" style = "background-color: white"></th>   
+                </tr>
+                <tr>
+                    <th colspan="2" style = "background-color: #CCE3DE; font-weight: 900; text-align: center; font-size: 1.1em;">UNIVERSITY</th>   
+                </tr>
+                <tr>
+                    <th scope="row">Applied Date</th>
+                    <td>'.$ep_detail->uni_submitdate.'</td>
+                </tr>
+                <tr style="text-align: center">
+                    <th scope="row">Logo</th>
+                    <td colspan="2"><img src="'.base_url("assets/img/university/").$ep_detail->uni_logo.'" style="width: 250px; height: 100px; object-fit:contain;">
+                    </td>  
+                </tr>
+                <tr style="text-align: center">
+                    <th scope="row">Background</th>
+                    <td colspan="2"><img src="'.base_url("assets/img/university/").$ep_detail->uni_background.'" style="width: 250px; height: 100px; object-fit:contain;">
+                    </td>  
+                </tr>
+                <tr>
+                    <th scope="row">University</th>
+                    <td>'.$ep_detail->uni_name.'</td>
+                </tr>
+                <tr>
+                    <th scope="row">Short Profile</th>
+                    <td>'.$ep_detail->uni_shortprofile.'</td>
+                </tr>
+                <tr>
+                    <th scope="row">Fun Fact</th>
+                    <td>'.$ep_detail->uni_fun_fact.'</td>
+                </tr>
+                <tr>
+                    <th scope="row">Country</th>
+                    <td>'.$ep_detail->uni_country.'</td>
+                </tr>
+                <tr>
+                    <th scope="row">Hotline</th>
+                    <td>'.$ep_detail->uni_hotline.'</td>
+                </tr>
+                <tr>
+                    <th scope="row">Email</th>
+                    <td>'.$ep_detail->uni_email.'</td>
+                </tr>
+                <tr>
+                    <th scope="row">University Address</th>
+                    <td>'.$ep_detail->uni_address.'</td>
+                </tr>
+                <tr>
+                    <th scope="row">Website</th>
+                    <td>'.$ep_detail->uni_website.'</td>
+                </tr>
+                <tr>
+                    <th scope="row">QS Rank</th>
+                    <td>'.$ep_detail->uni_qsrank.'</td>
+                </tr>
+                <tr>
+                    <th scope="row">Employability Rank</th>
+                    <td>'.$ep_detail->uni_employabilityrank.'</td>
+                </tr>
+                <tr>
+                    <th scope="row">Total Students</th>
+                    <td>'.$ep_detail->uni_totalstudents.'</td>
+                </tr>
+                <tr>
+                    <th scope="row">Action</th>
+                    <td>'.$ep_status.'</td>
+                </tr>
+                </tbody>
+               
+            </table>';
+
+            // $output2 ='
+            //     <table class="table table-striped" style = "border:0;">
+            //         <tbody>
+            //             <div class="d-grid gap-2 col-2 mx-auto">
+            //                 <button onclick="view_uni('.$ep_detail->user_id.')" class="btn btn-primary" type="button">Next Page</button>
+            //             </div>
+            //         </tbody>
+            //     </table>';
             
-            $users=$this->user_model->search_id($id);
-              if($users['user_approval']==1)
-            { 
-                $this->_sendEmail();
-                $this->session->set_flashdata('message','<div class="alert alert-success" role="alert" id="alert_message">
-                User account is activated</div>');
-            }
-            else
-            {
-               $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert" id="alert_message">
-               User account is not activated</div>');
-            }
-            redirect('internal/admin_panel/Admin_dashboard/users_accounts_nav');
+            echo $output;
+            //echo $output2;
+            
         }
 
-       
-    
-        //     $id=$this->input->post('user_id');
-        //     $this->load->model('user_model','users');
-        //    // $data=$this->input->post('user_approval');
-        //     if($this->input->post('user_id')!=1){
-        //     if($this->input->post('user_approval')==1)
-        //     {
-        //         $user_approval=0;
-        //     }
-        //     else 
-        //     {
-        //         $user_approval=1;
-        //     }
-        //     $data=
-        //     array(
-        //         'user_approval'=>$user_approval
-        //     );
-        //     $up_approval=$this->user_model->update_approve($id,$data);
-        //     }
-
-        //$this->user_model->update_approve($this->input->post('user_id'),$this->input->post('user_approval'));
-    }
-
-    // public function delete_acc()
-    // {
-    //     $id=$_REQUEST['sid'];
-    //     $this->user_model->deletedata($id);
-    //     $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
-    //     User account is deleted</div>');
-    //     redirect('internal/admin_panel/Admin_dashboard/users_accounts_nav');
-    // }
-
-    // public function decline_acc()
-    // {
-    //     $id=$_REQUEST['sid'];
-    //     $this->user_model->deletedata($id);
-    //    // $this->_sendEmail();
-    //     $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
-    //     User account is declined</div>');
-    //     redirect('internal/admin_panel/Admin_dashboard/users_accounts_nav');
-    // }
-
-        private function _sendEmail()
-    {
-        $lname=$_REQUEST['slname'];
-        $fname=$_REQUEST['sfname'];
-        $id=$_REQUEST['sid'];
-        $email=$_REQUEST['semail'];
-        $password=$_REQUEST['spassword'];
-        $users=$this->user_model->search_id($id);
-        $config=
-        [
-            'protocol'=>'smtp',
-            'smtp_host'=>'ssl://smtp.googlemail.com',
-            'smtp_user'=>'g3cap2100@gmail.com',
-            'smtp_pass'=>'ijees2021',
-            'smtp_port'=>465,
-            'mailtype'=>'html',
-            'charset'=>'utf-8',
-            'newline'=>"\r\n"
-        ];
-       
-        $this->email->initialize($config);
-        $this->email->from('g3cap2100@gmail.com','Capstone Project 2021');
-        $this->email->to($email);
-        $this->email->subject('Account Verification');
-
-        if($users['user_approval']==1)
+        if ($user_detail->user_role == "Academic Counsellor") 
         {
-            $this->email->message("Welcome, "."$fname ". "$lname ". ". Thank you for registering and being part of iJEES, INTI's Interactive Joint Education Employability System."."<br><br>Congratulations! Your account has been approved and is now activated. <br><br>You may now login to the system at any time. Your credentials are the same as the ones you have provided upon registration:<br><br>".
-            "Email Address :".$email."<br> Password: ".$password);
-            // $this->email->message("Welcome ".$fname . $lname." .Thank you for registering and being part of iJEES, INTI's Interactive Joint Education Employability System.  "."<br><p>This is your email address and password<p>"."Email Address :".$email."<br> Password: ".$password);
-        }
-        else
-        {
-            $this->email->message("Sorry ". $lname." .Your account is rejected ");
-        }
-
-        if($this->email->send())
-        {
-            return true;
-        }
-        else
-        {
-            echo $this->email->print_debugger();   
-        }
-    }
-
-    // public function show_approve_acc()
-    // { 
-    //     $data['title']= 'Approved';
-    //     $data['users']=$this->user_model->search_email();
-    //     $this->load->view('internal/templates/header',$data);
-    //     $this->load->view('internal/templates/sidenav',$data);
-    //      $this->load->view('internal/templates/topbar',$data);
-
-    //     $condition=1;
-    //     $data['users']=$this->user_model->approvedata($condition);
-    //     $this->load->view('internal/admin_panel/users_accounts_view',$data);
-    //     $this->load->view('internal/templates/footer'); 
-    // }
-
-    public function show_activated_acc()
-    { 
-        $data['title']= 'iJEES | Active Users';
-        $data['users']=$this->user_model->search_email();
-        $this->load->view('internal/templates/header',$data);
-        $this->load->view('internal/templates/sidenav',$data);
-        $this->load->view('internal/templates/topbar',$data);
-        $condition=1;
-        $result=$this->user_model->activated_acc($condition);
-        $data=array('userslist'=>$result);
-        $this->load->view('internal/admin_panel/active_acc_view',$data);
-        $this->load->view('internal/templates/footer'); 
-    }
-
-    public function show_inactivate_acc()
-    {
-        $data['title']= 'iJEES | Inactive Users';
-        $data['users']=$this->user_model->search_email();
-        $this->load->view('internal/templates/header',$data);
-        $this->load->view('internal/templates/sidenav',$data);
-        $this->load->view('internal/templates/topbar',$data);
-        $condition=0;
-        $result=$this->user_model->inactivate_acc($condition);
-        $data=array('userslist'=>$result);
-        $this->load->view('internal/admin_panel/inactive_acc_view',$data);
-        $this->load->view('internal/templates/footer'); 
-    }
-
-    public function inactivate_all_acc()
-    {
-        $data['title']= 'Updated Successfully';
-        $this->load->view('internal/templates/header',$data);
-        $this->load->view('internal/templates/sidenav',$data);
-        $this->load->view('internal/templates/topbar',$data);
-        if(isset($_POST['inactivate_all_acc']))
-        {
-            if(!empty($this->input->post('checkbox_value')))
-            {
-                $checknum=$this->input->post('checkbox_value');
-                $checked_id=[];
-                $condition=array(0);
-
-                foreach($checknum as $row)
-                {
-                   array_push($checked_id,$row);
-                   $this->load->model('user_model');
-                   $up_approval=$this->user_model->inactivate_user($row);
-                  
-                }
-                
-                $this->session->set_flashdata('message','<div class="alert alert-success" role="alert" id="alert_message">
-                The accounts are updated</div>');
-                redirect('internal/admin_panel/Admin_dashboard/show_activated_acc');
-            }
-            else 
-            {
-                $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert" id="alert_message">
-                Please select any number</div>');
-                redirect('internal/admin_panel/Admin_dashboard/show_activated_acc');
-            }
-        }
-        $this->load->view('internal/templates/footer'); 
-    }
-
-    public function activate_all_acc()
-    {
-        $data['title']= 'Updated Successfully';
-        $this->load->view('internal/templates/header',$data);
-        $this->load->view('internal/templates/sidenav',$data);
-        $this->load->view('internal/templates/topbar',$data);
-        if(isset($_POST['activate_all_acc']))
-        {
-            if(!empty($this->input->post('checkbox_value')))
-            {
-                $checknum=$this->input->post('checkbox_value');
-                $checked_id=[];
-                $condition=array(0);
-
-                foreach($checknum as $row)
-                {
-                   array_push($checked_id,$row);
-                   $this->load->model('user_model');
-                   $up_approval=$this->user_model->activate_user($row);
-                  
-                }
-                
-                $this->session->set_flashdata('message','<div class="alert alert-success" role="alert" id="alert_message">
-                The accounts are updated</div>');
-                redirect('internal/admin_panel/Admin_dashboard/show_inactivate_acc');
-            }
-            else 
-            {
-                $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert" id="alert_message">
-                Please select any number</div>');
-                redirect('internal/admin_panel/Admin_dashboard/show_inactivate_acc');
-            }
+            $output ='
+            <table class="table table-striped" style = "border:0;">
+                <tbody>
+                    <tr>
+                        <th colspan="2" style = "background-color: white"></th>   
+                    </tr>
+                    <tr>
+                        <th colspan="2" style = "background-color: #CCE3DE; font-weight: 900; text-align: center; font-size: 1.1em;">ACADEMIC COUNSELLOR</th>   
+                    </tr>
+                    <tr>
+                        <th scope="row">Applied Date</th>
+                        <td>'.$ac_detail->ac_submitdate.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Phone Number</th>
+                        <td>'.$ac_detail->ac_phonenumber.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Business Email</th>
+                        <td>'.$ac_detail->ac_businessemail.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">University</th>
+                        <td>'.$ac_detail->ac_university.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Nationality</th>
+                        <td>'.$ac_detail->ac_nationality.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Gender</th>
+                        <td>'.$ac_detail->ac_gender.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">DOB</th>
+                        <td>'.$ac_detail->ac_dob.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Document</th>
+                        <td><a href="'.base_url("assets/uploads/academic_counsellor/").$ac_detail->ac_document.'" target="_blank">'.$ac_detail->ac_document.'</a></td>
+                    </tr>
+                </tbody>
+            </table>';
+            echo $output;
         }
         
-        $this->load->view('internal/templates/footer'); 
     }
 
-}
+    // public function view_uni($user_id)
+    // {
+    //     $ep_detail=$this->user_ep_model->get_full_ep_detail($this->input->post('user_id'));
+
+    //     $output ='
+    //     <table class="table table-striped" style = "border:0;">
+    //         <tbody>
+    //             <tr>
+    //                 <th colspan="2" style = "background-color: white"></th>   
+    //             </tr>
+    //             <tr>
+    //                 <th colspan="2" style = "background-color: #CCE3DE; font-weight: 900; text-align: center; font-size: 1.1em;">UNIVERSITY</th>   
+    //             </tr>
+    //             <tr>
+    //                 <th scope="row">Applied Date</th>
+    //                 <td>'.$ep_detail->uni_submitdate.'</td>
+    //             </tr>
+    //             <tr style="text-align: center">
+    //                 <td colspan="2"><img src="'.base_url("assets/img/university/").$ep_detail->uni_logo.'" style="width: 250px; height: 100px; object-fit:contain;">
+    //                 </td>  
+    //             </tr>
+    //             <tr style="text-align: center">
+    //                 <td colspan="2"><img src="'.base_url("assets/img/university/").$ep_detail->uni_background.'" style="width: 250px; height: 100px; object-fit:contain;">
+    //                 </td>  
+    //             </tr>
+                
+    //             <tr>
+    //                 <th scope="row">University</th>
+    //                 <td>'.$ep_detail->uni_name.'</td>
+    //             </tr>
+    //             <tr>
+    //                 <th scope="row">Short Profile</th>
+    //                 <td>'.$ep_detail->uni_shortprofile.'</td>
+    //             </tr>
+    //             <tr>
+    //                 <th scope="row">Fun Fact</th>
+    //                 <td>'.$ep_detail->uni_fun_fact.'</td>
+    //             </tr>
+    //             <tr>
+    //                 <th scope="row">Country</th>
+    //                 <td>'.$ep_detail->uni_country.'</td>
+    //             </tr>
+    //             <tr>
+    //                 <th scope="row">Hotline</th>
+    //                 <td>'.$ep_detail->uni_hotline.'</td>
+    //             </tr>
+    //             <tr>
+    //                 <th scope="row">Email</th>
+    //                 <td>'.$ep_detail->uni_email.'</td>
+    //             </tr>
+    //             <tr>
+    //                 <th scope="row">University Address</th>
+    //                 <td>'.$ep_detail->uni_address.'</td>
+    //             </tr>
+    //             <tr>
+    //                 <th scope="row">Website</th>
+    //                 <td>'.$ep_detail->uni_website.'</td>
+    //             </tr>
+    //             <tr>
+    //                 <th scope="row">QS Rank</th>
+    //                 <td>'.$ep_detail->uni_qsrank.'</td>
+    //             </tr>
+    //             <tr>
+    //                 <th scope="row">Employability Rank</th>
+    //                 <td>'.$ep_detail->uni_employabilityrank.'</td>
+    //             </tr>
+    //             <tr>
+    //                 <th scope="row">Total Students</th>
+    //                 <td>'.$ep_detail->uni_totalstudents.'</td>
+    //             </tr>
+    //         </tbody>
+           
+    //     </table>';
+        
+    //     echo $output;
+       
+    // }
+       
+    }
 
 
 
-    
+?>

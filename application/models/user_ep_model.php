@@ -83,5 +83,16 @@ class user_ep_model extends CI_Model
         ->join('users', 'users.user_id = user_ep.user_id');// users table
         return $this->db->get();
     }
+
+    public function get_full_ep_detail($user_id)
+    {
+       $this->db->select('')
+       ->from('users') // users table
+       ->join('user_ep', 'user_ep.user_id = users.user_id') // ep table
+       ->join('universities', 'universities.uni_id = user_ep.uni_id'); // uni table
+       return $this->db->get()->row();// return object array
+    }  
+
+
     
 }

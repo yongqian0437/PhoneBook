@@ -86,7 +86,8 @@ class Admin_course_application extends CI_Controller
                 <tr>
                     <th colspan="2" style = "background-color: #CCE3DE; font-weight: 900; text-align: center; font-size: 1.1em;">COURSE DETAILS</th>
                 </tr>
-                <tr style="text-align: center">
+                <tr>
+                    <th scope="row">Logo</th>
                     <td colspan="2"><img src="'.base_url("assets/img/universities/").$course_applicants[0]->uni_logo.'" style="width: 250px; height: 100px; object-fit:contain;">
                     </td>  
                 </tr>

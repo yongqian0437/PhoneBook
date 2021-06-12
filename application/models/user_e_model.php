@@ -78,4 +78,13 @@ class user_e_model extends CI_Model
         ->join('users', 'users.user_id = user_e.user_id');// users table
         return $this->db->get();
     }
+
+    public function get_full_e_detail($user_id)
+    {
+       $this->db->select('')
+       ->from('users') // users table
+       ->join('user_e', 'user_e.user_id = users.user_id') // employer table
+       ->join('company', 'company.c_id = user_e.c_id'); // company table
+       return $this->db->get()->row();// return object array
+    }  
 }
