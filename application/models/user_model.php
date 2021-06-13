@@ -110,7 +110,7 @@ class user_model extends CI_Model
     
     function employers_list() // join 'users' table + 'user_e' table to get info from both tables
     {
-        $this->db->select('users.user_id, user_fname, user_lname, c_name, c_logo, e_jobtitle')
+        $this->db->select('users.user_id, user_fname, user_lname, c_name, c_logo, c_country, e_jobtitle')
                  ->from('users')
                  ->join('user_e', 'user_e.user_id = users.user_id')
                  ->join('company', 'company.c_id = user_e.c_id')
@@ -121,7 +121,7 @@ class user_model extends CI_Model
 
     function students_list()
     {
-        $this->db->select('users.user_id, user_email, user_fname, user_lname, student_interest, student_currentlevel')
+        $this->db->select('users.user_id, user_email, user_fname, user_lname, student_nationality, student_interest, student_currentlevel')
                  ->from('users')
                  ->join('user_student', 'user_student.user_id = users.user_id')
                  ->where('users.user_role', 'Student');
@@ -130,7 +130,7 @@ class user_model extends CI_Model
 
     function counsellors_list() // join users table + user_ac table to get info from both tables
     {
-        $this->db->select('users.user_id, user_email, user_fname, user_lname, ac_university, uni_logo') // uni_logo
+        $this->db->select('users.user_id, user_email, user_fname, user_lname, ac_university, uni_logo, uni_country') // uni_logo
                  ->from('users')
                  ->join('user_ac', 'user_ac.user_id = users.user_id')
                  ->join('universities', 'universities.uni_name = user_ac.ac_university')
@@ -150,18 +150,12 @@ class user_model extends CI_Model
 
     function get_name($id)
     {
-        $this->db->select('user_id,user_fname');
-
-        $this->db->from('users');
-
-        $this->db->where("user_id", $id);
-
-        $this->db->limit(1);
-
+        $this->db->select('user_id,user_fname')
+                 ->from('users')
+                 ->where("user_id", $id)
+                 ->limit(1);
         $query = $this->db->get();
-
         $res = $query->row_array();
-
         return $res['user_fname'];
     }
 }

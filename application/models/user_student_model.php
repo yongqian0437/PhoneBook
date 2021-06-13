@@ -76,7 +76,5 @@ class user_student_model extends CI_Model
     {
      return $this->db->get_where('user_student',['user_id'=>$id])->row_array();
     }
-    
-    
 }
 ?>

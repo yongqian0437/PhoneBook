@@ -34,21 +34,27 @@
                                     </div>
                                 </div>
                                 <div class="form-row px-3">
-                                    <!-- Company Phone Number-->
-                                    <div class="form-group col-md-12 px-2">
-                                        <input  class="form-control border-bottom" style="border: 0;" placeholder= "Phone Number: <?=$c['c_phonenumber'];?>" readonly>
-                                    </div>
-                                </div>
-                                <div class="form-row px-3">
                                     <!-- Company Registration Number-->
                                     <div class="form-group col-md-12 px-2">
                                         <input  class="form-control border-bottom" style="border: 0;" placeholder= "Registration Number: <?=$c['c_registrationnum'];?>" readonly>
                                     </div>
                                 </div>
                                 <div class="form-row px-3">
+                                    <!-- Company Country -->
+                                    <div class="form-group col-md-12 px-2">
+                                        <input  class="form-control border-bottom" style="border: 0;" placeholder= "Company Country: <?=$c['c_country'];?>" readonly>
+                                    </div>
+                                </div>
+                                <div class="form-row px-3">
                                     <!-- Company Address -->
                                     <div class="form-group col-md-12 px-2">
                                         <textarea class="form-control border-bottom" rows="6" style="border: 0;" placeholder= "Company Address: <?=$c['c_address'];?>" readonly></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-row px-3">
+                                    <!-- Company Phone Number-->
+                                    <div class="form-group col-md-12 px-2">
+                                        <input  class="form-control border-bottom" style="border: 0;" placeholder= "Phone Number: <?=$c['c_phonenumber'];?>" readonly>
                                     </div>
                                 </div>
                                 <div class="form-row px-3">

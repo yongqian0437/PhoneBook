@@ -33,15 +33,15 @@
                                     </div>
                                 </div>
                                 <div class="form-row px-3">
-                                    <!--  Email -->
+                                    <!-- University Short Profile -->
                                     <div class="form-group col-md-12 px-2">
-                                        <input  class="form-control border-bottom" style="border: 0;" placeholder= "University Email: <?=$uni['uni_email'];?>" readonly>
+                                        <textarea class="form-control border-bottom" rows="10" style="border: 0;" placeholder= "University Short Profile: <?=$uni['uni_shortprofile'];?>" readonly></textarea>
                                     </div>
                                 </div>
                                 <div class="form-row px-3">
-                                    <!-- Hotline-->
+                                    <!-- University Fun Fact -->
                                     <div class="form-group col-md-12 px-2">
-                                        <input  class="form-control border-bottom" style="border: 0;" placeholder= "University Hotline: <?=$uni['uni_hotline'];?>" readonly>
+                                        <textarea class="form-control border-bottom" rows="6" style="border: 0;" placeholder= "University Fun Fact: <?=$uni['uni_fun_fact'];?>" readonly></textarea>
                                     </div>
                                 </div>
                                 <div class="form-row px-3">
@@ -51,15 +51,27 @@
                                     </div>
                                 </div>
                                 <div class="form-row px-3">
-                                    <!-- University Short Profile -->
-                                    <div class="form-group col-md-12 px-2">
-                                        <textarea class="form-control border-bottom" rows="10" style="border: 0;" placeholder= "University Short Profile: <?=$uni['uni_shortprofile'];?>" readonly></textarea>
-                                    </div>
-                                </div>
-                                <div class="form-row px-3">
                                     <!-- Address -->
                                     <div class="form-group col-md-12 px-2">
                                         <textarea class="form-control border-bottom" rows="6" style="border: 0;" placeholder= "University Address: <?=$uni['uni_address'];?>" readonly></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-row px-3">
+                                    <!-- Hotline-->
+                                    <div class="form-group col-md-12 px-2">
+                                        <input  class="form-control border-bottom" style="border: 0;" placeholder= "University Hotline: <?=$uni['uni_hotline'];?>" readonly>
+                                    </div>
+                                </div>
+                                <div class="form-row px-3">
+                                    <!--  Email -->
+                                    <div class="form-group col-md-12 px-2">
+                                        <input  class="form-control border-bottom" style="border: 0;" placeholder= "University Email: <?=$uni['uni_email'];?>" readonly>
+                                    </div>
+                                </div>
+                                <div class="form-row px-3">
+                                    <!--  Website -->
+                                    <div class="form-group col-md-12 px-2">
+                                        <input  class="form-control border-bottom" style="border: 0;" placeholder= "University Website: <?=$uni['uni_website'];?>" readonly>
                                     </div>
                                 </div>
                                 <div class="form-row px-3">
