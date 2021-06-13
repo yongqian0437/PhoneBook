@@ -7,7 +7,8 @@ class Admin_dashboard extends CI_Controller
     public function __construct()
 	{
 		parent::__construct();
-		$this->load->model(['user_model','user_student_model','user_ea_model','user_e_model','user_ep_model','user_ac_model']);
+	    $this->load->model(['user_student_model','user_ep_model','user_ac_model','user_ea_model',
+        'user_e_model','universities_model','company_model','courses_model']);
         // date_default_timezone_set('Asia/Kuala_Lumpur');
 
         // Checks if session is set and if user is signed in as Admin (authorised access). If not, deny his/her access.
@@ -209,25 +210,44 @@ class Admin_dashboard extends CI_Controller
     function view_user()
     {
 
+       //general users//
        $user_detail=$this->user_model->get_user_id($this->input->post('user_id'));
-       $student_detail=$this->user_student_model->get_student_detail($this->input->post('user_id'));
-       $ea_detail=$this->user_ea_model->get_ea_detail($this->input->post('user_id'));
-       $e_detail=$this->user_e_model->get_full_e_detail($this->input->post('user_id'));
-       $ep_detail=$this->user_ep_model->get_full_ep_detail($this->input->post('user_id'));
-       $ac_detail=$this->user_ac_model->get_ac_detail($this->input->post('user_id'));
 
-        
+       //student details//
+       $student_detail=$this->user_student_model->get_student_detail($this->input->post('user_id'));
+
+       //ea details//
+       $ea_detail=$this->user_ea_model->get_ea_detail($this->input->post('user_id'));
+
+       //ac details//
+       $ac_detail=$this->user_ac_model->get_ac_detail($this->input->post('user_id'));
+    
+       if ($user_detail->user_role == "Education Partner") 
+       {
+
+       //ep and uni details//
+       $ep_detail=$this->user_ep_model->get_ep_detail($this->input->post('user_id'));
+       $uni_detail=$this->universities_model->get_uni_detail($ep_detail->uni_id);
+
+       if ($uni_detail->uni_approval == 0) 
+        {
+            $ep_status = '<button type="button" style = "cursor: default;" class="btn btn-warning">Inactive</button>';
+        }else{
+            $ep_status = '<button type="button" style = "cursor: default;" class="btn btn-success">Active</button>';
+        }
+        }
+       
+       if ($user_detail->user_role == "Employer") 
+       {
+        // e and company details
+        $e_detail=$this->user_e_model->get_e_detail($this->input->post('user_id'));
+        $c_detail=$this->company_model->get_c_detail($e_detail->c_id);
+       }
 
         if ($user_detail->user_approval == 0) {
             $user_status = '<button type="button" style = "cursor: default;" class="btn btn-warning">Inactive</button>';
         } else {
             $user_status = '<button type="button" style = "cursor: default;" class="btn btn-success">Active</button>';
-        }
-
-        if ($ep_detail->uni_approval == 0) {
-            $ep_status = '<button type="button" style = "cursor: default;" class="btn btn-warning">Inactive</button>';
-        } else {
-            $ep_status = '<button type="button" style = "cursor: default;" class="btn btn-success">Active</button>';
         }
 
         $output ='
@@ -400,32 +420,32 @@ class Admin_dashboard extends CI_Controller
                         <th colspan="2" style = "background-color: #CCE3DE; font-weight: 900; text-align: center; font-size: 1.1em;">COMPANY</th>   
                     </tr>
                     <tr style="text-align: center">
-                        <td colspan="2"><img src="'.base_url("assets/img/company_logos/").$e_detail->c_logo.'" style="width: 250px; height: 100px; object-fit:contain;">
+                        <td colspan="2"><img src="'.base_url("assets/img/company_logos/").$c_detail->c_logo.'" style="width: 250px; height: 100px; object-fit:contain;">
                         </td>  
                     </tr>
                     <tr>
                         <th scope="row">Company</th>
-                        <td>'.$e_detail->c_name.'</td>
+                        <td>'.$c_detail->c_name.'</td>
                     </tr>
                     <tr>
                         <th scope="row">Registration Number</th>
-                        <td>'.$e_detail->c_registrationnum.'</td>
+                        <td>'.$c_detail->c_registrationnum.'</td>
                     </tr>
                     <tr>
                         <th scope="row">Company Address</th>
-                        <td>'.$e_detail->c_address.'</td>
+                        <td>'.$c_detail->c_address.'</td>
                     </tr>
                     <tr>
                         <th scope="row">Phone Number</th>
-                        <td>'.$e_detail->c_phonenumber.'</td>
+                        <td>'.$c_detail->c_phonenumber.'</td>
                     </tr>
                     <tr>
                         <th scope="row">Website</th>
-                        <td>'.$e_detail->c_website.'</td>
+                        <td>'.$c_detail->c_website.'</td>
                     </tr>
                     <tr>
                         <th scope="row">Email</th>
-                        <td>'.$e_detail->c_email.'</td>
+                        <td>'.$c_detail->c_email.'</td>
                     </tr>
                 </tbody>
             </table>';
@@ -471,88 +491,21 @@ class Admin_dashboard extends CI_Controller
                         <th scope="row">Document</th>
                         <td><a href="'.base_url("assets/uploads/education_partner/").$ep_detail->ep_document.'" target="_blank">'.$ep_detail->ep_document.'</a></td>
                     <tr>
-                    <tr>
-                        <th colspan="2" style = "background-color: white"></th>   
-                    </tr>
-                    <tr>
-                        <th colspan="2" style = "background-color: #CCE3DE; font-weight: 900; text-align: center; font-size: 1.1em;">UNIVERSITY</th>   
-                    </tr>
-                    <tr>
-                        <th scope="row">Applied Date</th>
-                        <td>'.$ep_detail->uni_submitdate.'</td>
-                    </tr>
-                    <tr style="text-align: center">
-                        <th scope="row">Logo</th>
-                        <td colspan="2"><img src="'.base_url("assets/img/university/").$ep_detail->uni_logo.'" style="width: 250px; height: 100px; object-fit:contain;">
-                        </td>  
-                    </tr>
-                    <tr style="text-align: center">
-                        <th scope="row">Background</th>
-                        <td colspan="2"><img src="'.base_url("assets/img/university/").$ep_detail->uni_background.'" style="width: 250px; height: 100px; object-fit:contain;">
-                        </td>  
-                    </tr>
-                    <tr>
-                        <th scope="row">University</th>
-                        <td>'.$ep_detail->uni_name.'</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Short Profile</th>
-                        <td>'.$ep_detail->uni_shortprofile.'</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Fun Fact</th>
-                        <td>'.$ep_detail->uni_fun_fact.'</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Country</th>
-                        <td>'.$ep_detail->uni_country.'</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Hotline</th>
-                        <td>'.$ep_detail->uni_hotline.'</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Email</th>
-                        <td>'.$ep_detail->uni_email.'</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">University Address</th>
-                        <td>'.$ep_detail->uni_address.'</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Website</th>
-                        <td>'.$ep_detail->uni_website.'</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">QS Rank</th>
-                        <td>'.$ep_detail->uni_qsrank.'</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Employability Rank</th>
-                        <td>'.$ep_detail->uni_employabilityrank.'</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Total Students</th>
-                        <td>'.$ep_detail->uni_totalstudents.'</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Action</th>
-                        <td>'.$ep_status.'</td>
-                    </tr>
+                   
                     </tbody>
             </table>';
 
-            // $output2 ='
-            //     <table class="table table-striped" style = "border:0;">
-            //         <tbody>
-            //             <div class="d-grid gap-2 col-2 mx-auto">
-            //                 <button onclick="view_uni('.$ep_detail->user_id.')" class="btn btn-primary" type="button">Next Page</button>
-            //             </div>
-            //         </tbody>
-            //     </table>';
+            $output2 ='
+                <table class="table table-striped" style = "border:0;">
+                    <tbody>
+                        <div class="d-grid gap-2 col-2 mx-auto">
+                        <button type="button" onclick="view_next('.$ep_detail->user_id.')" data-toggle="modal"  data-target="#view_next" class="btn btn-info">Next</button>
+                        </div>
+                    </tbody>
+                </table>';
             
             echo $output;
-            //echo $output2;
+            echo $output2;
         }
 
         if ($user_detail->user_role == "Academic Counsellor") 
@@ -605,83 +558,82 @@ class Admin_dashboard extends CI_Controller
         
     }
 
-    // public function view_uni($user_id)
-    // {
-    //     $ep_detail=$this->user_ep_model->get_full_ep_detail($this->input->post('user_id'));
+    public function view_next()
+    {
+        //$ep_detail=$this->user_ep_model->get_full_ep_detail($this->input->post('user_id'));
+        $ep_detail=$this->user_ep_model->get_ep_detail($this->input->post('user_id'));
+        $uni_detail=$this->universities_model->get_uni_detail($ep_detail->uni_id);
 
-    //     $output ='
-    //     <table class="table table-striped" style = "border:0;">
-    //         <tbody>
-    //             <tr>
-    //                 <th colspan="2" style = "background-color: white"></th>   
-    //             </tr>
-    //             <tr>
-    //                 <th colspan="2" style = "background-color: #CCE3DE; font-weight: 900; text-align: center; font-size: 1.1em;">UNIVERSITY</th>   
-    //             </tr>
-    //             <tr>
-    //                 <th scope="row">Applied Date</th>
-    //                 <td>'.$ep_detail->uni_submitdate.'</td>
-    //             </tr>
-    //             <tr style="text-align: center">
-    //                 <td colspan="2"><img src="'.base_url("assets/img/university/").$ep_detail->uni_logo.'" style="width: 250px; height: 100px; object-fit:contain;">
-    //                 </td>  
-    //             </tr>
-    //             <tr style="text-align: center">
-    //                 <td colspan="2"><img src="'.base_url("assets/img/university/").$ep_detail->uni_background.'" style="width: 250px; height: 100px; object-fit:contain;">
-    //                 </td>  
-    //             </tr>
+        $output ='
+        <table class="table table-striped" style = "border:0;">
+            <tbody>
+                <tr>
+                    <th colspan="2" style = "background-color: #CCE3DE; font-weight: 900; text-align: center; font-size: 1.1em;">UNIVERSITY</th>   
+                </tr>
+                <tr>
+                    <th scope="row">Applied Date</th>
+                    <td>'.$uni_detail->uni_submitdate.'</td>
+                </tr>
+                <tr style="text-align: center">
+                    <td colspan="2"><img src="'.base_url("assets/img/university/").$uni_detail->uni_logo.'" style="width: 250px; height: 100px; object-fit:contain;">
+                    </td>  
+                </tr>
+                <tr style="text-align: center">
+                    <td colspan="2"><img src="'.base_url("assets/img/university/").$uni_detail->uni_background.'" style="width: 250px; height: 100px; object-fit:contain;">
+                    </td>  
+                </tr>
                 
-    //             <tr>
-    //                 <th scope="row">University</th>
-    //                 <td>'.$ep_detail->uni_name.'</td>
-    //             </tr>
-    //             <tr>
-    //                 <th scope="row">Short Profile</th>
-    //                 <td>'.$ep_detail->uni_shortprofile.'</td>
-    //             </tr>
-    //             <tr>
-    //                 <th scope="row">Fun Fact</th>
-    //                 <td>'.$ep_detail->uni_fun_fact.'</td>
-    //             </tr>
-    //             <tr>
-    //                 <th scope="row">Country</th>
-    //                 <td>'.$ep_detail->uni_country.'</td>
-    //             </tr>
-    //             <tr>
-    //                 <th scope="row">Hotline</th>
-    //                 <td>'.$ep_detail->uni_hotline.'</td>
-    //             </tr>
-    //             <tr>
-    //                 <th scope="row">Email</th>
-    //                 <td>'.$ep_detail->uni_email.'</td>
-    //             </tr>
-    //             <tr>
-    //                 <th scope="row">University Address</th>
-    //                 <td>'.$ep_detail->uni_address.'</td>
-    //             </tr>
-    //             <tr>
-    //                 <th scope="row">Website</th>
-    //                 <td>'.$ep_detail->uni_website.'</td>
-    //             </tr>
-    //             <tr>
-    //                 <th scope="row">QS Rank</th>
-    //                 <td>'.$ep_detail->uni_qsrank.'</td>
-    //             </tr>
-    //             <tr>
-    //                 <th scope="row">Employability Rank</th>
-    //                 <td>'.$ep_detail->uni_employabilityrank.'</td>
-    //             </tr>
-    //             <tr>
-    //                 <th scope="row">Total Students</th>
-    //                 <td>'.$ep_detail->uni_totalstudents.'</td>
-    //             </tr>
-    //         </tbody>
+                <tr>
+                    <th scope="row">University</th>
+                    <td>'.$uni_detail->uni_name.'</td>
+                </tr>
+                <tr>
+                    <th scope="row">Short Profile</th>
+                    <td>'.$uni_detail->uni_shortprofile.'</td>
+                </tr>
+                <tr>
+                    <th scope="row">Fun Fact</th>
+                    <td>'.$uni_detail->uni_fun_fact.'</td>
+                </tr>
+                <tr>
+                    <th scope="row">Country</th>
+                    <td>'.$uni_detail->uni_country.'</td>
+                </tr>
+                <tr>
+                    <th scope="row">Hotline</th>
+                    <td>'.$uni_detail->uni_hotline.'</td>
+                </tr>
+                <tr>
+                    <th scope="row">Email</th>
+                    <td>'.$uni_detail->uni_email.'</td>
+                </tr>
+                <tr>
+                    <th scope="row">University Address</th>
+                    <td>'.$uni_detail->uni_address.'</td>
+                </tr>
+                <tr>
+                    <th scope="row">Website</th>
+                    <td>'.$uni_detail->uni_website.'</td>
+                </tr>
+                <tr>
+                    <th scope="row">QS Rank</th>
+                    <td>'.$uni_detail->uni_qsrank.'</td>
+                </tr>
+                <tr>
+                    <th scope="row">Employability Rank</th>
+                    <td>'.$uni_detail->uni_employabilityrank.'</td>
+                </tr>
+                <tr>
+                    <th scope="row">Total Students</th>
+                    <td>'.$uni_detail->uni_totalstudents.'</td>
+                </tr>
+            </tbody>
            
-    //     </table>';
-        
-    //     echo $output;
+        </table>';
+
+        echo $output;
        
-    // }
+    }
        
     }
 

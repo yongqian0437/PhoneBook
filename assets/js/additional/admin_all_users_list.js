@@ -77,6 +77,7 @@ $(document).ready(function () {
             this.checked = checked;
         });
     })
+
 }); // end of ready function
 
 
@@ -99,6 +100,8 @@ function active_users_tab() {
 }
 
 function view_user(user_id) {
+    $('#view_user').show();
+    $('#view_next').hide();
     $.ajax({
         url: base_url + "internal/admin_panel/Admin_dashboard/view_user",
         method: "POST",
@@ -108,22 +111,21 @@ function view_user(user_id) {
 
         }
     });
-
-
 }
 
-// function next_page(user_id) {
-//     $.ajax({
-//         url: base_url + "internal/admin_panel/Admin_dashboard/view_uni",
-//         method: "POST",
-//         data: { user_id: user_id },
-//         success: function (data) {
-//             $('#user_information').html(data);
-
-//         }
-//     });
-// }
-
+function view_next(user_id) {
+    $('#view_next').show();
+    $('#view_user').hide();
+    $.ajax({
+        url: base_url + "internal/admin_panel/Admin_dashboard/view_next",
+        method: "POST",
+        data: { user_id: user_id },
+        success: function (data) {
+            $('#next').html(data);
+        }
+    });
+    // $('.modal-backdrop ').remove();
+}
 
 // activate 1 User
 function activate_user(user_id) {

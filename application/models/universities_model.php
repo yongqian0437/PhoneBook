@@ -79,12 +79,6 @@ class universities_model extends CI_Model
         return $this->db->get('universities')->result();
     }
 
-    function get_uni_detail($id)
-    {
-        $this->db->where('uni_id', $id);
-        return $this->db->get('universities')->row();
-    }
-
     function select_all_sort_list()
     {
         $this->db->where('uni_approval', 1);
@@ -92,5 +86,11 @@ class universities_model extends CI_Model
         $this->db->order_by('uni_name', 'ASC');
         return $this->db->get('universities')->result();
     }
+
+    public function get_uni_detail($uni_id)
+    {
+       $this->db->where('uni_id',$uni_id);
+       return $this->db->get('universities')->row();
+    } 
 
 }

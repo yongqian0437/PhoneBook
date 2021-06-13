@@ -117,8 +117,6 @@ td{
                                 </div>
                             </div>
 
-                           
-
                             <!-- Inactive Users Content -->
                             <div class="tab-pane fade show" id="inactive_users" role="tabpanel" aria-labelledby="inactive-users-tab">
                                 <div class="card">
@@ -146,9 +144,6 @@ td{
                                     <!-- /. Card Body -->
                                 </div>
                             </div>
-
-
-                            
                         </div>
                     </div>                   
                 </div>
@@ -164,14 +159,34 @@ td{
                             <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
+
                         <div class="modal-body" >
                             <div id = "user_information">
-                            </div>
+                        </div>
                         </div>
                         <div class="modal-footer">
-                            
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="view_next" tabindex="-1" role="dialog"  aria-labelledby="view_nextLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header" style = "background-color:#6B9080;">
+                            <h5 class="modal-title" id="view_nextLabel" style ="color:white;">Uni Information</h5>
+                            <button style ="color:white;" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body" >
+                            <div id = "next">
+                        </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" >Close</button>
                         </div>
                         </div>
                     </div>
