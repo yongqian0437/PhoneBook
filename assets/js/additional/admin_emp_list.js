@@ -3,30 +3,48 @@ $(document).ready(function(){
 document.getElementById("all_emps").style.color = "black";
 
 // ALL Employer Projects
-$("#table_all_emps").DataTable({
+var t = $("#table_all_emps").DataTable({
     //make table responsive
     "bAutoWidth":false,
     ajax: {
         url: base_url + "internal/admin_panel/content/admin_emps/all_emp_list",
         type: "GET",
     },
-    // "columnDefs": [{
-    //     "width": "18%",
-    //     "targets": [5]
-    // }
-    // ]
+    "columnDefs": [
+    {
+        "searchable": false,
+        "targets": 0
+    }
+    ]
 });
 
+    t.on( 'order.dt search.dt', function () {
+        t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+            cell.innerHTML = i+1;
+        } );
+    } ).draw();
+
 // PENDING Employer Projects
-$("#table_pending_emps").DataTable({
+var t2 = $("#table_pending_emps").DataTable({
     //make table responsive
     "bAutoWidth":false,
     ajax: {
         url: base_url + "internal/admin_panel/content/admin_emps/pending_emp_list",
         type: "GET",
     },
-    //"lengthMenu": [3, 5, 10],
+    "columnDefs": [
+        {
+            "searchable": false,
+            "targets": 1
+        }
+    ]
 });
+
+t2.on( 'order.dt search.dt', function () {
+    t2.column(1, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+        cell.innerHTML = i+1;
+    } );
+} ).draw();
 
 $('#select_all_emp').click(function() {
     var checked = this.checked;
@@ -34,6 +52,7 @@ $('#select_all_emp').click(function() {
         this.checked = checked;
     });
 })
+
 }); // end of ready function
 
 function pending_emps_tab() {

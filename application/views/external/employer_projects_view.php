@@ -3,40 +3,9 @@
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
+<!-- Set base url to javascript variable-->
 <script type="text/javascript">
-    $(function () {
-        // To apply for a specific EP
-        $('.apply_emp').click(function () {
-            var ep_id = $(this).data('id');
-            // Ask user for confirmation
-            swal({
-                    title: "Confirm application?",
-                    text: "This application will be submitted to the employer.\nUpon reviewal, you will be contacted.",
-                    icon: "info",
-                    buttons: ['Cancel', 'Confirm']
-                })
-                // Send application into db once confirmed
-                .then((send_application) => {
-                    if (send_application) {
-                        $.ajax({
-                            url: 'Employer_projects/send_emp_application/',
-                            type: 'post',
-                            data: {ep_id: ep_id},
-                            success: function() { 
-                                swal({
-                                    title: "Thank you!",
-                                    text: "Your application has been submitted.",
-                                    icon: "success",
-                                })
-                                .then((send_application) => {
-                                    location.reload();
-                                });
-                            }
-                        });
-                    }
-                });
-        });
-    });
+    var base_url = "<?php echo base_url(); ?>";
 </script>
 
 <!-- Top Navigation -->
@@ -83,30 +52,32 @@
                                     <div class="card-body" >
                                         <ul class="list-group list-group-flush">
                                             <li class="list-group-item list_class">
-                                            <img class="img-fluid img_class" src="<?= base_url("assets/img/company_logos/{$ep['c_logo']}");?>" width="300";/>
+                                            <img class="img-fluid img_class" style="height: 17vh; object-fit: contain;" src="<?= base_url("assets/img/company_logos/{$ep['c_logo']}");?>" width="300";/>
                                                 <h6><b>Project Title: <?= $ep['emp_title']?></b></h6>
                                             </li>
-                                            <li class="list-group-item" >
+                                            <li class="list-group-item">
                                                 <table>
                                                     <tr>
-                                                        <th>Level: </th>
+                                                        <th style="vertical-align:top">Level: </th>
                                                         <td><?= $ep['emp_level']?></td>
                                                     </tr>
                                                     <tr>
-                                                        <th>Field: </th>
+                                                        <th style="vertical-align:top">Field(s): </th>
                                                         <td><?= $ep['emp_area']?></td>
                                                     </tr>
                                                 </table>
                                             </li>
-                                            <li class="list-group-item">
-                                                <span style="text-align: left"><?= $ep['emp_description'] ?></span>
+                                            <li class="list-group-item" style="height: 20vh;">
+                                                <span style="text-align: justify; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical;"><?= $ep['emp_description'] ?></span>
                                             </li>
                                         </ul>
                                         <br>
 
                                         <!-- 2 Bottom Buttons -->
                                         <div class="bottom_buttons">
-
+                                            <!--Button for modal pop up when EP description becomes too long to display -->
+                                            <button type="button" onclick="view_emp('<?= $ep['emp_id'] ?>')" class="btn icon-btn btn-xs btn-info waves-effect waves-light" data-toggle="modal" data-target="#view_emp"><span class="fas fa-eye"></span></button>
+                                            
                                             <!-- *Check if session is established and if the role is a Student. If yes, show the 'View' and 'Apply Now' button -->
                                             <?php if ($user_role == 'Student') { ?> 
                                                 <!-- 'View' button becomes visible once student is logged in -->
@@ -134,6 +105,27 @@
 
                     </div>
                     <!-- /.row -->
+
+                    <div class="modal fade" id="view_emp" tabindex="-1" role="dialog" aria-labelledby="view_emplabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header" style = "background-color:#6B9080;">
+                                    <h5 class="modal-title" id="view_empLabel" style ="color:white;">Employer Project Information</h5>
+                                    <button style ="color:white;" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <div id="emp_information">
+
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                 </div>
                 <!-- /.container-fluid -->

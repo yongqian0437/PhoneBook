@@ -44,8 +44,6 @@ class Employer_emp_applicants extends CI_Controller
         $e_details = $this->user_e_model->e_details($this->session->userdata('user_id'));
         $emp_applicants = $this->emp_applicants_model->get_applicants_from_emps($e_details['e_id']);
 
-        $counter = 1;
-
 		$data = array();
 		$base_url = base_url();
 
@@ -57,7 +55,7 @@ class Employer_emp_applicants extends CI_Controller
             $function = $view.$chat;
 
 			$data [] = [ 
-				$counter,
+				'',
 				$emp_app['user_fname']. ' ' .$emp_app['user_lname'], // from users table
 				$emp_app['student_nationality'], // from students table
 				$emp_app['emp_title'], // from employer_projects table
@@ -65,7 +63,6 @@ class Employer_emp_applicants extends CI_Controller
                 $function,
             ];
 
-            $counter++;
 		}
 
         $output = array(

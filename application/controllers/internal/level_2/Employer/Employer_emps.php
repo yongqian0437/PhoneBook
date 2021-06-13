@@ -46,8 +46,6 @@ class Employer_emps extends CI_Controller
         $e_details = $this->user_e_model->e_details($this->session->userdata('user_id'));
         $employer_projects = $this->employer_projects_model->get_emps_from_employer($e_details['e_id']);
 
-        $counter = 1;
-
 		$data = array();
 		$base_url = base_url();
 
@@ -66,7 +64,7 @@ class Employer_emps extends CI_Controller
             }
 
 			$data[] = array(
-				$counter,
+				'',
 				$emp->emp_title,
 				$emp->emp_area,
 				$emp->emp_level,
@@ -75,7 +73,6 @@ class Employer_emps extends CI_Controller
                 $function,
 			);
 
-            $counter++;
 		}
 
 		$output = array(

@@ -66,6 +66,7 @@ class employer_projects_model extends CI_Model
         $this->db->where('e_id', $e_id);
         return $this->db->get('employer_projects')->result();
     }
+    
 
     //  View details of 1 EMP being posted 
     function emp_details($emp_id)

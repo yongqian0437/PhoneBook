@@ -37,9 +37,6 @@ class Admin_emps extends CI_Controller
 
         $employer_projects = $this->employer_projects_model->full_emps_details();
 
-
-        $counter = 1;
-
 		$data = array();
 		$base_url = base_url();
 
@@ -54,7 +51,7 @@ class Admin_emps extends CI_Controller
             }
 
 			$data[] = array(
-				$counter,
+				'',
 				$emp->c_name,
 				$emp->emp_title,
                 $emp->emp_submitdate,
@@ -62,7 +59,6 @@ class Admin_emps extends CI_Controller
                 $view,
 			);
 
-            $counter++;
 		}
 
 		$output = array(
@@ -85,8 +81,6 @@ class Admin_emps extends CI_Controller
 
         $employer_projects = $this->employer_projects_model->full_pending_emps_details();
 
-        $counter = 1;
-
 		$data = array();
 		$base_url = base_url();
 
@@ -97,7 +91,7 @@ class Admin_emps extends CI_Controller
             $checkbox = '<input type="checkbox" onclick="check('.$emp->emp_id.')" value='.$emp->emp_id.' id='.$emp->emp_id.'>';
 			$data[] = array(
                 $checkbox,
-				$counter,
+				'',
 				$emp->c_name,
 				$emp->emp_title,
                 $emp->emp_submitdate,
@@ -105,7 +99,6 @@ class Admin_emps extends CI_Controller
                 $view,
 			);
 
-            $counter++;
 		}
 
 		$output = array(

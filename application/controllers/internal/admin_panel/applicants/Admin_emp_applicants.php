@@ -36,8 +36,6 @@ class Admin_emp_applicants extends CI_Controller
 
         $emp_applicants = $this->emp_applicants_model->full_emp_apps_details();
 
-        $counter = 1;
-
 		$data = array();
 		$base_url = base_url();
 
@@ -46,15 +44,14 @@ class Admin_emp_applicants extends CI_Controller
 			$view = '<span><button type="button" onclick="view_emp_applicant('.$emp_app['emp_applicant_id'].')" class="btn icon-btn btn-xs btn-info waves-effect waves-light" data-toggle="modal" data-target="#view_emp_applicant"><span class="fas fa-eye"></span></button></span>';            
 
 			$data [] = [ 
-				$counter,
+				'',
 				$emp_app['user_fname']. ' ' .$emp_app['user_lname'], // from users table
 				$emp_app['student_nationality'], // from students table
 				$emp_app['emp_title'], // from employer_projects table
                 $emp_app['emp_app_submitdate'], // from emp_applicants table
                 $view,
             ];
-
-            $counter++;
+            
 		}
 
         $output = array(
