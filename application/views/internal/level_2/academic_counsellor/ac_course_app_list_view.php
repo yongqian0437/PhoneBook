@@ -55,9 +55,10 @@ td{
                                     <thead>
                                         <tr>
                                             <th>No.</th>
-                                            <th>Applicant Full Name</th>
+                                            <th>Full Name</th>
                                             <th>Nationality</th>
                                             <th>Course Name</th>
+                                            <th>Applied By</th>
                                             <th>Applied Date</th>
                                             <th>Action</th>
                                         </tr>

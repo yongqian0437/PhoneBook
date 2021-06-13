@@ -83,8 +83,8 @@
                                                     </tr>
                                                 </table>
                                             </li>
-                                            <li class="list-group-item" style="height: 30vh;">
-                                                <span style="text-align: justify; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 8; -webkit-box-orient: vertical;"><?= $rd['rd_scope'] ?></span>
+                                            <li class="list-group-item" style="height: 20vh;">
+                                                <span style="text-align: justify; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical;"><?= $rd['rd_scope'] ?></span>
                                             </li>
                                         </ul>
                                         <br>
@@ -127,9 +127,9 @@
                     <div class="modal fade" id="view_rd" tabindex="-1" role="dialog" aria-labelledby="view_rdlabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg" role="document">
                             <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="view_rdLabel">R&D Project Description</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <div class="modal-header" style="background-color:#6B9080;">
+                                    <h5 class="modal-title" id="view_rdLabel" style="color:white;">R&D Project Information</h5>
+                                    <button style="color:white;" type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>

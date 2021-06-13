@@ -63,35 +63,37 @@ class Rd_projects extends CI_Controller
         <table class="table table-striped" style = "border:0;">
             <tbody>
                 <tr>
-                    <th scope="row">R&D title</th>
+                    <th scope="row">R&D Project Title</th>
                     <td>' . $rd_info->rd_title . '</td>
                 </tr>
                 <tr>
-                    <th scope="row">R&D organisation</th>
+                    <th scope="row">Organisation</th>
                     <td>' . $rd_info->rd_organisation . '</td>
                 </tr>
-                <tr>
-                    <th scope="row">R&D person in charge</th>
+                
+                <!--<tr>
+                    <th scope="row">Person in charge</th>
                     <td>' . $rd_info->rd_pic . '</td>
                 </tr>
                 <tr>
-                    <th scope="row">R&D person in charge position</th>
+                    <th scope="row">Person in charge position</th>
                     <td>' . $rd_info->rd_pic_post . '</td>
                 </tr>
                 <tr>
-                    <th scope="row">R&D person in charge department</th>
+                    <th scope="row">Person in charge department</th>
                     <td>' . $rd_info->rd_pic_dept . '</td>
                 </tr>
                 <tr>
-                    <th scope="row">R&D person in charge email</th>
+                    <th scope="row">Person in charge email</th>
                     <td>' . $rd_info->rd_pic_email . '</td>
-                </tr>
+                </tr> --->
+
                 <tr>
-                    <th scope="row">R&D scope</th>
+                    <th scope="row">Scope</th>
                     <td style = "white-space: pre-wrap; word-break: break-word; text-align: justify;">' . $rd_info->rd_scope . '</td>
                 </tr>
                 <tr>
-                    <th scope="row">R&D objective</th>
+                    <th scope="row">Objective</th>
                     <td style = "white-space: pre-wrap; word-break: break-word; text-align: justify;">' . $rd_info->rd_objective . '</td>
                 </tr>
             </tbody>
