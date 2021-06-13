@@ -51,11 +51,20 @@ class course_applicants_model extends CI_Model
         return $this->db->get('course_applicants')->result();
     }
 
-    function find_data_with_id($id) 
+    function find_data_with_id($id)
     {
         $this->db->where('user_id', $id);
         return $this->db->get('user_student')->row();
     }
 
-
+    function get_student_courses($user_id)
+    {
+        $this->db->select('*')
+            ->from('users')
+            ->join('course_applicants', 'course_applicants.c_applicant_method = users.user_id')
+            ->join('courses', 'courses.course_id = course_applicants.course_id')
+            ->join('universities', 'universities.uni_id = courses.uni_id')
+            ->where('users.user_id', $user_id);
+        return $this->db->get()->result_array();
+    }
 }

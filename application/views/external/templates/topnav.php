@@ -80,7 +80,7 @@
         </li>
 
         <li class="nav-item px-2">
-            <a class="nav-link" href="#">About Us</a>
+            <a class="nav-link" href="<?= base_url('external/homepage/about_us'); ?>">About Us</a>
         </li>
 
         <li class="nav-item px-2">

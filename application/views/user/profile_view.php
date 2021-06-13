@@ -1,5 +1,3 @@
-<link href="<?php echo base_url() ?>/assets/scss/user_profile.scss" rel="stylesheet">
-
 <style>
     #overview_tab,
     #courses_tab,
@@ -55,7 +53,7 @@
 
                         <!-- Page Heading -->
                         <div class="d-sm-flex align-items-center justify-content-between mb-4 px-4">
-                            <h1 class="h3 mb-0 text-gray-800 pt-4 font-weight-bold">Profile</h1>
+                            <h1 class="h3 mb-0 text-gray-800 pt-4 font-weight-bold"></h1>
 
                         </div>
                         <div class="row">
@@ -69,9 +67,9 @@
                                     <p class="ml-2"> <?= $user_data['user_role'] ?></p>
                                 </div>
 
-                                <ul class="nav flex-column >
-                                    <li class=" nav-item">
-                                    <a class="nav-link  mb-1 ml-5" id="overview_tab" onclick="overview_tab()" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Profile</a>
+                                <ul class="nav flex-column">
+                                    <li class="nav-item">
+                                        <a class="nav-link  mb-1 ml-5" id="overview_tab" onclick="overview_tab()" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Profile</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link mb-1 ml-5" id="courses_tab" onclick="courses_tab()" data-toggle="tab" href="#courses" role="tab" aria-controls="courses" aria-selected="false">My Courses</a>
@@ -89,13 +87,15 @@
                                     <!-- Overview content-->
                                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                         <div class="card border-left-info shadow h-100 ">
-                                            <ul class="nav">
+                                            <ul class="nav justify-content-end">
                                                 <li class="nav-item">
-                                                    <a style="color:black;" class="nav-link" id="edit_tab" onclick="edit_tab()" data-toggle="tab" href="#edit" role="tab" aria-controls="edit" aria-selected="false">
-                                                        <span class="icon">
-                                                            <i style="font-size:20px;" class="fas fa-user-edit"></i>
-                                                        </span>
-                                                    </a>
+                                                    <div class="card-title">
+                                                        <a title="Edit my information" style="color:black;" class="nav-link" id="edit_tab" onclick="edit_tab()" data-toggle="tab" href="#edit" role="tab" aria-controls="edit" aria-selected="false">
+                                                            <span class="icon">
+                                                                <i style="font-size:20px;" class="fas fa-user-edit"></i>
+                                                            </span>
+                                                        </a>
+                                                    </div>
                                                 </li>
                                             </ul>
                                             <div class="card-body shadow">
@@ -132,182 +132,204 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <!-- Courses content-->
-                                <div class="tab-pane fade" id="courses">
-                                    <div class="card border-left-info shadow h-100 ">
-                                        <div class="card-body shadow">
+                                    <!-- Courses content-->
+                                    <div class="tab-pane fade" id="courses">
+                                        <div class="card border-left-info shadow h-100 ">
+                                            <div class="card-body shadow">
+                                                <div class="row pl-3 pt-4" style="vertical-align:middle;">
+                                                    <div class="col-8 col-md-4 col-lg-4 mb-4">
+                                                        <h6><b>University</b></h6>
+                                                    </div>
+                                                    <div class="col-8 col-md-4 col-lg-4 mb-4">
+                                                        <h6><b>Course Name</b></h6>
+                                                    </div>
+                                                    <div class="col-8 col-md-3 col-lg-3 mb-4">
+                                                        <h6><b>Apply Date</b></h6>
+                                                    </div>
+                                                    <div class="col-8 col-md-1 col-lg-1 mb-4">
+                                                    </div>
 
-                                            <div class="row pl-3 pt-4">
-
-                                                <p>wow</p>
+                                                    <?php if (!empty($student_course_data)) {           /* Display employer projects that the user applied for  */
+                                                        foreach ($student_course_data as $course_data) { ?>
+                                                            <div class="col-8 col-md-4 col-lg-4 mb-2">
+                                                                <hr>
+                                                                <img class="img-fluid img_class" src="<?= base_url("{$course_data['uni_logo']}"); ?>" width="200" ; />
+                                                            </div>
+                                                            <div class="col-8 col-md-4 col-lg-4 mb-2">
+                                                                <hr>
+                                                                <label><?= $course_data['course_name'] ?></label>
+                                                            </div>
+                                                            <div class="col-8 col-md-3 col-lg-3 mb-2">
+                                                                <hr>
+                                                                <label><?= $course_data['c_app_submitdate'] ?></label>
+                                                            </div>
+                                                            <div class="col-8 col-md-1 col-lg-1 mb-2">
+                                                                <hr>
+                                                                <a style="border-radius:10px; background-color:#6B9080; color:white; height:auto; width:auto%;" href="<?php echo base_url() . 'external/Courses/view_course/' . $course_data['course_id'] ?>" target="_blank" class="btn">
+                                                                    <span class="icon text-white-600">
+                                                                        <i style="font-size:20px;" class="fas fa-info-circle"></i>
+                                                                    </span>
+                                                                </a>
+                                                            </div>
+                                                        <?php }
+                                                    } else { ?>
+                                                        <p>N/A</p> <!-- If no employer projects applied, display N/A -->
+                                                    <?php } ?>
+                                                </div>
                                             </div>
+
                                         </div>
 
                                     </div>
 
-                                </div>
+                                    <!-- Contact content-->
+                                    <div class="tab-pane fade" id="contact">
+                                        <div class="card border-left-info shadow h-100 ">
+                                            <div class="card-body shadow">
 
-                                <!-- Contact content-->
-                                <div class="tab-pane fade" id="contact">
-                                    <div class="card border-left-info shadow h-100 ">
-                                        <div class="card-body shadow">
+                                                <div class="row pl-3 pt-4" style="vertical-align:middle;">
+                                                    <div class="col-8 col-md-4 col-lg-4 mb-4">
+                                                        <h6><b>Company</b></h6>
+                                                    </div>
+                                                    <div class="col-8 col-md-4 col-lg-4 mb-4">
+                                                        <h6><b>Project Title</b></h6>
+                                                    </div>
+                                                    <div class="col-8 col-md-3 col-lg-3 mb-4">
+                                                        <h6><b>Project Submit Date</b></h6>
+                                                    </div>
+                                                    <div class="col-8 col-md-1 col-lg-1 mb-4">
+                                                    </div>
 
-                                            <div class="row pl-3 pt-4" style="vertical-align:middle;">
-                                                <div class="col-8 col-md-4 col-lg-4 mb-4">
-                                                    <h6><b>Company</b></h6>
+                                                    <?php if (!empty($student_emp_data)) {           /* Display employer projects that the user applied for  */
+                                                        foreach ($student_emp_data as $emp_data) { ?>
+                                                            <div class="col-8 col-md-4 col-lg-4 mb-2">
+                                                                <hr>
+                                                                <img class="img-fluid img_class" src="<?= base_url("assets/img/company_logos/{$emp_data['c_logo']}"); ?>" width="200" ; />
+                                                            </div>
+                                                            <div class="col-8 col-md-4 col-lg-4 mb-2">
+                                                                <hr>
+                                                                <label><?= $emp_data['emp_title'] ?></label>
+                                                            </div>
+                                                            <div class="col-8 col-md-3 col-lg-3 mb-2">
+                                                                <hr>
+                                                                <label><?= $emp_data['emp_app_submitdate'] ?></label>
+                                                            </div>
+                                                            <div class="col-8 col-md-1 col-lg-1 mb-2">
+                                                                <hr>
+                                                                <a style="border-radius:10px; background-color:#6B9080; color:white; height:auto; width:auto%;" href="<?= base_url('assets/uploads/employer_projects/' . $emp_data['emp_document']) ?>" target="_blank" class="btn">
+                                                                    <span class="icon text-white-600">
+                                                                        <i style="font-size:20px;" class="fas fa-info-circle"></i>
+                                                                    </span>
+                                                                </a>
+                                                            </div>
+                                                        <?php }
+                                                    } else { ?>
+                                                        <p>N/A</p> <!-- If no employer projects applied, display N/A -->
+                                                    <?php } ?>
                                                 </div>
-                                                <div class="col-8 col-md-4 col-lg-4 mb-4">
-                                                    <h6><b>Project Title</b></h6>
-                                                </div>
-                                                <div class="col-8 col-md-3 col-lg-3 mb-4">
-                                                    <h6><b>Project Submit Date</b></h6>
-                                                </div>
-                                                <div class="col-8 col-md-1 col-lg-1 mb-4">
-                                                </div>
-
-                                                <?php if (!empty($student_emp_data)) {           /* Display employer projects that the user applied for  */
-                                                    foreach ($student_emp_data as $emp_data) { ?>
-                                                        <div class="col-8 col-md-4 col-lg-4 mb-2">
-                                                            <hr>
-                                                            <img class="img-fluid img_class" src="<?= base_url("assets/img/company_logos/{$emp_data['c_logo']}"); ?>" width="200" ; />
-                                                        </div>
-                                                        <div class="col-8 col-md-4 col-lg-4 mb-2">
-                                                            <hr>
-                                                            <label><?= $emp_data['emp_title'] ?></label>
-                                                        </div>
-                                                        <div class="col-8 col-md-3 col-lg-3 mb-2">
-                                                            <hr>
-                                                            <label><?= $emp_data['emp_app_submitdate'] ?></label>
-                                                        </div>
-                                                        <div class="col-8 col-md-1 col-lg-1 mb-2">
-                                                            <hr>
-                                                            <a style="border-radius:10px; background-color:#6B9080; color:white; height:auto; width:auto%;" href="#" class="btn">
-                                                                <span class="icon text-white-600">
-                                                                    <i style="font-size:20px;" class="fas fa-info-circle"></i>
-                                                                </span>
-                                                            </a>
-                                                        </div>
-                                                    <?php }
-                                                } else { ?>
-                                                    <p>N/A</p> <!-- If no employer projects applied, display N/A -->
-                                                <?php } ?>
                                             </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="tab-pane fade" id="edit">
+                                        <div class="card border-left-info shadow h-100 ">
+                                            <div class="card-body shadow">
+                                                <form method="post" name="edit_profile" action="<?php echo base_url() . 'user/profile/edit_profile' ?>">
+                                                    <div class="row">
+                                                        <div class="col-8 col-md-6 col-lg-6 mb-2">
+                                                            <div class="form-group">
+                                                                <label for="exampleInputEmail1">Email address</label>
+                                                                <input type="email" name="student_emailid" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="<?= $user_data['user_email'] ?>" placeholder="Enter your email address">
+                                                                <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-8 col-md-6 col-lg-6 mb-2">
+                                                            <div class="form-group">
+                                                                <label>Contact Number</label>
+                                                                <input type="number" name="student_contactNoid" class="form-control" id="contactNo" value="<?= $student_data['student_phonenumber'] ?>" placeholder="Enter your contact number">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-8 col-md-6 col-lg-6 mb-2">
+                                                            <div class="form-group">
+                                                                <label>Country</label>
+                                                                <input type="text" name="student_countryid" class="form-control" id="nationality" value="<?= $student_data['student_nationality'] ?>" placeholder="Your country name">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-8 col-md-6 col-lg-6 mb-2">
+                                                            <div class="form-group">
+                                                                <label>Current Level</label>
+                                                                <input type="text" name="student_levelid" class="form-control" id="contactNo" value="<?= $student_data['student_currentlevel'] ?>" placeholder="E.g., Diploma, Bachelor Degree, etc.">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-8 col-md-6 col-lg-6 mb-2">
+                                                            <div class="form-group">
+                                                                <label>Interest</label>
+                                                                <input type="text" name="student_interestid" class="form-control" id="contactNo" value="<?= $student_data['student_interest'] ?>" placeholder="E.g., IT, Arts, Business, etc.">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <button type="submit" class="btn btn-primary">Save</button>
+
+
+
+                                                </form>
+                                            </div>
+
                                         </div>
 
                                     </div>
-                                </div>
-
-                                <div class="tab-pane fade" id="edit">
-                                    <div class="card border-left-info shadow h-100 ">
-                                        <div class="card-body shadow">
-                                            <form method="post" name="edit_profile" action="<?php echo base_url() . 'user/profile/edit_profile' ?>">
-                                                <div class="row">
-                                                    <div class="col-8 col-md-6 col-lg-6 mb-2">
-                                                        <div class="form-group">
-                                                            <label for="exampleInputEmail1">Email address</label>
-                                                            <input type="email" name="student_emailid" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="<?= $user_data['user_email'] ?>" placeholder="Enter your email address">
-                                                            <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-8 col-md-6 col-lg-6 mb-2">
-                                                        <div class="form-group">
-                                                            <label>Contact Number</label>
-                                                            <input type="number" name="student_contactNoid" class="form-control" id="contactNo" value="<?= $student_data['student_phonenumber'] ?>" placeholder="Enter your contact number">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-8 col-md-6 col-lg-6 mb-2">
-                                                        <div class="form-group">
-                                                            <label>Country</label>
-                                                            <input type="text" name="student_countryid" class="form-control" id="nationality" value="<?= $student_data['student_nationality'] ?>" placeholder="Your country name">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-8 col-md-6 col-lg-6 mb-2">
-                                                        <div class="form-group">
-                                                            <label>Current Level</label>
-                                                            <input type="text" name="student_levelid" class="form-control" id="contactNo" value="<?= $student_data['student_currentlevel'] ?>" placeholder="E.g., Diploma, Bachelor Degree, etc.">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-8 col-md-6 col-lg-6 mb-2">
-                                                        <div class="form-group">
-                                                            <label>Interest</label>
-                                                            <input type="text" name="student_interestid" class="form-control" id="contactNo" value="<?= $student_data['student_interest'] ?>" placeholder="E.g., IT, Arts, Business, etc.">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <button type="submit" class="btn btn-primary">Save</button>
 
 
-
-                                            </form>
-                                        </div>
-
-                                    </div>
 
                                 </div>
-
-
-
                             </div>
                         </div>
                     </div>
-                </div>
 
+                </div>
             </div>
             <!-- /.container-fluid -->
 
-        </div>
-        <!-- End of Main Content -->
-    </div>
-    </div>
-    </div>
-    </div>
 
-    </div>
+            <script src="<?php echo base_url() ?>/assets/vendor/jquery/jquery.min.js"></script>
 
-    </div>
-    <!-- /.container-fluid -->
+            <script>
+                $(document).ready(function() {
+                    document.getElementById("overview_tab").style.color = "black";
+                }); // end of ready function
+                function courses_tab() {
+                    document.getElementById("overview_tab").style.color = "lightgray";
 
-    </div>
-    <!-- End of Main Content -->
-    <script src="<?php echo base_url() ?>/assets/vendor/jquery/jquery.min.js"></script>
+                    $('#home').hide();
+                    $('#contact').hide();
+                    $('#edit').hide();
+                    $('#courses').show();
+                }
 
-    <script>
-        $(document).ready(function() {
-            document.getElementById("overview_tab").style.color = "black";
-        }); // end of ready function
-        function courses_tab() {
-            document.getElementById("overview_tab").style.color = "lightgray";
+                function contact_tab() {
+                    document.getElementById("overview_tab").style.color = "lightgray";
 
-            $('#home').hide();
-            $('#contact').hide();
-            $('#edit').hide();
-            $('#courses').show();
-        }
+                    $('#home').hide();
+                    $('#courses').hide();
+                    $('#edit').hide();
+                    $('#contact').show();
+                }
 
-        function contact_tab() {
-            document.getElementById("overview_tab").style.color = "lightgray";
+                function edit_tab() {
+                    document.getElementById("overview_tab").style.color = "lightgray";
 
-            $('#home').hide();
-            $('#courses').hide();
-            $('#edit').hide();
-            $('#contact').show();
-        }
+                    $('#home').hide();
+                    $('#courses').hide();
+                    $('#contact').hide();
+                    $('#edit').show();
+                }
 
-        function edit_tab() {
-            document.getElementById("overview_tab").style.color = "lightgray";
-
-            $('#home').hide();
-            $('#courses').hide();
-            $('#contact').hide();
-            $('#edit').show();
-        }
-
-        function overview_tab() {
-            $('#courses').hide();
-            $('#contact').hide();
-            $('#edit').hide();
-            $('#home').show();
-        }
-    </script>
+                function overview_tab() {
+                    $('#courses').hide();
+                    $('#contact').hide();
+                    $('#edit').hide();
+                    $('#home').show();
+                }
+            </script>

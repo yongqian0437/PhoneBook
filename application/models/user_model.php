@@ -156,9 +156,13 @@ class user_model extends CI_Model
         return $res['user_fname'];
     }
 
-    function edit_user($userId, $student_email)
+    function update($id, $data)
     {
-        $this->db->where('user_id', $userId);
-        $this->db->update('users', $student_email);
+        $this->db->where('user_id', $id);
+        if ($this->db->update('users', $data)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
