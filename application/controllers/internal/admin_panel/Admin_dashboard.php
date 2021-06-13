@@ -21,21 +21,6 @@ class Admin_dashboard extends CI_Controller
         $data['title'] = 'iJEES | All Users';
         $data['include_js'] = 'admin_all_users_list';
         $all_users_details=$this->user_model->all_users_details();
-       
-        // var_dump($this->session->userdata());
-        // die;
-
-        // $employer_projects = $this->employer_projects_model->select_all();
-        // var_dump($employer_projects);
-        // die;
-
-        // $full_employer_projects = $this->employer_projects_model->full_emps_details();
-        // var_dump($full_employer_projects);
-        // die;
-
-        // $emp_detail = $this->employer_projects_model->get_emp_with_id(2);
-        // var_dump($emp_detail);
-        // die;
         
         $this->load->view('internal/templates/header', $data);
         $this->load->view('internal/templates/sidenav');
@@ -51,8 +36,6 @@ class Admin_dashboard extends CI_Controller
 		$start = intval($this->input->get("start"));
 		$length = intval($this->input->get("length"));
 
-       // $employer_projects = $this->employer_projects_model->full_emps_details();
-      // $data['users']=$this->user_model->search_email();
         $all_users_details=$this->user_model->all_users_details();
 
         $counter = 1;
@@ -102,8 +85,7 @@ class Admin_dashboard extends CI_Controller
 		$length = intval($this->input->get("length"));
 
         $active_users_details= $this->user_model->full_active_users_details();
-// var_dump( $inactive_users_details);
-// die;
+
         $counter = 1;
 
 		$data = array();
@@ -147,8 +129,7 @@ class Admin_dashboard extends CI_Controller
 		$length = intval($this->input->get("length"));
 
         $inactive_users_details= $this->user_model->full_inactive_users_details();
-// var_dump( $inactive_users_details);
-// die;
+
         $counter = 1;
 
 		$data = array();
@@ -188,7 +169,44 @@ class Admin_dashboard extends CI_Controller
     {
         $data = ['user_approval'=>1]; 
         $this->user_model->update($data, $this->input->post('user_id'));
-      //  $this->send_email($this->input->post('user_id'));
+
+        $users=$this->user_model->search_id($this->input->post('user_id'));
+        //$user_email= $this->input->post('user_email');
+        $message="Welcome, "."$users->user_fname ". "$users->user_lname". ". Thank you for registering and being part of iJEES, INTI's Interactive Joint Education Employability System."."<br><br>Congratulations! Your account has been approved and is now activated. <br><br>You may now login to the system at any time. Your credentials are the same as the ones you have provided upon registration:<br><br>".
+        "Email Address: ".$users->user_email."<br> Password: ".$users->user_password;
+        $this->Email($users->user_email,$message);
+
+    }
+
+    public function Email($user_email,$message)
+    {
+        
+        $config=
+        [
+            'protocol'=>'smtp',
+            'smtp_host'=>'ssl://smtp.googlemail.com',
+            'smtp_user'=>'g3cap2100@gmail.com',
+            'smtp_pass'=>'ijees2021',
+            'smtp_port'=>465,
+            'mailtype'=>'html',
+            'charset'=>'utf-8',
+            'newline'=>"\r\n"
+        ];
+       
+        $this->email->initialize($config);
+        $this->email->from('g3cap2100@gmail.com','Capstone Project 2021');
+        $this->email->to($user_email);
+        $this->email->subject("Account Verification");
+        $this->email->message($message);
+
+        if($this->email->send())
+        {
+           
+        }
+        else
+        {
+            echo $this->email->print_debugger();   
+        }
     }
 
     function deactivate_user() 
@@ -196,8 +214,6 @@ class Admin_dashboard extends CI_Controller
         $data = ['user_approval'=>0]; 
         $this->user_model->update($data, $this->input->post('user_id'));
     }
-
-   
 
     function view_user()
     {
@@ -465,75 +481,74 @@ class Admin_dashboard extends CI_Controller
                         <td><a href="'.base_url("assets/uploads/education_partner/").$ep_detail->ep_document.'" target="_blank">'.$ep_detail->ep_document.'</a></td>
                     <tr>
                     <tr>
-                    <th colspan="2" style = "background-color: white"></th>   
-                </tr>
-                <tr>
-                    <th colspan="2" style = "background-color: #CCE3DE; font-weight: 900; text-align: center; font-size: 1.1em;">UNIVERSITY</th>   
-                </tr>
-                <tr>
-                    <th scope="row">Applied Date</th>
-                    <td>'.$ep_detail->uni_submitdate.'</td>
-                </tr>
-                <tr style="text-align: center">
-                    <th scope="row">Logo</th>
-                    <td colspan="2"><img src="'.base_url("assets/img/university/").$ep_detail->uni_logo.'" style="width: 250px; height: 100px; object-fit:contain;">
-                    </td>  
-                </tr>
-                <tr style="text-align: center">
-                    <th scope="row">Background</th>
-                    <td colspan="2"><img src="'.base_url("assets/img/university/").$ep_detail->uni_background.'" style="width: 250px; height: 100px; object-fit:contain;">
-                    </td>  
-                </tr>
-                <tr>
-                    <th scope="row">University</th>
-                    <td>'.$ep_detail->uni_name.'</td>
-                </tr>
-                <tr>
-                    <th scope="row">Short Profile</th>
-                    <td>'.$ep_detail->uni_shortprofile.'</td>
-                </tr>
-                <tr>
-                    <th scope="row">Fun Fact</th>
-                    <td>'.$ep_detail->uni_fun_fact.'</td>
-                </tr>
-                <tr>
-                    <th scope="row">Country</th>
-                    <td>'.$ep_detail->uni_country.'</td>
-                </tr>
-                <tr>
-                    <th scope="row">Hotline</th>
-                    <td>'.$ep_detail->uni_hotline.'</td>
-                </tr>
-                <tr>
-                    <th scope="row">Email</th>
-                    <td>'.$ep_detail->uni_email.'</td>
-                </tr>
-                <tr>
-                    <th scope="row">University Address</th>
-                    <td>'.$ep_detail->uni_address.'</td>
-                </tr>
-                <tr>
-                    <th scope="row">Website</th>
-                    <td>'.$ep_detail->uni_website.'</td>
-                </tr>
-                <tr>
-                    <th scope="row">QS Rank</th>
-                    <td>'.$ep_detail->uni_qsrank.'</td>
-                </tr>
-                <tr>
-                    <th scope="row">Employability Rank</th>
-                    <td>'.$ep_detail->uni_employabilityrank.'</td>
-                </tr>
-                <tr>
-                    <th scope="row">Total Students</th>
-                    <td>'.$ep_detail->uni_totalstudents.'</td>
-                </tr>
-                <tr>
-                    <th scope="row">Action</th>
-                    <td>'.$ep_status.'</td>
-                </tr>
-                </tbody>
-               
+                        <th colspan="2" style = "background-color: white"></th>   
+                    </tr>
+                    <tr>
+                        <th colspan="2" style = "background-color: #CCE3DE; font-weight: 900; text-align: center; font-size: 1.1em;">UNIVERSITY</th>   
+                    </tr>
+                    <tr>
+                        <th scope="row">Applied Date</th>
+                        <td>'.$ep_detail->uni_submitdate.'</td>
+                    </tr>
+                    <tr style="text-align: center">
+                        <th scope="row">Logo</th>
+                        <td colspan="2"><img src="'.base_url("assets/img/university/").$ep_detail->uni_logo.'" style="width: 250px; height: 100px; object-fit:contain;">
+                        </td>  
+                    </tr>
+                    <tr style="text-align: center">
+                        <th scope="row">Background</th>
+                        <td colspan="2"><img src="'.base_url("assets/img/university/").$ep_detail->uni_background.'" style="width: 250px; height: 100px; object-fit:contain;">
+                        </td>  
+                    </tr>
+                    <tr>
+                        <th scope="row">University</th>
+                        <td>'.$ep_detail->uni_name.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Short Profile</th>
+                        <td>'.$ep_detail->uni_shortprofile.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Fun Fact</th>
+                        <td>'.$ep_detail->uni_fun_fact.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Country</th>
+                        <td>'.$ep_detail->uni_country.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Hotline</th>
+                        <td>'.$ep_detail->uni_hotline.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Email</th>
+                        <td>'.$ep_detail->uni_email.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">University Address</th>
+                        <td>'.$ep_detail->uni_address.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Website</th>
+                        <td>'.$ep_detail->uni_website.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">QS Rank</th>
+                        <td>'.$ep_detail->uni_qsrank.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Employability Rank</th>
+                        <td>'.$ep_detail->uni_employabilityrank.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Total Students</th>
+                        <td>'.$ep_detail->uni_totalstudents.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Action</th>
+                        <td>'.$ep_status.'</td>
+                    </tr>
+                    </tbody>
             </table>';
 
             // $output2 ='
@@ -547,7 +562,6 @@ class Admin_dashboard extends CI_Controller
             
             echo $output;
             //echo $output2;
-            
         }
 
         if ($user_detail->user_role == "Academic Counsellor") 

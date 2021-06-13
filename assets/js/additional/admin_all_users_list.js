@@ -205,7 +205,7 @@ function activate_all_users() {
                 if ($('input[type=checkbox]').is(':checked')) {
                     Swal.fire(
                         'Approved!',
-                        'Employer Projects have been approved.',
+                        'Accounts of users have been approved.',
                         'success'
                     )
 
@@ -255,7 +255,7 @@ function deactivate_all_users() {
                 if ($('input[type=checkbox]').is(':checked')) {
                     Swal.fire(
                         'Approved!',
-                        'Employer Projects have been approved.',
+                        'Accounts of users have been approved.',
                         'success'
                     )
 

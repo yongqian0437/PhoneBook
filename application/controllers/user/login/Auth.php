@@ -586,52 +586,6 @@ class Auth extends CI_Controller
         redirect('user/login/Auth/login'); 
     }
 
-    public function _sendEmail()
-    {
-        $lname=$_REQUEST['slname'];
-        $fname=$_REQUEST['sfname'];
-        $id=$_REQUEST['sid'];
-        $email=$_REQUEST['semail'];
-        $password=$_REQUEST['spassword'];
-        $users=$this->user_model->search_id($id);
-        $config=
-        [
-            'protocol'=>'smtp',
-            'smtp_host'=>'ssl://smtp.googlemail.com',
-            'smtp_user'=>'g3cap2100@gmail.com',
-            'smtp_pass'=>'ijees2021',
-            'smtp_port'=>465,
-            'mailtype'=>'html',
-            'charset'=>'utf-8',
-            'newline'=>"\r\n"
-        ];
-       
-        $this->email->initialize($config);
-        $this->email->from('g3cap2100@gmail.com','Capstone Project 2021');
-        $this->email->to($email);
-        $this->email->subject('Account Verification');
-
-        if($users['user_approval']==1)
-        {
-            $this->email->message("Welcome, "."$fname ". "$lname ". ". Thank you for registering and being part of iJEES, INTI's Interactive Joint Education Employability System."."<br><br>Congratulations! Your account has been approved and is now activated. <br><br>You may now login to the system at any time. Your credentials are the same as the ones you have provided upon registration:<br><br>".
-            "Email Address :".$email."<br> Password: ".$password);
-            // $this->email->message("Welcome ".$fname . $lname." .Thank you for registering and being part of iJEES, INTI's Interactive Joint Education Employability System.  "."<br><p>This is your email address and password<p>"."Email Address :".$email."<br> Password: ".$password);
-        }
-        else
-        {
-            $this->email->message("Sorry ". $lname." .Your account is rejected ");
-        }
-
-        if($this->email->send())
-        {
-            return true;
-        }
-        else
-        {
-            echo $this->email->print_debugger();   
-        }
-    }
-
     public function Email($user_email,$link,$message)
     {
         

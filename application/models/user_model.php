@@ -215,10 +215,10 @@ class user_model extends CI_Model
        return $this->db->get('users')->row();
     }  
 
-    // public function search_id($id)
-    // {
-    //     // return $this->db->get_where('users', ['user_id'=>$id])->row();
-    //     $this->db->where('user_id',$id);
-    //     return $this->db->get('users')->row();
-    // }
+    public function search_id($id)
+    {
+        // return $this->db->get_where('users', ['user_id'=>$id])->row();
+        $this->db->where('user_id',$id);
+        return $this->db->get('users')->row();
+    }
 }

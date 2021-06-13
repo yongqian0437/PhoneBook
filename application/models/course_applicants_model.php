@@ -87,7 +87,7 @@ class course_applicants_model extends CI_Model
     public function get_cas_id($c_applicant_id)
     {
        $this->db->where('c_applicant_id',$c_applicant_id);
-       return $this->db->get('course_applicants')->row();
+       return $this->db->get('course_applicants')->row();// return one result in object format
     }
 
     public function get_cas_with_id($c_applicant_id)
@@ -98,7 +98,7 @@ class course_applicants_model extends CI_Model
 
     public function ca_details($ca_id)
     {
-     return $this->db->get_where('course_applicants',['c_applicant_id'=>$ca_id])->row_array();// return one array
+     return $this->db->get_where('course_applicants',['c_applicant_id'=>$ca_id])->row_array();// return one result in array format
     }
 
     // function full_course_app_details()
@@ -107,7 +107,7 @@ class course_applicants_model extends CI_Model
     //         ->from('course_applicants') // course applicants table
     //         ->join('courses', 'courses.course_id = course_applicants.course_id') // courses table
     //         ->join('users', 'users.user_id = course_applicants.c_applicant_method'); // users table
-    //     return $this->db->get()->result_array();// return one object array
+    //     return $this->db->get()->result_array();// return array of array format
     // }
 
     public function full_course_app_details()
@@ -117,7 +117,7 @@ class course_applicants_model extends CI_Model
         ->join('courses', 'courses.course_id = course_applicants.course_id') // courses table
         ->join('users', 'users.user_id = course_applicants.c_applicant_method') // users table
         ->join('universities', 'universities.uni_id = courses.uni_id'); // uni table
-        return $this->db->get()->result();// return object array
+        return $this->db->get()->result();// return array of object format 
     }
 
 
