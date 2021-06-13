@@ -89,7 +89,7 @@ $(document).ready(function(){
                                           <table id="table_course_applicants" class="table">
                                     <thead>
                                         <tr>
-                                        <th>No</th>
+                                        <th>No.</th>
                                         <th>Full Name</th>
                                         <th>Nationality</th>
                                         <th>Current Level</th>

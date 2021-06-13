@@ -53,7 +53,7 @@ td{
                                 <table id="admin_course_applicant" class="table table-striped">
                                     <thead>
                                     <tr>
-                                        <th>No</th>
+                                        <th>No.</th>
                                         <th>Full Name</th>
                                         <th>Nationality</th>
                                         <th>Course Title</th>

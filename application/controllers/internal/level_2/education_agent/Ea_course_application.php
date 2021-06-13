@@ -160,7 +160,6 @@ class Ea_course_application extends CI_Controller
        $length = intval($this->input->get("length"));
 
        $course_applicants=$this->course_applicants_model->get_user_id($this->session->userdata('user_id'));
-       $counter = 1;
 
        $data = array();
        $base_url = base_url();
@@ -175,15 +174,13 @@ class Ea_course_application extends CI_Controller
          $function = $view.$edit_opt.$delete;
            
           $data[] = array(
-               $counter,
+               '',
                $ca->c_applicant_fname." ". $ca->c_applicant_lname,
                $ca->c_applicant_nationality,
                $ca->c_applicant_currentlevel,
                $ca->c_app_submitdate,
                $function,
            );
-
-           $counter++;
        }
 
        $output = array(

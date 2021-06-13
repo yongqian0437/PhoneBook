@@ -8,7 +8,7 @@ class Admin_dashboard extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model(['user_model','user_student_model','user_ea_model','user_e_model','user_ep_model','user_ac_model']);
-       // date_default_timezone_set('Asia/Kuala_Lumpur');
+        // date_default_timezone_set('Asia/Kuala_Lumpur');
 
         // Checks if session is set and if user is signed in as Admin (authorised access). If not, deny his/her access.
         if (!$this->session->userdata('user_id') || $this->session->userdata('user_role') != "Admin"){  
@@ -38,8 +38,6 @@ class Admin_dashboard extends CI_Controller
 
         $all_users_details=$this->user_model->all_users_details();
 
-        $counter = 1;
-
 		$data = array();
 		$base_url = base_url();
 
@@ -54,7 +52,7 @@ class Admin_dashboard extends CI_Controller
             }
 
 			$data[] = array(
-				$counter,
+				'',
 				$users->user_fname." ".$users->user_lname,
                 $users->user_email,
                 $users->user_role,
@@ -62,8 +60,6 @@ class Admin_dashboard extends CI_Controller
                 $status,
                 $view,
 			);
-
-            $counter++;
 		}
 
 		$output = array(
@@ -86,8 +82,6 @@ class Admin_dashboard extends CI_Controller
 
         $active_users_details= $this->user_model->full_active_users_details();
 
-        $counter = 1;
-
 		$data = array();
 		$base_url = base_url();
 
@@ -98,7 +92,7 @@ class Admin_dashboard extends CI_Controller
             $checkbox = '<input type="checkbox" onclick="check('.$users->user_id.')" value='.$users->user_id.' id='.$users->user_id.'>';
 			$data[] = array(
                 $checkbox,
-				$counter,
+				'',
 				$users->user_fname." ".$users->user_lname,
                 $users->user_email,
                 $users->user_role,
@@ -107,7 +101,6 @@ class Admin_dashboard extends CI_Controller
                 $view,
 			);
 
-            $counter++;
 		}
 
 		$output = array(
@@ -130,7 +123,6 @@ class Admin_dashboard extends CI_Controller
 
         $inactive_users_details= $this->user_model->full_inactive_users_details();
 
-        $counter = 1;
 
 		$data = array();
 		$base_url = base_url();
@@ -142,7 +134,7 @@ class Admin_dashboard extends CI_Controller
             $checkbox = '<input type="checkbox" onclick="check('.$users->user_id.')" value='.$users->user_id.' id='.$users->user_id.'>';
 			$data[] = array(
                 $checkbox,
-				$counter,
+				'',
 				$users->user_fname." ".$users->user_lname,
                 $users->user_email,
                 $users->user_role,
@@ -151,7 +143,6 @@ class Admin_dashboard extends CI_Controller
                 $view,
 			);
 
-            $counter++;
 		}
 
 		$output = array(

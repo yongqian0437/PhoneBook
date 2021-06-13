@@ -3,7 +3,7 @@ $(document).ready(function () {
     document.getElementById("all_users").style.color = "black";
 
     // ALL Users
-    $("#table_all_users").DataTable({
+    var t = $("#table_all_users").DataTable({
         //make table responsive
         "bAutoWidth": false,
         ajax: {
@@ -12,8 +12,14 @@ $(document).ready(function () {
         },
     });
 
+    t.on('order.dt search.dt', function () {
+        t.column(0, { search: 'applied', order: 'applied' }).nodes().each(function (cell, i) {
+            cell.innerHTML = i + 1;
+        });
+    }).draw();
+
     // Active Users
-    $("#table_active_users").DataTable({
+    var t2 = $("#table_active_users").DataTable({
         //make table responsive
         "bAutoWidth": false,
         ajax: {
@@ -23,8 +29,14 @@ $(document).ready(function () {
 
     });
 
+    t2.on('order.dt search.dt', function () {
+        t2.column(1, { search: 'applied', order: 'applied' }).nodes().each(function (cell, i) {
+            cell.innerHTML = i + 1;
+        });
+    }).draw();
+
     // Inactive Users
-    $("#table_inactive_users").DataTable({
+    var t3 = $("#table_inactive_users").DataTable({
         //make table responsive
         "bAutoWidth": false,
         ajax: {
@@ -33,6 +45,24 @@ $(document).ready(function () {
         },
 
     });
+
+    t3.on('order.dt search.dt', function () {
+        t3.column(1, { search: 'applied', order: 'applied' }).nodes().each(function (cell, i) {
+            cell.innerHTML = i + 1;
+        });
+    }).draw();
+
+    // t.on( 'order.dt search.dt', function () {
+    //     t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+    //         cell.innerHTML = i+1;
+    //     } );
+    // } ).draw();
+
+    // t.on( 'order.dt search.dt', function () {
+    //     t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+    //         cell.innerHTML = i+1;
+    //     } );
+    // } ).draw();
 
     $('#select_all_active_users').click(function () {
         var checked = this.checked;

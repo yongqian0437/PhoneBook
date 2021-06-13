@@ -20,16 +20,10 @@ class Admin_course_application extends CI_Controller
         $data['title']= 'IJEES | Course Application';
         $data['include_js'] ='admin_course_application_list';
         $data['course_applicants']= $course_applicants=$this->course_applicants_model->full_course_app_details();
-// var_dump( $data['course_applicants']);
 
-// // var_dump(  $data['include_js']);
-//  die;
         $this->load->view('internal/templates/header',$data);
-        
         $this->load->view('internal/templates/sidenav');
         $this->load->view('internal/templates/topbar');
-       // $result=$this->course_applicants_model->index();
-       // $data=array('calist'=>$result);
         $this->load->view('internal/admin_panel/applicants/admin_course_application_view');
         $this->load->view('internal/templates/footer');
     }
@@ -41,9 +35,7 @@ class Admin_course_application extends CI_Controller
         $start = intval($this->input->get("start"));
         $length = intval($this->input->get("length"));
  
-        //$course_applicants=$this->course_applicants_model->get_user_id($this->session->userdata('user_id'));
         $course_applicants=$this->course_applicants_model->full_course_app_details();
-        $counter = 1;
  
         $data = array();
         $base_url = base_url();
@@ -52,7 +44,7 @@ class Admin_course_application extends CI_Controller
            $view = '<span><button type="button" onclick="view_admin_course_applicant('.$ca->c_applicant_id.')" class="btn icon-btn btn-xs btn-info waves-effect waves-light" data-toggle="modal" data-target="#view_admin_course_application"><span class="fas fa-eye"></span></button></span>';
           
            $data[] = array(
-                $counter,
+                '',
                 $ca->c_applicant_fname ." " .$ca->c_applicant_lname,
                 $ca->c_applicant_nationality,
                 $ca->course_name,
@@ -61,7 +53,6 @@ class Admin_course_application extends CI_Controller
                 $view,
             );
  
-            $counter++;
         }
  
         $output = array(
