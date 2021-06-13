@@ -26,7 +26,7 @@ td{
                 <table id="dataTable" class="table table-striped">  
                     <thead>
                         <tr>
-                            <th>No</th>
+                            <th>No.</th>
                             <th>Full Name</th>
                             <th>Contact Number</th>
                             <th>Email</th>
