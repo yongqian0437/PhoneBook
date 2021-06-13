@@ -100,6 +100,14 @@ class Ac_course_applicants extends CI_Controller
                     <td>' . $course_applicant_details['c_applicant_fname'] . ' ' . $course_applicant_details['c_applicant_lname'] . '</td>
                 </tr>
                 <tr>
+                    <th scope="row">Phone Number</th>
+                    <td>' . $course_applicant_details['c_applicant_phonenumber'] . '</td>
+                </tr>
+                <tr>
+                    <th scope="row">Email</th>
+                    <td>' . $course_applicant_details['c_applicant_email'] . '</td>
+                </tr>
+                <tr>
                     <th scope="row">Nationality</th>
                     <td>' . $course_applicant_details['c_applicant_nationality'] . '</td>
                 </tr>
@@ -123,14 +131,6 @@ class Ac_course_applicants extends CI_Controller
                     <th scope="row">Current Level</th>
                     <td>' . $course_applicant_details['c_applicant_currentlevel'] . '</td>
                 </tr>            
-                <tr>
-                    <th scope="row">Email</th>
-                    <td>' . $course_applicant_details['c_applicant_email'] . '</td>
-                </tr>
-                <tr>
-                    <th scope="row">Phone Number</th>
-                    <td>' . $course_applicant_details['c_applicant_phonenumber'] . '</td>
-                </tr>
                 <tr>
                     <th scope="row">Document</th>
                     <td><a href="'.base_url("assets/uploads/course_applicants/").$course_applicant_details['c_applicant_document'].'" target="_blank">'.$course_applicant_details['c_applicant_document'].'</a></td>
