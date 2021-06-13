@@ -124,7 +124,7 @@ function view_next(user_id) {
             $('#next').html(data);
         }
     });
-    // $('.modal-backdrop ').remove();
+    $('.modal-backdrop ').remove();
 }
 
 // activate 1 User
