@@ -136,7 +136,16 @@ class course_applicants_model extends CI_Model
     //     ->join('universities', 'universities.uni_id = courses.uni_id'); // uni table
     //     return $this->db->get()->result();// return array of object format 
     // }
-    
+
+     function get_uni_name()
+    {
+        $this->db->select('')
+            ->from('course_applicants') // course applicants table
+            ->join('courses', 'courses.course_id = course_applicants.course_id') // courses table
+            ->join('universities', 'universities.uni_id = courses.course_id'); // users table
+        return $this->db->get()->result();// return array of array format
+    }
+
 
     
 

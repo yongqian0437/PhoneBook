@@ -11,6 +11,7 @@ class Ea_course_application extends CI_Controller
         $this->load->model(['user_model','course_applicants_model','universities_model','courses_model']);
         $this->load->library('form_validation');
         $this->load->helper('form');
+
         // Checks if session is set and if user is signed in as Level 2 user (authorised access). If not, deny his/her access.
         if (!$this->session->userdata('user_id') || !$this->session->userdata('user_role'))
         {  
@@ -24,8 +25,7 @@ class Ea_course_application extends CI_Controller
         $data['include_js'] ='ea_course_application_list';
         $user_id=$this->session->userdata('user_id');
         $data['course_applicants']=$this->course_applicants_model->get_user_id($user_id);
-       // $data['course_applicants']=$this->course_applicants_model->get_full_ca_details($user_id);
-        
+      
         $this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav');
         $this->load->view('internal/templates/topbar');
@@ -137,12 +137,19 @@ class Ea_course_application extends CI_Controller
        $length = intval($this->input->get("length"));
 
        $course_applicants=$this->course_applicants_model->get_user_id($this->session->userdata('user_id'));
-      // $course_applicants=$this->course_applicants_model->get_full_ca_details($this->session->userdata('user_id'));
-      // $uni_name=$this->courses_model-> get_uni_name($course_applicants);
+
        $data = array();
        $base_url = base_url();
 
-       foreach($course_applicants as $ca) {
+       foreach($course_applicants as $ca) 
+       {
+        $get_uni_id=$this->courses_model-> get_uni_id($ca->course_id);// get course id to get the uni id
+
+        foreach($get_uni_id as $details)
+        {
+            $get_uni_name=$this->universities_model->get_uni_detail($details->uni_id);// get uni id to get the uni name
+        }
+
           $edit_link = $base_url."internal/level_2/education_agent/ea_course_application/edit_course_applicant/".$ca->c_applicant_id;
 
           $delete = '<span><button type="button" onclick="delete_course_applicant('.$ca->c_applicant_id.')" class="btn icon-btn btn-xs btn-danger waves-effect waves-light delete" ><span class="fas fa-trash"></span></button></span>';
@@ -156,7 +163,8 @@ class Ea_course_application extends CI_Controller
                $ca->c_applicant_fname." ". $ca->c_applicant_lname,
                $ca->c_applicant_nationality,
                $ca->c_applicant_currentlevel,
-             
+            //    $ca->course_id,
+               $get_uni_name->uni_name,
                $ca->c_app_submitdate,
                $function,
            );
@@ -176,14 +184,17 @@ class Ea_course_application extends CI_Controller
    function edit_course_applicant($c_applicant_id)
     {
         $data['title'] = 'iJEES | Edit Course Applicant';
+        $data['include_js'] ='ea_course_application_edit';
         $data['edit_course_applicant']=$this->course_applicants_model->get_cas_with_id($c_applicant_id);
-        
+       // $data['edit_course_applicant']=$this->course_applicants_model->get_cas_with_id($data);
+        $data['university_data'] = $this->universities_model->select_all_approved_only(); 
 		$this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav');
         $this->load->view('internal/templates/topbar');
-        $this->load->view('internal/level_2/education_agent/ea_course_applicant_edit_view');
+        $this->load->view('internal/level_2/education_agent/ea_course_applicant_edit_view',$data);
         $this->load->view('internal/templates/footer'); 
     }
+    
 
     function submit_edit_course_applicant($c_applicant_id)
     {
@@ -214,6 +225,8 @@ class Ea_course_application extends CI_Controller
                 'c_applicant_currentlevel'=>htmlspecialchars($this->input->post('c_applicant_currentlevel',true)),
                 'c_applicant_address'=>htmlspecialchars($this->input->post('c_applicant_address',true)),
                 'c_applicant_identification'=>htmlspecialchars($this->input->post('c_applicant_identification',true)),
+                'course_id'=>htmlspecialchars($this->input->post('course1_id',true)),
+                'c_applicant_document'=>$c_applicant_document['file_name'],
                 
             ];
 
@@ -241,13 +254,34 @@ class Ea_course_application extends CI_Controller
     function view_course_applicant()
     {
        $ca_detail= $this->course_applicants_model->get_cas_id($this->input->post('c_applicant_id'));
+       //$course_applicants=$this->course_applicants_model->get_user_id($this->session->userdata('user_id'));
     
+       $get_uni_id=$this->courses_model-> get_uni_id($ca_detail->course_id);// get course id to get the uni id
+ 
+        foreach($get_uni_id as $details)
+        {
+            $uni_details=$this->universities_model->get_uni_detail($details->uni_id);// get uni id to get the uni name
+        }
+       
        $output ='
         <table class="table table-striped" style = "border:0;">
             <tbody>
                 <tr>
                     <th scope="row">Submitted Date</th>
                     <td>'.$ca_detail->c_app_submitdate.'</td>
+                </tr>
+                <tr>
+                    <th scope="row">Logo</th>
+                    <td colspan="2"><img src="'.base_url("assets/img/university/").$uni_details->uni_logo.'" style="width: 250px; height: 100px; object-fit:contain;">
+                    </td>  
+                </tr>
+                <tr>
+                    <th scope="row">University</th>
+                    <td>'.$uni_details->uni_name.'</td>
+                </tr>
+                <tr>
+                    <th scope="row">Course</th>
+                    <td>'.$details->course_name.'</td>
                 </tr>
                 <tr>
                     <th scope="row">Full Name</th>

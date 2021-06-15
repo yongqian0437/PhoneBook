@@ -85,15 +85,14 @@ $(document).ready(function(){
                             <div class="table-responsive">
 
                             <form id= "course_application_form" method="post" action="<?= base_url('internal/level_2/education_agent/ea_course_application/delete_all_course_application');?>">
-                                
-                                          <table id="table_course_applicants" class="table">
+                                <table id="table_course_applicants" class="table">
                                     <thead>
                                         <tr>
                                         <th>No.</th>
                                         <th>Full Name</th>
                                         <th>Nationality</th>
                                         <th>Current Level</th>
-                                        <!-- <th>University</th> -->
+                                        <th>University</th>
                                         <th>Submit Date</th>
                                         <th>Action</th>
                                         </tr>

@@ -174,7 +174,7 @@ class courses_model extends CI_Model
         return count($query);
     }
 
-    public function get_uni_name($course_id)
+    public function get_uni_id($course_id)
     {
        $this->db->where('course_id',$course_id);
        return $this->db->get('courses')->result();

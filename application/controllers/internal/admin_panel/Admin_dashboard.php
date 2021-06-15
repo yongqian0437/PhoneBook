@@ -532,6 +532,10 @@ class Admin_dashboard extends CI_Controller
                         <td>'.$c_detail->c_name.'</td>
                     </tr>
                     <tr>
+                        <th scope="row">Country</th>
+                        <td>'.$c_detail->c_country.'</td>
+                    </tr>
+                    <tr>
                         <th scope="row">Registration Number</th>
                         <td>'.$c_detail->c_registrationnum.'</td>
                     </tr>

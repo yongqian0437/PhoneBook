@@ -7,6 +7,12 @@ setTimeout(function() {
     $('#alert_message').fadeOut();
 }, 5000); // <-- time in milliseconds
 </script>
+
+<!-- Set base url to javascript variable-->
+<script type="text/javascript">
+    var base_url = "<?php echo base_url();?>";
+</script>
+
 <!-- Content Wrapper -->
 <div id="content-wrapper" >
 
@@ -376,14 +382,30 @@ setTimeout(function() {
 											</div>
 										</div>
 										
-										<!-- Upload Document -->
-										<!-- <div class="form-row pt-4 px-4">
-											<div class="form-group col-md-12 px-2">
-												<input type="file" class="custom-file-input" id="customFile" name="c_applicant_document" accept="application/pdf">
-												<label class="custom-file-label" for="customFile" value = "<?=$edit_course_applicant['c_applicant_document']?>"><?=$edit_course_applicant['c_applicant_document']?></label>
-												<p style="color:red; font-size: 14px">*Required document: Latest Academic Transcript in .PDF file format</p>
-											</div>
-										</div> -->
+                                        <!-- UNI INPUT -->
+                                        <div class="form-row pt-12 px-3">
+                                                <div class="form-group col-md-12 px-2">
+                                                    <label for="university1"></label>
+                                                    <select name="university1_id" id="university_1" class="form-control form-select form-select-md">
+                                                        <option value="" selected disabled>Please select a university</option>
+                                                        <?php
+                                                            foreach($university_data as $u) {
+                                                                echo '<option value="'.$u->uni_id.'">'.$u->	uni_name.'</option>';
+                                                            }
+                                                        ?>
+                                                    </select>
+                                                </div>  
+                                            </div>
+
+                                            <!-- COURSE INPUT -->
+                                            <div class="form-row pt-12 px-3">
+                                                <div class="form-group col-md-12 px-2" id="course_class_1">
+                                                        <label for="course1"></label>
+                                                        <select name="course1_id" id="course_1" class="form-control form-select form-select-md">
+                                                            <option value="" selected disabled>Please select a course</option>
+                                                        </select>
+                                                </div> 
+                                            </div>
 
                                         <div class="form-row px-4 pt-4">
                                         <div class="form-group col-md-12">

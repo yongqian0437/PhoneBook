@@ -83,24 +83,6 @@ class user_model extends CI_Model
         return $this->db->get('users')->result();
     }
 
-    // function student_submitdate() // join 'users' table + 'user_e' table to get info from both tables
-    // {
-    //     $this->db->select('users.user_id')
-    //              ->from('users')
-    //              ->join('user_student', 'user_student.user_id = users.user_id');
-                
-    //     return $this->db->get()->result();
-    // }
-
-    // function all_users_details() // join 'users' table + 'user_e' table to get info from both tables
-    // {
-    //     $this->db->select('')
-    //              ->from('users')
-    //              ->join('user_student', 'user_student.user_id = users.user_id');
-    //             // ->join('user_ea', 'user_ea.user_id = users.user_id');
-    //     return $this->db->get()->result();
-    // }
-
     function student_submitdate() // join 'users' table + 'user_e' table to get info from both tables
     {
         $this->db->select('')
