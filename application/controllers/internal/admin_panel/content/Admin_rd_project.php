@@ -175,7 +175,7 @@ class Admin_rd_project extends CI_Controller {
                     <th olspan="2" style = "background-color: white;" scope="row"></th>        
                 <tr>
                 <tr>
-                    <th colspan="2" style = "background-color: #CCE3DE; font-weight:900; font-size:1.1em;" scope="row"><center>POSTER EDUCATION PARTNER DETAILS</center></th>
+                    <th colspan="2" style = "background-color: #CCE3DE; font-weight:900; font-size:1.1em;" scope="row"><center>EDUCATION PARTNER DETAILS</center></th>
                 </tr>
                 <tr>
                     <th scope="row">University Name</th>
