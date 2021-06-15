@@ -62,7 +62,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="<?=base_url('internal/level_2/education_agent/Ea_dashboard');?>">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span>
                 </a>
@@ -76,14 +76,6 @@
                 <a class="nav-link" href="<?=base_url('internal/level_2/education_agent/ea_course_application');?>">
                     <i class="fas fa-plus-square"></i>
                     <span>New Student Application</span>
-                </a>
-            </li>
-
-            <!-- Nav Item - Past Applications -->
-            <li class="nav-item">
-                <a class="nav-link" href="">
-                    <i class="fas fa-history"></i>
-                    <span>Past Applications</span>
                 </a>
             </li>
 

@@ -62,7 +62,7 @@ $(document).ready(function(){
                     <div class="breadcrumb-wrapper col-xl-8">
                         <ol class="breadcrumb" style = "background-color:rgba(0, 0, 0, 0);">
                             <li class="breadcrumb-item">
-                                <a href="<?php echo base_url('internal/level_2/educational_partner/ep_dashboard');?>"><i class="fas fa-tachometer-alt"></i> Home</a>
+                                <a href="<?php echo base_url('internal/level_2/education_agent/ea_dashboard');?>"><i class="fas fa-tachometer-alt"></i> Home</a>
                             </li>
                             
                             <li class="breadcrumb-item active">Course Applicants</li>
@@ -70,7 +70,7 @@ $(document).ready(function(){
                     </div>
                     <div class = "col-xl-4">
                         <div class = "d-flex justify-content-end">
-                        <a type="button" href = "<?= base_url('internal/level_2/education_agent/ea_course_application/add_course_application'); ?>" class="btn btn-primary">Add New Course Applicant Form<i class="fas fa-plus pl-2"></i></a>
+                        <a type="button" href = "<?= base_url('internal/level_2/education_agent/ea_course_application/add_course_application'); ?>" class="btn btn-primary">Add New Applicant<i class="fas fa-plus pl-2"></i></a>
                         </div>
                     </div>
                 </div>
@@ -93,6 +93,7 @@ $(document).ready(function(){
                                         <th>Full Name</th>
                                         <th>Nationality</th>
                                         <th>Current Level</th>
+                                        <!-- <th>University</th> -->
                                         <th>Submit Date</th>
                                         <th>Action</th>
                                         </tr>

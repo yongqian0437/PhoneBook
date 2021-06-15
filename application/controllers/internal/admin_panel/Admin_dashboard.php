@@ -21,8 +21,7 @@ class Admin_dashboard extends CI_Controller
     {   
         $data['title'] = 'iJEES | All Users';
         $data['include_js'] = 'admin_all_users_list';
-        $all_users_details=$this->user_model->all_users_details();
-        
+ 
         $this->load->view('internal/templates/header', $data);
         $this->load->view('internal/templates/sidenav');
         $this->load->view('internal/templates/topbar');
@@ -38,18 +37,57 @@ class Admin_dashboard extends CI_Controller
 		$length = intval($this->input->get("length"));
 
         $all_users_details=$this->user_model->all_users_details();
-
+        //$student_submitdate=$this->user_model->student_submitdate();
+        
 		$data = array();
 		$base_url = base_url();
 
 		foreach($all_users_details as $users) {
-
+           
 			$view = '<span class = "px-1"><button type="button" onclick="view_user('.$users->user_id.')" class="btn icon-btn btn-xs btn-info waves-effect waves-light" data-toggle="modal" data-target="#view_user"><span class="fas fa-eye"></span></button></span>';
-
+   
+             // $submitdate=$ep_detail->ep_submitdate;
             if ($users->user_approval == 0) {
                 $status = '<button type="button" onclick="activate_user('.$users->user_id.')" class="btn btn-warning">Inactive</button>';
             } else {
                 $status = '<button type="button" onclick="deactivate_user('.$users->user_id.')" class="btn btn-success">Active</button>';
+            }
+            
+            // Get students'submitdate
+            if($users->user_role=="Student")
+            {
+                $student_detail=$this->user_student_model->get_student_detail($users->user_id);
+                $submitdate= $student_detail->student_submitdate;
+            }
+
+           // Get eas'submitdate
+            else if($users->user_role=="Education Agent")
+            {
+                $ea_detail=$this->user_ea_model->get_ea_detail($users->user_id);
+                $submitdate=$ea_detail->ea_submitdate;
+            }
+
+            // Get emps'submitdate
+            else if($users->user_role=="Employer")
+            {
+                $e_detail=$this->user_e_model->get_e_detail($users->user_id);
+                $submitdate=$e_detail->e_submitdate;
+            }
+
+            // Get acs'submitdate
+            else if($users->user_role=="Academic Counsellor")
+            {
+                $ac_detail=$this->user_ac_model->get_ac_detail($users->user_id);
+                $submitdate=$ac_detail->ac_submitdate;
+            }
+
+           // Get eps'submitdate
+            else
+            {
+                //$ep_detail=$this->user_ep_model->get_ep_detail($users->user_id);
+                //$submitdate=$ep_detail->ep_submitdate;
+                //var_dump($ep_detail);
+               $submitdate=$users->user_submitdate;
             }
 
 			$data[] = array(
@@ -57,12 +95,13 @@ class Admin_dashboard extends CI_Controller
 				$users->user_fname." ".$users->user_lname,
                 $users->user_email,
                 $users->user_role,
-                $users->user_submitdate,
+                 //$users->user_submitdate,
+                $submitdate,
                 $status,
                 $view,
 			);
 		}
-
+       
 		$output = array(
 			"draw" => $draw,
 			"recordsTotal" => count($all_users_details),
@@ -91,13 +130,49 @@ class Admin_dashboard extends CI_Controller
 			$view = '<span class = "px-1"><button type="button" onclick="view_user('.$users->user_id.')" class="btn icon-btn btn-xs btn-info waves-effect waves-light" data-toggle="modal" data-target="#view_user"><span class="fas fa-eye"></span></button></span>';
             $status = '<button type="button" onclick="deactivate_user('.$users->user_id.')" class="btn btn-success">Active</button>';
             $checkbox = '<input type="checkbox" onclick="check('.$users->user_id.')" value='.$users->user_id.' id='.$users->user_id.'>';
-			$data[] = array(
+			
+             // Get students'submitdate
+             if($users->user_role=="Student")
+             {
+                 $student_detail=$this->user_student_model->get_student_detail($users->user_id);
+                 $submitdate= $student_detail->student_submitdate;
+             }
+
+            // Get eas'submitdate
+             else if($users->user_role=="Education Agent")
+             {
+                 $ea_detail=$this->user_ea_model->get_ea_detail($users->user_id);
+                 $submitdate=$ea_detail->ea_submitdate;
+             }
+
+             // Get emps'submitdate
+             else if($users->user_role=="Employer")
+             {
+                 $e_detail=$this->user_e_model->get_e_detail($users->user_id);
+                 $submitdate=$e_detail->e_submitdate;
+             }
+
+             // Get acs'submitdate
+             else if($users->user_role=="Academic Counsellor")
+             {
+                 $ac_detail=$this->user_ac_model->get_ac_detail($users->user_id);
+                 $submitdate=$ac_detail->ac_submitdate;
+             }
+
+            // Get eps'submitdate
+             else
+             {
+                $submitdate=$users->user_submitdate;
+             }
+
+            $data[] = array(
                 $checkbox,
 				'',
 				$users->user_fname." ".$users->user_lname,
                 $users->user_email,
                 $users->user_role,
-                $users->user_submitdate,
+                //$users->user_submitdate,
+                $submitdate,
                 $status,
                 $view,
 			);
@@ -133,13 +208,49 @@ class Admin_dashboard extends CI_Controller
 			$view = '<span class = "px-1"><button type="button" onclick="view_user('.$users->user_id.')" class="btn icon-btn btn-xs btn-info waves-effect waves-light" data-toggle="modal" data-target="#view_user"><span class="fas fa-eye"></span></button></span>';
             $status = '<button type="button" onclick="activate_user('.$users->user_id.')" class="btn btn-warning">Inactive</button>';
             $checkbox = '<input type="checkbox" onclick="check('.$users->user_id.')" value='.$users->user_id.' id='.$users->user_id.'>';
-			$data[] = array(
+			
+             // Get students'submitdate
+             if($users->user_role=="Student")
+             {
+                 $student_detail=$this->user_student_model->get_student_detail($users->user_id);
+                 $submitdate= $student_detail->student_submitdate;
+             }
+
+            // Get eas'submitdate
+             else if($users->user_role=="Education Agent")
+             {
+                 $ea_detail=$this->user_ea_model->get_ea_detail($users->user_id);
+                 $submitdate=$ea_detail->ea_submitdate;
+             }
+
+             // Get emps'submitdate
+             else if($users->user_role=="Employer")
+             {
+                 $e_detail=$this->user_e_model->get_e_detail($users->user_id);
+                 $submitdate=$e_detail->e_submitdate;
+             }
+
+             // Get acs'submitdate
+             else if($users->user_role=="Academic Counsellor")
+             {
+                 $ac_detail=$this->user_ac_model->get_ac_detail($users->user_id);
+                 $submitdate=$ac_detail->ac_submitdate;
+             }
+
+            // Get eps'submitdate
+             else
+             {
+                $submitdate=$users->user_submitdate;
+             }
+            
+            $data[] = array(
                 $checkbox,
 				'',
 				$users->user_fname." ".$users->user_lname,
                 $users->user_email,
                 $users->user_role,
-                $users->user_submitdate,
+                //$users->user_submitdate,
+                $submitdate,
                 $status,
                 $view,
 			);
@@ -212,7 +323,7 @@ class Admin_dashboard extends CI_Controller
 
        //general users//
        $user_detail=$this->user_model->get_user_id($this->input->post('user_id'));
-
+       
        //student details//
        $student_detail=$this->user_student_model->get_student_detail($this->input->post('user_id'));
 
@@ -224,17 +335,16 @@ class Admin_dashboard extends CI_Controller
     
        if ($user_detail->user_role == "Education Partner") 
        {
-
        //ep and uni details//
        $ep_detail=$this->user_ep_model->get_ep_detail($this->input->post('user_id'));
        $uni_detail=$this->universities_model->get_uni_detail($ep_detail->uni_id);
 
-       if ($uni_detail->uni_approval == 0) 
-        {
-            $ep_status = '<button type="button" style = "cursor: default;" class="btn btn-warning">Inactive</button>';
-        }else{
-            $ep_status = '<button type="button" style = "cursor: default;" class="btn btn-success">Active</button>';
-        }
+        if ($uni_detail->uni_approval == 0) 
+            {
+                $ep_status = '<button type="button" style = "cursor: default;" class="btn btn-warning">Inactive</button>';
+            }else{
+                $ep_status = '<button type="button" style = "cursor: default;" class="btn btn-success">Active</button>';
+            }
         }
        
        if ($user_detail->user_role == "Employer") 
@@ -255,10 +365,6 @@ class Admin_dashboard extends CI_Controller
             <tbody>
                 <tr>
                     <th colspan="2" style = "background-color: #CCE3DE; font-weight: 900; text-align: center; font-size: 1.1em;">USER DETAILS</th>   
-                </tr>
-                <tr>
-                    <th scope="row">Submitted Date</th>
-                    <td>'.$user_detail->user_submitdate.'</td>
                 </tr>
                 <tr>
                     <th scope="row">Full Name</th>
@@ -320,8 +426,6 @@ class Admin_dashboard extends CI_Controller
                         <th scope="row">Current Level</th>
                         <td>'.$student_detail->student_currentlevel.'</td>
                     </tr>
-                   
-                    
                 </tbody>
             </table>';
             echo $output;

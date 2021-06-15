@@ -22,7 +22,12 @@ class Auth extends CI_Controller
             {
                 redirect('internal/admin_panel/Admin_dashboard');
             }
-            // check user role is  AC,EA,E,EP
+             // check user role is  EA
+            else if ($this->session->userdata=="Education Agent")
+            {
+                redirect('internal/level_2/education_agent/Ea_dashboard');
+            }
+            // check user role is  AC,E,EP
             else if ($this->session->userdata('user_role')!="Student")
             {
                 redirect('internal/level_2/Level_2_dashboard/profile_level_2');
@@ -82,7 +87,12 @@ class Auth extends CI_Controller
                     {
                         redirect('internal/admin_panel/Admin_dashboard');
                     }
-                    // check user role is  AC,EA,E,EP
+                    // check user role is  EA
+                    else if ($users['user_role']=="Education Agent")
+                    {
+                       redirect('internal/level_2/education_agent/Ea_dashboard');
+                    }
+                    // check user role is  AC,E,EP
                     else if ($users['user_role']!="Student")
                     {
                        redirect('internal/level_2/Level_2_dashboard/profile_level_2');

@@ -120,5 +120,26 @@ class course_applicants_model extends CI_Model
         return $this->db->get()->result();// return array of object format 
     }
 
+    public function get_total_students($user_id)
+    {
+       $this->db->where('c_applicant_method',$user_id);
+       return $this->db->get('course_applicants')->result_array();
+    }
+
+    // public function get_full_ca_details()
+    // {
+    // //    $this->db->where('c_applicant_method',$user_id);
+    // //    return $this->db->get('course_applicants')->result();
+    //     $this->db->select('')
+    //     ->from('course_applicants') // course applicants table
+    //     ->join('courses', 'courses.course_id = course_applicants.course_id')// uni table
+    //     ->join('universities', 'universities.uni_id = courses.uni_id'); // uni table
+    //     return $this->db->get()->result();// return array of object format 
+    // }
+    
+
+    
+
+
 
 }

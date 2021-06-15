@@ -24,6 +24,7 @@ class Ea_course_application extends CI_Controller
         $data['include_js'] ='ea_course_application_list';
         $user_id=$this->session->userdata('user_id');
         $data['course_applicants']=$this->course_applicants_model->get_user_id($user_id);
+       // $data['course_applicants']=$this->course_applicants_model->get_full_ca_details($user_id);
         
         $this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav');
@@ -34,7 +35,7 @@ class Ea_course_application extends CI_Controller
 
     public function add_course_application()
     {
-        $data['title']= 'iJEES | Add Student Application';
+        $data['title']= 'iJEES | Add Student Applicant';
         $data['include_js'] ='ea_course_application_add';
         $data['users']=$this->user_model->search_email();
         $data['university_data'] = $this->universities_model->select_all_approved_only(); 
@@ -127,30 +128,6 @@ class Ea_course_application extends CI_Controller
         }
         
     }
-
-    // function submit_added_course_applicant($uni_id)
-    // {
-    //     $data=
-	// 	[
-    //         'uni_id'=>$uni_id,
-	// 		'course_name'=>htmlspecialchars($this->input->post('course_name')),
-	// 		'course_area'=>htmlspecialchars($this->input->post('course_area')),
-	// 		'course_level'=>htmlspecialchars($this->input->post('course_level')),
-	// 		'course_duration'=>htmlspecialchars($this->input->post('course_duration')),
-	// 		'course_fee'=>htmlspecialchars($this->input->post('course_fee')),
-	// 		'course_shortprofile'=>htmlspecialchars($this->input->post('course_shortprofile')),
-	// 		'course_requirements'=>htmlspecialchars($this->input->post('course_requirements')),
-	// 		'course_country'=>htmlspecialchars($this->input->post('course_country')),
-    //         'course_intake'=>htmlspecialchars($this->input->post('course_intake')),
-    //         'course_careeropportunities'=>htmlspecialchars($this->input->post('course_careeropportunities')),
-	// 	];
-
-    //     $this->courses_model->insert($data);
-    //     $this->session->set_flashdata('insert_message', 1); 
-    //     $this->session->set_flashdata('c_applicant_id', $c_applicant_id); 
-
-    //     redirect('internal/level_2/educational_partner/ep_courses');
-    // }
   
    public function course_application_list()
    {
@@ -160,7 +137,8 @@ class Ea_course_application extends CI_Controller
        $length = intval($this->input->get("length"));
 
        $course_applicants=$this->course_applicants_model->get_user_id($this->session->userdata('user_id'));
-
+      // $course_applicants=$this->course_applicants_model->get_full_ca_details($this->session->userdata('user_id'));
+      // $uni_name=$this->courses_model-> get_uni_name($course_applicants);
        $data = array();
        $base_url = base_url();
 
@@ -178,6 +156,7 @@ class Ea_course_application extends CI_Controller
                $ca->c_applicant_fname." ". $ca->c_applicant_lname,
                $ca->c_applicant_nationality,
                $ca->c_applicant_currentlevel,
+             
                $ca->c_app_submitdate,
                $function,
            );
@@ -196,7 +175,7 @@ class Ea_course_application extends CI_Controller
 
    function edit_course_applicant($c_applicant_id)
     {
-        $data['title'] = 'iJEES | Edit Course Application Form';
+        $data['title'] = 'iJEES | Edit Course Applicant';
         $data['edit_course_applicant']=$this->course_applicants_model->get_cas_with_id($c_applicant_id);
         
 		$this->load->view('internal/templates/header',$data);
@@ -271,13 +250,10 @@ class Ea_course_application extends CI_Controller
                     <td>'.$ca_detail->c_app_submitdate.'</td>
                 </tr>
                 <tr>
-                    <th scope="row">First Name</th>
-                    <td>'.$ca_detail->c_applicant_fname.'</td>
+                    <th scope="row">Full Name</th>
+                    <td>'.$ca_detail->c_applicant_fname.' '.$ca_detail->c_applicant_lname.'</td>
                 </tr>
-                <tr>
-                    <th scope="row">Last Name</th>
-                    <td>'.$ca_detail->c_applicant_lname.'</td>
-                </tr>
+               
                 <tr>
                     <th scope="row">Phone Number</th>
                     <td>'.$ca_detail->c_applicant_phonenumber.'</td>

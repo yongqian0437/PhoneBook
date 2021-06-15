@@ -81,9 +81,33 @@ class user_model extends CI_Model
     public function all_users_details()
     {
         return $this->db->get('users')->result();
-      
     }
 
+    // function student_submitdate() // join 'users' table + 'user_e' table to get info from both tables
+    // {
+    //     $this->db->select('users.user_id')
+    //              ->from('users')
+    //              ->join('user_student', 'user_student.user_id = users.user_id');
+                
+    //     return $this->db->get()->result();
+    // }
+
+    // function all_users_details() // join 'users' table + 'user_e' table to get info from both tables
+    // {
+    //     $this->db->select('')
+    //              ->from('users')
+    //              ->join('user_student', 'user_student.user_id = users.user_id');
+    //             // ->join('user_ea', 'user_ea.user_id = users.user_id');
+    //     return $this->db->get()->result();
+    // }
+
+    function student_submitdate() // join 'users' table + 'user_e' table to get info from both tables
+    {
+        $this->db->select('')
+            ->from('users')
+            ->join('user_student', 'user_student.user_id = users.user_id');
+        return $this->db->get()->result();
+    }
 
     function full_active_users_details()
     {
@@ -221,4 +245,24 @@ class user_model extends CI_Model
         $this->db->where('user_id',$id);
         return $this->db->get('users')->row();
     }
+
+    public function get_user_details($user_id)
+    {
+       $this->db->where('user_id',$user_id);
+       return $this->db->get('users')->row_array();
+    } 
+
+    // public function get_full_submitteddate()
+    // {
+    //     $this->db->select('users.user_id')
+    //     ->from('users') // course applicants table
+    //     ->join('user_student','student_submitdate'); // courses table
+       
+    //     return $this->db->get()->result();// return array of object format 
+    // }
+    
+
+   
+
+    
 }
