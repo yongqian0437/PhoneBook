@@ -102,6 +102,10 @@ class Admin_courses extends CI_Controller {
                     <td>'.$course->course_careeropportunities	.'</td>
                 </tr>
                 <tr>
+                    <th scope="row">Structure</th>
+                    <td style = "white-space: pre-wrap; word-break: break-word; text-align: justify;">'.$course->course_structure.'</td>
+                </tr>
+                <tr>
                     <th scope="row">Shortprofile</th>
                     <td style = "white-space: pre-wrap; word-break: break-word; text-align: justify;">'.$course->course_shortprofile.'</td>
                 </tr>

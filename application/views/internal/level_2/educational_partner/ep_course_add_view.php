@@ -370,6 +370,13 @@ label{
 
                                     <div class="form-row pt-4">
                                         <div class="form-group col-md-12 px-4">
+                                            <label for="course_structure">Structures</label>
+                                            <textarea type="text" class="form-control" rows="8" id="course_structure" name = "course_structure" placeholder="Example:&#10;Year 1: .........&#10;Year 2: .........&#10;Year 3: ........." required></textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row pt-4">
+                                        <div class="form-group col-md-12 px-4">
                                             <label for="course_requirements">Requirements</label>
                                             <textarea type="text" class="form-control" rows="8" id="course_requirements" name = "course_requirements" placeholder="Example:&#10;SPM: At least 5 credits&#10;A-Level: " required></textarea>
                                         </div>

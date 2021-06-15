@@ -102,7 +102,8 @@ class Ep_courses extends CI_Controller {
 			'course_duration'=>htmlspecialchars($this->input->post('course_duration')),
 			'course_fee'=>htmlspecialchars($this->input->post('course_fee')),
 			'course_shortprofile'=>htmlspecialchars($this->input->post('course_shortprofile')),
-			'course_requirements'=>htmlspecialchars($this->input->post('course_requirements')),
+			'course_structure'=>htmlspecialchars($this->input->post('course_structure')),
+            'course_requirements'=>htmlspecialchars($this->input->post('course_requirements')),
 			'course_country'=>htmlspecialchars($this->input->post('course_country')),
             'course_intake'=>htmlspecialchars($this->input->post('course_intake')),
             'course_careeropportunities'=>htmlspecialchars($this->input->post('course_careeropportunities')),
@@ -146,6 +147,7 @@ class Ep_courses extends CI_Controller {
 			'course_duration'=>htmlspecialchars($this->input->post('course_duration')),
 			'course_fee'=>htmlspecialchars($this->input->post('course_fee')),
 			'course_shortprofile'=>htmlspecialchars($this->input->post('course_shortprofile')),
+            'course_structure'=>htmlspecialchars($this->input->post('course_structure')),
 			'course_requirements'=>htmlspecialchars($this->input->post('course_requirements')),
 			'course_country'=>htmlspecialchars($this->input->post('course_country')),
             'course_intake'=>htmlspecialchars($this->input->post('course_intake')),
@@ -198,6 +200,10 @@ class Ep_courses extends CI_Controller {
                 <tr>
                     <th scope="row">Shortprofile</th>
                     <td style = "white-space: pre-wrap; word-break: break-word; text-align: justify;">'.$course_detail[0]->course_shortprofile.'</td>
+                </tr>
+                <tr>
+                    <th scope="row">Structure</th>
+                    <td style = "white-space: pre-wrap; word-break: break-word; text-align: justify;">'.$course_detail[0]->course_structure.'</td>
                 </tr>
                 <tr>
                     <th scope="row">Requirements</th>
