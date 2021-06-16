@@ -53,7 +53,7 @@ class universities_model extends CI_Model
 
     public function valid_email($uni_email)
     {
-        return $this->db->get_where('universities', ['uni_email'=>$uni_email])->row_array();
+        return $this->db->get_where('universities', ['uni_email' => $uni_email])->row_array();
     }
 
     // public function last_uni_id()
@@ -70,7 +70,7 @@ class universities_model extends CI_Model
 
     public function uni_details($uni_id)
     {
-        return $this->db->get_where('universities', ['uni_id'=>$uni_id])->row_array();
+        return $this->db->get_where('universities', ['uni_id' => $uni_id])->row_array();
     }
 
     function get_uni_with_id($id)  //new function
@@ -93,4 +93,17 @@ class universities_model extends CI_Model
         return $this->db->get('universities')->result();
     }
 
+    public function uni_max_6()
+    {
+        $this->db->where('uni_approval', 1);
+        $this->db->order_by('uni_submitdate', 'DESC');
+        $this->db->limit(6);
+        return $this->db->get('universities')->result_array();
+    }
+
+    function uni_by_approval($condition)
+    {
+        $this->db->where('uni_approval', $condition);
+        return $this->db->get('universities')->result();
+    }
 }

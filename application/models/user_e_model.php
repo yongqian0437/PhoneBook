@@ -18,12 +18,9 @@ class user_e_model extends CI_Model
     function insert($data)
     {
         $this->db->insert('user_e', $data);
-        if ($this->db->affected_rows() > 0) 
-        {
+        if ($this->db->affected_rows() > 0) {
             return true;
-        }
-        else 
-        {
+        } else {
             return false;
         }
     }
@@ -31,12 +28,9 @@ class user_e_model extends CI_Model
     function update($data, $id)
     {
         $this->db->where('e_id', $id);
-        if ($this->db->update('user_e', $data)) 
-        {
+        if ($this->db->update('user_e', $data)) {
             return true;
-        } 
-        else 
-        {
+        } else {
             return false;
         }
     }
@@ -45,12 +39,9 @@ class user_e_model extends CI_Model
     {
         $this->db->where('e_id', $id);
         $this->db->delete('user_e');
-        if ($this->db->affected_rows() > 0) 
-        {
+        if ($this->db->affected_rows() > 0) {
             return true;
-        } 
-        else 
-        {
+        } else {
             return false;
         }
     }
@@ -62,17 +53,27 @@ class user_e_model extends CI_Model
 
     function select_condition($condition)
     {
+        echo $condition;
         $this->db->where($condition);
         return $this->db->get('user_e')->result();
     }
 
     public function e_details($id)
     {
-     return $this->db->get_where('user_e',['user_id'=>$id])->row_array();
+        return $this->db->get_where('user_e', ['user_id' => $id])->row_array();
     }
 
-//     public function getcompanyid($c_id)
-//     {
-//      return $this->db->get_where('user_e',['c_id'=>$c_id])->row_array();
-//     }
+    //     public function getcompanyid($c_id)
+    //     {
+    //      return $this->db->get_where('user_e',['c_id'=>$c_id])->row_array();
+    //     }
+
+    public function approved_employers()
+    {
+        $this->db->select('*')
+            ->from('users')
+            ->join('user_e', 'user_e.user_id = users.user_id')
+            ->where('user_approval', 1);
+        return $this->db->get()->result_array();
+    }
 }

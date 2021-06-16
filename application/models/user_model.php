@@ -165,4 +165,19 @@ class user_model extends CI_Model
             return false;
         }
     }
+
+    public function  approved_user_month() //wip
+    {
+        $this->db->select('*')
+            ->from('users')
+            ->join('user_ac', 'user_ac.user_id = users.user_id')
+            ->join('user_e', 'user_e.user_id = users.user_id')
+            ->join('user_ea', 'user_ea.user_id = users.user_id')
+            ->join('user_ep', 'user_ep.user_id = users.user_id')
+            ->join('user_student', 'user_student.user_id = users.user_id')
+            ->where('users.user_approval', 1);
+
+
+        return $this->db->get('users')->result_array();
+    }
 }

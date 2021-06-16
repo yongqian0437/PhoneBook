@@ -11,18 +11,15 @@ class user_ac_model extends CI_Model
 
     public function index()
     {
-       return $this->db->get('user_ac');
+        return $this->db->get('user_ac');
     }
 
     function insert($data)
     {
         $this->db->insert('user_ac', $data);
-        if ($this->db->affected_rows() > 0) 
-        {
+        if ($this->db->affected_rows() > 0) {
             return true;
-        } 
-        else 
-        {
+        } else {
             return false;
         }
     }
@@ -30,12 +27,9 @@ class user_ac_model extends CI_Model
     function update($data, $id)
     {
         $this->db->where('ac_id', $id);
-        if ($this->db->update('user_ac', $data)) 
-        {
+        if ($this->db->update('user_ac', $data)) {
             return true;
-        } 
-        else 
-        {
+        } else {
             return false;
         }
     }
@@ -44,12 +38,9 @@ class user_ac_model extends CI_Model
     {
         $this->db->where('ac_id', $id);
         $this->db->delete('user_ac');
-        if ($this->db->affected_rows() > 0) 
-        {
+        if ($this->db->affected_rows() > 0) {
             return true;
-        } 
-        else 
-        {
+        } else {
             return false;
         }
     }
@@ -67,6 +58,15 @@ class user_ac_model extends CI_Model
 
     public function ac_details($id)
     {
-     return $this->db->get_where('user_ac',['user_id'=>$id])->row_array();
+        return $this->db->get_where('user_ac', ['user_id' => $id])->row_array();
+    }
+
+    public function approved_ac()
+    {
+        $this->db->select('*')
+            ->from('users')
+            ->join('user_ac', 'user_ac.user_id = users.user_id')
+            ->where('user_approval', 1);
+        return $this->db->get()->result_array();
     }
 }

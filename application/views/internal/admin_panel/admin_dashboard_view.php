@@ -18,13 +18,16 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                        <form method="post" name="edit_profile" action="<?php echo base_url() . 'internal/admin_panel/admin_dashboard2/enrollment_type' ?>">
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </form>
                     </div>
 
                     <!-- Content Row -->
                     <div class="row">
 
                         <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="col mb-4">
                             <a href="<?php echo base_url('internal/level_2/educational_partner/ep_courses'); ?>" style="text-decoration:none">
                                 <div class="card border-left-primary shadow h-100 py-2">
 
@@ -33,7 +36,7 @@
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                                     Students</div>
-                                                <div id="course_counter" class="h5 mb-0 font-weight-bold text-gray-800 counting_number">0</div>
+                                                <div id="student_counter" class="h5 mb-0 font-weight-bold text-gray-800 counting_number">0</div>
                                             </div>
                                             <div class="col-auto">
                                                 <i class="fas fa-book fa-2x text-gray-300"></i>
@@ -45,7 +48,7 @@
                         </div>
 
                         <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="col mb-4">
                             <a href="<?php echo base_url('internal/level_2/educational_partner/Ep_my_rd_project'); ?>" style="text-decoration:none">
                                 <div class="card border-left-success shadow h-100 py-2">
                                     <div class="card-body">
@@ -53,7 +56,7 @@
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                     Employers</div>
-                                                <div id="my_rd_counter" class="h5 mb-0 font-weight-bold text-gray-800 counting_number">0</div>
+                                                <div id="e_counter" class="h5 mb-0 font-weight-bold text-gray-800 counting_number">0</div>
                                             </div>
                                             <div class="col-auto">
                                                 <i class="fas fa-briefcase fa-2x text-gray-300"></i>
@@ -65,7 +68,7 @@
                         </div>
 
                         <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="col mb-4">
                             <a href="<?= base_url('internal/level_2/educational_partner/ep_rd_applicants'); ?>" style="text-decoration:none">
                                 <div class="card border-left-danger shadow h-100 py-2">
                                     <div class="card-body">
@@ -73,7 +76,7 @@
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
                                                     Education Agents</div>
-                                                <div id="my_app_counter" class="h5 mb-0 font-weight-bold text-gray-800 counting_number">0</div>
+                                                <div id="ea_counter" class="h5 mb-0 font-weight-bold text-gray-800 counting_number">0</div>
                                             </div>
                                             <div class="col-auto">
                                                 <i class="fas fa-user-tie fa-2x text-gray-300"></i>
@@ -85,15 +88,34 @@
                         </div>
 
                         <!-- Pending Requests Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="col mb-4">
                             <a href="<?= base_url('internal/level_2/educational_partner/ep_rd_applicants/project_partners_page'); ?>" style="text-decoration:none">
                                 <div class="card border-left-info shadow h-100 py-2">
                                     <div class="card-body">
                                         <div class="row no-gutters align-items-center">
                                             <div class="col mr-2">
                                                 <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                                    Academic Counselors</div>
-                                                <div id="partner_counter" class="h5 mb-0 font-weight-bold text-gray-800 counting_number">0</div>
+                                                    Academic Counsellors</div>
+                                                <div id="ac_counter" class="h5 mb-0 font-weight-bold text-gray-800 counting_number">0</div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <div class="col mb-4">
+                            <a href="<?= base_url('internal/level_2/educational_partner/ep_rd_applicants/project_partners_page'); ?>" style="text-decoration:none">
+                                <div class="card border-left-warning shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                    Education Partners</div>
+                                                <div id="ep_counter" class="h5 mb-0 font-weight-bold text-gray-800 counting_number">0</div>
                                             </div>
                                             <div class="col-auto">
                                                 <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -124,57 +146,27 @@
                         <div class="col-5">
                             <div class="card">
                                 <div class="card-header">
-                                    <h6>Pending service requests</h6>
+                                    <h6>Universities</h6>
                                 </div>
                                 <div class="card-body">
                                     <table id="customers">
                                         <tr>
-                                            <th>Name</th>
-                                            <th>Role</th>
+                                            <th>University</th>
                                             <th></th>
+                                            <th>Courses</th>
                                         </tr>
-                                        <tr>
-                                            <td>Alfreds Futterkiste</td>
-                                            <td>Employer</td>
-                                            <td>
-                                                <div class="btn-sm btn-primary">View</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Berglunds snabbköp</td>
-                                            <td>Student</td>
-                                            <td>
-                                                <div class="btn-sm btn-primary">View</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Centro comercial</td>
-                                            <td>Academic Counsellor</td>
-                                            <td>
-                                                <div class="btn-sm btn-primary">View</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Ernst Handel</td>
-                                            <td>Employer</td>
-                                            <td>
-                                                <div class="btn-sm btn-primary">View</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Island Trading</td>
-                                            <td>Employer Agent</td>
-                                            <td>
-                                                <div class="btn-sm btn-primary">View</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Island Trading</td>
-                                            <td>Employer Agent</td>
-                                            <td>
-                                                <div class="btn-sm btn-primary">View</div>
-                                            </td>
-                                        </tr>
+                                        <?php foreach ($latest_uni as $uni) {
+                                            $total_course = $this->courses_model->get_totalcourse_for_uni($uni['uni_id']);
+                                        ?>
+
+                                            <tr>
+                                                <td><?= $uni['uni_name'] ?></td>
+                                                <td></td>
+                                                <td>
+                                                    <?= $total_course ?>
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
                                     </table>
                                 </div>
                             </div>
@@ -184,11 +176,11 @@
                         <div class="col-8">
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">University Partners</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Education Partners</h6>
                                 </div>
                                 <div class="card-body">
                                     <div class="chart-bar">
-                                        <canvas id="myBarChart"></canvas>
+                                        <canvas id="ep_barChart"></canvas>
                                     </div>
                                     <hr>
                                     red:total courses
@@ -200,17 +192,17 @@
                             <div class="card shadow mb-4">
                                 <!-- Card Header - Dropdown -->
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Donut Chart</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Enrollment by Student/Education Agent</h6>
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
                                     <div class="chart-pie pt-4">
-                                        <canvas id="myPieChart"></canvas>
+                                        <canvas id="enrollment_donut"></canvas>
                                     </div>
+                                    <p>Green: Student <br>
+                                        Blue: Education Agent</p>
                                     <hr>
-                                    red: student self enroll
-                                    blue: ea enroll for student
-                                    green: ac enroll for student
+
                                 </div>
                             </div>
                         </div>
@@ -219,17 +211,47 @@
                     <div class="row">
                         <div class="col">
                             <div class="card shadow">
-                                <p>courses</p>
+                                <!-- Card Header - Dropdown -->
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Universities</h6>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="pt-4">
+                                        <canvas id="uni_pie"></canvas>
+                                    </div>
+                                    <hr>
+                                </div>
                             </div>
                         </div>
                         <div class="col">
                             <div class="card shadow">
-                                <p>employer projects</p>
+                                <!-- Card Header - Dropdown -->
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Employer Projects</h6>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="pt-4">
+                                        <canvas id="emp_pie"></canvas>
+                                    </div>
+                                    <hr>
+                                </div>
                             </div>
                         </div>
                         <div class="col">
                             <div class="card shadow">
-                                <p>rd projects</p>
+                                <!-- Card Header - Dropdown -->
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Donut Chart</h6>
+                                </div>
+                                <!-- Card Body -->
+                                <div class="card-body">
+                                    <div class="chart-pie pt-4">
+                                        <canvas id="rd_pie"></canvas>
+                                    </div>
+                                    <hr>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -241,10 +263,23 @@
             <!-- End of Main Content -->
 
             <script>
-                var counter1 = <?= $num_courses ?>;
-                var counter2 = <?= $num_rd_projects ?>;
-                var counter3 = <?= $num_rd_applicants ?>;
-                var counter4 = 100;
+                var counter1 = <?= $total_student ?>;
+                var counter2 = <?= $total_e ?>;
+                var counter3 = <?= $total_ea ?>;
+                var counter4 = <?= $total_ac ?>;
+                var counter5 = <?= $total_ep ?>;
+                //enrollment donut
+                var s_applicant = <?= $total_by_student ?>;
+                var ea_applicant = <?= $total_by_ea ?>;
+
+                var active_uni = <?= $active_uni ?>;
+                var pending_uni = <?= $pending_uni ?>;
+
+                var active_emp = <?= $active_emp ?>;
+                var pending_emp = <?= $pending_emp ?>;
+
+                var active_rd = <?= $active_rd ?>;
+                var pending_rd = <?= $pending_rd ?>;
             </script>
 
             <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -255,4 +290,6 @@
             <!-- Page level plugins -->
             <script src="vendor/chart.js/Chart.min.js"></script>
 
-            <!-- Page level custom scripts -->
+            <script>
+
+            </script>

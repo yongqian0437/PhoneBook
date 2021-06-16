@@ -15,7 +15,6 @@ class Level_2_profile extends CI_Controller
         $data['title'] = 'iJEES | Profile';
         $user_id = $this->session->userdata('user_id');
         $data['user_role'] = $this->session->userdata('user_role');
-        $ea_id = $this->user_ea_model->ea_details($user_id);
 
         $user_data = $this->user_model->get_user_data();
         $data['user_data'] = $user_data;

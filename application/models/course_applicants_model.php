@@ -67,4 +67,23 @@ class course_applicants_model extends CI_Model
             ->where('users.user_id', $user_id);
         return $this->db->get()->result_array();
     }
+
+    public function applicants_per_uni() //WIP
+    {
+        $this->db->select('*')
+            ->from('course_applicants')
+            ->join('courses', 'courses.course_id = course_applicants.course_id')
+            ->join('universities', 'universities.uni_id = courses.uni_id')
+            ->group_by('universities.uni_id');
+        return $this->db->get()->result_array();
+    }
+
+    function enrollment_method($method)
+    {
+        $this->db->select('')
+            ->from('course_applicants')
+            ->join('users', 'users.user_id = course_applicants.c_applicant_method') //change to user id
+            ->where('users.user_role', $method);
+        return $this->db->get()->result_array();
+    }
 }

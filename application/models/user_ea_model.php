@@ -18,12 +18,9 @@ class user_ea_model extends CI_Model
     function insert($data)
     {
         $this->db->insert('user_ea', $data);
-        if ($this->db->affected_rows() > 0) 
-        {
+        if ($this->db->affected_rows() > 0) {
             return true;
-        } 
-        else 
-        {
+        } else {
             return false;
         }
     }
@@ -31,12 +28,9 @@ class user_ea_model extends CI_Model
     function update($data, $id)
     {
         $this->db->where('ea_id', $id);
-        if ($this->db->update('user_ea', $data)) 
-        {
+        if ($this->db->update('user_ea', $data)) {
             return true;
-        }
-        else 
-        {
+        } else {
             return false;
         }
     }
@@ -45,12 +39,9 @@ class user_ea_model extends CI_Model
     {
         $this->db->where('ea_id', $id);
         $this->db->delete('user_ea');
-        if ($this->db->affected_rows() > 0)
-        {
+        if ($this->db->affected_rows() > 0) {
             return true;
-        } 
-        else 
-        {
+        } else {
             return false;
         }
     }
@@ -68,6 +59,15 @@ class user_ea_model extends CI_Model
 
     public function ea_details($id)
     {
-     return $this->db->get_where('user_ea',['user_id'=>$id])->row_array();
+        return $this->db->get_where('user_ea', ['user_id' => $id])->row_array();
+    }
+
+    public function approved_ea()
+    {
+        $this->db->select('*')
+            ->from('users')
+            ->join('user_ea', 'user_ea.user_id = users.user_id')
+            ->where('user_approval', 1);
+        return $this->db->get()->result_array();
     }
 }

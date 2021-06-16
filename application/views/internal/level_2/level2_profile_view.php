@@ -209,7 +209,7 @@
                                                 <div class="row">
                                                     <div class="col-8 col-md-6 col-lg-6 mb-2">
                                                         <div class="form-group">
-                                                            <label for="exampleInputEmail1">Email address</label>
+                                                            <label for="exampleInputEmail1">Email Address</label>
                                                             <input type="email" name="user_email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="<?= $user_data['user_email'] ?>" placeholder="Enter your email address">
                                                         </div>
                                                     </div>
