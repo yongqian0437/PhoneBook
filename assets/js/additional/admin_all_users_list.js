@@ -108,7 +108,6 @@ function view_user(user_id) {
         data: { user_id: user_id },
         success: function (data) {
             $('#user_information').html(data);
-
         }
     });
 }
@@ -125,6 +124,7 @@ function view_next(user_id) {
         }
     });
     $('.modal-backdrop ').remove();
+
 }
 
 // activate 1 User

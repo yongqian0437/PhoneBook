@@ -93,4 +93,21 @@ class universities_model extends CI_Model
        return $this->db->get('universities')->row();
     } 
 
+    function fetch_uni_id($uni_name)  //new function
+    {
+        $this->db->where('uni_name', $uni_name);
+        $query= $this->db->get('universities');
+
+        if ($query->num_rows() > 0) {
+            foreach ($query->result() as $row) {
+                $output =$row->uni_id;
+            }
+        } else {
+            $output = '<option value="" selected disabled>No universities available</option>';
+        }
+
+        return $output;
+    }
+
+
 }

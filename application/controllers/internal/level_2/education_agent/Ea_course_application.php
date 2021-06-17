@@ -21,7 +21,7 @@ class Ea_course_application extends CI_Controller
 
     public function index()
     {
-        $data['title']= 'iJEES | Course Application';
+        $data['title']= 'iJEES | Course Applicants';
         $data['include_js'] ='ea_course_application_list';
         $user_id=$this->session->userdata('user_id');
         $data['course_applicants']=$this->course_applicants_model->get_user_id($user_id);

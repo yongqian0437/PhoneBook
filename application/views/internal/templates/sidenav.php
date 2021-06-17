@@ -75,7 +75,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="<?=base_url('internal/level_2/education_agent/ea_course_application');?>">
                     <i class="fas fa-plus-square"></i>
-                    <span>New Student Application</span>
+                    <span>Course Applicants</span>
                 </a>
             </li>
 

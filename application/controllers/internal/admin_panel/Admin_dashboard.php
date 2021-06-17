@@ -21,7 +21,7 @@ class Admin_dashboard extends CI_Controller
     {   
         $data['title'] = 'iJEES | All Users';
         $data['include_js'] = 'admin_all_users_list';
- 
+
         $this->load->view('internal/templates/header', $data);
         $this->load->view('internal/templates/sidenav');
         $this->load->view('internal/templates/topbar');
@@ -82,12 +82,15 @@ class Admin_dashboard extends CI_Controller
             }
 
            // Get eps'submitdate
-            else
+            else  if($users->user_role=="Education Partner")
             {
-                //$ep_detail=$this->user_ep_model->get_ep_detail($users->user_id);
-                //$submitdate=$ep_detail->ep_submitdate;
+                $ep_detail=$this->user_ep_model->get_ep_detail($users->user_id);
+                $submitdate=$ep_detail->ep_submitdate;
                 //var_dump($ep_detail);
-               $submitdate=$users->user_submitdate;
+            }
+            else 
+            {
+                $submitdate=$users->user_submitdate;
             }
 
 			$data[] = array(
@@ -160,7 +163,12 @@ class Admin_dashboard extends CI_Controller
              }
 
             // Get eps'submitdate
-             else
+             else if($users->user_role=="Education Partner")
+             {
+                $ep_detail=$this->user_ep_model->get_ep_detail($users->user_id);
+                $submitdate=$ep_detail->ep_submitdate;
+             } 
+             else 
              {
                 $submitdate=$users->user_submitdate;
              }
@@ -238,10 +246,16 @@ class Admin_dashboard extends CI_Controller
              }
 
             // Get eps'submitdate
-             else
-             {
+            else if($users->user_role=="Education Partner")
+            {
+                $ep_detail=$this->user_ep_model->get_ep_detail($users->user_id);
+                $submitdate=$ep_detail->ep_submitdate;
+                //var_dump($ep_detail);
+            }
+            else 
+            {
                 $submitdate=$users->user_submitdate;
-             }
+            }
             
             $data[] = array(
                 $checkbox,
@@ -668,6 +682,11 @@ class Admin_dashboard extends CI_Controller
 
     public function view_next()
     {
+        $all_users_details=$this->user_model->all_users_details();
+
+        foreach($all_users_details as $users) {
+        $view = '<span class = "px-1"><button type="button" onclick="view_user('.$users->user_id.')" class="btn icon-btn btn-xs btn-info waves-effect waves-light" data-toggle="modal" data-target="#view_user"><span class="fas fa-eye"></span></button></span>';
+        }
         //$ep_detail=$this->user_ep_model->get_full_ep_detail($this->input->post('user_id'));
         $ep_detail=$this->user_ep_model->get_ep_detail($this->input->post('user_id'));
         $uni_detail=$this->universities_model->get_uni_detail($ep_detail->uni_id);
@@ -735,12 +754,12 @@ class Admin_dashboard extends CI_Controller
                     <th scope="row">Total Students</th>
                     <td>'.$uni_detail->uni_totalstudents.'</td>
                 </tr>
+                
             </tbody>
            
         </table>';
 
         echo $output;
-       
     }
        
     }

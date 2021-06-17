@@ -363,6 +363,8 @@ class Auth extends CI_Controller
 
     public function ep_reg()
     { 
+        
+
         $user_id= $this->session->userdata('user_id');
         $uni_id= $this->session->userdata('uni_id');
         $this->form_validation->set_rules('ep_phonenumber','Phone Number', 'required|trim|min_length[5]',[
@@ -387,7 +389,7 @@ class Auth extends CI_Controller
             $data=
             [
                 'user_id'=>$user_id,
-                'uni_id'=>$uni_id,
+                
                 //'course_id'=>$course_id,
                 'ep_phonenumber'=>htmlspecialchars($this->input->post('ep_phonenumber',true)),
                 'ep_businessemail'=>htmlspecialchars($this->input->post('ep_businessemail',true)),
@@ -449,9 +451,12 @@ class Auth extends CI_Controller
         }
     }
 
+
     public function ac_reg()
     { 
         $data['university_data'] = $this->universities_model->select_all_approved_only(); // get from eddie's branch
+      
+      
         $user_id=$this->session->userdata('user_id');
         $this->form_validation->set_rules('ac_phonenumber','Phone Number', 'required|trim|min_length[5]',[
             'min_length'=> 'Phone number too short'
@@ -471,18 +476,21 @@ class Auth extends CI_Controller
         else
         {
             $ac_document = $this->upload_doc('./assets/uploads/academic_counsellor', 'ac_document');
-
+            $uni_id=$this->universities_model->fetch_uni_id($this->input->post('ac_university'));
+            
             $data=
             [
                 'user_id'=>$user_id,
                 'ac_phonenumber'=>htmlspecialchars($this->input->post('ac_phonenumber',true)),
                 'ac_businessemail'=>htmlspecialchars($this->input->post('ac_businessemail',true)),
+                'uni_id'=>$uni_id,
                 'ac_university'=>htmlspecialchars($this->input->post('ac_university',true)),
                 'ac_nationality'=>htmlspecialchars($this->input->post('ac_nationality',true)),
                 'ac_gender'=>htmlspecialchars($this->input->post('ac_gender',true)),
                 'ac_dob'=>htmlspecialchars($this->input->post('ac_dob',true)),
                 'ac_document'=>$ac_document['file_name'],
             ];
+            
          // insert data into database
         $this->user_ac_model->insert($data);
         $this->session->set_flashdata('message','<div class="alert alert-success" role="alert" id="alert_message">
