@@ -53,20 +53,23 @@ class Ac_course_applicants extends CI_Controller
         foreach ($course_applicants as $course_app) {
 
             $view = '<span><button type="button" onclick="view_course_applicant(' . $course_app['c_applicant_id'] . ')" class="btn icon-btn btn-xs btn-info waves-effect waves-light" data-toggle="modal" data-target="#view_course_applicant"><span class="fas fa-eye"></span></button></span>';
-            $chat = '<span class = "px-1 "><a type="button" onclick="chat_with_course_applicant(\'' . str_replace("'", "\\'", $course_app['user_id']) . '\', \'' . str_replace("'", "\\'", $course_app['user_fname']) . '\', \'' . str_replace("'", "\\'", $course_app['user_lname']) . '\');")" id="' . $course_app['user_id'] . '" title="' . $course_app['user_fname'] . ' ' . $course_app['user_lname'] . '" class="btn icon-btn btn-xs btn-success waves-effect waves-light"><span class="fas fa-comment"></span></a></span>';
 
-            $function = $view . $chat;
+            if ($course_app['user_role'] == 'Student') {
+                $chat = '<span class = "px-1 "><a type="button" onclick="chat_with_course_applicant(\'' . str_replace("'", "\\'", $course_app['user_id']) . '\', \'' . str_replace("'", "\\'", $course_app['user_fname']) . '\', \'' . str_replace("'", "\\'", $course_app['user_lname']) . '\');")" id="' . $course_app['user_id'] . '" title="' . $course_app['user_fname'] . ' ' . $course_app['user_lname'] . '" class="btn icon-btn btn-xs btn-success waves-effect waves-light"><span class="fas fa-comment"></span></a></span>';
+                $function = $view . $chat;
+            } else {
+                $function = $view;
+            }
 
             $data[] = [
                 '',
                 $course_app['c_applicant_fname'] . ' ' . $course_app['c_applicant_lname'], // from course_applicants table
                 $course_app['c_applicant_nationality'], // from course_applicants table
                 $course_app['course_name'], // from courses table
-                'Hi',
+                $course_app['user_role'], // from user table
                 $course_app['c_app_submitdate'], // from course_applicants table
                 $function,
             ];
-
         }
 
         $output = array(
@@ -133,7 +136,7 @@ class Ac_course_applicants extends CI_Controller
                 </tr>            
                 <tr>
                     <th scope="row">Document</th>
-                    <td><a href="'.base_url("assets/uploads/course_applicants/").$course_applicant_details['c_applicant_document'].'" target="_blank">'.$course_applicant_details['c_applicant_document'].'</a></td>
+                    <td><a href="' . base_url("assets/uploads/course_applicants/") . $course_applicant_details['c_applicant_document'] . '" target="_blank">' . $course_applicant_details['c_applicant_document'] . '</a></td>
                 </tr>
             </tbody>
         </table>
