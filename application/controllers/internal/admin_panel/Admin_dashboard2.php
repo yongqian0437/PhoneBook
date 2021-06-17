@@ -38,6 +38,29 @@ class Admin_dashboard2 extends CI_Controller
         $data['latest_uni'] = $this->universities_model->uni_max_6();
         $data['total_uni'] = count($this->universities_model->select_all_approved_only());
 
+        //total users
+        $Jan = $this->get_monthly_user('2021-01-01', '2021-01-31');
+        $Feb = $Jan + $this->get_monthly_user('2021-02-01', '2021-02-28');
+        $Mar = $Feb + $this->get_monthly_user('2021-03-01', '2021-03-31');
+        $Apr = $Mar + $this->get_monthly_user('2021-04-01', '2021-04-30');
+        $May = $Apr + $this->get_monthly_user('2021-05-01', '2021-05-31');
+        $Jun = $May + $this->get_monthly_user('2021-06-01', '2021-06-30');
+        $Jul = $Jun + $this->get_monthly_user('2021-07-01', '2021-07-31');
+
+        $data['monthly_user'] =
+            [
+                $Jan,
+                $Feb,
+                $Mar,
+                $Apr,
+                $May,
+                $Jun,
+                $Jul,
+            ];
+
+        //applicants by uni
+        $data['total_applicants'] = $this->course_applicants_model->applicants_per_uni();
+
         //enrollment method
         $data['total_by_ea'] = count($this->course_applicants_model->enrollment_method('Education Agent'));
         $data['total_by_student'] = count($this->course_applicants_model->enrollment_method('Student'));
@@ -58,14 +81,13 @@ class Admin_dashboard2 extends CI_Controller
         $this->load->view('internal/templates/footer');
     }
 
-    public function total_users()
+    public function get_monthly_user($date1, $date2)         //total users
     {
-        $data['total_users'] = count($this->user_model->approvedata(1));
-    }
-
-    public function uni_applicants()
-    {
-        $data['total_applicants'] = $this->course_applicants_model->applicants_per_uni();
-        echo count($this->course_applicants_model->applicants_per_uni());
+        $total_per_month = $this->user_model->get_monthly_user($date1, $date2, 'user_ac', 'ac_submitdate') +
+            $this->user_model->get_monthly_user($date1, $date2, 'user_e', 'e_submitdate') +
+            $this->user_model->get_monthly_user($date1, $date2, 'user_ea', 'ea_submitdate') +
+            $this->user_model->get_monthly_user($date1, $date2, 'user_ep', 'ep_submitdate') +
+            $this->user_model->get_monthly_user($date1, $date2, 'user_student', 'student_submitdate');
+        return $total_per_month;
     }
 }

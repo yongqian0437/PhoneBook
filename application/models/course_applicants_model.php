@@ -68,13 +68,14 @@ class course_applicants_model extends CI_Model
         return $this->db->get()->result_array();
     }
 
-    public function applicants_per_uni() //WIP
+    public function applicants_per_uni()
     {
-        $this->db->select('*')
+        $this->db->select('count(course_applicants.c_applicant_id), universities.uni_name')
             ->from('course_applicants')
             ->join('courses', 'courses.course_id = course_applicants.course_id')
             ->join('universities', 'universities.uni_id = courses.uni_id')
-            ->group_by('universities.uni_id');
+            ->group_by('universities.uni_id')
+            ->order_by('count(course_applicants.c_applicant_id)', 'DESC');
         return $this->db->get()->result_array();
     }
 

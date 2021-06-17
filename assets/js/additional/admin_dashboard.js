@@ -77,9 +77,9 @@ var ctx = document.getElementById("userChartArea");
 var myLineChart = new Chart(ctx, {
   type: 'line',
   data: {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
     datasets: [{
-      label: "User Amount",
+      label: "Total Users",
       lineTension: 0.3,
       backgroundColor: "rgba(78, 115, 223, 0.05)",
       borderColor: "rgba(78, 115, 223, 1)",
@@ -91,7 +91,7 @@ var myLineChart = new Chart(ctx, {
       pointHoverBorderColor: "rgba(78, 115, 223, 1)",
       pointHitRadius: 10,
       pointBorderWidth: 2,
-      data: [0, 10000, 5000, 15000, 10000, 20000, 15000, 25000, 20000, 30000, 25000, 40000],
+      data: [Jan, Feb, Mar, Apr, May, Jun, Jul],
     }],
   },
   options: {
@@ -119,12 +119,10 @@ var myLineChart = new Chart(ctx, {
       }],
       yAxes: [{
         ticks: {
-          maxTicksLimit: 5,
+          min: 0,
+          maxTicksLimit: 10,
           padding: 10,
-          // Include a dollar sign in the ticks
-          callback: function(value, index, values) {
-            return '$' + number_format(value);
-          }
+          
         },
         gridLines: {
           color: "rgb(234, 236, 244)",
@@ -155,7 +153,7 @@ var myLineChart = new Chart(ctx, {
       callbacks: {
         label: function(tooltipItem, chart) {
           var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-          return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
+          return datasetLabel + ': ' + number_format(tooltipItem.yLabel);
         }
       }
     }
@@ -194,94 +192,12 @@ var ctx = document.getElementById("enrollment_donut");
                 });
 
 
-var ctx = document.getElementById("ep_barChart");
-var myBarChart = new Chart(ctx, {
-  type: 'bar',
-  data: {
-    labels: ["January", "February", "March", "April", "May", "June"],
-    datasets: [{
-      label: "Revenue",
-      backgroundColor: "#4e73df",
-      hoverBackgroundColor: "#2e59d9",
-      borderColor: "#4e73df",
-      data: [4215, 5312, 6251, 7841, 9821, 14984],
-    }],
-  },
-  options: {
-    maintainAspectRatio: false,
-    layout: {
-      padding: {
-        left: 10,
-        right: 25,
-        top: 25,
-        bottom: 0
-      }
-    },
-    scales: {
-      xAxes: [{
-        time: {
-          unit: 'month'
-        },
-        gridLines: {
-          display: false,
-          drawBorder: false
-        },
-        ticks: {
-          maxTicksLimit: 6
-        },
-        maxBarThickness: 25,
-      }],
-      yAxes: [{
-        ticks: {
-          min: 0,
-          max: 15000,
-          maxTicksLimit: 5,
-          padding: 10,
-          // Include a dollar sign in the ticks
-          callback: function(value, index, values) {
-            return '$' + number_format(value);
-          }
-        },
-        gridLines: {
-          color: "rgb(234, 236, 244)",
-          zeroLineColor: "rgb(234, 236, 244)",
-          drawBorder: false,
-          borderDash: [2],
-          zeroLineBorderDash: [2]
-        }
-      }],
-    },
-    legend: {
-      display: false
-    },
-    tooltips: {
-      titleMarginBottom: 10,
-      titleFontColor: '#6e707e',
-      titleFontSize: 14,
-      backgroundColor: "rgb(255,255,255)",
-      bodyFontColor: "#858796",
-      borderColor: '#dddfeb',
-      borderWidth: 1,
-      xPadding: 15,
-      yPadding: 15,
-      displayColors: false,
-      caretPadding: 10,
-      callbacks: {
-        label: function(tooltipItem, chart) {
-          var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
-          return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
-        }
-      }
-    },
-  }
-});
-
-new Chart(document.getElementById("uni_pie"), {
+var ctx1 = document.getElementById("uni_pie");
+var myChart = new Chart(ctx1, {
   type: 'pie',
   data: {
     labels: ["Active Universities", "Pending Universities"],
     datasets: [{
-      label: "Population (millions)",
       backgroundColor: ["#3e95cd", "#8e5ea2"],
       data: [active_uni,pending_uni]
     }]
@@ -294,14 +210,14 @@ new Chart(document.getElementById("uni_pie"), {
   }
 });
 
-new Chart(document.getElementById("emp_pie"), {
+var ctx2 = document.getElementById("emp_pie");
+var myChart = Chart(ctx2, {
   type: 'pie',
   data: {
     labels: ["Active Employer Projects", "Pending Employer Projects"],
     datasets: [{
-      label: "Population (millions)",
       backgroundColor: ["#3e95cd", "#8e5ea2"],
-      data: [active_emp,emp_uni]
+      data: [active_emp,pending_emp]
     }]
   },
   options: {
@@ -312,12 +228,11 @@ new Chart(document.getElementById("emp_pie"), {
   }
 });
 
-new Chart(document.getElementById("rd_pie"), {
+/* new Chart(document.getElementById("rd_pie"), {
   type: 'pie',
   data: {
     labels: ["Active R&D Projects", "Pending R&D Projects"],
     datasets: [{
-      label: "Population (millions)",
       backgroundColor: ["#3e95cd", "#8e5ea2"],
       data: [active_rd,pending_rd]
     }]
@@ -328,4 +243,4 @@ new Chart(document.getElementById("rd_pie"), {
       text: 'R&D in iJEES'
     }
   }
-});
+}); */

@@ -166,18 +166,12 @@ class user_model extends CI_Model
         }
     }
 
-    public function  approved_user_month() //wip
+    public function get_monthly_user($date1, $date2, $table, $attribute)
     {
-        $this->db->select('*')
-            ->from('users')
-            ->join('user_ac', 'user_ac.user_id = users.user_id')
-            ->join('user_e', 'user_e.user_id = users.user_id')
-            ->join('user_ea', 'user_ea.user_id = users.user_id')
-            ->join('user_ep', 'user_ep.user_id = users.user_id')
-            ->join('user_student', 'user_student.user_id = users.user_id')
-            ->where('users.user_approval', 1);
-
-
-        return $this->db->get('users')->result_array();
+        $this->db->select('*');
+        $this->db->join('users', 'users.user_id = ' . $table . '.user_id');
+        $this->db->where('users.user_approval', 1);
+        $this->db->where($table . "." . $attribute . " BETWEEN '" . $date1 . " 00:00:00' AND '" . $date2 . " 23:59:59' ");
+        return $this->db->count_all_results($table);
     }
 }

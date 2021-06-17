@@ -1,6 +1,11 @@
 <script src="<?php echo base_url() ?>/assets/vendor/jquery/jquery.min.js"></script>
 <link href="<?php echo base_url() ?>/assets/scss/admin_dashboard.scss" rel="stylesheet">
 
+<script src="<?php echo base_url() ?>/assets/vendor/chart.js/Chart.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="<?php echo base_url() ?>/assets/js/demo/chart-area-demo.js"></script>
+<script src="<?php echo base_url() ?>/assets/js/demo/chart-pie-demo.js"></script>
 
 <body id="page-top">
 
@@ -18,9 +23,9 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                        <form method="post" name="edit_profile" action="<?php echo base_url() . 'internal/admin_panel/admin_dashboard2/enrollment_type' ?>">
+                        <!-- <form method="post" name="edit_profile" action="<?php echo base_url() . 'internal/admin_panel/admin_dashboard2/uni_applicants' ?>">
                             <button type="submit" class="btn btn-primary">Save</button>
-                        </form>
+                        </form> -->
                     </div>
 
                     <!-- Content Row -->
@@ -146,7 +151,7 @@
                         <div class="col-5">
                             <div class="card">
                                 <div class="card-header">
-                                    <h6>Universities</h6>
+                                    <h6>Universities (Total <?= $total_uni ?>)</h6>
                                 </div>
                                 <div class="card-body">
                                     <table id="customers">
@@ -158,7 +163,6 @@
                                         <?php foreach ($latest_uni as $uni) {
                                             $total_course = $this->courses_model->get_totalcourse_for_uni($uni['uni_id']);
                                         ?>
-
                                             <tr>
                                                 <td><?= $uni['uni_name'] ?></td>
                                                 <td></td>
@@ -218,7 +222,7 @@
                                 <!-- Card Body -->
                                 <div class="card-body">
                                     <div class="pt-4">
-                                        <canvas id="uni_pie"></canvas>
+                                        <canvas id="pie-chartcanvas-1"></canvas>
                                     </div>
                                     <hr>
                                 </div>
@@ -233,7 +237,7 @@
                                 <!-- Card Body -->
                                 <div class="card-body">
                                     <div class="pt-4">
-                                        <canvas id="emp_pie"></canvas>
+                                        <canvas id="pie-chartcanvas-2"></canvas>
                                     </div>
                                     <hr>
                                 </div>
@@ -243,12 +247,12 @@
                             <div class="card shadow">
                                 <!-- Card Header - Dropdown -->
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Donut Chart</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">R&D Projects</h6>
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
-                                    <div class="chart-pie pt-4">
-                                        <canvas id="rd_pie"></canvas>
+                                    <div class="pt-4">
+                                        <canvas id="pie-chartcanvas-3"></canvas>
                                     </div>
                                     <hr>
                                 </div>
@@ -268,6 +272,15 @@
                 var counter3 = <?= $total_ea ?>;
                 var counter4 = <?= $total_ac ?>;
                 var counter5 = <?= $total_ep ?>;
+                //total active users
+                var Jan = <?= $monthly_user[0] ?>;
+                var Feb = <?= $monthly_user[1] ?>;
+                var Mar = <?= $monthly_user[2] ?>;
+                var Apr = <?= $monthly_user[3] ?>;
+                var May = <?= $monthly_user[4] ?>;
+                var Jun = <?= $monthly_user[5] ?>;
+                var Jul = <?= $monthly_user[6] ?>;
+
                 //enrollment donut
                 var s_applicant = <?= $total_by_student ?>;
                 var ea_applicant = <?= $total_by_ea ?>;
@@ -280,7 +293,211 @@
 
                 var active_rd = <?= $active_rd ?>;
                 var pending_rd = <?= $pending_rd ?>;
+
+                //bar
+                var ctx = document.getElementById("ep_barChart");
+                var myBarChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ["<?= $total_applicants[0]['uni_name'] ?>", "<?= $total_applicants[1]['uni_name'] ?>", "<?= $total_applicants[2]['uni_name'] ?>"],
+                        datasets: [{
+                            label: "Applicants",
+                            backgroundColor: "#4e73df",
+                            hoverBackgroundColor: "#2e59d9",
+                            borderColor: "#4e73df",
+                            data: [<?= $total_applicants[0]['count(course_applicants.c_applicant_id)'] ?>, <?= $total_applicants[1]['count(course_applicants.c_applicant_id)'] ?>, <?= $total_applicants[2]['count(course_applicants.c_applicant_id)'] ?>],
+                        }],
+                    },
+                    options: {
+                        maintainAspectRatio: false,
+                        layout: {
+                            padding: {
+                                left: 10,
+                                right: 25,
+                                top: 25,
+                                bottom: 0
+                            }
+                        },
+                        scales: {
+                            xAxes: [{
+                                time: {
+                                    unit: 'month'
+                                },
+                                gridLines: {
+                                    display: false,
+                                    drawBorder: false
+                                },
+                                ticks: {
+                                    maxTicksLimit: 6
+                                },
+                                maxBarThickness: 25,
+                            }],
+                            yAxes: [{
+                                ticks: {
+                                    min: 0,
+                                    max: 6,
+                                    maxTicksLimit: 5,
+                                    padding: 10,
+                                    // Include a dollar sign in the ticks
+                                    callback: function(value, index, values) {
+                                        return number_format(value);
+                                    }
+                                },
+                                gridLines: {
+                                    color: "rgb(234, 236, 244)",
+                                    zeroLineColor: "rgb(234, 236, 244)",
+                                    drawBorder: false,
+                                    borderDash: [2],
+                                    zeroLineBorderDash: [2]
+                                }
+                            }],
+                        },
+                        legend: {
+                            display: false
+                        },
+                        tooltips: {
+                            titleMarginBottom: 10,
+                            titleFontColor: '#6e707e',
+                            titleFontSize: 14,
+                            backgroundColor: "rgb(255,255,255)",
+                            bodyFontColor: "#858796",
+                            borderColor: '#dddfeb',
+                            borderWidth: 1,
+                            xPadding: 15,
+                            yPadding: 15,
+                            displayColors: false,
+                            caretPadding: 10,
+                            callbacks: {
+                                label: function(tooltipItem, chart) {
+                                    var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+                                    return datasetLabel + ': ' + number_format(tooltipItem.yLabel);
+                                }
+                            }
+                        },
+                    }
+                });
+
+                //Pie charts
+                $(function() {
+
+                    //get the pie chart canvas
+                    var ctx1 = $("#pie-chartcanvas-1");
+                    var ctx2 = $("#pie-chartcanvas-2");
+                    var ctx3 = $("#pie-chartcanvas-3");
+
+                    //pie chart data
+                    var data1 = {
+                        labels: ["match1", "match2", "match3", "match4", "match5"],
+                        datasets: [{
+                            label: "TeamA Score",
+                            data: [10, 50, 25, 70, 40],
+                            backgroundColor: [
+                                "#DEB887",
+                                "#A9A9A9",
+                                "#DC143C",
+                                "#F4A460",
+                                "#2E8B57"
+                            ],
+                            borderColor: [
+                                "#CDA776",
+                                "#989898",
+                                "#CB252B",
+                                "#E39371",
+                                "#1D7A46"
+                            ],
+                            borderWidth: [1, 1, 1, 1, 1]
+                        }]
+                    };
+
+                    //pie chart data
+                    var data2 = {
+                        labels: ["match1", "match2", "match3", "match4", "match5"],
+                        datasets: [{
+                            label: "TeamB Score",
+                            data: [20, 35, 40, 60, 50],
+                            backgroundColor: [
+                                "#FAEBD7",
+                                "#DCDCDC",
+                                "#E9967A",
+                                "#F5DEB3",
+                                "#9ACD32"
+                            ],
+                            borderColor: [
+                                "#E9DAC6",
+                                "#CBCBCB",
+                                "#D88569",
+                                "#E4CDA2",
+                                "#89BC21"
+                            ],
+                            borderWidth: [1, 1, 1, 1, 1]
+                        }]
+                    };
+
+                    var data3 = {
+                        labels: ["match1", "match2", "match3", "match4", "match5"],
+                        datasets: [{
+                            label: "TeamB Score",
+                            data: [20, 35, 40, 60, 50],
+                            backgroundColor: [
+                                "#FAEBD7",
+                                "#DCDCDC",
+                                "#E9967A",
+                                "#F5DEB3",
+                                "#9ACD32"
+                            ],
+                            borderColor: [
+                                "#E9DAC6",
+                                "#CBCBCB",
+                                "#D88569",
+                                "#E4CDA2",
+                                "#89BC21"
+                            ],
+                            borderWidth: [1, 1, 1, 1, 1]
+                        }]
+                    };
+
+                    //options
+                    var options = {
+                        responsive: false,
+                        title: {
+                            display: true,
+                            position: "top",
+                            text: "Pie Chart",
+                            fontSize: 18,
+                            fontColor: "#111"
+                        },
+                        legend: {
+                            display: true,
+                            position: "bottom",
+                            labels: {
+                                fontColor: "#333",
+                                fontSize: 16
+                            }
+                        }
+                    };
+
+                    //create Chart class object
+                    var chart1 = new Chart(ctx1, {
+                        type: "pie",
+                        data: data1,
+                        options: options
+                    });
+
+                    //create Chart class object
+                    var chart2 = new Chart(ctx2, {
+                        type: "pie",
+                        data: data2,
+                        options: options
+                    });
+                    var chart3 = new Chart(ctx3, {
+                        type: "pie",
+                        data: data3,
+                        options: options
+                    });
+                });
             </script>
+
+
 
             <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
