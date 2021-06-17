@@ -126,16 +126,17 @@ class course_applicants_model extends CI_Model
        return $this->db->get('course_applicants')->result_array();
     }
 
-    // public function get_full_ca_details()
-    // {
-    // //    $this->db->where('c_applicant_method',$user_id);
-    // //    return $this->db->get('course_applicants')->result();
-    //     $this->db->select('')
-    //     ->from('course_applicants') // course applicants table
-    //     ->join('courses', 'courses.course_id = course_applicants.course_id')// uni table
-    //     ->join('universities', 'universities.uni_id = courses.uni_id'); // uni table
-    //     return $this->db->get()->result();// return array of object format 
-    // }
+    // For EA: Bar graph of course applicants grouped by their nationality
+    public function applicants_per_nationality($user_id)
+    {
+        $this->db->select('count(course_applicants.c_applicant_id), course_applicants.c_applicant_nationality')
+        ->from('course_applicants')
+        ->where('course_applicants.c_applicant_method', $user_id)
+        ->group_by('course_applicants.c_applicant_nationality')
+        ->order_by('count(course_applicants.c_applicant_id)', 'desc')
+        ->order_by('course_applicants.c_applicant_nationality', 'asc');
+        return $this->db->get()->result_array();
+    }
 
      function get_uni_name()
     {

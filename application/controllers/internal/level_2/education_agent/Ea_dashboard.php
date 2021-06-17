@@ -18,20 +18,27 @@ class Ea_dashboard extends CI_Controller
     public function index()
     {
         $data['title'] = 'iJEES | Dashboard';
-        $user_details = $this->user_model->get_user_details($this->session->userdata('user_id'));
-        // var_dump( $user_details);
-        // die;
+        $data['include_js'] ='ea_dashboard';
+       
+       // $user_details = $this->user_model->get_user_details($this->session->userdata('user_id'));
+        
 
         // Total Student
-       $data['total_students']= count($this->course_applicants_model->get_total_students($user_details['user_id']));
-
-       //Total Female
+       $data['total_students']= count($this->course_applicants_model->get_total_students($this->session->userdata('user_id')));
+// var_dump($data['total_student']);
+// die;
+       //get nationality
+       $data['total_applicants']=$this->course_applicants_model->applicants_per_nationality($this->session->userdata('user_id'));
+      
+// var_dump( $data['total_applicants']);
+// die;
+       //Bar Chart
        
 
         $this->load->view('internal/templates/header', $data);
         $this->load->view('internal/templates/sidenav');
         $this->load->view('internal/templates/topbar');
-        $this->load->view('internal/level_2/education_agent/ea_dashboard_view');
+        $this->load->view('internal/level_2/education_agent/ea_dashboard_view',$data);
         $this->load->view('internal/templates/footer');
     }
 
