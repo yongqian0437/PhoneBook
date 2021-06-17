@@ -105,4 +105,16 @@ class emp_applicants_model extends CI_Model
         return $this->db->get()->result_array();
     }
 
+    // For Employer: Bar graph of EMP Applicants grouped by their nationality
+    function applicants_per_nationality($e_id){
+        $this->db->select('count(emp_applicants.emp_applicant_id), user_student.student_nationality')
+                 ->from('emp_applicants')
+                 ->join('employer_projects', 'employer_projects.emp_id = emp_applicants.emp_id')
+                 ->join('user_student', 'user_student.student_id = emp_applicants.student_id')
+                 ->where('employer_projects.e_id', $e_id)
+                 ->group_by('user_student.student_nationality')
+                 ->order_by('count(emp_applicants.emp_applicant_id)', 'desc')
+                 ->order_by('user_student.student_nationality', 'asc');
+        return $this->db->get()->result_array();
+    }
 }
