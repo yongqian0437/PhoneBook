@@ -72,7 +72,7 @@
                                             </li>
                                         </ul>
                                         <br>
-
+                                        <div class="mt-3">
                                         <!-- 2 Bottom Buttons -->
                                         <div class="bottom_buttons">
                                             <!--Button for modal pop up when EP description becomes too long to display -->
@@ -97,6 +97,7 @@
                                                     <a class="btn apply_reg" href="<?= base_url('user/login/Auth/login');?>">Apply Now</a>
 
                                                 <?php } ?>
+                                        </div>
                                         </div>
                                     </div>
                                 </div>

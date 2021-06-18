@@ -76,6 +76,7 @@ class emp_applicants_model extends CI_Model
             ->join('user_e', 'user_e.e_id = employer_projects.e_id')
             ->join('company', 'company.c_id = user_e.c_id')
             ->where('users.user_id', $user_id);
+            return $this->db->get()->result_array();
     }
     
     // Get students who applied for the Employer Project(s) that a specific Employer has posted

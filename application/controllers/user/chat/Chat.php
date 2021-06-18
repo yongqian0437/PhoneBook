@@ -218,12 +218,12 @@ class Chat extends CI_Controller
 
         // Get receiver's country/nationality
         $receiver_user_data = $this->user_model->search_id($receiver_id);
-        if ($receiver_user_data['user_role'] == 'Student') 
+        if ($receiver_user_data->user_role == 'Student') 
         {
             $student_details = $this->user_student_model->student_details($receiver_id);
             $receiver_country = $student_details['student_nationality'];
         } 
-        else if ($receiver_user_data['user_role'] == 'Academic Counsellor') 
+        else if ($receiver_user_data->user_role == 'Academic Counsellor') 
         {
             $ac_details = $this->user_ac_model->ac_details($receiver_id);
             $receiver_country = $this->user_ac_model->ac_university_country($ac_details['ac_university']);
