@@ -1,0 +1,63 @@
+<tr>
+                        <th colspan="2" style = "background-color: white"></th>   
+                    </tr>
+                    <tr>
+                        <th colspan="2" style = "background-color: #CCE3DE; font-weight: 900; text-align: center; font-size: 1.1em;">UNIVERSITY</th>   
+                    </tr>
+                    <tr>
+                        <th scope="row">Applied Date</th>
+                        <td>'.$ep_detail->uni_submitdate.'</td>
+                    </tr>
+                    <tr style="text-align: center">
+                        <td colspan="2"><img src="'.base_url("assets/img/university/").$ep_detail->uni_logo.'" style="width: 250px; height: 100px; object-fit:contain;">
+                        </td>  
+                    </tr>
+                    <tr style="text-align: center">
+                        <td colspan="2"><img src="'.base_url("assets/img/university/").$ep_detail->uni_background.'" style="width: 250px; height: 100px; object-fit:contain;">
+                        </td>  
+                    </tr>
+                    
+                    <tr>
+                        <th scope="row">University</th>
+                        <td>'.$ep_detail->uni_name.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Short Profile</th>
+                        <td>'.$ep_detail->uni_shortprofile.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Fun Fact</th>
+                        <td>'.$ep_detail->uni_fun_fact.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Country</th>
+                        <td>'.$ep_detail->uni_country.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Hotline</th>
+                        <td>'.$ep_detail->uni_hotline.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Email</th>
+                        <td>'.$ep_detail->uni_email.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">University Address</th>
+                        <td>'.$ep_detail->uni_address.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Website</th>
+                        <td>'.$ep_detail->uni_website.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">QS Rank</th>
+                        <td>'.$ep_detail->uni_qsrank.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Employability Rank</th>
+                        <td>'.$ep_detail->uni_employabilityrank.'</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Total Students</th>
+                        <td>'.$ep_detail->uni_totalstudents.'</td>
+                    </tr>

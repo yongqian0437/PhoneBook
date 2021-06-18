@@ -36,19 +36,23 @@ class user_model extends CI_Model
         }
     }
 
-    public function update_approve($id, $data)
+    function update($data, $id)
     {
         $this->db->where('user_id', $id);
-        return $this->db->update('users', $data);
+        if ($this->db->update('users', $data)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    public function  approvedata($condition)
+    public function activated_acc($condition)
     {
         $this->db->where('user_approval', $condition);
         return $this->db->get('users')->result_array();
     }
 
-    public function  pendingdata($condition)
+    public function inactivate_acc($condition)
     {
         $this->db->where('user_approval', $condition);
         return $this->db->get('users')->result_array();
@@ -64,9 +68,23 @@ class user_model extends CI_Model
         return $this->db->get_where('users', ['user_email' => $this->session->userdata('user_email')])->row_array();
     }
 
-    public function search_id($id)
+    public function all_users_details()
     {
-        return $this->db->get_where('users', ['user_id' => $id])->row_array();
+        return $this->db->get('users')->result();
+    }
+
+    function student_submitdate() // join 'users' table + 'user_e' table to get info from both tables
+    {
+        $this->db->select('')
+            ->from('users')
+            ->join('user_student', 'user_student.user_id = users.user_id');
+        return $this->db->get()->result();
+    }
+
+    function full_active_users_details()
+    {
+        
+        return $this->db->get_where('users', ['user_approval'=>1])->result();
     }
 
     public function valid_email($user_email)
@@ -93,11 +111,6 @@ class user_model extends CI_Model
     {
         $this->db->query("update users set user_password='" . $data['user_password'] . "'where user_password='" . $_SESSION['tokan'] . "'");
     }
-
-    // Wait for Yee Peng to finalise her codes //
-    // *-----------------------------------* //
-
-    // ---- WORK IN PROGRESS ---- //
 
     function employers_list() // join 'users' table + 'user_e' table to get info from both tables
     {
@@ -132,7 +145,6 @@ class user_model extends CI_Model
 
     function get_user_data()
     {
-        // $id = $this->session->userdata['user_id'];
         $this->db->select('user_id, user_email, user_fname, user_lname, user_role, user_password')
             ->where('user_id', $this->session->userdata['user_id']);
         $this->db->limit(1);
@@ -156,16 +168,6 @@ class user_model extends CI_Model
         return $res['user_fname'];
     }
 
-    function update($id, $data)
-    {
-        $this->db->where('user_id', $id);
-        if ($this->db->update('users', $data)) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
     public function get_monthly_user($date1, $date2, $table, $attribute)
     {
         $this->db->select('*');
@@ -174,4 +176,37 @@ class user_model extends CI_Model
         $this->db->where($table . "." . $attribute . " BETWEEN '" . $date1 . " 00:00:00' AND '" . $date2 . " 23:59:59' ");
         return $this->db->count_all_results($table);
     }
+
+    public function inactivate_user($row)
+    {
+        return $this->db->query("update users set user_approval= 0 where user_id=$row LIMIT 1");
+    }
+
+    public function activate_user($row)
+    {
+        return $this->db->query("update users set user_approval= 1 where user_id=$row LIMIT 1");
+    }
+    
+    function full_inactive_users_details()
+    {
+        return $this->db->get_where('users', ['user_approval'=>0])->result();
+    }
+
+    public function get_user_id($user_id)
+    {
+       $this->db->where('user_id',$user_id);
+       return $this->db->get('users')->row();
+    }  
+
+    public function search_id($id)
+    {
+        $this->db->where('user_id',$id);
+        return $this->db->get('users')->row();
+    }
+
+    public function get_user_details($user_id)
+    {
+       $this->db->where('user_id',$user_id);
+       return $this->db->get('users')->row_array();
+    } 
 }

@@ -73,11 +73,6 @@ class user_e_model extends CI_Model
         return $this->db->get()->row_array();
     }
 
-    //     public function getcompanyid($c_id)
-    //     {
-    //      return $this->db->get_where('user_e',['c_id'=>$c_id])->row_array();
-    //     }
-
     public function approved_employers()
     {
         $this->db->select('*')
@@ -86,4 +81,17 @@ class user_e_model extends CI_Model
             ->where('user_approval', 1);
         return $this->db->get()->result_array();
     }
+    public function full_e_details()
+    {
+        $this->db->select('')
+        ->from('user_e') // ea table
+        ->join('users', 'users.user_id = user_e.user_id');// users table
+        return $this->db->get();
+    }
+
+    public function get_e_detail($user_id)
+    {
+       $this->db->where('user_id',$user_id);
+       return $this->db->get('user_e')->row();
+    } 
 }

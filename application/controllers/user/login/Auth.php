@@ -22,7 +22,12 @@ class Auth extends CI_Controller
             {
                 redirect('internal/admin_panel/Admin_dashboard');
             }
-            // check user role is  AC,EA,E,EP
+             // check user role is  EA
+            else if ($this->session->userdata=="Education Agent")
+            {
+                redirect('internal/level_2/education_agent/Ea_dashboard');
+            }
+            // check user role is  AC,E,EP
             else if ($this->session->userdata('user_role')!="Student")
             {
                 redirect('internal/level_2/Level_2_dashboard/profile_level_2');
@@ -82,7 +87,12 @@ class Auth extends CI_Controller
                     {
                         redirect('internal/admin_panel/Admin_dashboard');
                     }
-                    // check user role is  AC,EA,E,EP
+                    // check user role is  EA
+                    else if ($users['user_role']=="Education Agent")
+                    {
+                       redirect('internal/level_2/education_agent/Ea_dashboard');
+                    }
+                    // check user role is  AC,E,EP
                     else if ($users['user_role']!="Student")
                     {
                        redirect('internal/level_2/Level_2_dashboard/profile_level_2');
@@ -94,7 +104,7 @@ class Auth extends CI_Controller
                 // if password is incorrect
                 else
                 {
-                    $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
+                    $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert" id="alert_message">
                     Wrong password!</div>');
                     redirect('user/login/Auth/login');
                 }
@@ -102,7 +112,7 @@ class Auth extends CI_Controller
             // if account is not approved by admin
             else
             {
-                $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
+                $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert" id="alert_message">
                 Email has not been activated!</div>');
                 redirect('user/login/Auth/login');
             }
@@ -111,7 +121,7 @@ class Auth extends CI_Controller
         // if user account does not exist
         else
         {
-            $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
+            $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert" id="alert_message">
             Account does not exist!</div>');
             redirect('user/login/Auth/login');
         }
@@ -217,7 +227,7 @@ class Auth extends CI_Controller
             $this->load->library('upload', $config);
             if (!$this->upload->do_upload($file_input_name)) 
             {
-                $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
+                $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert" id="alert_message">
                 The file format is not correct</div>');
                 redirect('user/login/Auth/ep_reg');
             } else {
@@ -289,7 +299,7 @@ class Auth extends CI_Controller
         // insert data into database
         $this->user_student_model->insert($data);
        
-        $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
+        $this->session->set_flashdata('message','<div class="alert alert-success" role="alert" id="alert_message">
         You have registered successfully</div>');
         
         redirect('user/login/Auth/login');
@@ -312,12 +322,14 @@ class Auth extends CI_Controller
         else
         {
                 $uni_background= $this->upload_img('./assets/img/universities', 'uni_background');  
+                $uni_background_path = "assets/img/universities/".$uni_background['file_name'];
                 $uni_logo= $this->upload_img('./assets/img/universities', 'uni_logo');
+                $uni_logo_path = "assets/img/universities/".$uni_logo['file_name'];
                
             $data=
                 [
-                    'uni_logo'=>$uni_logo['file_name'],
-                    'uni_background'=>$uni_background['file_name'],
+                    'uni_logo'=>$uni_logo_path,
+                    'uni_background'=>$uni_background_path,
                     'uni_name'=>htmlspecialchars($this->input->post('uni_name',true)),
                     'uni_shortprofile'=>htmlspecialchars($this->input->post('uni_shortprofile',true)),
                     'uni_country'=>htmlspecialchars($this->input->post('uni_country',true)),
@@ -342,8 +354,8 @@ class Auth extends CI_Controller
 
           $this->session->set_userdata($university);
 
-          $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
-          Check your email to get the approval from the admin</div>'); 
+        //   $this->session->set_flashdata('message','<div class="alert alert-success" role="alert" id="alert_message">
+        //   Check your email to get the approval from the admin</div>'); 
           redirect('user/login/Auth/ep_reg'); 
         }
           
@@ -351,6 +363,8 @@ class Auth extends CI_Controller
 
     public function ep_reg()
     { 
+        
+
         $user_id= $this->session->userdata('user_id');
         $uni_id= $this->session->userdata('uni_id');
         $this->form_validation->set_rules('ep_phonenumber','Phone Number', 'required|trim|min_length[5]',[
@@ -375,7 +389,7 @@ class Auth extends CI_Controller
             $data=
             [
                 'user_id'=>$user_id,
-                'uni_id'=>$uni_id,
+                
                 //'course_id'=>$course_id,
                 'ep_phonenumber'=>htmlspecialchars($this->input->post('ep_phonenumber',true)),
                 'ep_businessemail'=>htmlspecialchars($this->input->post('ep_businessemail',true)),
@@ -388,7 +402,7 @@ class Auth extends CI_Controller
         
          // insert data into database
             $this->user_ep_model->insert($data);
-            $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
+            $this->session->set_flashdata('message','<div class="alert alert-success" role="alert" id="alert_message">
             Check your email to get the approval from the admin</div>'); 
             redirect('user/login/Auth/login'); 
         }
@@ -430,15 +444,19 @@ class Auth extends CI_Controller
 
             // insert data into database
             $this->user_ea_model->insert($data);
-            $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
+           
+            $this->session->set_flashdata('message','<div class="alert alert-success" role="alert" id="alert_message">
             Check your email to get the approval from the admin</div>'); 
             redirect('user/login/Auth/login'); 
         }
     }
 
+
     public function ac_reg()
     { 
         $data['university_data'] = $this->universities_model->select_all_approved_only(); // get from eddie's branch
+      
+      
         $user_id=$this->session->userdata('user_id');
         $this->form_validation->set_rules('ac_phonenumber','Phone Number', 'required|trim|min_length[5]',[
             'min_length'=> 'Phone number too short'
@@ -458,21 +476,24 @@ class Auth extends CI_Controller
         else
         {
             $ac_document = $this->upload_doc('./assets/uploads/academic_counsellor', 'ac_document');
-
+            $uni_id=$this->universities_model->fetch_uni_id($this->input->post('ac_university'));
+            
             $data=
             [
                 'user_id'=>$user_id,
                 'ac_phonenumber'=>htmlspecialchars($this->input->post('ac_phonenumber',true)),
                 'ac_businessemail'=>htmlspecialchars($this->input->post('ac_businessemail',true)),
+                'uni_id'=>$uni_id,
                 'ac_university'=>htmlspecialchars($this->input->post('ac_university',true)),
                 'ac_nationality'=>htmlspecialchars($this->input->post('ac_nationality',true)),
                 'ac_gender'=>htmlspecialchars($this->input->post('ac_gender',true)),
                 'ac_dob'=>htmlspecialchars($this->input->post('ac_dob',true)),
                 'ac_document'=>$ac_document['file_name'],
             ];
+            
          // insert data into database
         $this->user_ac_model->insert($data);
-        $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
+        $this->session->set_flashdata('message','<div class="alert alert-success" role="alert" id="alert_message">
         Check your email to get the approval from the admin</div>'); 
         redirect('user/login/Auth/login'); 
         }
@@ -566,7 +587,7 @@ class Auth extends CI_Controller
             ];
          // insert data into database
         $this->user_e_model->insert($data);
-        $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
+        $this->session->set_flashdata('message','<div class="alert alert-success" role="alert" id="alert_message">
         Check your email to get the approval from the admin</div>');
         redirect('user/login/Auth/login'); 
         }
@@ -578,55 +599,9 @@ class Auth extends CI_Controller
         $this->session->unset_userdata('user_email');
         $this->session->unset_userdata('user_role');
         $this->session->unset_userdata('has_login');
-        $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
+        $this->session->set_flashdata('message','<div class="alert alert-success" role="alert" id="alert_message">
         You have been logout</div>');
         redirect('user/login/Auth/login'); 
-    }
-
-    public function _sendEmail()
-    {
-        $lname=$_REQUEST['slname'];
-        $fname=$_REQUEST['sfname'];
-        $id=$_REQUEST['sid'];
-        $email=$_REQUEST['semail'];
-        $password=$_REQUEST['spassword'];
-        $users=$this->user_model->search_id($id);
-        $config=
-        [
-            'protocol'=>'smtp',
-            'smtp_host'=>'ssl://smtp.googlemail.com',
-            'smtp_user'=>'g3cap2100@gmail.com',
-            'smtp_pass'=>'ijees2021',
-            'smtp_port'=>465,
-            'mailtype'=>'html',
-            'charset'=>'utf-8',
-            'newline'=>"\r\n"
-        ];
-       
-        $this->email->initialize($config);
-        $this->email->from('g3cap2100@gmail.com','Capstone Project 2021');
-        $this->email->to($email);
-        $this->email->subject('Account Verification');
-
-        if($users['user_approval']==1)
-        {
-            $this->email->message("Welcome, "."$fname ". "$lname ". ". Thank you for registering and being part of iJEES, INTI's Interactive Joint Education Employability System."."<br><br>Congratulations! Your account has been approved and is now activated. <br><br>You may now login to the system at any time. Your credentials are the same as the ones you have provided upon registration:<br><br>".
-            "Email Address :".$email."<br> Password: ".$password);
-            // $this->email->message("Welcome ".$fname . $lname." .Thank you for registering and being part of iJEES, INTI's Interactive Joint Education Employability System.  "."<br><p>This is your email address and password<p>"."Email Address :".$email."<br> Password: ".$password);
-        }
-        else
-        {
-            $this->email->message("Sorry ". $lname." .Your account is rejected ");
-        }
-
-        if($this->email->send())
-        {
-            return true;
-        }
-        else
-        {
-            echo $this->email->print_debugger();   
-        }
     }
 
     public function Email($user_email,$link,$message)
@@ -652,7 +627,7 @@ class Auth extends CI_Controller
 
         if($this->email->send())
         {
-            $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
+            $this->session->set_flashdata('message','<div class="alert alert-success" role="alert" id="alert_message">
             Check your email to reset your password</div>');
             redirect('user/login/Auth/login');
         }
@@ -687,7 +662,7 @@ class Auth extends CI_Controller
         }
         else
         {
-            $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert">
+            $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert" id="alert_message">
             Email is not registred or activated</div>');
             redirect('user/login/Auth/forgotPassword'); 
         }
@@ -712,7 +687,7 @@ class Auth extends CI_Controller
             $this->user_model->changepassword($data);
             //$this->db->query("update users set user_password='".$data['user_password']."'where user_password='".$_SESSION['tokan']."'");
         }
-        $this->session->set_flashdata('message','<div class="alert alert-success" role="alert">
+        $this->session->set_flashdata('message','<div class="alert alert-success" role="alert" id="alert_message">
         Your password has changed successfully</div>');
         redirect('user/login/Auth/login');
     }

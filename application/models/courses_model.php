@@ -87,6 +87,23 @@ class courses_model extends CI_Model
         return $output;
     }
 
+    function fetch_courses_id($uni_id)  //new function
+    {
+        $this->db->where('uni_id', $uni_id);
+        $query = $this->db->get('courses');
+
+        if ($query->num_rows() > 0) {
+            $output = '<option value="" selected disabled>Please select a course</option>';
+            foreach ($query->result() as $row) {
+                $output .= '<option value="' . $row->course_id . '">' . $row->course_name . '</option>';
+            }
+        } else {
+            $output = '<option value="" selected disabled>No courses available</option>';
+        }
+
+        return $output;
+    }
+
     function course_field_dropdown($uni_id)
     {
         $this->db->where('uni_id', $uni_id);
@@ -156,4 +173,10 @@ class courses_model extends CI_Model
         $query = $this->db->get('courses')->result();
         return count($query);
     }
+
+    public function get_uni_id($course_id)
+    {
+       $this->db->where('course_id',$course_id);
+       return $this->db->get('courses')->result();
+    } 
 }

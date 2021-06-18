@@ -62,7 +62,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="<?=base_url('internal/level_2/education_agent/Ea_dashboard');?>">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span>
                 </a>
@@ -73,17 +73,9 @@
 
             <!-- Nav Item - New Course Application -->
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="<?=base_url('internal/level_2/education_agent/ea_course_application');?>">
                     <i class="fas fa-plus-square"></i>
-                    <span>New Student Application</span>
-                </a>
-            </li>
-
-            <!-- Nav Item - Past Applications -->
-            <li class="nav-item">
-                <a class="nav-link" href="">
-                    <i class="fas fa-history"></i>
-                    <span>Past Applications</span>
+                    <span>Course Applicants</span>
                 </a>
             </li>
 
@@ -193,81 +185,83 @@
         
         default: ?>
 
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span>
-                </a>
-            </li>
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item active">
+            <a class="nav-link" href="">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Dashboard</span>
+            </a>
+        </li>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
+        <!-- Divider -->
+        <hr class="sidebar-divider">
 
-            <!-- Heading -->
-            <div class="sidebar-heading">Master Data</div>
+        <!-- Heading -->
+        <div class="sidebar-heading">Master Data</div>
 
-            <!-- Nav Item - Accounts Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#accounts_collapse"
-                    aria-expanded="true" aria-controls="accounts_collapse">
-                    <i class="fas fa-user"></i>
-                    <span>User Accounts</span>
-                </a>
-                <div id="accounts_collapse" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="<?=base_url('internal/admin_panel/Admin_dashboard/users_accounts_nav');?>">All Users</a>
-                        <a class="collapse-item" href="<?=base_url('internal/admin_panel/Users_information/students_info');?>">Students</a>
-                        <a class="collapse-item" href="<?=base_url('internal/admin_panel/Users_information/ac_info');?>">Academic Counsellors</a>
-                        <a class="collapse-item" href="<?=base_url('internal/admin_panel/Users_information/ea_info');?>">Education Agents</a>
-                        <a class="collapse-item" href="<?=base_url('internal/admin_panel/Users_information/ep_info');?>">Education Partners</a>
-                        <a class="collapse-item" href="<?=base_url('internal/admin_panel/Users_information/employer_info');?>">Employers</a>
-                    </div>
+        <!-- Nav Item - Accounts Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#accounts_collapse"
+                aria-expanded="true" aria-controls="accounts_collapse">
+                <i class="fas fa-user"></i>
+                <span>User Accounts</span>
+            </a>
+            <div id="accounts_collapse" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="<?=base_url('internal/admin_panel/Admin_dashboard');?>">All Users</a>
+                    <a class="collapse-item" href="<?=base_url('internal/admin_panel/Users_information/students_info');?>">Students</a>
+                    <a class="collapse-item" href="<?=base_url('internal/admin_panel/Users_information/ac_info');?>">Academic Counsellors</a>
+                    <a class="collapse-item" href="<?=base_url('internal/admin_panel/Users_information/ea_info');?>">Education Agents</a>
+                    <a class="collapse-item" href="<?=base_url('internal/admin_panel/Users_information/ep_info');?>">Education Partners</a>
+                    <a class="collapse-item" href="<?=base_url('internal/admin_panel/Users_information/employer_info');?>">Employers</a>
                 </div>
-            </li>
+            </div>
+        </li>
 
-            <!-- Nav Item - Student Applications Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#applications_collapse"
-                    aria-expanded="true" aria-controls="applications_collapse">
-                    <i class="fas fa-file-alt"></i>
-                    <span>Student Applications</span>
-                </a>
-                <div id="applications_collapse" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="">Courses</a>
-                        <a class="collapse-item" href="">Employer Projects</a>
-                    </div>
+        <!-- Nav Item - Student Applications Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#applications_collapse"
+                aria-expanded="true" aria-controls="applications_collapse">
+                <i class="fas fa-file-alt"></i>
+                <span>Applicants</span>
+            </a>
+            <div id="applications_collapse" class="collapse" aria-labelledby="headingUtilities"
+                data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="<?=base_url('internal/admin_panel/applicants/Admin_course_application');?>">Courses</a>
+                    <a class="collapse-item" href="">Employer Projects (EPs)</a>
+                    <a class="collapse-item" href="">R&D Projects (R&DPs)</a>
                 </div>
-            </li>
+            </div>
+        </li>
 
-            <!-- Nav Item - Content Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#content_collapse"
-                    aria-expanded="true" aria-controls="content_collapse">
-                    <i class="fas fa-database"></i>
-                    <span>Content</span>
-                </a>
-                <div id="content_collapse" class="collapse" aria-labelledby="headingPages"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="">University Courses</a>
-                        <a class="collapse-item" href="">Employer Projects</a>
-                        <a class="collapse-item" href="">R&D Projects</a>
-                    </div>
+        <!-- Nav Item - Content Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#content_collapse"
+                aria-expanded="true" aria-controls="content_collapse">
+                <i class="fas fa-database"></i>
+                <span>Content</span>
+            </a>
+            <div id="content_collapse" class="collapse" aria-labelledby="headingPages"
+                data-parent="#accordionSidebar">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <a class="collapse-item" href="">Universities</a>
+                    <a class="collapse-item" href="">Courses</a>
+                    <a class="collapse-item" href="<?= base_url('internal/admin_panel/Admin_emps');?>">Employer Projects (EPs)</a>
+                    <a class="collapse-item" href="">R&D Projects (R&DPs)</a>
                 </div>
-            </li>
+            </div>
+        </li>
 
-            <!-- Nav Item - Logout -->
-            <li class="nav-item">
-                <a class="nav-link" href="<?=base_url('user/login/Auth/logout')  ;?>">
-                    <i class="fas fa-sign-out-alt"></i>
-                    <span>Logout</span>
-                </a>
-            </li>
-        
-        <?php break;
+        <!-- Nav Item - Logout -->
+        <li class="nav-item">
+            <a class="nav-link" href="<?=base_url('user/login/Auth/logout')  ;?>">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Logout</span>
+            </a>
+        </li>
+    
+    <?php break;
 
     } ?>
 

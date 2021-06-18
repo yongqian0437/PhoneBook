@@ -70,4 +70,18 @@ class user_ea_model extends CI_Model
             ->where('user_approval', 1);
         return $this->db->get()->result_array();
     }
+
+    public function full_ea_details()
+    {
+        $this->db->select('')
+        ->from('user_ea') // ea table
+        ->join('users', 'users.user_id = user_ea.user_id');// users table
+        return $this->db->get();
+    }
+
+    public function get_ea_detail($user_id)
+    {
+       $this->db->where('user_id',$user_id);
+       return $this->db->get('user_ea')->row();
+    }  
 }

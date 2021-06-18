@@ -9,6 +9,11 @@ class course_applicants_model extends CI_Model
         $this->load->database();
     }
 
+    public function index()
+    {
+        return $this->db->get('course_applicants');
+    }
+
     function insert($data)
     {
         $this->db->insert('course_applicants', $data);
@@ -66,6 +71,75 @@ class course_applicants_model extends CI_Model
             ->join('universities', 'universities.uni_id = courses.uni_id')
             ->where('users.user_id', $user_id);
         return $this->db->get()->result_array();
+    }
+
+    public function valid_ea($c_applicant_method)
+    {
+        return $this->db->get_where('course_applicants', ['c_applicant_method'=>$c_applicant_method])->row_array();
+    }
+
+    public function get_user_id($user_id)
+    {
+       $this->db->where('c_applicant_method',$user_id);
+       return $this->db->get('course_applicants')->result();
+    }
+
+    public function get_cas_id($c_applicant_id)
+    {
+       $this->db->where('c_applicant_id',$c_applicant_id);
+       return $this->db->get('course_applicants')->row();// return one result in object format
+    }
+
+    public function get_cas_with_id($c_applicant_id)
+    {
+        $this->db->select('*')
+                ->from('course_applicants')
+                ->join('courses', 'courses.course_id = course_applicants.course_id')
+                ->join('universities', 'universities.uni_id = courses.uni_id')
+                ->where('course_applicants.c_applicant_id', $c_applicant_id);
+       return $this->db->get()->row_array();
+    }
+
+    public function ca_details($ca_id)
+    {
+     return $this->db->get_where('course_applicants',['c_applicant_id'=>$ca_id])->row_array();// return one result in array format
+    }
+
+    public function full_course_app_details()
+    {
+        $this->db->select('')
+        ->from('course_applicants') // course applicants table
+        ->join('courses', 'courses.course_id = course_applicants.course_id') // courses table
+        ->join('users', 'users.user_id = course_applicants.c_applicant_method') // users table
+        ->join('universities', 'universities.uni_id = courses.uni_id'); // uni table
+        return $this->db->get()->result();// return array of object format 
+    }
+
+    public function get_total_students($user_id)
+    {
+       $this->db->where('c_applicant_method',$user_id);
+       return $this->db->get('course_applicants')->result_array();
+    }
+
+    // For EA: Bar graph of course applicants grouped by their nationality
+    public function applicants_per_nationality($user_id)
+    {
+        $this->db->select('count(course_applicants.c_applicant_id), course_applicants.c_applicant_nationality')
+        ->from('course_applicants')
+        ->where('course_applicants.c_applicant_method', $user_id)
+        ->group_by('course_applicants.c_applicant_nationality')
+        ->order_by('count(course_applicants.c_applicant_id)', 'desc')
+        ->order_by('course_applicants.c_applicant_nationality', 'asc');
+        return $this->db->get()->result_array();
+    }
+
+     function get_uni_name()
+    {
+        $this->db->select('')
+            ->from('course_applicants') // course applicants table
+            ->join('courses', 'courses.course_id = course_applicants.course_id') // courses table
+            ->join('universities', 'universities.uni_id = courses.course_id'); // users table
+        return $this->db->get()->result();// return array of array format
     }
 
     public function applicants_per_uni()

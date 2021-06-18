@@ -85,4 +85,27 @@ class user_ep_model extends CI_Model
             ->where('user_approval', 1);
         return $this->db->get()->result_array();
     }
+
+    public function full_ep_details()
+    {
+        $this->db->select('')
+        ->from('user_ep') // ep table
+        ->join('users', 'users.user_id = user_ep.user_id');// users table
+        return $this->db->get();
+    }
+
+    public function get_full_ep_detail()
+    {
+       $this->db->select('')
+       ->from('users') // users table
+       ->join('user_ep', 'user_ep.user_id = users.user_id') // ep table
+       ->join('universities', 'universities.uni_id = user_ep.uni_id'); // uni table
+       return $this->db->get()->row();// return object array
+    }  
+
+    public function get_ep_detail($user_id)
+    {
+        $this->db->where('user_id',$user_id);
+        return $this->db->get('user_ep')->row();
+    } 
 }

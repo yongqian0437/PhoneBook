@@ -104,21 +104,22 @@
 											</div>
 										</div>
 									</div>
-									<!-- Select your university -->
-                                    <div class="form-row pt-3 px-3">
-                                        <div class="form-group col-md-12 px-2">
-										<select name="ac_university" id="ac_university" class="form-control form-select" required>
-                                            <option value="" selected disabled >Please select a university</option>
-                                            <?php
-                                                foreach($university_data as $u) {
-                                                   echo '<option value="'.$u->uni_name.'">'.$u->	uni_name.'</option>';
-													//echo "<option value='$u->uni_name'>$u->uni_name</option>"
-                                                }
-                                            ?>
-                                        </select>
-                                            </select>
+
+									 <!-- UNI INPUT -->
+									 <div class="form-row pt-12 px-3">
+                                            <div class="form-group col-md-12 px-2">
+                                                <label for="university1"></label>
+                                                <select name="ac_university" id="university_1" class="form-control form-select form-select-md">
+                                                    <option value="" selected disabled>Please select a university</option>
+                                                    <?php
+                                                        foreach($university_data as $u) {
+                                                            echo '<option value="'.$u->uni_name.'">'.$u->	uni_name.'</option>';
+                                                        }
+                                                    ?>
+                                                </select>
+                                            </div>  
                                         </div>
-                                    </div>
+									
 									<!-- Upload Document -->
 									<div class="form-row pt-3 px-4">
 										<div class="form-group col-md-12 px-2">

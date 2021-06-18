@@ -66,5 +66,11 @@ class company_model extends CI_Model
     {
         return $this->db->get_where('company', ['c_id'=>$c_id])->row_array();
     }
+
+    public function get_c_detail($c_id)
+    {
+       $this->db->where('c_id',$c_id);
+       return $this->db->get('company')->row();
+    } 
    
 }

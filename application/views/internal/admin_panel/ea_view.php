@@ -1,3 +1,12 @@
+<style>
+th{
+    color:black;
+}
+td{
+    color: rgba(0,0,0,0.7);
+}
+</style>
+
 <!-- Content Wrapper -->
 <div id="content-wrapper" >
 
@@ -13,38 +22,43 @@
             <h6 class="m-0 font-weight-bold text-primary">Education Agents</h6>
         </div>
         <div class="card-body">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <div class="table-responsive">
+                <table id="dataTable" class="table table-striped">
                     <thead>
                         <tr>
-                            <th>Education Agent ID</th>
-                            <th>User ID</th>
+                            <th>No.</th>
+                            <th>Full Name</th>
                             <th>Contact Number</th>
-                            <th>Business email</th>
+                            <th>Business Email</th>
                             <th>Nationality</th>
                             <th>Gender</th>
                             <th>DOB</th>
                             <th>Document</th>
-                            <th>Submit Date</th>
+                            <th>Submitted Date</th>
                         </tr>
                     </thead>
                     
                     <tbody>
+                    <?php $count=1;?>
+                    <?php foreach($ealist->result() as $ea):?>
+                    
                     <?php
-                        foreach($ealist->result() as $ea)
-                            echo "<tr>"
-                                ."<td>$ea->ea_id</td>"
-                                ."<td>$ea->user_id</td>"
-                                ."<td>$ea->ea_phonenumber</td>"
-                                ."<td>$ea->ea_businessemail</td>"
-                                ."<td>$ea->ea_nationality</td>"
-                                ."<td>$ea->ea_gender</td>"
-                                ."<td>$ea->ea_dob</td>"
-                                ."<td><a class='btn btn-primary btn-block' href='"
-                                .base_url()
-                                ."assets/uploads/education_agents/$ea->ea_document' role='button' target='_blank'>View</a></td>" 
-                                ."<td>$ea->ea_submitdate</td>" 
-                                ."</tr>" 
+                        echo "<tr>"
+                            ."<td>$count</td>"
+                            ."<td>$ea->user_fname $ea->user_lname</td>"
+                            ."<td>$ea->ea_phonenumber</td>"
+                            ."<td>$ea->ea_businessemail</td>"
+                            ."<td>$ea->ea_nationality</td>"
+                            ."<td>$ea->ea_gender</td>"
+                            ."<td>$ea->ea_dob</td>"
+                            ."<td style='text-align:center'><a class='btn btn-info ' href='"
+                            .base_url()
+                            ."assets/uploads/education_agents/$ea->ea_document' role='button' target='_blank'><span class='fas fa-eye'></span></a></td>"  
+                            ."<td>$ea->ea_submitdate</td>" 
+                            ."</tr>" 
                     ?>
+                    <?php $count++; ?>
+                    <?php endforeach ;?>
                     </tbody>
                 </table>
         </div>
