@@ -82,16 +82,13 @@ class Admin_dashboard extends CI_Controller
             }
 
            // Get eps'submitdate
-            else  if($users->user_role=="Education Partner")
+            else  
             {
                 $ep_detail=$this->user_ep_model->get_ep_detail($users->user_id);
                 $submitdate=$ep_detail->ep_submitdate;
                 //var_dump($ep_detail);
             }
-            else 
-            {
-                $submitdate=$users->user_submitdate;
-            }
+        
 
 			$data[] = array(
 				'',
@@ -163,16 +160,12 @@ class Admin_dashboard extends CI_Controller
              }
 
             // Get eps'submitdate
-             else if($users->user_role=="Education Partner")
+             else 
              {
                 $ep_detail=$this->user_ep_model->get_ep_detail($users->user_id);
                 $submitdate=$ep_detail->ep_submitdate;
              } 
-             else 
-             {
-                $submitdate=$users->user_submitdate;
-             }
-
+          
             $data[] = array(
                 $checkbox,
 				'',
@@ -246,16 +239,13 @@ class Admin_dashboard extends CI_Controller
              }
 
             // Get eps'submitdate
-            else if($users->user_role=="Education Partner")
+            else 
             {
                 $ep_detail=$this->user_ep_model->get_ep_detail($users->user_id);
                 $submitdate=$ep_detail->ep_submitdate;
                 //var_dump($ep_detail);
             }
-            else 
-            {
-                $submitdate=$users->user_submitdate;
-            }
+           
             
             $data[] = array(
                 $checkbox,

@@ -70,6 +70,7 @@ class user_model extends CI_Model
 
     public function all_users_details()
     {
+        $this->db->where('user_role !=', 'Admin');
         return $this->db->get('users')->result();
     }
 
@@ -83,8 +84,9 @@ class user_model extends CI_Model
 
     function full_active_users_details()
     {
-        
-        return $this->db->get_where('users', ['user_approval'=>1])->result();
+        $this->db->where('user_approval', 1)
+                 ->where('user_role !=', 'Admin');
+        return $this->db->get('users')->result();
     }
 
     public function valid_email($user_email)
