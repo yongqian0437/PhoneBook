@@ -23,7 +23,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="<?php echo base_url('internal/level_2/academic_counsellor/ac_dashboard');?>">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span>
                 </a>
@@ -40,11 +40,11 @@
                 </a>
             </li>
 
-            <!-- Nav Item - Student Applications -->
+            <!-- Nav Item - Course Applicants -->
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="<?=base_url('internal/level_2/academic_counsellor/Ac_course_applicants');?>">
                     <i class="fas fa-file-alt"></i>
-                    <span>Student Applications</span>
+                    <span>Course Applicants</span>
                 </a>
             </li>
 
@@ -112,7 +112,7 @@
 
             <!-- Nav Item - R&DP -->
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="<?=base_url('external/Rd_projects')  ;?>">
                     <i class="fas fa-search"></i>
                     <span>R&D Projects</span>
                 </a>

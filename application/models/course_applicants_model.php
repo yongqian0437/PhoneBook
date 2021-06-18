@@ -161,4 +161,68 @@ class course_applicants_model extends CI_Model
             ->where('users.user_role', $method);
         return $this->db->get()->result_array();
     }
+    function past_application($course_id, $user_email)
+    {
+        $condition = "`course_id`= '$course_id' AND `c_applicant_email`= '$user_email' ";
+        $this->db->select('c_applicant_id')
+                 ->from('course_applicants')
+                 ->where($condition)
+                 ->limit(1);
+        $result = $this->db->get()->result_array();
+        // $condition = $this->db->get()->result_array();
+        if ($result)
+            return true;
+        else
+            return false;
+    }
+
+        // Get students who applied for the Course(s)
+        function get_applicants_from_course($ac_uni_id)
+        {
+            $this->db->select('')
+                     ->from('course_applicants')
+                     ->join('courses', 'courses.course_id = course_applicants.course_id')
+                     ->join('users', 'users.user_id = course_applicants.c_applicant_method') //change to user id
+                     ->join('universities', 'universities.uni_id = courses.uni_id')
+                     ->where('universities.uni_id', $ac_uni_id);
+
+            return $this->db->get()->result_array();
+        }
+    
+        // Get the details of ONE applicant (student)
+        function course_applicant_details($c_applicant_id)
+        {
+            $this->db->select('')
+                     ->from('course_applicants')
+                     ->join('courses', 'courses.course_id = course_applicants.course_id')
+                     ->where('course_applicants.c_applicant_id', $c_applicant_id);
+            return $this->db->get()->row_array();
+        }
+
+        function get_applicants_from_method($ac_uni_id, $method)
+        {
+            $this->db->select('')
+                     ->from('course_applicants')
+                     ->join('courses', 'courses.course_id = course_applicants.course_id')
+                     ->join('users', 'users.user_id = course_applicants.c_applicant_method') //change to user id
+                     ->join('universities', 'universities.uni_id = courses.uni_id')
+                     ->where('universities.uni_id', $ac_uni_id)
+                     ->where('users.user_role', $method );
+
+            return $this->db->get()->result_array();
+        }
+
+// Function for bar graph 
+        function course_applicants_per_nationality($uni_id){
+            $this->db->select('count(course_applicants.c_applicant_id), course_applicants.c_applicant_nationality')
+                     ->from('course_applicants')
+                    //  ->join('users', 'users.user_id = course_applicants.c_applicant_method')
+                     ->join('courses', 'courses.course_id = course_applicants.course_id')
+                     ->join('universities', 'universities.uni_id = courses.uni_id')
+                     ->where('universities.uni_id', $uni_id)
+                     ->group_by('course_applicants.c_applicant_nationality')
+                     ->order_by('count(course_applicants.c_applicant_id)', 'desc')
+                     ->order_by('course_applicants.c_applicant_nationality' , 'asc');
+            return $this->db->get()->result_array();
+        }
 }

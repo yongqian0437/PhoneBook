@@ -117,10 +117,25 @@
                                             </div>
                                         </div>
                                         <div class=" col-3 mt-5 ">
-                                            <a type=" button" class="button-custom-color float-right">Apply</a>
-                                            <a href="<?php echo base_url() . 'external/Courses/view_course/' . $courses->course_id ?>" class="button-custom-color float-right mr-1">View</a>
+                                            <?php if ($user_role == 'Student') { ?>
+                                                <?php $response = $this->course_applicants_model->past_application($courses->course_id, $user_email);
+                                                if ($response == true) { ?>
+                                                    <button type=" button" class="button-disabled float-right" disabled>Applied</button>
+                                                <?php } else { ?>
+                                                    <a href="<?php echo base_url() . 'external/Courses/course_applicant/' . $courses->course_id ?>" type=" button" class="button-custom-color float-right">Apply</a>
+                                                <?php } ?>
+                                                <a href="<?php echo base_url() . 'external/Courses/view_course/' . $courses->course_id ?>" class="button-custom-color float-right mr-1">View</a>
+
+                                            <?php } else { ?>
+
+                                                <!-- ***If Student is not logged in, 'Apply Now' button will redirect to Login page -->
+                                                <a class="button-custom-color float-right" href="<?= base_url('user/login/Auth/login'); ?>">Apply</a>
+                                                <a href="<?php echo base_url() . 'external/Courses/view_course/' . $courses->course_id ?>" class="button-custom-color float-right mr-1">View</a>
+
+                                            <?php } ?>
                                         </div>
                                     </div>
+
                                 </div>
 
                             <?php } ?>

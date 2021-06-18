@@ -59,7 +59,18 @@
                                             <div class="col-12 d-flex justify-content-center mb-3">
                                                 <div class="row">
                                                     <div>
-                                                        <a type="button" target="_blank" class="btn btn-secondary course-ave-buttons">Apply</a>
+                                                        <?php if ($user_role == 'Student') { ?>
+                                                            <?php $response = $this->course_applicants_model->past_application($courses->course_id, $user_email);
+                                                            if ($response == true) { ?>
+                                                                <button type=" button" class="btn btn-secondary" style="background-color: #000000;" disabled>Applied</button>
+                                                            <?php } else { ?>
+                                                                <a href="<?php echo base_url() . 'external/Courses/course_applicant/' . $courses->course_id ?>" type=" button" class="btn btn-secondary course-ave-buttons">Apply</a>
+                                                            <?php } ?>
+
+                                                        <?php } else { ?>
+                                                            <a type="button" class="btn btn-secondary course-ave-buttons" href="<?= base_url('user/login/Auth/login'); ?>">Apply</a>
+                                                            <!-- ***If Student is not logged in, 'Apply' button will redirect to Login page -->
+                                                        <?php } ?>
                                                         <a type="button" target="_blank" href="<?php echo base_url() . 'external/Universities/university_detail/' . $courses->uni_id ?>" class="btn btn-secondary course-ave-buttons">View University</a>
                                                         <a type="button" href="<?php echo base_url() . 'user/chat/Chat/' ?>" class="btn btn-secondary course-ave-buttons">Enquire</a>
                                                     </div>

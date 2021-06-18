@@ -73,7 +73,7 @@
                 <a class="dropdown-item" href="<?= base_url('external/Employer_projects'); ?>" style="color: white;">
                     Employer Projects
                 </a>
-                <a class="dropdown-item" href="#" style="color: white;">
+                <a class="dropdown-item" href="<?=base_url('external/Rd_projects');?>" style = "color: white;" >
                     Research & Development Projects
                 </a>
             </div>
