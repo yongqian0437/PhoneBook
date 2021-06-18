@@ -336,10 +336,12 @@ class Auth extends CI_Controller
                     'uni_country'=>htmlspecialchars($this->input->post('uni_country',true)),
                     'uni_hotline'=>htmlspecialchars($this->input->post('uni_hotline',true)),
                     'uni_email'=>htmlspecialchars($this->input->post('uni_email',true)),
-                    'uni_website'=>htmlspecialchars($this->input->post('uni_website',true)),
                     'uni_address'=>htmlspecialchars($this->input->post('uni_address',true)),
+                    'uni_website'=>htmlspecialchars($this->input->post('uni_website',true)),
                     'uni_qsrank'=>htmlspecialchars($this->input->post('uni_qsrank',true)),
                     'uni_employabilityrank'=>htmlspecialchars($this->input->post('uni_employabilityrank',true)),
+                    'uni_totalstudents'=>htmlspecialchars($this->input->post('uni_totalstudents',true)),
+                    'uni_approval'=>0,
                 ];
 
           // insert data into database
@@ -365,7 +367,6 @@ class Auth extends CI_Controller
 
     public function ep_reg()
     { 
-        
 
         $user_id= $this->session->userdata('user_id');
         $uni_id= $this->session->userdata('uni_id');
@@ -391,18 +392,17 @@ class Auth extends CI_Controller
             $data=
             [
                 'user_id'=>$user_id,
-                
-                //'course_id'=>$course_id,
                 'ep_phonenumber'=>htmlspecialchars($this->input->post('ep_phonenumber',true)),
                 'ep_businessemail'=>htmlspecialchars($this->input->post('ep_businessemail',true)),
                 'ep_nationality'=>htmlspecialchars($this->input->post('ep_nationality',true)),
                 'ep_gender'=>htmlspecialchars($this->input->post('ep_gender',true)),
                 'ep_dob'=>htmlspecialchars($this->input->post('ep_dob',true)),
                 'ep_document'=>$ep_document['file_name'], 
-                'ep_jobtitle'=>htmlspecialchars($this->input->post('ep_jobtitle',true)),  
+                'ep_jobtitle'=>htmlspecialchars($this->input->post('ep_jobtitle',true)),
+                'uni_id'=>$uni_id,  
             ];
         
-         // insert data into database
+            // insert data into database
             $this->user_ep_model->insert($data);
             $this->session->set_flashdata('message','<div class="alert alert-success" role="alert" id="alert_message">
             Check your email to get the approval from the admin</div>'); 
