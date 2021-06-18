@@ -20,7 +20,7 @@ class Admin_dashboard2 extends CI_Controller
 
     public function index()
     {
-        $data['title'] = 'Dashboard';
+        $data['title'] = 'Admin | Dashboard';
         $data['include_js'] = 'admin_dashboard';
 
         $this->load->view('internal/templates/header', $data);

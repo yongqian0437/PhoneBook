@@ -33,7 +33,7 @@
 
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col mb-4">
-                            <a href="<?php echo base_url('internal/level_2/educational_partner/ep_courses'); ?>" style="text-decoration:none">
+                            <a href="<?php echo base_url('internal/admin_panel/Users_information/students_info'); ?>" style="text-decoration:none">
                                 <div class="card border-left-primary shadow h-100 py-2">
 
                                     <div class="card-body" href="">
@@ -54,7 +54,7 @@
 
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col mb-4">
-                            <a href="<?php echo base_url('internal/level_2/educational_partner/Ep_my_rd_project'); ?>" style="text-decoration:none">
+                            <a href="<?php echo base_url('internal/admin_panel/Users_information/employer_info'); ?>" style="text-decoration:none">
                                 <div class="card border-left-success shadow h-100 py-2">
                                     <div class="card-body">
                                         <div class="row no-gutters align-items-center">
@@ -74,7 +74,7 @@
 
                         <!-- Earnings (Monthly) Card Example -->
                         <div class="col mb-4">
-                            <a href="<?= base_url('internal/level_2/educational_partner/ep_rd_applicants'); ?>" style="text-decoration:none">
+                            <a href="<?= base_url('internal/admin_panel/Users_information/ea_info'); ?>" style="text-decoration:none">
                                 <div class="card border-left-danger shadow h-100 py-2">
                                     <div class="card-body">
                                         <div class="row no-gutters align-items-center">
@@ -94,7 +94,7 @@
 
                         <!-- Pending Requests Card Example -->
                         <div class="col mb-4">
-                            <a href="<?= base_url('internal/level_2/educational_partner/ep_rd_applicants/project_partners_page'); ?>" style="text-decoration:none">
+                            <a href="<?= base_url('internal/admin_panel/Users_information/ac_info'); ?>" style="text-decoration:none">
                                 <div class="card border-left-info shadow h-100 py-2">
                                     <div class="card-body">
                                         <div class="row no-gutters align-items-center">
@@ -113,7 +113,7 @@
                         </div>
 
                         <div class="col mb-4">
-                            <a href="<?= base_url('internal/level_2/educational_partner/ep_rd_applicants/project_partners_page'); ?>" style="text-decoration:none">
+                            <a href="<?= base_url('internal/admin_panel/Users_information/ep_info'); ?>" style="text-decoration:none">
                                 <div class="card border-left-warning shadow h-100 py-2">
                                     <div class="card-body">
                                         <div class="row no-gutters align-items-center">

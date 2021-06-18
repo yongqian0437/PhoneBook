@@ -10,6 +10,7 @@ class Ep_my_rd_project extends CI_Controller {
 		$this->load->model('user_model');
 		$this->load->model('user_ep_model');
 		$this->load->model('rd_projects_model');
+		$this->load->model('rd_applicants_model');
 		$this->load->model('universities_model');
 
         // Checks if session is set and if user signed in has a role. If not, deny his/her access.
@@ -202,6 +203,7 @@ class Ep_my_rd_project extends CI_Controller {
         unlink('./assets/uploads/rd_projects/'.$rd_data->rd_document);
 
         $this->rd_projects_model->delete($this->input->post('rd_id'));
+        $this->rd_applicants_model->delete_rd_applicant_with_rd_id($this->input->post('rd_id'));
     }
 
 	function edit_my_rd_project($rd_id)

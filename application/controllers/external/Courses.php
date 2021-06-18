@@ -32,7 +32,7 @@ class Courses extends CI_Controller
 		}
 		$data['title'] = 'iJEES | Courses';
 
-		$data['course_data'] = $this->courses_model->select_all();
+		$data['course_data'] = $this->courses_model->select_all_approved();
 		$data['dropdown_area'] = $this->courses_model->filter_dropdown('course_area');
 		$data['dropdown_country'] = $this->courses_model->filter_dropdown('course_country');
 		$data['title'] = 'iJEES | Courses';
@@ -51,10 +51,10 @@ class Courses extends CI_Controller
 			$student_details = $this->user_student_model->student_details($user_id);
 			$data['student_id'] = $student_details['student_id'];
 		}
-		$data['title'] = 'iJEES | Course Detail';	
+		$data['title'] = 'iJEES | Course Details';	
 		$data['course_data'] = $this->courses_model->select_condition($id, 'courses');
 		$data['uni_data'] = $this->universities_model->get_uni_detail($data['course_data'][0]->uni_id);
-		$data['title'] = 'iJEES | Course Detail';
+		$data['title'] = 'iJEES | Course Details';
 
 		$this->load->view('external/templates/header', $data);
 		$this->load->view('external/courses_detail_view'); //view num 2 - jordan

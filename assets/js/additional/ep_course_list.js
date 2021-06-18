@@ -1,3 +1,4 @@
+
 $(document).ready(function(){
     var t = $("#table_courses").DataTable({
         //make table responsive
@@ -7,7 +8,7 @@ $(document).ready(function(){
             type: "GET",
         },
         "columnDefs": [{
-            "width": "15%",
+            "width": "18%",
             "targets": [6]
         },
         {

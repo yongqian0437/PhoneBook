@@ -17,7 +17,7 @@ class Admin_course_application extends CI_Controller
 
     public function index()
     {
-        $data['title']= 'IJEES | Course Application';
+        $data['title']= 'Admin | Course Applications';
         $data['include_js'] ='admin_course_application_list';
         $data['course_applicants']= $course_applicants=$this->course_applicants_model->full_course_app_details();
 

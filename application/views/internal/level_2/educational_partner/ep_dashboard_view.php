@@ -173,12 +173,12 @@
                 var myBarChart = new Chart(ctx, {
                     type: 'bar',
                     data: {
-                        labels: [<?php $counter=0; foreach($course_field as $row): ?>"<?php if ($counter<7) { echo $row['course_area']; } $counter++;?>", <?php endforeach; ?>],
+                        labels: [<?php $counter=0; foreach($course_field as $row): ?>"<?php if ($counter<5) { echo $row['course_area']; } $counter++;?>", <?php endforeach; ?>],
                         datasets: [{
                             label: "Total",
                             backgroundColor: ["#3bceac", "#ff99c8", "#ca7df9", "#758bfd", "#ffc09f"],
                             borderColor: "#4e73df",
-                            data: [<?php  $counter=0; foreach($course_field as $row): ?>"<?php if ($counter<7) { echo $row['count(courses.course_id)']; } $counter++;?>", <?php endforeach; ?>],
+                            data: [<?php  $counter=0; foreach($course_field as $row): ?>"<?php if ($counter<5) { echo $row['count(courses.course_id)']; } $counter++;?>", <?php endforeach; ?>],
                         }],
                     },
                     options: {

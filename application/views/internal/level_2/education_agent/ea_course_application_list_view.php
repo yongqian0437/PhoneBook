@@ -62,7 +62,7 @@ $(document).ready(function(){
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Course Applicants</h1>
+                    <h1 class="h3 mb-0 text-gray-800">Course Applications</h1>
                 </div>
 
                 <!-- Breadcrumb -->
@@ -73,7 +73,7 @@ $(document).ready(function(){
                                 <a href="<?php echo base_url('internal/level_2/education_agent/ea_dashboard');?>"><i class="fas fa-tachometer-alt"></i> Home</a>
                             </li>
                             
-                            <li class="breadcrumb-item active">Course Applicants</li>
+                            <li class="breadcrumb-item active">Course Applications</li>
                         </ol>
                     </div>
                     <div class = "col-xl-4">

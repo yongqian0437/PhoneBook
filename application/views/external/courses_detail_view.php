@@ -90,27 +90,26 @@
                                                         <br>
 
                                                         <h6><b>About</b></h6>
-                                                        <div style=" word-break: break-word; text-align: justify;"> <?php echo $courses->course_shortprofile ?></div>
+                                                        <div style="white-space: pre-wrap; word-break: break-word; text-align: justify;"> <?php echo $courses->course_shortprofile ?></div>
 
-                                                        <br>
                                                         <br>
                                                         <h6><b>Career Oppurtunities</b></h6>
                                                         <?php echo $courses->course_careeropportunities ?>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!-- <div class="card shadow mb-4"> -->
+                                            <div class="card shadow mb-4">
                                             <!-- Card Header - Accordion -->
-                                            <!-- <a href="#collapseCard2" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
+                                            <a href="#collapseCard2" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
                                                     <h6 class="m-0 font-weight-bold card-h-title">Programme Structure</h6>
-                                                </a> -->
+                                                </a>
                                             <!-- Card Content - Collapse -->
-                                            <!-- <div class="collapse show" id="collapseCard2">
+                                            <div class="collapse show" id="collapseCard2">
                                                     <div class="card-body">
-                                                        <?php echo $courses->course_structure ?>
+                                                        <p style="white-space: pre-wrap; word-break: break-word;"><?php echo $courses->course_structure ?></p>
                                                     </div>
                                                 </div>
-                                            </div> -->
+                                            </div>
                                             <div class="row">
                                                 <div class="col-6">
                                                     <div class="d-flex card shadow mb-4">
@@ -135,13 +134,12 @@
                                                     <div class=" d-flex card shadow mb-4">
                                                         <!-- Card Header - Accordion -->
                                                         <a href="#collapseCard3" class="d-block card-header py-3" data-toggle="collapse" role="button" aria-expanded="true" aria-controls="collapseCardExample">
-                                                            <h6 class="m-0 font-weight-bold card-h-title">Requirement</h6>
+                                                            <h6 class="m-0 font-weight-bold card-h-title">Requirements</h6>
                                                         </a>
                                                         <!-- Card Content - Collapse -->
                                                         <div class="collapse show" id="collapseCard3">
                                                             <div class="card-body">
                                                                 <p style="white-space: pre-wrap; word-break: break-word;"><?php echo $courses->course_requirements ?></p>
-                                                                </p>
                                                             </div>
                                                         </div>
                                                     </div>

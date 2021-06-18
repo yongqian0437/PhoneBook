@@ -19,7 +19,7 @@ class Admin_dashboard extends CI_Controller
 
     public function index()
     {   
-        $data['title'] = 'iJEES | All Users';
+        $data['title'] = 'Admin | All Users';
         $data['include_js'] = 'admin_all_users_list';
 
         $this->load->view('internal/templates/header', $data);

@@ -17,7 +17,7 @@ class Admin_emp_applicants extends CI_Controller
 
     public function index()
     {   
-        $data['title'] = 'iJEES | EP Applicants';
+        $data['title'] = 'Admin | EP Applications';
         $data['include_js'] = 'admin_emp_applicants_list';
 
         $this->load->view('internal/templates/header', $data);

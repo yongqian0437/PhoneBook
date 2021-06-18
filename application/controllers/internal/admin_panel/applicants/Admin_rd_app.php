@@ -22,7 +22,7 @@ class Admin_rd_app extends CI_Controller {
 	public function index()
 	{
 		
-		$data['title'] = 'iJEES | R&D Project Applications';
+		$data['title'] = 'Admin | R&D Project Applications';
         // $data['c'] = $this->user_ep_model->get_uni_from_ep($this->session->userdata('user_id')); 
         $data['include_js'] = 'admin_rd_app';
 

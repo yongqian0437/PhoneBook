@@ -28,7 +28,7 @@ td{
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800"><?=$university_data['uni_name'] ?>'s Course Applicants</h1>
+                    <h1 class="h3 mb-0 text-gray-800"><?=$university_data['uni_name'] ?>'s Course Applications</h1>
                 </div>
 
                 <!-- Breadcrumb -->
@@ -38,7 +38,7 @@ td{
                             <li class="breadcrumb-item">
                                 <a href="<?=base_url('internal/level_2/Academic_counsellor/Ac_dashboard');?>"><i class="fas fa-tachometer-alt"></i> Home</a>
                             </li>
-                            <li class="breadcrumb-item active">Course Applicants</li>
+                            <li class="breadcrumb-item active">Course Applications</li>
                         </ol>
                     </div>
                 </div>

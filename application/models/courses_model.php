@@ -45,7 +45,14 @@ class courses_model extends CI_Model
         return $this->db->get('courses')->result();
     }
 
-
+    function select_all_approved()
+    {
+        $this->db->select('*')
+                 ->from('courses')
+                 ->join('universities', 'universities.uni_id = courses.uni_id')
+                 ->where('universities.uni_approval', 1);
+        return $this->db->get()->result();
+    }
 
     function select_condition($id)
     {
@@ -159,7 +166,13 @@ class courses_model extends CI_Model
                 $this->db->order_by('course_fee', 'DESC');
             }
         }
-        $query = $this->db->get('courses')->result();
+        
+        $this->db->select('*')
+                 ->from('courses')
+                 ->join('universities', 'universities.uni_id = courses.uni_id')
+                 ->where('universities.uni_approval', 1);
+        
+        $query = $this->db->get()->result();
 
         if (count($query) > 0) {
             return $query;

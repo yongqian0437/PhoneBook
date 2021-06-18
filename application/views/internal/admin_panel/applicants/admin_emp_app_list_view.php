@@ -28,7 +28,7 @@ td{
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Employer Project (EP) Applicants</h1>
+                    <h1 class="h3 mb-0 text-gray-800">Employer Project (EP) Applications</h1>
                 </div>
 
                 <!-- Breadcrumb -->
@@ -38,7 +38,7 @@ td{
                             <li class="breadcrumb-item">
                                 <a href=""><i class="fas fa-tachometer-alt"></i> Home</a>
                             </li>
-                            <li class="breadcrumb-item active">EP Applicants</li>
+                            <li class="breadcrumb-item active">EP Applications</li>
                         </ol>
                     </div>
                 </div>

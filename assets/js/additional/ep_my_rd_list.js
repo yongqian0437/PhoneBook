@@ -7,7 +7,7 @@ $(document).ready(function(){
             type: "GET",
         },
         "columnDefs": [{
-            "width": "15%",
+            "width": "18%",
             "targets": [6]
         },
         {
@@ -50,7 +50,7 @@ function delete_my_rd_project(rd_id){
                 {
                     Swal.fire(
                         'Deleted!',
-                        'Course has been deleted.',
+                        'R&D Project has been deleted.',
                         'success'
                     )
 

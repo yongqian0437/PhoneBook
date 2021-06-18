@@ -17,7 +17,7 @@ class Admin_courses extends CI_Controller {
 	public function index()
 	{
 		$data['include_js'] = 'admin_courses_list';
-		$data['title'] = 'iJEES | Courses';
+		$data['title'] = 'Admin | Courses';
         $this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav');
         $this->load->view('internal/templates/topbar');

@@ -21,7 +21,7 @@ class Employer_emp_applicants extends CI_Controller
 
     public function index()
     {   
-        $data['title'] = 'iJEES | EP Applicants';
+        $data['title'] = 'iJEES | EP Applications';
         $data['include_js'] = 'employer_emp_applicants_list';
 
         $e_details = $this->user_e_model->e_details($this->session->userdata('user_id'));

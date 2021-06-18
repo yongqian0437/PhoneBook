@@ -18,7 +18,7 @@ class Admin_emps extends CI_Controller
 
     public function index()
     {   
-        $data['title'] = 'iJEES | Employer Projects (EPs)';
+        $data['title'] = 'Admin | Employer Projects (EPs)';
         $data['include_js'] = 'admin_emp_list';
         
         $this->load->view('internal/templates/header', $data);

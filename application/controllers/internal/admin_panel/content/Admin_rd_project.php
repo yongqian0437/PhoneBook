@@ -15,7 +15,7 @@ class Admin_rd_project extends CI_Controller {
 	public function index()
 	{
 		$data['include_js'] = 'admin_rd_project_list';
-		$data['title'] = 'iJEES | R&D Projects';
+		$data['title'] = 'Admin | R&D Projects';
         $this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav');
         $this->load->view('internal/templates/topbar');

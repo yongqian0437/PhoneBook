@@ -21,7 +21,7 @@ class Ac_course_applicants extends CI_Controller
 
     public function index()
     {
-        $data['title'] = 'iJEES | Course Applicants';
+        $data['title'] = 'iJEES | Course Applications';
         $data['include_js'] = 'ac_course_applicants_list';
 
         $ac_details = $this->user_ac_model->ac_details($this->session->userdata('user_id'));

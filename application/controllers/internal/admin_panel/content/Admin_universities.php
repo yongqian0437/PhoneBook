@@ -16,7 +16,7 @@ class Admin_universities extends CI_Controller {
 	public function index()
 	{
 		$data['include_js'] = 'admin_universities_list';
-		$data['title'] = 'iJEES | Universities';
+		$data['title'] = 'Admin | Universities';
         $this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav');
         $this->load->view('internal/templates/topbar');

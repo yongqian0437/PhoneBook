@@ -17,7 +17,7 @@ class Users_information extends CI_Controller
 
     public function students_info()
     {  
-        $data['title']= 'iJEES | Student';
+        $data['title']= 'Admin | Students';
         $data['users']=$this->user_model->search_email();
         $this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav',$data);
@@ -30,7 +30,7 @@ class Users_information extends CI_Controller
 
     public function detail_student ($id)
     {
-         $data['title']="iJEES | Detail of Student";
+         $data['title']="Admin | Student Details";
          $data['student']=$this->user_student_model->student_details($id);        
          $this->load->view('internal/templates/header',$data);
          $this->load->view('internal/templates/sidenav',$data);
@@ -41,7 +41,7 @@ class Users_information extends CI_Controller
 
     public function ep_info()
     {
-        $data['title']= 'iJEES | Education Partner';
+        $data['title']= 'Admin | Education Partners';
         $data['users']=$this->user_model->search_email();
         $this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav',$data);
@@ -55,7 +55,7 @@ class Users_information extends CI_Controller
 
     public function detail_education_partner ($id)//get user id to find ep details
     {
-        $data['title']="iJEES | Detail of Education Partner";
+        $data['title']="Admin | Education Partner Details";
         $data['ep']=$this->user_ep_model->ep_details($id); 
         $ep_information=$this->user_ep_model->ep_details($id); 
         $ep_info=
@@ -76,7 +76,7 @@ class Users_information extends CI_Controller
 
     public function university($uni_id)
     {
-        $data['title']="iJEES | Detail of University";
+        $data['title']="Admin | University Details";
         $data['ep']=$this->user_ep_model->ep_details($uni_id); 
         $university['uni']=$this->universities_model->uni_details($uni_id);
         $this->load->view('internal/templates/header',$data);
@@ -87,7 +87,7 @@ class Users_information extends CI_Controller
 
     public function ac_info()
     {
-        $data['title']= 'iJEES | Academic Counsellor';
+        $data['title']= 'Admin | Academic Counsellors';
         $data['users']=$this->user_model->search_email();
         $this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav',$data);
@@ -100,7 +100,7 @@ class Users_information extends CI_Controller
 
     public function detail_academic_counsellor ($id)
     {
-        $data['title']="iJEES | Detail of Academic Counsellor";
+        $data['title']="Admin | Academic Counsellor Details";
         $data['ac']=$this->user_ac_model->ac_details($id);        
         $this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav',$data);
@@ -111,7 +111,7 @@ class Users_information extends CI_Controller
 
     public function ea_info()
     {
-        $data['title']= 'iJEES | Education Agent';
+        $data['title']= 'Admin | Education Agents';
         $data['users']=$this->user_model->search_email();
         $this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav',$data);
@@ -124,7 +124,7 @@ class Users_information extends CI_Controller
 
     public function detail_education_agents($id)
     {
-        $data['title']="iJEES | Detail of Education Agent";
+        $data['title']="Admin | Education Agent Details";
         $data['ea']=$this->user_ea_model->ea_details($id);        
         $this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav',$data);
@@ -135,7 +135,7 @@ class Users_information extends CI_Controller
 
     public function employer_info()
     {
-        $data['title']= 'iJEES | Employer';
+        $data['title']= 'Admin | Employers';
         $data['users']=$this->user_model->search_email();
         $this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav',$data);
@@ -148,7 +148,7 @@ class Users_information extends CI_Controller
 
     public function detail_employer($id)
     {
-        $data['title']="iJEES | Detail of Employer";
+        $data['title']="Admin | Employer Details";
         $employer['e']=$this->user_e_model->e_details($id);
         $e_information=$this->user_e_model->e_details($id);
         $e_info=
@@ -169,7 +169,7 @@ class Users_information extends CI_Controller
 
     public function company($c_id)
     {
-        $data['title']="iJEES | Detail of Company";
+        $data['title']="Admin | Company Details";
         $company['c']=$this->company_model->c_details($c_id);
         $this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav',$data);

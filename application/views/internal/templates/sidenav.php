@@ -44,7 +44,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="<?=base_url('internal/level_2/academic_counsellor/Ac_course_applicants');?>">
                     <i class="fas fa-file-alt"></i>
-                    <span>Course Applicants</span>
+                    <span>Course Applications</span>
                 </a>
             </li>
 
@@ -75,7 +75,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="<?=base_url('internal/level_2/education_agent/ea_course_application');?>">
                     <i class="fas fa-plus-square"></i>
-                    <span>Course Applicants</span>
+                    <span>Course Applications</span>
                 </a>
             </li>
 
@@ -192,7 +192,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="<?=base_url('internal/level_2/Employer/Employer_emp_applicants')  ;?>">
                     <i class="fas fa-user-edit"></i>
-                    <span>EP Applicants</span>
+                    <span>EP Applications</span>
                 </a>
             </li>
 
@@ -246,7 +246,7 @@
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#applications_collapse"
                 aria-expanded="true" aria-controls="applications_collapse">
                 <i class="fas fa-file-alt"></i>
-                <span>Applicants</span>
+                <span>Applications</span>
             </a>
             <div id="applications_collapse" class="collapse" aria-labelledby="headingUtilities"
                 data-parent="#accordionSidebar">

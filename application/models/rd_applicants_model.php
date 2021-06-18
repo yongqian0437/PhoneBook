@@ -110,4 +110,13 @@ class rd_applicants_model extends CI_Model
         return $this->db->get('rd_applicants')->result();
     }
     
+    function delete_rd_applicant_with_rd_id($rd_id){
+        $this->db->where('rd_id', $rd_id);
+        $this->db->delete('rd_applicants');
+        if ($this->db->affected_rows() > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
