@@ -24,6 +24,7 @@
 
                         <!-- Card 1 - Total Course Applicant -->
                         <div class="col-xl-4 col-md-6 mb-4">
+                            <a href = "<?php echo base_url('internal/level_2/academic_counsellor/ac_course_applicants');?>" style = "text-decoration:none">
                             <div class="card border-left-primary shadow h-100 py-2">
                                 <div class="card-body" href="">
                                     <div class="row no-gutters align-items-center">
@@ -38,10 +39,12 @@
                                     </div>
                                 </div>
                             </div>
+                            </a>
                         </div>
 
                         <!-- Card 2 - Course Applicants applied by Students -->
                         <div class="col-xl-4 col-md-6 mb-4">
+                        <a href = "<?php echo base_url('internal/level_2/academic_counsellor/ac_course_applicants');?>" style = "text-decoration:none">
                             <div class="card border-left-success shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
@@ -56,10 +59,12 @@
                                     </div>
                                 </div>
                             </div>
+                        </a>
                         </div>
 
                         <!--Card 3 - Course Applicants applied by Education Agents -->
                         <div class="col-xl-4 col-md-6 mb-4">
+                        <a href = "<?php echo base_url('internal/level_2/academic_counsellor/ac_course_applicants');?>" style = "text-decoration:none">
                             <div class="card border-left-danger shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
@@ -74,6 +79,7 @@
                                     </div>
                                 </div>
                             </div>
+                        </a>
                         </div>
                     </div>
                 <!-- Bar Chart -->

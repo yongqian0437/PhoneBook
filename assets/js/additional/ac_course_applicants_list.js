@@ -7,8 +7,8 @@ $(document).ready(function(){
             type: "GET",
         },
         "columnDefs": [{
-            "width": "15%",
-            "targets": [5]
+            "width": "18%",
+            "targets": [6]
         },
         {
             "searchable": false,
