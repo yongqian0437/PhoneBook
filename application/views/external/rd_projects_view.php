@@ -88,9 +88,8 @@
                                             </li>
                                         </ul>
                                         <br>
-
+                                        <div class="mt-3">
                                         <!-- 2 Bottom Buttons -->
-
                                         <div class="bottom_buttons">
                                             <button type="button" onclick="view_rd(<?php echo $rd['rd_id']; ?>)" class="btn icon-btn btn-xs btn-info waves-effect waves-light" data-toggle="modal" data-target="#view_rd"><span class="fas fa-eye"></span></button>
                                             <!-- *Check if session is established and if the role is a EP. If yes, show the 'View' and 'Apply Now' button -->
@@ -115,8 +114,7 @@
                                                 <?php } ?>
                                             <?php } ?>
                                         </div>
-
-                                        
+                                        </div>
                                     </div>
                                 </div>
                             </div>
