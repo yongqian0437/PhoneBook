@@ -8,7 +8,7 @@ class Chat extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model(['user_model', 'chat_model']);
+        $this->load->model(['user_model', 'chat_model', 'user_student_model', 'user_ac_model', 'user_e_model', 'company_model']);
         $this->load->helper('string');
         date_default_timezone_set('Asia/Kuala_Lumpur');
 
@@ -48,8 +48,9 @@ class Chat extends CI_Controller
                         'user_email' => $user['user_email'],
                         'user_fname' => $user['user_fname'],
                         'user_lname' => $user['user_lname'],
-                    'ac_university'  => $user['ac_university'],
-                        'uni_logo'   => $user['uni_logo']
+                     'ac_university' => $user['ac_university'],
+                        'uni_logo'   => $user['uni_logo'],
+                        'uni_country'=> $user['uni_country'],
                 ];
             }
 
@@ -63,6 +64,7 @@ class Chat extends CI_Controller
                     'user_lname' => $user2['user_lname'],
                     'c_name'     => $user2['c_name'],
                     'c_logo'     => $user2['c_logo'],
+                    'c_country'  => $user2['c_country'],
                     'e_jobtitle' => $user2['e_jobtitle']
                 ];
             }
@@ -86,6 +88,7 @@ class Chat extends CI_Controller
                     'user_email' => $user['user_email'],
                     'user_fname' => $user['user_fname'],
                     'user_lname' => $user['user_lname'],
+                    'student_nationality' => $user['student_nationality'],
                     'student_interest' => $user['student_interest'],
                     'student_currentlevel' => $user['student_currentlevel']
                 ];
@@ -191,6 +194,48 @@ class Chat extends CI_Controller
         $Logged_sender_id = $this->session->userdata['user_id'];
         
         $history = $this->chat_model->receiver_chat_history($receiver_id); // check in model
+
+        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+        // Get current user's country/nationality
+        $current_user_data = $this->user_model->get_user_data();
+
+        if ($current_user_data['user_role'] == 'Student') 
+        {
+            $student_details = $this->user_student_model->student_details($Logged_sender_id);
+            $sender_country = $student_details['student_nationality'];
+        } 
+        else if ($current_user_data['user_role'] == 'Academic Counsellor') 
+        {
+            $ac_details = $this->user_ac_model->ac_details($Logged_sender_id);
+            $sender_country = $this->user_ac_model->ac_university_country($ac_details['ac_university']);
+        } 
+        else {
+            $e_details =  $this->user_e_model->e_details($Logged_sender_id);
+            $e_company_details = $this->company_model->c_details($e_details['c_id']);
+            $sender_country = $e_company_details['c_country'];
+        }
+
+        // Get receiver's country/nationality
+        $receiver_user_data = $this->user_model->search_id($receiver_id);
+        if ($receiver_user_data['user_role'] == 'Student') 
+        {
+            $student_details = $this->user_student_model->student_details($receiver_id);
+            $receiver_country = $student_details['student_nationality'];
+        } 
+        else if ($receiver_user_data['user_role'] == 'Academic Counsellor') 
+        {
+            $ac_details = $this->user_ac_model->ac_details($receiver_id);
+            $receiver_country = $this->user_ac_model->ac_university_country($ac_details['ac_university']);
+        } 
+        else {
+            $e_details =  $this->user_e_model->e_details($receiver_id);
+            $e_company_details = $this->company_model->c_details($e_details['c_id']);
+            $receiver_country =  $e_company_details['c_country'];
+        }
+
+        // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
         //print_r($history);
         foreach ($history as $chat):
             $message_id = $chat['chat_id'];
@@ -254,7 +299,8 @@ class Chat extends CI_Controller
                         <div class="col-11">
                             <div class="direct-chat-info clearfix">
                                 <span class="direct-chat-name pull-left"><?= $userName; ?></span>
-                                <span class="direct-chat-timestamp pull-right"><?= $messagedatetime; ?></span>
+                                <span class="direct-chat-timestamp pull-right"><?= $messagedatetime; ?>, </span>
+                                <span><?= $receiver_country ?></span> <!--EP CP change: add country-->
                             </div>
                         </div>
                     </div>
@@ -286,7 +332,8 @@ class Chat extends CI_Controller
                         <div class="col-11">
                             <div class="direct-chat-info clearfix" style="text-align: right;">
                                 <span class="direct-chat-name"><?= $userName; ?></span>
-                                <span class="direct-chat-timestamp"><?= $messagedatetime; ?></span>
+                                <span class="direct-chat-timestamp"><?= $messagedatetime; ?>, </span>
+                                <span><?= $sender_country ?></span> <!--EP CP change: add country-->
                             </div>
                         </div>
                     </div>

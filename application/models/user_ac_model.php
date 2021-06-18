@@ -82,5 +82,16 @@ class user_ac_model extends CI_Model
     {
        $this->db->where('user_id',$user_id);
        return $this->db->get('user_ac')->row();
-    }  
+    }
+      
+    function ac_university_country($university_name) {
+        $this->db->select('uni_country')
+                 ->from('universities')
+                 ->join('user_ac', 'user_ac.ac_university = universities.uni_name')
+                 ->where('user_ac.ac_university', $university_name)
+                 ->limit(1);
+        $query = $this->db->get();
+        $res = $query->row_array();
+        return $res['uni_country'];
+    }
 }

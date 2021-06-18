@@ -140,7 +140,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="<?=base_url('internal/level_2/Employer/Employer_dashboard');?>">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span>
                 </a>
@@ -159,7 +159,7 @@
 
             <!-- Nav Item - Employer Projects -->
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="<?=base_url('internal/level_2/Employer/Employer_emps');?>">
                     <i class="fas fa-user-tie"></i>
                     <span>Employer Projects (EPs)</span>
                 </a>
@@ -167,7 +167,7 @@
 
             <!-- Nav Item - Past Applications -->
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="<?=base_url('internal/level_2/Employer/Employer_emp_applicants');?>">
                     <i class="fas fa-user-edit"></i>
                     <span>EP Applicants</span>
                 </a>
@@ -215,40 +215,40 @@
                     <a class="collapse-item" href="<?=base_url('internal/admin_panel/Users_information/ep_info');?>">Education Partners</a>
                     <a class="collapse-item" href="<?=base_url('internal/admin_panel/Users_information/employer_info');?>">Employers</a>
                 </div>
-            </div>
-        </li>
+            </li>
 
-        <!-- Nav Item - Student Applications Collapse Menu -->
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#applications_collapse"
-                aria-expanded="true" aria-controls="applications_collapse">
-                <i class="fas fa-file-alt"></i>
-                <span>Applicants</span>
-            </a>
-            <div id="applications_collapse" class="collapse" aria-labelledby="headingUtilities"
-                data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="<?=base_url('internal/admin_panel/applicants/Admin_course_application');?>">Courses</a>
-                    <a class="collapse-item" href="">Employer Projects (EPs)</a>
-                    <a class="collapse-item" href="">R&D Projects (R&DPs)</a>
+            <!-- Nav Item - Student Applications Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#applications_collapse"
+                    aria-expanded="true" aria-controls="applications_collapse">
+                    <i class="fas fa-file-alt"></i>
+                    <span>Applicants</span>
+                </a>
+                <div id="applications_collapse" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="<?=base_url('internal/admin_panel/applicants/Admin_course_application');?>">Courses</a>
+                        <a class="collapse-item" href="<?= base_url('internal/admin_panel/applicants/Admin_emp_applicants');?>">Employer Projects (EPs)</a>
+                        <a class="collapse-item" href="">R&D Projects (R&DPs)</a>
+                    </div>
                 </div>
-            </div>
-        </li>
+            </li>
 
-        <!-- Nav Item - Content Collapse Menu -->
-        <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#content_collapse"
-                aria-expanded="true" aria-controls="content_collapse">
-                <i class="fas fa-database"></i>
-                <span>Content</span>
-            </a>
-            <div id="content_collapse" class="collapse" aria-labelledby="headingPages"
-                data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="">Universities</a>
-                    <a class="collapse-item" href="">Courses</a>
-                    <a class="collapse-item" href="<?= base_url('internal/admin_panel/Admin_emps');?>">Employer Projects (EPs)</a>
-                    <a class="collapse-item" href="">R&D Projects (R&DPs)</a>
+            <!-- Nav Item - Content Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#content_collapse"
+                    aria-expanded="true" aria-controls="content_collapse">
+                    <i class="fas fa-database"></i>
+                    <span>Content</span>
+                </a>
+                <div id="content_collapse" class="collapse" aria-labelledby="headingPages"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="">Universities</a>
+                        <a class="collapse-item" href="">Courses</a>
+                        <a class="collapse-item" href="<?= base_url('internal/admin_panel/content/Admin_emps');?>">Employer Projects (EPs)</a>
+                        <a class="collapse-item" href="">R&D Projects (R&DPs)</a>
+                    </div>
                 </div>
             </div>
         </li>

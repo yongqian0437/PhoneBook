@@ -27,9 +27,9 @@
         1. Scroll down and View 'All Contacts'<br>
         2. A list of Academic Counsellors and Employers, along with their details will be displayed<br>
         3. You may search for a user according to the University or Company name<br>
-        4. Once you have found who you are looking for, click 'Chat'<br><br>
+        4. Once you have found who you are looking for, click 'Chat'</p>
 
-        Communication that takes place here will be monitored, and any exhange of documents will be of consent. </p>
+        <p class="mt-4 px-4 font-weight-bold"><i>*As stated in iJEES' Terms and Conditions, communication that takes place here will be monitored, and any exhange of documents are of consent.</i></p>
 
         <div class="px-4 pb-3">
             <hr style=" width :100%; height:2px; background-color:#EAF4F4">
@@ -108,7 +108,7 @@
                     
                         <!-- Card Header - Accordion -->
                         <a href="#collapse_card" class="d-block card-header py-3 d-flex flex-row align-items-center justify-content-between" data-toggle="collapse"
-                            role="button" aria-expanded="true" aria-controls="collapse_card" style="background-color: #dbe7e4">
+                            role="button" aria-expanded="false" aria-controls="collapse_card" style="background-color: #dbe7e4">
                             <h6 class="m-0 font-weight-bold" style="color: #595959">All Contacts</h6>
                             <span>&nbsp</span>
                             <div class="justify-content-end">
@@ -132,94 +132,131 @@
                             <!-- Display different table with different columns if user logged in is a Student -->
                             <?php if ($this->session->userdata['user_role'] == 'Student') { ?>
 
-                                <!-- Academic Counsellors table -->
-                                <div class="row">
-                                    <div class="col-12 pb-4 m-0 font-weight-bold"><h5><b>Academic Counsellors</b></h5></div>
-                                        <div class="table-reponsive col-12">
-                                            <table class="table table-bordered dt-bootstrap4 display"> 
+                            <!-- ACADEMIC COUNSELLORS CARD -->
+                            <div class="row">
+                                <div class="col-xl-12 col-lg-12">
+                                    <div class="card mb-4">
 
-                                                    <?php
-                                                        echo "<thead style='background-color: #57cc99'>";
-                                                        echo    "<tr>";
-                                                        echo        "<th style='color: #FFFFFF;'>Chat</th>";
-                                                        echo        "<th style='color: #FFFFFF;'>Logo</th>";
-                                                        echo        "<th style='color: #FFFFFF;'>University</th>";
-                                                        echo        "<th style='color: #FFFFFF;'>First Name</th>";
-                                                        echo        "<th style='color: #FFFFFF;'>Last Name</th>";
-                                                        echo    "</tr>";
-                                                        echo "</thead>";
-                                                        ?>
+                                        <a href="#collapse_ac_card" class="d-block card-header py-3 d-flex flex-row align-items-center justify-content-between" data-toggle="collapse"
+                                        role="button" aria-expanded="true" aria-controls="collapse_card" style="background-color: #57cc99">
+                                        <h6 class="m-0 font-weight-bold" style="color: #FFF">Academic Counsellors</h6></a>
 
-                                                <tbody>
-                                                    <?php if (!empty($userslist)) {
-                                                        foreach ($userslist as $user) : ?>
-                                                            <tr style='background-color: #f0faf6'>
-                                                                <td class="select_user" id="<?php echo $user['user_id']; ?>" title="<?php echo $user['user_fname'] . ' ' .$user['user_lname'];  ?>">
-                                                                    <a href="#chat_section" style="display:block; background-color: #5e6472; color:white; text-align: center; font-weight: 700;">Chat</a></td>
-                                                                <td><img class="img-fluid img_class" src="<?= base_url($user['uni_logo']);?>" width="200";/></td>
-                                                                <td><?php echo $user['ac_university']; ?></td>
-                                                                <td><?php echo $user['user_fname']; ?></td>                                     
-                                                                <td><?php echo $user['user_lname']; ?></td>
-                                                                
-                                                            </tr>
-                                                        <?php endforeach;
-                                                    } ?>
-                                                </tbody>
-                                                
-                                            </table>
+                                        <div class="collapse show" id="collapse_ac_card">
+                                            <div class="card-body">
+                                                <!-- ACADEMIC COUNSELLORS TABLE -->
+                                                <div class="table-reponsive col-12">
+                                                    <table class="table table-bordered dt-bootstrap4 chat_table"> 
+
+                                                            <?php
+                                                                echo "<thead style='background-color: #57cc99'>";
+                                                                echo    "<tr>";
+                                                                echo        "<th style='color: #FFFFFF;'>Chat</th>";
+                                                                echo        "<th style='color: #FFFFFF;'>Logo</th>";
+                                                                echo        "<th style='color: #FFFFFF;'>University</th>";
+                                                                echo        "<th style='color: #FFFFFF;'>Country</th>";
+                                                                echo        "<th style='color: #FFFFFF;'>First Name</th>";
+                                                                echo        "<th style='color: #FFFFFF;'>Last Name</th>";
+                                                                echo    "</tr>";
+                                                                echo "</thead>";
+                                                                ?>
+
+                                                        <tbody>
+                                                            <?php if (!empty($userslist)) {
+                                                                foreach ($userslist as $user) : ?>
+                                                                    <tr style='background-color: #f0faf6' class="font-weight-bold">
+                                                                        <td class="select_user" id="<?php echo $user['user_id']; ?>" title="<?php echo $user['ac_university'] . ', '. $user['user_fname'] . ' ' .$user['user_lname'] ;  ?>">
+                                                                            <a href="#chat_section" style="display:block; background-color: #5e6472; color:white; text-align: center; font-weight: 700;">Chat</a></td>
+                                                                        <td>
+                                                                            <img class="img-fluid img_class" src="<?= base_url($user['uni_logo']);?>" id="uni_logo";/>
+                                                                        </td>
+                                                                        <td class="font-weight-bold"><?php echo $user['ac_university']; ?></td>
+                                                                        <td><?php echo $user['uni_country']; ?></td>
+                                                                        <td><?php echo $user['user_fname']; ?></td>                                     
+                                                                        <td><?php echo $user['user_lname']; ?></td>
+                                                                        
+                                                                    </tr>
+                                                                <?php endforeach;
+                                                            } ?>
+                                                        </tbody>
+                                                        
+                                                    </table>
+                                                </div>
+                                                <!-- ./table-responsive -->
+                                            </div>
                                         </div>
-                                        <!-- ./table-responsive -->
-                                </div>
-                                
-                                <!-- Divider -->
-                                <hr class="my-5" style="height: 1px; border: none; background-color: #333;"/>
-
-                                <!-- Employers table -->
-                                <div class="row">
-                                    <div class="col-12 pb-4 m-0 font-weight-bold"><h5><b>Employers</b></h5></div>            
-                                        <div class="table-reponsive col-12">
-                                            <table class="table table-bordered dt-bootstrap4 display"> 
-
-                                                    <?php
-                                                        echo "<thead style='background-color: #00afb9'>";
-                                                        echo    "<tr>";
-                                                        echo        "<th style='color: #FFFFFF;'>Chat</th>";
-                                                        echo        "<th style='color: #FFFFFF;'>Logo</th>";
-                                                        echo        "<th style='color: #FFFFFF;'>Company</th>";
-                                                        echo        "<th style='color: #FFFFFF;'>First Name</th>";
-                                                        echo        "<th style='color: #FFFFFF;'>Last Name</th>";
-                                                        echo        "<th style='color: #FFFFFF;'>Job Title</th>";
-                                                        echo    "</tr>";
-                                                        echo "</thead>";
-                                                    ?>
-
-                                                <tbody>
-                                                    <?php if (!empty($userslist2)) {
-                                                        foreach ($userslist2 as $user2) : ?>
-                                                            <tr style='background-color: #ebf9fa'>
-                                                                <td class="select_user" id="<?php echo $user2['user_id']; ?>" title="<?php echo $user2['user_fname'] . ' ' .$user2['user_lname'];  ?>">
-                                                                    <a href="#chat_section" style="display:block; background-color: #5e6472; color:white; text-align: center; font-weight: 700;">Chat</a></td>
-                                                                <td><img class="img-fluid img_class" src="<?= base_url("assets/img/company_logos/{$user2['c_logo']}");?>" width="200";/></td>
-                                                                <td><?php echo $user2['c_name']; ?></td>
-                                                                <td><?php echo $user2['user_fname']; ?></td>                                        
-                                                                <td><?php echo $user2['user_lname']; ?></td>
-                                                                <td><?php echo $user2['e_jobtitle']; ?></td>
-                                                            </tr>
-                                                        <?php endforeach;
-                                                    } ?>
-                                                </tbody>
-
-                                            </table>
-                                        </div>
-                                        <!-- ./table-responsive -->
-                                </div>
                                         
-                                 <!-- Display different table with different columns if user logged in is an Employer or AC -->
-                                <?php } else { ?>
+                                    </div>
+                                    <!-- card mb-4 -->
+                                </div>
+                            </div>
 
-                                    <!-- Students table -->
+                            <!-- EMPLOYERS CARD -->
+                            <div class="row">
+                                <div class="col-xl-12 col-lg-12">
+                                    <div class="card mb-4">
+
+                                        <a href="#collapse_e_card" class="d-block card-header py-3 d-flex flex-row align-items-center justify-content-between" data-toggle="collapse"
+                                        role="button" aria-expanded="true" aria-controls="collapse_card" style="background-color: #00afb9">
+                                        <h6 class="m-0 font-weight-bold" style="color: #FFF">Employers</h6></a>
+
+                                        <div class="collapse show" id="collapse_e_card">
+                                            <div class="card-body">
+                                                <!-- EMPLOYERS TABLE -->
+                                                <div class="table-reponsive col-12">
+                                                    <table class="table table-bordered dt-bootstrap4 chat_table"> 
+
+                                                            <?php
+                                                                echo "<thead style='background-color: #00afb9'>";
+                                                                echo    "<tr>";
+                                                                echo        "<th style='color: #FFFFFF;'>Chat</th>";
+                                                                echo        "<th style='color: #FFFFFF;'>Logo</th>";
+                                                                echo        "<th style='color: #FFFFFF;'>Company</th>";
+                                                                echo        "<th style='color: #FFFFFF;'>Country</th>";
+                                                                echo        "<th style='color: #FFFFFF;'>First Name</th>";
+                                                                echo        "<th style='color: #FFFFFF;'>Last Name</th>";
+                                                                echo        "<th style='color: #FFFFFF;'>Job Title</th>";
+                                                                echo    "</tr>";
+                                                                echo "</thead>";
+                                                            ?>
+
+                                                        <tbody>
+                                                            <?php if (!empty($userslist2)) {
+                                                                foreach ($userslist2 as $user2) : ?>
+                                                                    <tr style='background-color: #ebf9fa' class="font-weight-bold">
+                                                                        <td class="select_user" id="<?php echo $user2['user_id']; ?>" title="<?php echo $user2['c_name'] . ', '. $user2['user_fname'] . ' ' .$user2['user_lname'] ;  ?>">
+                                                                            <a href="#chat_section" style="display:block; background-color: #5e6472; color:white; text-align: center; font-weight: 700;">Chat</a></td>
+                                                                        <td>
+                                                                            <img class="img-fluid img_class" src="<?= base_url("assets/img/company_logos/{$user2['c_logo']}");?>" id="c_logo";/>
+                                                                        </td>
+                                                                        <td><?php echo $user2['c_name']; ?></td>
+                                                                        <td><?php echo $user2['c_country']; ?></td>                                        
+                                                                        <td><?php echo $user2['user_fname']; ?></td>                                        
+                                                                        <td><?php echo $user2['user_lname']; ?></td>
+                                                                        <td><?php echo $user2['e_jobtitle']; ?></td>
+                                                                    </tr>
+                                                                <?php endforeach;
+                                                            } ?>
+                                                        </tbody>
+
+                                                    </table>
+                                                </div>
+                                                <!-- ./table-responsive -->
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                    <!-- card mb-4 -->
+                                </div>
+                            </div>
+                            <!-- ./ Employers Card & Table -->
+                                        
+                            <!-- Display Student table if user logged in is an Employer or AC -->
+                        <?php } else { ?>
+                            <div class="row">
+                                <div class="col-xl-12 col-lg-12">
+                                    <!-- STUDENTS table -->
                                     <div class="table-reponsive col-12">
-                                        <table class="table table-bordered dt-bootstrap4" id="chat_table"> 
+                                        <table class="table table-bordered dt-bootstrap4 chat_table"> 
                                         
                                                 <?php
                                                     echo "<thead style='background-color: #57cc99'>";
@@ -227,6 +264,7 @@
                                                     echo        "<th style='color: #FFFFFF;'>Chat</th>";
                                                     echo        "<th style='color: #FFFFFF;'>First Name</th>";
                                                     echo        "<th style='color: #FFFFFF;'>Last Name</th>";
+                                                    echo        "<th style='color: #FFFFFF;'>Country</th>";
                                                     echo        "<th style='color: #FFFFFF;'>Field of Interest</th>";
                                                     echo        "<th style='color: #FFFFFF;'>Current Level</th>";
                                                     echo    "</tr>";
@@ -236,11 +274,12 @@
                                                 <tbody>
                                                     <?php if (!empty($userslist)) {
                                                         foreach($userslist as $user): ?>
-                                                            <tr style='background-color: #f0faf6'>
+                                                            <tr style='background-color: #f0faf6' class="font-weight-bold">
                                                                 <td class="select_user" id="<?php echo $user['user_id']; ?>" title="<?php echo $user['user_fname'] . ' ' .$user['user_lname'];  ?>">
                                                                     <a  href="#chat_section" style="display:block; background-color: #5e6472; color:white; text-align: center; font-weight: 700;">Chat</a></td>
                                                                 <td><?php echo $user['user_fname']; ?></td>                                      
                                                                 <td><?php echo $user['user_lname']; ?></td>                                   
+                                                                <td><?php echo $user['student_nationality']; ?></td>                                   
                                                                 <td><?php echo $user['student_interest']; ?></td>
                                                                 <td><?php echo $user['student_currentlevel']; ?></td>
                                                             </tr>
@@ -251,8 +290,10 @@
                                         </table>
                                     </div>
                                     <!-- ./table-responsive -->
-                                    
-                                <?php } ?>
+                                </div>
+                            </div>
+                            
+                        <?php } ?>
                                         
                             </div>
                             <!-- ./card-body -->

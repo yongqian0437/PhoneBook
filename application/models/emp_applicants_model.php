@@ -60,7 +60,6 @@ class emp_applicants_model extends CI_Model
             ->where($condition)
             ->limit(1);
         $result = $this->db->get()->result_array();
-        // $condition = $this->db->get()->result_array();
         if ($result)
             return true;
         else
@@ -77,6 +76,57 @@ class emp_applicants_model extends CI_Model
             ->join('user_e', 'user_e.e_id = employer_projects.e_id')
             ->join('company', 'company.c_id = user_e.c_id')
             ->where('users.user_id', $user_id);
+    }
+    
+    // Get students who applied for the Employer Project(s) that a specific Employer has posted
+    function get_applicants_from_emps($e_id)
+    {
+        $this->db->select('')
+                 ->from('emp_applicants')
+                 ->join('employer_projects', 'employer_projects.emp_id = emp_applicants.emp_id')
+                 ->join('user_student', 'user_student.student_id = emp_applicants.student_id')
+                 ->join('users', 'users.user_id = user_student.user_id')
+                 ->where('employer_projects.e_id', $e_id);
+        return $this->db->get()->result_array();
+    }
+
+    // Get the details of ONE applicant (student)
+    function emp_applicant_details($emp_applicant_id)
+    {
+        $this->db->select('')
+                 ->from('emp_applicants')
+                 ->join('employer_projects', 'employer_projects.emp_id = emp_applicants.emp_id')
+                 ->join('user_e', 'user_e.e_id = employer_projects.e_id')
+                 ->join('company', 'company.c_id = user_e.c_id')
+                 ->join('user_student', 'user_student.student_id = emp_applicants.student_id')
+                 ->join('users', 'users.user_id = user_student.user_id')
+                 ->where('emp_applicants.emp_applicant_id', $emp_applicant_id);
+        return $this->db->get()->row_array();
+    }
+
+    // For Admin: View details of ALL recorded EMP Applicants in the system
+    function full_emp_apps_details()
+    {
+        $this->db->select('')
+                 ->from('emp_applicants')
+                 ->join('employer_projects', 'employer_projects.emp_id = emp_applicants.emp_id')
+                 ->join('user_e', 'user_e.e_id = employer_projects.e_id')
+                 ->join('company', 'company.c_id = user_e.c_id')
+                 ->join('user_student', 'user_student.student_id = emp_applicants.student_id')
+                 ->join('users', 'users.user_id = user_student.user_id');
+        return $this->db->get()->result_array();
+    }
+
+    // For Employer: Bar graph of EMP Applicants grouped by their nationality
+    function applicants_per_nationality($e_id){
+        $this->db->select('count(emp_applicants.emp_applicant_id), user_student.student_nationality')
+                 ->from('emp_applicants')
+                 ->join('employer_projects', 'employer_projects.emp_id = emp_applicants.emp_id')
+                 ->join('user_student', 'user_student.student_id = emp_applicants.student_id')
+                 ->where('employer_projects.e_id', $e_id)
+                 ->group_by('user_student.student_nationality')
+                 ->order_by('count(emp_applicants.emp_applicant_id)', 'desc')
+                 ->order_by('user_student.student_nationality', 'asc');
         return $this->db->get()->result_array();
     }
 }
