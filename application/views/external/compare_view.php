@@ -38,6 +38,26 @@ td{
 tr:nth-child(even) {
 background-color: #EAF4F4;
 }
+
+#cancel{
+    right:0px;
+    top:0.8em;
+    position: absolute;
+}
+
+#cancel:hover {
+    opacity: 0.6;
+}
+
+#add_selection_btn:hover {
+    transform: scale(0.95);
+}
+
+#add_icon:hover {
+    transform: scale(0.95);
+    color:#16a88c !important;
+}
+
 </style>
 
 <!-- Top Navigation -->
@@ -101,8 +121,15 @@ background-color: #EAF4F4;
                     <div class="col-xl-3 col-md-6 mb-4" id = 'selection3'>
                         <div style = 'background-color:#CCE3DE' class="card h-75">
                             <div class="card-body">
-                            <h4 style = 'color:black' class="card-title"><b>SELECTION 3</b></h4>
+                                <a class="btn pb-5" id = "cancel" onclick="removeThirdSelection()"><i  class = "fas fa-times" style = "color:black; font-size:1.4em;"></i></a>
+                                <h4 style = 'color:black' class="card-title"><b>SELECTION 3</b></h4>
                             </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-1 col-md-6 mb-4" id = 'selectionbtn'>
+                        <div style = 'border:0;' class="card h-75">
+
                         </div>
                     </div>
 
@@ -150,14 +177,16 @@ background-color: #EAF4F4;
                                             <option value="Masters">Masters</option>
                                             <option value="Doctorate">Doctorate</option>
                                             <option value="Advanced Diploma">Advanced Diploma</option>
-                                            <option value="Graduate Certificate &Graduate Diploma">Graduate Certificate and Graduate Diploma</option>
-                                            <option value="Postgraduate Certificate & Postgraduate Diploma">Postgraduate Certificate and Postgraduate Diploma</option>
+                                            <option value="Graduate Certificate and Graduate Diploma">Graduate Certificate and Graduate Diploma</option>
+                                            <option value="Postgraduate Certificate and Postgraduate Diploma">Postgraduate Certificate and Postgraduate Diploma</option>
+                                            <option value="Others">Others</option>
                                         </select>
                                     </div>  
                                     <!-- COURSE INPUT -->
                                     <div class="form-group" id="course_class_1"><br>
                                         <label for="course1">COURSE</label><br>
                                         <select name="course1_id" id="course_1" class="form-control form-select form-select-md">
+                                            <option value="" selected disabled>Please select a course</option>
                                         </select>
                                     </div>  
 
@@ -193,14 +222,16 @@ background-color: #EAF4F4;
                                             <option value="Masters">Masters</option>
                                             <option value="Doctorate">Doctorate</option>
                                             <option value="Advanced Diploma">Advanced Diploma</option>
-                                            <option value="Graduate Certificate &Graduate Diploma">Graduate Certificate and Graduate Diploma</option>
-                                            <option value="Postgraduate Certificate & Postgraduate Diploma">Postgraduate Certificate and Postgraduate Diploma</option>
+                                            <option value="Graduate Certificate and Graduate Diploma">Graduate Certificate and Graduate Diploma</option>
+                                            <option value="Postgraduate Certificate and Postgraduate Diploma">Postgraduate Certificate and Postgraduate Diploma</option>
+                                            <option value="Others">Others</option>
                                         </select>
                                     </div>  
                                     <!-- COURSE INPUT -->
                                     <div class="form-group" id="course_class_2"><br>
                                         <label for="course1">COURSE</label><br>
                                         <select name="course2_id" id="course_2" class="form-control form-select form-select-md">
+                                            <option value="" selected disabled>Please select a course</option>
                                         </select>
                                     </div>
 
@@ -209,7 +240,7 @@ background-color: #EAF4F4;
                         </div>
 
                         <!-- THIRD COURSES INPUTS -->
-                        <div class="col-xl-3 col-md-6 mb-4">
+                        <div class="col-xl-3 col-md-6 mb-4" id = "third_selection">
                             <div class="card h-100 py-2" id = 'card3' style = "border-color:#CCE3DE ; border-width: 5px;">
                                 <div class="card-body">
                                     <!-- UNIVERSITIY INPUT -->
@@ -236,17 +267,29 @@ background-color: #EAF4F4;
                                             <option value="Masters">Masters</option>
                                             <option value="Doctorate">Doctorate</option>
                                             <option value="Advanced Diploma">Advanced Diploma</option>
-                                            <option value="Graduate Certificate &Graduate Diploma">Graduate Certificate and Graduate Diploma</option>
-                                            <option value="Postgraduate Certificate & Postgraduate Diploma">Postgraduate Certificate and Postgraduate Diploma</option>
+                                            <option value="Graduate Certificate and Graduate Diploma">Graduate Certificate and Graduate Diploma</option>
+                                            <option value="Postgraduate Certificate and Postgraduate Diploma">Postgraduate Certificate and Postgraduate Diploma</option>
+                                            <option value="Others">Others</option>
                                         </select>
                                     </div>  
                                     <!-- COURSE INPUT -->
                                     <div class="form-group" id="course_class_3"><br>
                                         <label for="course3">COURSE</label><br>
                                         <select name="course3_id" id="course_3" class="form-control form-select form-select-md">
+                                            <option value="" selected disabled>Please select a course</option>
                                         </select>
                                     </div>
 
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END OF THIRD SELECTION--> 
+                        
+                        <!-- add third selection button -->
+                        <div class="col-xl-1 col-md-6 mb-4" id = "forth_selection">
+                            <div class="card h-100 py-2 pt-5" id = 'card3' style = "border:0; ">
+                                <div class="card-body pt-5" >
+                                    <a class="btn pt-5" onclick="addThirdSelection()" id = "add_selection_btn"><i  id = "add_icon" class = "fas fa-plus-circle" style = "color:#1dd3b0; font-size:4.4em; "></i></a>
                                 </div>
                             </div>
                         </div>

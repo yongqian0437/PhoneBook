@@ -67,4 +67,47 @@ class rd_applicants_model extends CI_Model
         else
             return false;
     }
+
+    function all_my_applications($ep_id)
+    {
+        $this->db->where('ep_collab_id ', $ep_id);
+        return $this->db->get('rd_applicants')->result();
+    }
+
+    function get_rd_owner_detail($rd_id)
+    {
+        $this->db->where('rd_id ', $rd_id);
+        return $this->db->get('rd_projects')->row();
+
+    }
+
+    function all_project_partners($ep_id)
+    {
+        $this->db->where('ep_owner_id ', $ep_id);
+        return $this->db->get('rd_applicants')->result();
+    }
+
+    function get_ep_partner_detail($ep_id)
+    {
+        $this->db->select('*');
+        $this->db->from('user_ep');
+        $this->db->where('ep_id ', $ep_id);
+        $this->db->join('universities', 'universities.uni_id = user_ep.uni_id');
+        $this->db->join('users', 'users.user_id = user_ep.user_id');
+        $query = $this->db->get()->row();
+        return $query;
+    }
+
+    function get_one_rd_applicant($rd_applicant_id)
+    {
+        $this->db->where('rd_applicant_id', $rd_applicant_id);
+        return $this->db->get('rd_applicants')->row();
+    }
+
+    function sort_select_all()
+    {
+        $this->db->order_by('rd_app_submitdate', 'DESC');
+        return $this->db->get('rd_applicants')->result();
+    }
+    
 }

@@ -1,23 +1,30 @@
+var add_third_selection = 0;
+
 $(document).ready(function(){
 
     $('#selection1').hide();
     $('#selection2').hide();
-    $('#selection3').hide();
+   
     $('#card0').hide();
     $('#card1').hide();
     $('#card2').hide();
-    $('#card3').hide();
+    
     $('#course_class_1').hide();
     $('#course_class_2').hide();
     $('#course_class_3').hide();
+    $('#third_selection').hide();
+
 
     $("#selection1").fadeIn(3000);
     $("#selection2").fadeIn(4500);
-    $("#selection3").fadeIn(6000);
     $("#card0").fadeIn(1500);
     $("#card1").fadeIn(3000);
     $("#card2").fadeIn(4500);
-    $("#card3").fadeIn(6000);
+
+    //third selection
+    $('#selection3').hide();
+    $('#third_selection').hide();
+    
     
     //ajax for 1st courses dropdown
     $('#university_1, #level_1').change(function () {
@@ -65,6 +72,7 @@ $(document).ready(function(){
         var level3 = document.getElementById("level_3").value;
 
         if(uni3 != "" && level3 != ""){
+            
             $('#course_class_3').fadeIn(1000);
 
             $.ajax({
@@ -73,9 +81,10 @@ $(document).ready(function(){
                 data:{uni_id:$("#university_3").val(), course_level:$("#level_3").val()},
                 success:function(data)
                 {
-                 $('#course_3').html(data);
+                $('#course_3').html(data);
                 }
             });
+            
         }
     });
 
@@ -88,28 +97,77 @@ function generateTable() {
     var course2 = document.getElementById("course_2").value;
     var course3 = document.getElementById("course_3").value;
 
-    if(course1 != "" && course2 != "" && course3 != ""){
+    if(add_third_selection == 1){
+        if(course1 != "" && course2 != "" && course3 != ""){
 
-        $.ajax({
-            url: base_url + "external/Compare/fetch_table",
-            method:"POST",
-            data:{ uni_id1:$("#university_1").val(), uni_id2:$("#university_2").val(), uni_id3:$("#university_3").val(), course_id1:$("#course_1").val(), course_id2:$("#course_2").val(), course_id3:$("#course_3").val()  },
-            success:function(data)
-            {
-             $('#table_view').html(data);
-             $("h3").empty().append("Compare Table");
-            }
-        });
-        $('#table_view').hide();
-        $("#table_view").fadeIn(2000);
+            $.ajax({
+                url: base_url + "external/Compare/fetch_table",
+                method:"POST",
+                data:{ uni_id1:$("#university_1").val(), uni_id2:$("#university_2").val(), uni_id3:$("#university_3").val(), course_id1:$("#course_1").val(), course_id2:$("#course_2").val(), course_id3:$("#course_3").val()  },
+                success:function(data)
+                {
+                $('#table_view').html(data);
+                $("h3").empty().append("Compare Table");
+                }
+            });
+            $('#table_view').hide();
+            $("#table_view").fadeIn(2000);
+        }
+        else{
+            swal({
+                title: "Try Again",
+                text: "Please fill in all information.",
+                icon: "error",
+                button: "OK",
+            });
+        }
     }
     else{
-        swal({
-            title: "Try Again",
-            text: "Please fill in all information.",
-            icon: "error",
-            button: "OK",
-        });
+        if(course1 != "" && course2 != "" ){
+
+            $.ajax({
+                url: base_url + "external/Compare/fetch_table_for_2courses",
+                method:"POST",
+                data:{ uni_id1:$("#university_1").val(), uni_id2:$("#university_2").val(), course_id1:$("#course_1").val(), course_id2:$("#course_2").val()  },
+                success:function(data)
+                {
+                $('#table_view').html(data);
+                $("h3").empty().append("Compare Table");
+                }
+            });
+            $('#table_view').hide();
+            $("#table_view").fadeIn(2000);
+        }
+        else{
+            swal({
+                title: "Try Again",
+                text: "Please fill in all information.",
+                icon: "error",
+                button: "OK",
+            });
+        }
     }
 } 
 
+function addThirdSelection(){
+
+    $('#selectionbtn').hide();
+    $('#forth_selection').hide();
+
+    $("#selection3").fadeIn(3000);
+    $("#third_selection").fadeIn(3000);
+
+    add_third_selection = 1;
+}
+
+function removeThirdSelection(){
+
+    $('#selection3').hide();
+    $('#third_selection').hide();
+
+    $('#selectionbtn').show();
+    $('#forth_selection').show();
+
+    add_third_selection = 0;
+
+}

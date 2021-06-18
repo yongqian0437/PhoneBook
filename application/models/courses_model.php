@@ -73,6 +73,7 @@ class courses_model extends CI_Model
     {
         $this->db->where('uni_id', $uni_id);
         $this->db->where('course_level', $course_level);
+        $this->db->order_by('course_name', 'ASC');
         $query = $this->db->get('courses');
 
         if ($query->num_rows() > 0) {
@@ -179,4 +180,37 @@ class courses_model extends CI_Model
        $this->db->where('course_id',$course_id);
        return $this->db->get('courses')->result();
     } 
+    function course_join_uni()
+    {
+        $this->db->select('*');
+        $this->db->from('courses');
+        $this->db->join('universities', 'universities.uni_id = courses.uni_id');
+        $this->db->order_by('courses.uni_id');
+        $this->db->order_by('courses.course_level');                
+        $query = $this->db->get()->result();
+        return $query;
+    }
+
+    function one_course_join_uni($course_id)
+    {
+        $this->db->select('*');
+        $this->db->from('courses');
+        $this->db->where('course_id', $course_id);
+        $this->db->join('universities', 'universities.uni_id = courses.uni_id');
+        $query = $this->db->get()->row();
+        return $query;
+    }
+
+    // Function for bar graph in ep
+    function course_field_bar_chart($uni_id){
+        $this->db->select('count(courses.course_id), courses.course_area')
+                 ->from('courses')
+                 ->join('universities', 'universities.uni_id = courses.uni_id')
+                 ->where('universities.uni_id', $uni_id)
+                 ->group_by('courses.course_area')
+                 ->order_by('count(courses.course_id)', 'desc')
+                 ->order_by('courses.course_area' , 'asc');
+        return $this->db->get()->result_array();
+    }
+
 }

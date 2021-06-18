@@ -108,4 +108,43 @@ class user_ep_model extends CI_Model
         $this->db->where('user_id',$user_id);
         return $this->db->get('user_ep')->row();
     } 
+    public function get_uni_from_ep($user_id)
+    {
+        $this->db->where('user_id', $user_id);
+        $ep_query = $this->db->get('user_ep')->row();
+
+        $this->db->where('uni_id', $ep_query->uni_id);
+        return $this->db->get('universities')->row();
+    }
+
+    public function get_course_for_uni($uni_id)
+    {
+        $this->db->where('uni_id', $uni_id);
+        return $this->db->get('courses')->result();
+    }
+
+    public function get_course_detail($course_id)
+    {
+        $this->db->where('course_id', $course_id);
+        return $this->db->get('courses')->row();
+    }
+    
+    public function get_rd_for_ep($ep_id)
+    {
+        $this->db->where('ep_id', $ep_id);
+        return $this->db->get('rd_projects')->result();
+    }
+
+    public function get_ep_detail_with_user_id($user_id)
+    {
+        $this->db->where('user_id', $user_id);
+        return $this->db->get('user_ep')->row();
+    }
+
+    public function get_one_rd_detail($rd_id)
+    {
+        $this->db->where('rd_id', $rd_id);
+        return $this->db->get('rd_projects')->row();
+
+    }
 }

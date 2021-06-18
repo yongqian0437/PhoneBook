@@ -93,7 +93,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="<?php echo base_url('internal/level_2/educational_partner/ep_dashboard');?>">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span>
                 </a>
@@ -102,28 +102,51 @@
             <!-- Divider -->
             <hr class="sidebar-divider">
 
-            <!-- Nav Item - Course Application -->
+            <!-- Nav Item - University -->
             <li class="nav-item">
-                <a class="nav-link" href="">
-                    <i class="fas fa-book"></i>
-                    <span>University Courses</span>
+                <a class="nav-link" href="<?php echo base_url('internal/level_2/educational_partner/ep_university');?>">
+                    <i class="fas fa-university"></i>
+                    <span>University</span>
                 </a>
             </li>
 
-            <!-- Nav Item - R&DP -->
+            <!-- Nav Item - Course -->
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url('internal/level_2/educational_partner/ep_courses');?>">
+                    <i class="fas fa-book"></i>
+                    <span>Courses</span>
+                </a>
+            </li>
+
+            <!-- Nav Item - Browse R&DP -->
             <li class="nav-item">
                 <a class="nav-link" href="<?=base_url('external/Rd_projects')  ;?>">
                     <i class="fas fa-search"></i>
-                    <span>R&D Projects</span>
+                    <span>Browse R&D Projects</span>
+                </a>
+            </li>
+
+            <!-- Nav Item - My R&DP Application -->
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo base_url('internal/level_2/educational_partner/Ep_my_rd_project');?>">
+                    <i class="fas fa-list"></i>
+                    <span>My R&D Projects</span>
                 </a>
             </li>
 
             <!-- Nav Item - R&DP Application -->
             <li class="nav-item">
-                <a class="nav-link" href="">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#rd_applicants_collapse"
+                    aria-expanded="true" aria-controls="rd_applicants_collapse">
                     <i class="fas fa-plus-square"></i>
                     <span>R&D Projects Application</span>
                 </a>
+                <div id="rd_applicants_collapse" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="<?=base_url('internal/level_2/educational_partner/ep_rd_applicants');?>">My Applications</a>
+                        <a class="collapse-item" href="<?=base_url('internal/level_2/educational_partner/ep_rd_applicants/project_partners_page');?>">Project Partners</a>
+                    </div>
+                </div>
             </li>
 
             <!-- Nav Item - Logout -->
@@ -230,8 +253,7 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <a class="collapse-item" href="<?=base_url('internal/admin_panel/applicants/Admin_course_application');?>">Courses</a>
                     <a class="collapse-item" href="<?= base_url('internal/admin_panel/applicants/Admin_emp_applicants');?>">Employer Projects (EPs)</a>
-                    <a class="collapse-item" href="">R&D Projects (R&DPs)</a>
-                </div>
+                    <a class="collapse-item" href="<?=base_url('internal/admin_panel/applicants/Admin_rd_app');?>">R&D Projects (R&DPs)</a>                </div>
             </div>
         </li>
 
@@ -245,10 +267,10 @@
             <div id="content_collapse" class="collapse" aria-labelledby="headingPages"
                 data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="">Universities</a>
-                    <a class="collapse-item" href="">Courses</a>
+                    <a class="collapse-item" href="<?=base_url('internal/admin_panel/content/Admin_universities');?>">Universities</a>
+                    <a class="collapse-item" href="<?=base_url('internal/admin_panel/content/Admin_courses');?>">Courses</a>
                     <a class="collapse-item" href="<?= base_url('internal/admin_panel/content/Admin_emps');?>">Employer Projects (EPs)</a>
-                    <a class="collapse-item" href="">R&D Projects (R&DPs)</a>
+                    <a class="collapse-item" href="<?=base_url('internal/admin_panel/content/Admin_rd_project');?>">R&D Projects (R&DPs)</a>
                 </div>
             </div>
         </li>
