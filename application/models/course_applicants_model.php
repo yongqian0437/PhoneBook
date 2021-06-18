@@ -108,5 +108,17 @@ class course_applicants_model extends CI_Model
             return $this->db->get()->result_array();
         }
 
-
+// Function for bar graph 
+        function course_applicants_per_nationality($uni_id){
+            $this->db->select('count(course_applicants.c_applicant_id), course_applicants.c_applicant_nationality')
+                     ->from('course_applicants')
+                    //  ->join('users', 'users.user_id = course_applicants.c_applicant_method')
+                     ->join('courses', 'courses.course_id = course_applicants.course_id')
+                     ->join('universities', 'universities.uni_id = courses.uni_id')
+                     ->where('universities.uni_id', $uni_id)
+                     ->group_by('course_applicants.c_applicant_nationality')
+                     ->order_by('count(course_applicants.c_applicant_id)', 'desc')
+                     ->order_by('course_applicants.c_applicant_nationality' , 'asc');
+            return $this->db->get()->result_array();
+        }
 }

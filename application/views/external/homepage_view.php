@@ -29,7 +29,9 @@
                                     <h1 class="ml-2 mt-5 pt-5 mr-2" style="font-weight:600; font-size:3.25rem;">Modern Global Education and Employability Plan</h1>
                                     <h1 class="ml-5 mt-4" style="font-weight:400; font-size:1.75rem;">A single point of entry and a global marketplace</h1>
                                     <h1 class="ml-5" style="font-weight:400; font-size:1.75rem;">for education and employability for all</h1>
-                                    <a href="<?=base_url('user/login/Auth/login');?>" class="btn btn-danger btn-lg ml-3 mt-5" style="border-radius:10px;">SIGN UP AND JOIN US</a>
+                                    <?php if(!$this->session->has_userdata('has_login')){ ?>
+                                    <a href="<?=base_url('user/login/Auth/login');?>" class="btn btn-danger btn-lg ml-3 mt-5" style="border-radius:10px;">SIGN UP AND JOIN US</a>      
+                                    <?php } ?>                         
                                 </div>
                             </div>
                             <div class="carousel-item">

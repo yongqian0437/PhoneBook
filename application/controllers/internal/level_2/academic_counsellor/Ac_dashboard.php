@@ -33,6 +33,9 @@ class Ac_dashboard extends CI_Controller
         // $ac_details = $this->user_ac_model->ac_details($this->session->userdata('user_id'));
         // $course_applicants = $this->course_applicants_model->get_applicants_from_course($ac_details['ac_id'], $ac_details['uni_id']);
         // var_dump($course_applicants); die;
+
+        // For Bar Graph: Total Course Applicants by Nationality
+        $data['total_course_app'] = $this->course_applicants_model->course_applicants_per_nationality($ac_details['uni_id']);
         $this->load->view('internal/templates/header', $data);
         $this->load->view('internal/templates/sidenav');
         $this->load->view('internal/templates/topbar');
