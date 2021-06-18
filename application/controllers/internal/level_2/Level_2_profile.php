@@ -23,13 +23,13 @@ class Level_2_profile extends CI_Controller
         $ac_data = $this->user_ac_model->ac_details($user_id);
         $data['ac_data'] = $ac_data;
 
-        $e_data = $this->user_e_model->e_details($user_id);
+        $e_data = $this->user_e_model->e_profile_details($user_id);
         $data['e_data'] = $e_data;
 
         $ea_data = $this->user_ea_model->ea_details($user_id);
         $data['ea_data'] = $ea_data;
 
-        $ep_data = $this->user_ep_model->ep_details($user_id);
+        $ep_data = $this->user_ep_model->ep_profile_details($user_id);
         $data['ep_data'] = $ep_data;
 
         $this->load->view('internal/templates/header', $data);
@@ -49,10 +49,10 @@ class Level_2_profile extends CI_Controller
         $ea_id = $this->user_ea_model->ea_details($user_id);
         $ep_id = $this->user_ep_model->ep_details($user_id);
 
-        $data = [
+        /*  $data = [
             'user_email' => htmlspecialchars($this->input->post('user_email'))
         ];
-        $data['user_data'] = $this->user_model->update($user_id, $data);
+        $data['user_data'] = $this->user_model->update($user_id, $data); */
 
         if ($user_role == 'Academic Counsellor') {
             $data =

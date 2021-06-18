@@ -137,7 +137,7 @@
                         <div class="col-7">
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Total Active User</h6>
+                                    <h6 class="m-0 font-weight-bold">Total Active User</h6>
                                 </div>
                                 <div class="card-body">
                                     <div class="chart-area">
@@ -151,7 +151,7 @@
                         <div class="col-5">
                             <div class="card">
                                 <div class="card-header">
-                                    <h6>Universities (Total <?= $total_uni ?>)</h6>
+                                    <h6 class="m-0 font-weight-bold">Universities (Total <?= $total_uni ?>)</h6>
                                 </div>
                                 <div class="card-body">
                                     <table id="customers">
@@ -187,8 +187,6 @@
                                         <canvas id="ep_barChart"></canvas>
                                     </div>
                                     <hr>
-                                    red:total courses
-                                    blue:total r&d projects
                                 </div>
                             </div>
                         </div>
@@ -203,17 +201,14 @@
                                     <div class="chart-pie pt-4">
                                         <canvas id="enrollment_donut"></canvas>
                                     </div>
-                                    <p>Green: Student <br>
-                                        Blue: Education Agent</p>
                                     <hr>
-
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="row">
-                        <div class="col">
+                    <div class="row justify-content-center">
+                        <div class="col-4 w-100">
                             <div class="card shadow">
                                 <!-- Card Header - Dropdown -->
                                 <div class="card-header py-3">
@@ -221,14 +216,14 @@
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
-                                    <div class="pt-4">
+                                    <div class="">
                                         <canvas id="pie-chartcanvas-1"></canvas>
                                     </div>
                                     <hr>
                                 </div>
                             </div>
                         </div>
-                        <div class="col">
+                        <div class="col-4 w-100">
                             <div class="card shadow">
                                 <!-- Card Header - Dropdown -->
                                 <div class="card-header py-3">
@@ -236,14 +231,14 @@
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
-                                    <div class="pt-4">
+                                    <div class="">
                                         <canvas id="pie-chartcanvas-2"></canvas>
                                     </div>
                                     <hr>
                                 </div>
                             </div>
                         </div>
-                        <div class="col">
+                        <div class="col-4 w-100">
                             <div class="card shadow">
                                 <!-- Card Header - Dropdown -->
                                 <div class="card-header py-3">
@@ -251,7 +246,7 @@
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
-                                    <div class="pt-4">
+                                    <div class="">
                                         <canvas id="pie-chartcanvas-3"></canvas>
                                     </div>
                                     <hr>
@@ -301,7 +296,7 @@
                     data: {
                         labels: ["<?= $total_applicants[0]['uni_name'] ?>", "<?= $total_applicants[1]['uni_name'] ?>", "<?= $total_applicants[2]['uni_name'] ?>"],
                         datasets: [{
-                            label: "Applicants",
+                            label: "Total Course Applicants",
                             backgroundColor: "#4e73df",
                             hoverBackgroundColor: "#2e59d9",
                             borderColor: "#4e73df",
@@ -321,14 +316,14 @@
                         scales: {
                             xAxes: [{
                                 time: {
-                                    unit: 'month'
+                                    unit: 'University'
                                 },
                                 gridLines: {
                                     display: false,
                                     drawBorder: false
                                 },
                                 ticks: {
-                                    maxTicksLimit: 6
+                                    maxTicksLimit: 5
                                 },
                                 maxBarThickness: 25,
                             }],
@@ -338,10 +333,7 @@
                                     max: 6,
                                     maxTicksLimit: 5,
                                     padding: 10,
-                                    // Include a dollar sign in the ticks
-                                    callback: function(value, index, values) {
-                                        return number_format(value);
-                                    }
+
                                 },
                                 gridLines: {
                                     color: "rgb(234, 236, 244)",
@@ -353,7 +345,7 @@
                             }],
                         },
                         legend: {
-                            display: false
+                            display: true
                         },
                         tooltips: {
                             titleMarginBottom: 10,
@@ -387,91 +379,56 @@
 
                     //pie chart data
                     var data1 = {
-                        labels: ["match1", "match2", "match3", "match4", "match5"],
+                        labels: ["Active", "Pending"],
                         datasets: [{
-                            label: "TeamA Score",
-                            data: [10, 50, 25, 70, 40],
+                            label: "Universities",
+                            data: [active_uni, pending_uni],
                             backgroundColor: [
-                                "#DEB887",
-                                "#A9A9A9",
-                                "#DC143C",
-                                "#F4A460",
-                                "#2E8B57"
+                                "#613dc1",
+                                "#6c0e23"
                             ],
-                            borderColor: [
-                                "#CDA776",
-                                "#989898",
-                                "#CB252B",
-                                "#E39371",
-                                "#1D7A46"
-                            ],
-                            borderWidth: [1, 1, 1, 1, 1]
+                            borderWidth: [1, 1]
                         }]
                     };
 
                     //pie chart data
                     var data2 = {
-                        labels: ["match1", "match2", "match3", "match4", "match5"],
+                        labels: ["Active", "Pending"],
                         datasets: [{
-                            label: "TeamB Score",
-                            data: [20, 35, 40, 60, 50],
+                            label: "Employer Porjects",
+                            data: [active_emp, pending_emp],
                             backgroundColor: [
-                                "#FAEBD7",
-                                "#DCDCDC",
-                                "#E9967A",
-                                "#F5DEB3",
-                                "#9ACD32"
+                                "#c42021",
+                                "#3a5683"
                             ],
-                            borderColor: [
-                                "#E9DAC6",
-                                "#CBCBCB",
-                                "#D88569",
-                                "#E4CDA2",
-                                "#89BC21"
-                            ],
-                            borderWidth: [1, 1, 1, 1, 1]
+                            borderWidth: [1, 1]
                         }]
                     };
 
                     var data3 = {
-                        labels: ["match1", "match2", "match3", "match4", "match5"],
+                        labels: ["Active", "Pending"],
                         datasets: [{
-                            label: "TeamB Score",
-                            data: [20, 35, 40, 60, 50],
+                            label: "R&D Projects",
+                            data: [active_rd, pending_rd],
                             backgroundColor: [
-                                "#FAEBD7",
-                                "#DCDCDC",
-                                "#E9967A",
-                                "#F5DEB3",
-                                "#9ACD32"
+                                "#3e95cd",
+                                "#8e5ea2"
                             ],
-                            borderColor: [
-                                "#E9DAC6",
-                                "#CBCBCB",
-                                "#D88569",
-                                "#E4CDA2",
-                                "#89BC21"
-                            ],
-                            borderWidth: [1, 1, 1, 1, 1]
+                            borderWidth: [1, 1]
                         }]
                     };
 
                     //options
                     var options = {
-                        responsive: false,
-                        title: {
-                            display: true,
-                            position: "top",
-                            text: "Pie Chart",
-                            fontSize: 18,
-                            fontColor: "#111"
-                        },
+                        responsive: true,
+
                         legend: {
                             display: true,
                             position: "bottom",
+                            align: "left",
                             labels: {
                                 fontColor: "#333",
-                                fontSize: 16
+                                fontSize: 14
                             }
                         }
                     };

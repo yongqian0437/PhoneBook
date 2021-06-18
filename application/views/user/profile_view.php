@@ -52,8 +52,8 @@
                     <div class="col-12">
 
                         <!-- Page Heading -->
-                        <div class="d-sm-flex align-items-center justify-content-between mb-4 px-4">
-                            <h1 class="h3 mb-0 text-gray-800 pt-4 font-weight-bold"></h1>
+                        <div class="d-sm-flex align-items-center justify-content-between mb-5 px-4">
+                            <h1 class="h3 mb-0 text-gray-800 pt-4 font-weight-bold">My Profile</h1>
 
                         </div>
                         <div class="row">
@@ -238,13 +238,7 @@
                                             <div class="card-body shadow">
                                                 <form method="post" name="edit_profile" action="<?php echo base_url() . 'user/profile/edit_profile' ?>">
                                                     <div class="row">
-                                                        <div class="col-8 col-md-6 col-lg-6 mb-2">
-                                                            <div class="form-group">
-                                                                <label for="exampleInputEmail1">Email address</label>
-                                                                <input type="email" name="student_emailid" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="<?= $user_data['user_email'] ?>" placeholder="Enter your email address">
-                                                                <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
-                                                            </div>
-                                                        </div>
+
                                                         <div class="col-8 col-md-6 col-lg-6 mb-2">
                                                             <div class="form-group">
                                                                 <label>Contact Number</label>

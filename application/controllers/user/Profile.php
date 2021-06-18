@@ -39,12 +39,11 @@ class Profile extends CI_Controller
 
         $student_details = $this->user_student_model->student_details($user_id);
 
-        $data = [
+        /* $data = [
             'user_email' => htmlspecialchars($this->input->post('student_emailid'))
         ];
-        $data['user_data'] = $this->user_model->update($user_id, $data);
+        $data['user_data'] = $this->user_model->update($user_id, $data); */
 
-        //$user_email = $this->input->post('student_emailid');
         $data =
             [
                 'student_phonenumber' => htmlspecialchars($this->input->post('student_contactNoid')),

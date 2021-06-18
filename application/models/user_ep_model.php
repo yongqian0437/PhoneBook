@@ -67,6 +67,16 @@ class user_ep_model extends CI_Model
         return $this->db->get_where('user_ep', ['user_id' => $id])->row_array();
     }
 
+    public function ep_profile_details($id)
+    {
+        $this->db->select('*')
+            ->from('user_ep')
+            ->join('users', 'users.user_id = user_ep.user_id')
+            ->join('universities', 'universities.uni_id = user_ep.uni_id')
+            ->where('user_ep.user_id', $id);
+        return $this->db->get()->row_array();
+    }
+
     public function approved_ep()
     {
         $this->db->select('*')

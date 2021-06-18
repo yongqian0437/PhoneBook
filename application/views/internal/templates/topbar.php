@@ -1,58 +1,55 @@
 <!-- Content Wrapper -->
 <div id="content-wrapper" class="d-flex flex-column">
 
-<!-- Main Content -->
-<div id="content">
+    <!-- Main Content -->
+    <div id="content">
 
-    <!-- Topbar -->
-    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+        <!-- Topbar -->
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-        <!-- Sidebar Toggle (Topbar) -->
-        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-            <i class="fa fa-bars"></i>
-        </button>
-        <!-- Topbar Search -->
- 
-  
-      
-                 <!-- <div class="nabvar-form navbar-right">
+            <!-- Sidebar Toggle (Topbar) -->
+            <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                <i class="fa fa-bars"></i>
+            </button>
+            <!-- Topbar Search -->
+
+
+
+            <!-- <div class="nabvar-form navbar-right">
                 
                   <input type="text" name="keyword" class="form-control" placeholder='Search'>
                   <button type="submit" class="btn btn-success">Search</button>
                  
                  </div>  -->
 
-        <!-- Topbar Navbar -->
-        <ul class="navbar-nav ml-auto">
-  
-            <div class="topbar-divider d-none d-sm-block"></div>
+            <!-- Topbar Navbar -->
+            <ul class="navbar-nav ml-auto">
 
-            <!-- Nav Item - User Information -->
-            <li class="nav-item dropdown no-arrow">
-                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <!---------------------------------Chaneg later if use it ------------------------------->
-                    <!-- <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?=$users['user_lname'] ;?></span> -->
-                    <img class="img-profile rounded-circle"
-                        src="img/undraw_profile.svg">
-                </a>
-                <!-- Dropdown - User Information -->
-                <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                    aria-labelledby="userDropdown">
-                    <a class="dropdown-item" href="#">
-                        <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                        Profile
+                <div class="topbar-divider d-none d-sm-block"></div>
+
+                <!-- Nav Item - User Information -->
+                <li class="nav-item dropdown no-arrow">
+                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <!---------------------------------Chaneg later if use it ------------------------------->
+                        <!-- <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $users['user_lname']; ?></span> -->
+                        <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                     </a>
-            
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="<?=base_url('user/logout')  ;?>" data-toggle="modal" data-target="#logoutModal">
-                        <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                        Logout
-                    </a>
-                </div>
-            </li>
+                    <!-- Dropdown - User Information -->
+                    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="<?= base_url('internal/level_2/level_2_profile'); ?>">
+                            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                            Profile
+                        </a>
 
-        </ul>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="<?= base_url('user/logout'); ?>" data-toggle="modal" data-target="#logoutModal">
+                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                            Logout
+                        </a>
+                    </div>
+                </li>
 
-    </nav>
-    <!-- End of Topbar -->
+            </ul>
+
+        </nav>
+        <!-- End of Topbar -->

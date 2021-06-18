@@ -185,14 +185,14 @@ var ctx = document.getElementById("enrollment_donut");
                             caretPadding: 10,
                         },
                         legend: {
-                            display: false
+                            display: true
                         },
                         cutoutPercentage: 80,
                     },
                 });
 
 
-var ctx1 = document.getElementById("uni_pie");
+/* var ctx1 = document.getElementById("uni_pie");
 var myChart = new Chart(ctx1, {
   type: 'pie',
   data: {
@@ -209,38 +209,3 @@ var myChart = new Chart(ctx1, {
     }
   }
 });
-
-var ctx2 = document.getElementById("emp_pie");
-var myChart = Chart(ctx2, {
-  type: 'pie',
-  data: {
-    labels: ["Active Employer Projects", "Pending Employer Projects"],
-    datasets: [{
-      backgroundColor: ["#3e95cd", "#8e5ea2"],
-      data: [active_emp,pending_emp]
-    }]
-  },
-  options: {
-    title: {
-      display: true,
-      text: 'Employer Projects in iJEES'
-    }
-  }
-});
-
-/* new Chart(document.getElementById("rd_pie"), {
-  type: 'pie',
-  data: {
-    labels: ["Active R&D Projects", "Pending R&D Projects"],
-    datasets: [{
-      backgroundColor: ["#3e95cd", "#8e5ea2"],
-      data: [active_rd,pending_rd]
-    }]
-  },
-  options: {
-    title: {
-      display: true,
-      text: 'R&D in iJEES'
-    }
-  }
-}); */

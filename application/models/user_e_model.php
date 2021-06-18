@@ -63,6 +63,16 @@ class user_e_model extends CI_Model
         return $this->db->get_where('user_e', ['user_id' => $id])->row_array();
     }
 
+    public function e_profile_details($id)
+    {
+        $this->db->select('*')
+            ->from('user_e')
+            ->join('users', 'users.user_id = user_e.user_id')
+            ->join('company', 'company.c_id = user_e.c_id')
+            ->where('user_e.user_id', $id);
+        return $this->db->get()->row_array();
+    }
+
     //     public function getcompanyid($c_id)
     //     {
     //      return $this->db->get_where('user_e',['c_id'=>$c_id])->row_array();

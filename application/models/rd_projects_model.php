@@ -53,7 +53,7 @@ class rd_projects_model extends CI_Model
 
     function rd_by_approval($condition)
     {
-        $this->db->where('uni_approval', $condition);
-        return $this->db->get('universities')->result();
+        $this->db->where('rd_approval', $condition);
+        return $this->db->get('rd_projects')->result();
     }
 }
