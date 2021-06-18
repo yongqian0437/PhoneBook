@@ -387,7 +387,7 @@ setTimeout(function() {
                                                 <div class="form-group col-md-12 px-2">
                                                     <label for="university1"></label>
                                                     <select name="university1_id" id="university_1" class="form-control form-select form-select-md">
-                                                        <option value="" selected disabled>Please select a university</option>
+                                                        <option value = "<?=$edit_course_applicant['uni_id']?>" selected><?=$edit_course_applicant['uni_name']?></option>
                                                         <?php
                                                             foreach($university_data as $u) {
                                                                 echo '<option value="'.$u->uni_id.'">'.$u->	uni_name.'</option>';
@@ -402,7 +402,7 @@ setTimeout(function() {
                                                 <div class="form-group col-md-12 px-2" id="course_class_1">
                                                         <label for="course1"></label>
                                                         <select name="course1_id" id="course_1" class="form-control form-select form-select-md">
-                                                            <option value="" selected disabled>Please select a course</option>
+                                                            <option value = "<?=$edit_course_applicant['course_id']?>" selected><?=$edit_course_applicant['course_name']?></option>
                                                         </select>
                                                 </div> 
                                             </div>
@@ -411,17 +411,9 @@ setTimeout(function() {
                                         <div class="form-group col-md-12">
                                             <input type="file"  accept=".pdf" class="custom-file-input" id="c_applicant_document" name="c_applicant_document">
 											<label class="custom-file-label" for="customFile"><?=$edit_course_applicant['c_applicant_document']?></label>
-                                            <div style = "color:red; font-size:0.9em;">*Required document: COMPLETED Employer Project Proposal in .PDF file format</div>  
+                                            <div style = "color:red; font-size:0.9em;">*Required document: Latest Academic Transcript in .PDF file format</div>  
                                         </div>
                                     </div>
-
-                                    <!-- <div class="form-row px-4 pt-4">
-                                        <div class="form-group col-md-12">
-                                            <input type="file"  accept=".pdf" class="custom-file-input" id="emp_document" name="emp_document">
-											<label class="custom-file-label" for="customFile"><?=$emp_details['emp_document']?></label>
-                                            <div style = "color:red; font-size:0.9em;">*Required document: COMPLETED Employer Project Proposal in .PDF file format</div>  
-                                        </div>
-                                    </div> -->
                                     
                                         <!-- Submit button -->
                                         <div class="pt-2 pr-3">

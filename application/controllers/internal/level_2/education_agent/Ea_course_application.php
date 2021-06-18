@@ -85,6 +85,17 @@ class Ea_course_application extends CI_Controller
             'is_unique'=>'This identification has already registered!'
         ]);
 
+        if($_FILES['c_applicant_document']['name'] != "") {
+            $original_details = $this->course_applicants_model->ca_details($c_applicant_id);
+            unlink('./assets/uploads/course_applicant_form/'.$original_details['c_applicant_document']);
+       
+			$c_applicant_document = $this->upload_doc('./assets/uploads/course_applicant_form', 'c_applicant_document');
+			$data = [
+				'c_applicant_document' =>$c_applicant_document['file_name'],
+			];
+			$this->course_applicants_model->update($data, $c_applicant_id);
+		}
+
         if($this->form_validation->run()== false)
         {
             $data['title']="iJEES | Course Applicant Registration";
@@ -226,7 +237,6 @@ class Ea_course_application extends CI_Controller
                 'c_applicant_address'=>htmlspecialchars($this->input->post('c_applicant_address',true)),
                 'c_applicant_identification'=>htmlspecialchars($this->input->post('c_applicant_identification',true)),
                 'course_id'=>htmlspecialchars($this->input->post('course1_id',true)),
-                'c_applicant_document'=>$c_applicant_document['file_name'],
                 
             ];
 

@@ -92,8 +92,15 @@ class course_applicants_model extends CI_Model
 
     public function get_cas_with_id($c_applicant_id)
     {
-       $this->db->where('c_applicant_id',$c_applicant_id);
-       return $this->db->get('course_applicants')->row_array();
+    //    $this->db->select('course_applicants.c_applicant_id, course_applicants.c_applicant_fname, course_applicants.c_applicant_lname, course_applicants.c_applicant_phonenumber, course_applicants.c_applicant_email, 
+    //    course_applicants.c_applicant_email, course_applicants.c_applicant_nationality, course_applicants.c_applicant_gender, course_applicants.c_applicant_dob, course_applicants.c_applicant_currentlevel ,
+    //    course_applicants.c_applicant_address, course_applicants.c_applicant_identification, course_applicants.course_id, course_applicants.c_applicant_document, course_applicants.c_app_submitdate')
+        $this->db->select('*')
+                ->from('course_applicants')
+                ->join('courses', 'courses.course_id = course_applicants.course_id')
+                ->join('universities', 'universities.uni_id = courses.uni_id')
+                ->where('course_applicants.c_applicant_id', $c_applicant_id);
+       return $this->db->get()->row_array();
     }
 
     public function ca_details($ca_id)

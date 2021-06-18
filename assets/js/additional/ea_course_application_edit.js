@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('#course_class_1').hide();
+
     //ajax for 1st courses dropdown
     $('#university_1').change(function () {
         var uni1 = document.getElementById("university_1").value;
