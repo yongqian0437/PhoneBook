@@ -35,7 +35,7 @@ class Admin_dashboard2 extends CI_Controller
         $data['total_ep'] = count($this->user_ep_model->approved_ep());
 
         //6 latest uni list
-        $data['latest_uni'] = $this->universities_model->uni_max_6();
+        $data['latest_uni'] = $this->universities_model->uni_max_5();
         $data['total_uni'] = count($this->universities_model->select_all_approved_only());
 
         //total users

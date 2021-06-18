@@ -133,9 +133,9 @@
 
                     </div>
 
-                    <div class="row">
-                        <div class="col-7">
-                            <div class="card shadow mb-4">
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <div class="card h-100 shadow">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold">Total Active User</h6>
                                 </div>
@@ -147,17 +147,18 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="col-5">
-                            <div class="card">
+                    </div>
+                    
+                    <div class="row mb-4">
+                    <div class="col-6">
+                            <div class="card h-100 shadow">
                                 <div class="card-header">
-                                    <h6 class="m-0 font-weight-bold">Universities (Total <?= $total_uni ?>)</h6>
+                                    <h6 class="m-0 font-weight-bold">Latest 5 Active Universities (Total: <?= $total_uni ?>)</h6>
                                 </div>
                                 <div class="card-body">
                                     <table id="customers">
                                         <tr>
                                             <th>University</th>
-                                            <th></th>
                                             <th>Courses</th>
                                         </tr>
                                         <?php foreach ($latest_uni as $uni) {
@@ -165,7 +166,6 @@
                                         ?>
                                             <tr>
                                                 <td><?= $uni['uni_name'] ?></td>
-                                                <td></td>
                                                 <td>
                                                     <?= $total_course ?>
                                                 </td>
@@ -175,31 +175,32 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-8">
-                            <div class="card shadow mb-4">
-                                <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Education Partners</h6>
-                                </div>
-                                <div class="card-body">
-                                    <div class="chart-bar">
-                                        <canvas id="ep_barChart"></canvas>
-                                    </div>
-                                    <hr>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-4">
-                            <div class="card shadow mb-4">
+                
+                        <div class="col-6">
+                            <div class="card h-100 shadow">
                                 <!-- Card Header - Dropdown -->
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Enrollment by Student/Education Agent</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Enrolment by Student/Education Agent</h6>
                                 </div>
                                 <!-- Card Body -->
                                 <div class="card-body">
                                     <div class="chart-pie pt-4">
                                         <canvas id="enrollment_donut"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-4">
+                    <div class="col-12">
+                            <div class="card h-100 shadow">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Top 3 Universities by Course Applicants</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-bar">
+                                        <canvas id="ep_barChart"></canvas>
                                     </div>
                                     <hr>
                                 </div>
@@ -294,13 +295,12 @@
                 var myBarChart = new Chart(ctx, {
                     type: 'bar',
                     data: {
-                        labels: ["<?= $total_applicants[0]['uni_name'] ?>", "<?= $total_applicants[1]['uni_name'] ?>", "<?= $total_applicants[2]['uni_name'] ?>"],
+                        labels: [<?php $counter=0; foreach($total_applicants as $row): ?>"<?php if ($counter<4) { echo $row['uni_name']; } $counter++;?>", <?php endforeach; ?>],
                         datasets: [{
                             label: "Total Course Applicants",
-                            backgroundColor: "#4e73df",
-                            hoverBackgroundColor: "#2e59d9",
+                            backgroundColor: ["#3bceac", "#ff99c8", "#ca7df9", "#758bfd", "#ffc09f"],
                             borderColor: "#4e73df",
-                            data: [<?= $total_applicants[0]['count(course_applicants.c_applicant_id)'] ?>, <?= $total_applicants[1]['count(course_applicants.c_applicant_id)'] ?>, <?= $total_applicants[2]['count(course_applicants.c_applicant_id)'] ?>],
+                            data: [<?php  $counter=0; foreach($total_applicants as $row): ?>"<?php if ($counter<4) { echo $row['count(course_applicants.c_applicant_id)']; } $counter++;?>", <?php endforeach; ?>],
                         }],
                     },
                     options: {
@@ -345,7 +345,7 @@
                             }],
                         },
                         legend: {
-                            display: true
+                            display: false
                         },
                         tooltips: {
                             titleMarginBottom: 10,

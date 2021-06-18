@@ -93,11 +93,11 @@ class universities_model extends CI_Model
         return $this->db->get('universities')->result();
     }
 
-    public function uni_max_6()
+    public function uni_max_5()
     {
         $this->db->where('uni_approval', 1);
         $this->db->order_by('uni_submitdate', 'DESC');
-        $this->db->limit(6);
+        $this->db->limit(5);
         return $this->db->get('universities')->result_array();
     }
 
