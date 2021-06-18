@@ -9,8 +9,8 @@ class Ac_course_applicants extends CI_Controller
         $this->load->model(['user_ac_model', 'course_applicants_model', 'universities_model']);
         date_default_timezone_set('Asia/Kuala_Lumpur');
 
-        // Checks if session is set and if user is signed in as Employer (authorised access). If not, deny his/her access.
-        // if (!$this->session->userdata('user_id') || $this->session->userdata('user_role') != "Employer"){  
+        // Checks if session is set and if user is signed in as Academic Counsellor (authorised access). If not, deny his/her access.
+        // if (!$this->session->userdata('user_id') || $this->session->userdata('user_role') != "Academic Counsellor"){  
         //     redirect('user/login/Auth/login');
         // }
 
