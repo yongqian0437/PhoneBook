@@ -79,9 +79,11 @@ class Ep_university extends CI_Controller {
 			'uni_country'=>htmlspecialchars($this->input->post('uni_country')),
 			'uni_hotline'=>htmlspecialchars($this->input->post('uni_hotline')),
 			'uni_email'=>htmlspecialchars($this->input->post('uni_email')),
+			'uni_website'=>htmlspecialchars($this->input->post('uni_website')),
 			'uni_address'=>htmlspecialchars($this->input->post('uni_address')),
 			'uni_qsrank'=>htmlspecialchars($this->input->post('uni_qsrank')),
 			'uni_employabilityrank'=>htmlspecialchars($this->input->post('uni_employabilityrank')),
+			'uni_totalstudents'=>htmlspecialchars($this->input->post('uni_totalstudents')),
 		];
 		$this->universities_model->update($data, $uni_id);
 

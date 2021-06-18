@@ -42,6 +42,9 @@ class Ep_dashboard extends CI_Controller {
         $ep_data = $this->user_ep_model->get_ep_detail_with_user_id($this->session->userdata('user_id'));
 		$data['num_partners']= count($this->rd_applicants_model->all_project_partners($ep_data->ep_id));
 
+		//data for barchart
+		$data['course_field'] = $this->courses_model->course_field_bar_chart($university_data->uni_id); 
+
 		$this->load->view('internal/templates/header',$data);
         $this->load->view('internal/templates/sidenav');
         $this->load->view('internal/templates/topbar');

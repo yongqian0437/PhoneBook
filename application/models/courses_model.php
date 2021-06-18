@@ -179,4 +179,16 @@ class courses_model extends CI_Model
         return $query;
     }
 
+    // Function for bar graph in ep
+    function course_field_bar_chart($uni_id){
+        $this->db->select('count(courses.course_id), courses.course_area')
+                 ->from('courses')
+                 ->join('universities', 'universities.uni_id = courses.uni_id')
+                 ->where('universities.uni_id', $uni_id)
+                 ->group_by('courses.course_area')
+                 ->order_by('count(courses.course_id)', 'desc')
+                 ->order_by('courses.course_area' , 'asc');
+        return $this->db->get()->result_array();
+    }
+
 }

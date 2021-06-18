@@ -1,4 +1,10 @@
 <script src="<?php echo base_url()?>/assets/vendor/jquery/jquery.min.js"></script>
+<!-- Page level plugins -->
+<script src="<?php echo base_url()?>/assets/vendor/chart.js/Chart.min.js"></script>
+
+<!-- Page level custom scripts -->
+<script src="<?php echo base_url()?>/assets/js/demo/chart-area-demo.js"></script>
+<script src="<?php echo base_url()?>/assets/js/demo/chart-pie-demo.js"></script>
 
 <body id="page-top">
 
@@ -133,6 +139,23 @@
                     
                 </div>
 
+                <!-- Bar Chart -->
+                <div class ="row ">
+                    <div class="col-xl-12 col-lg-12">
+                         <!-- Bar Chart -->
+                         <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Courses by Top 5 Fields </h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-bar">
+                                        <canvas id="course_field_barChart"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+
                 </div>
                 <!-- /.container-fluid -->
 
@@ -144,6 +167,84 @@
                 var counter2 = <?=$num_rd_projects?>;
                 var counter3 = <?=$num_rd_applicants?>;
                 var counter4 = <?=$num_partners?>;
+
+                // Bar Chart
+                var ctx = document.getElementById("course_field_barChart");
+                var myBarChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: [<?php $counter=0; foreach($course_field as $row): ?>"<?php if ($counter<7) { echo $row['course_area']; } $counter++;?>", <?php endforeach; ?>],
+                        datasets: [{
+                            label: "Total",
+                            backgroundColor: ["#3bceac", "#ff99c8", "#ca7df9", "#758bfd", "#ffc09f"],
+                            borderColor: "#4e73df",
+                            data: [<?php  $counter=0; foreach($course_field as $row): ?>"<?php if ($counter<7) { echo $row['count(courses.course_id)']; } $counter++;?>", <?php endforeach; ?>],
+                        }],
+                    },
+                    options: {
+                        maintainAspectRatio: false,
+                        layout: {
+                            padding: {
+                                left: 10,
+                                right: 25,
+                                top: 25,
+                                bottom: 0
+                            }
+                        },
+                        scales: {
+                            xAxes: [{
+                                time: {
+                                    unit: 'month'
+                                },
+                                gridLines: {
+                                    display: false,
+                                    drawBorder: false
+                                },
+                                ticks: {
+                                    maxTicksLimit: 5
+                                },
+                                maxBarThickness: 25,
+                            }],
+                            yAxes: [{
+                                ticks: {
+                                    min: 0,
+                                    max: 6,
+                                    maxTicksLimit: 5,
+                                    padding: 10,
+                                },
+                                gridLines: {
+                                    color: "rgb(234, 236, 244)",
+                                    zeroLineColor: "rgb(234, 236, 244)",
+                                    drawBorder: false,
+                                    borderDash: [2],
+                                    zeroLineBorderDash: [2]
+                                }
+                            }],
+                        },
+                        legend: {
+                            display: false
+                        },
+                        tooltips: {
+                            titleMarginBottom: 10,
+                            titleFontColor: '#6e707e',
+                            titleFontSize: 14,
+                            backgroundColor: "rgb(255,255,255)",
+                            bodyFontColor: "#858796",
+                            borderColor: '#dddfeb',
+                            borderWidth: 1,
+                            xPadding: 15,
+                            yPadding: 15,
+                            displayColors: false,
+                            caretPadding: 10,
+                            callbacks: {
+                                label: function(tooltipItem, chart) {
+                                    var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+                                    return datasetLabel + ': ' + number_format(tooltipItem.yLabel);
+                                }
+                            }
+                        },
+                    }
+                });
 
                 </script>
 
