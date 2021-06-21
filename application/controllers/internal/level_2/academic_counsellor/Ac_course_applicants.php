@@ -45,7 +45,7 @@ class Ac_course_applicants extends CI_Controller
         $length = intval($this->input->get("length"));
 
         $ac_details = $this->user_ac_model->ac_details($this->session->userdata('user_id'));
-        $course_applicants = $this->course_applicants_model->get_applicants_from_course($ac_details['ac_id'], $ac_details['uni_id']);
+        $course_applicants = $this->course_applicants_model->get_applicants_from_course($ac_details['uni_id']);
 
         $data = array();
         $base_url = base_url();
