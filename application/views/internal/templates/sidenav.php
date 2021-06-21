@@ -48,14 +48,6 @@
                 </a>
             </li>
 
-             <!-- Nav Item - Logout -->
-             <li class="nav-item">
-                <a class="nav-link" href="<?=base_url('user/login/Auth/logout')  ;?>">
-                    <i class="fas fa-sign-out-alt"></i>
-                    <span>Logout</span>
-                </a>
-            </li>
-
         <?php break; 
         
         case "Education Agent": ?>
@@ -76,14 +68,6 @@
                 <a class="nav-link" href="<?=base_url('internal/level_2/education_agent/ea_course_application');?>">
                     <i class="fas fa-plus-square"></i>
                     <span>Course Applications</span>
-                </a>
-            </li>
-
-             <!-- Nav Item - Logout -->
-             <li class="nav-item">
-                <a class="nav-link" href="<?=base_url('user/login/Auth/logout')  ;?>">
-                    <i class="fas fa-sign-out-alt"></i>
-                    <span>Logout</span>
                 </a>
             </li>
 
@@ -149,14 +133,6 @@
                 </div>
             </li>
 
-            <!-- Nav Item - Logout -->
-            <li class="nav-item">
-                <a class="nav-link" href="<?=base_url('user/login/Auth/logout')  ;?>">
-                    <i class="fas fa-sign-out-alt"></i>
-                    <span>Logout</span>
-                </a>
-            </li>
-
         <?php break; 
         
         case "Employer": ?>
@@ -196,16 +172,9 @@
                 </a>
             </li>
 
-             <!-- Nav Item - Logout -->
-             <li class="nav-item">
-                <a class="nav-link" href="<?=base_url('user/login/Auth/logout')  ;?>">
-                    <i class="fas fa-sign-out-alt"></i>
-                    <span>Logout</span>
-                </a>
-            </li>
-
         <?php break; 
         
+        // Admin
         default: ?>
 
         <!-- Nav Item - Dashboard -->
@@ -273,14 +242,6 @@
                     <a class="collapse-item" href="<?=base_url('internal/admin_panel/content/Admin_rd_project');?>">R&D Projects (R&DPs)</a>
                 </div>
             </div>
-        </li>
-
-        <!-- Nav Item - Logout -->
-        <li class="nav-item">
-            <a class="nav-link" href="<?=base_url('user/login/Auth/logout')  ;?>">
-                <i class="fas fa-sign-out-alt"></i>
-                <span>Logout</span>
-            </a>
         </li>
     
     <?php break;

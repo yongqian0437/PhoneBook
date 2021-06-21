@@ -1,3 +1,6 @@
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="sweetalert2.min.js"></script>
+<link rel="stylesheet" href="sweetalert2.min.css">
 <style>
     .nav-link {
         color: white;
@@ -86,12 +89,6 @@
         <li class="nav-item px-2">
             <a class="nav-link" href="<?= base_url('user/chat/Chat'); ?>">Have a Chat</a>
         </li>
-        <!-- <li class="nav-item pl-2">
-            <a class="nav-link" href="#" >
-                <button type="button" class="btn" style="background-color: white; color: #6B9080; font-size: 0.rem; border-radius:15px; font-weight: 800; ">Hava a Chat</button>
-            </a>
-        </li> -->
-
 
         <!-- If user is sign in. Will display user name and user logo -->
         <?php if ($this->session->has_userdata('has_login')) { ?>
@@ -102,7 +99,7 @@
 
             <li class="nav-item dropdown no-arrow pl-1">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="mr-2 d-none d-lg-inline small pr-2" style="color: white; font-weight:700; font-size:0.9em;"><?php echo $this->session->userdata('user_lname'); ?></span>
+                    <span class="mr-2 d-none d-lg-inline small pr-2" style="color: white; font-weight:700; font-size:0.9em;"><?php echo $this->session->userdata('user_fname'); ?></span>
                     <img class="img-profile rounded-circle" src="<?= base_url('assets/img/chat_user/profile_pic.png'); ?>">
                 </a>
                 <!-- Dropdown - User Information -->
@@ -112,9 +109,9 @@
                         Profile
                     </a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="<?= base_url('user/login/Auth/logout'); ?>" style="color: white;">
+                    <a onclick="logout()" class="dropdown-item" style="color: white;">
                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                        Logout
+                        Log Out
                     </a>
                 </div>
             </li>
@@ -131,3 +128,21 @@
 
 </nav>
 <!-- End of Topbar -->
+
+    <script>
+        function logout() {
+
+        Swal.fire({
+            text: 'Are you sure you want to Log Out?',
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Log Out'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "<?php echo base_url('user/login/Auth/logout'); ?>";
+            }
+        })
+        }
+    </script>

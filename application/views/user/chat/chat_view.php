@@ -14,13 +14,33 @@
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
+        <?php if ($user_role != 'Student') { ?>
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4 px-4">
+                <h1 class="h3 mb-0 text-gray-800">Chat Room</h1>
+        </div>
+
+        <!-- Breadcrumb -->
+        <div class="row" >
+            <div class="breadcrumb-wrapper col-xl-9">
+                <ol class="breadcrumb" style = "background-color:rgba(0, 0, 0, 0);">
+                    <li class="breadcrumb-item">
+                        <a href="<?=base_url('internal/level_2/Academic_counsellor/Ac_dashboard');?>"><i class="fas fa-tachometer-alt"></i> Home</a>
+                    </li>
+                    <li class="breadcrumb-item active">Chat Room</li>
+                </ol>
+            </div>
+        </div>
+        <?php } ?>
+
+        <?php if ($user_role == 'Student') { ?>
         <!-- Page Heading -->
         <div class="d-sm-flex align-items-center justify-content-between mb-2 pt-4 px-4">
             <h1 class="h3 mb-0 text-gray-800 font-weight-bold">Chat Room</h1>
         </div>
 
         <p class="mb-4 px-4">
-        <?php if ($user_role == 'Student') { ?> iJEES' Chat Room makes it easy for you to connect with Academic Counsellors and Employers that are registered in iJEES anywhere, anytime. This section is a one-stop service for communication to take place. 
+        iJEES' Chat Room makes it easy for you to connect with Academic Counsellors and Employers that are registered in iJEES anywhere, anytime. This section is a one-stop service for communication to take place. 
         The Academic Counsellors and Employers listed here are always ready to answer your enquiries towards a university, course or employer project (EP) that you may have. <br><br>
         
         To begin chatting, follow these simple steps:<br><br>

@@ -6,7 +6,7 @@ class Employer_emp_applicants extends CI_Controller
     public function __construct()
 	{
 		parent::__construct();
-		$this->load->model(['user_e_model', 'emp_applicants_model']);
+		$this->load->model(['user_e_model', 'emp_applicants_model', 'company_model']);
         date_default_timezone_set('Asia/Kuala_Lumpur');
         
         // Checks if session is set and if user is signed in as Employer (authorised access). If not, deny his/her access.
@@ -26,6 +26,7 @@ class Employer_emp_applicants extends CI_Controller
 
         $e_details = $this->user_e_model->e_details($this->session->userdata('user_id'));
         $data['emp_applicants'] = $this->emp_applicants_model->get_applicants_from_emps($e_details['e_id']);
+        $data['company_details'] = $this->company_model->c_details($e_details['c_id']);
 
         $this->load->view('internal/templates/header', $data);
         $this->load->view('internal/templates/sidenav');

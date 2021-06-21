@@ -28,7 +28,7 @@ td{
 
                 <!-- Page Heading -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Employer Project (EP) Applications</h1>
+                    <h1 class="h3 mb-0 text-gray-800"><?=$company_details['c_name']?>'s Employer Project (EP) Applications</h1>
                 </div>
 
                 <!-- Breadcrumb -->

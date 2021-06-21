@@ -106,6 +106,7 @@ class Chat extends CI_Controller
         // Load sidenav if user is a Level 2 user
         if ($user_role != "Student") {
             $this->load->view('internal/templates/sidenav'); // sidenav
+            $this->load->view('internal/templates/topbar'); // topbar
         }
         
         $this->load->view('user/chat/chat_view', $data);

@@ -27,12 +27,22 @@ class Auth extends CI_Controller
             {
                 redirect('internal/level_2/education_agent/Ea_dashboard');
             }
-            // check user role is  AC,E,EP
-            else if ($this->session->userdata('user_role')!="Student")
+            // check user role is AC
+            else if ($this->session->userdata=="Academic Counsellor")
             {
-                redirect('internal/level_2/Level_2_dashboard/profile_level_2');
+                redirect('internal/level_2/academic_counsellor/Ac_dashboard');
             }
-                // check user role is  student
+            // check user role is E
+            else if ($this->session->userdata=="Employer")
+            {
+                redirect('internal/level_2/employer/Employer_dashboard');
+            }
+            // check user role is EP
+            else if ($this->session->userdata=="Education Partner")
+            {
+                redirect('internal/level_2/educational_partner/Ep_dashboard');
+            }
+            // check user role is Student
             else
             {
                 redirect('external/homepage/profile_level_1');
@@ -92,15 +102,25 @@ class Auth extends CI_Controller
                     {
                        redirect('internal/level_2/education_agent/Ea_dashboard');
                     }
-                    // check user role is  AC,E,EP
-                    else if ($users['user_role']!="Student")
+                    // check user role is AC
+                    else if ($users['user_role']=="Academic Counsellor")
                     {
-                       redirect('internal/level_2/Level_2_dashboard/profile_level_2');
+                       redirect('internal/level_2/academic_counsellor/Ac_dashboard');
+                    }
+                    // check user role is E
+                    else if ($users['user_role']=="Employer")
+                    {
+                       redirect('internal/level_2/employer/Employer_dashboard');
+                    }
+                    // check user role is  EP
+                    else if ($users['user_role']=="Education Partner")
+                    {
+                       redirect('internal/level_2/educational_partner/Ep_dashboard');
                     }
                      // check user role is  student
                     else
                         redirect('external/homepage');
-                }
+                    }
                 // if password is incorrect
                 else
                 {
@@ -601,7 +621,7 @@ class Auth extends CI_Controller
         $this->session->unset_userdata('user_role');
         $this->session->unset_userdata('has_login');
         $this->session->set_flashdata('message','<div class="alert alert-success" role="alert" id="alert_message">
-        You have been logout</div>');
+        You have been log out!</div>');
         redirect('user/login/Auth/login'); 
     }
 

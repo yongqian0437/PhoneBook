@@ -36,8 +36,31 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+
+                    <?php if ($user_role == 'Education Partner') { ?>
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4 px-4">
+                            <h1 class="h3 mb-0 text-gray-800">Research & Development Projects</h1>
+                    </div>
+
+                    <!-- Breadcrumb -->
+                    <div class="row" >
+                        <div class="breadcrumb-wrapper col-xl-9">
+                            <ol class="breadcrumb" style = "background-color:rgba(0, 0, 0, 0);">
+                                <li class="breadcrumb-item">
+                                    <a href="<?=base_url('internal/level_2/educational_partner/ep_dashboard');?>"><i class="fas fa-tachometer-alt"></i> Home</a>
+                                </li>
+                                <li class="breadcrumb-item active">Research & Development Projects</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <?php } ?>
+
+                    <?php if ($user_role != 'Education Partner') { ?>
                     <!-- Page Heading -->
                     <h1 class="h3 mb-1 text-gray-800 pt-4 px-4 pb-2 font-weight-bold">Research & Development Projects</h1>
+                    <?php } ?>
+
                     <p class="mb-4 px-4" style="text-align: justify;">Research and development (R&D) includes activities that companies undertake to innovate and introduce new products and services.
                         It is often the first stage in the development process. The goal is typically to take new products and services to market and add to the company's bottom line.
                         R&D represents the activities companies undertake to innovate and introduce new products and services or to improve their existing offerings,
