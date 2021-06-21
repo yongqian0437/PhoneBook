@@ -42,7 +42,7 @@ class Universities extends CI_Controller
 
 		foreach ($universities as $r) {
 
-			$logo = $base_url . $r->uni_logo;
+			$logo = base_url('assets/img/universities/') . $r->uni_logo;
 			$total_course = $this->courses_model->get_totalcourse_for_uni($r->uni_id);
 
 			$image = '<img style=" height:85px; width: 250px; object-fit: contain;" src="' . $logo . '" alt="logo"><br><br>';

@@ -91,7 +91,7 @@ class Admin_rd_app extends CI_Controller {
                     <th colspan="2" style = "background-color: #CCE3DE; font-weight:900; font-size:1.1em;" scope="row"><center>OWNER DETAILS</center></th>
                 </tr>
                 <tr style="text-align: center">
-                    <td colspan="2"><img src="'.base_url().$ep_owner->uni_logo.'" style="width: 250px; height: 100px; object-fit:contain;"></td>
+                    <td colspan="2"><img src="'.base_url("assets/img/universities/").$ep_owner->uni_logo.'" style="width: 250px; height: 100px; object-fit:contain;"></td>
                 </tr> 
                 <tr>
                 <th scope="row">University Name</th>
@@ -132,7 +132,7 @@ class Admin_rd_app extends CI_Controller {
                     <th colspan="2" style = "background-color: #CCE3DE; font-weight:900; font-size:1.1em;" scope="row"><center>COLLABORATOR DETAILS</center></th>
                 </tr>
                 <tr style="text-align: center">
-                    <td colspan="2"><img src="'.base_url().$ep_collab->uni_logo.'" style="width: 250px; height: 100px; object-fit:contain;"></td>
+                    <td colspan="2"><img src="'.base_url("assets/img/universities/").$ep_collab->uni_logo.'" style="width: 250px; height: 100px; object-fit:contain;"></td>
                 </tr> 
                 <tr>
                 <th scope="row">University Name</th>

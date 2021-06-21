@@ -31,13 +31,13 @@
                         <?php if (!empty($course_data)) {
                             foreach ($course_data as $courses) { ?>
                                 <div class="col-12">
-                                    <div class="course-cover-img" style="background-image: url('<?php echo base_url($uni_data->uni_background); ?>');">
+                                    <div class="course-cover-img" style="background-image: url('<?php echo base_url("assets/img/universities/").$uni_data->uni_background; ?>');">
                                         <div class="fallbak">
                                             <div class="row">
                                                 <div class="col-4">
                                                     <div class="pt-5 pl-2 pb-1">
                                                         <div style="width:25vh; height:25vh; border-radius:100%; margin:auto; background-color:white;">
-                                                            <center><img src="<?php echo base_url($uni_data->uni_logo); ?>" alt="uni_logo" id="logo" class="pt-5"></center>
+                                                            <center><img src="<?php echo base_url("assets/img/universities/").$uni_data->uni_logo; ?>" alt="uni_logo" id="logo" class="pt-5"></center>
                                                         </div>
                                                     </div>
                                                 </div>

@@ -167,7 +167,7 @@
                                                                         <td class="select_user" id="<?php echo $user['user_id']; ?>" title="<?php echo $user['ac_university'] . ', '. $user['user_fname'] . ' ' .$user['user_lname'] ;  ?>">
                                                                             <a href="#chat_section" style="display:block; background-color: #5e6472; color:white; text-align: center; font-weight: 700;">Chat</a></td>
                                                                         <td>
-                                                                            <img class="img-fluid img_class" src="<?= base_url($user['uni_logo']);?>" id="uni_logo";/>
+                                                                            <img class="img-fluid img_class" src="<?= base_url("assets/img/universities/{$user['uni_logo']}");?>" id="uni_logo";/>
                                                                         </td>
                                                                         <td class="font-weight-bold"><?php echo $user['ac_university']; ?></td>
                                                                         <td><?php echo $user['uni_country']; ?></td>

@@ -177,6 +177,9 @@ class Admin_rd_project extends CI_Controller {
                 <tr>
                     <th colspan="2" style = "background-color: #CCE3DE; font-weight:900; font-size:1.1em;" scope="row"><center>EDUCATION PARTNER DETAILS</center></th>
                 </tr>
+                <tr style="text-align: center">
+                    <td colspan="2"><img src="' . base_url("assets/img/universities/") . $rd_detail->uni_logo . '" style="width: 250px; height: 100px; object-fit:contain;"></td>
+                </tr> 
                 <tr>
                     <th scope="row">University Name</th>
                     <td>'.$rd_detail->uni_name.'</td>

@@ -692,11 +692,11 @@ class Admin_dashboard extends CI_Controller
                     <td>'.$uni_detail->uni_submitdate.'</td>
                 </tr>
                 <tr style="text-align: center">
-                    <td colspan="2"><img src="'.base_url("assets/img/university/").$uni_detail->uni_logo.'" style="width: 250px; height: 100px; object-fit:contain;">
+                    <td colspan="2"><img src="'.base_url("assets/img/universities/").$uni_detail->uni_logo.'" style="width: 250px; height: 100px; object-fit:contain;">
                     </td>  
                 </tr>
                 <tr style="text-align: center">
-                    <td colspan="2"><img src="'.base_url("assets/img/university/").$uni_detail->uni_background.'" style="width: 250px; height: 100px; object-fit:contain;">
+                    <td colspan="2"><img src="'.base_url("assets/img/universities/").$uni_detail->uni_background.'" style="width: 250px; height: 100px; object-fit:contain;">
                     </td>  
                 </tr>
                 

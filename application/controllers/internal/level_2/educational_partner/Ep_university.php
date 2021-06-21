@@ -53,9 +53,8 @@ class Ep_university extends CI_Controller {
 			unlink($university_data[0]->uni_background);
 
 			$uni_background = $this->upload_img('./assets/img/universities', 'uni_background');  
-			$uni_background_path = "assets/img/universities/".$uni_background['file_name'];
 			$data = [
-				'uni_background'=>$uni_background_path,
+				'uni_background'=>$uni_background['file_name'],
 			];
 			$this->universities_model->update($data, $uni_id);
 		}
@@ -65,9 +64,8 @@ class Ep_university extends CI_Controller {
 			unlink($university_data[0]->uni_logo);
 
 			$uni_logo= $this->upload_img('./assets/img/universities', 'uni_logo');
-			$uni_logo_path = "assets/img/universities/".$uni_logo['file_name'];
 			$data = [
-				'uni_logo'=>$uni_logo_path,
+				'uni_logo'=>$uni_logo['file_name'], 
 			];
 			$this->universities_model->update($data, $uni_id);
 		}

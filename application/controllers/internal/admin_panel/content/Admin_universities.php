@@ -133,7 +133,7 @@ class Admin_universities extends CI_Controller {
             <tbody>
                 <tr style = "display:none;"><td colspan="2"></td></tr>
                 <tr style="text-align: center">
-                    <td colspan="2"><img src="'.base_url().$uni_detail->uni_logo.'" style="width: 250px; height: 100px; object-fit:contain;"></td>
+                    <td colspan="2"><img src="'.base_url("assets/img/universities/").$uni_detail->uni_logo.'" style="width: 250px; height: 100px; object-fit:contain;"></td>
                 </tr> 
                 <tr>
                     <th scope="row">Submitted Date</th>
@@ -193,7 +193,7 @@ class Admin_universities extends CI_Controller {
                 </tr>
                 <tr style = "background-color:white;">
                     <th scope="row">Background Image</th>
-                    <td><img src="'.base_url().$uni_detail->uni_background.'" style="width: 350px; height: 200px; object-fit:contain;"></td>
+                    <td><img src="'.base_url("assets/img/universities/").$uni_detail->uni_background.'" style="width: 350px; height: 200px; object-fit:contain;"></td>
                 </tr>
             </tbody>
         </table>

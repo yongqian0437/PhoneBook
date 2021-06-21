@@ -104,7 +104,7 @@ label{
                                     <div class="form-group col-md-12 px-4">
                                         <label>Document</label>
                                         <p>You are required to download the following template and fill in the required information regarding the Employer Project that you are about to request to be posted on iJEES. Once done, proceed to upload it.</p>
-                                        <div>(<a href="<?= base_url('/assets/uploads/rd_projects/template-research.pdf')?>" download>R&D Project Document Template 2021</a>)</div>
+                                        <div><a href="<?= base_url('/assets/uploads/rd_projects/template-research.pdf')?>" download>R&D Project Document Template 2021</a></div>
                                     </div>
                                 </div>
                                 <div class="form-row  px-4">

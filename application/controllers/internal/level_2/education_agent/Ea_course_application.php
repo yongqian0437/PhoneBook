@@ -271,9 +271,8 @@ class Ea_course_application extends CI_Controller
                     <th scope="row">Submitted Date</th>
                     <td>'.$ca_detail->c_app_submitdate.'</td>
                 </tr>
-                <tr>
-                    <th scope="row">Logo</th>
-                    <td colspan="2"><img src="'.base_url("assets/img/university/").$uni_details->uni_logo.'" style="width: 250px; height: 100px; object-fit:contain;">
+                <tr style="text-align: center;">
+                    <td colspan="2"><img src="'.base_url("assets/img/universities/").$uni_details->uni_logo.'" style="width: 250px; height: 100px; object-fit:contain;">
                     </td>  
                 </tr>
                 <tr>

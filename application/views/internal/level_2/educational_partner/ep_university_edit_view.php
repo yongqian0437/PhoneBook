@@ -406,7 +406,7 @@ label{
 
                                         <div class="col-xl-6 pl-5">
                                             <div class = "pb-3" style = "color:black;">Current University Logo</div>
-                                            <img style=" height:200px; width: 300px; object-fit: contain;" src="<?= base_url($university_data->uni_logo); ?>" alt="logo">
+                                            <img style=" height:200px; width: 300px; object-fit: contain;" src="<?= base_url("assets/img/universities/").$university_data->uni_logo?>"  alt="logo">
                                         </div>
                                         <div class="col-xl-6">
                                             <div class = "pb-3" style = "color:black;">New University Logo</div>
@@ -458,7 +458,7 @@ label{
 
                                         <div class="col-xl-6 pl-5">
                                             <div class = "pb-3" style = "color:black;">Current University Background</div>
-                                            <img style=" height:200px; width: 300px; object-fit: contain;" src="<?= base_url($university_data->uni_background); ?>" alt="background">
+                                            <img style=" height:200px; width: 300px; object-fit: contain;" src="<?= base_url("assets/img/universities/{$university_data->uni_background}");?>" alt="background">
                                         </div>
                                         <div class="col-xl-6">
                                             <div class = "pb-3" style = "color:black;">New University Background</div>
