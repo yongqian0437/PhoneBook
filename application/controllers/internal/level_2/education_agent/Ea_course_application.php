@@ -24,6 +24,8 @@ class Ea_course_application extends CI_Controller
         $data['title']= 'iJEES | Course Applications';
         $data['include_js'] ='ea_course_application_list';
         $user_id=$this->session->userdata('user_id');
+
+
         $data['course_applicants']=$this->course_applicants_model->get_user_id($user_id);
       
         $this->load->view('internal/templates/header',$data);
@@ -98,7 +100,7 @@ class Ea_course_application extends CI_Controller
         else
         {
             
-            $c_applicant_document= $this->upload_doc('./assets/uploads/course_applicant_form', 'c_applicant_document');
+            $c_applicant_document= $this->upload_doc('./assets/uploads/course_applicants', 'c_applicant_document');
             $user_id=$this->session->userdata('user_id');
             $data=
             [
@@ -202,9 +204,9 @@ class Ea_course_application extends CI_Controller
 
         if($_FILES['c_applicant_document']['name'] != "") {
             $original_details = $this->course_applicants_model->ca_details($c_applicant_id);
-            unlink('./assets/uploads/course_applicant_form/'.$original_details['c_applicant_document']);
+            unlink('./assets/uploads/course_applicants/'.$original_details['c_applicant_document']);
        
-			$c_applicant_document = $this->upload_doc('./assets/uploads/course_applicant_form', 'c_applicant_document');
+			$c_applicant_document = $this->upload_doc('./assets/uploads/course_applicants', 'c_applicant_document');
 			$data = [
 				'c_applicant_document' =>$c_applicant_document['file_name'],
 			];
@@ -246,7 +248,7 @@ class Ea_course_application extends CI_Controller
     {
         //$this->course_applicants_model->delete($this->input->post('c_applicant_id'));
         $ca_details = $this->course_applicants_model->ca_details($this->input->post('c_applicant_id'));
-        unlink('./assets/uploads/course_applicant_form/'.$ca_details['c_applicant_document']);
+        unlink('./assets/uploads/course_applicants/'.$ca_details['c_applicant_document']);
         $this->course_applicants_model->delete($this->input->post('c_applicant_id'));
     }
 
@@ -321,7 +323,7 @@ class Ea_course_application extends CI_Controller
                 </tr>
                 <tr>
                     <th scope="row">Document</th>
-                    <td><a href="'.base_url("assets/uploads/course_applicant_form/").$ca_detail->c_applicant_document.'" target="_blank">'.$ca_detail->c_applicant_document.'</a></td>
+                    <td><a href="'.base_url("assets/uploads/course_applicants/").$ca_detail->c_applicant_document.'" target="_blank">'.$ca_detail->c_applicant_document.'</a></td>
             </tbody>
         </table>';
 

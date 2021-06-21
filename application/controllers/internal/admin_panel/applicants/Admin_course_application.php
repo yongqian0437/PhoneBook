@@ -142,7 +142,7 @@ class Admin_course_application extends CI_Controller
                 </tr>
                 <tr>
                     <th scope="row">Document</th>
-                    <td><a href="'.base_url("assets/uploads/course_applicant_form/").$ca_detail->c_applicant_document.'" target="_blank">'.$ca_detail->c_applicant_document.'</a></td>
+                    <td><a href="'.base_url("assets/uploads/course_applicants/").$ca_detail->c_applicant_document.'" target="_blank">'.$ca_detail->c_applicant_document.'</a></td>
             </tbody>
         </table>';
 
