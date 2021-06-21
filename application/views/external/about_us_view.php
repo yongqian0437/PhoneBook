@@ -29,12 +29,14 @@
                         <section class="card about-card mb-2" data-aos="fade">
                             <div class="about-background-img" style="background-image:url('<?php echo base_url('assets/img/about_us/mission&vision_background.png'); ?>');">
                                 <div class="dark-background ">
-                                    <h3 data-aos="slide-left" style="margin-left:2rem; margin-right:auto;">Mission and Vision</h3>
-                                    <div class="card-p-left">
-                                        <p data-aos="slide-right">
-                                            To become a global platform for people who are seeking for higher education or employability accross the world.
-                                            A portal for you to find opportunities around the globe.
-                                        </p>
+                                    <div class="card-content1">
+                                        <h3 data-aos="slide-left" style="margin-left:2rem; margin-right:auto;">Mission and Vision</h3>
+                                        <div class="card-p-left">
+                                            <p data-aos="slide-right">
+                                                To become a global platform for people who are seeking for higher education or employability accross the world.
+                                                A portal for you to find opportunities around the globe.
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                         </section>
@@ -42,21 +44,23 @@
                         <section class="card about-card" data-aos="slide-up" data-aos-duration="2000">
                             <div class="about-background-img" style="background-image:url('<?php echo base_url('assets/img/about_us/who_are_we_background.jpg'); ?>');">
                                 <div class="dark-background ">
-                                    <h3 data-aos="flip-left" data-aos-duration="2000" style="margin-right:2rem; margin-left:auto; right:1rem; position:absolute; top:5rem;">Who are we</h3>
-                                    <div class="card-p-right">
-                                        <p data-aos="flip-left" data-aos-duration="2000">
-                                            INTI International University & Colleges currently has collaboration with 95 universities from 11
-                                            countries in 5 continents globally and with more than 500 industry partners nationwide in
-                                            Malaysia and overseas. INTI started its higher education business in 1986. Now, on its 35th year
-                                            of empowering young minds we have 6 campuses across Malaysia with 16,500 students currently
-                                            being served globally.
-                                            For more information visit our website at www.newinti.edu.my.
-                                            <br>
-                                            <br>
-                                            INTI offers education opportunities meant for senior high schoolers wanting to do Pre-University,
-                                            Diploma, Bachelor, Masteral and Doctoral courses in Malaysia, Australia, UK, USA, New Zealand,
-                                            and Canada.
-                                        </p>
+                                    <div class="card-content2">
+                                        <h3 data-aos="flip-left" data-aos-duration="2000" style="margin-right:2rem; margin-left:auto;">Who are we</h3>
+                                        <div class="card-p-right">
+                                            <p data-aos="flip-left" data-aos-duration="2000">
+                                                INTI International University & Colleges currently has collaboration with 95 universities from 11
+                                                countries in 5 continents globally and with more than 500 industry partners nationwide in
+                                                Malaysia and overseas. INTI started its higher education business in 1986. Now, on its 35th year
+                                                of empowering young minds we have 6 campuses across Malaysia with 16,500 students currently
+                                                being served globally.
+                                                For more information visit our website at www.newinti.edu.my.
+                                                <br>
+                                                <br>
+                                                INTI offers education opportunities meant for senior high schoolers wanting to do Pre-University,
+                                                Diploma, Bachelor, Masteral and Doctoral courses in Malaysia, Australia, UK, USA, New Zealand,
+                                                and Canada.
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
