@@ -20,7 +20,7 @@ class Auth extends CI_Controller
 
             if($this->session->userdata('user_role') =="Admin")
             {
-                redirect('internal/admin_panel/Admin_dashboard');
+                redirect('internal/admin_panel/Admin_user_acc');
             }
              // check user role is  EA
             else if ($this->session->userdata=="Education Agent")

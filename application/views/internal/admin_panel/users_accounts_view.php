@@ -40,7 +40,7 @@ td{
                     <div class="breadcrumb-wrapper col-xl-9">
                         <ol class="breadcrumb" style = "background-color:rgba(0, 0, 0, 0);">
                             <li class="breadcrumb-item">
-                                <a href=""><i class="fas fa-tachometer-alt"></i> Home</a>
+                                <a href="<?=base_url('internal/admin_panel/Admin_dashboard'); ?>"><i class="fas fa-tachometer-alt"></i> Home</a>
                             </li>
                             <li class="breadcrumb-item active">All Users</li>
                         </ol>

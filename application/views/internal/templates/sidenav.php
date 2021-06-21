@@ -210,7 +210,7 @@
 
         <!-- Nav Item - Dashboard -->
         <li class="nav-item active">
-            <a class="nav-link" href="<?=base_url('internal/admin_panel/Admin_dashboard2'); ?>">
+            <a class="nav-link" href="<?=base_url('internal/admin_panel/Admin_dashboard'); ?>">
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span>
             </a>
@@ -231,7 +231,7 @@
             </a>
             <div id="accounts_collapse" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="<?=base_url('internal/admin_panel/Admin_dashboard');?>">All Users</a>
+                    <a class="collapse-item" href="<?=base_url('internal/admin_panel/Admin_user_acc');?>">All Users</a>
                     <a class="collapse-item" href="<?=base_url('internal/admin_panel/Users_information/students_info');?>">Students</a>
                     <a class="collapse-item" href="<?=base_url('internal/admin_panel/Users_information/ac_info');?>">Academic Counsellors</a>
                     <a class="collapse-item" href="<?=base_url('internal/admin_panel/Users_information/ea_info');?>">Education Agents</a>

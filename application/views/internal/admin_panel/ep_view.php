@@ -16,6 +16,23 @@ td{
     <!-- Begin Page Content -->
     <div class="container-fluid">
 
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Education Partners</h1>
+    </div>
+
+    <!-- Breadcrumb -->
+    <div class="row" >
+        <div class="breadcrumb-wrapper col-xl-9">
+            <ol class="breadcrumb" style = "background-color:rgba(0, 0, 0, 0);">
+                <li class="breadcrumb-item">
+                    <a href="<?=base_url('internal/admin_panel/Admin_dashboard'); ?>"><i class="fas fa-tachometer-alt"></i> Home</a>
+                </li>
+                <li class="breadcrumb-item active">Education Partners</li>
+            </ol>
+        </div>
+    </div>
+
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
         <div class="card-header py-3">

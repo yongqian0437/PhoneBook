@@ -7,7 +7,7 @@ $(document).ready(function () {
         //make table responsive
         "bAutoWidth": false,
         ajax: {
-            url: base_url + "internal/admin_panel/Admin_dashboard/all_users_list",
+            url: base_url + "internal/admin_panel/Admin_user_acc/all_users_list",
             type: "GET",
         },
     });
@@ -23,7 +23,7 @@ $(document).ready(function () {
         //make table responsive
         "bAutoWidth": false,
         ajax: {
-            url: base_url + "internal/admin_panel/Admin_dashboard/active_users_list",
+            url: base_url + "internal/admin_panel/Admin_user_acc/active_users_list",
             type: "GET",
         },
 
@@ -40,7 +40,7 @@ $(document).ready(function () {
         //make table responsive
         "bAutoWidth": false,
         ajax: {
-            url: base_url + "internal/admin_panel/Admin_dashboard/inactive_users_list",
+            url: base_url + "internal/admin_panel/Admin_user_acc/inactive_users_list",
             type: "GET",
         },
 
@@ -103,7 +103,7 @@ function view_user(user_id) {
     $('#view_user').show();
     $('#view_next').hide();
     $.ajax({
-        url: base_url + "internal/admin_panel/Admin_dashboard/view_user",
+        url: base_url + "internal/admin_panel/Admin_user_acc/view_user",
         method: "POST",
         data: { user_id: user_id },
         success: function (data) {
@@ -116,7 +116,7 @@ function view_next(user_id) {
     $('#view_next').show();
     $('#view_user').hide();
     $.ajax({
-        url: base_url + "internal/admin_panel/Admin_dashboard/view_next",
+        url: base_url + "internal/admin_panel/Admin_user_acc/view_next",
         method: "POST",
         data: { user_id: user_id },
         success: function (data) {
@@ -141,7 +141,7 @@ function activate_user(user_id) {
     }).then((result) => {
         if (result.isConfirmed) {
             $.ajax({
-                url: base_url + "internal/admin_panel/Admin_dashboard/activate_user",
+                url: base_url + "internal/admin_panel/Admin_user_acc/activate_user",
                 method: "POST",
                 data: { user_id: user_id },
                 success: function (data) {
@@ -181,7 +181,7 @@ function deactivate_user(user_id) {
     }).then((result) => {
         if (result.isConfirmed) {
             $.ajax({
-                url: base_url + "internal/admin_panel/Admin_dashboard/deactivate_user",
+                url: base_url + "internal/admin_panel/Admin_user_acc/deactivate_user",
                 method: "POST",
                 data: { user_id: user_id },
                 success: function (data) {
@@ -227,7 +227,7 @@ function activate_all_users() {
                     $user_id = $(this).val();
 
                     $.ajax({
-                        url: base_url + "internal/admin_panel/Admin_dashboard/activate_user",
+                        url: base_url + "internal/admin_panel/Admin_user_acc/activate_user",
                         method: "POST",
                         data: { user_id: $user_id },
 
@@ -277,7 +277,7 @@ function deactivate_all_users() {
                     $user_id = $(this).val();
 
                     $.ajax({
-                        url: base_url + "internal/admin_panel/Admin_dashboard/deactivate_user",
+                        url: base_url + "internal/admin_panel/Admin_user_acc/deactivate_user",
                         method: "POST",
                         data: { user_id: $user_id },
 
