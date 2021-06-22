@@ -91,7 +91,7 @@ setTimeout(function() {
                                             <!-- University Fun Fact -->
                                             <div class="form-group col-md-12 px-2">
                                               <textarea class="form-control border-bottom" style="border: 0;" rows="4" name="uni_fun_fact" placeholder="Fun Fact of the University" required></textarea>
-                                              <p style="font-size: 14px">*This refers to a unique piece of information that is specific to the university. Its aim is to attract users by reading what makes this university stand out. (e.g: past achievements, state-of-the-art facilities, etc.)  </p>
+                                              <div style = "color:red; font-size:0.9em;">*This refers to a unique piece of information that is specific to the university. Its aim is to attract users by reading what makes this university stand out. (e.g: past achievements, state-of-the-art facilities, etc.)  </div>
                                             </div>
                                         </div>
                                         <div class="form-row pt-3 px-4">
@@ -99,7 +99,7 @@ setTimeout(function() {
                                              <div class="form-group col-md-12 px-2">
                                                 <input type="file" accept="image/*" class="custom-file-input " id="form-group" name="uni_logo" value="<?=set_value('uni_logo')?>">
                                                 <label class="custom-file-label border-bottom" style="border: 0;" for="customFile">Upload University Logo</label>
-                                                <p style="font-size: 14px">*Accepted file formats are only in .JPG, .JPEG and .PNG</p>
+                                                <div style = "color:red; font-size:0.9em;">*Accepted file formats are only in .JPG, .JPEG and .PNG</div>
                                                 <?= form_error('uni_logo','<small class="text-danger pl-3">','</small>');?>
                                              </div>
                                         </div>
@@ -108,10 +108,10 @@ setTimeout(function() {
                                             <div class="form-group col-md-12 px-2">
                                                 <input type="file" accept="image/*" class="custom-file-input " id="form-group" name="uni_background" required>
                                                 <label class="custom-file-label border-bottom" style="border: 0;" for="customFile">Upload a picture of the University building</label>
-                                                <p style="font-size: 14px">*Accepted file formats are only in .JPG, .JPEG and .PNG</p>
+                                                <div style = "color:red; font-size:0.9em;">*Accepted file formats are only in .JPG, .JPEG and .PNG</div>
                                             </div>
                                         </div>
-                                        <div class="form-row px-3">
+                                        <div class="form-row px-3 pt-4">
                                             <!-- Country -->
                                             <div class="form-group col-md-12 px-3">
                                               <label for="uni_country">Country of University</label>    

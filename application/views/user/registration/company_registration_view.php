@@ -93,13 +93,13 @@ setTimeout(function() {
                                             <div class="form-group col-md-12 px-2">
                                                 <input type="file" accept="image/*" class="custom-file-input" id="form-group" name="c_logo" value="<?=set_value('c_logo')?>">
                                                 <label class="custom-file-label border-bottom" style="border: 0;" for="customFile">Upload Company Logo</label>
-                                                <p style="font-size: 14px">*Accepted file formats are only in .JPG, .JPEG and .PNG</p>
+                                                <div style = "color:red; font-size:0.9em;">*Accepted file formats are only in .JPG, .JPEG and .PNG</div>
                                                 <?= form_error('c_logo','<small class="text-danger pl-3">','</small>');?>
                                             </div>
                                         </div>
                                         <div class="form-row px-3">
                                              <!-- Company Country -->
-                                            <div class="form-group col-md-12 px-2">
+                                            <div class="form-group col-md-12 px-2 pt-3">
                                               <!-- <input type="text" class="form-control border-bottom" style="border: 0;" name="c_country" placeholder="Company Country" required> -->
                                               <label for="c_country">Country of Company</label>    
                                                 <select name="c_country" id="c_country" class="form-control form-select" required>

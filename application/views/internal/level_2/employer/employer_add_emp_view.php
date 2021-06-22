@@ -93,7 +93,7 @@ label{
                                         </div>
                                         <div class="col-md-12 px-4">
                                             <p>You are required to download the following template and fill in the required information regarding the Employer Project that you are about to request to be posted on iJEES. Once done, proceed to upload it.</p>
-                                            <a href="<?= base_url('/assets/uploads/employer_projects/Employer Project Proposal Template 2021.docx')?>" download>Employer Project Proposal Template 2021</a>
+                                            <a href="<?= base_url('/assets/uploads/employer_projects/Employer_Project_Proposal_Template_2021.pdf')?>" download>Employer Project Proposal Template 2021</a>
                                         </div>
                                     </div>
                                     <div class="form-row px-4 pt-4">

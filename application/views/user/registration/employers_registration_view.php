@@ -356,8 +356,17 @@
 											<input type="type" name="e_jobtitle" class="form-control border-bottom" id="e_jobtitle" style="border: 0;" placeholder="Enter your job title" required>
 										</div>
 									</div>
+									<div class="form-row pt-3 px-3">
+                                        <div class="col-md-12 px-2">
+                                            <label>Document</label>
+                                        </div>
+                                        <div class="col-md-12 px-2">
+                                            <p  style="font-size: 14px">You are required to download the following Employer Partner Agreement template and fill in the required information. Once done, proceed to upload it.</p>
+                                            <a href="<?= base_url('/assets/uploads/employer/Employer_Partner_Agreement_Template_SAMPLE.pdf')?>" download> Employer Partner Agreement Template 2021</a>
+                                        </div>
+                                    </div>
 									<!-- Upload Document -->
-									<div class="form-row pt-3 px-4">
+									<div class="form-row pt-4 px-4">
 										<div class="form-group col-md-12 px-2">
 											<input type="file"  accept=".pdf" class="custom-file-input" id="form-group" name="e_document" required>
 											<label class="custom-file-label" for="customFile">Upload document</label>
