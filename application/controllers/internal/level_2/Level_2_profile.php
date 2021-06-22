@@ -8,6 +8,27 @@ class Level_2_profile extends CI_Controller
     {
         parent::__construct();
         $this->load->model(['user_model', 'user_ac_model', 'user_e_model', 'user_ea_model', 'user_ep_model']);
+
+        // Checks if session is set and if user signed in has a role. If not, deny his/her access.
+        if (!$this->session->userdata('user_id') || !$this->session->userdata('user_role')){  
+            redirect('user/login/Auth/login');
+        }
+
+        // Checks if session is set and if user signed in is an admin or student. Direct them back to their own dashboard.
+        if ($this->session->has_userdata('has_login') && $this->session->userdata('user_role') == "Student" || $this->session->userdata('user_role') == "Admin" ){  
+
+			$users['user_role'] = $this->session->userdata('user_role');
+
+			if($users['user_role']=="Admin")
+			{
+				redirect('internal/admin_panel/Admin_dashboard');
+			}
+			// check user role is  Student
+			else if ($users['user_role']=="Student")
+			{
+				redirect('external/homepage');
+			}
+		}	
     }
 
     public function index()

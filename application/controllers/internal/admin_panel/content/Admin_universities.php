@@ -11,6 +11,42 @@ class Admin_universities extends CI_Controller {
 		$this->load->model('universities_model');
         $this->load->model('courses_model');
 		$this->load->model('rd_projects_model');
+
+        // Checks if session is set and if user signed in has a role. If not, deny his/her access.
+        if (!$this->session->userdata('user_id') || !$this->session->userdata('user_role')){  
+            redirect('user/login/Auth/login');
+        }
+
+        // Checks if session is set and if user signed in is not admin. Direct them back to their own dashboard.
+        if ($this->session->has_userdata('has_login') && $this->session->userdata('user_role') != "Admin"  ){  
+
+			$users['user_role'] = $this->session->userdata('user_role');
+
+			if($users['user_role']=="Student")
+			{
+				redirect('external/homepage');
+			}
+			// check user role is  EA
+			else if ($users['user_role']=="Education Agent")
+			{
+			   redirect('internal/level_2/education_agent/Ea_dashboard');
+			}
+			// check user role is AC
+			else if ($users['user_role']=="Academic Counsellor")
+			{
+			   redirect('internal/level_2/academic_counsellor/Ac_dashboard');
+			}
+			// check user role is E
+			else if ($users['user_role']=="Employer")
+			{
+			   redirect('internal/level_2/employer/Employer_dashboard');
+			}
+			// check user role is  EP
+			else if ($users['user_role']=="Education Partner")
+			{
+			   redirect('internal/level_2/educational_partner/Ep_dashboard');
+			}
+		}
 	}
 
 	public function index()

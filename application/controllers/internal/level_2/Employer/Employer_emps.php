@@ -18,6 +18,37 @@ class Employer_emps extends CI_Controller
         if ($this->session->userdata('has_login') != 0 && $this->session->userdata('user_role') != "Employer"){
             redirect('user/login/Auth/login');
         }
+
+        // Checks if session is set and if user signed in is not employer. Direct them back to their own dashboard.
+        if ($this->session->has_userdata('has_login') && $this->session->userdata('user_role') != "Employer"  ){  
+
+			$users['user_role'] = $this->session->userdata('user_role');
+
+			if($users['user_role']=="Admin")
+			{
+				redirect('internal/admin_panel/Admin_dashboard');
+			}
+			// check user role is  EA
+			else if ($users['user_role']=="Education Agent")
+			{
+			   redirect('internal/level_2/education_agent/Ea_dashboard');
+			}
+			// check user role is AC
+			else if ($users['user_role']=="Academic Counsellor")
+			{
+			   redirect('internal/level_2/academic_counsellor/Ac_dashboard');
+			}
+			// check user role is Student
+			else if ($users['user_role']=="Student")
+			{
+				redirect('external/homepage');
+			}
+			// check user role is  EP
+			else if ($users['user_role']=="Education Partner")
+			{
+			   redirect('internal/level_2/educational_partner/Ep_dashboard');
+			}
+		}	
 	}
 
     public function index()
