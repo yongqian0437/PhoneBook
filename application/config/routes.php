@@ -52,29 +52,3 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
-
-//----EXTERNAL USERS----
-
-//----INTERNAL USERS----
-
-//----ADMIN PANEL----
-
-//Users
-
-//Applications
-
-//Contents
-
-//----LEVEL 2----
-
-//Academic Counsellor
-
-//Education Agent
-
-//Employer
-
-//Education Partner
-
-//----USERS----
-
-

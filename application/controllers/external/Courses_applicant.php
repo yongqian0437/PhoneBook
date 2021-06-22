@@ -44,16 +44,6 @@ class Courses_applicant extends CI_Controller
     public function index()
     {
 
-        $user = array(
-            'user_id' => '1',
-            'user_fname' => 'Wei Cheng',
-            'user_lname' => 'Yeo',
-            'user_email' => 'lol',
-            'user_role' => 'student',
-            'user_approval' => '1'
-        );
-        $this->session->set_userdata($user);
-
         $data['student_data'] = $this->course_applicants_model->find_data_with_id($this->session->userdata('user_id'));
 
         // if($this->session->has_userdata('user_id')){
