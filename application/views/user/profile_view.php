@@ -52,7 +52,7 @@
                     <div class="col-12">
 
                         <!-- Page Heading -->
-                        <div class="d-sm-flex align-items-center justify-content-between mb-5 px-4">
+                        <div class="d-sm-flex align-items-center justify-content-between px-4">
                             <h1 class="h3 mb-0 text-gray-800 pt-4 font-weight-bold">My Profile</h1>
                         </div>
 
@@ -179,7 +179,7 @@
                                                             </div>
                                                         <?php }
                                                     } else { ?>
-                                                        <p>N/A</p> <!-- If no employer projects applied, display N/A -->
+                                                        <p class="mx-auto">No record found</p> <!-- If no employer projects applied, display N/A -->
                                                     <?php } ?>
                                                 </div>
                                             </div>
@@ -230,7 +230,7 @@
                                                             </div>
                                                         <?php }
                                                     } else { ?>
-                                                        <p>N/A</p> <!-- If no employer projects applied, display N/A -->
+                                                        <p class="mx-auto">No record found</p> <!-- If no employer projects applied, display N/A -->
                                                     <?php } ?>
                                                 </div>
                                             </div>
