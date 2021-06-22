@@ -9,10 +9,11 @@ class Employer_dashboard extends CI_Controller
 		$this->load->model(['user_e_model', 'employer_projects_model', 'emp_applicants_model']);
         date_default_timezone_set('Asia/Kuala_Lumpur');
         
-        if ($this->session->userdata('has_login') != 0 && $this->session->userdata('user_role') != "Employer"){
+        // Checks if session is set and if user signed in has a role. If not, deny his/her access.
+        if (!$this->session->userdata('user_id') || !$this->session->userdata('user_role')){  
             redirect('user/login/Auth/login');
         }
-
+        
         // Checks if session is set and if user signed in is not employer. Direct them back to their own dashboard.
         if ($this->session->has_userdata('has_login') && $this->session->userdata('user_role') != "Employer"  ){  
 

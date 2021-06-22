@@ -10,13 +10,10 @@ class Ac_course_applicants extends CI_Controller
         date_default_timezone_set('Asia/Kuala_Lumpur');
 
         // Checks if session is set and if user is signed in as Academic Counsellor (authorised access). If not, deny his/her access.
-        // if (!$this->session->userdata('user_id') || $this->session->userdata('user_role') != "Academic Counsellor"){  
-        //     redirect('user/login/Auth/login');
-        // }
-
-        if ($this->session->userdata('has_login') != 0 && $this->session->userdata('user_role') != "Academic Counsellor") {
+        if (!$this->session->userdata('user_id') || !$this->session->userdata('user_role')){  
             redirect('user/login/Auth/login');
         }
+
         // Checks if session is set and if user signed in is not ac. Direct them back to their own dashboard.
         if ($this->session->has_userdata('has_login') && $this->session->userdata('user_role') != "Academic Counsellor"  ){  
 

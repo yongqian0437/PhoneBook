@@ -10,9 +10,9 @@ class Employer_emp_applicants extends CI_Controller
         date_default_timezone_set('Asia/Kuala_Lumpur');
         
         // Checks if session is set and if user is signed in as Employer (authorised access). If not, deny his/her access.
-        // if (!$this->session->userdata('user_id') || $this->session->userdata('user_role') != "Employer"){  
-        //     redirect('user/login/Auth/login');
-        // }
+        if (!$this->session->userdata('user_id') || !$this->session->userdata('user_role')){  
+            redirect('user/login/Auth/login');
+        }
 
         if ($this->session->userdata('has_login') != 0 && $this->session->userdata('user_role') != "Employer"){
             redirect('user/login/Auth/login');
