@@ -90,8 +90,12 @@ class Admin_courses extends CI_Controller
                     <td>' . $course->course_duration . '</td>
                 </tr>
                 <tr>
-                    <th scope="row">Fee</th>
+                    <th scope="row">Malaysian based Fee (MYR)</th>
                     <td>RM ' . number_format($course->course_fee) . '</td>
+                </tr>
+                <tr>
+                    <th scope="row">International Fee (USD)</th>
+                    <td>$ ' . number_format($course->course_usd_fee) . '</td>
                 </tr>
                 <tr>
                     <th scope="row">Intake</th>

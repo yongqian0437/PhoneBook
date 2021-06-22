@@ -120,7 +120,9 @@
                                                         <!-- Card Content - Collapse -->
                                                         <div class="collapse show" id="collapseCard3">
                                                             <div class="card-body">
-                                                                <p><b>Course Fee:</b> RM<?php echo number_format($courses->course_fee) ?> per year -
+                                                                <p><b>Malaysian based Fee:</b> RM<?php echo number_format($courses->course_fee) ?> -
+                                                                    <?php echo $courses->course_duration ?> year(s) </p>
+                                                                <p><b>International Fee:</b> $<?php echo number_format($courses->course_usd_fee) ?> -
                                                                     <?php echo $courses->course_duration ?> year(s) </p>
                                                                 <p><b>Intake(s):</b> <?php echo $courses->course_intake ?></p>
                                                                 <p><b>Level:</b> <?php echo $courses->course_level ?></p>

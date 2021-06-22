@@ -100,7 +100,8 @@ class Ep_courses extends CI_Controller {
 			'course_area'=>htmlspecialchars($this->input->post('course_area')),
 			'course_level'=>htmlspecialchars($this->input->post('course_level')),
 			'course_duration'=>htmlspecialchars($this->input->post('course_duration')),
-			'course_fee'=>htmlspecialchars($this->input->post('course_fee')),
+			'course_fee'=>$this->input->post('course_fee'),
+            'course_usd_fee'=>$this->input->post('course_usd_fee'),
 			'course_shortprofile'=>htmlspecialchars($this->input->post('course_shortprofile')),
 			'course_structure'=>htmlspecialchars($this->input->post('course_structure')),
             'course_requirements'=>htmlspecialchars($this->input->post('course_requirements')),
@@ -145,7 +146,8 @@ class Ep_courses extends CI_Controller {
 			'course_area'=>htmlspecialchars($this->input->post('course_area')),
 			'course_level'=>htmlspecialchars($this->input->post('course_level')),
 			'course_duration'=>htmlspecialchars($this->input->post('course_duration')),
-			'course_fee'=>htmlspecialchars($this->input->post('course_fee')),
+			'course_fee'=>$this->input->post('course_fee'),
+            'course_usd_fee'=>$this->input->post('course_usd_fee'),
 			'course_shortprofile'=>htmlspecialchars($this->input->post('course_shortprofile')),
             'course_structure'=>htmlspecialchars($this->input->post('course_structure')),
 			'course_requirements'=>htmlspecialchars($this->input->post('course_requirements')),
@@ -186,8 +188,12 @@ class Ep_courses extends CI_Controller {
                     <td>'.$course_detail[0]->course_duration.'</td>
                 </tr>
                 <tr>
-                    <th scope="row">Fee</th>
+                    <th scope="row">Malaysian based Fee (MYR)</th>
                     <td>RM '.number_format($course_detail[0]->course_fee).'</td>
+                </tr>
+                <tr>
+                    <th scope="row">International Fee (USD)</th>
+                    <td>$ '.number_format($course_detail[0]->course_usd_fee).'</td>
                 </tr>
                 <tr>
                     <th scope="row">Intake</th>

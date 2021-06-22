@@ -99,10 +99,16 @@ class Compare extends CI_Controller {
 				<td>'.$course_data3[0]->course_name.'</td>
 			</tr>
 			<tr>
-				<th scope="row">Tuition Fee (RM)</th>
+				<th scope="row">Malaysian based Fee (RM)</th>
 				<td>RM '. number_format($course_data1[0]->course_fee) .'</td>
 				<td>RM '. number_format($course_data2[0]->course_fee).'</td>
 				<td>RM '. number_format($course_data3[0]->course_fee).'</td>
+			</tr>
+			<tr>
+				<th scope="row">International Fee (USD)</th>
+				<td>$ '. number_format($course_data1[0]->course_usd_fee) .'</td>
+				<td>$ '. number_format($course_data2[0]->course_usd_fee).'</td>
+				<td>$ '. number_format($course_data3[0]->course_usd_fee).'</td>
 			</tr>
 			<tr>
 				<th scope="row">Country</th>
@@ -235,9 +241,14 @@ class Compare extends CI_Controller {
 				<td>'.$course_data2[0]->course_name.'</td>
 			</tr>
 			<tr>
-				<th scope="row">Tuition Fee (RM)</th>
+				<th scope="row">Malaysian based Fee (MYR)</th>
 				<td>RM '. number_format($course_data1[0]->course_fee) .'</td>
 				<td>RM '. number_format($course_data2[0]->course_fee).'</td>
+			</tr>
+			<tr>
+				<th scope="row">International Fee (USD)</th>
+				<td>$ '. number_format($course_data1[0]->course_usd_fee) .'</td>
+				<td>$ '. number_format($course_data2[0]->course_usd_fee).'</td>
 			</tr>
 			<tr>
 				<th scope="row">Country</th>

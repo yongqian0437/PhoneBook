@@ -88,15 +88,36 @@ label{
                                         </div>
                                     </div>
 
+                                
                                     <div class="form-row pt-4">
                                         <div class="form-group col-md-6 px-4 pr-5">
-                                            <label for="course_fee">Fee (RM)</label>
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text" id="basic-addon1">RM</span>
-                                                <input type="number" class="form-control" id="course_fee" name = "course_fee" placeholder="Enter fee" required>
-                                            </div>
+                                            <label for="course_intake">Intake</label>
+                                            <textarea type="text" class="form-control" rows="3" id="course_intake" name = "course_intake" placeholder="Enter intake (eg: February, June, July)" required></textarea>
+                                            <div style = "color:red; font-size:0.9em;">*Can enter more than 1 month</div>
                                         </div>
                                         <div class="form-group col-md-6 px-4 pl-5">
+                                            <label for="course_careeropportunities">Career Oppurtunities</label>
+                                            <textarea type="text" class="form-control" rows="3" id="course_careeropportunities" name = "course_careeropportunities" placeholder="Enter career oppurtunities (eg: Scientist, Doctor, Nurse)" required></textarea>
+                                            <div style = "color:red; font-size:0.9em;">*Can enter more than 1 career oppurtunities</div>                                       
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row pt-4">
+                                        <div class="form-group col-md-4 px-4 ">
+                                            <label for="course_fee">Malaysian based Fee (RM)</label>
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon1">RM</span>
+                                                <input type="number" class="form-control" id="course_fee" name = "course_fee" step="0.01" placeholder="Enter malaysian base fee" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-4 px-2 ">
+                                            <label for="course_usd_fee">International Fee (USD)</label>
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon2">$</span>
+                                                <input type="number" class="form-control" id="course_usd_fee" name = "course_usd_fee" step="0.01" placeholder="Enter international fee" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-4 px-4">
                                             <label for="course_country">Country</label>
                                             <select name="course_country" id="course_country" class="form-control form-select" required>
                                                 <option value="" selected disabled>Please select a country</option>
@@ -345,19 +366,6 @@ label{
                                                 <option value="Zambia">Zambia</option>
                                                 <option value="Zimbabwe">Zimbabwe</option>
                                             </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-row pt-4">
-                                        <div class="form-group col-md-6 px-4 pr-5">
-                                            <label for="course_intake">Intake</label>
-                                            <textarea type="text" class="form-control" rows="3" id="course_intake" name = "course_intake" placeholder="Enter intake (eg: February, June, July)" required></textarea>
-                                            <div style = "color:red; font-size:0.9em;">*Can enter more than 1 month</div>
-                                        </div>
-                                        <div class="form-group col-md-6 px-4 pl-5">
-                                            <label for="course_careeropportunities">Career Oppurtunities</label>
-                                            <textarea type="text" class="form-control" rows="3" id="course_careeropportunities" name = "course_careeropportunities" placeholder="Enter career oppurtunities (eg: Scientist, Doctor, Nurse)" required></textarea>
-                                            <div style = "color:red; font-size:0.9em;">*Can enter more than 1 career oppurtunities</div>                                       
                                         </div>
                                     </div>
 

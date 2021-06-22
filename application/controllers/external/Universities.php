@@ -132,11 +132,17 @@ class Universities extends CI_Controller
 				</div>
 				<div class="col-md-1 pt-2" >
 					<center>
-						<div style = "font-size:1.0em; color:black; font-weight:600;">RM ' . number_format($row->course_fee) . '</div>
+						<div style = "font-size:1.0em; color:black; font-weight:600;">MYR RM' . number_format($row->course_fee) . '</div>
 						<div style = "font-size:0.8em; color:grey;">in total</div>
 					</center>
 				</div>
-				<div class="col-md-3 pt-2 pl-5">
+				<div class="col-md-1 pt-2" >
+					<center>
+						<div style = "font-size:1.0em; color:black; font-weight:600;">USD $' . number_format($row->course_usd_fee) . '</div>
+						<div style = "font-size:0.8em; color:grey;">in total</div>
+					</center>
+				</div>
+				<div class="col-md-2 pt-2 pl-5">
 					<a type="button" target="_blank" href = "'.$course_link.'" class="btn btn-sm " style = "background-color:#A4C3B2; color:white; font-size:0.9em;">View</a>
 					'.$apply_button.'
 				</div>
