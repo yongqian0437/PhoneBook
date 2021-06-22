@@ -41,36 +41,35 @@ setTimeout(function() {
                                         <form method="post" action="<?= base_url('internal/level_2/education_agent/ea_course_application/submit_added_course_applicant');?>" enctype="multipart/form-data">
 										<?= form_open_multipart('') ?>
 
-                                        <!--Course Applicant first Name -->
+                                        <!--Student first Name -->
                                         <div class="form-row pt-3 px-3">
 											<div class="form-group col-md-6 px-2">
-												<input type="text" name="c_applicant_fname" class="form-control border-bottom" id="c_applicant_fname" style="border: 0;" placeholder="Enter Course Applicant First Name" required>
+												<input type="text" name="c_applicant_fname" class="form-control border-bottom" id="c_applicant_fname" style="border: 0;" placeholder="Enter Student First Name" required>
 											</div>
                                             <div class="form-group col-md-6 px-2">
-												<input type="text" name="c_applicant_lname" class="form-control border-bottom" id="c_applicant_lname" style="border: 0;" placeholder="Enter Course Applicant Last Name" required>
+												<input type="text" name="c_applicant_lname" class="form-control border-bottom" id="c_applicant_lname" style="border: 0;" placeholder="Enter Student Last Name" required>
 											</div>
 										</div>
 
                                         <!--Phone Number-->
                                         <div class="form-row pt-3 px-3">
 											<div class="form-group col-md-12 px-2">
-												<input type="number" name="c_applicant_phonenumber" class="form-control border-bottom" id="c_applicant_phonenumber" style="border: 0;" placeholder="Enter Course Applicant Phone Number" required>
+												<input type="number" name="c_applicant_phonenumber" class="form-control border-bottom" id="c_applicant_phonenumber" style="border: 0;" placeholder="Enter Student Phone Number" required>
 											</div>
 										</div>
 
                                         <!--Email Address-->
                                         <div class="form-row pt-3 px-3">
 											<div class="form-group col-md-12 px-2">
-												<input type="email" name="c_applicant_email" class="form-control border-bottom" id="c_applicant_email" style="border: 0;" placeholder="Enter Course Applicant Email Address" value="<?=set_value('c_applicant_email')?>" required>
+												<input type="email" name="c_applicant_email" class="form-control border-bottom" id="c_applicant_email" style="border: 0;" placeholder="Enter Student Email Address" required>
 											</div>
-                                            <?= form_error('c_applicant_email','<small class="text-danger pl-3">','</small>');?>
                                         </div>
 
-                                        <!--Course Applicant Nationality -->
+                                        <!--Student Nationality -->
                                         <div class="form-row pt-4 px-3">
                                         <div class="form-group col-md-12 px-2">
                                                 <select name="c_applicant_nationality" id="c_applicant_nationality" class="form-control form-select border-bottom" style="border: 0; "required>
-                                                    <option value="" selected disabled >Please select your nationality</option>
+                                                    <option value="" selected disabled >Please Select Student Nationality</option>
                                                     <option value="Afghanistan">Afghanistan</option>
                                                     <option value="Åland Islands">Åland Islands</option>
                                                     <option value="Albania">Albania</option>
@@ -319,7 +318,7 @@ setTimeout(function() {
                                                 </div>
                                                 </div>
 
-                                        <!--Course Applicant DOB and Gender -->
+                                        <!--Student DOB and Gender -->
                                         <div class="form-row pt-3 px-3">
                                         <div class="form-group col-md-6 px-2">
 											<input type="date" name="c_applicant_dob" class="form-control border-bottom" id="c_applicant_dob" style="border: 0;" required>
@@ -342,7 +341,7 @@ setTimeout(function() {
                                         <div class="form-row pt-3 px-3">
                                             <div class="form-group col-md-12 px-2">
                                                 <select name="c_applicant_currentlevel" id="c_applicant_currentlevel" class="form-control form-select border-bottom" style="border: 0;" required>
-                                                    <option value="" selected disabled>Please select your current level </option>
+                                                    <option value="" selected disabled>Please Select Student Current Level </option>
                                                     <option value="Foundation">Foundation</option>
                                                     <option value="Certificate">Certificate</option>
                                                     <option value="Diploma">Diploma</option>
@@ -359,16 +358,15 @@ setTimeout(function() {
                                         <!--Home Address-->
                                         <div class="form-row pt-3 px-3">
 											<div class="form-group col-md-12 px-2">
-												<input type="text" name="c_applicant_address" class="form-control border-bottom" id="c_applicant_address" style="border: 0;" placeholder="Enter Course Applicant Home Address" required>
+												<input type="text" name="c_applicant_address" class="form-control border-bottom" id="c_applicant_address" style="border: 0;" placeholder="Enter Student Home Address" required>
 											</div>
 										</div>
 
 										<!-- Application Identification -->
 										<div class="form-row pt-3 px-3">
 											<div class="form-group col-md-12 px-2">
-												<input type="text" name="c_applicant_identification" class="form-control border-bottom" id="c_applicant_identification" style="border: 0;" placeholder="Enter Identification Card No. or Passport No." value="<?=set_value('c_applicant_identification')?>" required>
+												<input type="text" name="c_applicant_identification" class="form-control border-bottom" id="c_applicant_identification" style="border: 0;" placeholder="Enter Student Identification Card No. or Passport No." required>
 											</div>
-                                            <?= form_error('c_applicant_identification','<small class="text-danger pl-3">','</small>');?>
 										</div>
 
                                         <!-- UNI INPUT -->
@@ -376,7 +374,7 @@ setTimeout(function() {
                                             <div class="form-group col-md-12 px-2">
                                                 <label for="university1"></label>
                                                 <select name="university1_id" id="university_1" class="form-control form-select form-select-md">
-                                                    <option value="" selected disabled>Please select a university</option>
+                                                    <option value="" selected disabled>Please Select Student University</option>
                                                     <?php
                                                         foreach($university_data as $u) {
                                                             echo '<option value="'.$u->uni_id.'">'.$u->	uni_name.'</option>';
@@ -391,7 +389,7 @@ setTimeout(function() {
                                             <div class="form-group col-md-12 px-2" id="course_class_1">
                                                     <label for="course1"></label>
                                                     <select name="course1_id" id="course_1" class="form-control form-select form-select-md">
-                                                        <option value="" selected disabled>Please select a course</option>
+                                                        <option value="" selected disabled>Please Select Student Course</option>
                                                     </select>
                                             </div> 
                                         </div>   
@@ -400,7 +398,7 @@ setTimeout(function() {
 										<div class="form-row pt-4 px-4">
 											<div class="form-group col-md-12 px-2">
 												<input type="file" class="custom-file-input" id="customFile" name="c_applicant_document" accept="application/pdf" required>
-												<label class="custom-file-label" for="customFile">Upload Document</label>
+												<label class="custom-file-label" for="customFile">Upload Student Document</label>
 												<p style="color:red; font-size: 14px">*Required document: Latest Academic Transcript in .PDF file format</p>
 											</div>
 										</div>

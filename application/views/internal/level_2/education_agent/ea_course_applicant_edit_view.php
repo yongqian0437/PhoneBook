@@ -42,31 +42,31 @@ setTimeout(function() {
                                         <form method="post" action="<?= base_url('internal/level_2/education_agent/ea_course_application/submit_edit_course_applicant/'.$edit_course_applicant['c_applicant_id'])?>" enctype="multipart/form-data">
 										<?= form_open_multipart('') ?>
 
-                                        <!--Course Applicant first Name -->
+                                        <!--Student first Name -->
                                         <div class="form-row pt-3 px-3">
 											<div class="form-group col-md-6 px-2">
-												<input type="text" name="c_applicant_fname" class="form-control border-bottom" id="c_applicant_fname" style="border: 0;" placeholder="Enter Course Applicant First Name" value = "<?=$edit_course_applicant['c_applicant_fname']?>" required>
+												<input type="text" name="c_applicant_fname" class="form-control border-bottom" id="c_applicant_fname" style="border: 0;" placeholder="Enter Student First Name" value = "<?=$edit_course_applicant['c_applicant_fname']?>" required>
 											</div>
                                             <div class="form-group col-md-6 px-2">
-												<input type="text" name="c_applicant_lname" class="form-control border-bottom" id="c_applicant_lname" style="border: 0;" placeholder="Enter Course Applicant Last Name" value = "<?=$edit_course_applicant['c_applicant_lname']?>" required>
+												<input type="text" name="c_applicant_lname" class="form-control border-bottom" id="c_applicant_lname" style="border: 0;" placeholder="Enter Student Last Name" value = "<?=$edit_course_applicant['c_applicant_lname']?>" required>
 											</div>
 										</div>
                                         
                                         <!--Phone Number-->
                                         <div class="form-row pt-3 px-3">
 											<div class="form-group col-md-12 px-2">
-												<input type="number" name="c_applicant_phonenumber" class="form-control border-bottom" id="c_applicant_phonenumber" style="border: 0;" placeholder="Enter Course Applicant Phone Number" value = "<?=$edit_course_applicant['c_applicant_phonenumber']?>" required>
+												<input type="number" name="c_applicant_phonenumber" class="form-control border-bottom" id="c_applicant_phonenumber" style="border: 0;" placeholder="Enter Student Phone Number" value = "<?=$edit_course_applicant['c_applicant_phonenumber']?>" required>
 											</div>
 										</div>
 
                                         <!--Email Address-->
                                         <div class="form-row pt-3 px-3">
 											<div class="form-group col-md-12 px-2">
-												<input type="email" name="c_applicant_email" class="form-control border-bottom" id="c_applicant_email" style="border: 0;" placeholder="Enter Course Applicant Email Address" value = "<?=$edit_course_applicant['c_applicant_email']?>"required>
+												<input type="email" name="c_applicant_email" class="form-control border-bottom" id="c_applicant_email" style="border: 0;" placeholder="Enter Student Email Address" value = "<?=$edit_course_applicant['c_applicant_email']?>"required>
 											</div>
                                         </div>
 
-                                        <!--Course Applicant Nationality -->
+                                        <!--Student Nationality -->
                                         <div class="form-row pt-4 px-3">
                                         <div class="form-group col-md-12 px-2">
                                                 <select name="c_applicant_nationality" id="c_applicant_nationality" class="form-control form-select border-bottom" style="border: 0;" required>
@@ -319,7 +319,7 @@ setTimeout(function() {
                                                 </div>
                                                 </div>
 
-                                        <!--Course Applicant DOB and Gender -->
+                                        <!--Student DOB and Gender -->
                                         <div class="form-row pt-3 px-3">
                                         <div class="form-group col-md-6 px-2">
 											<input type="date" name="c_applicant_dob" class="form-control border-bottom" id="c_applicant_dob" style="border: 0;"  value = "<?=$edit_course_applicant['c_applicant_dob']?>" required>
@@ -371,14 +371,14 @@ setTimeout(function() {
                                         <!--Home Address-->
                                         <div class="form-row pt-3 px-3">
 											<div class="form-group col-md-12 px-2">
-												<input type="text" name="c_applicant_address" class="form-control border-bottom" id="c_applicant_address" style="border: 0;" placeholder="Enter Course Applicant Home Address" value = "<?=$edit_course_applicant['c_applicant_address']?>" required>
+												<input type="text" name="c_applicant_address" class="form-control border-bottom" id="c_applicant_address" style="border: 0;" placeholder="Enter Student Home Address" value = "<?=$edit_course_applicant['c_applicant_address']?>" required>
 											</div>
 										</div>
 
 										<!-- Application Identification -->
 										<div class="form-row pt-3 px-3">
 											<div class="form-group col-md-12 px-2">
-												<input type="text" name="c_applicant_identification" class="form-control border-bottom" id="c_applicant_identification" style="border: 0;" placeholder="Enter Identification Card No. or Passport No." value = "<?=$edit_course_applicant['c_applicant_identification']?>" required>
+												<input type="text" name="c_applicant_identification" class="form-control border-bottom" id="c_applicant_identification" style="border: 0;" placeholder="Enter Student Identification Card No. or Passport No." value = "<?=$edit_course_applicant['c_applicant_identification']?>" required>
 											</div>
 										</div>
 										

@@ -110,13 +110,6 @@ class Ea_course_application extends CI_Controller
         $this->form_validation->set_rules('c_applicant_phonenumber','Phone Number', 'required|trim|min_length[5]',[
             'min_length'=> 'Phone number too short'
         ]);
-        $this->form_validation->set_rules('c_applicant_email','Email', 'required|trim|valid_email|is_unique[course_applicants.c_applicant_email]',[
-            'is_unique'=>'This email has already registered!'
-        ]);
-
-        $this->form_validation->set_rules('c_applicant_identification','Identification', 'required|trim|is_unique[course_applicants.c_applicant_identification]',[
-            'is_unique'=>'This identification has already registered!'
-        ]);
 
         if($this->form_validation->run()== false)
         {
