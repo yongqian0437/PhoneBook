@@ -247,13 +247,13 @@
                                                         <div class="col-8 col-md-6 col-lg-6 mb-2">
                                                             <div class="form-group">
                                                                 <label>Contact Number</label>
-                                                                <input type="number" name="student_contactNoid" class="form-control" id="contactNo" value="<?= $student_data['student_phonenumber'] ?>" placeholder="Enter your contact number">
+                                                                <input type="number" name="student_contactNoid" class="form-control" id="contactNo" value="<?= $student_data['student_phonenumber'] ?>" placeholder="Enter your contact number" required>
                                                             </div>
                                                         </div>
                                                         <div class="col-8 col-md-6 col-lg-6 mb-2">
                                                             <div class="form-group">
                                                                 <label>Country</label>
-                                                                <select name="student_countryid" id="nationality" class="form-control form-select btn-sm">
+                                                                <select name="student_countryid" id="nationality" class="form-control form-select btn-sm" required>
                                                                     <option value="<?= $student_data['student_nationality'] ?>" selected><?= $student_data['student_nationality'] ?></option>
                                                                     <option value="Afghanistan">Afghanistan</option>
                                                                     <option value="Åland Islands">Åland Islands</option>
@@ -505,20 +505,20 @@
                                                         <div class="col-8 col-md-6 col-lg-6 mb-2">
                                                             <div class="form-group">
                                                                 <label>Current Level</label>
-                                                                <input type="text" name="student_levelid" class="form-control" id="contactNo" value="<?= $student_data['student_currentlevel'] ?>" placeholder="E.g., Diploma, Bachelor Degree, etc.">
+                                                                <input type="text" name="student_levelid" class="form-control" id="contactNo" value="<?= $student_data['student_currentlevel'] ?>" placeholder="E.g., Diploma, Bachelor Degree, etc." required>
                                                             </div>
                                                         </div>
                                                         <div class="col-8 col-md-6 col-lg-6 mb-2">
                                                             <div class="form-group">
                                                                 <label>Interest</label>
-                                                                <input type="text" name="student_interestid" class="form-control" id="contactNo" value="<?= $student_data['student_interest'] ?>" placeholder="E.g., IT, Arts, Business, etc.">
+                                                                <input type="text" name="student_interestid" class="form-control" id="contactNo" value="<?= $student_data['student_interest'] ?>" placeholder="E.g., IT, Arts, Business, etc." required>
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <a href="<?= base_url('user/profile'); ?>" class="btn btn-light">
+                                                        Cancel
+                                                    </a>
                                                     <button type="submit" class="btn btn-primary">Save</button>
-
-
-
                                                 </form>
                                             </div>
 

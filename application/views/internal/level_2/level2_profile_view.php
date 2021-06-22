@@ -239,7 +239,7 @@
                                                                                                                                                                                             } else if ($user_role == 'Education Partner') {
                                                                                                                                                                                                 echo $ep_data['ep_businessemail'];
                                                                                                                                                                                             }
-                                                                                                                                                                                            ?>" placeholder="Enter your business email address">
+                                                                                                                                                                                            ?>" placeholder="Enter your business email address" required>
                                                             </div>
                                                         </div>
                                                         <div class="col-8 col-md-6 col-lg-6 mb-2">
@@ -255,10 +255,13 @@
                                                                                                                                                     } else if ($user_role == 'Education Partner') {
                                                                                                                                                         echo $ep_data['ep_phonenumber'];
                                                                                                                                                     }
-                                                                                                                                                    ?>" placeholder="Enter your phone number">
+                                                                                                                                                    ?>" placeholder="Enter your phone number" required>
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <a href="<?= base_url('internal/level_2/level_2_profile'); ?>" class="btn btn-light">
+                                                        Cancel
+                                                    </a>
                                                     <button type="submit" class="btn btn-primary">Save</button>
                                                 </form>
                                             </div>
