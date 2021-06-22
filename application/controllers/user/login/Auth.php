@@ -20,32 +20,32 @@ class Auth extends CI_Controller
 
             if($this->session->userdata('user_role') =="Admin")
             {
-                redirect('internal/admin_panel/Admin_user_acc');
+                redirect('internal/admin_panel/Admin_dashboard');
             }
              // check user role is  EA
-            else if ($this->session->userdata=="Education Agent")
+            else if ($this->session->userdata('user_role')=="Education Agent")
             {
                 redirect('internal/level_2/education_agent/Ea_dashboard');
             }
             // check user role is AC
-            else if ($this->session->userdata=="Academic Counsellor")
+            else if ($this->session->userdata('user_role')=="Academic Counsellor")
             {
                 redirect('internal/level_2/academic_counsellor/Ac_dashboard');
             }
             // check user role is E
-            else if ($this->session->userdata=="Employer")
+            else if ($this->session->userdata('user_role')=="Employer")
             {
                 redirect('internal/level_2/employer/Employer_dashboard');
             }
             // check user role is EP
-            else if ($this->session->userdata=="Education Partner")
+            else if ($this->session->userdata('user_role')=="Education Partner")
             {
                 redirect('internal/level_2/educational_partner/Ep_dashboard');
             }
             // check user role is Student
             else
             {
-                redirect('external/homepage/profile_level_1');
+                redirect('external/homepage/');
             }
         }
 
