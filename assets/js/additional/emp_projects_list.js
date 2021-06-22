@@ -3,26 +3,28 @@ $(function () {
     $('.apply_emp').click(function () {
         var ep_id = $(this).data('id');
         // Ask user for confirmation
-        swal({
+        Swal.fire({
                 title: "Confirm application?",
                 text: "This application will be submitted to the employer.\nUpon reviewal, you will be contacted.",
                 icon: "info",
-                buttons: ['Cancel', 'Confirm']
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Confirm'
             })
             // Send application into db once confirmed
             .then((send_application) => {
-                if (send_application) {
+                if (send_application.isConfirmed) {
                     $.ajax({
                         url: 'Employer_projects/send_emp_application/',
                         type: 'post',
                         data: {ep_id: ep_id},
                         success: function() { 
-                            swal({
-                                title: "Thank you!",
-                                text: "Your application has been submitted.",
-                                icon: "success",
-                            })
-                            .then((send_application) => {
+                            Swal.fire(
+                                'Thank you!',
+                                'Your application has been submitted.',
+                                'success',
+                            ).then((send_application) => {
                                 location.reload();
                             });
                         }

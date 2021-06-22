@@ -1,7 +1,3 @@
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="sweetalert2.min.js"></script>
-<link rel="stylesheet" href="sweetalert2.min.css">
-
 <style>
     #overview_tab,
     #courses_tab,
@@ -40,17 +36,6 @@
 <script type="text/javascript">
     var base_url = "<?php echo base_url(); ?>";
 </script>
-
-<!-- Pop up after user edit profile information-->
-<?php if ($this->session->flashdata('edit_message')) { ?>
-    <script>
-        alert('Your profile has been edited successfully');
-        /* Swal.fire({
-            icon: 'success',
-            text: 'Your profile has been successfully edited'
-        }) */
-    </script>
-<?php } ?>
 
 <!-- Top Navigation -->
 <?php $this->load->view('external/templates/topnav'); ?>
@@ -534,10 +519,8 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <a href="<?= base_url('user/profile'); ?>" class="btn btn-light">
-                                                        Cancel
-                                                    </a>
                                                     <button type="submit" class="btn btn-primary">Save</button>
+                                                    <a href="<?= base_url('user/profile'); ?>" class="btn btn-danger">Cancel</a>
                                                 </form>
                                             </div>
 
@@ -557,7 +540,7 @@
 
 
             <script src="<?php echo base_url() ?>/assets/vendor/jquery/jquery.min.js"></script>
-
+            <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
             <script>
                 $(document).ready(function() {
                     document.getElementById("overview_tab").style.color = "black";
@@ -596,3 +579,14 @@
                     $('#home').show();
                 }
             </script>
+
+            <!-- Pop up after user edit profile information-->
+            <?php if ($this->session->flashdata('edit_message')) { ?>
+                <script>
+                    swal({
+                            title: 'Profile successfully edited!',
+                            icon:  'success',
+                            button: "OK",
+                        });
+                </script>
+            <?php } ?>

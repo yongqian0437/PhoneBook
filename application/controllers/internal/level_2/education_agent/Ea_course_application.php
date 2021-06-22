@@ -257,8 +257,8 @@ class Ea_course_application extends CI_Controller
 
         $this->course_applicants_model->update($data, $c_applicant_id);
        
-        $this->session->set_flashdata('message','<div class="alert alert-success" role="alert" id="alert_message">
-        You have updated successfully</div>');
+        // $this->session->set_flashdata('message','<div class="alert alert-success" role="alert" id="alert_message">
+        // You have updated successfully</div>');
 
         $this->session->set_flashdata('edit_message', 1); 
         $this->session->set_flashdata('c_applicant_fname', $this->input->post('c_applicant_fname')); 

@@ -20,6 +20,32 @@ setTimeout(function() {
     
     <!-- Begin Page Content -->
     <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Add Course Applicant</h1>
+        </div>
+
+        <!-- Breadcrumb -->
+        <div class="row" >
+            <div class="breadcrumb-wrapper col-xl-9">
+                <ol class="breadcrumb" style = "background-color:rgba(0, 0, 0, 0);">
+                    <li class="breadcrumb-item">
+                        <a href="<?= base_url('internal/level_2/education_agent/ea_dashboard'); ?>"><i class="fas fa-tachometer-alt"></i> Home</a>
+                    </li>
+                    <li class="breadcrumb-item">
+                        <a href="<?= base_url('internal/level_2/education_agent/ea_course_application'); ?>"></i>Course Applications</a>
+                    </li>
+                    <li class="breadcrumb-item active">Add Course Applicant</li>
+                </ol>
+            </div>
+            <div class = "col-xl-3">
+                <div class = "d-flex justify-content-end">
+                    <a type="button" href = "<?= base_url('internal/level_2/education_agent/ea_course_application'); ?>" class="btn btn-primary">Back<i class="fas fa-undo pl-1"></i></a>
+                </div>
+            </div>
+        </div>
+
         <!-- Outer Row -->
         <div class="row justify-content-center">
 
@@ -409,7 +435,7 @@ setTimeout(function() {
 												<div class="form-check">
 													<label class="form-check-label">
 														<input type="checkbox" class="form-check-input" required>
-														Please accept our <a href="https://newinti.edu.my/legal/privacy/">terms and conditions</a>
+														Please accept our <a href="https://newinti.edu.my/legal/privacy/" target="_blank">terms and conditions</a>
 													</label>
 												</div>
 												<!-- Submit button -->

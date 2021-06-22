@@ -70,20 +70,20 @@ $(function () {
 		});
 	});
 
-	$('.clear_chat').click(function () { 
-		var receiver_id = $('#receiver_id').val();
-		//alert(receiver_id);
-		$.ajax({
-			//dataType : "json",
-			url: 'Chat/clear_chat?receiver_id=' + receiver_id,
-			success: function (data) {
-				get_chat_history(receiver_id);
-			},
-			error: function (jqXHR, status, err) {
-				// alert('Local error callback');
-			}
-		});
-	});
+	// $('.clear_chat').click(function () { 
+	// 	var receiver_id = $('#receiver_id').val();
+	// 	//alert(receiver_id);
+	// 	$.ajax({
+	// 		//dataType : "json",
+	// 		url: 'Chat/clear_chat?receiver_id=' + receiver_id,
+	// 		success: function (data) {
+	// 			get_chat_history(receiver_id);
+	// 		},
+	// 		error: function (jqXHR, status, err) {
+	// 			// alert('Local error callback');
+	// 		}
+	// 	});
+	// });
 
 });	// end of jquery
 

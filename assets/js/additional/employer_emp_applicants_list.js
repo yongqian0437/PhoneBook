@@ -9,7 +9,11 @@ $(document).ready(function(){
         "columnDefs": [{
             "searchable": false,
             "targets": 0
-        }]
+        },
+        {
+            "width": "18%",
+            "targets": [5]
+        },]
     });
 
     t.on( 'order.dt search.dt', function () {

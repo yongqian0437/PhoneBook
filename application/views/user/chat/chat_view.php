@@ -67,7 +67,7 @@
                     <!-- Card Header -->
                     <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between" style="background-color: #dbe7e4">
                         <h6 class="m-0 font-weight-bold" id="receiver_name" style="color: #595959">Select someone to chat</h6> <!--<php echo $chat_title; ?>-->
-                        <span title="Clear Chat" class="clear_chat"><i class="fas fa-trash"></i></span>
+                        <!-- <span title="Clear Chat" class="clear_chat"><i class="fas fa-trash"></i></span> -->
                     </div>
 
                     <!-- Card Body -->

@@ -11,8 +11,8 @@ class Rd_projects extends CI_Controller
         $this->load->model(['user_ep_model', 'rd_projects_model', 'rd_applicants_model', 'universities_model']);
         date_default_timezone_set('Asia/Kuala_Lumpur');
 
-        // Checks if session is set and if user signed in is an internal user. Direct them back to their own dashboard.
-        if ($this->session->has_userdata('has_login') && $this->session->userdata('user_role') != "Student"  ){  
+        // Checks if session is set and if user signed in is a student or an EP. Otherwise, direct them back to their own dashboard.
+        if ($this->session->has_userdata('has_login') && $this->session->userdata('user_role') != "Student" && $this->session->userdata('user_role') != "Education Partner"){  
 
 			$users['user_role'] = $this->session->userdata('user_role');
 
@@ -34,11 +34,6 @@ class Rd_projects extends CI_Controller
 			else if ($users['user_role']=="Employer")
 			{
 			   redirect('internal/level_2/employer/Employer_dashboard');
-			}
-			// check user role is  EP
-			else if ($users['user_role']=="Education Partner")
-			{
-			   redirect('internal/level_2/educational_partner/Ep_dashboard');
 			}
 		}	
     }

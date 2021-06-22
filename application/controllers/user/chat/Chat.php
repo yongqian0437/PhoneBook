@@ -17,8 +17,8 @@ class Chat extends CI_Controller
             redirect('user/login/Auth/login');
         }
 
-        // Checks if session is set and if user signed in is an internal user. Direct them back to their own dashboard.
-        if ($this->session->has_userdata('has_login') && $this->session->userdata('user_role') != "Student"  ){  
+        // Checks if session is set and if user signed in is a student, EP or AC. Otherwise, direct them back to their own dashboard.
+        if ($this->session->has_userdata('has_login') && $this->session->userdata('user_role') != "Student" && $this->session->userdata('user_role') != "Employer" && $this->session->userdata('user_role') != "Academic Counsellor" ){  
 
 			$users['user_role'] = $this->session->userdata('user_role');
 
@@ -391,23 +391,23 @@ class Chat extends CI_Controller
         <?php endforeach;
     }
 
-    public function clear_chat()
-    {
-        $receiver_id = $this->input->get('receiver_id');
+    // public function clear_chat()
+    // {
+    //     $receiver_id = $this->input->get('receiver_id');
 
-        // Get messages that were sent to the specific receiver
-        $messagelist = $this->chat_model->receiver_message_list($receiver_id) ; // check in model
+    //     // Get messages that were sent to the specific receiver
+    //     $messagelist = $this->chat_model->receiver_message_list($receiver_id) ; // check in model
 
-        foreach ($messagelist as $row) 
-        {
-            if ($row['message'] == 'NULL') 
-            {
-                $attachment_name = unlink('assets/uploads/chat_attachments/' . $row['attachment_name']);
-            }
-        }
+    //     foreach ($messagelist as $row) 
+    //     {
+    //         if ($row['message'] == 'NULL') 
+    //         {
+    //             $attachment_name = unlink('assets/uploads/chat_attachments/' . $row['attachment_name']);
+    //         }
+    //     }
 
-        // Delete the messages sent
-        $this->chat_model->clear_chat_by_id($receiver_id) ; // check in model
-    }
+    //     // Delete the messages sent
+    //     $this->chat_model->clear_chat_by_id($receiver_id) ; // check in model
+    // }
 
 }
