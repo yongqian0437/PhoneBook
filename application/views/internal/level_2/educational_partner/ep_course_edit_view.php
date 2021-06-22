@@ -83,7 +83,7 @@ label{
                                         <div class="form-group col-md-6 px-4 pl-5">
                                             <label for="course_duration">Duration (Year)</label>
                                             <div class="input-group-prepend">
-                                                <input type="text" class="form-control" id="course_duration" name = "course_duration" placeholder="Enter duration (eg: 1, 2.5)" value = "<?=$course_data->course_duration?>" required>
+                                                <input type="number" step="0.01" class="form-control" id="course_duration" name = "course_duration" placeholder="Enter duration (eg: 1, 2.5)" value = "<?=$course_data->course_duration?>" required>
                                                 <span class="input-group-text" id="basic-addon1">year</span>
                                             </div>
                                         </div>
