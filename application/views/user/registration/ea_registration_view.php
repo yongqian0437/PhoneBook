@@ -357,7 +357,7 @@
                                         </div>
                                         <div class="col-md-12 px-2">
                                             <p  style="font-size: 14px">You are required to download the following Agency Agreement template and fill in the required information. Once done, proceed to upload it.</p>
-                                            <a href="<?= base_url('/assets/uploads/education_agents/INTI_Agency_Agreement_Template_SAMPLE.pdf')?>" download>INTI's Agency Agreement Template 2021</a>
+                                            <a href="<?= base_url('/assets/uploads/education_agents/Agency_Agreement_Template_SAMPLE.pdf')?>" download>Agency Agreement Template 2021</a>
                                         </div>
                                     </div>
 									<!-- Upload Document -->
