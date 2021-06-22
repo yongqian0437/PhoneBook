@@ -96,7 +96,7 @@
                                 <div class="about-background-img img-fluid" style="background-image:url('<?php echo base_url('assets/img/about_us/awards_background.jpeg'); ?>');">
                                     <div class="dark-background ">
                                         <h3 data-aos="slide-left" data-aos-duration="2000">iJEES Awards</h3>
-                                        <div class="awards-container mt-5" data-aos="fade-right" data-aos-duration="3000">
+                                        <div class="awards-container mt-5 mx-1" data-aos="fade-right" data-aos-duration="3000">
                                             <div class="card-deck mx-2">
                                                 <div class="card card-awards text-center">
                                                     <div class="card-img-top">
@@ -153,7 +153,7 @@
                                         <h3 data-aos="flip-left" data-aos-duration="3000" style="margin-right:2rem; margin-left:auto; right:1rem;">Contact Us</h3>
 
                                         <div class="row contact-card justify-content-center" style="margin-left: 8rem; margin-right:8rem;">
-                                            <div class="col-auto" data-aos="slide-up" data-aos-duration="1000">
+                                            <div class="col-4" data-aos="slide-up" data-aos-duration="1000">
                                                 <div class=" card card-secondary h-100" style="cursor:pointer; transition:all .5s ease-in-out; width:20rem;">
                                                     <img class="card-img-top" src="<?php echo base_url('assets/img/about_us/email_icon.png') ?>" alt="Card image cap">
                                                     <div class="card-body">
@@ -164,7 +164,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-auto" data-aos="slide-up" data-aos-duration="2000">
+                                            <div class="col-4" data-aos="slide-up" data-aos-duration="2000">
                                                 <div class="card card-secondary h-100" style="cursor:pointer; transition:all .5s ease-in-out; width:20rem;">
                                                     <img class="card-img-top" src="<?php echo base_url('assets/img/about_us/whatsapp_icon.png') ?>" alt="Card image cap">
                                                     <div class="card-body">
@@ -190,7 +190,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-auto" data-aos="slide-up" data-aos-duration="3000">
+                                            <div class="col-4" data-aos="slide-up" data-aos-duration="3000">
                                                 <div class="card card-secondary h-100" style="cursor:pointer; transition:all .5s ease-in-out; width:20rem;">
                                                     <img class="card-img-top" src="<?php echo base_url('assets/img/about_us/chat_icon.jpg') ?>" alt="Card image cap">
                                                     <div class="card-body">
