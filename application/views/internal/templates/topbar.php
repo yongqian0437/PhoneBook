@@ -89,7 +89,7 @@
                         </a>
                         <div class="dropdown-divider"></div>
                     <?php } ?>
-                        <a onclick="logout()" class="dropdown-item">
+                        <a onclick="logout()" style = "cursor: pointer;" class="dropdown-item">
                             <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                             Log Out
                         </a>

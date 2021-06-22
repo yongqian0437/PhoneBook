@@ -109,7 +109,7 @@
                         Profile
                     </a>
                     <div class="dropdown-divider"></div>
-                    <a onclick="logout()" class="dropdown-item" style="color: white;">
+                    <a onclick="logout()" class="dropdown-item" style="color: white; cursor: pointer;">
                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                         Log Out
                     </a>
