@@ -137,7 +137,7 @@
                         <div class="col-12">
                             <div class="card h-100 shadow">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold">Total Active User</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Total Active User</h6>
                                 </div>
                                 <div class="card-body">
                                     <div class="chart-area">
@@ -148,25 +148,25 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="row mb-4">
-                    <div class="col-6">
+                        <div class="col-6">
                             <div class="card h-100 shadow">
                                 <div class="card-header">
-                                    <h6 class="m-0 font-weight-bold">Latest 5 Active Universities (Total: <?= $total_uni ?>)</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Latest 5 Active Universities (Total: <?= $total_uni ?>)</h6>
                                 </div>
                                 <div class="card-body">
                                     <table id="customers">
                                         <tr>
                                             <th>University</th>
-                                            <th>Courses</th>
+                                            <th class="text-center">Courses</th>
                                         </tr>
                                         <?php foreach ($latest_uni as $uni) {
                                             $total_course = $this->courses_model->get_totalcourse_for_uni($uni['uni_id']);
                                         ?>
                                             <tr>
                                                 <td><?= $uni['uni_name'] ?></td>
-                                                <td>
+                                                <td class="text-center">
                                                     <?= $total_course ?>
                                                 </td>
                                             </tr>
@@ -175,7 +175,7 @@
                                 </div>
                             </div>
                         </div>
-                
+
                         <div class="col-6">
                             <div class="card h-100 shadow">
                                 <!-- Card Header - Dropdown -->
@@ -193,7 +193,7 @@
                     </div>
 
                     <div class="row mb-4">
-                    <div class="col-12">
+                        <div class="col-12">
                             <div class="card h-100 shadow">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">Top 3 Universities by Course Applicants</h6>
@@ -295,12 +295,20 @@
                 var myBarChart = new Chart(ctx, {
                     type: 'bar',
                     data: {
-                        labels: [<?php $counter=0; foreach($total_applicants as $row): ?>"<?php if ($counter<4) { echo $row['uni_name']; } $counter++;?>", <?php endforeach; ?>],
+                        labels: [<?php $counter = 0;
+                                    foreach ($total_applicants as $row) : ?> "<?php if ($counter < 4) {
+                                                                                                echo $row['uni_name'];
+                                                                                            }
+                                                                                            $counter++; ?>", <?php endforeach; ?>],
                         datasets: [{
                             label: "Total Course Applicants",
                             backgroundColor: ["#3bceac", "#ff99c8", "#ca7df9", "#758bfd", "#ffc09f"],
                             borderColor: "#4e73df",
-                            data: [<?php  $counter=0; foreach($total_applicants as $row): ?>"<?php if ($counter<4) { echo $row['count(course_applicants.c_applicant_id)']; } $counter++;?>", <?php endforeach; ?>],
+                            data: [<?php $counter = 0;
+                                    foreach ($total_applicants as $row) : ?> "<?php if ($counter < 4) {
+                                                                                                    echo $row['count(course_applicants.c_applicant_id)'];
+                                                                                                }
+                                                                                                $counter++; ?>", <?php endforeach; ?>],
                         }],
                     },
                     options: {

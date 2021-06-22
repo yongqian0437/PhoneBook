@@ -105,6 +105,10 @@ class Level_2_profile extends CI_Controller
             $data['ep_data'] = $this->user_ep_model->update($data, $ep_id['ep_id']);
         }
 
+        $this->session->set_flashdata('edit_message', 1);
+        /* var_dump($this->session->flashdata('edit_message'));
+        die; */
+
         redirect('/internal/level_2/Level_2_profile');
     }
 }

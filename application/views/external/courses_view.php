@@ -142,7 +142,7 @@
 
                         <?php } else { ?>
 
-                            <h3>Records not found</h3>
+                            <h3 class="text-center mt-5">Records not found</h3>
 
                         <?php } ?>
                         <div class="pb-5"></div>

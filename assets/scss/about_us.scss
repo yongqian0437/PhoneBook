@@ -21,11 +21,6 @@
 	padding-right: 7rem;
 }
 
-/* body[data-aos-duration="4000"] [data-aos],
-[data-aos][data-aos][data-aos-duration="4000"] {
-	transition-duration: 4000ms;
-} */
-
 .dark-background {
 	background: rgb(0, 0, 0);
 	background: rgba(0, 0, 0, 0.5);
@@ -35,56 +30,77 @@
 }
 
 .about-card {
-	height: 80vh;
+	//height: 80vh;
+	width: 100%;
+	height: 40rem;
 }
 
 .about-card-center {
-	height: 80vh;
+	//height: 80vh;
+	width: 100;
+	//height: auto;
 }
 
 .about-background-img {
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
-	height: 80vh;
+	height: 40rem;
+}
+
+.card-content1 {
+	text-align: left;
+	position: absolute;
+	bottom: 3rem;
+	justify-content: center;
+}
+
+.card-content2 {
+	text-align: right;
+	position: absolute;
+	right: 0;
+	bottom: 3rem;
+	justify-content: center;
 }
 
 .about-card h3 {
-	font-size: 3rem;
-	bottom: 4em;
-	position: absolute;
+	font-size: 2.5vw;
+	/* bottom: 4em;
+	position: absolute; */
 	font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica",
 		"Arial", sans-serif;
 }
 
 .about-card-center h3 {
-	font-size: 3rem;
+	font-size: 2.5vw;
 	text-align: center;
-	padding-top: 5rem;
+	padding-top: 4.5rem;
 	font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica",
 		"Arial", sans-serif;
 }
 
 .card-p-left {
-	font-size: 1.4rem;
-	justify-content: center;
-	text-align: left;
+	font-size: 1.5vw;
+	//justify-content: center;
+	//text-align: left;
 	margin-left: 7rem;
-	bottom: 3.5rem;
-	position: absolute;
+	margin-top: 1rem;
+	//bottom: 3.5rem;
+	//position: absolute;
 	width: 100vh;
 }
 
 .card-p-right {
-	font-size: 1.4rem;
-	justify-content: center;
-	text-align: right;
+	font-size: 1.5vw;
+
+	//text-align: right;
 	//margin-right: 7rem;
-	bottom: 3.5rem;
+	/* bottom: 3.5rem;
 	right: 7rem;
-	position: absolute;
+	position: absolute; */
 	width: 100vh;
-	//height: 15vh;
+	margin-right: 7rem;
+	margin-top: 1rem;
 }
 
 /* ---------------Contact Us css------------------- */

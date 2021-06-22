@@ -46,7 +46,6 @@ class Profile extends CI_Controller
         $data['title'] = 'iJEES | Profile';
         $user_id = $this->session->userdata('user_id');
 
-
         $user_data = $this->user_model->get_user_data();
         $data['user_data'] = $user_data;
 
@@ -67,13 +66,7 @@ class Profile extends CI_Controller
     public function edit_profile()
     {
         $user_id = $this->session->userdata('user_id');
-
         $student_details = $this->user_student_model->student_details($user_id);
-
-        /* $data = [
-            'user_email' => htmlspecialchars($this->input->post('student_emailid'))
-        ];
-        $data['user_data'] = $this->user_model->update($user_id, $data); */
 
         $data =
             [
@@ -84,6 +77,10 @@ class Profile extends CI_Controller
             ];
 
         $data['student_data'] = $this->user_student_model->update($data, $student_details['student_id']);
+
+        $this->session->set_flashdata('edit_message', 1);
+        /* var_dump($this->session->flashdata('edit_message'));
+        die; */
 
         redirect('user/profile');
     }
