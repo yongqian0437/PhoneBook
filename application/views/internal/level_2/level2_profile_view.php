@@ -1,3 +1,6 @@
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="sweetalert2.min.js"></script>
+<link rel="stylesheet" href="sweetalert2.min.css">
 <style>
     img {
         height: 26vh;
@@ -13,6 +16,22 @@
         color: black;
     }
 </style>
+
+<!-- Set base url to javascript variable-->
+<script type="text/javascript">
+    var base_url = "<?php echo base_url(); ?>";
+</script>
+
+<!-- Pop up after user edit profile information-->
+<?php if ($this->session->flashdata('edit_message')) { ?>
+    <script>
+        alert('Your profile has been edited successfully');
+        /* Swal.fire({
+            icon: 'success',
+            text: 'Your profile has been successfully edited'
+        }) */
+    </script>
+<?php } ?>
 
 <body id="page-top">
 
