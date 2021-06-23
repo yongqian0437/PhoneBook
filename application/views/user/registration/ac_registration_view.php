@@ -371,7 +371,7 @@
 										<div class="form-group col-md-12 px-2">
 											<input type="file" accept=".pdf" class="custom-file-input" id="form-group" name="ac_document" required>
 											<label class="custom-file-label" for="customFile">Upload document</label>	
-											<p style="font-size: 14px">*Required document: Employment Verification Letter in .PDF file format</p>
+											<div style = "color:red; font-size:0.9em;">*Required document: Employment Verification Letter in .PDF file format</div>
 										</div>
 									</div>
 									<!-- Terms & Condition -->
