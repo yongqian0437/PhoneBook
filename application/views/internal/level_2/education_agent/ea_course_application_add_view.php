@@ -352,11 +352,11 @@ setTimeout(function() {
 										<div class="form-holder mb-3 ml-3" style="align-self: flex-end; transform: translateY(4px);">
 											<div class="checkbox-tick">
 												<label class="male ml-3">
-													<input type="radio" name="c_applicant_gender" value="male" required> Male<br>
+													<input type="radio" name="c_applicant_gender" value="Male" required> Male<br>
 													<span class="checkmark"></span>
 												</label>
 												<label class="female ml-5">
-													<input type="radio" name="c_applicant_gender" value="female" required> Female<br>
+													<input type="radio" name="c_applicant_gender" value="Female" required> Female<br>
 													<span class="checkmark"></span>
 												</label>
 											</div>
