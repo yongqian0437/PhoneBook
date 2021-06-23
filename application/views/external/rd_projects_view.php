@@ -65,7 +65,8 @@
                         It is often the first stage in the development process. The goal is typically to take new products and services to market and add to the company's bottom line.
                         R&D represents the activities companies undertake to innovate and introduce new products and services or to improve their existing offerings,
                         allows an organisation to stay ahead of its competition. This allows education partners or educational institutions to collaborate with one another
-                        in there common aim...</p> <!-- Edit description later -->
+                        in there common aim. The term R&D is widely linked to innovation both in the corporate and government world or the public and private sectors. 
+                        Through R&D Project collaboration, institutions may now join forces in discovering a solution to a unified problem.</p> <!-- R&D Description -->
 
                     <div class="px-4 pb-4">
                         <hr style=" width :100%; height:2px; background-color:#EAF4F4">
