@@ -72,9 +72,9 @@ class Compare extends CI_Controller {
 		$uni_data3 = $this->universities_model->get_uni_with_id($this->input->post('uni_id3')); 
 		
 		$base_url = base_url();
-		$logo1 = $base_url.$uni_data1[0]->uni_logo;
-		$logo2 = $base_url.$uni_data2[0]->uni_logo;
-		$logo3 = $base_url.$uni_data3[0]->uni_logo;
+		$logo1 = $base_url."assets/img/universities/".$uni_data1[0]->uni_logo;
+		$logo2 = $base_url."assets/img/universities/".$uni_data2[0]->uni_logo;
+		$logo3 = $base_url."assets/img/universities/".$uni_data3[0]->uni_logo;
 
 		$course_link1 = $base_url."external/Courses/view_course/".$course_data1[0]->course_id;
 		$course_link2 = $base_url."external/Courses/view_course/".$course_data2[0]->course_id;
@@ -229,8 +229,8 @@ class Compare extends CI_Controller {
 		$uni_data2 = $this->universities_model->get_uni_with_id($this->input->post('uni_id2')); 
 		
 		$base_url = base_url();
-		$logo1 = $base_url.$uni_data1[0]->uni_logo;
-		$logo2 = $base_url.$uni_data2[0]->uni_logo;
+		$logo1 = $base_url."assets/img/universities/".$uni_data1[0]->uni_logo;
+		$logo2 = $base_url."assets/img/universities/".$uni_data2[0]->uni_logo;
 
 		$course_link1 = $base_url."external/Courses/view_course/".$course_data1[0]->course_id;
 		$course_link2 = $base_url."external/Courses/view_course/".$course_data2[0]->course_id;
