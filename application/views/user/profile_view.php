@@ -163,7 +163,7 @@
                                                         foreach ($student_course_data as $course_data) { ?>
                                                             <div class="col-8 col-md-4 col-lg-4 mb-2">
                                                                 <hr>
-                                                                <img class="img-fluid img_class" style="height: 9vh; object-fit: contain;" src="<?= base_url("{$course_data['uni_logo']}"); ?>" width="200" ; />
+                                                                <img class="img-fluid img_class" style="height: 9vh; object-fit: contain;" src="<?= base_url("assets/img/universities/").$course_data['uni_logo'];  ?>" width="200" ; />
                                                             </div>
                                                             <div class="col-8 col-md-4 col-lg-4 mb-2">
                                                                 <hr>

@@ -8,6 +8,10 @@
         font-weight: 600;
     }
 
+    .nav-link:hover {
+        color: rgba(255, 237, 109, 1) !important;
+    }
+
     .dropdown-item {
         color: white;
         font-size: 1.0rem;
@@ -15,7 +19,8 @@
     }
 
     .dropdown-item:hover {
-        background: rgba(255, 255, 255, 0.2) !important;
+        background: rgba(255, 255, 255, 0.1) !important;
+        color: rgba(255, 237, 109, 1) !important;
     }
 
     #register_btn:hover {

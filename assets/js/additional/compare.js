@@ -114,7 +114,7 @@ function generateTable() {
             $("#table_view").fadeIn(2000);
         }
         else{
-            swal({
+            swal.fire({
                 title: "Try Again",
                 text: "Please fill in all information.",
                 icon: "error",
@@ -139,7 +139,7 @@ function generateTable() {
             $("#table_view").fadeIn(2000);
         }
         else{
-            swal({
+            swal.fire({
                 title: "Try Again",
                 text: "Please fill in all information.",
                 icon: "error",

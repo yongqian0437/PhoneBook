@@ -174,13 +174,13 @@
                                                     </div>
                                                     <div class="card-footer">
                                                         <div class="row">
-                                                            <a href="https://wa.me/60122106629?text=Hello%20I%20am%20[name]%20from%20[counntry],%20I%20would%20like%20to%20know%20more%20about%20what%20iJEES%20offers.%20" target="_blank" class="btn btn-outline-secondary btn-icon-right">
+                                                            <a href="https://wa.me/60122106629?text=Hello%20I%20am%20[name]%20from%20[country],%20I%20would%20like%20to%20know%20more%20about%20what%20iJEES%20offers.%20" target="_blank" class="btn btn-outline-secondary btn-icon-right">
                                                                 <span style="color:black">MAS
                                                                     <img src="https://static3.avast.com/1/web/i/v2/components/arrow-m-right-orange.png" height="24">
                                                                 </span>
                                                             </a>
 
-                                                            <a href="https://wa.me/5151629?text=Hello%20I%20am%20[name]%20from%20[counntry],%20I%20would%20like%20to%20know%20more%20about%20what%20iJEES%20offers.%20" target="_blank" class="btn btn-outline-secondary btn-icon-right">
+                                                            <a href="https://wa.me/5151629?text=Hello%20I%20am%20[name]%20from%20[country],%20I%20would%20like%20to%20know%20more%20about%20what%20iJEES%20offers.%20" target="_blank" class="btn btn-outline-secondary btn-icon-right">
                                                                 <span style="color:black">INTERNATIONAL
                                                                     <img src="https://static3.avast.com/1/web/i/v2/components/arrow-m-right-orange.png" height="24">
                                                                 </span>
