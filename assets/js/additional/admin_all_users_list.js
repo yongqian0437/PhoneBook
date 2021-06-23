@@ -137,7 +137,7 @@ function activate_user(user_id) {
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, approve it!'
+        confirmButtonText: 'Yes, activate it!'
     }).then((result) => {
         if (result.isConfirmed) {
             $.ajax({
@@ -177,7 +177,7 @@ function deactivate_user(user_id) {
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, approve it!'
+        confirmButtonText: 'Yes, deactivate it!'
     }).then((result) => {
         if (result.isConfirmed) {
             $.ajax({

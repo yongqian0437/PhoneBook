@@ -79,7 +79,7 @@ class Auth extends CI_Controller
             if($users['user_approval']==1)
             {
                 // verify the password
-                if($user_password==$users['user_password'])
+                if(password_verify($user_password,$users['user_password']))
                 {
                     $data=
                     [
@@ -180,7 +180,8 @@ class Auth extends CI_Controller
                     'user_fname'=>htmlspecialchars($this->input->post('user_fname',true)),
                     'user_lname'=>htmlspecialchars($this->input->post('user_lname',true)),
                     'user_email'=>htmlspecialchars($this->input->post('user_email',true)),
-                    'user_password'=>htmlspecialchars($this->input->post('user_password',true)),
+                   // 'user_password'=>htmlspecialchars($this->input->post('user_password',true)),
+                    'user_password'=>password_hash($this->input->post ('user_password'), PASSWORD_DEFAULT),
                     'user_role'=>htmlspecialchars($this->input->post('user_role',true)),
                     'user_approval'=>1,
                 ];
@@ -192,7 +193,8 @@ class Auth extends CI_Controller
                     'user_fname'=>htmlspecialchars($this->input->post('user_fname',true)),
                     'user_lname'=>htmlspecialchars($this->input->post('user_lname',true)),
                     'user_email'=>htmlspecialchars($this->input->post('user_email',true)),
-                    'user_password'=>htmlspecialchars($this->input->post('user_password',true)),
+                    //'user_password'=>htmlspecialchars($this->input->post('user_password',true)),
+                    'user_password'=>password_hash($this->input->post ('user_password'), PASSWORD_DEFAULT),
                     'user_role'=>htmlspecialchars($this->input->post('user_role',true)),
                     'user_approval'=>0,
                 ];
@@ -675,10 +677,9 @@ class Auth extends CI_Controller
         if(count($result)>0)
         {
            $tokan=rand(1000,9999);
-
            $this->user_model->updatepassword($tokan,$user_email);
-           //$this->db->query("update users set user_password='".$tokan."'where user_email='".$user_email."'");
-           $message="Please click on password reset link <br> <a href='".base_url('user/login/Auth/reset?tokan=').$tokan."'>Reset Password</a>";
+           $message="Please click on password reset link <br> <a href='".base_url('user/login/Auth/reset?tokan=').$tokan."'>Reset Password</a><br><br><b>iJEES<br>G3 CAP2100"
+           ."<br>INTI. YOUR FUTURE BUILT TODAY.</b>";
            $this->Email($user_email,'Reset Password Link',$message);
         }
         else
@@ -705,8 +706,8 @@ class Auth extends CI_Controller
         $data=$this->input->post();
         if($data['user_password']==$data['user_password2'])
         {
+            $data['user_password']=password_hash($data['user_password'],PASSWORD_DEFAULT);
             $this->user_model->changepassword($data);
-            //$this->db->query("update users set user_password='".$data['user_password']."'where user_password='".$_SESSION['tokan']."'");
         }
         $this->session->set_flashdata('message','<div class="alert alert-success" role="alert" id="alert_message">
         Your password has changed successfully</div>');

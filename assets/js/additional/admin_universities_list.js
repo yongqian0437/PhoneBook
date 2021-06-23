@@ -1,7 +1,7 @@
-$(document).ready(function(){
+$(document).ready(function () {
     var t = $("#table_admin_all_uni").DataTable({
         //make table responsive
-        "bAutoWidth":false,
+        "bAutoWidth": false,
         ajax: {
             url: base_url + "internal/admin_panel/content/Admin_universities/admin_all_universities_list",
             type: "GET",
@@ -20,15 +20,15 @@ $(document).ready(function(){
         }
         ]
     });
-    t.on( 'order.dt search.dt', function () {
-        t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
-            cell.innerHTML = i+1;
-        } );
-    } ).draw();
+    t.on('order.dt search.dt', function () {
+        t.column(0, { search: 'applied', order: 'applied' }).nodes().each(function (cell, i) {
+            cell.innerHTML = i + 1;
+        });
+    }).draw();
 
     var t2 = $("#table_admin_pending_uni").DataTable({
         //make table responsive
-        "bAutoWidth":false,
+        "bAutoWidth": false,
         ajax: {
             url: base_url + "internal/admin_panel/content/Admin_universities/admin_pending_universities_list",
             type: "GET",
@@ -48,36 +48,35 @@ $(document).ready(function(){
         ]
     });
 
-    t2.on( 'order.dt search.dt', function () {
-        t2.column(1, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
-            cell.innerHTML = i+1;
-        } );
-    } ).draw();
+    t2.on('order.dt search.dt', function () {
+        t2.column(1, { search: 'applied', order: 'applied' }).nodes().each(function (cell, i) {
+            cell.innerHTML = i + 1;
+        });
+    }).draw();
 
-    $('#select_all_uni').click(function() {
+    $('#select_all_uni').click(function () {
         var checked = this.checked;
-        $('input[type="checkbox"]').each(function() {
+        $('input[type="checkbox"]').each(function () {
             this.checked = checked;
         });
     })
 
 }); // end of ready function
 
-function view_admin_university(uni_id){
+function view_admin_university(uni_id) {
 
     $.ajax({
         url: base_url + "internal/admin_panel/content/Admin_universities/view_admin_university",
-        method:"POST",
-        data:{ uni_id:uni_id},
-        success:function(data)
-        {
+        method: "POST",
+        data: { uni_id: uni_id },
+        success: function (data) {
             $('#admin_university_information').html(data);
 
         }
     });
 }
 
-function edit_approval(uni_id){
+function edit_approval(uni_id) {
 
     Swal.fire({
         title: 'Are you sure?',
@@ -86,16 +85,15 @@ function edit_approval(uni_id){
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes'
-      }).then((result) => {
+        confirmButtonText: 'Yes, approve it!'
+    }).then((result) => {
         if (result.isConfirmed) {
 
             $.ajax({
                 url: base_url + "internal/admin_panel/content/Admin_universities/edit_one_approval",
-                method:"POST",
-                data:{ uni_id:uni_id},
-                success:function(data)
-                {
+                method: "POST",
+                data: { uni_id: uni_id },
+                success: function (data) {
 
                     //reload datatable
                     var xin_table = $("#table_admin_all_uni").DataTable();
@@ -105,15 +103,15 @@ function edit_approval(uni_id){
                     xin_table.ajax.reload(null, false);
                 }
             });
-          
+
         }
-      })
+    })
 }
 
 // Approve >1 RD
 function approve_all_uni() {
 
-    if($('input[type=checkbox]').is(':checked')){
+    if ($('input[type=checkbox]').is(':checked')) {
 
         Swal.fire({
             title: 'Are you sure?',
@@ -126,14 +124,14 @@ function approve_all_uni() {
         }).then((result) => {
             if (result.isConfirmed) {
 
-                $('input[type=checkbox]:checked').each(function() {
+                $('input[type=checkbox]:checked').each(function () {
                     //alert("Id: " + $(this).attr("id") + " Value: " + $(this).val());
                     $uni_id = $(this).val();
-            
+
                     $.ajax({
                         url: base_url + "internal/admin_panel/content/Admin_universities/approve_uni",
-                        method:"POST",
-                        data:{ uni_id:$uni_id},
+                        method: "POST",
+                        data: { uni_id: $uni_id },
                     });
                 });
 
@@ -142,11 +140,11 @@ function approve_all_uni() {
                     'Universities have been approved.',
                     'success'
                 )
-                    
+
                 //reload both datatables
                 var xin_table = $("#table_admin_all_uni").DataTable();
                 xin_table.ajax.reload(null, false);
-            
+
                 var xin_table2 = $("#table_admin_pending_uni").DataTable();
                 xin_table2.ajax.reload(null, false);
             }

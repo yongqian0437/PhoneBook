@@ -310,8 +310,8 @@ class Admin_user_acc extends CI_Controller
 
         $users=$this->user_model->search_id($this->input->post('user_id'));
         //$user_email= $this->input->post('user_email');
-        $message="Welcome, "."$users->user_fname ". "$users->user_lname". ". Thank you for registering and being part of iJEES, INTI's Interactive Joint Education Employability System."."<br><br>Congratulations! Your account has been approved and is now activated. <br><br>You may now login to the system at any time. Your credentials are the same as the ones you have provided upon registration:<br><br>".
-        "Email Address: ".$users->user_email."<br> Password: ".$users->user_password;
+        $message="Welcome, "."$users->user_fname ". "$users->user_lname". ". Thank you for registering and being part of iJEES, INTI's Interactive Joint Education Employability System."."<br><br>Congratulations! Your account has been approved and is now activated. <br><br>You may now login to the system at any time. Your credentials are the same as the ones you have provided upon registration.<br><br><b>iJEES<br>G3 CAP2100"
+        ."<br>INTI. YOUR FUTURE BUILT TODAY.</b>";
         $this->Email($users->user_email,$message);
 
     }
