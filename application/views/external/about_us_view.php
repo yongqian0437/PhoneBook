@@ -96,7 +96,7 @@
                                 <div class="about-background-img img-fluid" style="background-image:url('<?php echo base_url('assets/img/about_us/awards_background.jpeg'); ?>');">
                                     <div class="dark-background ">
                                         <h3 data-aos="slide-left" data-aos-duration="2000">iJEES Awards</h3>
-                                        <div class="awards-container mt-5 mx-1" data-aos="fade-right" data-aos-duration="3000">
+                                        <div class="awards-container mt-5" data-aos="fade-right" data-aos-duration="3000">
                                             <div class="card-deck mx-2">
                                                 <div class="card card-awards text-center">
                                                     <div class="card-img-top">

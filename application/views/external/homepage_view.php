@@ -1,4 +1,3 @@
-
 <?php $this->load->view('external/templates/topnav'); ?>
 
 <body id="page-top">
@@ -29,9 +28,9 @@
                                     <h1 class="ml-2 mt-5 pt-5 mr-2" style="font-weight:600; font-size:3.25rem;">Modern Global Education and Employability Plan</h1>
                                     <h1 class="ml-5 mt-4" style="font-weight:400; font-size:1.75rem;">A single point of entry and a global marketplace</h1>
                                     <h1 class="ml-5" style="font-weight:400; font-size:1.75rem;">for education and employability for all</h1>
-                                    <?php if(!$this->session->has_userdata('has_login')){ ?>
-                                    <a href="<?=base_url('user/login/Auth/login');?>" class="btn btn-danger btn-lg ml-3 mt-5" style="border-radius:10px;">SIGN UP AND JOIN US</a>      
-                                    <?php } ?>                         
+                                    <?php if (!$this->session->has_userdata('has_login')) { ?>
+                                        <a href="<?= base_url('user/login/Auth/login'); ?>" class="btn btn-danger btn-lg ml-3 mt-5" style="border-radius:10px;">SIGN UP AND JOIN US</a>
+                                    <?php } ?>
                                 </div>
                             </div>
                             <div class="carousel-item">
@@ -141,7 +140,7 @@
                                 <img class="card-img-top" src="<?php echo base_url('assets/img/Card-secondary/details4.jpg') ?>" alt="Card image cap">
                                 <div class="card-body">
                                     <div class="card-title">Top universities graduate employability ranking</div>
-                                    <p class="card-text">Gain an insight into your chances of getting employed upon graduation.</p>
+                                    <p class="card-text">Gain an insight into your chances of getting employed upon graduation</p>
                                 </div>
                                 <div class="card-footer text-right mr-4">
                                     <a href="https://www.topuniversities.com/university-rankings/employability-rankings/2020" target="_blank" class="btn btn-outline-secondary btn-icon-right">
@@ -215,10 +214,10 @@
                             <div class="col col-image" style="background-image: url('<?php echo base_url('assets/img/Overview/Short2.png'); ?>');">
                                 &nbsp;
                             </div>
-                            <div class="col col-text col-left"> 
+                            <div class="col col-text col-left">
                                 <div class="Aligner-item">
                                     <h1 class="overview">Partners around the world</h1>
-                                    <p class="overview mt-4" style="animation: left_to_right 2s ease; width: 100%;">We have university partners around the world, let us help you find the right one.  
+                                    <p class="overview mt-4" style="animation: left_to_right 2s ease; width: 100%;">We have university partners around the world, let us help you find the right one.
                                     </p>
                                 </div>
                             </div>
