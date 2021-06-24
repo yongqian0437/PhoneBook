@@ -120,6 +120,8 @@
                                                         <!-- Card Content - Collapse -->
                                                         <div class="collapse show" id="collapseCard3">
                                                             <div class="card-body">
+                                                            <div style="font-size:0.9em; color: red; font-weight: 700">Disclaimer</div>
+                                                            <div style="font-size:0.9em;" class="mb-4">Please note that tuition fees may vary depending on the type and amount of courses that a student enrolls in. Tuition is subject to change without notice and annual increases.</div>
                                                                 <p><b>Malaysian based Fee:</b> RM<?php echo number_format($courses->course_fee) ?> -
                                                                     <?php echo $courses->course_duration ?> year(s) </p>
                                                                 <p><b>International Fee:</b> $<?php echo number_format($courses->course_usd_fee) ?> -
