@@ -206,16 +206,16 @@
                                                         <label>
                                                             <?php
                                                             if ($user_role == 'Academic Counsellor') { ?>
-                                                                <a href="<?= base_url('assets/uploads/academic_counsellor/' . $ac_data['ac_document']) ?>" target="_blank"><?= $ac_data['ac_document'] ?></a>
+                                                                <a style="white-space: pre-wrap; word-break: break-word;" href="<?= base_url('assets/uploads/academic_counsellor/' . $ac_data['ac_document']) ?>" target="_blank"><?= $ac_data['ac_document'] ?></a>
                                                             <?php
                                                             } else if ($user_role == 'Employer') { ?>
-                                                                <a href="<?= base_url('assets/uploads/employer/' . $e_data['e_document']) ?>" target="_blank"><?= $e_data['e_document'] ?></a>
+                                                                <a style="white-space: pre-wrap; word-break: break-word;" href="<?= base_url('assets/uploads/employer/' . $e_data['e_document']) ?>" target="_blank"><?= $e_data['e_document'] ?></a>
                                                             <?php
                                                             } else if ($user_role == 'Education Agent') { ?>
-                                                                <a href="<?= base_url('assets/uploads/education_agents/' . $ea_data['ea_document']) ?>" target="_blank"><?= $ea_data['ea_document'] ?></a>
+                                                                <a style="white-space: pre-wrap; word-break: break-word;" href="<?= base_url('assets/uploads/education_agents/' . $ea_data['ea_document']) ?>" target="_blank"><?= $ea_data['ea_document'] ?></a>
                                                             <?php
                                                             } else if ($user_role == 'Education Partner') { ?>
-                                                                <a href="<?= base_url('assets/uploads/education_partner/' . $ep_data['ep_document']) ?>" target="_blank"><?= $ep_data['ep_document'] ?></a>
+                                                                <a style="white-space: pre-wrap; word-break: break-word;" href="<?= base_url('assets/uploads/education_partner/' . $ep_data['ep_document']) ?>" target="_blank"><?= $ep_data['ep_document'] ?></a>
                                                             <?php
                                                             }
                                                             ?>
