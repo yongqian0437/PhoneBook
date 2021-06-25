@@ -208,7 +208,7 @@ class Admin_rd_project extends CI_Controller {
                     <td><a href="'.base_url("assets/uploads/rd_projects/").$rd_detail->rd_document.'" target="_blank">'.$rd_detail->rd_document.'</a></td>
                 </tr>
                 <tr>
-                    <th olspan="2" style = "background-color: white;" scope="row"></th>        
+                    <th colspan="2" style = "background-color: white;" scope="row"></th>        
                 <tr>
                 <tr>
                     <th colspan="2" style = "background-color: #CCE3DE; font-weight:900; font-size:1.1em;" scope="row"><center>EDUCATION PARTNER DETAILS</center></th>

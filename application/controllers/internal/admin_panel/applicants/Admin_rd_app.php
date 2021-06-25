@@ -157,7 +157,7 @@ class Admin_rd_app extends CI_Controller {
                     <td>'.$ep_owner->ep_jobtitle.'</td>
                 </tr>
                 <tr>
-                    <th olspan="2" style = "background-color: white;" scope="row"></th>        
+                    <th colspan="2" style = "background-color: white;" scope="row"></th>        
                 <tr>
                 <tr>
                     <th colspan="2" style = "background-color: #CCE3DE; font-weight:900; font-size:1.1em;" scope="row"><center>COLLABORATOR DETAILS</center></th>
@@ -198,7 +198,7 @@ class Admin_rd_app extends CI_Controller {
                     <td>'.$ep_collab->ep_jobtitle.'</td>
                 </tr>
                 <tr>
-                    <th olspan="2" style = "background-color: white;" scope="row"></th>        
+                    <th colspan="2" style = "background-color: white;" scope="row"></th>        
                 <tr>
                 <tr>
                     <th colspan="2" style = "background-color: #CCE3DE; font-weight:900; font-size:1.1em;" scope="row"><center>R&D PROJECT DETAILS</center></th>        
