@@ -250,7 +250,7 @@
                                                         <div class="col-8 col-md-6 col-lg-6 mb-2">
                                                             <div class="form-group">
                                                                 <label>Phone Number</label>
-                                                                <input type="text" name="phonenumber" class="form-control" id="contactNo" value="<?php
+                                                                <input type="number" name="phonenumber" class="form-control" id="contactNo" value="<?php
                                                                                                                                                     if ($user_role == 'Academic Counsellor') {
                                                                                                                                                         echo $ac_data['ac_phonenumber'];
                                                                                                                                                     } else if ($user_role == 'Employer') {

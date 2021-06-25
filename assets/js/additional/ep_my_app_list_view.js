@@ -61,7 +61,7 @@ function delete_my_application(rd_applicant_id){
                 {
                     Swal.fire(
                         'Deleted!',
-                        'Course has been deleted.',
+                        'Application has been deleted.',
                         'success'
                     )
 
