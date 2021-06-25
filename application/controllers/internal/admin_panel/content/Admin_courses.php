@@ -159,7 +159,6 @@ class Admin_courses extends CI_Controller
                 <tr>
                     <th colspan="2" style = "background-color: #CCE3DE; font-weight:900; font-size:1.1em;" scope="row"><center>UNIVERSITY DETAILS</center></th>
                 </tr>
-                <tr style = "display:none;"><td colspan="2"></td></tr>
                 <tr style="text-align: center">
                     <td colspan="2"><img src="' . base_url("assets/img/universities/") . $course->uni_logo . '" style="width: 250px; height: 100px; object-fit:contain;"></td>
                 </tr> 
