@@ -95,7 +95,6 @@ setTimeout(function() {
                                 </form>
                                 <!-- End of Input fields (Form) -->
                                  <!-- End of Input fields (Form) -->
-                                 <a class="nav-link mt-5" style="text-align:center;" href="<?=base_url("user/login/Auth/login"); ?>">Back to Login</a>
                                    
                             </div>
                         </div>
