@@ -87,7 +87,7 @@
 											<div class="form-group col-md-12 px-2">
 												<input type="file" class="custom-file-input" id="customFile" name="c_applicant_document" accept="application/pdf" required>
 												<label class="custom-file-label" for="customFile">Upload Document</label>
-												<p style="font-size: 14px">*Required document: Latest Academic Transcript in .PDF file format</p>
+												<p style="font-size: 14px; color:red;">*Required document: Latest Academic Transcript in .PDF file format</p>
 											</div>
 										</div>
 

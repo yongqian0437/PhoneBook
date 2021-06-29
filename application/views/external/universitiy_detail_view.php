@@ -217,34 +217,34 @@ th{
                                             </div>
                                             <div class="col-md-2  mx-auto" style ="text-align:center;">
                                                 <div style ="text-align:center; color:black; font-size:2.4em; font-weight:600;"><?php echo $uni_detail->uni_qsrank?></div>
-                                                <div style ="text-align:center; color:black; font-size:1.1em;">World Ranking</div>
+                                                <div style ="text-align:center; color:black; font-size:1.1em;"><?php if($uni_detail->uni_name == "INTI International University"){echo "Malaysia Ranking";}else{echo "World Ranking";}?></div>
                                                 <!-- Star condition for world ranking-->
                                                 <?php if($uni_detail->uni_name == "INTI International University"){?>
                                                     <i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i><i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i><i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i><i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i><i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i>                                               
-                                                <?php } elseif($uni_detail->uni_qsrank <= 5){?>
-                                                    <i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i><i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i><i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i><i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i><i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i>
-                                                <?php } elseif($uni_detail->uni_qsrank <= 10){?>
-                                                    <i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i><i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i><i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i><i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i>
-                                                <?php } elseif($uni_detail->uni_qsrank <= 30){?>
-                                                    <i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i><i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i><i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i>
                                                 <?php } elseif($uni_detail->uni_qsrank <= 50){?>
+                                                    <i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i><i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i><i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i><i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i><i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i>
+                                                <?php } elseif($uni_detail->uni_qsrank <= 150){?>
+                                                    <i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i><i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i><i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i><i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i>
+                                                <?php } elseif($uni_detail->uni_qsrank <= 500){?>
+                                                    <i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i><i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i><i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i>
+                                                <?php } elseif($uni_detail->uni_qsrank <= 1000){?>
                                                     <i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i><i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i>
-                                                <?php } elseif($uni_detail->uni_qsrank > 50){?>
+                                                <?php } elseif($uni_detail->uni_qsrank > 1000){?>
                                                     <i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i>
                                                 <?php }?>
 
                                                 <div class = "pt-5" style ="text-align:center; color:black; font-size:2.4em; font-weight:600;"><?php echo $uni_detail->uni_employabilityrank?></div>
                                                 <div style ="text-align:center; color:black; font-size:1.1em;">Employabilty <br> Ranking</div>
                                                 <!-- Star condition for employability rank-->
-                                                <?php if($uni_detail->uni_employabilityrank <= 5){?>
+                                                <?php if($uni_detail->uni_employabilityrank <= 50){?>
                                                     <i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i><i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i><i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i><i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i><i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i>
-                                                <?php } elseif($uni_detail->uni_employabilityrank <= 10){?>
+                                                <?php } elseif($uni_detail->uni_employabilityrank <= 150){?>
                                                     <i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i><i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i><i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i><i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i>
-                                                <?php } elseif($uni_detail->uni_employabilityrank <= 30){?>
+                                                <?php } elseif($uni_detail->uni_employabilityrank <= 500){?>
                                                     <i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i><i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i><i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i>
-                                                <?php } elseif($uni_detail->uni_employabilityrank <= 50){?>
+                                                <?php } elseif($uni_detail->uni_employabilityrank <= 1000){?>
                                                     <i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i><i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i>
-                                                <?php } elseif($uni_detail->uni_employabilityrank > 50){?>
+                                                <?php } elseif($uni_detail->uni_employabilityrank > 1000){?>
                                                     <i class = "fas fa-star" style = "color:#f2de33; font-size:1.3em;"></i>
                                                 <?php }?>
 
