@@ -196,7 +196,7 @@
                         <div class="col-12">
                             <div class="card h-100 shadow">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Top 3 Universities by Course Applicants</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Top 4 Universities by Course Applicants</h6>
                                 </div>
                                 <div class="card-body">
                                     <div class="chart-bar">
