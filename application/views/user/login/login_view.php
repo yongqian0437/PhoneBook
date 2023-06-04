@@ -1,19 +1,25 @@
 <!-- Jquery plugin -->
 <script src="<?php echo base_url() ?>/assets/vendor/jquery/jquery.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <!-- Set base url to javascript variable-->
 <script type="text/javascript">
     var base_url = "<?php echo base_url(); ?>";
 </script>
 <script>
-//Js to remove alert message after university information is edited
-setTimeout(function() {
-    $('#alert_message').fadeOut();
-}, 5000); // <-- time in milliseconds
+    //Js to remove alert message after university information is edited
+    setTimeout(function() {
+        $('#alert_message').fadeOut();
+    }, 5000); // <-- time in milliseconds
 </script>
 
-<!-- Top Navigation -->
-<?php $this->load->view('external/templates/topnav');?>
+<!-- Check if session is set. If yes, display message-->
+<?php if ($this->session->userdata('add_sale_message')) { ?>
+    <script>
+        sweetalert_message('added');
+    </script>
+<?php }
+$this->session->unset_userdata('add_sale_message'); ?>
 
 <body id="page-top" style='background-color:#f9f6f1;'>
 
@@ -21,7 +27,7 @@ setTimeout(function() {
     <div id="wrapper">
 
         <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column" >
+        <div id="content-wrapper" class="d-flex flex-column">
 
             <!-- Main Content -->
             <div id="content">
@@ -69,21 +75,21 @@ setTimeout(function() {
                                     <center>
                                         <div class="pt-5 px-5" style="font-size:23px; letter-spacing: 8px; color:#787878; font-weight:700;">LOGIN PAGE</div>
                                     </center>
-                                    <?=$this->session->flashdata('message')?> 
+                                    <?= $this->session->flashdata('message') ?>
                                     <!-- Input fields (Form) -->
-                                    <form class="user" method="post" action=" <?=base_url('user/login/Auth/login'); ?>">
+                                    <form class="user" method="post" action=" <?= base_url('user/login/Auth/login'); ?>">
                                         <!-- Email-->
                                         <div class="form-row pt-5 px-3">
                                             <div class="form-group col-md-12 px-2">
-                                                <input type="email" name="user_email" class="form-control border-bottom" id="email" style="border: 0;" placeholder="Enter your email address" value="<?=set_value('user_email');?>" required>
-                                                <?= form_error('user_email','<small class="text-danger pl-3">','</small>');?>
+                                                <input type="email" name="user_email" class="form-control border-bottom" id="email" style="border: 0;" placeholder="Enter your email address" value="<?= set_value('user_email'); ?>" required>
+                                                <?= form_error('user_email', '<small class="text-danger pl-3">', '</small>'); ?>
                                             </div>
                                         </div>
                                         <!-- Password and confirm password -->
                                         <div class="form-row pt-3 pb-3 px-3">
                                             <div class="form-group col-md-12 px-2">
                                                 <input type="password" name="user_password" class="form-control border-bottom" id="password" style="border: 0;" placeholder="Enter your password" required>
-                                                <?= form_error('user_password','<small class="text-danger pl-3">','</small>');?>
+                                                <?= form_error('user_password', '<small class="text-danger pl-3">', '</small>'); ?>
                                             </div>
                                         </div>
                                         <!-- Submit button -->
@@ -95,10 +101,10 @@ setTimeout(function() {
                                     </form>
                                     <!-- End of Input fields (Form) -->
                                     <center>
-                                    <div class="pt-5 pb-3">
-                                        <a class="mt-5" style="text-align:center;" href="<?=base_url("user/login/Auth/forgotPassword"); ?>">Forget your password?</a>
-                                    </div>
-                                        <a class="" style="text-align:center;" href="<?= base_url('user/login/Auth/registration');?>">Register an account</a>
+                                        <div class="pt-5 pb-3">
+                                            <a class="" style="text-align:center;" href="<?= base_url('user/login/Auth/registration'); ?>">Register an account</a>
+                                        </div>
+                                        <a class="mt-5" style="text-align:center;" href="<?= base_url("user/login/Auth/forgotPassword"); ?>">Forget your password?</a>
                                     </center>
                                 </div>
                             </div>
@@ -113,3 +119,15 @@ setTimeout(function() {
                 <!-- /.container-fluid -->
             </div>
             <!-- End of Main Content -->
+            <?php
+if ($this->session->flashdata('register_success')) {
+?>
+    <script>
+        Swal.fire({
+            title: 'Your account has been registered.',
+            icon: 'success',
+        })
+    </script>
+<?php
+}
+?>

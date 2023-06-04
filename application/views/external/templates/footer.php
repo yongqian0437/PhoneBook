@@ -1,11 +1,11 @@
 <!-- Footer -->
-<footer class="sticky-footer">
+<!-- <footer class="sticky-footer">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
                         <span>Copyright &copy; iJEES - Interactive Joint Education Employability System 2021</span>
                     </div>
                 </div>
-</footer>
+</footer> -->
 <!-- End of Footer -->
 
 </div>
