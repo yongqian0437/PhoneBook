@@ -8,7 +8,7 @@
     var value = $('#invite_code').val();
 
     $.ajax({
-        url: '<?php echo base_url("user/login/Auth/check_invite_code_exists"); ?>',
+        url: '<?php echo base_url("user/Auth/check_invite_code_exists"); ?>',
         type: 'POST',
         data: { value: value },
         dataType: 'json',
@@ -83,7 +83,7 @@
                                     <div class="pt-5 px-5" style="font-size:23px; letter-spacing: 8px; color:#787878; font-weight:700;">ROLE REGISTRATION PAGE</div>
                                 </center>
                                 <!-- Input fields (Form) -->
-                                <form class="user" method="post" action="<?= base_url('user/login/Auth/registration'); ?>">
+                                <form class="user" method="post" action="<?= base_url('user/Auth/registration'); ?>">
                                     <!-- First and last name-->
                                     <div class="form-row pt-5 px-3">
                                         <div class="form-group col-md-6 px-2 pr-4">
@@ -166,10 +166,10 @@
                                 <!-- End of Input fields (Form) -->
                                 <center>
                                     <div class="pt-5 pb-4">
-                                        <a style="text-align:center;" href="<?= base_url("user/login/Auth/login"); ?>">Already have an account? Login!</a>
+                                        <a style="text-align:center;" href="<?= base_url("user/Auth/login"); ?>">Already have an account? Login!</a>
                                     </div>
                                     <div class="pb-2">
-                                        <a style="text-align:center;" href="<?= base_url("user/login/Auth/forgotPassword"); ?>">Forget your password?</a>
+                                        <a style="text-align:center;" href="<?= base_url("user/Auth/forgotPassword"); ?>">Forget your password?</a>
                                     </div>
                                 </center>
 

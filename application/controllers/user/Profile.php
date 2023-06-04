@@ -58,9 +58,9 @@ class Profile extends CI_Controller
         $student_course_data = $this->course_applicants_model->get_student_courses($user_id);
         $data['student_course_data'] = $student_course_data;
 
-        $this->load->view('external/templates/header', $data);
+        $this->load->view('external/header', $data);
         $this->load->view('user/profile_view');
-        $this->load->view('external/templates/footer');
+        $this->load->view('external/footer');
     }
 
     public function edit_profile()

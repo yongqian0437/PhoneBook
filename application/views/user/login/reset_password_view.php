@@ -73,7 +73,7 @@ setTimeout(function() {
                                 </center>
                                 <?=$this->session->flashdata('message')?> 
                                 <!-- Input fields (Form) -->
-                                <form class="user" method="post" action=" <?=base_url('user/login/Auth/updatepassword'); ?>">
+                                <form class="user" method="post" action=" <?=base_url('user/Auth/updatepassword'); ?>">
                                     <!-- Password-->
                                     <div class="form-row pt-5 px-3">
                                         <div class="form-group col-md-12 px-2">

@@ -51,9 +51,9 @@ class Compare extends CI_Controller {
 		$data['university_data'] = $this->universities_model->sorted_uni_dropdown(); 
 		$data['include_js'] = 'compare';
 		$data['include_css'] = 'compare';
-		$this->load->view('external/templates/header', $data);
+		$this->load->view('templates/header', $data);
 		$this->load->view('external/compare_view');
-        $this->load->view('external/templates/footer');
+        $this->load->view('templates/footer');
 	}
 
 	function fetch_courses()

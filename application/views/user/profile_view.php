@@ -38,7 +38,7 @@
 </script>
 
 <!-- Top Navigation -->
-<?php $this->load->view('external/templates/topnav'); ?>
+<?php $this->load->view('templates/topnav'); ?>
 
 <body id="page-top">
 
