@@ -1,14 +1,11 @@
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script src="sweetalert2.min.js"></script>
-<link rel="stylesheet" href="sweetalert2.min.css">
 <style>
-    .nav-link {
+    .topnav {
         color: white;
         font-size: 1.1rem;
         font-weight: 600;
     }
 
-    .nav-link:hover {
+    .topnav:hover {
         color: rgba(255, 237, 109, 1) !important;
     }
 
@@ -58,16 +55,16 @@
     <!-- Float left Group -->
     <ul class="navbar-nav mr-auto">
 
-        <li class="nav-item px-2">
-            <a class="nav-link font-weight-bold" href="<?= base_url('reading_corner'); ?>">Reading Corner</a>
+        <li class="nav-item px-3">
+            <a class="nav-link topnav font-weight-bold" href="<?= base_url('reading_corner'); ?>">Reading Corner</a>
         </li>
 
-        <li class="nav-item px-2">
-            <a class="nav-link font-weight-bold" href="<?= base_url('report'); ?>">Report</a>
+        <li class="nav-item px-3">
+            <a class="nav-link topnav font-weight-bold" href="<?= base_url('report'); ?>">Report</a>
         </li>
 
-        <li class="nav-item px-2">
-            <a class="nav-link font-weight-bold" href="<?= base_url('quiz'); ?>">Quiz</a>
+        <li class="nav-item px-3">
+            <a class="nav-link topnav font-weight-bold" href="<?= base_url('quiz'); ?>">Quiz</a>
         </li>
 
 
