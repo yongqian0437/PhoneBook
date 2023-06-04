@@ -1,7 +1,3 @@
-<!-- Jquery plugin -->
-<script src="<?php echo base_url() ?>/assets/vendor/jquery/jquery.min.js"></script>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
 <!-- Set base url to javascript variable-->
 <script type="text/javascript">
     var base_url = "<?php echo base_url(); ?>";
@@ -112,14 +108,14 @@
             </div>
             <!-- End of Main Content -->
             <?php
-if ($this->session->flashdata('register_success')) {
-?>
-    <script>
-        Swal.fire({
-            title: 'Your account has been registered.',
-            icon: 'success',
-        })
-    </script>
-<?php
-}
-?>
+            if ($this->session->flashdata('register_success')) {
+            ?>
+                <script>
+                    Swal.fire({
+                        title: 'Your account has been registered.',
+                        icon: 'success',
+                    })
+                </script>
+            <?php
+            }
+            ?>

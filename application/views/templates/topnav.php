@@ -59,15 +59,15 @@
     <ul class="navbar-nav mr-auto">
 
         <li class="nav-item px-2">
-            <a class="nav-link font-weight-bold" href="">Reading Corner</a>
+            <a class="nav-link font-weight-bold" href="<?= base_url('reading_corner'); ?>">Reading Corner</a>
         </li>
 
         <li class="nav-item px-2">
-            <a class="nav-link font-weight-bold" href="">Report</a>
+            <a class="nav-link font-weight-bold" href="<?= base_url('report'); ?>">Report</a>
         </li>
 
         <li class="nav-item px-2">
-            <a class="nav-link font-weight-bold" href="">Quiz</a>
+            <a class="nav-link font-weight-bold" href="<?= base_url('quiz'); ?>">Quiz</a>
         </li>
 
 

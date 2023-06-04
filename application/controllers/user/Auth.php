@@ -11,13 +11,13 @@ class Auth extends CI_Controller
         $this->load->helper('form');
         $this->load->model(['user_model']);
     }
-    
+
     public function login()
     {
         //Dont allow user to access login page
         if ($this->session->userdata('has_login') ){  
 
-                redirect('external/homepage/');
+                redirect('Reading_corner');
         }
 
         $this->form_validation->set_rules('user_email','Email','trim|required|valid_email');
@@ -26,7 +26,7 @@ class Auth extends CI_Controller
         if($this->form_validation->run() ==false)
         {
             $data['include_css'] = 'forms';
-            $data['title']='iJEES | User Login';
+            $data['title']='Dementia App | Login';
             $this->load->view('templates/header',$data);
             $this->load->view('user/login/login_view');
             $this->load->view('templates/footer');
@@ -58,7 +58,7 @@ class Auth extends CI_Controller
 
             $this->session->set_userdata($data);
 
-            redirect('external/homepage');
+            redirect('Reading_corner');
         }
 
         // if user account does not exist
@@ -86,7 +86,7 @@ class Auth extends CI_Controller
         
         if($this->form_validation->run()== false)
         {
-            $data['title']="iJEES | User Registration";
+            $data['title']="Dementia App | Registration";
             $data['include_css'] = 'forms';
             if($invite_code != 0){
                 $data['invite_code'] = $invite_code;
@@ -178,7 +178,7 @@ class Auth extends CI_Controller
 
     public function forgotPassword()
     {
-        $data['title']='iJEES | Forgot Password';
+        $data['title']='Dementia App | Forgot Password';
         $data['include_css']='forms';
         $this->load->view('templates/header',$data);
         $this->load->view('user/login/forgot_password_view');
@@ -209,7 +209,7 @@ class Auth extends CI_Controller
     public function reset()
     {
         $data['tokan']=$this->input->get('tokan');
-        $data['title']='iJEES | Reset Password';
+        $data['title']='Dementia App | Reset Password';
         $_SESSION['tokan']=$data['tokan'];
         $this->load->view('templates/header',$data);
         $this->load->view('user/login/reset_password_view');
