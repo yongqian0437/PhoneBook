@@ -13,14 +13,6 @@
     }, 5000); // <-- time in milliseconds
 </script>
 
-<!-- Check if session is set. If yes, display message-->
-<?php if ($this->session->userdata('add_sale_message')) { ?>
-    <script>
-        sweetalert_message('added');
-    </script>
-<?php }
-$this->session->unset_userdata('add_sale_message'); ?>
-
 <body id="page-top" style='background-color:#f9f6f1;'>
 
     <!-- Page Wrapper -->
