@@ -17,7 +17,7 @@
 
     .dropdown-item:hover {
         background: rgba(255, 255, 255, 0.1) !important;
-        color: rgba(255, 237, 109, 1) !important;
+        color: white !important;
     }
 
     #register_btn:hover {
@@ -80,12 +80,12 @@
                 </a>
                 <!-- Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" style="background-color: #6B9080;" aria-labelledby="userDropdown">
-                    <a class="dropdown-item" href="<?= base_url('user/profile'); ?>" style="color: white;">
+                    <a class="dropdown-item" href="<?= base_url('user/profile'); ?>" style="color: #DEDEDE;">
                         <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                         Profile
                     </a>
                     <div class="dropdown-divider"></div>
-                    <a onclick="logout()" class="dropdown-item" style="color: white; cursor: pointer;">
+                    <a onclick="logout()" class="dropdown-item" style="color: #DEDEDE; cursor: pointer;">
                         <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                         Log Out
                     </a>

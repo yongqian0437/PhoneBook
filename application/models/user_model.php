@@ -117,4 +117,11 @@ class user_model extends CI_Model
         $this->db->query("update users set user_password='" . $data['user_password'] . "'where user_password='" . $_SESSION['tokan'] . "'");
     }
 
+    public function changepassword_with_id($data)
+    {
+        $this->db->where('user_id', $data['user_id']);
+        $this->db->set('user_password', $data['user_password']);
+        $this->db->update('users');
+    }
+
 }

@@ -13,9 +13,6 @@ setTimeout(function() {
 }, 5000); // <-- time in milliseconds
 </script>
 
-<!-- Top Navigation -->
-<?php $this->load->view('templates/topnav');?>
-
 <body id="page-top" style='background-color:#f9f6f1;'>
 
     <!-- Page Wrapper -->

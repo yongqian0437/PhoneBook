@@ -53,8 +53,6 @@
 <!-- Set base url to javascript variable-->
 <script type="text/javascript">
     var base_url = "<?php echo base_url(); ?>";
-
-
 </script>
 
 <!-- Top Navigation -->
@@ -105,7 +103,7 @@
                                                 <a class="nav-link custom_nav" id="tab3" data-toggle="pill" href="#notification"><i class="fas fa-bell pr-3"></i>Notification</a>
                                             </li>
                                             <li class="nav-item one">
-                                                <a class="nav-link custom_nav" id="tab3" data-toggle="pill" href="#invitefriend"><i class="fas fa-bell pr-3"></i>Invite a friend</a>
+                                                <a class="nav-link custom_nav" id="tab3" data-toggle="pill" href="#invitefriend"><i class="fas fa-share pr-3"></i>Invite a friend</a>
                                             </li>
                                         </ul>
                                         <div style="height:100px"></div>
@@ -114,7 +112,7 @@
                                         <div class="tab-content">
                                             <div class="tab-pane fade show active" id="accounts">
                                                 <h3 class="font-weight-bold">General Info</h3>
-                                                <div class="row pt-4">
+                                                <div class="row pt-5">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
                                                             <label for="user_fname" style="font-weight: 700;">FIRST NAME</label>
@@ -137,12 +135,36 @@
                                                     </div>
                                                 </div>
                                                 <div class="pt-4 ">
-                                                    <button type="button" class="btn btn-success" style="float:right; width:auto;" data-toggle="modal" data-target="#edit_user"><i class="fas fa-pen pr-2"></i>Edit</button>
+                                                    <button type="button" class="btn btn-success" style="float:right; width:auto;" data-toggle="modal" data-target="#edit_user"><i class="fas fa-pen pr-2"></i>Edit Details</button>
                                                 </div>
                                             </div>
                                             <div class="tab-pane fade" id="password">
-                                                <h3 class="font-weight-bold">Password</h3>
-                                                <p>Display profile settings here...</p>
+                                                <h3 class="font-weight-bold">Update Password</h3>
+
+                                                <form method="post" action=" <?= base_url('user/profile/update_password'); ?>">
+                                                    <div class="row pt-5 pb-4">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <label for="old_password" style="font-weight: 700;">OLD PASSWORD</label>
+                                                                <input type="password" class="form-control" id="old_password" name="old_password" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <label for="user_password" style="font-weight: 700;">NEW PASSWORD</label>
+                                                                <input type="password" class="form-control" id="user_password" name="user_password" required>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <label for="confirm_password" style="font-weight: 700;">CONFIRM PASSWORD</label>
+                                                                <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <button type="submit" onclick="update_password(event)" class="btn btn-success" style="float:right; width:auto;"><i class="fas fa-check pr-2"></i>Edit Password</button>
+                                                </form>
+
                                             </div>
                                             <div class="tab-pane fade" id="notification">
                                                 <h3 class="font-weight-bold">Notification</h3>
@@ -214,3 +236,14 @@
                 </script>
             <?php }
             $this->session->unset_userdata('edit_profile_success'); ?>
+
+            <!-- Check if session is set. If yes, display message-->
+            <?php if ($this->session->userdata('edit_password_success')) { ?>
+                <script>
+                    Swal.fire({
+                        icon: 'success',
+                        text: 'Your password has been updated.'
+                    })
+                </script>
+            <?php }
+            $this->session->unset_userdata('edit_password_success'); ?>

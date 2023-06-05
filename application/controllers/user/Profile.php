@@ -32,21 +32,44 @@ class Profile extends CI_Controller
     public function edit_profile()
     {
         $data =
-                [
-                    'user_fname' => $this->input->post('user_fname'),
-                    'user_lname' => $this->input->post('user_lname'),
-                    'user_email' => $this->input->post('user_email'),
-                ];
+            [
+                'user_fname' => $this->input->post('user_fname'),
+                'user_lname' => $this->input->post('user_lname'),
+                'user_email' => $this->input->post('user_email'),
+            ];
 
-        if($this->user_model->update($data, $this->session->userdata('user_id'))){
+        if ($this->user_model->update($data, $this->session->userdata('user_id'))) {
             $response = array('success' => true, 'message' => 'Data updated successfully');
             $this->session->set_userdata('edit_profile_success', 1);
-        }
-        else{
+        } else {
             $response = array('success' => false, 'message' => 'Data updated successfully');
         }
 
         header('Content-Type: application/json');
         echo json_encode($response);
+    }
+
+    public function check_password()
+    {
+        $users = $this->user_model->valid_email($this->session->userdata('user_email'));
+
+        if (password_verify($this->input->post('user_password'), $users['user_password'])) {
+            $response['status'] = 'success';
+        } else {
+            $response['status'] = 'error';
+        }
+        
+        echo json_encode($response);
+    }
+
+    public function update_password()
+    {
+        $data['user_id'] = $this->session->userdata('user_id');
+        $data['user_password']=password_hash($this->input->post('user_password'),PASSWORD_DEFAULT);
+        $this->user_model->changepassword_with_id($data);
+
+        $this->session->set_userdata('edit_password_success', 1);
+
+        redirect('user/profile');
     }
 }

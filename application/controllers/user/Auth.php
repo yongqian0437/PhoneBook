@@ -143,6 +143,7 @@ class Auth extends CI_Controller
         redirect('user/Auth/login'); 
     }
 
+    //Forget password function onwards ------------------------------------------------------------------------
     public function Email($user_email,$link,$message)
     {
         
@@ -150,8 +151,8 @@ class Auth extends CI_Controller
         [
             'protocol'=>'smtp',
             'smtp_host'=>'ssl://smtp.googlemail.com',
-            'smtp_user'=>'g3cap2100@gmail.com',
-            'smtp_pass'=>'ijees2021',
+            'smtp_user'=>'0134396@kdu-online.com',
+            'smtp_pass'=>'dementia123',
             'smtp_port'=>465,
             'mailtype'=>'html',
             'charset'=>'utf-8',
@@ -159,7 +160,7 @@ class Auth extends CI_Controller
         ];
        
         $this->email->initialize($config);
-        $this->email->from('g3cap2100@gmail.com','Capstone Project 2021');
+        $this->email->from('0134396@kdu-online.com','Capstone Project 2021');
         $this->email->to($user_email);
         $this->email->subject($link);
         $this->email->message($message);
@@ -201,7 +202,7 @@ class Auth extends CI_Controller
         else
         {
             $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert" id="alert_message">
-            Email is not registred or activated</div>');
+            Email is not registred</div>');
             redirect('user/Auth/forgotPassword'); 
         }
     }
