@@ -1,12 +1,12 @@
 <style>
     .topnav {
-        color: white;
+        color: #DEDEDE;
         font-size: 1.1rem;
         font-weight: 600;
     }
 
     .topnav:hover {
-        color: rgba(255, 237, 109, 1) !important;
+        color: white !important;
     }
 
     .dropdown-item {
@@ -75,7 +75,7 @@
 
             <li class="nav-item dropdown no-arrow pl-1">
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span class="mr-2 d-none d-lg-inline small pr-2" style="color: white; font-weight:700; font-size:0.9em;"><?php echo $this->session->userdata('user_fname'); ?></span>
+                    <span class="mr-2 d-none d-lg-inline small pr-2" style="color: white; font-weight:700; font-size:1.0em;"><?php echo $this->session->userdata('user_fname'); ?></span>
                     <img class="img-profile rounded-circle" src="<?= base_url('assets/img/chat_user/profile_pic.png'); ?>">
                 </a>
                 <!-- Dropdown - User Information -->
@@ -103,7 +103,7 @@
             text: 'Are you sure you want to Log Out?',
             icon: 'question',
             showCancelButton: true,
-            confirmButtonColor: '#3085d6',
+            confirmButtonColor: '#1cc88a',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Log Out'
         }).then((result) => {

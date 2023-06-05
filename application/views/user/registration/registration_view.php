@@ -4,28 +4,30 @@
     var base_url = "<?php echo base_url(); ?>";
 
     function checkValueExists(event) {
-    event.preventDefault(); 
-    var value = $('#invite_code').val();
+        event.preventDefault();
+        var value = $('#invite_code').val();
 
-    $.ajax({
-        url: '<?php echo base_url("user/Auth/check_invite_code_exists"); ?>',
-        type: 'POST',
-        data: { value: value },
-        dataType: 'json',
-        success: function(response) {
-            if (response.exists) {
-                // Value exists in the database
-                event.target.form.submit();
-            } else {
-                // Value does not exist in the database
-                Swal.fire({
-                    icon: 'warning',
-                    title: 'Invite code does not exist!',
-                })
+        $.ajax({
+            url: '<?php echo base_url("user/Auth/check_invite_code_exists"); ?>',
+            type: 'POST',
+            data: {
+                value: value
+            },
+            dataType: 'json',
+            success: function(response) {
+                if (response.exists) {
+                    // Value exists in the database
+                    event.target.form.submit();
+                } else {
+                    // Value does not exist in the database
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Invite code does not exist!',
+                    })
+                }
             }
-        }
-    });
-}
+        });
+    }
 </script>
 
 
@@ -104,7 +106,7 @@
                                         </div>
                                         <div class="form-group col-md-4 px-2">
                                             <input type="type" name="invite_code" class="form-control border-bottom" id="invite_code" style="border: 0;" placeholder="Invite Code (Optional)" value="<?php if (isset($invite_code)) {
-                                                                                                                                                                                                       echo $invite_code;
+                                                                                                                                                                                                            echo $invite_code;
                                                                                                                                                                                                         } ?>">
                                         </div>
                                     </div>
@@ -159,7 +161,7 @@
                                     </div>
                                     <!-- Submit button -->
                                     <div class="pt-4 pr-4">
-                                        <button type="submit" onclick="checkValueExists(event)" class="btn btn-success" style="float:right; width:auto;">Submit <i class="fas fa-check"></i></button>
+                                        <button type="submit" onclick="checkValueExists(event)" class="btn btn-success" style="float:right; width:auto;"><i class="fas fa-check pr-2"></i>Submit</button>
                                     </div>
                                 </form>
                                 <br><br>
