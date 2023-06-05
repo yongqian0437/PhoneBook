@@ -10,6 +10,7 @@ class Auth extends CI_Controller
         $this->load->library('email');
         $this->load->helper('form');
         $this->load->model(['user_model']);
+        $this->load->model('quiz_model');
     }
 
     public function login()
@@ -112,8 +113,15 @@ class Auth extends CI_Controller
                 'relation' => $this->input->post('relation'),
             ];
 
-            // insert data into database
-            $this->user_model->insert($data);
+            // insert data into database and return new created user id
+            $user_id = $this->user_model->insert($data);
+
+            //Created new column for all 3 quiz table for this new user
+            $new_data['user_id'] = $user_id;
+            $this->quiz_model->insert_quiz_s($new_data);
+            $this->quiz_model->insert_quiz_t($new_data);
+            $this->quiz_model->insert_quiz_d($new_data);
+           
             $this->session->set_flashdata('register_success', true);
             redirect('user/Auth/login'); 
 

@@ -20,7 +20,7 @@ class Profile extends CI_Controller
         $data['title'] = 'Dementia | Profile';
         $user_id = $this->session->userdata('user_id');
 
-        $data['user_data'] = $this->user_model->get_user_details($this->session->userdata('user_id'));;
+        $data['user_data'] = $this->user_model->get_user_details($this->session->userdata('user_id'));
 
         $data['include_js'] = 'profile';
         $this->load->view('templates/header', $data);

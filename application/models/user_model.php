@@ -20,7 +20,7 @@ class user_model extends CI_Model
         $data['invite_code'] = $this->generate_unique_code();
         $this->db->insert('users', $data);
         if ($this->db->affected_rows() > 0) {
-            return true;
+            return $this->db->insert_id();
         } else {
             return false;
         }
