@@ -72,4 +72,22 @@ class Profile extends CI_Controller
 
         redirect('user/profile');
     }
+
+    public function update_notfication_settings()
+    {
+        $data =
+            [
+                'email_notification' => $this->input->post('email_notification'),
+                'notification_time' => $this->input->post('notification_time'),
+            ];
+
+        if ($this->user_model->update($data, $this->session->userdata('user_id'))) {
+            $response = array('success' => true, 'message' => 'Data updated successfully');
+        } else {
+            $response = array('success' => false, 'message' => 'Data updated successfully');
+        }
+
+        header('Content-Type: application/json');
+        echo json_encode($response);
+    }
 }

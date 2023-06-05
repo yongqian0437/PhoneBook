@@ -30,7 +30,7 @@ class user_model extends CI_Model
         $this->load->helper('string');
 
         do {
-            $random_code = random_string('alnum', 8);
+            $random_code = random_string('numeric', 8);
             $code_exists = $this->check_code($random_code);
         } while ($code_exists);
 
