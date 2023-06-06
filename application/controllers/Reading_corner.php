@@ -11,7 +11,7 @@ class Reading_corner extends CI_Controller {
 
 		// If user is not login bring them back to login page
         if (!$this->session->has_userdata('has_login')){  
-            redirect('user/Auth/login');
+            redirect('user/auth/login');
 		}	
 	}
 

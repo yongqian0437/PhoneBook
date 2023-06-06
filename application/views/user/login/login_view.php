@@ -65,7 +65,7 @@
                                     </center>
                                     <?= $this->session->flashdata('message') ?>
                                     <!-- Input fields (Form) -->
-                                    <form class="user" method="post" action=" <?= base_url('user/Auth/login'); ?>">
+                                    <form class="user" method="post" action=" <?= base_url('user/auth/login'); ?>">
                                         <!-- Email-->
                                         <div class="form-row pt-5 px-3">
                                             <div class="form-group col-md-12 px-2">
@@ -90,9 +90,9 @@
                                     <!-- End of Input fields (Form) -->
                                     <center>
                                         <div class="pt-5 pb-3">
-                                            <a class="" style="text-align:center;" href="<?= base_url('user/Auth/registration'); ?>">Register an account</a>
+                                            <a class="" style="text-align:center;" href="<?= base_url('user/auth/registration'); ?>">Register an account</a>
                                         </div>
-                                        <a class="mt-5" style="text-align:center;" href="<?= base_url("user/Auth/forgotPassword"); ?>">Forget your password?</a>
+                                        <a class="mt-5" style="text-align:center;" href="<?= base_url("user/auth/forgotPassword"); ?>">Forget your password?</a>
                                     </center>
                                 </div>
                             </div>

@@ -69,7 +69,7 @@ setTimeout(function() {
                                 </center>
                                 <?=$this->session->flashdata('message')?> 
                                 <!-- Input fields (Form) -->
-                                <form class="user" method="post" action=" <?=base_url('user/Auth/resetlink'); ?>">
+                                <form class="user" method="post" action=" <?=base_url('user/auth/resetlink'); ?>">
                                     <!-- Email-->
                                     <div class="form-row pt-5 px-3">
                                         <div class="form-group col-md-12 px-2">
@@ -87,7 +87,7 @@ setTimeout(function() {
                                 <br><br>
                                  <center>
                                  <div class="pt-5">
-                                    <a style="text-align:center;" href="<?=base_url("user/Auth/login"); ?>">Back to Login</a>
+                                    <a style="text-align:center;" href="<?=base_url("user/auth/login"); ?>">Back to Login</a>
                                  </div>
                                  </center>
                                    

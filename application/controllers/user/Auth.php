@@ -65,7 +65,7 @@ class Auth extends CI_Controller
         else {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert" id="alert_message">
             Incorrect Credentials!</div>');
-            redirect('user/Auth/login');
+            redirect('user/auth/login');
         }
     }
 
@@ -123,7 +123,7 @@ class Auth extends CI_Controller
             $this->quiz_model->insert_quiz_d($new_data);
            
             $this->session->set_flashdata('register_success', true);
-            redirect('user/Auth/login'); 
+            redirect('user/auth/login'); 
 
         }
     }
@@ -148,7 +148,7 @@ class Auth extends CI_Controller
         $this->session->unset_userdata('has_login');
         $this->session->set_flashdata('message','<div class="alert alert-success" role="alert" id="alert_message">
         You have been log out!</div>');
-        redirect('user/Auth/login'); 
+        redirect('user/auth/login'); 
     }
 
     //Forget password function onwards ------------------------------------------------------------------------
@@ -177,7 +177,7 @@ class Auth extends CI_Controller
         {
             $this->session->set_flashdata('message','<div class="alert alert-success" role="alert" id="alert_message">
             Check your email to reset your password</div>');
-            redirect('user/Auth/login');
+            redirect('user/auth/login');
         }
         else
         {
@@ -203,7 +203,7 @@ class Auth extends CI_Controller
         {
            $tokan=rand(1000,9999);
            $this->user_model->updatepassword($tokan,$user_email);
-           $message="Please click on password reset link <br> <a href='".base_url('user/Auth/reset?tokan=').$tokan."'>Reset Password</a><br><br><b>iJEES<br>G3 CAP2100"
+           $message="Please click on password reset link <br> <a href='".base_url('user/auth/reset?tokan=').$tokan."'>Reset Password</a><br><br><b>iJEES<br>G3 CAP2100"
            ."<br>INTI. YOUR FUTURE BUILT TODAY.</b>";
            $this->Email($user_email,'Reset Password Link',$message);
         }
@@ -211,7 +211,7 @@ class Auth extends CI_Controller
         {
             $this->session->set_flashdata('message','<div class="alert alert-danger" role="alert" id="alert_message">
             Email is not registred</div>');
-            redirect('user/Auth/forgotPassword'); 
+            redirect('user/auth/forgotPassword'); 
         }
     }
 
@@ -236,6 +236,6 @@ class Auth extends CI_Controller
         }
         $this->session->set_flashdata('message','<div class="alert alert-success" role="alert" id="alert_message">
         Your password has changed successfully</div>');
-        redirect('user/Auth/login');
+        redirect('user/auth/login');
     }
 }

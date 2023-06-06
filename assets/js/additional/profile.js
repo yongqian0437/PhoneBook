@@ -40,7 +40,7 @@ $(document).ready(function () {
         var button = $('#copy_link');
         var invite_code = button.data('id');
 
-        var linkToCopy = base_url + "user/Auth/registration/" + invite_code; // Replace with your desired link
+        var linkToCopy = base_url + "user/auth/registration/" + invite_code; // Replace with your desired link
         navigator.clipboard.writeText(linkToCopy)
             .then(function () {
 

@@ -47,7 +47,7 @@
 
     <!-- Logo Image-->
     <!-- <nav class="navbar navbar-light bg-light">   -->
-    <a class="navbar-brand py-0 " href="<?php echo base_url('external/homepage'); ?>">
+    <a class="navbar-brand py-0 " href="<?php echo base_url('reading_corner'); ?>">
         <img src="<?php echo base_url('assets/img/iJEES_Logo.png'); ?>" height="100" alt="">
     </a>
     <!-- </nav> -->
@@ -108,7 +108,7 @@
             confirmButtonText: 'Log Out'
         }).then((result) => {
             if (result.isConfirmed) {
-                window.location.href = "<?php echo base_url('user/Auth/logout'); ?>";
+                window.location.href = "<?php echo base_url('user/auth/logout'); ?>";
             }
         })
     }
