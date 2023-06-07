@@ -57,4 +57,14 @@ class quiz_model extends CI_Model
        return $this->db->get('quiz_dealing')->row();
     } 
 
+    public function update_draft($data, $user_id, $database)
+    {
+        $this->db->where('user_id', $user_id);
+        if ($this->db->update($database, $data)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 }
