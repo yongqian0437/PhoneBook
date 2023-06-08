@@ -50,6 +50,9 @@ class Quiz extends CI_Controller
 			redirect('quiz');
 		}
 
+																																						if(){
+
+		}
 
 		$data['title'] = 'Dementia App | Quiz';
 		$data['include_js'] = 'quiz_in_progress';
