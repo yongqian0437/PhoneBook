@@ -24,6 +24,7 @@ class Quiz extends CI_Controller
 		$data['qs_data'] = $this->quiz_model->get_qs_details($this->session->userdata('user_id'));
 		$data['qt_data'] = $this->quiz_model->get_qt_details($this->session->userdata('user_id'));
 		$data['qd_data'] = $this->quiz_model->get_qd_details($this->session->userdata('user_id'));
+		$data['include_js'] = 'quiz';
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('quiz_view.php');
@@ -42,6 +43,10 @@ class Quiz extends CI_Controller
 			$data['quiz_data'] = $this->quiz_model->get_qd_details($this->session->userdata('user_id'));
 			$data['database'] = "quiz_dealing";
 		} else {
+			redirect('quiz');
+		}
+
+		if($data['quiz_data']->status == 3){
 			redirect('quiz');
 		}
 
@@ -74,7 +79,7 @@ class Quiz extends CI_Controller
 		}
 
 		header('Content-Type: application/json');
-        echo json_encode($response);
+		echo json_encode($response);
 	}
 
 	public function completed_quiz()
@@ -87,8 +92,7 @@ class Quiz extends CI_Controller
 		}
 
 		header('Content-Type: application/json');
-        echo json_encode($response);
-
+		echo json_encode($response);
 	}
 
 	public function retake_quiz($database = 0)
@@ -123,12 +127,20 @@ class Quiz extends CI_Controller
 			];
 
 		$this->quiz_model->update_draft($data, $this->session->userdata('user_id'), $database_name);
-		redirect('quiz/take_quiz/'.$database);
-
+		redirect('quiz/take_quiz/' . $database);
 	}
 
 	public function view_result()
 	{
-		# code...
+		$data = $this->quiz_model->get_selected_quiz_details($this->session->userdata('user_id'), $this->input->post('database'));
+
+		// Convert the data to JSON format
+		$json_data = json_encode($data);
+
+		// Set the response content type as JSON
+		$this->output->set_content_type('application/json');
+
+		// Return the JSON response
+		echo $json_data;
 	}
 }

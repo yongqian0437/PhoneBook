@@ -41,21 +41,21 @@ class quiz_model extends CI_Model
 
     public function get_qs_details($user_id)
     {
-       $this->db->where('user_id',$user_id);
-       return $this->db->get('quiz_symptom')->row();
+        $this->db->where('user_id', $user_id);
+        return $this->db->get('quiz_symptom')->row();
     }
-    
+
     public function get_qt_details($user_id)
     {
-       $this->db->where('user_id',$user_id);
-       return $this->db->get('quiz_tips')->row();
-    } 
+        $this->db->where('user_id', $user_id);
+        return $this->db->get('quiz_tips')->row();
+    }
 
     public function get_qd_details($user_id)
     {
-       $this->db->where('user_id',$user_id);
-       return $this->db->get('quiz_dealing')->row();
-    } 
+        $this->db->where('user_id', $user_id);
+        return $this->db->get('quiz_dealing')->row();
+    }
 
     public function update_draft($data, $user_id, $database)
     {
@@ -67,4 +67,9 @@ class quiz_model extends CI_Model
         }
     }
 
+    public function get_selected_quiz_details($user_id, $database)
+    {
+        $this->db->where('user_id', $user_id);
+        return $this->db->get($database)->row();
+    }
 }
