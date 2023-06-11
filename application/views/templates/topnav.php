@@ -40,6 +40,11 @@
         height: 5vh;
         width: 1px;
     }
+
+    .logo-image{
+        width: 60px;
+        height: auto;
+    }
 </style>
 
 <!-- Topbar -->
@@ -48,7 +53,7 @@
     <!-- Logo Image-->
     <!-- <nav class="navbar navbar-light bg-light">   -->
     <a class="navbar-brand py-0 " href="<?php echo base_url('reading_corner'); ?>">
-        <img src="<?php echo base_url('assets/img/iJEES_Logo.png'); ?>" height="100" alt="">
+        <img src="<?php echo base_url('assets/img/mental-health.png'); ?>" height="80" alt="logo" class = "logo-image">
     </a>
     <!-- </nav> -->
 

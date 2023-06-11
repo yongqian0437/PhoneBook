@@ -39,7 +39,20 @@ scroll-behavior: smooth;
               
 
                 </div>
-                <!-- /.container-fluid -->
+                <!-- /.container-fluid --> 
+                <div class = "row">
+                <div class="breadcrumb-wrapper col-xl-8">
+                            <ol class="breadcrumb" style="background-color:rgba(0, 0, 0, 0);">
+                                <li class="breadcrumb-item">
+                                    <a href="<?= base_url('reading_corner'); ?>"><i class="fas fa-tachometer-alt pr-2"></i>Reading Corner</a>
+                                </li>
+                                <li class="breadcrumb-item">
+                                    <a href="<?= base_url('quiz'); ?>">Quiz Report</a>
+                                </li>
+
+                            </ol>
+                        </div>
+                </div>
 
             </div>
             <!-- End of Main Content -->
