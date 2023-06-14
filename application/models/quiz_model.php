@@ -67,6 +67,21 @@ class quiz_model extends CI_Model
         }
     }
 
+    public function update_max_streak($user_id, $streak, $database)
+    {
+        $this->db->where('user_id', $user_id);
+        $this->db->where('max_streak' . '<=', $streak);
+
+        // Set the update data
+        $data = array(
+            'max_streak' => $streak
+        );
+        
+        // Perform the update
+        $this->db->set($data);
+        $this->db->update($database);
+    }
+
     public function get_selected_quiz_details($user_id, $database)
     {
         $this->db->where('user_id', $user_id);

@@ -62,10 +62,11 @@ class Quiz extends CI_Controller
 	//function with ajax
 	public function update_quiz_answer()
 	{
+		$this->quiz_model->update_max_streak($this->session->userdata('user_id'),$this->input->post('current_streak'),$this->input->post('database'));
 		$data =
 			[
 				$this->input->post('col_question_number') => $this->input->post('answer'),
-				'max_streak' => $this->input->post('max_streak'),
+				'current_streak' => $this->input->post('current_streak'),
 				'status' => 2,
 				'progress' => $this->input->post('progress'),
 				'score' => $this->input->post('score'),

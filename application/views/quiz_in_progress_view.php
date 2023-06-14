@@ -2,9 +2,10 @@
     var base_url = "<?php echo base_url(); ?>";
     const database = "<?= $database ?>";
     var progress = <?= $quiz_data->progress ?>;
-    var current_streak = <?= $quiz_data->max_streak ?>;
+    var current_streak = <?= $quiz_data->current_streak ?>;
     var score = <?= $quiz_data->score ?>;
 </script>
+
 
 <!-- Styles-->
 <style>
@@ -78,6 +79,8 @@
 
                 <!-- Begin Page Content -->
                 <div style='background-color:white;' class="container-fluid">
+
+                <div id="spinnerContainer"></div>
 
                     <div class="row justify-content-md-center py-5" id="main_quiz_card">
                         <div class="col-md-8">
@@ -169,7 +172,7 @@
                             <!-- show only after quiz is completed -->
                             <div class="card shadow-lg rounded border-success mb-3"style="max-width: 100%;">
                                 <div class="card-header bg-success text-white">
-                                    Success
+                                    Great Job!
                                 </div>
                                 <div class="card-body text-success text-center">
                                     <h5 class="card-title">Congratulations!</h5>

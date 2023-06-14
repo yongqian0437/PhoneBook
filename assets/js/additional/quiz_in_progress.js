@@ -213,6 +213,7 @@ if (database == "quiz_symptom") {
 
 }
 
+
 $(document).ready(function () {
 
     $("#success_card").hide();
@@ -245,31 +246,32 @@ $(document).ready(function () {
 
 function check_answer_streak(answer) {
 
-    //show correct and wrong answer with green and red color
-
-    // $("#card_body" + correct_answers[progress]).animate({
-    //     backgroundColor: "#28a745"
-    // }, 1000);
-    // for (var i = 1; i < 5; i ++) {
-    //     if (i == correct_answers[progress]){
-    //         $("#card_body" + correct_answers[progress]).animate({
-    //             backgroundColor: "#28a745"
-    //         }, 1000);
-    //     }
-    //     else{
-    //         $("#card_body" + correct_answers[progress]).animate({
-    //             backgroundColor: "#dc3545"
-    //         }, 1000);
-    //     }
-    // }
-
     //check if answr is correct and update streak value
     if (answer == correct_answers[progress]) {
         current_streak++;
         score++;
+        //show correct pop up
+        Swal.fire({
+            icon: 'success',
+            title: 'Correct answer',
+            showCancelButton: false,
+            showConfirmButton: false,
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+        })
     }
     else {
+        //show wrong pop up
+        Swal.fire({
+            icon: 'error',
+            title: 'Incorrect answer',
+            showCancelButton: false,
+            showConfirmButton: false,
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+        })
         current_streak = 0;
+
     }
 
     //get database quiz table column question name
@@ -286,7 +288,7 @@ function check_answer_streak(answer) {
             col_question_number: col_question_number,
             answer: answer,
             progress: progress + 1,
-            max_streak: current_streak,
+            current_streak: current_streak,
             score: score
         },
         dataType: 'json',
@@ -296,6 +298,9 @@ function check_answer_streak(answer) {
                 progress++;
 
                 if (progress == 10) {
+                    setTimeout(function () {
+                        Swal.close();
+                      }, 2000);
                     completed_quiz(score);
                 } else {
                     //fade in fade out
@@ -307,21 +312,16 @@ function check_answer_streak(answer) {
                     $("#progress_bar").css("width", current_streak + "0%");
                     $("#progress_bar").text(current_streak);
                     $(".question-card").fadeIn();
-
-                    // $(".question-card").prop("disabled", true);
-                    // $(".question-card").fadeOut(function () {
-                    //     update_ans_ques(progress);
-                    //     $("#progress_bar").css("width", current_streak + "0%");
-                    //     $("#progress_bar").text(current_streak);
-                    //     $(".question-card").fadeIn(function () {
-                    //         // Enable question card after fadeIn animation
-                    //         $(".question-card").prop("disabled", false);
-                    //     });
-                    // });
+                    setTimeout(function () {
+                        Swal.close();
+                      }, 2000);
                 }
-
+                
             }
             else {
+                setTimeout(function () {
+                    Swal.close();
+                  }, 2000);
                 Swal.fire({
                     icon: 'error',
                     title: 'An error occurred, please select your answer again',
@@ -329,15 +329,15 @@ function check_answer_streak(answer) {
             }
         },
         error: function (xhr, status, error) {
+            setTimeout(function () {
+                Swal.close();
+              }, 2000);
             Swal.fire({
                 icon: 'error',
                 title: 'Update error, please try again',
             })
         }
     });
-
-
-
 }
 
 function completed_quiz(score) {
