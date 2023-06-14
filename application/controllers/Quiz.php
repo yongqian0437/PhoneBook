@@ -49,7 +49,7 @@ class Quiz extends CI_Controller
 		if($data['quiz_data']->status == 3){
 			redirect('quiz');
 		}
-		asdfadsf
+
 
 		$data['title'] = 'Dementia App | Quiz';
 		$data['include_js'] = 'quiz_in_progress';
