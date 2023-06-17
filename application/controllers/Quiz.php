@@ -86,6 +86,8 @@ class Quiz extends CI_Controller
 	public function completed_quiz()
 	{
 		$data['status'] = 3;
+		//update first attempt score
+		$this->quiz_model->first_attempt($this->session->userdata('user_id'),$this->input->post('score'),$this->input->post('database'));
 		if ($this->quiz_model->update_draft($data, $this->session->userdata('user_id'), $this->input->post('database'))) {
 			$response = array('success' => true, 'message' => 'Data updated successfully');
 		} else {

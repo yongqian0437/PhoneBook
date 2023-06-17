@@ -5,28 +5,34 @@
 
     function checkValueExists(event) {
         event.preventDefault();
-        var value = $('#invite_code').val();
+        var value = $('#invite_code').val().trim();
 
-        $.ajax({
-            url: '<?php echo base_url("user/auth/check_invite_code_exists"); ?>',
-            type: 'POST',
-            data: {
-                value: value
-            },
-            dataType: 'json',
-            success: function(response) {
-                if (response.exists) {
-                    // Value exists in the database
-                    event.target.form.submit();
-                } else {
-                    // Value does not exist in the database
-                    Swal.fire({
-                        icon: 'warning',
-                        title: 'Invite code does not exist!',
-                    })
+        if (value !== '') {
+            $.ajax({
+                url: '<?php echo base_url("user/auth/check_invite_code_exists"); ?>',
+                type: 'POST',
+                data: {
+                    value: value
+                },
+                dataType: 'json',
+                success: function(response) {
+                    if (response.exists) {
+                        // Value exists in the database
+                        event.target.form.submit();
+                    } else {
+                        // Value does not exist in the database
+                        Swal.fire({
+                            icon: 'warning',
+                            title: 'Invite code does not exist!',
+                        })
+                    }
                 }
-            }
-        });
+            });
+        }
+        else{
+            event.target.form.submit();
+        }
+
     }
 </script>
 

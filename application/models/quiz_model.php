@@ -87,4 +87,19 @@ class quiz_model extends CI_Model
         $this->db->where('user_id', $user_id);
         return $this->db->get($database)->row();
     }
+
+    public function first_attempt($user_id, $score, $database)
+    {
+        $this->db->where('user_id', $user_id);
+        $this->db->where('first_attempt_score', 0);
+
+        // Set the update data
+        $data = array(
+            'first_attempt_score' => $score
+        );
+        
+        // Perform the update
+        $this->db->set($data);
+        $this->db->update($database);
+    }
 }

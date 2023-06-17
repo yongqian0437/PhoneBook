@@ -347,6 +347,7 @@ function completed_quiz(score) {
         type: 'POST',
         data: {
             database: database,
+            score: score,
         },
         dataType: 'json',
         success: function (response) {
