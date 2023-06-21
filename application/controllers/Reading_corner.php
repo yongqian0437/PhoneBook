@@ -21,9 +21,7 @@ class Reading_corner extends CI_Controller
 	{
 		$data['title'] = 'Dementia App | Reading Corner';
 
-		$data['rs_data'] = $this->reading_corner_model->get_rs_details($this->session->userdata('user_id'));
-		$data['rt_data'] = $this->reading_corner_model->get_rt_details($this->session->userdata('user_id'));
-		$data['rd_data'] = $this->reading_corner_model->get_rd_details($this->session->userdata('user_id'));
+		$data['read_data'] = $this->reading_corner_model->get_reading_details($this->session->userdata('user_id'));
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('reading_corner_view.php');
@@ -33,19 +31,13 @@ class Reading_corner extends CI_Controller
 	public function read($read_num = 0)
 	{
 		if ($read_num == 1) {
-			$data['read_data'] = $this->reading_corner_model->get_rs_details($this->session->userdata('user_id'));
+			$data['read_data'] = $this->reading_corner_model->get_reading_details($this->session->userdata('user_id'));
 			$data['database'] = "read_symptom";
-		} elseif ($read_num == 2) {
-			$data['read_data'] = $this->reading_corner_model->get_rt_details($this->session->userdata('user_id'));
-			$data['database'] = "read_tips";
-		} elseif ($read_num == 3) {
-			$data['read_data'] = $this->reading_corner_model->get_rd_details($this->session->userdata('user_id'));
-			$data['database'] = "read_dealing";
 		} else {
 			redirect('read');
 		}
 
-		if ($data['read_data']->status == 3) {
+		if ($data['read_data']->status == 2) {
 			redirect('read');
 		}
 

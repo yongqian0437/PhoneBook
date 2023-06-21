@@ -54,19 +54,20 @@
                                     </div>
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item">
-                                        <div class="pb-2">Reading Progress: <?php echo ($rs_data->progress / 10) * 100 ?>%</div>
+                                        <div class="pb-2">Reading Progress: <?php echo ($read_data->symptoms / 10) * 100 ?>%</div>
                                             <div class="progress" style="height: 25px;">
-                                                <div class="progress-bar" role="progressbar" style="width: <?php echo ($rs_data->progress / 10) * 100 ?>%; " aria-valuenow="<?= $rs_data->progress ?>" aria-valuemin="0" aria-valuemax="10"><?php echo ($rs_data->progress / 10) * 100 ?>%</div>
+                                                <div class="progress-bar" role="progressbar" style="width: <?php echo ($read_data->symptoms / 10) * 100 ?>%; " aria-valuenow="<?= $read_data->symptoms ?>" aria-valuemin="0" aria-valuemax="10"><?php echo ($read_data->symptoms / 10) * 100 ?>%</div>
+
                                             </div>
                                         </li>
-                                        <?php if ($rs_data->status != 1) { ?>
-                                            <li class="list-group-item">Last Activity: <?= $rs_data->last_update ?></li>
+                                        <?php if ($read_data->status != 0) { ?>
+                                            <li class="list-group-item">Last Activity: <?= $read_data->last_update ?></li>
                                         <?php } ?>
                                     </ul>
                                     <div class="card-body">
-                                        <?php if ($rs_data->status == 1) { ?>
+                                        <?php if ($read_data->status == 0) { ?>
                                             <a href="<?= base_url('reading_corner/read/1'); ?>" class="btn btn-success px-2 py-2" style="width: 100%;"><i class="fas fa-clipboard pr-2"></i>Read</a>
-                                        <?php } elseif ($qs_data->status == 2) { ?>
+                                        <?php } elseif ($read_data->status == 1) { ?>
                                             <a href="<?= base_url('reading_corner/read/1'); ?>" class="btn btn-success px-2 py-2" style="width: 100%;"><i class="fas fa-clipboard pr-2"></i>Continue</a>
                                         <?php } else { ?>
                                             <div class="row">

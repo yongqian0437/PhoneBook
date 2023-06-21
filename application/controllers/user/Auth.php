@@ -11,6 +11,7 @@ class Auth extends CI_Controller
         $this->load->helper('form');
         $this->load->model(['user_model']);
         $this->load->model('quiz_model');
+        $this->load->model('reading_corner_model');
     }
 
     public function login()
@@ -121,7 +122,10 @@ class Auth extends CI_Controller
             $this->quiz_model->insert_quiz_s($new_data);
             $this->quiz_model->insert_quiz_t($new_data);
             $this->quiz_model->insert_quiz_d($new_data);
-           
+
+            //Created new column for reading progress for this new user
+            $this->reading_corner_model->insert_reading($new_data);
+
             $this->session->set_flashdata('register_success', true);
             redirect('user/auth/login'); 
 
