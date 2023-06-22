@@ -1,26 +1,5 @@
 <script type="text/javascript">
     var base_url = "<?php echo base_url(); ?>";
-    const database = "<?= $database ?>";
-    var progress = <?= $quiz_data->progress ?>;
-</script>
-<script>
-    $(document).ready(function() {
-
-        $('#leave_button').click(function() {
-            Swal.fire({
-                text: 'Are you sure you want leave?',
-                icon: 'question',
-                showCancelButton: true,
-                confirmButtonColor: '#1cc88a',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.href = base_url + "reading_corner";
-                }
-            })
-        });
-    });
 </script>
 
 <!-- Styles-->
@@ -103,29 +82,39 @@
                                 <div class="card-header">
 
                                     <div class="row">
-                                        <div class="col-md-5">
+                                        <div class="col-md-9">
                                             <div class="d-flex align-items-center">
+                                                <label class="mr-2 pt-2" style="font-size: 1.2rem;"></i>Understanding Dementia Symptoms</label>
                                             </div>
                                         </div>
-                                        <div class="col-md-4 text-right">
-                                        </div>
-                                        <div class="col-md-2 text-right">
+                                        <div class="col-md-3 text-right">
                                             <a id="leave_button" class="btn btn-danger"><i class="fas fa-arrow-left pr-2"></i>Leave</a>
                                         </div>
                                     </div>
 
                                 </div>
-                                <div class="card-body question_card_body text-center" style="height: 200px;">
-                                    <h3 class="card-title  px-5" id="symptoms">Symptoms</h3>
+                                <div class="card-body question_card_body text-center" style="height: 100px;">
+                                    <h3 class="card-title  px-5" id="topic">Topic</h3>
+                                </div>
+                                <div class="card-body question_card_body text-center" style="height: 150px;">
+                                    <h5 class="card-title  px-5" id="explaination">Explaination</h5>
+                                </div>
+                                <div class="card-header">
+
+                                    <div class="row">
+                                        <div class="col-md-9 text-left">
+                                            <button id="previous_button" class="btn btn-danger"><i class="fas fa-arrow-left pr-2"></i>Previous</a>
+                                        </div>
+                                        <div class="col-md-3 text-right">
+                                            <button id="next_button" class="btn btn-danger"><i class="fas fa-arrow-right pr-2"></i>Next</button>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
 
                         </div>
                     </div>
-
-
-
-
 
                 </div>
                 <!-- /.container-fluid -->

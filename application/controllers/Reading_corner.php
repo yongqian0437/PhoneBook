@@ -23,6 +23,7 @@ class Reading_corner extends CI_Controller
 
 		$data['read_data'] = $this->reading_corner_model->get_reading_details($this->session->userdata('user_id'));
 
+		$data['include_js'] = 'read_in_progress';
 		$this->load->view('templates/header', $data);
 		$this->load->view('reading_corner_view.php');
 		$this->load->view('templates/footer');
@@ -32,33 +33,22 @@ class Reading_corner extends CI_Controller
 	{
 		if ($read_num == 1) {
 			$data['read_data'] = $this->reading_corner_model->get_reading_details($this->session->userdata('user_id'));
-			$data['database'] = "read_symptom";
+			$data['database'] = "reading_progress";
+		} elseif ($read_num == 2) {
+			$data['read_data'] = $this->reading_corner_model->get_reading_details($this->session->userdata('user_id'));
+			$data['database'] = "reading_progress";
+		} elseif ($read_num == 3) {
+			$data['read_data'] = $this->reading_corner_model->get_reading_details($this->session->userdata('user_id'));
+			$data['database'] = "reading_progress";
 		} else {
-			redirect('read');
+			redirect('reading_corner');
 		}
 
-		if ($data['read_data']->status == 2) {
-			redirect('read');
-		}
-
-
-		$data['title'] = 'Dementia App | Reading Model';
+		$data['title'] = 'Dementia App | Reading Corner';
+		$data['include_js'] = 'read_in_progress';
 
 		$this->load->view('templates/header', $data);
 		$this->load->view('read_in_progress_view.php');
 		$this->load->view('templates/footer');
-	}
-
-	public function completed_quiz()
-	{
-		$data['status'] = 3;
-		if ($this->reading_corner_model->update_draft($data, $this->session->userdata('user_id'), $this->input->post('database'))) {
-			$response = array('success' => true, 'message' => 'Data updated successfully');
-		} else {
-			$response = array('success' => false, 'message' => 'Data updated successfully');
-		}
-
-		header('Content-Type: application/json');
-		echo json_encode($response);
 	}
 }
