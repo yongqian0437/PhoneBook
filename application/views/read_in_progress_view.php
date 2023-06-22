@@ -94,9 +94,9 @@
 
                                 </div>
                                 <div class="card-body question_card_body text-center" style="height: 100px;">
-                                    <h3 class="card-title  px-5" id="topic">Topic</h3>
+                                    <h4 class="card-title  px-5" id="topic">Topic</h4>
                                 </div>
-                                <div class="card-body question_card_body text-center" style="height: 150px;">
+                                <div class="card-body question_card_body text-center" style="height: 100px;">
                                     <h5 class="card-title  px-5" id="explaination">Explaination</h5>
                                 </div>
                                 <div class="card-header">
