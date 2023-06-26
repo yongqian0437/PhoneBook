@@ -33,6 +33,7 @@ class Report extends CI_Controller
 			array('2018', 100),
 			array('2019', 250),
 			array('2020', 400),
+
 			array('2021', 600)
 		);
 
