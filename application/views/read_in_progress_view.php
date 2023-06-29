@@ -93,11 +93,11 @@
                                     </div>
 
                                 </div>
-                                <div class="card-body question_card_body text-center" style="height: 100px;">
-                                    <h4 class="card-title  px-5" id="topic">Topic</h4>
+                                <div class="card-body question_card_body text-left" style="height: 100px;">
+                                    <h4 class="card-title  px-5" id="contents">Content</h4>
                                 </div>
-                                <div class="card-body question_card_body text-center" style="height: 100px;">
-                                    <h5 class="card-title  px-5" id="explaination">Explaination</h5>
+                                <div class="card-body question_card_body text-left" style="height: 100px;">
+                                    <h5 class="card-title  px-5" id="explanations">Explanations</h5>
                                 </div>
                                 <div class="card-header">
 
