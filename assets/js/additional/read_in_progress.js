@@ -102,12 +102,29 @@ $(document).ready(function () {
 
 	// Function to save the progress to the database
 	function saveProgress() {
+		var currentProgress = currentIndex + 1;
+		// Retrieve the saved progress from the database
 		$.ajax({
-			url: base_url + "reading_corner/save_progress",
-			type: "POST",
-			data: { progress: currentIndex + 1, stat: 1 },
+			url: base_url + "reading_corner/get_saved_progress",
+			type: "GET",
 			success: function (response) {
-				console.log("Progress saved successfully");
+				var savedProgress = parseInt(response.progress);
+
+				// Compare the current progress with the saved progress
+				if (currentProgress > savedProgress) {
+					// Only save the progress if it is larger than the saved progress
+					$.ajax({
+						url: base_url + "reading_corner/save_progress",
+						type: "POST",
+						data: { progress: currentProgress, stat: 1 },
+						success: function (response) {
+							console.log("Progress saved successfully");
+						},
+						error: function (xhr, status, error) {
+							console.error(error);
+						},
+					});
+				}
 			},
 			error: function (xhr, status, error) {
 				console.error(error);
@@ -117,6 +134,13 @@ $(document).ready(function () {
 
 	// Initial content update
 	updateContent();
+
+	// "Read" button click event
+	$("#symptoms_button").click(function () {
+		currentProgress = 1;
+		updateContent();
+		saveProgress();
+	});
 
 	// Navigation button click event for "Previous"
 	$("#previous_button").click(function () {

@@ -89,4 +89,13 @@ class Reading_corner extends CI_Controller
 		// Return the progress as JSON response
 		$this->output->set_content_type('application/json')->set_output(json_encode(['status' => 'success', 'data' => $progress]));
 	}
+
+	public function get_saved_progress()
+	{
+		$user_id = $this->session->userdata('user_id');
+		// Retrieve the saved progress from the database
+		$saved_progress = $this->reading_corner_model->get_progress($user_id);
+		// Return the saved progress as a response
+		$this->output->set_content_type('application/json')->set_output(json_encode(['progress' => $saved_progress]));
+	}
 }

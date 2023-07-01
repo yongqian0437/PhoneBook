@@ -52,6 +52,7 @@ class reading_corner_model extends CI_Model
         return $this->db->get('reading_progress')->row();
     }
 
+    //can delete,maybe
     function update_symptoms($user_id, $symptoms)
     {
         $this->db->set('symptoms', $symptoms);
