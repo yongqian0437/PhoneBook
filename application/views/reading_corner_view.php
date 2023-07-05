@@ -60,9 +60,9 @@
 
                                             </div>
                                         </li>
-                                        <!-- <?php if ($read_data->status != 0) { ?>
-                                            <li class="list-group-item">Last Activity: <?= $read_data->last_update ?></li>
-                                        <?php } ?> -->
+                                        <?php if ($read_data->status != 0) { ?>
+                                            <li class="list-group-item">Timer Reading: <?= $read_data->symptoms_timer ?>s</li>
+                                        <?php } ?>
                                     </ul>
                                     <div class="card-body">
                                         <?php if ($read_data->status == 0) { ?>

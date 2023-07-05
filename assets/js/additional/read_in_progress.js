@@ -160,7 +160,7 @@ $(document).ready(function () {
 		}
 	});
 
-	// Navigation button click event for "Previous"
+	// Navigation button click event for "Leave"
 	$("#leave_button").click(function () {
 		Swal.fire({
 			text: "Are you sure you want leave?",
