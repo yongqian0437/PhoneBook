@@ -130,6 +130,18 @@ $(document).ready(function () {
 				console.error(error);
 			},
 		});
+		// Save the current content to the symptoms_last field
+		$.ajax({
+			url: base_url + "reading_corner/save_symptoms_last",
+			type: "POST",
+			data: { last_progress: symptoms[currentIndex] },
+			success: function (response) {
+				console.log("Symptoms last saved successfully");
+			},
+			error: function (xhr, status, error) {
+				console.error(error);
+			},
+		});
 	}
 
 	// Initial content update
