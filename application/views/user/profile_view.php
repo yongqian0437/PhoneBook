@@ -50,6 +50,10 @@
         /* Adjust the desired left padding size */
         padding-right: 200px;
     }
+
+    .share_icon {
+    text-decoration: none;
+  }
 </style>
 
 <!-- Set base url to javascript variable-->
@@ -208,7 +212,7 @@
                                                         <input type="text" class="form-control" value="<?= $user_data->invited_times ?>" disabled>
                                                     </div>
                                                 </div>
-                                                <div class="row pt-2 pb-5">
+                                                <div class="row pt-2 pb-2">
                                                     <div class="col-md-7">
                                                         <label for="myInput" class="col-form-label" style="font-weight: 600; font-size:1.1rem;">Your invite code:</label>
                                                     </div>
@@ -216,7 +220,20 @@
                                                         <input type="text" class="form-control" value="<?= $user_data->invite_code ?>" disabled>
                                                     </div>
                                                 </div>
+                                                <div class="row pt-2 pb-2">
+                                                    <div class="col-md-12">
+                                                        <a class="share_icon" href="https://www.messenger.com/t/<PAGE_ID>?text=Learn%20more%20about%20dementia!%20<?php echo base_url('user/auth/registration/'.$user_data->invite_code); ?>" target="_blank">
+                                                            <img src="<?php echo base_url('assets/img/about_us/instagram-logo.png'); ?>" alt="Share on Instagram" style="height: 2.1rem; width: 2.1rem;">
+                                                        </a>
+
+                                                        <a class="share_icon" href="https://web.whatsapp.com/send?text=Learn%20more%20about%20dementia!%20<?php echo base_url('user/auth/registration/'.$user_data->invite_code); ?>" target="_blank">
+                                                            <img src="<?php echo base_url('assets/img/about_us/whatsapp_icon.png'); ?>" alt="Share on WhatsApp" style="height: 3.6rem; width: 3.6rem;">
+                                                        </a>
+                                                    </div>
+                                                </div>
+
                                                 <button id="copy_link" data-id="<?= $user_data->invite_code ?>" class="btn btn-success" style="float:left; width:auto;"><i class="fas fa-copy pr-2"></i>Copy Link</button>
+
                                             </div>
                                         </div>
                                     </div>
