@@ -47,11 +47,12 @@ class Reading_corner extends CI_Controller
 
 		// Load the progress and last open content from the database
 		$user_id = $this->session->userdata('user_id');
-		$data['symptoms'] = $this->reading_corner_model->get_progress($user_id);
-		$data['symptoms_last'] = $this->reading_corner_model->get_symptoms_last($user_id);
+		$data['reading_progress_data'] = $this->reading_corner_model->get_progress_row($user_id);
+		//die;
+		//$data['symptoms_last'] = $this->reading_corner_model->get_symptoms_last($user_id);
 
 		$this->load->view('templates/header', $data);
-		$this->load->view('read_in_progress_view.php', $data);
+		$this->load->view('read_in_progress_view.php');
 		$this->load->view('templates/footer');
 	}
 
@@ -97,5 +98,14 @@ class Reading_corner extends CI_Controller
 		$saved_progress = $this->reading_corner_model->get_progress($user_id);
 		// Return the saved progress as a response
 		$this->output->set_content_type('application/json')->set_output(json_encode(['progress' => $saved_progress]));
+	}
+
+	public function get_saved_symptoms_last()
+	{
+		$user_id = $this->session->userdata('user_id');
+		$symptoms_last = $this->reading_corner_model->get_saved_symptoms_last($user_id);
+
+		// Return the symptoms_last as JSON response
+		$this->output->set_content_type('application/json')->set_output(json_encode(['symptoms_last' => $symptoms_last]));
 	}
 }

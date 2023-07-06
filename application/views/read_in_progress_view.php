@@ -1,5 +1,7 @@
 <script type="text/javascript">
     var base_url = "<?php echo base_url(); ?>";
+    var last = "<?php echo $reading_progress_data->symptoms_last; ?>";
+    console.log(last);
 </script>
 
 <!-- Styles-->

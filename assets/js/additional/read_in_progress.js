@@ -75,10 +75,14 @@ var dealing_explanation = [
 	"Listen actively, show genuine interest, and respond empathetically.",
 	"Seek support from dementia support groups and educational resources.",
 ];
+if (last == 0) {
+	var currentIndex = 0;
+} else {
+	var currentIndex = last - 1;
+}
 
 $(document).ready(function () {
 	// Array index to keep track of the current topic
-	var currentIndex = 0;
 
 	// Function to update the topic and explanation
 	function updateContent(progress) {
@@ -145,14 +149,7 @@ $(document).ready(function () {
 	}
 
 	// Initial content update
-	updateContent();
-
-	// "Read" button click event
-	$("#symptoms_button").click(function () {
-		currentProgress = 1;
-		updateContent();
-		saveProgress();
-	});
+	updateContent(currentIndex);
 
 	// Navigation button click event for "Previous"
 	$("#previous_button").click(function () {

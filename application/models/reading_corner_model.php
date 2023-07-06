@@ -72,6 +72,12 @@ class reading_corner_model extends CI_Model
         return $this->db->get('reading_progress')->row('symptoms');
     }
 
+    public function get_progress_row($user_id)
+    {
+        $this->db->where('user_id', $user_id);
+        return $this->db->get('reading_progress')->row();
+    }
+
     public function update_progress($user_id, $progress, $stat)
     {
         $this->db->set('symptoms', $progress);
