@@ -24,57 +24,6 @@ var symptoms_explanations = [
 	"Dementia can lead to a decline in initiative and motivation. Individuals may become passive, lose interest in their usual activities, and require constant prompting and encouragement to engage in daily tasks.",
 ];
 
-var tips = [
-	"Use simple and clear language",
-	"Maintain eye contact and non-verbal cues",
-	"Speak slowly and calmly",
-	"Give one instruction at a time",
-	"Use visual aids and gestures",
-	"Be patient and allow extra time",
-	"Avoid arguing or correcting",
-	"Listen actively",
-	"Use reminiscence therapy",
-	"Adapt to their communication style",
-];
-
-var tips_explanations = [
-	"Speak in short sentences and use simple words to ensure understanding.",
-	"Establish eye contact and use facial expressions and gestures to enhance communication.",
-	"Speak at a moderate pace, allowing time for processing and response.",
-	"Break down tasks and instructions into simple steps.",
-	"Incorporate visual aids and gestures to aid comprehension.",
-	"Practice patience and avoid rushing or interrupting.",
-	"Avoid arguments or corrections, focus on maintaining a positive conversation.",
-	"Give your full attention, show interest, and respond appropriately.",
-	"Encourage conversations that involve reminiscing about the past.",
-	"Adapt to the person's unique communication style and understand their intended meaning.",
-];
-
-var dealing = [
-	"Be patient and understanding",
-	"Maintain a calm and reassuring environment",
-	"Establish a routine",
-	"Use gentle and respectful touch",
-	"Maintain good non-verbal communication",
-	"Simplify choices",
-	"Break tasks into manageable steps",
-	"Avoid correcting or arguing",
-	"Practice active listening",
-	"Seek support and education",
-];
-
-var dealing_explanation = [
-	"Show patience and understanding when dealing with the challenges of dementia.",
-	"Create a calm and reassuring environment to help the person with dementia feel at ease.",
-	"Establishing a consistent routine can provide structure and familiarity.",
-	"Use gentle touch to convey love and reassurance, respecting the person's boundaries.",
-	"Non-verbal cues like facial expressions and body language are important for communication.",
-	"Simplify choices to prevent overwhelming the person with dementia.",
-	"Break down tasks into smaller steps to make them more manageable.",
-	"Avoid correcting or arguing, and focus on validating their feelings and experiences.",
-	"Listen actively, show genuine interest, and respond empathetically.",
-	"Seek support from dementia support groups and educational resources.",
-];
 if (last == 0) {
 	var currentIndex = 0;
 } else {

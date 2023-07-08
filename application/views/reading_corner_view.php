@@ -61,14 +61,14 @@
                                             </div>
                                         </li>
                                         <?php if ($read_data->status != 0) { ?>
-                                            <li class="list-group-item">Timer Reading: <?= $read_data->symptoms_timer ?>s</li>
+                                            <li class="list-group-item">Time Reading: <?= $read_data->symptoms_timer ?>s</li>
                                         <?php } ?>
                                     </ul>
                                     <div class="card-body">
                                         <?php if ($read_data->status == 0) { ?>
-                                            <a id="symptoms_button" href="<?= base_url('reading_corner/read/1'); ?>" class="btn btn-success px-2 py-2" style="width: 100%;"><i class="fas fa-clipboard pr-2"></i>Read</a>
+                                            <a href="<?= base_url('reading_corner/read/1'); ?>" class="btn btn-success px-2 py-2" style="width: 100%;"><i class="fas fa-clipboard pr-2"></i>Read</a>
                                         <?php } elseif ($read_data->status == 1) { ?>
-                                            <a id="symptoms_button" href="<?= base_url('reading_corner/read/1'); ?>" class="btn btn-success px-2 py-2" style="width: 100%;"><i class="fas fa-clipboard pr-2"></i>Continue</a>
+                                            <a href="<?= base_url('reading_corner/read/1'); ?>" class="btn btn-success px-2 py-2" style="width: 100%;"><i class="fas fa-clipboard pr-2"></i>Continue</a>
                                         <?php } else { ?>
                                             <div class="row">
                                                 <div class="col-md-12 px-2 pb-2">
@@ -96,15 +96,15 @@
 
                                             </div>
                                         </li>
-                                        <!-- <?php if ($read_data->status != 0) { ?>
-                                            <li class="list-group-item">Last Activity: <?= $read_data->last_update ?></li>
-                                        <?php } ?> -->
+                                        <?php if ($read_data->tips_status != 0) { ?>
+                                            <li class="list-group-item">Time Reading: <?= $read_data->tips_timer ?>s</li>
+                                        <?php } ?>
                                     </ul>
                                     <div class="card-body">
-                                        <?php if ($read_data->status == 0) { ?>
-                                            <a href="<?= base_url('reading_corner/read/2'); ?>" class="btn btn-success px-2 py-2" style="width: 100%;"><i class="fas fa-clipboard pr-2"></i>Read</a>
-                                        <?php } elseif ($read_data->status == 1) { ?>
-                                            <a href="<?= base_url('reading_corner/read/2'); ?>" class="btn btn-success px-2 py-2" style="width: 100%;"><i class="fas fa-clipboard pr-2"></i>Continue</a>
+                                        <?php if ($read_data->tips_status == 0) { ?>
+                                            <a href="<?= base_url('reading_corner_tips/read/2'); ?>" class="btn btn-success px-2 py-2" style="width: 100%;"><i class="fas fa-clipboard pr-2"></i>Read</a>
+                                        <?php } elseif ($read_data->tips_status == 1) { ?>
+                                            <a href="<?= base_url('reading_corner_tips/read/2'); ?>" class="btn btn-success px-2 py-2" style="width: 100%;"><i class="fas fa-clipboard pr-2"></i>Continue</a>
                                         <?php } else { ?>
                                             <div class="row">
                                                 <div class="col-md-12 px-2 pb-2">
@@ -132,15 +132,15 @@
 
                                             </div>
                                         </li>
-                                        <!-- <?php if ($read_data->status != 0) { ?>
-                                            <li class="list-group-item">Last Activity: <?= $read_data->last_update ?></li>
-                                        <?php } ?> -->
+                                        <?php if ($read_data->dealing_status != 0) { ?>
+                                            <li class="list-group-item">Time Reading: <?= $read_data->dealing_timer ?>s</li>
+                                        <?php } ?>
                                     </ul>
                                     <div class="card-body">
-                                        <?php if ($read_data->status == 0) { ?>
-                                            <a href="<?= base_url('reading_corner/read/3'); ?>" class="btn btn-success px-2 py-2" style="width: 100%;"><i class="fas fa-clipboard pr-2"></i>Read</a>
-                                        <?php } elseif ($read_data->status == 1) { ?>
-                                            <a href="<?= base_url('reading_corner/read/3'); ?>" class="btn btn-success px-2 py-2" style="width: 100%;"><i class="fas fa-clipboard pr-2"></i>Continue</a>
+                                        <?php if ($read_data->dealing_status == 0) { ?>
+                                            <a href="<?= base_url('reading_corner_dealing/read/3'); ?>" class="btn btn-success px-2 py-2" style="width: 100%;"><i class="fas fa-clipboard pr-2"></i>Read</a>
+                                        <?php } elseif ($read_data->dealing_status == 1) { ?>
+                                            <a href="<?= base_url('reading_corner_dealing/read/3'); ?>" class="btn btn-success px-2 py-2" style="width: 100%;"><i class="fas fa-clipboard pr-2"></i>Continue</a>
                                         <?php } else { ?>
                                             <div class="row">
                                                 <div class="col-md-12 px-2 pb-2">

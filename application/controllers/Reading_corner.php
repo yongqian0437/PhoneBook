@@ -21,7 +21,7 @@ class Reading_corner extends CI_Controller
 	{
 		$data['title'] = 'Dementia App | Reading Corner';
 
-		$data['read_data'] = $this->reading_corner_model->get_reading_details($this->session->userdata('user_id'));
+		$data['read_data'] = $this->reading_corner_model->get_reading_symptoms_details($this->session->userdata('user_id'));
 
 		$data['include_js'] = 'read_in_progress';
 
@@ -37,10 +37,6 @@ class Reading_corner extends CI_Controller
 
 		if ($read_num == 1) {
 			$data['read_data'] = $this->reading_corner_model->get_reading_symptoms_details($this->session->userdata('user_id'));
-		} elseif ($read_num == 2) {
-			$data['read_data'] = $this->reading_corner_model->get_reading_tips_details($this->session->userdata('user_id'));
-		} elseif ($read_num == 3) {
-			$data['read_data'] = $this->reading_corner_model->get_reading_dealing_details($this->session->userdata('user_id'));
 		} else {
 			redirect('reading_corner');
 		}
@@ -98,14 +94,5 @@ class Reading_corner extends CI_Controller
 		$saved_progress = $this->reading_corner_model->get_progress($user_id);
 		// Return the saved progress as a response
 		$this->output->set_content_type('application/json')->set_output(json_encode(['progress' => $saved_progress]));
-	}
-
-	public function get_saved_symptoms_last()
-	{
-		$user_id = $this->session->userdata('user_id');
-		$symptoms_last = $this->reading_corner_model->get_saved_symptoms_last($user_id);
-
-		// Return the symptoms_last as JSON response
-		$this->output->set_content_type('application/json')->set_output(json_encode(['symptoms_last' => $symptoms_last]));
 	}
 }
