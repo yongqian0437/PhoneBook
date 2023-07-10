@@ -37,8 +37,9 @@
                             <div class="py-2 px-4" style="text-align: justify; font-weight:500;">Finish all the quizzes and grab your well-deserved completion certificate!</div>
                         </div>
                         <div class="col-md-4 pt-5 pr-5">
-                            <?php if($qs_data->status == 3 && $qt_data->status == 3 && $qd_data->status == 3){ ?>
-                            <a id="leave_button" class="btn btn-primary" style="float:right; width:auto;"><i class="fas fa-medal pr-2"></i>Claim your certificate!</a>
+                            <?php if ($qs_data->status == 3 && $qt_data->status == 3 && $qd_data->status == 3) { ?>
+                                <a id="cert_button" class="btn btn-primary" style="float:right; width:auto;" href="<?php echo base_url('quiz/generate_certificate_pdf'); ?>"><i class="fas fa-medal pr-2"></i>Claim your certificate!</a>
+
                             <?php } ?>
                         </div>
                     </div>

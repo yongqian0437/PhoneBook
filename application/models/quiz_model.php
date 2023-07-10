@@ -76,7 +76,7 @@ class quiz_model extends CI_Model
         $data = array(
             'max_streak' => $streak
         );
-        
+
         // Perform the update
         $this->db->set($data);
         $this->db->update($database);
@@ -97,7 +97,7 @@ class quiz_model extends CI_Model
         $data = array(
             'first_attempt_score' => $score
         );
-        
+
         // Perform the update
         $this->db->set($data);
         $this->db->update($database);

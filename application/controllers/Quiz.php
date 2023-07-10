@@ -2,6 +2,10 @@
 
 defined('BASEPATH') or exit('No direct script access allowed');
 
+require_once APPPATH . 'libraries/dompdf/autoload.inc.php';
+
+use Dompdf\Dompdf;
+
 class Quiz extends CI_Controller
 {
 
@@ -46,7 +50,7 @@ class Quiz extends CI_Controller
 			redirect('quiz');
 		}
 
-		if($data['quiz_data']->status == 3){
+		if ($data['quiz_data']->status == 3) {
 			redirect('quiz');
 		}
 
@@ -62,7 +66,7 @@ class Quiz extends CI_Controller
 	//function with ajax
 	public function update_quiz_answer()
 	{
-		$this->quiz_model->update_max_streak($this->session->userdata('user_id'),$this->input->post('current_streak'),$this->input->post('database'));
+		$this->quiz_model->update_max_streak($this->session->userdata('user_id'), $this->input->post('current_streak'), $this->input->post('database'));
 		$data =
 			[
 				$this->input->post('col_question_number') => $this->input->post('answer'),
@@ -87,7 +91,7 @@ class Quiz extends CI_Controller
 	{
 		$data['status'] = 3;
 		//update first attempt score
-		$this->quiz_model->first_attempt($this->session->userdata('user_id'),$this->input->post('score'),$this->input->post('database'));
+		$this->quiz_model->first_attempt($this->session->userdata('user_id'), $this->input->post('score'), $this->input->post('database'));
 		if ($this->quiz_model->update_draft($data, $this->session->userdata('user_id'), $this->input->post('database'))) {
 			$response = array('success' => true, 'message' => 'Data updated successfully');
 		} else {
@@ -145,5 +149,40 @@ class Quiz extends CI_Controller
 
 		// Return the JSON response
 		echo $json_data;
+	}
+
+	public function generate_certificate_pdf()
+	{
+		// Fetch necessary data from the database
+		$user_id = $this->session->userdata('user_id');
+		$user = $this->user_model->get_user_details($user_id);
+		$name = $user->user_fname . ' ' . $user->user_lname;
+		$time = date('d F Y');
+
+		// Load the PDF template file
+		$pdfTemplate = file_get_contents(APPPATH . 'views/pdf_view.php');
+
+		// Replace placeholders in the template with dynamic data
+		$pdfTemplate = str_replace('{{name}}', $name, $pdfTemplate);
+		$pdfTemplate = str_replace('{{time}}', $time, $pdfTemplate);
+
+		// Create a new DOMPDF instance
+		$dompdf = new Dompdf();
+		$dompdf->loadHtml($pdfTemplate);
+
+		// (Optional) Adjust PDF settings
+		$dompdf->setPaper('A4', 'portrait');
+
+		// Render the PDF
+		$dompdf->render();
+
+		// Get the PDF content as a string
+		$pdfContent = $dompdf->output();
+
+		// Set the response content type as PDF
+		header('Content-Type: application/pdf');
+
+		// Open the PDF in a new browser tab
+		echo $pdfContent;
 	}
 }

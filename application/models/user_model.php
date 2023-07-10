@@ -26,7 +26,8 @@ class user_model extends CI_Model
         }
     }
 
-    function generate_unique_code() {
+    function generate_unique_code()
+    {
         $this->load->helper('string');
 
         do {
@@ -37,13 +38,15 @@ class user_model extends CI_Model
         return $random_code;
     }
 
-    public function check_code($code) {
+    public function check_code($code)
+    {
         $this->db->where('invite_code', $code);
         $query = $this->db->get('users');
         return $query->num_rows() > 0;
     }
 
-    public function check_invite_code_exists($invite_code) {
+    public function check_invite_code_exists($invite_code)
+    {
         // Perform the database query to check if the value exists
         $this->db->from('users');
         $this->db->where('invite_code', $invite_code);
@@ -53,7 +56,8 @@ class user_model extends CI_Model
         return ($query->num_rows() > 0);
     }
 
-    public function increase_invite_number($submitted_invite_code){
+    public function increase_invite_number($submitted_invite_code)
+    {
 
         $this->db->where('invite_code', $submitted_invite_code);
         $this->db->set('invited_times', 'invited_times+1', false);
@@ -88,9 +92,9 @@ class user_model extends CI_Model
 
     public function get_user_details($user_id)
     {
-       $this->db->where('user_id',$user_id);
-       return $this->db->get('users')->row();
-    } 
+        $this->db->where('user_id', $user_id);
+        return $this->db->get('users')->row();
+    }
 
     public function search_email()
     {
@@ -123,5 +127,4 @@ class user_model extends CI_Model
         $this->db->set('user_password', $data['user_password']);
         $this->db->update('users');
     }
-
 }
