@@ -13,14 +13,6 @@ class reading_corner_model extends CI_Model
     {
         $this->db->insert('reading_progress', $data);
         if ($this->db->affected_rows() > 0) {
-            $reading_id = $this->db->insert_id();
-
-            // Update the symptoms and symptoms_last fields based on the reading_id
-            $this->db->set('symptoms', $reading_id);
-            $this->db->set('symptoms_last', $reading_id);
-            $this->db->where('id', $reading_id);
-            $this->db->update('reading_progress');
-
             return true;
         } else {
             return false;
