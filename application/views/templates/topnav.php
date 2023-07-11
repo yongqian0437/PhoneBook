@@ -72,6 +72,9 @@
             <a class="nav-link topnav font-weight-bold" href="<?= base_url('quiz'); ?>">Quiz</a>
         </li>
 
+        <li class="nav-item px-3">
+            <a class="nav-link topnav font-weight-bold" href="<?= base_url('chatbot'); ?>">Chatbot</a>
+        </li>
 
 
     </ul>
