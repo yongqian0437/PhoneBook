@@ -74,41 +74,46 @@ function enter_prompt() {
         });
 
 
-        //Append new card to conversation list if its a new chat
-        if (new_chat === "yes") {
-
-            //ajax to get latest added conversation history row id
-            $.ajax({
-                url: base_url + "chatbot/get_latest_con_id",
-                method: "GET",
-                dataType: "json",
-                success: function (response) {
-
-                    $('#conversation_list').append('<div onclick = "load_history(' + response.con_id + ')" class="card shadow chatbubble mt-2" style=" color: black;">' +
-                        '    <div class="card-body">' +
-                        '        ' + response.con_name + '' +
-                        '    </div>' +
-                        '</div>');
-
-                    //set current con_id to newly created con_id
-                    current_con_id = response.con_id;
-                    
-                },
-                error: function (xhr, status, error) {
-                    // Handle errors, if any
-                    console.error(error);
-                }
-            });
-
-        }
+        append_new_card();
 
         new_chat = "no";
 
     }
 }
 
+function append_new_card(){
+    //Append new card to conversation list if its a new chat
+    if (new_chat === "yes") {
+
+        //ajax to get latest added conversation history row id
+        $.ajax({
+            url: base_url + "chatbot/get_latest_con_id",
+            method: "GET",
+            dataType: "json",
+            success: function (response) {
+
+                $('#conversation_list').append('<div onclick = "load_history(' + response.con_id + ')" id = "' + response.con_id + '" class="card shadow chatbubble mt-2" style=" color: black;">' +
+                    '    <div class="card-body">' +
+                    '        ' + response.con_name + '' +
+                    '    </div>' +
+                    '</div>');
+
+                //set current con_id to newly created con_id
+                current_con_id = response.con_id;
+
+            },
+            error: function (xhr, status, error) {
+                // Handle errors, if any
+                console.error(error);
+            }
+        });
+
+    }
+}
+
 function open_new_chat() {
     new_chat = "yes";
+    current_con_id = 0;
     $('#conversation_body').empty();
     $('#conversation_body').append(`
     <div class="row justify-content-center py-2" id="new_chat_info">
@@ -125,12 +130,12 @@ function open_new_chat() {
                     Do not know where to start? Try asking these questions!
                     <div class="card my-2" style="color: black; background-color: #F2F0F0; border-radius: 40px; width: 50%; padding-top:0px; padding: bottom 0px;">
                         <div class="card-body">
-                            List out the top 5 most profitable items sold in the past 12 months
+                        What is the difference between Alzheimer’s disease and dementia?
                         </div>
                     </div>
                     <div class="card my-2" style="color: black; background-color: #F2F0F0; border-radius: 40px; width: 50%; padding-top:0px; padding: bottom 0px;">
                         <div class="card-body">
-                            What are the company’s policies on vacation time and sick leave?
+                        What are the early signs of Alzheimer’s disease?
                         </div>
                     </div>
                 </div>
@@ -138,6 +143,7 @@ function open_new_chat() {
         </div>
     </div>
 `);
+
 }
 
 function appendTextWithDelay(text, delay) {
@@ -173,7 +179,7 @@ function load_history(con_id) {
 
     //loading pop up
     Swal.fire({
-        title: 'The chatbot is responding...',
+        title: 'Loading your conversation...',
         html: 'Please wait...',
         allowEscapeKey: false,
         allowOutsideClick: false,

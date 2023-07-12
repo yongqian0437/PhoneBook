@@ -130,6 +130,9 @@ class Chatbot extends CI_Controller
                 'role' => 2,
             ];
 
+        //=====================need to change
+        //get gpt response in database so that it has breakline
+
         $this->chatbot_model->insert_chat($chat_data);
 
         //Update conversation_history no_of_message

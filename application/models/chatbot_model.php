@@ -61,7 +61,7 @@ class chatbot_model extends CI_Model
     function get_latest_con_id($user_id)
     {
         $this->db->where('user_id', $user_id);
-        $this->db->order_by('user_id', 'DESC');
+        $this->db->order_by('con_id', 'DESC');
         $this->db->limit(1);
         $query = $this->db->get('conversation_history');
         

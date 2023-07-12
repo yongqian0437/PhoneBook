@@ -94,7 +94,7 @@
                                     <div class="row ">
                                         <div class="col-xl-2" style="border-right: black;" id="conversation_list">
 
-                                            <div onclick="open_new_chat()" class="card shadow chatbubble" style=" color: black;">
+                                            <div onclick="open_new_chat()" class="card shadow chatbubble mb-5" style=" color: black;">
                                                 <div class="card-body">
                                                     + New chat
                                                 </div>
@@ -113,7 +113,7 @@
                                             if (isset($conversation_history_data)) {
                                                 foreach ($conversation_history_data as $conversation_history_row) {
                                             ?>
-                                                    <div onclick="load_history(<?= $conversation_history_row->con_id ?>)" class="card shadow convoclass chatbubble mt-2" style=" color: black; position: relative;">
+                                                    <div onclick="load_history(<?= $conversation_history_row->con_id ?>)" id = "<?= $conversation_history_row->con_id ?>" class="card shadow convoclass chatbubble mt-2" style=" color: black; position: relative;">
                                                         <div class="card-body">
                                                             <?= $conversation_history_row->con_name ?>
                                                         </div>
