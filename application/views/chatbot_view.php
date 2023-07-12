@@ -3,7 +3,6 @@
     var base_url = "<?php echo base_url(); ?>";
     var new_chat = "<?= $new_chat ?>";
     var current_con_id = <?= $latest_con_id ?>;
-
 </script>
 
 <!-- Styles-->
@@ -29,7 +28,7 @@
     }
 
     .textarea[contenteditable]:empty::before {
-        content: "Placeholder still possible";
+        content: "Write something...";
         color: gray;
     }
 
@@ -40,6 +39,17 @@
 
     .chatbubble {
         border-radius: 20px;
+    }
+
+    .convoclass:hover .edit-delete-buttons {
+        display: block;
+    }
+
+    .edit-delete-buttons {
+        display: none;
+        position: absolute;
+        top: 5px;
+        right: 5px;
     }
 </style>
 
@@ -89,14 +99,23 @@
                                                     + New chat
                                                 </div>
                                             </div>
+                                            <!-- <div onclick="load_history()" class="card shadow convoclass chatbubble mt-2" style=" color: black; position: relative;">
+                                                        <div class="card-body">
+                                                            test teststet
+                                                            <div class="edit-delete-buttons">
+                                                                <button><i class="fas fa-pencil"></i></button>
+                                                                <button><i class="fas fa-trash"></i></button>
+                                                            </div>
+                                                        </div>
+                                                    </div> -->
 
                                             <?php
                                             if (isset($conversation_history_data)) {
                                                 foreach ($conversation_history_data as $conversation_history_row) {
                                             ?>
-                                                    <div onclick="load_history(<?=$conversation_history_row->con_id?>)" class="card shadow chatbubble mt-2" style=" color: black;">
+                                                    <div onclick="load_history(<?= $conversation_history_row->con_id ?>)" class="card shadow convoclass chatbubble mt-2" style=" color: black; position: relative;">
                                                         <div class="card-body">
-                                                            <?=$conversation_history_row->con_name?>
+                                                            <?= $conversation_history_row->con_name ?>
                                                         </div>
                                                     </div>
                                             <?php }
@@ -119,12 +138,12 @@
 
                                                             <div class="card my-2" style="color: black; background-color: #F2F0F0; border-radius: 40px; width: 50%; padding-top:0px; padding: bottom 0px;">
                                                                 <div class="card-body">
-                                                                    List out the top 5 most profitable item sold in the past 12 months
+                                                                    What is the difference between Alzheimer’s disease and dementia?
                                                                 </div>
                                                             </div>
                                                             <div class="card my-2" style="color: black; background-color: #F2F0F0; border-radius: 40px; width: 50%; padding-top:0px; padding: bottom 0px;">
                                                                 <div class="card-body">
-                                                                    What are the company’s policies on vacation time and sick leave?
+                                                                    What are the early signs of Alzheimer’s disease?
                                                                 </div>
                                                             </div>
 

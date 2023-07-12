@@ -26,7 +26,9 @@ if (!function_exists('generate_text')) {
 
         $decoded_response = json_decode($response, true);
         $generated_text = $decoded_response['choices'][0]['text'];
-
+        $generated_text = ltrim($generated_text, "\n");
+        
         return $generated_text;
     }
 }
+?>

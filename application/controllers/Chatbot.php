@@ -56,9 +56,11 @@ class Chatbot extends CI_Controller
         $con_id = $this->input->post('con_id');
 
         //Set up conversation history
-        $conversation = array(
-            array('role' => 'system', 'content' => 'You are an assistant that put a <br> tag whenever there is a line break.')
-        );
+        $conversation = array();
+
+        // $conversation = array(
+        //     array('role' => 'system', 'content' => 'You are an assistant that put a <br> tag whenever there is a line break.')
+        // );
 
         // Get chat history if exist
         if ($this->input->post('new_chat') == "no") {
@@ -87,16 +89,25 @@ class Chatbot extends CI_Controller
         );
 
         //======================= Need to change ========================
-        // $gpt_response = generate_text($conversation);
-        $gpt_response = "GPT response test";
+        $user_prompt = "";
+        foreach ($conversation as $conversation) {
+            $user_prompt .= $conversation['role'] . ": " . $conversation['content'] . "\n";
+        }
+
+        $gpt_response = generate_text($user_prompt);
 
         // Create new table in conversation history and chat history if its new chat
         if ($this->input->post('new_chat') == "yes") {
 
+            //Default uses first five word as the conversation name
+            $words = explode(" ", $gpt_response);
+            $first_five_words = array_slice($words, 0, 5);
+            $first_five_words = implode(" ", $first_five_words);
+
             $con_data =
                 [
                     'user_id' => $this->session->userdata('user_id'),
-                    'con_name' => "New chat",
+                    'con_name' => $first_five_words,
                 ];
             $con_id = $this->chatbot_model->insert_history($con_data);
         }

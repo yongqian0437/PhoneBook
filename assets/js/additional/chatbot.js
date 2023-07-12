@@ -213,7 +213,7 @@ function load_history(con_id) {
                 } else {
 
                     $('#conversation_body').append('<div class="row py-2 ml-5 my-1 mr-2 justify-content-end">' +
-                        '    <div class="card chatbubble ml-4" style="background-color: #007aff; color: white;">' +
+                        '    <div class="card chatbubble ml-4" style="background-color: #007aff; color: white; white-space: pre; word-break: break-all; ">' +
                         '        <div class="card-body response-card">' + chat.message + '</div>' +
                         '    </div>' +
                         '</div>');
