@@ -26,7 +26,7 @@ class Chatbot extends CI_Controller
         $has_conversation = $this->chatbot_model->check_if_user_has_conversation($this->session->userdata('user_id'));
 
         //if there is convseration         
-        if($has_conversation) {
+        if ($has_conversation) {
             //1. Get the last inserted con_id
             $latest_row = $this->chatbot_model->get_latest_con_id($this->session->userdata('user_id'));
             $data['latest_con_id'] = $latest_row->con_id;
@@ -55,30 +55,36 @@ class Chatbot extends CI_Controller
         //con_id can be 0 which means its new
         $con_id = $this->input->post('con_id');
 
+        //Set up conversation history
         $conversation = array(
             array('role' => 'system', 'content' => 'You are an assistant that put a <br> tag whenever there is a line break.')
         );
 
         // Get chat history if exist
-        //======================= Need to change ========================
-        // if ($this->input->post('new_chat') == "no") {
-        //     $chat_data = $this->chatbot_model->select_chat_history($con_id);
+        if ($this->input->post('new_chat') == "no") {
+            $chat_data = $this->chatbot_model->select_chat_history($con_id);
 
-        //     foreach ($chat_data as $chat_data_row) {
+            foreach ($chat_data as $chat_data_row) {
 
-        //         if ($chat_data_row->role == "ai") {
-        //             $conversation[] = array(
-        //                 'role' => 'assistant',
-        //                 'content' => $chat_data_row->message
-        //             );
-        //         } else {
-        //             $conversation[] = array(
-        //                 'role' => 'user',
-        //                 'content' => $chat_data_row->message
-        //             );
-        //         }
-        //     }
-        // }
+                if ($chat_data_row->role == "ai") {
+                    $conversation[] = array(
+                        'role' => 'assistant',
+                        'content' => $chat_data_row->message
+                    );
+                } else {
+                    $conversation[] = array(
+                        'role' => 'user',
+                        'content' => $chat_data_row->message
+                    );
+                }
+            }
+        }
+
+        //Latest prompt
+        $conversation[] = array(
+            'role' => 'user',
+            'content' => $prompt
+        );
 
         //======================= Need to change ========================
         // $gpt_response = generate_text($conversation);
