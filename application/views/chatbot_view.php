@@ -1,10 +1,10 @@
 <!-- Set base url to javascript variable-->
 <script type="text/javascript">
     var base_url = "<?php echo base_url(); ?>";
-    var new_chat = <?= $new_chat ?>;
-    var con_id = <?= $latest_con_id ?>;
+    var new_chat = "<?= $new_chat ?>";
+    var current_con_id = <?= $latest_con_id ?>;
+
 </script>
-<script src="<?php echo base_url() ?>/assets/js/additional/quiz_info.js"></script>
 
 <!-- Styles-->
 <style>
@@ -66,7 +66,7 @@
                             <div class="d-sm-flex align-items-center justify-content-between mb-2 px-4">
                                 <h1 class="h3 mb-0 text-gray-800 pt-4 font-weight-bold">Dementia Chatbot</h1>
                             </div>
-                            <div class="py-2 px-4" style="text-align: justify; font-weight:500;">Ask the chatbot about anything to dementia!</div>
+                            <div class="py-2 px-4" style="text-align: justify; font-weight:500;">Ask the chatbot about dementia!</div>
                         </div>
                     </div>
 
@@ -94,7 +94,7 @@
                                             if (isset($conversation_history_data)) {
                                                 foreach ($conversation_history_data as $conversation_history_row) {
                                             ?>
-                                                    <div onclick="load_history(<?=$conversation_history_row->con_id?>)" class="card shadow chatbubble" style=" color: black;">
+                                                    <div onclick="load_history(<?=$conversation_history_row->con_id?>)" class="card shadow chatbubble mt-2" style=" color: black;">
                                                         <div class="card-body">
                                                             <?=$conversation_history_row->con_name?>
                                                         </div>

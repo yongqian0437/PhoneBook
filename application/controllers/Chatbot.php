@@ -28,18 +28,19 @@ class Chatbot extends CI_Controller
         //if there is convseration         
         if($has_conversation) {
             //1. Get the last inserted con_id
-            $data['latest_con_id'] = $this->chatbot_model->select_conversation_history($this->session->userdata('user_id'));
+            $latest_row = $this->chatbot_model->get_latest_con_id($this->session->userdata('user_id'));
+            $data['latest_con_id'] = $latest_row->con_id;
 
             //2. Get all existing conversation
             $data['conversation_history_data'] = $this->chatbot_model->select_conversation_history($this->session->userdata('user_id'));
 
-            $data['new_chat'] = 0;
+            $data['new_chat'] = "no";
         }
         //if there is no convseration    
         else {
             $data['latest_con_id'] = 0;
+            $data['new_chat'] = "yes";
         }
-
 
         $this->load->view('templates/header', $data);
         $this->load->view('chatbot_view.php');
@@ -59,31 +60,32 @@ class Chatbot extends CI_Controller
         );
 
         // Get chat history if exist
-        if (!$this->input->post('new_chat')) {
-            $chat_data = $this->chatbot_model->select_chat_history($con_id);
+        //======================= Need to change ========================
+        // if ($this->input->post('new_chat') == "no") {
+        //     $chat_data = $this->chatbot_model->select_chat_history($con_id);
 
-            foreach ($chat_data as $chat_data_row) {
+        //     foreach ($chat_data as $chat_data_row) {
 
-                if ($chat_data_row->role == "ai") {
-                    $conversation[] = array(
-                        'role' => 'assistant',
-                        'content' => $chat_data_row->message
-                    );
-                } else {
-                    $conversation[] = array(
-                        'role' => 'user',
-                        'content' => $chat_data_row->message
-                    );
-                }
-            }
-        }
+        //         if ($chat_data_row->role == "ai") {
+        //             $conversation[] = array(
+        //                 'role' => 'assistant',
+        //                 'content' => $chat_data_row->message
+        //             );
+        //         } else {
+        //             $conversation[] = array(
+        //                 'role' => 'user',
+        //                 'content' => $chat_data_row->message
+        //             );
+        //         }
+        //     }
+        // }
 
         //======================= Need to change ========================
         // $gpt_response = generate_text($conversation);
         $gpt_response = "GPT response test";
 
         // Create new table in conversation history and chat history if its new chat
-        if (!$this->input->post('new_chat')) {
+        if ($this->input->post('new_chat') == "yes") {
 
             $con_data =
                 [
@@ -102,17 +104,19 @@ class Chatbot extends CI_Controller
                 'role' => 1,
             ];
 
-        $this->chatbot_model->insert_chat($con_id);
+        $this->chatbot_model->insert_chat($chat_data);
         //one for gpt response
         $chat_data =
             [
                 'con_id' => $con_id,
-                'message' => $prompt,
+                'message' => $gpt_response,
                 'role' => 2,
             ];
 
-        $this->chatbot_model->insert_chat($con_id);
+        $this->chatbot_model->insert_chat($chat_data);
 
+        //Update conversation_history no_of_message
+        $this->chatbot_model->increase_no_of_message($con_id);
 
         // Send the response as JSON
         $this->output
@@ -133,6 +137,10 @@ class Chatbot extends CI_Controller
 
     public function get_latest_con_id()
     {
-        $user_id = $this->input->post('user_id');
+        $latest_con_id = $this->chatbot_model->get_latest_con_id($this->session->userdata('user_id'));
+
+        $this->output
+            ->set_content_type('application/json')
+            ->set_output(json_encode($latest_con_id));
     }
 }

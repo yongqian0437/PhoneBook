@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
-    if (!new_chat) {
-        load_history(con_id);
+    if (new_chat === "no") {
+        load_history(current_con_id);
         $('#new_chat_info').hide();
     }
 
@@ -36,22 +36,13 @@ function enter_prompt() {
             '</div>');
 
 
-        $('#conversation_body').append('<div class="row py-2 ml-5 my-1 mr-2 justify-content-end">' +
-            '    <div class="card chatbubble ml-4" style="background-color: #007aff; color: white;">' +
-            '        <div class="card-body">' +
-            '            test' +
-            '        </div>' +
-            '    </div>' +
-            '</div>');
-
-
         $.ajax({
             url: base_url + "chatbot/generate_response",
             type: 'POST',
             data: {
                 prompt: prompt,
                 new_chat: new_chat,
-                con_id: con_id
+                con_id: current_con_id
             },
             dataType: "json",
             success: function (response) {
@@ -84,60 +75,69 @@ function enter_prompt() {
 
 
         //Append new card to conversation list if its a new chat
-        if (new_chat = true) {
+        if (new_chat === "yes") {
 
+            //ajax to get latest added conversation history row id
             $.ajax({
-                url: base_url + "chatbot/generate_response",
-                type: 'POST',
-                data: {
-                    user_id: user_id,
-                },
+                url: base_url + "chatbot/get_latest_con_id",
+                method: "GET",
                 dataType: "json",
                 success: function (response) {
 
-                    //Close loading pop up
-                    swal.close();
-
-                    //change global variable so its NOT a new chat
-                    var delay = 20; // Delay in milliseconds between each character
-
-                    //append gpt response text
-                    $('#conversation_body').append('<div class="row py-2 ml-5 my-1 mr-2 justify-content-end">' +
-                        '    <div class="card chatbubble ml-4" style="background-color: #007aff; color: white;">' +
-                        '        <div class="card-body response-card"></div>' +
+                    $('#conversation_list').append('<div onclick = "load_history(' + response.con_id + ')" class="card shadow chatbubble mt-2" style=" color: black;">' +
+                        '    <div class="card-body">' +
+                        '        ' + response.con_name + '' +
                         '    </div>' +
                         '</div>');
 
-                    // Append text with the writing effect
-                    appendTextWithDelay(response, delay);
-
-
+                    //set current con_id to newly created con_id
+                    current_con_id = response.con_id;
+                    
                 },
                 error: function (xhr, status, error) {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'There was an error generating your response, please try again',
-                    })
+                    // Handle errors, if any
+                    console.error(error);
                 }
             });
 
-            //ajax to get latest added conversation history row id
-            //======================= Need to change ========================
-
-            $('#conversation_list').append('<div onclick = "load_history()" class="card shadow chatbubble" style=" color: black;">' +
-                '    <div class="card-body">' +
-                '         test' +
-                '    </div>' +
-                '</div>');
         }
-        new_chat = false;
+
+        new_chat = "no";
 
     }
 }
 
 function open_new_chat() {
-    new_chat = 0;
-    $('#new_chat_info').show();
+    new_chat = "yes";
+    $('#conversation_body').empty();
+    $('#conversation_body').append(`
+    <div class="row justify-content-center py-2" id="new_chat_info">
+        <div class="col-xl-7 py-2">
+            <div class="card shadow chatbubble" style="color: black;">
+                <div class="card-body">
+                    Ask the chatbot about something
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-7 py-2">
+            <div class="card shadow chatbubble" style="color: black;">
+                <div class="card-body">
+                    Do not know where to start? Try asking these questions!
+                    <div class="card my-2" style="color: black; background-color: #F2F0F0; border-radius: 40px; width: 50%; padding-top:0px; padding: bottom 0px;">
+                        <div class="card-body">
+                            List out the top 5 most profitable items sold in the past 12 months
+                        </div>
+                    </div>
+                    <div class="card my-2" style="color: black; background-color: #F2F0F0; border-radius: 40px; width: 50%; padding-top:0px; padding: bottom 0px;">
+                        <div class="card-body">
+                            What are the company’s policies on vacation time and sick leave?
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+`);
 }
 
 function appendTextWithDelay(text, delay) {
@@ -191,23 +191,43 @@ function load_history(con_id) {
         dataType: "json",
         success: function (response) {
 
+            //set new con_id
+            current_con_id = con_id;
+
+            $('#conversation_body').empty();
+
+
+            //append chat history
+            $.each(response, function (index, chat) {
+
+                if (chat.role == 1) {
+
+                    $('#conversation_body').append('<div class="row py-2 mr-5 my-1 ml-2">' +
+                        '    <div class="card chatbubble mr-4" style="background-color: #eaeaea; color: black; ">' +
+                        '        <div class="card-body">' +
+                        '            ' + chat.message + '' +
+                        '        </div>' +
+                        '    </div>' +
+                        '</div>');
+
+                } else {
+
+                    $('#conversation_body').append('<div class="row py-2 ml-5 my-1 mr-2 justify-content-end">' +
+                        '    <div class="card chatbubble ml-4" style="background-color: #007aff; color: white;">' +
+                        '        <div class="card-body response-card">' + chat.message + '</div>' +
+                        '    </div>' +
+                        '</div>');
+                }
+
+            });
             //Close loading pop up
             swal.close();
-
-            //======================= Need to change ========================
-            //append gpt response text
-            $('#conversation_body').append('<div class="row py-2 ml-5 my-1 mr-2 justify-content-end">' +
-                '    <div class="card chatbubble ml-4" style="background-color: #007aff; color: white;">' +
-                '        <div class="card-body response-card"></div>' +
-                '    </div>' +
-                '</div>');
-
 
         },
         error: function (xhr, status, error) {
             Swal.fire({
                 icon: 'error',
-                title: 'There was an error generating your response, please try again',
+                title: 'There was an error loading your history, please try again',
             })
         }
     });
