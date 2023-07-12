@@ -17,7 +17,7 @@ setTimeout(function() {
 </script>
 
 <link href="<?php echo base_url() ?>assets/css/forms.css" rel="stylesheet">
-<body id="page-top" style='background-color:#f9f6f1;'>
+<body id="page-top" style='background-color:white;'>
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -32,7 +32,7 @@ setTimeout(function() {
                 <div class="container-fluid ">
 
                     <!-- Cards for registration -->
-                    <div class="row justify-content-md-center pt-5" style='background-color:#f9f6f1;'>
+                    <div class="row justify-content-md-center pt-5" style='background-color:white;'>
 
                         <!-- Steps -->
                         <div class="col-xl-3">

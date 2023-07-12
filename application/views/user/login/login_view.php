@@ -9,7 +9,7 @@
     }, 5000); // <-- time in milliseconds
 </script>
 
-<body id="page-top" style='background-color:#f9f6f1;'>
+<body id="page-top" style='background-color:white;'>
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -24,7 +24,7 @@
                 <div class="container-fluid">
 
                     <!-- Cards for registration -->
-                    <div class="row justify-content-md-center pt-5 pb-5" style='background-color:#f9f6f1;'>
+                    <div class="row justify-content-md-center pt-5 pb-5" style='background-color:white;'>
 
                         <!-- Steps -->
                         <div class="col-xl-3">
