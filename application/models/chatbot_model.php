@@ -29,12 +29,31 @@ class chatbot_model extends CI_Model
         }
     }
 
+    function edit_conversation_name($con_id, $con_name)
+    {
+        $this->db->where('con_id', $con_id);
+        $this->db->set('con_name', $con_name);
+        $this->db->update('conversation_history');
+    }
+
+    function delete_conversation($con_id)
+    {
+        $this->db->where('con_id', $con_id);
+        $this->db->delete('conversation_history');
+    }
+
+    function delete_chat($con_id)
+    {
+        $this->db->where('con_id', $con_id);
+        $this->db->delete('chat_history');
+    }
+
     function increase_no_of_message($con_id)
     {
         $this->db->set('no_of_message', 'no_of_message + 1', false);
         $this->db->where('con_id', $con_id);
         $this->db->update('conversation_history');
-        
+
         return $this->db->affected_rows();
     }
 
@@ -43,7 +62,7 @@ class chatbot_model extends CI_Model
         $this->db->select('*');
         $this->db->from('conversation_history');
         $this->db->where('user_id', $user_id);
-        $this->db->order_by('user_id', 'DESC');
+        $this->db->order_by('con_id', 'DESC');
         $query = $this->db->get()->result();
         return $query;
     }
@@ -58,13 +77,19 @@ class chatbot_model extends CI_Model
         return $query;
     }
 
+    function one_chat_row($chat_id)
+    {
+        $this->db->where('chat_id', $chat_id);
+        return $this->db->get('chat_history')->row();
+    }
+
     function get_latest_con_id($user_id)
     {
         $this->db->where('user_id', $user_id);
         $this->db->order_by('con_id', 'DESC');
         $this->db->limit(1);
         $query = $this->db->get('conversation_history');
-        
+
         return $query->row();
     }
 
@@ -83,7 +108,4 @@ class chatbot_model extends CI_Model
             return false; // No rows
         }
     }
-
-    
-
 }

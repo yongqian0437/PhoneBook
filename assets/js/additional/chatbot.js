@@ -3,6 +3,13 @@ $(document).ready(function () {
     if (new_chat === "no") {
         load_history(current_con_id);
         $('#new_chat_info').hide();
+    } else {
+        $('#conversation_list').append('<div onclick="open_new_chat()" class="card shadow chatbubble mb-5" style=" color: black;">' +
+        '<div class="card-body">' +
+        '+ New chat' +
+        '</div>' +
+        '</div>');
+
     }
 
 });
@@ -81,7 +88,7 @@ function enter_prompt() {
     }
 }
 
-function append_new_card(){
+function append_new_card() {
     //Append new card to conversation list if its a new chat
     if (new_chat === "yes") {
 
@@ -92,14 +99,13 @@ function append_new_card(){
             dataType: "json",
             success: function (response) {
 
-                $('#conversation_list').append('<div onclick = "load_history(' + response.con_id + ')" id = "' + response.con_id + '" class="card shadow chatbubble mt-2" style=" color: black;">' +
-                    '    <div class="card-body">' +
-                    '        ' + response.con_name + '' +
-                    '    </div>' +
-                    '</div>');
-
                 //set current con_id to newly created con_id
                 current_con_id = response.con_id;
+
+                load_conversation(current_con_id);
+
+                //rewrite the card list
+                
 
             },
             error: function (xhr, status, error) {
@@ -219,7 +225,7 @@ function load_history(con_id) {
                 } else {
 
                     $('#conversation_body').append('<div class="row py-2 ml-5 my-1 mr-2 justify-content-end">' +
-                        '    <div class="card chatbubble ml-4" style="background-color: #007aff; color: white; white-space: pre; word-break: break-all; ">' +
+                        '    <div class="card chatbubble ml-4" style="background-color: #007aff; color: white;">' +
                         '        <div class="card-body response-card">' + chat.message + '</div>' +
                         '    </div>' +
                         '</div>');
@@ -227,6 +233,7 @@ function load_history(con_id) {
 
             });
             //Close loading pop up
+            load_conversation(con_id);
             swal.close();
 
         },
@@ -237,4 +244,173 @@ function load_history(con_id) {
             })
         }
     });
+}
+
+function load_conversation(con_id) {
+
+    //check if user has conversation
+    $.ajax({
+        url: base_url + "chatbot/check_has_conversation",
+        method: "GET",
+        dataType: "json",
+        success: function (response) {
+
+            if (response === "yes") {
+
+                console.log('test');
+                $.ajax({
+                    url: base_url + "chatbot/load_convo_card",
+                    type: 'GET',
+                    dataType: "json",
+                    success: function (response) {
+
+
+                        $('#conversation_list').empty();
+                        //append new chat button
+                        $('#conversation_list').append('<div onclick="open_new_chat()" class="card shadow chatbubble mb-5" style=" color: black;">' +
+                            '<div class="card-body">' +
+                            '+ New chat' +
+                            '</div>' +
+                            '</div>');
+
+
+                        //append chat history
+                        $.each(response, function (index, card) {
+
+                            if (card.con_id == current_con_id) {
+                                $('#conversation_list').append('<div id="con' + card.con_id + '" class="card shadow convoclass chatbubble mt-2" style=" color: black; position: relative;">' +
+                                    '<div class="card-body convobody">' +
+                                    '<i class="fas fa-comments pr-2"></i>' + card.con_name + '' +
+                                    '<div class="buttons_icon" id = "buttonset' + card.con_id + '" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%);">' +
+                                    '<button class="edit-button text-secondary" onclick ="edit_con_name(' + card.con_id + ')" title="Edit" style="background-color: white; border: none;"><i class="fas fa-edit"></i></button>' +
+                                    '<button class="delete-button text-secondary" onclick ="delete_conversation(' + card.con_id + ')" title="Delete" style="background-color: white; border: none;"><i class="fas fa-trash"></i></button>' +
+                                    '</div>' +
+                                    '</div>' +
+                                    '</div>');
+                            } else {
+                                $('#conversation_list').append('<div onclick="load_history(' + card.con_id + ')" id="con' + card.con_id + '" class="card shadow convoclass chatbubble mt-2" style=" color: black; position: relative;">' +
+                                    '<div class="card-body convobody">' +
+                                    '<i class="fas fa-comments pr-2"></i>' + card.con_name + '' +
+                                    '</div>' +
+                                    '</div>');
+                            }
+
+                        });
+
+                        //Make active card effect
+                        //Unset all card css
+                        $('.convoclass').css({
+                            'color': 'black',
+                            'font-weight': 'normal'
+                        });
+                        //Set card as active
+                        $('#con' + con_id).css({
+                            'color': '#007aff',
+                            'font-weight': 'bold'
+                        });
+
+
+                    },
+                    error: function (xhr, status, error) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'There was an error loading your converation history, please try again',
+                        })
+                    }
+                });
+            }
+
+        },
+        error: function (xhr, status, error) {
+            // Handle errors, if any
+            console.error(error);
+        }
+    });
+
+
+}
+
+function edit_con_name(con_id) {
+
+    Swal.fire({
+        title: 'Enter a name',
+        input: 'text',
+        inputPlaceholder: 'Conversation name',
+        showCancelButton: true,
+        confirmButtonText: 'Submit',
+        cancelButtonText: 'Cancel',
+        preConfirm: (value) => {
+            if (!value) {
+                return Swal.showValidationMessage('Please enter a name');
+            }
+        }
+    }).then((result) => {
+        if (result.isConfirmed) {
+
+            $.ajax({
+                url: base_url + "chatbot/edit_conversation_name",
+                type: 'POST',
+                data: {
+                    con_id: con_id,
+                    con_name: result.value
+                },
+                success: function (response) {
+
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'The name has been edited',
+                    })
+
+                    load_conversation(con_id);
+
+                },
+                error: function (xhr, status, error) {
+                    // Handle errors, if any
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'There was an error editing your conversation',
+                    })
+
+                }
+            });
+
+        }
+    });
+}
+
+function delete_conversation(con_id) {
+
+    Swal.fire({
+        text: 'Are you sure you want to permanently delete this conversation?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonColor: '#1cc88a',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes'
+    }).then((result) => {
+        if (result.isConfirmed) {
+
+            $.ajax({
+                url: base_url + "chatbot/delete_conversation",
+                type: 'POST',
+                data: {
+                    con_id: con_id
+                },
+                success: function (response) {
+
+                    window.location.href = base_url + "chatbot";
+
+                },
+                error: function (xhr, status, error) {
+                    // Handle errors, if any
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'There was an error deleting your conversation',
+                    })
+
+                }
+            });
+
+        }
+    })
 }
