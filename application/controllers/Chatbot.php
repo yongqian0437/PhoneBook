@@ -59,7 +59,7 @@ class Chatbot extends CI_Controller
         $conversation = array();
 
         $conversation = array(
-            array('role' => 'system', 'content' => 'You uses /n when necessary')
+            array('role' => 'system', 'content' => 'You uses \n when there is a line break')
         );
 
         // Get chat history if exist
@@ -132,12 +132,15 @@ class Chatbot extends CI_Controller
 
         $response_chat_id = $this->chatbot_model->insert_chat($chat_data);
 
-        //Get ai response message from databse
-        $chat_row_data = $this->chatbot_model->one_chat_row($response_chat_id);
-        $gpt_response = $chat_row_data->message;
+        //Update latest_update datetime column
+        $this->chatbot_model->update_last_update($con_id);
 
         //Update conversation_history no_of_message
         $this->chatbot_model->increase_no_of_message($con_id);
+
+        //Get ai response message from databse
+        $chat_row_data = $this->chatbot_model->one_chat_row($response_chat_id);
+        $gpt_response = $chat_row_data->message;
 
         // Send the response as JSON
         $this->output
@@ -161,22 +164,22 @@ class Chatbot extends CI_Controller
         $conversation_history_data = $this->chatbot_model->select_conversation_history($this->session->userdata('user_id'));
 
         $this->output
-        ->set_content_type('application/json')
-        ->set_output(json_encode($conversation_history_data));
+            ->set_content_type('application/json')
+            ->set_output(json_encode($conversation_history_data));
     }
 
     public function check_has_conversation()
     {
-       //check if there is any conversation
-       $has_conversation = $this->chatbot_model->check_if_user_has_conversation($this->session->userdata('user_id')); 
+        //check if there is any conversation
+        $has_conversation = $this->chatbot_model->check_if_user_has_conversation($this->session->userdata('user_id'));
 
-       if($has_conversation) {
-        $check = "yes";
-       } else {
-        $check = "no";
-       }
+        if ($has_conversation) {
+            $check = "yes";
+        } else {
+            $check = "no";
+        }
 
-       $this->output
+        $this->output
             ->set_content_type('application/json')
             ->set_output(json_encode($check));
     }
@@ -196,7 +199,7 @@ class Chatbot extends CI_Controller
         $con_name = $this->input->post('con_name');
 
 
-        $this->chatbot_model->edit_conversation_name($con_id  ,$con_name);
+        $this->chatbot_model->edit_conversation_name($con_id, $con_name);
 
         $this->output
             ->set_content_type('application/json')

@@ -62,7 +62,7 @@ class chatbot_model extends CI_Model
         $this->db->select('*');
         $this->db->from('conversation_history');
         $this->db->where('user_id', $user_id);
-        $this->db->order_by('con_id', 'DESC');
+        $this->db->order_by('last_update', 'DESC');        
         $query = $this->db->get()->result();
         return $query;
     }
@@ -77,6 +77,13 @@ class chatbot_model extends CI_Model
         return $query;
     }
 
+    function update_last_update($con_id) {
+        $currentDateTime = date('Y-m-d H:i:s'); 
+        $this->db->set('last_update', $currentDateTime);
+        $this->db->where('con_id', $con_id);
+        $this->db->update('conversation_history');
+    }
+
     function one_chat_row($chat_id)
     {
         $this->db->where('chat_id', $chat_id);
@@ -86,7 +93,7 @@ class chatbot_model extends CI_Model
     function get_latest_con_id($user_id)
     {
         $this->db->where('user_id', $user_id);
-        $this->db->order_by('con_id', 'DESC');
+        $this->db->order_by('last_update', 'DESC');        
         $this->db->limit(1);
         $query = $this->db->get('conversation_history');
 

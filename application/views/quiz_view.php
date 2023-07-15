@@ -51,23 +51,42 @@
                     <div class="row justify-content-md-center pb-5 px-4">
                         <div class="col-md-4 pb-5">
                             <div class="px-2">
-                                <div class="card shadow">
-                                    <div class="card-body text-center bg-primary">
+                                <div class="card shadow" style="border-radius: 30px;">
+                                    <div class="card-body text-center bg-primary" style="border-top-left-radius: 30px; border-top-right-radius: 30px; ">
                                         <h5 class="card-title pt-3" style="font-weight: 700; color:white;">Understanding Dementia Symptoms </h5>
                                     </div>
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item">
-                                            <div class="pb-2"><?= 10 - $qs_data->progress ?> questions left</div>
+                                            <div class="pb-2"><b><?= 10 - $qs_data->progress ?> questions left</b></div>
                                             <div class="progress" style="height: 25px;">
                                                 <div class="progress-bar" role="progressbar" style="width: <?php echo ($qs_data->progress / 10) * 100 ?>%; " aria-valuenow="<?= $qs_data->progress ?>" aria-valuemin="0" aria-valuemax="10"><?php echo ($qs_data->progress / 10) * 100 ?>%</div>
                                             </div>
                                         </li>
-                                        <li class="list-group-item"><i class="fas fa-fire pr-2" style="color:red;"></i>Highest Streak: <?= $qs_data->max_streak ?></li>
                                         <?php if ($qs_data->status != 1) { ?>
-                                            <li class="list-group-item">Last Activity: <?= $qs_data->last_update ?></li>
+                                            <li class="list-group-item"><b>Last Activity:</b> <?= $qs_data->last_update ?></li>
                                         <?php } ?>
                                         <?php if ($qs_data->status == 3) { ?>
-                                            <li class="list-group-item">Score: <?= $qs_data->score ?>/10 (<?php echo ($qs_data->score / 10) * 100 ?>%)</li>
+                                            <li class="list-group-item">
+                                                <div class="row information_row justify-content-md-center">
+                                                    <div class="col-md-6 text-center">
+                                                        <div class="card shadow" style="border-radius: 30px;">
+                                                            <div class="card-body">
+                                                                <i class="fas fa-fire pr-2" style="color:red;"></i>Highest Streak:
+                                                                <div class="pt-1" style="font-size: 2.0rem; font-weight:bold;"><?= $qd_data->max_streak ?></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-6 text-center">
+                                                        <div class="card shadow" style="border-radius: 30px;">
+                                                            <div class="card-body">
+                                                                <i class="fas fa-star pr-2" style="color:#ffcd0a;"></i>Score: <?= $qs_data->score ?>/10
+                                                                <div class="pt-1" style="font-size: 2.0rem; font-weight:bold"><?php echo ($qs_data->score / 10) * 100 ?>%</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
                                         <?php } ?>
                                     </ul>
                                     <div class="card-body">
@@ -91,23 +110,42 @@
                         </div>
                         <div class="col-md-4 pb-5">
                             <div class="px-2">
-                                <div class="card shadow">
-                                    <div class="card-body text-center bg-primary">
+                                <div class="card shadow" style="border-radius: 30px;">
+                                    <div class="card-body text-center bg-primary" style="border-top-left-radius: 30px; border-top-right-radius: 30px; ">
                                         <h5 class="card-title pt-3" style="font-weight: 700; color:white;">Tips For Communicating With Dementia</h5>
                                     </div>
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item">
-                                            <div class="pb-2"><?= 10 - $qt_data->progress ?> questions left</div>
+                                            <div class="pb-2"><b><?= 10 - $qt_data->progress ?> questions left</b></div>
                                             <div class="progress" style="height: 25px;">
                                                 <div class="progress-bar" role="progressbar" style="width: <?php echo ($qt_data->progress / 10) * 100 ?>%; " aria-valuenow="<?= $qt_data->progress ?>" aria-valuemin="0" aria-valuemax="10"><?php echo ($qt_data->progress / 10) * 100 ?>%</div>
                                             </div>
                                         </li>
-                                        <li class="list-group-item"><i class="fas fa-fire pr-2" style="color:red;"></i>Highest Streak: <?= $qt_data->max_streak ?></li>
                                         <?php if ($qt_data->status != 1) { ?>
-                                            <li class="list-group-item">Last Activity: <?= $qt_data->last_update ?></li>
+                                            <li class="list-group-item"><b>Last Activity:</b> <?= $qt_data->last_update ?></li>
                                         <?php } ?>
                                         <?php if ($qt_data->status == 3) { ?>
-                                            <li class="list-group-item">Score: <?= $qt_data->score ?>/10 (<?php echo ($qt_data->score / 10) * 100 ?>%)</li>
+                                            <li class="list-group-item">
+                                                <div class="row information_row justify-content-md-center">
+                                                    <div class="col-md-6 text-center">
+                                                        <div class="card shadow" style="border-radius: 30px;">
+                                                            <div class="card-body">
+                                                                <i class="fas fa-fire pr-2" style="color:red;"></i>Highest Streak:
+                                                                <div class="pt-1" style="font-size: 2.0rem; font-weight:bold"><?= $qt_data->max_streak ?></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-6 text-center">
+                                                        <div class="card shadow" style="border-radius: 30px;">
+                                                            <div class="card-body">
+                                                                <i class="fas fa-star pr-2" style="color:#ffcd0a;"></i>Score: <?= $qt_data->score ?>/10
+                                                                <div class="pt-1" style="font-size: 2.0rem; font-weight:bold"><?php echo ($qt_data->score / 10) * 100 ?>%</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
                                         <?php } ?>
                                     </ul>
                                     <div class="card-body">
@@ -133,23 +171,42 @@
                         <div class="col-md-4 pb-5">
                             <div class="px-2">
 
-                                <div class="card shadow">
-                                    <div class="card-body text-center bg-primary">
+                                <div class="card shadow" style="border-radius: 30px;">
+                                    <div class="card-body text-center bg-primary" style="border-top-left-radius: 30px; border-top-right-radius: 30px; ">
                                         <h5 class="card-title pt-3" style="font-weight: 700; color:white;">Dealing With People With Dementia</h5>
                                     </div>
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item">
-                                            <div class="pb-2"><?= 10 - $qd_data->progress ?> questions left</div>
+                                            <div class="pb-2"><b><?= 10 - $qd_data->progress ?> questions left</b></div>
                                             <div class="progress" style="height: 25px;">
                                                 <div class="progress-bar" role="progressbar" style="width: <?php echo ($qd_data->progress / 10) * 100 ?>%; " aria-valuenow="<?= $qd_data->progress ?>" aria-valuemin="0" aria-valuemax="10"><?php echo ($qd_data->progress / 10) * 100 ?>%</div>
                                             </div>
                                         </li>
-                                        <li class="list-group-item"><i class="fas fa-fire pr-2" style="color:red;"></i>Highest Streak: <?= $qd_data->max_streak ?></li>
                                         <?php if ($qd_data->status != 1) { ?>
-                                            <li class="list-group-item">Last Activity: <?= $qd_data->last_update ?></li>
+                                            <li class="list-group-item"><b>Last Activity:</b> <?= $qd_data->last_update ?></li>
                                         <?php } ?>
                                         <?php if ($qd_data->status == 3) { ?>
-                                            <li class="list-group-item">Score: <?= $qd_data->score ?>/10 (<?php echo ($qd_data->score / 10) * 100 ?>%)</li>
+                                            <li class="list-group-item">
+                                                <div class="row information_row justify-content-md-center">
+                                                    <div class="col-md-6 text-center">
+                                                        <div class="card shadow" style="border-radius: 30px;">
+                                                            <div class="card-body">
+                                                                <i class="fas fa-fire pr-2" style="color:red;"></i>Highest Streak:
+                                                                <div class="pt-1" style="font-size: 2.0rem; font-weight:bold"><?= $qd_data->max_streak ?></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-md-6 text-center">
+                                                        <div class="card shadow" style="border-radius: 30px;">
+                                                            <div class="card-body">
+                                                                <i class="fas fa-star pr-2" style="color:#ffcd0a;"></i>Score: <?= $qd_data->score ?>/10
+                                                                <div class="pt-1" style="font-size: 2.0rem; font-weight:bold"><?php echo ($qd_data->score / 10) * 100 ?>%</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li>
                                         <?php } ?>
                                     </ul>
                                     <div class="card-body">

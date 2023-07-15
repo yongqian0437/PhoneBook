@@ -5,18 +5,25 @@ $(document).ready(function () {
         $('#new_chat_info').hide();
     } else {
         $('#conversation_list').append('<div onclick="open_new_chat()" class="card shadow chatbubble mb-5" style=" color: black;">' +
-        '<div class="card-body">' +
-        '+ New chat' +
-        '</div>' +
-        '</div>');
+            '<div class="card-body">' +
+            '+ &nbsp New chat' +
+            '</div>' +
+            '</div>');
 
     }
 
 });
 
 
-function enter_prompt() {
-    var prompt = $('#user_prompt').text();
+function enter_prompt(text = "default value") {
+
+    //Check if user click on recommended prompt
+    if (text === "default value") {
+        var prompt = $('#user_prompt').text();
+    }
+    else {
+        var prompt = text;
+    }
 
     if (prompt !== '') {
 
@@ -70,7 +77,6 @@ function enter_prompt() {
                 // Append text with the writing effect
                 appendTextWithDelay(response, delay);
 
-
             },
             error: function (xhr, status, error) {
                 Swal.fire({
@@ -79,10 +85,8 @@ function enter_prompt() {
                 })
             }
         });
-
-
+        load_conversation(current_con_id);
         append_new_card();
-
         new_chat = "no";
 
     }
@@ -104,8 +108,6 @@ function append_new_card() {
 
                 load_conversation(current_con_id);
 
-                //rewrite the card list
-                
 
             },
             error: function (xhr, status, error) {
@@ -120,37 +122,36 @@ function append_new_card() {
 function open_new_chat() {
     new_chat = "yes";
     current_con_id = 0;
+    load_conversation(current_con_id);
     $('#conversation_body').empty();
     $('#conversation_body').append(`
-    <div class="row justify-content-center py-2" id="new_chat_info">
-        <div class="col-xl-7 py-2">
-            <div class="card shadow chatbubble" style="color: black;">
-                <div class="card-body">
-                    Ask the chatbot about something
-                </div>
-            </div>
+    <div class="row justify-content-center py-2 pt-5" id="new_chat_info" style="padding-left: 20%; padding-right:20%">
+        <div class="col-md-4 text-center">
+            <i class="fas fa-lightbulb pr-2" style="color:#ffcd0a; font-size: 2.0rem;"></i>
+            <div class="pb-2" style="font-weight:bold; font-size: 1.2rem;">Examples</div>
+            <button type="button" onclick="enter_prompt('What is the difference between Alzheimer’s disease and dementia?')" class="btn btn-outline-dark mb-2">What is the difference between Alzheimer’s disease and dementia?</button><br>
+            <button type="button" onclick="enter_prompt('What are the early signs of Alzheimer’s disease?')" class="btn btn-outline-dark mb-2">What are the early signs of Alzheimer’s disease?</button><br>
+            <button type="button" onclick="enter_prompt('What are the stages of Alzheimer’s disease?')" class="btn btn-outline-dark">What are the stages of Alzheimer’s disease?</button>
         </div>
-        <div class="col-xl-7 py-2">
-            <div class="card shadow chatbubble" style="color: black;">
-                <div class="card-body">
-                    Do not know where to start? Try asking these questions!
-                    <div class="card my-2" style="color: black; background-color: #F2F0F0; border-radius: 40px; width: 50%; padding-top:0px; padding: bottom 0px;">
-                        <div class="card-body">
-                        What is the difference between Alzheimer’s disease and dementia?
-                        </div>
-                    </div>
-                    <div class="card my-2" style="color: black; background-color: #F2F0F0; border-radius: 40px; width: 50%; padding-top:0px; padding: bottom 0px;">
-                        <div class="card-body">
-                        What are the early signs of Alzheimer’s disease?
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="col-md-4 text-center">
+            <i class="fas fa-bolt pr-2" style="color:#007AFF; font-size: 2.0rem;"></i>
+            <div class="pb-2" style="font-weight:bold; font-size: 1.2rem;">Capabilities</div>
+            <button disabled type="button" class="btn btn-outline-dark mb-2">Remembers what user said earlier in the conversation</button><br>
+            <button disabled type="button" class="btn btn-outline-dark mb-2">Allows user to provide follow-up corrections</button><br>
+            <button disabled type="button" class="btn btn-outline-dark">Trained to decline inappropriate requests</button>
+        </div>
+        <div class="col-md-4 text-center">
+            <i class="fas fa-exclamation pr-2" style="color:#FF0000; font-size: 2.0rem;"></i>
+            <div class="pb-2" style="font-weight:bold; font-size: 1.2rem;">Limitation</div>
+            <button disabled type="button" class="btn btn-outline-dark mb-2">May occasionally generate incorrect information</button><br>
+            <button disabled type="button" class="btn btn-outline-dark mb-2">May occasionally produce harmful instructions or biased content</button><br>
+            <button disabled type="button" class="btn btn-outline-dark">Limited knowledge of world and events after 2021</button>
         </div>
     </div>
 `);
 
 }
+
 
 function appendTextWithDelay(text, delay) {
     var index = 0;
@@ -257,7 +258,6 @@ function load_conversation(con_id) {
 
             if (response === "yes") {
 
-                console.log('test');
                 $.ajax({
                     url: base_url + "chatbot/load_convo_card",
                     type: 'GET',
@@ -269,7 +269,7 @@ function load_conversation(con_id) {
                         //append new chat button
                         $('#conversation_list').append('<div onclick="open_new_chat()" class="card shadow chatbubble mb-5" style=" color: black;">' +
                             '<div class="card-body">' +
-                            '+ New chat' +
+                            '+ &nbsp New chat' +
                             '</div>' +
                             '</div>');
 
@@ -281,7 +281,7 @@ function load_conversation(con_id) {
                                 $('#conversation_list').append('<div id="con' + card.con_id + '" class="card shadow convoclass chatbubble mt-2" style=" color: black; position: relative;">' +
                                     '<div class="card-body convobody">' +
                                     '<i class="fas fa-comments pr-2"></i>' + card.con_name + '' +
-                                    '<div class="buttons_icon" id = "buttonset' + card.con_id + '" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%);">' +
+                                    '<div class="buttons_icon" id = "buttonset' + card.con_id + '" style="position: absolute; right: 5px; top: 50%; transform: translateY(-50%);">' +
                                     '<button class="edit-button text-secondary" onclick ="edit_con_name(' + card.con_id + ')" title="Edit" style="background-color: white; border: none;"><i class="fas fa-edit"></i></button>' +
                                     '<button class="delete-button text-secondary" onclick ="delete_conversation(' + card.con_id + ')" title="Delete" style="background-color: white; border: none;"><i class="fas fa-trash"></i></button>' +
                                     '</div>' +
