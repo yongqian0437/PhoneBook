@@ -89,12 +89,12 @@ class Chatbot extends CI_Controller
         );
 
         //======================= Need to change ========================
-        $user_prompt = "";
-        foreach ($conversation as $conversation) {
-            $user_prompt .= $conversation['role'] . ": " . $conversation['content'] . "\n";
-        }
+        // $user_prompt = "";
+        // foreach ($conversation as $conversation) {
+        //     $user_prompt .= $conversation['role'] . ": " . $conversation['content'] . "\n";
+        // }
 
-        $gpt_response = generate_text($user_prompt);
+        $gpt_response = generate_text($conversation);
 
         // Create new table in conversation history and chat history if its new chat
         if ($this->input->post('new_chat') == "yes") {

@@ -48,11 +48,10 @@
     }
 
     .btn-outline-dark:disabled {
-  color: #5a5c68;
-  border-color: #5a5c68;
-  opacity: 1;
-}
-
+        color: #5a5c68;
+        border-color: #5a5c68;
+        opacity: 1;
+    }
 </style>
 
 <!-- Top Navigation -->
