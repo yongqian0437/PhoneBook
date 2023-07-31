@@ -53,7 +53,7 @@
                             <div class="px-2">
                                 <div class="card shadow" style="border-radius: 30px;">
                                     <div class="card-body bg-primary" style="border-top-left-radius: 30px; border-top-right-radius: 30px;">
-                                        <h5 class="card-title pt-5" style="font-weight: 700; color:white; width: 70%;">Understanding Dementia Symptoms</h5>
+                                        <h5 class="card-title pt-5" style="font-weight: 700; color:white; width: 80%; font-size: 1.8rem;">Understanding Dementia Symptoms</h5>
                                         <?php if ($qs_data->status != 1) {
                                             $dateTime = new DateTime($qs_data->last_update);
                                             $qs_dateOnly = $dateTime->format('Y-m-d');
@@ -119,7 +119,7 @@
                             <div class="px-2">
                                 <div class="card shadow" style="border-radius: 30px;">
                                     <div class="card-body bg-primary" style="border-top-left-radius: 30px; border-top-right-radius: 30px;">
-                                        <h5 class="card-title pt-5" style="font-weight: 700; color:white; width: 70%;">Tips For Communicating With Dementia</h5>
+                                        <h5 class="card-title pt-5" style="font-weight: 700; color:white; width: 80%; font-size: 1.8rem;">Tips For Communicating With Dementia</h5>
                                         <?php if ($qt_data->status != 1) {
                                             $dateTime = new DateTime($qt_data->last_update);
                                             $qt_dateOnly = $dateTime->format('Y-m-d');
@@ -187,7 +187,7 @@
                                 <div class="card shadow" style="border-radius: 30px;">
 
                                     <div class="card-body bg-primary" style="border-top-left-radius: 30px; border-top-right-radius: 30px;">
-                                        <h5 class="card-title pt-5" style="font-weight: 700; color:white; width: 70%;">Dealing With People With Dementia</h5>
+                                        <h5 class="card-title pt-5" style="font-weight: 700; color:white; width: 80%; font-size: 1.8rem;">Dealing With People With Dementia</h5>
                                         <?php if ($qd_data->status != 1) {
                                             $dateTime = new DateTime($qd_data->last_update);
                                             $qd_dateOnly = $dateTime->format('Y-m-d');
