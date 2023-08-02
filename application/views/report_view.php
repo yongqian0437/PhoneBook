@@ -439,17 +439,18 @@
 
                 <!-- // donutchart -->
                 <script>
+                    var incomplete = (10-<?=$reading_data->symptoms?>);
                     var pieChart = document.getElementById('chartProgress').getContext('2d');
                     var myChart = new Chart(chartProgress, {
                         type: 'doughnut',
                         data: {
-                            labels: ['Reading Progress'],
+                            labels: ['Complete <?= $reading_data->symptoms * 10 ?>%', 'Incomplete <?= (10 - $reading_data->symptoms) * 10 ?>%'],
                             datasets: [{
-                                label: 'Reading Percentage (%)',
-                                data: [<?=$reading_data->symptoms?>],
+                                data: [<?= $reading_data->symptoms ?>, incomplete],
                                 backgroundColor: [
 
-                                    'rgb(7, 25, 82)'
+                                    'rgb(7, 25, 82)',
+                                    'rgb(211, 211, 211)'
                                 ],
                                 hoverOffset: 4
                             }]
@@ -462,17 +463,18 @@
                 </script>
 
                 <script>
+                    var incomplete = (10 - <?= $reading_data->tips ?>);
                     var pieChart = document.getElementById('doughnutChart2').getContext('2d');
                     var myChart = new Chart(doughnutChart2, {
                         type: 'doughnut',
                         data: {
-                            labels: ['Reading Progress'],
+                            labels: ['Complete <?= $reading_data->tips * 10 ?>%', 'Incomplete <?= (10 - $reading_data->tips) * 10 ?>%'],
                             datasets: [{
-                                label: 'Reading Percentage (%)',
-                                data: [<?=$reading_data->tips?>],
+                                data: [<?= $reading_data->tips ?>, incomplete],
                                 backgroundColor: [
 
-                                    'rgb(53, 162, 159)'
+                                    'rgb(53, 162, 159)',
+                                    'rgb(211, 211, 211)'
                                 ],
                                 hoverOffset: 4
                             }]
@@ -485,20 +487,22 @@
                 </script>
 
                 <script>
+                    var incomplete = (10 - <?= $reading_data->dealing ?>);
                     var pieChart = document.getElementById('doughnutChart3').getContext('2d');
                     var myChart = new Chart(doughnutChart3, {
                         type: 'doughnut',
                         data: {
-                            labels: ['Reading Progress'],
+                            labels: ['Complete <?= $reading_data->dealing * 10 ?>%', 'Incomplete <?= (10 - $reading_data->dealing) * 10 ?>%'],
                             datasets: [{
-                                label: 'Reading Percentage (%)',
-                                data: [<?=$reading_data->dealing?>],
+                                data: [<?= $reading_data->dealing ?>, incomplete],
                                 backgroundColor: [
 
-                                    'rgb(151, 254, 237)'
+                                    'rgb(151, 254, 237)',
+                                    'rgb(211, 211, 211)'
                                 ],
-
+                                hoverOffset: 4
                             }]
+
                         },
                         options: {
                             maintainAspectRatio: false,
