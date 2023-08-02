@@ -37,4 +37,19 @@ class report_model extends CI_Model
         $percentage = ($count1 / $count2) * 100;
         return round($percentage, 2);
     }
+
+    function get_user_score_data($database)
+    {
+        $this->db->where('user_id', $this->session->userdata('user_id'));
+        return $this->db->get($database)->row();
+    }
+
+    function score_percentage($database)
+    {
+        //get user score first
+        $quiz_data = $this->get_user_score_data($database);
+        $quiz_score = $quiz_data->SCORE
+
+    }
+
 }
