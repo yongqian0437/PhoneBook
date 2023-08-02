@@ -105,7 +105,7 @@
                     </div>
 
                     <div class="d-sm-flex align-items-center justify-content-between mb-2 px-4">
-                        <h1 class="h3 mb-0 col-4 text-gray-700 pt-4 font-weight-bold ">Reading Progress :</h1>
+                        <h4 class="mb-0 col-4 text-gray-700 pt-4 font-weight-bold ">Reading Progress :</h4>
                     </div>
                     <div class="graphbox2">
 
@@ -114,7 +114,7 @@
                             <div class="col-xl-12 col-lg-12" style="border-radius: 20px;">
                                 <div class="card h-100 shadow mb-4" style="border-radius: 20px;">
                                     <div class="card-header py-3" style="background-color: #6b9080;border-top-left-radius: 20px; border-top-right-radius: 20px;">
-                                        <div class="text-xs font-weight-bold mb-1" style="color: white; text-transform: uppercase;">Dementia Symptoms</div>
+                                        <div class="text-xs font-weight-bold mb-1" style="color: white; text-transform: uppercase;">Topic 1</div>
                                     </div>
 
                                     <div class="card-body" style="background-color: #f9f6f1;">
@@ -130,7 +130,7 @@
                             <div class="col-xl-12 col-lg-12 " style="border-radius: 20px;">
                                 <div class="card h-100 shadow mb-4" style="border-radius: 20px;">
                                     <div class="card-header py-3" style="background-color: #6b9080;border-top-left-radius: 20px; border-top-right-radius: 20px;">
-                                        <div class="text-xs font-weight-bold mb-1" style="color: white; text-transform: uppercase;">Tips for communicating with a person with Dementia</div>
+                                        <div class="text-xs font-weight-bold mb-1" style="color: white; text-transform: uppercase;">Topic 2</div>
                                     </div>
 
                                     <div class="card-body" style="background-color: #f9f6f1">
@@ -145,8 +145,8 @@
                         <div class="box">
                             <div class="col-xl-12 col-lg-12" style="border-radius: 20px;">
                                 <div class="card h-100 shadow mb-4" style="border-radius: 20px;">
-                                    <div class="card-header py-2" style="background-color: #6b9080;border-top-left-radius: 20px; border-top-right-radius: 20px;">
-                                        <div class="text-xs font-weight-bold mb-1" style="color: white; text-transform: uppercase;">Dealing with the Troubling Behavior of A Person with Dementia</div>
+                                    <div class="card-header py-3" style="background-color: #6b9080;border-top-left-radius: 20px; border-top-right-radius: 20px;">
+                                        <div class="text-xs font-weight-bold mb-1" style="color: white; text-transform: uppercase;">Topic 3</div>
                                     </div>
 
                                     <div class="card-body" style="background-color: #f9f6f1">
@@ -157,10 +157,14 @@
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
 
+                    <div class="px-4 ">
+                        <hr style=" width :100%; height:2px; background-color:#EAF4F4">
+                    </div>
+                    <div class="d-sm-flex align-items-center justify-content-between mb-2 px-4">
+                        <h4 class="mb-2 col-4 text-gray-700 pt-4 font-weight-bold ">Quiz :</h4>
+                    </div>
 
                     <div class="row justify-content-center px-4" style="box-shadow:30px;">
 
