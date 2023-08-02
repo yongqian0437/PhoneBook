@@ -446,7 +446,7 @@
                             labels: ['Reading Progress'],
                             datasets: [{
                                 label: 'Reading Percentage (%)',
-                                data: [<?php echo ($read_data->symptoms / 10) * 100 ?>],
+                                data: [<?=$reading_data->symptoms?>],
                                 backgroundColor: [
 
                                     'rgb(7, 25, 82)'
@@ -469,7 +469,7 @@
                             labels: ['Reading Progress'],
                             datasets: [{
                                 label: 'Reading Percentage (%)',
-                                data: [<?php echo ($read_data->tips / 10) * 100 ?>],
+                                data: [<?=$reading_data->tips?>],
                                 backgroundColor: [
 
                                     'rgb(53, 162, 159)'
@@ -492,7 +492,7 @@
                             labels: ['Reading Progress'],
                             datasets: [{
                                 label: 'Reading Percentage (%)',
-                                data: [<?php echo ($read_data->dealing / 10) * 100 ?>],
+                                data: [<?=$reading_data->dealing?>],
                                 backgroundColor: [
 
                                     'rgb(151, 254, 237)'
