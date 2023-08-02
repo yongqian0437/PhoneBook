@@ -176,7 +176,7 @@
                                         <div class="col mr-2">
                                             <div class="text-center text-xs font-weight-bold text-uppercase mb-2">
                                                 You have scored more than
-                                                <h1 class="text-danger"><?php echo ($qs_data->score / 10) * 100 ?>% </h1> of individuals on your very first attempt in the <h3 class="text-success" style="font-family: 'poppins', sans-serif;">Dementia Symptoms</h3>
+                                                <h1 class="text-danger"><?php echo $qs_percent; ?>% </h1> of individuals on your very first attempt in the <h3 class="text-success" style="font-family: 'poppins', sans-serif;">Dementia Symptoms</h3>
                                             </div>
                                         </div>
                                     </div>
@@ -193,7 +193,7 @@
                                         <div class="col mr-2">
                                             <div class="text-center text-xs font-weight-bold text-uppercase mb-2">
                                                 You have scored more than
-                                                <h1 class="text-danger"><?php echo ($qt_data->score / 10) * 100 ?>%</h1> of individuals on your very first attempt in the <h3 class="text-success" style="font-family: 'Poppins', sans-serif;">Tips for communicating with Dementia
+                                                <h1 class="text-danger"><?php echo $qt_percent; ?>%</h1> of individuals on your very first attempt in the <h3 class="text-success" style="font-family: 'Poppins', sans-serif;">Tips for communicating with Dementia
                                             </div>
                                         </div>
                                     </div>
@@ -209,7 +209,7 @@
                                         <div class="col mr-2">
                                             <div class="text-center text-xs font-weight-bold text-uppercase mb-2">
                                                 You have scored more than
-                                                <h1 class="text-danger"> <?php echo ($qd_data->score / 10) * 100 ?>%</h1> of individuals on your very first attempt in the <h3 class="text-success" style="font-family: 'Poppins', sans-serif;">Dealing with people with Dementia
+                                                <h1 class="text-danger"> <?php echo $qd_percent; ?>%</h1> of individuals on your very first attempt in the <h3 class="text-success" style="font-family: 'Poppins', sans-serif;">Dealing with people with Dementia
                                             </div>
                                         </div>
                                     </div>

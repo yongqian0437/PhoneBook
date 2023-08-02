@@ -18,12 +18,14 @@ class report_model extends CI_Model
         return $this->db->get($database)->row();
     }
 
-    function total_user_count($database)
+    function total_user_count($table)
     {
-        $this->db->select('COUNT(*)');
-        $this->db->where('first_attempt_score' . '!=', 0);
+        $this->db->select('*');
+        $this->db->from($table);
+        $this->db->where('first_attempt_score >', 0);
+        $query = $this->db->get();
 
-        return $this->db->get($database)->row();
+        return $query->num_rows();
     }
 
     function count_percentage($user_score, $database)
@@ -38,18 +40,31 @@ class report_model extends CI_Model
         return round($percentage, 2);
     }
 
-    function get_user_score_data($database)
+    function get_user_score_data($table)
     {
         $this->db->where('user_id', $this->session->userdata('user_id'));
-        return $this->db->get($database)->row();
+        return $this->db->get($table)->row();
     }
 
-    function score_percentage($database)
+    function score_percentage($table)
     {
-        //get user score first
-        $quiz_data = $this->get_user_score_data($database);
-        $quiz_score = $quiz_data->SCORE
+        //get THIS user score first
+        $quiz_data = $this->get_user_score_data($table);
+        $first_quiz_score = $quiz_data->first_attempt_score;
 
+        //get total user
+        $total_user = $this->total_user_count($table);
+        
+
+        //get total user who score less than this user
+        $this->db->select('*');
+        $this->db->from($table);
+        $this->db->where('first_attempt_score >', 0);
+        $this->db->where('first_attempt_score <', $first_quiz_score);
+        $query = $this->db->get();
+        $count = $query->num_rows();
+
+        $percentage = ($count/$total_user)*100;
+        return $percentage;
     }
-
 }

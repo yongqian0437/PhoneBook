@@ -28,6 +28,12 @@ class Report extends CI_Controller
 		//reading corner data
 		$data['reading_data'] = $this->reading_corner_model->get_reading_symptoms_details($this->session->userdata('user_id'));
 
+		//quiz score percentage
+		$data['qs_percent'] = $this->report_model->score_percentage('quiz_symptom');
+		$data['qt_percent'] = $this->report_model->score_percentage('quiz_tips');
+		$data['qd_percent'] = $this->report_model->score_percentage('quiz_dealing');
+
+
 		//quiz data
 		$data['qs_data'] = $this->quiz_model->get_qs_details($this->session->userdata('user_id'));
 		$data['qt_data'] = $this->quiz_model->get_qt_details($this->session->userdata('user_id'));
