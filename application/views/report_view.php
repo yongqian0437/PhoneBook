@@ -174,10 +174,16 @@
                                 <div class="card-body ">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-center text-xs font-weight-bold text-uppercase mb-2">
-                                                You have scored more than
-                                                <h1 class="text-danger"><?php echo $qs_percent; ?>% </h1> of individuals on your very first attempt in the <h3 class="text-success" style="font-family: 'poppins', sans-serif;">Dementia Symptoms</h3>
-                                            </div>
+                                            <?php if ($qs_data->status == 3) { ?>
+                                                <div class="text-center text-xs font-weight-bold text-uppercase mb-2">
+                                                    You have scored more than
+                                                    <h1 class="text-danger"><?php echo $qs_percent; ?>% </h1> of individuals on your very first attempt in the <h3 class="text-success" style="font-family: 'poppins', sans-serif;">Dementia Symptoms</h3>
+                                                </div>
+                                            <?php } else { ?>
+                                                <div class="text-center font-weight-bold  py-4 " style="font-size: 1.5rem;">
+                                                    Complete the quiz for this topic to see your report!
+                                                </div>
+                                            <?php } ?>
                                         </div>
                                     </div>
                                 </div>
@@ -191,10 +197,16 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-center text-xs font-weight-bold text-uppercase mb-2">
-                                                You have scored more than
-                                                <h1 class="text-danger"><?php echo $qt_percent; ?>%</h1> of individuals on your very first attempt in the <h3 class="text-success" style="font-family: 'Poppins', sans-serif;">Tips for communicating with Dementia
-                                            </div>
+                                            <?php if ($qt_data->status == 3) { ?>
+                                                <div class="text-center text-xs font-weight-bold text-uppercase mb-2">
+                                                    You have scored more than
+                                                    <h1 class="text-danger"><?php echo $qt_percent; ?>% </h1> of individuals on your very first attempt in the <h3 class="text-success" style="font-family: 'poppins', sans-serif;">Dementia Symptoms</h3>
+                                                </div>
+                                            <?php } else { ?>
+                                                <div class="text-center font-weight-bold  py-4 " style="font-size: 1.5rem;">
+                                                    Complete the quiz for this topic to see your report!
+                                                </div>
+                                            <?php } ?>
                                         </div>
                                     </div>
                                 </div>
@@ -207,10 +219,16 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-center text-xs font-weight-bold text-uppercase mb-2">
-                                                You have scored more than
-                                                <h1 class="text-danger"> <?php echo $qd_percent; ?>%</h1> of individuals on your very first attempt in the <h3 class="text-success" style="font-family: 'Poppins', sans-serif;">Dealing with people with Dementia
-                                            </div>
+                                        <?php if ($qd_data->status == 3) { ?>
+                                                <div class="text-center text-xs font-weight-bold text-uppercase mb-2">
+                                                    You have scored more than
+                                                    <h1 class="text-danger"><?php echo $qd_percent; ?>% </h1> of individuals on your very first attempt in the <h3 class="text-success" style="font-family: 'poppins', sans-serif;">Dementia Symptoms</h3>
+                                                </div>
+                                            <?php } else { ?>
+                                                <div class="text-center font-weight-bold  py-4 " style="font-size: 1.5rem;">
+                                                    Complete the quiz for this topic to see your report!
+                                                </div>
+                                            <?php } ?>
                                         </div>
                                     </div>
                                 </div>
@@ -439,7 +457,7 @@
 
                 <!-- // donutchart -->
                 <script>
-                    var incomplete = (10-<?=$reading_data->symptoms?>);
+                    var incomplete = (10 - <?= $reading_data->symptoms ?>);
                     var pieChart = document.getElementById('chartProgress').getContext('2d');
                     var myChart = new Chart(chartProgress, {
                         type: 'doughnut',
