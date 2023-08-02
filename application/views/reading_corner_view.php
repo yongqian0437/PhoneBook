@@ -48,9 +48,9 @@
                     <div class="row justify-content-md-center pb-5 px-4">
                         <div class="col-md-4 pb-5">
                             <div class="px-2">
-                                <div class="card shadow">
-                                    <div class="card-body text-center bg-primary">
-                                        <h5 class="card-title pt-3" style="font-weight: 700; color:white;">Understanding Dementia Symptoms</h5>
+                                <div class="card shadow" style="border-radius: 30px;">
+                                    <div class="card-body " style="border-top-left-radius: 30px; border-top-right-radius: 30px; background-color: #6B9080;">
+                                        <h5 class="card-title pt-5" style="font-weight: 700; color:white; width: 80%; font-size: 1.7rem;">Understanding Dementia Symptoms</h5>
                                     </div>
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item">
@@ -60,9 +60,6 @@
 
                                             </div>
                                         </li>
-                                        <?php if ($read_data->status != 0) { ?>
-                                            <li class="list-group-item">Time Reading: <?= $read_data->symptoms_timer ?>s</li>
-                                        <?php } ?>
                                     </ul>
                                     <div class="card-body">
                                         <?php if ($read_data->status == 0) { ?>
@@ -84,9 +81,9 @@
 
                         <div class="col-md-4 pb-5">
                             <div class="px-2">
-                                <div class="card shadow">
-                                    <div class="card-body text-center bg-primary">
-                                        <h5 class="card-title pt-3" style="font-weight: 700; color:white;">Tips For Communicating With Dementia</h5>
+                            <div class="card shadow" style="border-radius: 30px;">
+                                    <div class="card-body " style="border-top-left-radius: 30px; border-top-right-radius: 30px; background-color: #6B9080;">
+                                        <h5 class="card-title pt-5" style="font-weight: 700; color:white; width: 80%; font-size: 1.7rem;">Tips For Communicating With Dementia</h5>
                                     </div>
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item">
@@ -96,9 +93,6 @@
 
                                             </div>
                                         </li>
-                                        <?php if ($read_data->tips_status != 0) { ?>
-                                            <li class="list-group-item">Time Reading: <?= $read_data->tips_timer ?>s</li>
-                                        <?php } ?>
                                     </ul>
                                     <div class="card-body">
                                         <?php if ($read_data->tips_status == 0) { ?>
@@ -120,9 +114,9 @@
 
                         <div class="col-md-4 pb-5">
                             <div class="px-2">
-                                <div class="card shadow">
-                                    <div class="card-body text-center bg-primary">
-                                        <h5 class="card-title pt-3" style="font-weight: 700; color:white;">Dealing With People With Dementia</h5>
+                                <div class="card shadow" style="border-radius: 30px;">
+                                    <div class="card-body " style="border-top-left-radius: 30px; border-top-right-radius: 30px; background-color: #6B9080;">
+                                        <h5 class="card-title pt-5" style="font-weight: 700; color:white; width: 80%; font-size: 1.7rem;">Dealing With People With Dementia</h5>
                                     </div>
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item">
@@ -132,9 +126,6 @@
 
                                             </div>
                                         </li>
-                                        <?php if ($read_data->dealing_status != 0) { ?>
-                                            <li class="list-group-item">Time Reading: <?= $read_data->dealing_timer ?>s</li>
-                                        <?php } ?>
                                     </ul>
                                     <div class="card-body">
                                         <?php if ($read_data->dealing_status == 0) { ?>

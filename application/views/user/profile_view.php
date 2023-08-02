@@ -184,7 +184,7 @@
                                                         </label>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-4 pt-4">
+                                                <div class="col-md-4 pt-4" style="display: none;">
                                                     <div class="form-group">
                                                         <label for="hoursDropdown" style="font-weight: 600; font-size:1.2rem;">Select Hour:</label>
                                                         <select class="form-control" id="hoursDropdown">

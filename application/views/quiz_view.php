@@ -52,8 +52,8 @@
                         <div class="col-md-4 pb-5">
                             <div class="px-2">
                                 <div class="card shadow" style="border-radius: 30px;">
-                                    <div class="card-body bg-primary" style="border-top-left-radius: 30px; border-top-right-radius: 30px;">
-                                        <h5 class="card-title pt-5" style="font-weight: 700; color:white; width: 80%; font-size: 1.8rem;">Understanding Dementia Symptoms</h5>
+                                    <div class="card-body " style="border-top-left-radius: 30px; border-top-right-radius: 30px; background-color: #6B9080;">
+                                        <h5 class="card-title pt-5" style="font-weight: 700; color:white; width: 80%; font-size: 1.7rem;">Understanding Dementia Symptoms</h5>
                                         <?php if ($qs_data->status != 1) {
                                             $dateTime = new DateTime($qs_data->last_update);
                                             $qs_dateOnly = $dateTime->format('Y-m-d');
@@ -67,7 +67,7 @@
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item">
                                             <div class="pb-2"><b><?= 10 - $qs_data->progress ?> questions left</b></div>
-                                            <div class="progress" style="height: 25px;">
+                                            <div class="progress" style="height: 25px; ">
                                                 <div class="progress-bar" role="progressbar" style="width: <?php echo ($qs_data->progress / 10) * 100 ?>%; " aria-valuenow="<?= $qs_data->progress ?>" aria-valuemin="0" aria-valuemax="10"><?php echo ($qs_data->progress / 10) * 100 ?>%</div>
                                             </div>
                                         </li>
@@ -103,11 +103,11 @@
                                             <a href="<?= base_url('quiz/take_quiz/1'); ?>" class="btn btn-success px-2 py-2" style="width: 100%;"><i class="fas fa-clipboard pr-2"></i>Continue</a>
                                         <?php } else { ?>
                                             <div class="row">
-                                                <div class="col-md-12 px-2 pb-2">
-                                                    <a onclick="retake_quiz(1)" class="btn btn-danger" style="width: 100%;"><i class="fas fa-clipboard pr-2"></i>Retake Quiz</a>
-                                                </div>
                                                 <div class="col-md-12 px-2 py-2">
                                                     <button type="button" class="btn btn-success" style="width: 100%;" onclick="generate_result('quiz_symptom')" data-toggle="modal" data-target="#check_result"><i class="fas fa-pen pr-2"></i>View Results</button>
+                                                </div>
+                                                <div class="col-md-12 px-2 pb-2">
+                                                    <a onclick="retake_quiz(1)" class="btn btn-danger" style="width: 100%;"><i class="fas fa-clipboard pr-2"></i>Retake Quiz</a>
                                                 </div>
                                             </div>
                                         <?php } ?>
@@ -118,8 +118,8 @@
                         <div class="col-md-4 pb-5">
                             <div class="px-2">
                                 <div class="card shadow" style="border-radius: 30px;">
-                                    <div class="card-body bg-primary" style="border-top-left-radius: 30px; border-top-right-radius: 30px;">
-                                        <h5 class="card-title pt-5" style="font-weight: 700; color:white; width: 80%; font-size: 1.8rem;">Tips For Communicating With Dementia</h5>
+                                    <div class="card-body" style="border-top-left-radius: 30px; border-top-right-radius: 30px; background-color: #6B9080;">
+                                        <h5 class="card-title pt-5" style="font-weight: 700; color:white; width: 80%; font-size: 1.7rem;">Tips For Communicating With Dementia</h5>
                                         <?php if ($qt_data->status != 1) {
                                             $dateTime = new DateTime($qt_data->last_update);
                                             $qt_dateOnly = $dateTime->format('Y-m-d');
@@ -163,16 +163,16 @@
                                     </ul>
                                     <div class="card-body">
                                         <?php if ($qt_data->status == 1) { ?>
-                                            <a href="<?= base_url('quiz/take_quiz/2'); ?>" class="btn btn-success px-2 py-2" style="width: 100%;"><i class="fas fa-clipboard pr-2"></i>Take Quiz</a>
+                                            <a href="<?= base_url('quiz/take_quiz/2'); ?>" class="btn btn-success px-2 py-2" style="width: 100%; "><i class="fas fa-clipboard pr-2"></i>Take Quiz</a>
                                         <?php } elseif ($qt_data->status == 2) { ?>
                                             <a href="<?= base_url('quiz/take_quiz/2'); ?>" class="btn btn-success px-2 py-2" style="width: 100%;"><i class="fas fa-clipboard pr-2"></i>Continue</a>
                                         <?php } else { ?>
                                             <div class="row">
+                                            <div class="col-md-12 px-2 py-2">
+                                                    <button type="button" class="btn btn-success" style="width: 100%;" onclick="generate_result('quiz_tips')" data-toggle="modal" data-target="#check_result"><i class="fas fa-pen pr-2"></i>View Results</button>
+                                                </div>
                                                 <div class="col-md-12 px-2 pb-2">
                                                     <a onclick="retake_quiz(2)" style="width: 100%;" class="btn btn-danger"><i class="fas fa-clipboard pr-2"></i>Retake Quiz</a>
-                                                </div>
-                                                <div class="col-md-12 px-2 py-2">
-                                                    <button type="button" class="btn btn-success" style="width: 100%;" onclick="generate_result('quiz_tips')" data-toggle="modal" data-target="#check_result"><i class="fas fa-pen pr-2"></i>View Results</button>
                                                 </div>
                                             </div>
                                         <?php } ?>
@@ -186,8 +186,8 @@
 
                                 <div class="card shadow" style="border-radius: 30px;">
 
-                                    <div class="card-body bg-primary" style="border-top-left-radius: 30px; border-top-right-radius: 30px;">
-                                        <h5 class="card-title pt-5" style="font-weight: 700; color:white; width: 80%; font-size: 1.8rem;">Dealing With People With Dementia</h5>
+                                    <div class="card-body" style="border-top-left-radius: 30px; border-top-right-radius: 30px; background-color: #6B9080;">
+                                        <h5 class="card-title pt-5" style="font-weight: 700; color:white; width: 80%; font-size: 1.7rem;">Dealing With People With Dementia</h5>
                                         <?php if ($qd_data->status != 1) {
                                             $dateTime = new DateTime($qd_data->last_update);
                                             $qd_dateOnly = $dateTime->format('Y-m-d');
