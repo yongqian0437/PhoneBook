@@ -338,7 +338,7 @@
                                 <div class="col-xl-12 col-lg-12" style="border-radius:20px;">
                                     <div class="card h-100 shadow mb-4" style="border-radius:20px;">
                                         <div class="card-header py-3" style="background-color: #6b9080;border-top-left-radius: 20px; border-top-right-radius: 20px;">
-                                            <div class="text-xs font-weight-bold mb-1" style="color: white; text-transform: uppercase;">Current Score</div>
+                                            <div class="text-xs font-weight-bold mb-1" style="color: white; text-transform: uppercase;">How are the users in our system related to dementia?</div>
                                         </div>
 
                                         <div class="card-body" style="background-color: #f9f6f1;">
@@ -459,14 +459,12 @@
                     var myChart = new Chart(pieChart, {
                         type: 'pie',
                         data: {
-                            labels: ['Understanding Dementia Symptoms', 'Tips For Communicating With Dementia', 'Dealing With People With Dementia'],
+                            labels: ['Personally related', 'Family or friend related'],
                             datasets: [{
-                                label: 'Current Score',
-                                data: [<?= $qs_data->score ?>, <?= $qt_data->score ?>, <?= $qd_data->score ?>],
+                                data: [<?= $themselves_count?>, <?= $family_count ?>],
                                 backgroundColor: [
                                     'rgb(241, 26, 123)',
                                     'rgb(152, 33, 118)',
-                                    'rgb(255, 229, 173)'
                                 ],
                                 hoverOffset: 4
                             }]

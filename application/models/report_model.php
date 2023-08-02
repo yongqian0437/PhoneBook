@@ -17,6 +17,16 @@ class report_model extends CI_Model
 
         return $this->db->get($database)->row();
     }
+    // ================================ User relation to dementia ========================================
+    function count_relation($type)
+    {
+        $this->db->select('*');
+        $this->db->from('users');
+        $this->db->where('relation', $type);
+        $query = $this->db->get();
+
+        return $query->num_rows();
+    }
 
     // ================================ Calculate first attempt score functions ========================================
     function total_user_count($table)

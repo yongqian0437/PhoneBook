@@ -25,6 +25,10 @@ class Report extends CI_Controller
 	{
 		$data['title'] = 'Dementia App | Report';
 
+		//count relations
+		$data['themselves_count'] = $this->report_model->count_relation(1);
+		$data['family_count'] = $this->report_model->count_relation(3);
+
 		//reading corner data
 		$data['reading_data'] = $this->reading_corner_model->get_reading_symptoms_details($this->session->userdata('user_id'));
 
@@ -51,17 +55,5 @@ class Report extends CI_Controller
 		$this->load->view('report_view', $data);
 		$this->load->view('templates/footer');
 	}
-
-	// // Get the user's ID from the session or any other source
-	// $user_id = $this->session->userdata('user_id');
-	// $userScore = $this->report_model->get_reportsymtom($user_id); // Replace $user_id with the actual user ID
-	// $totalCount = $this->report_model->total_user_count('quiz_symptom'); // Replace 'quiz_symptom' with the appropriate table name
-
-	// $percentage = ($userScore / $totalCount) * 100;
-	// $percentage = round($percentage, 2); // Round the percentage to two decimal places
-
-	// $data['percentage'] = $percentage;
-
-	// Load the view
 
 }
