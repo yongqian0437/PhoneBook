@@ -163,7 +163,7 @@
                         <hr style=" width :100%; height:2px; background-color:#EAF4F4">
                     </div>
                     <div class="d-sm-flex align-items-center justify-content-between mb-2 px-4">
-                        <h4 class="mb-2 col-4 text-gray-700 pt-4 font-weight-bold ">Quiz :</h4>
+                        <h4 class="mb-2 col-4 text-gray-700 pt-4 font-weight-bold ">Quiz Score:</h4>
                     </div>
 
                     <div class="row justify-content-center px-4" style="box-shadow:30px;">
@@ -174,10 +174,84 @@
                                 <div class="card-body ">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <?php if ($qs_data->status == 3) { ?>
+                                            <?php if ($qs_data->first_attempt_score != 0) { ?>
                                                 <div class="text-center text-xs font-weight-bold text-uppercase mb-2">
                                                     You have scored more than
-                                                    <h1 class="text-danger"><?php echo $qs_percent; ?>% </h1> of individuals on your very first attempt in the <h3 class="text-success" style="font-family: 'poppins', sans-serif;">Dementia Symptoms</h3>
+                                                    <h1 class="text-danger"><?php echo $qs_percent; ?>% </h1> of individuals on your very first attempt in <h3 class="text-success" style="font-family: 'poppins', sans-serif;">Dementia Symptoms</h3>
+                                                </div>
+                                            <?php } else { ?>
+                                                <div class="text-center font-weight-bold  py-4 " style="font-size: 1.5rem;">
+                                                    Complete the quiz once for this topic to see your report!
+                                                </div>
+                                            <?php } ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+
+
+                        <div class="col-4 mb-4 ">
+                            <div class="card border-left-success shadow h-100 py-2" style="border-radius: 30px;">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <?php if ($qt_data->first_attempt_score != 0) { ?>
+                                                <div class="text-center text-xs font-weight-bold text-uppercase mb-2">
+                                                    You have scored more than
+                                                    <h1 class="text-danger"><?php echo $qt_percent; ?>% </h1> of individuals on your very first attempt in <h3 class="text-success" style="font-family: 'poppins', sans-serif;">Dementia Symptoms</h3>
+                                                </div>
+                                            <?php } else { ?>
+                                                <div class="text-center font-weight-bold  py-4 " style="font-size: 1.5rem;">
+                                                    Complete the quiz once for this topic to see your report!
+                                                </div>
+                                            <?php } ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- </a> -->
+                        </div>
+
+                        <div class="col mb-4">
+                            <div class="card border-left-success shadow h-100 py-2" style="border-radius: 30px;">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                        <?php if ($qd_data->first_attempt_score != 0) { ?>
+                                                <div class="text-center text-xs font-weight-bold text-uppercase mb-2">
+                                                    You have scored more than
+                                                    <h1 class="text-danger"><?php echo $qd_percent; ?>% </h1> of individuals on your very first attempt in <h3 class="text-success" style="font-family: 'poppins', sans-serif;">Dementia Symptoms</h3>
+                                                </div>
+                                            <?php } else { ?>
+                                                <div class="text-center font-weight-bold  py-4 " style="font-size: 1.5rem;">
+                                                    Complete the quiz once for this topic to see your report!
+                                                </div>
+                                            <?php } ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="d-sm-flex align-items-center justify-content-between mb-2 px-4">
+                        <h4 class="mb-2 col-4 text-gray-700 pt-4 font-weight-bold ">Quiz Streaks:</h4>
+                    </div>
+                    <div class="row justify-content-center px-4" style="box-shadow:30px;">
+
+                        <div class="col-4 mb-4 ">
+                            <div class="card border-left-success shadow h-100 py-2" style="border-radius: 30px;">
+
+                                <div class="card-body ">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <?php if ($qs_data->status == 3) { ?>
+                                                <div class="text-center text-xs font-weight-bold text-uppercase mb-2">
+                                                    You are in the top
+                                                    <h1 class="text-danger"><?php echo $qs_streak_percent; ?>% </h1> with your highest streak in <h3 class="text-success" style="font-family: 'poppins', sans-serif;">Dementia Symptoms</h3>
                                                 </div>
                                             <?php } else { ?>
                                                 <div class="text-center font-weight-bold  py-4 " style="font-size: 1.5rem;">
@@ -199,8 +273,8 @@
                                         <div class="col mr-2">
                                             <?php if ($qt_data->status == 3) { ?>
                                                 <div class="text-center text-xs font-weight-bold text-uppercase mb-2">
-                                                    You have scored more than
-                                                    <h1 class="text-danger"><?php echo $qt_percent; ?>% </h1> of individuals on your very first attempt in the <h3 class="text-success" style="font-family: 'poppins', sans-serif;">Dementia Symptoms</h3>
+                                                    You are in the top
+                                                    <h1 class="text-danger"><?php echo $qt_streak_percent; ?>% </h1> with your highest streak in <h3 class="text-success" style="font-family: 'poppins', sans-serif;">Dementia Symptoms</h3>
                                                 </div>
                                             <?php } else { ?>
                                                 <div class="text-center font-weight-bold  py-4 " style="font-size: 1.5rem;">
@@ -221,8 +295,8 @@
                                         <div class="col mr-2">
                                         <?php if ($qd_data->status == 3) { ?>
                                                 <div class="text-center text-xs font-weight-bold text-uppercase mb-2">
-                                                    You have scored more than
-                                                    <h1 class="text-danger"><?php echo $qd_percent; ?>% </h1> of individuals on your very first attempt in the <h3 class="text-success" style="font-family: 'poppins', sans-serif;">Dementia Symptoms</h3>
+                                                You are in the top
+                                                    <h1 class="text-danger"><?php echo $qd_streak_percent; ?>% </h1> with your highest streak in <h3 class="text-success" style="font-family: 'poppins', sans-serif;">Dementia Symptoms</h3>
                                                 </div>
                                             <?php } else { ?>
                                                 <div class="text-center font-weight-bold  py-4 " style="font-size: 1.5rem;">
@@ -237,61 +311,11 @@
                         </div>
                     </div>
 
-                    <div class="row px-4">
-                        <!-- Pending Requests Card Example -->
-                        <div class="col mb-4">
-                            <div class="card  shadow h-100 py-2" style="border-radius: 20px;background-color: #f9f6f1;">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-uppercase mb-1" style="font-family: 'Roboto', sans-serif;">
-                                                Highest Streak in Quiz Dementia Symptoms
-                                            </div>
-                                            <div id="ac_counter" class="h5 mb-0 font-weight-bold text-gray-800 counting_number"><i class="fas fa-fire pr-2" style="color:red;"></i><?= $qs_data->max_streak ?></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col mb-4">
-                            <div class="card shadow h-100 py-2" style="border-radius: 20px;background-color: #f9f6f1;">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-uppercase mb-1" style="font-family: 'Roboto', sans-serif;">
-                                                Highest Streak in Quiz Tips for communicating with a person with Dementia
-                                            </div>
-                                            <div id="ep_counter" class="h5 mb-0 font-weight-bold text-gray-800 counting_number"><i class="fas fa-fire pr-2" style="color:red;"></i><?= $qt_data->max_streak ?></div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col mb-4">
-                            <div class="card border-left shadow h-100 py-2" style="border-radius: 20px;background-color: #f9f6f1;">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-uppercase mb-1" style="font-family: 'Roboto', sans-serif;">
-                                                Highest Streak in Quiz Dealing with the Troubling Behavior of A Person with Dementia
-                                            </div>
-                                            <div id="ep_counter" class="h5 mb-0 font-weight-bold text-gray-800 counting_number text-warning "><i class="fas fa-fire pr-2" style="color:red;"></i><?= $qd_data->max_streak ?></div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
 
 
 
                     <!-- Graph -->
-                    <div class="row px-4">
+                    <div class="row px-4 py-5">
                         <div class="graphbox">
 
                             <div class="box mb-4" style="border-radius:20px;">

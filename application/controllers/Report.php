@@ -33,6 +33,10 @@ class Report extends CI_Controller
 		$data['qt_percent'] = $this->report_model->score_percentage('quiz_tips');
 		$data['qd_percent'] = $this->report_model->score_percentage('quiz_dealing');
 
+		//quiz streak percentage
+		$data['qs_streak_percent'] = $this->report_model->streak_percentage('quiz_symptom');
+		$data['qt_streak_percent'] = $this->report_model->streak_percentage('quiz_tips');
+		$data['qd_streak_percent'] = $this->report_model->streak_percentage('quiz_dealing');
 
 		//quiz data
 		$data['qs_data'] = $this->quiz_model->get_qs_details($this->session->userdata('user_id'));

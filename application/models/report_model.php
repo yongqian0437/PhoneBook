@@ -18,6 +18,7 @@ class report_model extends CI_Model
         return $this->db->get($database)->row();
     }
 
+    // ================================ Calculate first attempt score functions ========================================
     function total_user_count($table)
     {
         $this->db->select('*');
@@ -26,18 +27,6 @@ class report_model extends CI_Model
         $query = $this->db->get();
 
         return $query->num_rows();
-    }
-
-    function count_percentage($user_score, $database)
-    {
-        $users_less_than_score = $this->score_less_than($user_score, $database);
-        $count1 = $users_less_than_score->COUNT;
-
-        $total_users = $this->total_user_count($database);
-        $count2 = $total_users->COUNT;
-
-        $percentage = ($count1 / $count2) * 100;
-        return round($percentage, 2);
     }
 
     function get_user_score_data($table)
@@ -61,6 +50,46 @@ class report_model extends CI_Model
         $this->db->from($table);
         $this->db->where('first_attempt_score >', 0);
         $this->db->where('first_attempt_score <', $first_quiz_score);
+        $query = $this->db->get();
+        $count = $query->num_rows();
+
+        $percentage = ($count/$total_user)*100;
+        return $percentage;
+    }
+
+    // ================================ Calculate streaks functions ========================================
+
+    function total_user_count_for_streak($table)
+    {
+        $this->db->select('*');
+        $this->db->from($table);
+        $this->db->where('first_attempt_score >', 0);
+        $query = $this->db->get();
+
+        return $query->num_rows();
+    }
+
+    function get_user_streak_data($table)
+    {
+        $this->db->where('user_id', $this->session->userdata('user_id'));
+        return $this->db->get($table)->row();
+    }
+
+    function streak_percentage($table)
+    {
+        //get THIS user score first
+        $quiz_data = $this->get_user_streak_data($table);
+        $quiz_max_streak = $quiz_data->max_streak;
+
+        //get total user
+        $total_user = $this->total_user_count_for_streak($table);
+        
+
+        //get total user who score less than this user
+        $this->db->select('*');
+        $this->db->from($table);
+        $this->db->where('max_streak >', 0);
+        $this->db->where('max_streak <', $quiz_max_streak);
         $query = $this->db->get();
         $count = $query->num_rows();
 
