@@ -134,31 +134,39 @@ function update_password(event) {
     var user_password = $('#user_password').val();
     var confirm_password = $('#confirm_password').val();
 
-    //check if old_password matches
-    $.ajax({
-        url: base_url + "user/profile/check_password",
-        type: 'POST',
-        data: { user_password: old_password },
-        dataType: 'json',
-        success: function (response) {
-            if (response.status === 'success') {
-                //check password and confirm password matches
-                if (user_password === confirm_password) {
-                    event.target.form.submit();
-                }
-                else {
+    if (old_password === '' || user_password === '' || confirm_password === '') {
+        Swal.fire({
+            icon: 'error',
+            title: 'Please fill in all fields',
+        })
+    } else {
+        //check if old_password matches
+        $.ajax({
+            url: base_url + "user/profile/check_password",
+            type: 'POST',
+            data: { user_password: old_password },
+            dataType: 'json',
+            success: function (response) {
+                if (response.status === 'success') {
+                    //check password and confirm password matches
+                    if (user_password === confirm_password) {
+                        event.target.form.submit();
+                    }
+                    else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Confirm password does not match password',
+                        })
+                    }
+                } else {
                     Swal.fire({
                         icon: 'error',
-                        title: 'Confirm password does not match password',
+                        title: 'Wrong old password!',
                     })
                 }
-            } else {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Wrong old password!',
-                })
             }
-        }
-    });
+        });
+    }
+
 
 }
