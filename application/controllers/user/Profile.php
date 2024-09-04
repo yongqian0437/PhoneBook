@@ -17,7 +17,7 @@ class Profile extends CI_Controller
 
     public function index()
     {
-        $data['title'] = 'Dementia | Profile';
+        $data['title'] = 'PhoneBook | Profile';
         $user_id = $this->session->userdata('user_id');
 
         $data['user_data'] = $this->user_model->get_user_details($this->session->userdata('user_id'));

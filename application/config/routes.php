@@ -52,3 +52,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+$route['record'] = 'record/index';
+$route['record/index'] = 'record/index';
+$route['record/index/(:num)'] = 'record/index/$1';
+$route['record/edit/(:num)'] = 'record/edit/$1';
+$route['record/delete/(:num)'] = 'record/delete/$1';

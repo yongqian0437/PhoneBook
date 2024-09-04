@@ -105,12 +105,6 @@
                                             <li class="nav-item one">
                                                 <a class="nav-link custom_nav" id="tab2" data-toggle="pill" href="#password"><i class="fas fa-lock pr-3"></i>Passwords</a>
                                             </li>
-                                            <li class="nav-item one">
-                                                <a class="nav-link custom_nav" id="tab3" data-toggle="pill" href="#notification"><i class="fas fa-bell pr-3"></i>Notification</a>
-                                            </li>
-                                            <li class="nav-item one">
-                                                <a class="nav-link custom_nav" id="tab4" data-toggle="pill" href="#invitefriend"><i class="fas fa-share pr-3"></i>Invite a friend</a>
-                                            </li>
                                         </ul>
                                         <div style="height:100px"></div>
                                     </div>
@@ -172,69 +166,8 @@
                                                 </form>
 
                                             </div>
-                                            <div class="tab-pane fade" id="notification">
-                                                <h3 class="font-weight-bold">Notification</h3>
-                                                <div class="col-md-4 pt-5">
-                                                    <div class="form-check">
-                                                        <input class="form-check-input" type="checkbox" value="" id="check_notification" style="width: 20px; height: 20px;" <?php if ($user_data->email_notification) {
-                                                                                                                                                                                echo "checked";
-                                                                                                                                                                            } ?>>
-                                                        <label class="form-check-label pl-2" for="check_notification" style="font-weight: 600; font-size:1.2rem;">
-                                                            Email reminder
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4 pt-4" style="display: none;">
-                                                    <div class="form-group">
-                                                        <label for="hoursDropdown" style="font-weight: 600; font-size:1.2rem;">Select Hour:</label>
-                                                        <select class="form-control" id="hoursDropdown">
-                                                            <?php
-                                                            $selectedHour = $user_data->notification_time;
-                                                            for ($hour = 8; $hour <= 24; $hour++) {
-                                                                $displayHour = ($hour > 12) ? ($hour - 12) : $hour;
-                                                                $amPm = ($hour >= 12) ? 'PM' : 'AM';
-                                                                $selected = ($hour == $selectedHour) ? 'selected' : '';
-                                                                echo "<option value='$hour' $selected>$displayHour $amPm</option>";
-                                                            }
-                                                            ?>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="tab-pane fade" id="invitefriend">
-                                                <h3 class="font-weight-bold">Invite a friend</h3>
-                                                <p>Invite your friend or family to register by sharing a link with your own personal code</p>
-                                                <div class="row pt-4">
-                                                    <div class="col-md-7">
-                                                        <label for="myInput" class="col-form-label" style="font-weight: 600; font-size:1.1rem;">Number of people you invited:</label>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <input type="text" class="form-control" value="<?= $user_data->invited_times ?>" disabled>
-                                                    </div>
-                                                </div>
-                                                <div class="row pt-2 pb-2">
-                                                    <div class="col-md-7">
-                                                        <label for="myInput" class="col-form-label" style="font-weight: 600; font-size:1.1rem;">Your invite code:</label>
-                                                    </div>
-                                                    <div class="col-md-4">
-                                                        <input type="text" class="form-control" value="<?= $user_data->invite_code ?>" disabled>
-                                                    </div>
-                                                </div>
-                                                <div class="row pt-2 pb-2">
-                                                    <div class="col-md-12">
-                                                        <a class="share_icon" href="https://www.messenger.com/t/<PAGE_ID>?text=Learn%20more%20about%20dementia!%20<?php echo base_url('user/auth/registration/'.$user_data->invite_code); ?>" target="_blank">
-                                                            <img src="<?php echo base_url('assets/img/about_us/instagram-logo.png'); ?>" alt="Share on Instagram" style="height: 2.1rem; width: 2.1rem;">
-                                                        </a>
-
-                                                        <a class="share_icon" href="https://web.whatsapp.com/send?text=Learn%20more%20about%20dementia!%20<?php echo base_url('user/auth/registration/'.$user_data->invite_code); ?>" target="_blank">
-                                                            <img src="<?php echo base_url('assets/img/about_us/whatsapp_icon.png'); ?>" alt="Share on WhatsApp" style="height: 3.6rem; width: 3.6rem;">
-                                                        </a>
-                                                    </div>
-                                                </div>
-
-                                                <button id="copy_link" data-id="<?= $user_data->invite_code ?>" class="btn btn-success" style="float:left; width:auto;"><i class="fas fa-copy pr-2"></i>Copy Link</button>
-
-                                            </div>
+                                         
+                                          
                                         </div>
                                     </div>
                                 </div>

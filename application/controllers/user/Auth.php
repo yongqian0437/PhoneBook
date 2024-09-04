@@ -10,8 +10,7 @@ class Auth extends CI_Controller
         $this->load->library('email');
         $this->load->helper('form');
         $this->load->model(['user_model']);
-        $this->load->model('quiz_model');
-        $this->load->model('reading_corner_model');
+        $this->load->model('phonebook_model');
     }
 
     public function login()
@@ -19,7 +18,7 @@ class Auth extends CI_Controller
         //Dont allow user to access login page
         if ($this->session->userdata('has_login')) {
 
-            redirect('Reading_corner');
+            redirect('phonebook');
         }
 
         $this->form_validation->set_rules('user_email', 'Email', 'trim|required|valid_email');
@@ -28,7 +27,7 @@ class Auth extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $data['include_css'] = 'forms';
-            $data['title'] = 'Dementia App | Login';
+            $data['title'] = 'PhoneBook | Login';
             $this->load->view('templates/header', $data);
             $this->load->view('user/login/login_view');
             $this->load->view('templates/footer');
@@ -57,7 +56,7 @@ class Auth extends CI_Controller
 
             $this->session->set_userdata($data);
 
-            redirect('Reading_corner');
+            redirect('phonebook');
         }
 
         // if user account does not exist
@@ -68,75 +67,49 @@ class Auth extends CI_Controller
         }
     }
 
-    public function registration($invite_code = 0)
+    public function registration()
     {
         $this->form_validation->set_rules('user_fname', 'First Name', 'required|trim');
         $this->form_validation->set_rules('user_lname', 'Last Name', 'required|trim');
         $this->form_validation->set_rules('user_email', 'Email', 'required|trim|valid_email|is_unique[users.user_email]', [
             'is_unique' => 'This email has already registered!'
         ]);
-
         $this->form_validation->set_rules('user_password', 'Password', 'required|trim|min_length[3]|matches[user_password2]', [
-            'matches' => 'password do not match!',
+            'matches' => 'Passwords do not match!',
             'min_length' => 'Password too short'
         ]);
         $this->form_validation->set_rules('user_password2', 'Password', 'required|trim|matches[user_password]');
-        $this->form_validation->set_rules('relation', 'Relation', 'required|trim');
-
+    
         if ($this->form_validation->run() == false) {
-            $data['title'] = "Dementia App | Registration";
+            $data['title'] = "Phone Book | Registration";
             $data['include_css'] = 'forms';
-            if ($invite_code != 0) {
-                $data['invite_code'] = $invite_code;
-            }
             $this->load->view('templates/header', $data);
             $this->load->view('user/registration/registration_view');
             $this->load->view('templates/footer');
         } else {
-            //If user registered with an invite code
-            if (!($this->input->post('invite_code')) == null) {
-                $submitted_invite_code = $this->input->post('invite_code');
-                printf($submitted_invite_code);
-                $this->user_model->increase_invite_number($submitted_invite_code);
-            }
-
-            $data =
-                [
-                    'user_fname' => htmlspecialchars($this->input->post('user_fname', true)),
-                    'user_lname' => htmlspecialchars($this->input->post('user_lname', true)),
-                    'user_email' => htmlspecialchars($this->input->post('user_email', true)),
-                    'user_password' => password_hash($this->input->post('user_password'), PASSWORD_DEFAULT),
-                    'relation' => $this->input->post('relation'),
-                ];
-
-            // insert data into database and return new created user id
+            // Sanitize and prepare user data for insertion
+            $data = [
+                'user_fname' => htmlspecialchars($this->input->post('user_fname', true)),
+                'user_lname' => htmlspecialchars($this->input->post('user_lname', true)),
+                'user_email' => htmlspecialchars($this->input->post('user_email', true)),
+                'user_password' => password_hash($this->input->post('user_password'), PASSWORD_DEFAULT),
+            ];
+    
+            // Insert user data into database and get the new user ID
             $user_id = $this->user_model->insert($data);
 
-            //Created new column for all 3 quiz table for this new user
-            $new_data['user_id'] = $user_id;
-            $this->quiz_model->insert_quiz_s($new_data);
-            $this->quiz_model->insert_quiz_t($new_data);
-            $this->quiz_model->insert_quiz_d($new_data);
-
-            //Created new column for reading progress for this new user
-            $this->reading_corner_model->insert_reading($new_data);
-
+            //Created new column for new user
+            // $new_data['user_id'] = $user_id;
+            // $this->phonebook_model->insert_info($new_data);
+    
+            // Set success message and redirect to login page
             $this->session->set_flashdata('register_success', true);
             redirect('user/auth/login');
         }
     }
 
-    //Using ajax to check if invite code exist before they are allowed to submit
-    public function check_invite_code_exists()
-    {
-        $value = $this->input->post('value');
+    
 
-        // Perform the database check
-        $exists = $this->user_model->check_invite_code_exists($value);
-
-        // Return the result as JSON
-        echo json_encode(array('exists' => $exists));
-    }
 
     public function logout()
     {
@@ -150,40 +123,9 @@ class Auth extends CI_Controller
         redirect('user/auth/login');
     }
 
-    //Forget password function onwards ------------------------------------------------------------------------
-    public function Email($user_email, $link, $message)
-    {
-
-        $config =
-            [
-                'protocol' => 'smtp',
-                'smtp_host' => 'ssl://smtp.googlemail.com',
-                'smtp_user' => '0134396@kdu-online.com',
-                'smtp_pass' => 'dementia123',
-                'smtp_port' => 465,
-                'mailtype' => 'html',
-                'charset' => 'utf-8',
-                'newline' => "\r\n"
-            ];
-
-        $this->email->initialize($config);
-        $this->email->from('0134396@kdu-online.com', 'Capstone Project 2021');
-        $this->email->to($user_email);
-        $this->email->subject($link);
-        $this->email->message($message);
-
-        if ($this->email->send()) {
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert" id="alert_message">
-            Check your email to reset your password</div>');
-            redirect('user/auth/login');
-        } else {
-            echo $this->email->print_debugger();
-        }
-    }
-
     public function forgotPassword()
     {
-        $data['title'] = 'Dementia App | Forgot Password';
+        $data['title'] = 'PhoneBook | Forgot Password';
         $data['include_css'] = 'forms';
         $this->load->view('templates/header', $data);
         $this->load->view('user/login/forgot_password_view');
@@ -211,7 +153,7 @@ class Auth extends CI_Controller
     public function reset()
     {
         $data['tokan'] = $this->input->get('tokan');
-        $data['title'] = 'Dementia App | Reset Password';
+        $data['title'] = 'Phone Book | Reset Password';
         $_SESSION['tokan'] = $data['tokan'];
         $this->load->view('templates/header', $data);
         $this->load->view('user/login/reset_password_view');

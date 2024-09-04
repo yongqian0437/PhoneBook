@@ -1,11 +1,5 @@
 <!-- Footer -->
-<!-- <footer class="sticky-footer">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; iJEES - Interactive Joint Education Employability System 2021</span>
-                    </div>
-                </div>
-</footer> -->
+
 <!-- End of Footer -->
 
 </div>
@@ -23,6 +17,10 @@
 
     <!-- Custom scripts for all pages-->
     <script src="<?php echo base_url()?>/assets/js/sb-admin-2.min.js"></script>
+
+    <!-- <script src="https://cdn.datatables.net/2.1.2/js/dataTables.min.js"></script> -->
+    <script src="<?php echo base_url('assets/vendor/datatables/jquery.dataTables.min.js')?>"></script>
+    <script src="<?php echo base_url('assets/vendor/datatables/dataTables.bootstrap4.min.js')?>"></script>
     
     <?php 
         if (isset($include_js)) {

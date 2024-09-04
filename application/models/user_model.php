@@ -17,53 +17,14 @@ class user_model extends CI_Model
 
     function insert($data)
     {
-        $data['invite_code'] = $this->generate_unique_code();
         $this->db->insert('users', $data);
         if ($this->db->affected_rows() > 0) {
-            return $this->db->insert_id();
+            return true;
         } else {
             return false;
         }
     }
-
-    function generate_unique_code()
-    {
-        $this->load->helper('string');
-
-        do {
-            $random_code = random_string('numeric', 8);
-            $code_exists = $this->check_code($random_code);
-        } while ($code_exists);
-
-        return $random_code;
-    }
-
-    public function check_code($code)
-    {
-        $this->db->where('invite_code', $code);
-        $query = $this->db->get('users');
-        return $query->num_rows() > 0;
-    }
-
-    public function check_invite_code_exists($invite_code)
-    {
-        // Perform the database query to check if the value exists
-        $this->db->from('users');
-        $this->db->where('invite_code', $invite_code);
-        $query = $this->db->get();
-
-        // Return true if the value exists, false otherwise
-        return ($query->num_rows() > 0);
-    }
-
-    public function increase_invite_number($submitted_invite_code)
-    {
-
-        $this->db->where('invite_code', $submitted_invite_code);
-        $this->db->set('invited_times', 'invited_times+1', false);
-        $this->db->update('users');
-    }
-
+ 
     function deletedata($id)
     {
         $this->db->where('user_id', $id);

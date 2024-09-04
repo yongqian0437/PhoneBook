@@ -27,13 +27,13 @@
         min-height: 100vh;
     }
 
-    .side-image {
-        background-image: url(<?php echo base_url("assets/img/dementias.jpg"); ?>);
+    .side-background {
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
         border-radius: 10px 0 0 10px;
         position: relative;
+        background-color: #87BD91;
     }
 
     .row {
@@ -165,7 +165,7 @@
     }
 
     @media only screen and (max-width: 768px) {
-        .side-image {
+        .side-background {
             border-radius: 10px 10px 0 0;
         }
 
@@ -206,11 +206,11 @@
             <div class="row">
 
                 <!-- image -->
-                <div class="col-md-6 side-image">
+                <div class="col-md-6 side-background">
                     <img src="assets/img/white.png" alt="" />
                     <div class="text">
-                        <p>Dementia APP <br>-
-                            <i>An APP for Dementia Care</i>
+                        <p>PhoneBook System <br>-
+                            <i>An APP for Booking</i>
                         </p>
                     </div>
                 </div>
